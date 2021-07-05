@@ -15,3 +15,4 @@ keypoints:
 ---
 
 # Pangolin
+{% include links.md %}
