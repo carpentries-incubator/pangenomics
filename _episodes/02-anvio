@@ -1,13 +1,16 @@
 ---
-title: "ANVIO"
-teaching: 0
-exercises: 0
+title: "Anvi'o"
+teaching: 15 min
+exercises: 40 min
 questions:
-- "Key question (FIXME)"
+- "What is Anvi'o?"
+- "How can obtain a pangenome analysis in Anvi'o?"
 objectives:
-- "First learning objective. (FIXME)"
+- "Establish a dataset of genomes to obtain their pangenome"
+- "Perform a basic workflow to obtain a pangenome in Anvi'o"
+- "Understand and interpret the pangenome results"
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "Anvi’o is an open-source, community-driven analysis and visualization platform for microbial ‘omics. "
 ---
 # ANVIO
 
