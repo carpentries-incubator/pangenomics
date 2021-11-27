@@ -78,29 +78,43 @@ Tuberculosis (TB) is the most lethal infection disease worldwide with 1.4 millio
 |*M. tuberculosis*  N3913 | Human   | L7         |Australia    | ERR2704711          |
 
 
+
 ## The basic process to construct a pangenome starting with genbank files
 
-Connect to server through ssh command and enter the password
+
+Connect to the working server using the *ssh* command and enter the password
 ~~~
 ssh betterlab@132.248.196.38
 ~~~
+{: .source}
 
-**Note.** When typing the password, it will not show in the terminal for security reasons. Don't panic, is normal!
+~~~
+betterlab@132.248.196.38's password:
+~~~
+{: .output}
 
+Type the password. **Note.** When typing the password, it will not show in the terminal for security reasons. Don't panic, is normal!
+Once conexion has been established correctly, the header of your terminal will content the server information instead your personal computer information. 
+~~~
+(base) betterlab@betterlabub:~$
+~~~
+
+{: .output}
 
 Create a new directory into the Pangenomics directory
 ~~~
 cd Pangenomics/
 ~~~
+
 ~~~
 mkdir GBK-MTBC
+~~~
+
 
 Move into the new directory GBK-MTBC and to obtain the complete path to this directory
 
 ~~~
 cd GBK-MTBC/
-~~~
-~~~
 pwd
 ~~~
 
@@ -113,15 +127,13 @@ exit
 In your computer, move to the direcotry which contains the genomes of interest and verify they are correct
 ~~~
 cd /home/arya/Documents/Paulina/2Pangenome/Annotation_GBK/
-~~~
-
-~~~
 ls
 ~~~
 
 Copy your genomes to the new directory you created into the server 
 ~~~
 scp *.gbk betterlab@132.248.196.38:/home/betterlab/Pangenomics/GBK-MTBC/.
+~~~
 
 Conect to server again
 ~~~
@@ -131,13 +143,10 @@ ssh betterlab@132.248.196.38
 Verify you uploads
 ~~~
 cd Pangenomics/GBK-MTBC/
-~~~
-~~~
 ls
 ~~~
 
 To start using ANVIO, activate the conda environment which contain it
-
 ~~~
 conda activate Pangenomics
 ~~~~
@@ -168,8 +177,6 @@ ls *fa |cut -d'-' -f1 |while read line; do echo $line$'\t'$line-contigs.db >>ext
 **STEP 5.** Modify the headers of the list external-genomes.txt
 ~~~
 nano external-genomes.txt
-~~~
-~~~
 name	contigs_db_path
 ~~~
 
@@ -215,4 +222,5 @@ anvi-display-pan -g MTBC-rep_GENOMES.db \
 
 
 {: .source}
+{: .output}
 {% include links.md %}
