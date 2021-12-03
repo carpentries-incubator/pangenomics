@@ -28,9 +28,11 @@ The pangenome could be divided in three principal components: **core genome** wh
 There are two classes of pangenomes: open and closed. An **open pangenome** occurs when the size of the pangenome increases considerably every added genome (p. e. *Escherichia coli*). Whereas, a **closed pangenome** results when only few gene families are incorporated to the pangenome when a new member is added.
 
 
-XXXX
+![Figure 1. Characteristics of open and closed pangenomes](../fig/Characteristics_of_open_and_closed_pangenomes.png)
 
-## Selection of genomes 
+
+
+## How to select a group of genomes to construct a pangenome?
 
 Selection of proper data to construct a pangenome analysis is a crucial task of the process. By definition, a pangenome represents the entire set of genes from all strains in a clade. Thus, let's define and understand what a clade is. 
 
