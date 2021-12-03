@@ -36,13 +36,15 @@ betterlab@132.248.196.38's password:
 ~~~
 {: .output}
 
-Type the password. **Note.** When typing the password, it will not be shown in the terminal for security reasons. Don't panic, is normal!
-Once conexion has been established correctly, the header of your terminal will content the server information instead your personal computer information. 
+
+Type the password provided by your instructors. 
+**Note.** When typing the password, it will not be shown in the terminal for security reasons. Don't panic, is normal!
+Once conexion has been established correctly, the header of your terminal will change and instead, it will show the server information. 
 ~~~
 (base) betterlab@betterlabub:~$
 ~~~
-
 {: .output}
+
 
 Create a new directory named "MTBC" into the Pangenomics directory
 ~~~
@@ -97,16 +99,18 @@ Mtb_N0031_L2.gbk  Mtb_N0091_L6.gbk  Mtb_N1176_L5.gbk  Mtb_N1272_L5.gbk
 Mtb_N0052_L2.gbk  Mtb_N0136_L4.gbk  Mtb_N1201_L6.gbk  Mtb_N1274_L3.gbk
 Mtb_N0054_L3.gbk  Mtb_N0145_L2.gbk  Mtb_N1202_L6.gbk  Mtb_N1283_L4.gbk
 Mtb_N0069_L1.gbk  Mtb_N0155_L2.gbk  Mtb_N1216_L4.gbk  Mtb_N3913_L7.gbk
+~~~
 {: .output}
 
-Copy the genomes from your personal computer to the recently created Pangenomics directory into the server, using the path you obtained
+
+Copy the genomes from your personal computer to the recently created Pangenomics directory into the server, using the *scp* command, the server IP and the MTBC directory path you obtained above
 ~~~
-scp *.gbk betterlab@132.248.196.38:/home/betterlab/Pangenomics/GBK-MTBC/.
+scp *.gbk betterlab@132.248.196.38:/home/betterlab/Pangenomics/MTBC/.
 ~~~
 {: .source}
 
 
-Conect to server again using the same terminal or a new one
+Conect again to the server using the same terminal or a new one
 ~~~
 ssh betterlab@132.248.196.38
 ~~~
@@ -117,7 +121,7 @@ betterlab@132.248.196.38's password:
 ~~~
 {: .output}
 
-Move to your MTBC directory and check your uploads
+Move into your MTBC directory and check your uploads
 ~~~
 cd Pangenomics/MTBC/
 ls
@@ -146,8 +150,10 @@ conda activate Pangenomics
 ~~~
 {: .output}
 
+To this point, we are ready to construct a Pangenome of the 20 representative MTBC genomes. 
+Please notice that we avoided including "-" symbol within the name of the genbank files. In the future, when using your personal genomes and reproduce this methodology, do the same. It will save you some code issues.
 
-**Important note:** Avoid including "-" symbol within the genbank file names
+Let's do it!
 
 
 **STEP 1.** Process the GBK files with anvi-script-process-genbank script (in batch). This script takes a GenBank file, and outputs a FASTA file, as well as two additional TAB-delimited output files for external gene calls and gene functions that can be used with the programs anvi-gen-contigs-database and anvi-import-functions.
@@ -191,7 +197,6 @@ External gene calls file .....................: Mtb_N3913_L7-external-gene-calls
 TAB-delimited functions ......................: Mtb_N3913_L7-external-functions.txt
 
 * Mmmmm ☘
-
 ~~~
 {: .output}
 
