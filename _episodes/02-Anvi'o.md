@@ -158,8 +158,8 @@ Let's do it!
 
 STEP 1
 ===============================================
-**Process the GBK files with anvi-script-process-genbank script (in batch)**
-===============================================
+**Process the genome files (.gbk)**
+
 
 This script takes a GenBank file, and outputs a FASTA file, as well as two additional TAB-delimited output files for external gene calls and gene functions that can be used with the programs anvi-gen-contigs-database and anvi-import-functions.
 
@@ -247,7 +247,7 @@ Mtb_N0091_L6-external-gene-calls.txt  Mtb_N1202_L6-external-functions.txt
 STEP 2
 ===============================================
 **Reformat the fasta files** 
-===============================================
+
 
 ~~~
 ls *fa | while read line; do anvi-script-reformat-fasta $line -o $line\.fasta; done
@@ -342,8 +342,10 @@ Mtb_N0069_L1-contigs.fa.fasta  Mtb_N0155_L2-contigs.fa.fasta  Mtb_N1216_L4-conti
 ~~~
 {: .output}
 
+STEP 3
+===============================================
+**Create a database per genome**
 
-**STEP 3.** Create the database 
 ~~~
 ls *fasta | while read line; do anvi-gen-contigs-database -T 4 -f $line -o $line-contigs.db; done
 ~~~
@@ -527,8 +529,10 @@ Mtb_N0091_L6-contigs.fa.fasta-contigs.db  Mtb_N1202_L6-contigs.fa.fasta-contigs.
 {: .output}
 
 
+STEP 4
+===============================================
+**Create a list of ids and their corresponding genome database**
 
-**STEP 4.** Create a list of the genomes 
 ~~~
 ls *fa |cut -d'-' -f1 |while read line; do echo $line$'\t'$line-contigs.db >>external-genomes.txt; done
 ~~~
@@ -574,7 +578,9 @@ Mtb_N3913_L7	Mtb_N3913_L7-contigs.db
 ~~~
 {: .output}
 
-**STEP 5.** Modify the headers of the list external-genomes.txt
+STEP 5
+===============================================
+**Modify the headers of the list external-genomes.txt**
 ~~~
 nano external-genomes.txt
 ~~~
@@ -631,10 +637,12 @@ Mtb_N0091_L6	Mtb_N0091_L6-contigs.db
 Mtb_N0136_L4	Mtb_N0136_L4-contigs.db
 Mtb_N0145_L2	Mtb_N0145_L2-contigs.db
 ~~~
-{: .output}
+{: .output}  
 
-
-**STEP 6.** Rename the .db files
+STEP 6
+===============================================
+**Rename the .db files**
+  
 ~~~
 rename s'/.fa.fasta-contigs.db/.db/' *db
 ls *.db
@@ -649,9 +657,10 @@ Mtb_N0054_L3-contigs.db  Mtb_N0136_L4-contigs.db  Mtb_N1176_L5-contigs.db  Mtb_N
 ~~~
 {: .output}
 
-
-
-**STEP 7.** Create a database of the genomes of interest
+STEP 7
+===============================================
+**Create the pangenome database**
+  
 ~~~
 anvi-gen-genomes-storage -e external-genomes.txt -o MTBC_GENOMES.db
 ~~~
@@ -720,8 +729,10 @@ Mtb_N0054_L3-contigs.db  Mtb_N0145_L2-contigs.db  Mtb_N1202_L6-contigs.db  Mtb_N
 ~~~
 {: .output}
 
-
-**STEP 8.** Create a pangenome with the database of genomes created before
+  
+STEP 8
+===============================================
+**Construct the pangenome with the database created above**
 ~~~
 anvi-pan-genome -g MTBC_GENOMES.db \
                 --project-name "Pangenome_MTBC" \
@@ -808,9 +819,10 @@ combined-aas.fa                  combined-aas.fa.unique.phr    combined-aas.fa.u
 ~~~
 {: .output}
 
+STEP 9
+===============================================
+**Create the imagen of the results**
 
-
-**STEP 9.** Create the imagen of the results
 ~~~
 anvi-display-pan -g MTBC_GENOMES.db \
     -p Pangenome-MTBC/Pangenome_MTBC-PAN.db
@@ -868,9 +880,9 @@ command line.
 ~~~
 {: .output}
 
-
-
-**STEP 10.** Visualize the results by cliking the link of the server address 
+STEP 10
+===============================================
+**Visualize the results by cliking the link of the server address**
 
 ~~~
 http://132.248.196.38:8080
