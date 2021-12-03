@@ -156,7 +156,11 @@ Please notice that we avoided including "-" symbol within the name of the genban
 
 Let's do it!
 
-STEP 1
+
+THE 10 STEPS WORKFLOW TO CONSTRUCT A PANGENOME IN ANVI'O
+===============================================
+
+Step 1
 ===============================================
 **Process the genome files (.gbk)**
 
@@ -244,7 +248,7 @@ Mtb_N0091_L6-external-gene-calls.txt  Mtb_N1202_L6-external-functions.txt
 {: .output}
 
 
-STEP 2
+Step 2
 ===============================================
 **Reformat the fasta files** 
 
@@ -342,7 +346,7 @@ Mtb_N0069_L1-contigs.fa.fasta  Mtb_N0155_L2-contigs.fa.fasta  Mtb_N1216_L4-conti
 ~~~
 {: .output}
 
-STEP 3
+Step 3
 ===============================================
 **Create a database per genome**
 
@@ -529,7 +533,7 @@ Mtb_N0091_L6-contigs.fa.fasta-contigs.db  Mtb_N1202_L6-contigs.fa.fasta-contigs.
 {: .output}
 
 
-STEP 4
+Step 4
 ===============================================
 **Create a list of ids and their corresponding genome database**
 
@@ -578,7 +582,7 @@ Mtb_N3913_L7	Mtb_N3913_L7-contigs.db
 ~~~
 {: .output}
 
-STEP 5
+Step 5
 ===============================================
 **Modify the headers of the list external-genomes.txt**
 ~~~
@@ -639,7 +643,7 @@ Mtb_N0145_L2	Mtb_N0145_L2-contigs.db
 ~~~
 {: .output}  
 
-STEP 6
+Step 6
 ===============================================
 **Rename the .db files**
   
@@ -657,7 +661,7 @@ Mtb_N0054_L3-contigs.db  Mtb_N0136_L4-contigs.db  Mtb_N1176_L5-contigs.db  Mtb_N
 ~~~
 {: .output}
 
-STEP 7
+Step 7
 ===============================================
 **Create the pangenome database**
   
@@ -730,7 +734,7 @@ Mtb_N0054_L3-contigs.db  Mtb_N0145_L2-contigs.db  Mtb_N1202_L6-contigs.db  Mtb_N
 {: .output}
 
   
-STEP 8
+Step 8
 ===============================================
 **Construct the pangenome with the database created above**
 ~~~
@@ -819,7 +823,7 @@ combined-aas.fa                  combined-aas.fa.unique.phr    combined-aas.fa.u
 ~~~
 {: .output}
 
-STEP 9
+Step 9
 ===============================================
 **Create the imagen of the results**
 
@@ -880,7 +884,7 @@ command line.
 ~~~
 {: .output}
 
-STEP 10
+Step 10
 ===============================================
 **Visualize the results by cliking the link of the server address**
 
