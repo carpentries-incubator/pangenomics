@@ -157,7 +157,7 @@ Please notice that we avoided including "-" symbol within the name of the genban
 Let's do it!
 
 
-THE 10 STEPS WORKFLOW TO CONSTRUCT A PANGENOME IN ANVI'O
+Ten steps workflow to construct a Pangenome in Anvi'o
 ===============================================
 
 Step 1
