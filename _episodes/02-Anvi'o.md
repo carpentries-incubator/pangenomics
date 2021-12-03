@@ -139,7 +139,8 @@ Mtb_N0069_L1.gbk  Mtb_N0155_L2.gbk  Mtb_N1216_L4.gbk  Mtb_N3913_L7.gbk
 
 
 
-To start using ANVIO, activate the conda environment which contain the package Anvi'o. Instead of *(base)*, the beginning of the line code will be *(Pangenomics)* indicated that the environment is active. 
+To start using Anvi'o, activate the conda environment used to installation.
+Instead of (base), the beginning of the line code will be (Pangenomics) indicated that the environment is active. 
 ~~~
 conda activate Pangenomics
 ~~~
@@ -155,8 +156,12 @@ Please notice that we avoided including "-" symbol within the name of the genban
 
 Let's do it!
 
+STEP 1
+===============================================
+**Process the GBK files with anvi-script-process-genbank script (in batch)**
+===============================================
 
-**STEP 1.** Process the GBK files with anvi-script-process-genbank script (in batch). This script takes a GenBank file, and outputs a FASTA file, as well as two additional TAB-delimited output files for external gene calls and gene functions that can be used with the programs anvi-gen-contigs-database and anvi-import-functions.
+This script takes a GenBank file, and outputs a FASTA file, as well as two additional TAB-delimited output files for external gene calls and gene functions that can be used with the programs anvi-gen-contigs-database and anvi-import-functions.
 
 ~~~
 ls *gbk | cut -d'.' -f1 | while read line; do echo anvi-script-process-genbank -i GENBANK --input-genbank $line\.gbk -O $line; anvi-script-process-genbank -i GENBANK --input-genbank $line\.gbk -O $line; done
@@ -239,8 +244,11 @@ Mtb_N0091_L6-external-gene-calls.txt  Mtb_N1202_L6-external-functions.txt
 {: .output}
 
 
+STEP 2
+===============================================
+**Reformat the fasta files** 
+===============================================
 
-**STEP 2.** Reformat the fasta files 
 ~~~
 ls *fa | while read line; do anvi-script-reformat-fasta $line -o $line\.fasta; done
 ~~~
