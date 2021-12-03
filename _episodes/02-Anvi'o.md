@@ -46,10 +46,10 @@ Once conexion has been established correctly, the header of your terminal will c
 {: .output}
 
 
-Create a new directory named "MTBC" into the Pangenomics directory
+Create a new directory named "Anvio" into the Pangenomics directory
 ~~~
 cd Pangenomics/
-mkdir MTBC
+mkdir Anvio
 ls -la
 ~~~
 {: .source}
@@ -57,11 +57,26 @@ ls -la
 ~~~
 drwxrwxr-x  6 betterlab betterlab     4096 Dec  3 07:26 .
 drwxr-xr-x 42 betterlab betterlab     4096 Dec  2 08:29 ..
-drwxrwxr-x  2 betterlab betterlab     4096 Dec  3 07:26 MTBC
+drwxrwxr-x  2 betterlab betterlab     4096 Dec  3 07:26 Anvio
 ~~~
 {: .output}
 
-Move into the new directory MTBC and obtain the complete path to this directory
+Move into the directory Anvio and create a new directory named "MTBC" 
+~~~
+cd Anvio/
+mkdir MTBC
+ls -la
+~~~
+{: .source}
+
+~~~
+drwxrwxr-x 3 betterlab betterlab     4096 Dec  3 16:12 .
+drwxrwxr-x 4 betterlab betterlab     4096 Dec  3 16:12 ..
+drwxrwxr-x 3 betterlab betterlab     4096 Dec  3 09:33 MTBC
+~~~
+{: .output}
+
+Move into the directory MTBC/ and obtain the complete path to this directory
 
 ~~~
 cd MTBC/
@@ -70,7 +85,7 @@ pwd
 {: .source}
 
 ~~~
-/home/betterlab/Pangenomics/MTBC
+/home/betterlab/Pangenomics/Anvio/MTBC
 ~~~
 {: .output}
 
@@ -105,7 +120,7 @@ Mtb_N0069_L1.gbk  Mtb_N0155_L2.gbk  Mtb_N1216_L4.gbk  Mtb_N3913_L7.gbk
 
 Copy the genomes from your personal computer to the recently created Pangenomics directory into the server, using the *scp* command, the server IP and the MTBC directory path you obtained above
 ~~~
-scp *.gbk betterlab@132.248.196.38:/home/betterlab/Pangenomics/MTBC/.
+scp *.gbk betterlab@132.248.196.38:/home/betterlab/Pangenomics/Anvio/MTBC/.
 ~~~
 {: .source}
 
@@ -123,7 +138,7 @@ betterlab@132.248.196.38's password:
 
 Move into your MTBC directory and check your uploads
 ~~~
-cd Pangenomics/MTBC/
+cd Pangenomics/Anvio/MTBC/
 ls
 ~~~
 {: .source}
@@ -147,7 +162,7 @@ conda activate Pangenomics
 {: .source}
 
 ~~~
-(Pangenomics) betterlab@betterlabub:~/Pangenomics/MTBC$
+(Pangenomics) betterlab@betterlabub:~/Pangenomics/Anvio/MTBC$
 ~~~
 {: .output}
 
