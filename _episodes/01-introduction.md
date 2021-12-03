@@ -44,11 +44,11 @@ A **clade** (*kládos*, 'branch'), also known as *monophyletic group*, is a grou
 
 
 
-For this lesson purposes, we selected 20 representative *Mycobacterium tuberculosis* genomes. 
-
 
 
 ## Brief description of *Mycobacterium tuberculosis* dataset
+
+For this lesson purposes, we selected 20 representative *Mycobacterium tuberculosis* genomes. 
 
 Tuberculosis (TB) is the most lethal infection disease worldwide with 1.4 million causalities annually. Members of the *Mycobacterium tuberculosis* complex (MTBC) are recognized as the causative agents of TB in humans and other mammals. The MTBC is composed by nine *Mycobacterium* species affecting wild and domesticated animals, and two species that infect principally humans *Mycobacterium tuberculosis sensu stricto* and *Mycobacterium africanum*. Interestingly, all MTBC members form a clade when compared with other *Mycobacterium* spp. They share 99.99% of their nucleotide sequences and it has been decreted a maximum distance of ~2,500 SNPs between any pair of genomes belonging to the MTBC. No horizontal gene transfer or genomic recombination have been reported in these complex of bacteria, suggesting that these organisms are 'clones'. A pangenome analysis of these bacteria can help us to determine if MTBC has an open or a closed pengenome. 
 
