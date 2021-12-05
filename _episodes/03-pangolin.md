@@ -16,7 +16,6 @@ keypoints:
 -"PPanGGOLiN integrates protein-coding genes and their genomic neighborhood to build a graph."
 -"panRGP method predicts Regions of Genomic Plasticity which are grouped into insertion sites based on their conserved persistent flanking genes."
 -"PPanGGOLiN is designed to scale up to tens of thousand of geneomes, including whole genomes, metagenomes and single-cell annotated genomes."
-
 ---
 
 ![Figure 1. PPanGGOLiN logo](../fig/logo_ppanggolin.png)
