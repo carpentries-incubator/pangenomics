@@ -34,37 +34,57 @@ Step by step pangenome analysis with PPanGGOLiN
 
 Before start using PPanGGOLiN, activate the Pangenomics environment 
 
+~~~
 conda activate Pangenomics
+~~~
+{: .source}
 
+~~~
+(Pangenomics) betterlab@betterlabub:~$
+~~~
+{: .output}
 
 Step 1
 ===============================================
 **Create a work directory for PPanGGOLiN analysis**
 
+~~~
 cd Pangenomics/
 mkdir PPanGGOLiN
 ls -la
+~~~
+{: .source}
 
+~~~
 drwxrwxr-x  6 betterlab betterlab 4096 Dec  6 08:31 .
 drwxr-xr-x 42 betterlab betterlab 4096 Dec  3 18:37 ..
 drwxrwxr-x  3 betterlab betterlab 4096 Dec  3 16:12 Anvio
 drwxrwxr-x  2 betterlab betterlab 4096 Dec  6 08:32 PPanGGOLiN
 drwxrwxr-x  2 betterlab betterlab 4096 Dec  6 09:08 gbk
+~~~
+{: .output}
 
 
 Step 2
 ===============================================
 **Copy the genome files (.gbk) into the PPanGGOLiN directory**
 
+~~~
 cd gbk
 cp *.gbk ../PPanGGOLiN/.
 cd ../PPanGGOLiN/
 ls
+~~~
+{: .source}
 
+~~~
 Mtb_N0004_L3.gbk  Mtb_N0069_L1.gbk  Mtb_N0145_L2.gbk  Mtb_N1201_L6.gbk  Mtb_N1272_L5.gbk
 Mtb_N0031_L2.gbk  Mtb_N0072_L1.gbk  Mtb_N0155_L2.gbk  Mtb_N1202_L6.gbk  Mtb_N1274_L3.gbk
 Mtb_N0052_L2.gbk  Mtb_N0091_L6.gbk  Mtb_N0157_L1.gbk  Mtb_N1216_L4.gbk  Mtb_N1283_L4.gbk
 Mtb_N0054_L3.gbk  Mtb_N0136_L4.gbk  Mtb_N1176_L5.gbk  Mtb_N1268_L5.gbk  Mtb_N3913_L7.gbk
+~~~
+{: .output}
+
 
 Step 3
 ===============================================
@@ -73,10 +93,14 @@ Step 3
 Each line of this file represent one organism, first column contains a unique organism name and the second column contains the associate gbk file.
 First, we move into the gbk/ directory which contains all the genome files. 
 
+~~~
 cd ~/Pangenomics/gbk
 ls *.gbk | cut -d'.' -f1|while read line; do echo $line$'\t'$line.gbk >> organisms.gbk.list; done
 head organism.gbk.list
+~~~
+{: .source}
 
+~~~
 Mtb_N0004_L3	Mtb_N0004_L3.gbk
 Mtb_N0031_L2	Mtb_N0031_L2.gbk
 Mtb_N0052_L2	Mtb_N0052_L2.gbk
@@ -87,17 +111,29 @@ Mtb_N0091_L6	Mtb_N0091_L6.gbk
 Mtb_N0136_L4	Mtb_N0136_L4.gbk
 Mtb_N0145_L2	Mtb_N0145_L2.gbk
 Mtb_N0155_L2	Mtb_N0155_L2.gbk
+~~~
+{: .output}
 
 Then, we copy this list into the PPanGGOLiN/ work directory 
 
+~~~
 cp organisms.gbk.list ../PPanGGOLiN/.
+~~~
+{: .source}
+
 
 Move into the work directory and verify your organisms list
 
+~~~
 cd ../PPanGGOLiN
 ls
+~~~
+{: .source}
 
+~~~
 organisms.gbk.list
+~~~
+{: .output}
 
 Step 3
 ===============================================
@@ -105,8 +141,12 @@ Step 3
 
 Using the organisms list, annotation of genomes is made with the 'annotate' module of PPanGGOLiN
 
+~~~
 ppanggolin annotate --anno organisms.gbk.list --output pangenome
+~~~
+{: .source}
 
+~~~
 2021-12-06 10:36:41 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin annotate --anno organisms.gbk.list --output pangenome
 2021-12-06 10:36:41 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
 2021-12-06 10:36:41 annotate.py:l338 INFO	Reading organisms.gbk.list the list of organism files ...
@@ -116,28 +156,47 @@ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 2021-12-06 10:36:46 writeBinaries.py:l494 INFO	writing the protein coding gene dna sequences
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 100732.00gene/s]
 2021-12-06 10:36:47 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome/pangenome.h5
-(Pangenomics) betterlab@betterlabub:~/Pangenomics/PPanGGOLiN$ 
+~~~
+{: .output}
 
-
-
+Now a new directory was created
+~~~
 ls
+~~~
+{: .source}
+
+~~~
 Mtb_N0004_L3.gbk  Mtb_N0069_L1.gbk  Mtb_N0145_L2.gbk  Mtb_N1201_L6.gbk  Mtb_N1272_L5.gbk  pangenome
 Mtb_N0031_L2.gbk  Mtb_N0072_L1.gbk  Mtb_N0155_L2.gbk  Mtb_N1202_L6.gbk  Mtb_N1274_L3.gbk  organisms.gbk.list
 Mtb_N0052_L2.gbk  Mtb_N0091_L6.gbk  Mtb_N0157_L1.gbk  Mtb_N1216_L4.gbk  Mtb_N1283_L4.gbk
 Mtb_N0054_L3.gbk  Mtb_N0136_L4.gbk  Mtb_N1176_L5.gbk  Mtb_N1268_L5.gbk  Mtb_N3913_L7.gbk
+~~~
+{: .output}
 
+Move into the pangenome/ directory and explore it. 
+~~~
 cd pangenome/
 ls
+~~~
+{: .source}
 
+~~~
 pangenome.h5
+~~~
+{: .output}
 
+The pangenome.h5 file will be used to save all the results of the subsequent analysis 
 
 Step 4
 ===============================================
 **Gene clustering**
 
+~~~
 ppanggolin cluster --pangenome pangenome.h5 --cpu 8
+~~~
+{: .source}
 
+~~~
 2021-12-06 10:39:37 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 2021-12-06 10:39:37 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
 2021-12-06 10:39:37 readBinaries.py:l37 INFO	Getting the current pangenome's status
@@ -164,6 +223,8 @@ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 2021-12-06 10:39:45 writeBinaries.py:l421 INFO	Updating annotations with fragment information
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 333993.84gene/s]
 2021-12-06 10:39:45 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
+~~~
+{: .output}
 
 The results are saved in the pangenome.h5 file given as input
 
@@ -171,8 +232,12 @@ Step 5
 ===============================================
 **Build the pangenome graph**
 
+~~~
 ppanggolin graph --pangenome pangenome.h5 --cpu 8 
+~~~
+{: .source}
 
+~~~
 2021-12-06 10:46:22 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin graph --pangenome pangenome.h5 --cpu 8
 2021-12-06 10:46:22 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
 2021-12-06 10:46:22 readBinaries.py:l37 INFO	Getting the current pangenome's status
@@ -188,6 +253,8 @@ Processing Mtb_N3913_L7: 100%|████████████████�
 2021-12-06 10:46:24 writeBinaries.py:l508 INFO	Writing the edges...
 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5686/5686 [00:00<00:00, 130941.02edge/s]
 2021-12-06 10:46:24 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
+~~~
+{: .output}
 
 The results are saved in the pangenome.h5 file given as input
 
@@ -200,8 +267,12 @@ The one parameter that might be of importance is the '-K', or '--nb_of_partition
 
 In most cases, you should let the statistical criterion used by PPanGGOLiN find the optimal number of partitions for you.
 
+~~~
 ppanggolin partition --pangenome pangenome.h5 --cpu 8
+~~~
+{: .source}
 
+~~~
 2021-12-06 11:09:56 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin partition --pangenome pangenome.h5 --cpu 8 --force
 2021-12-06 11:09:56 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
 2021-12-06 11:09:56 readBinaries.py:l37 INFO	Getting the current pangenome's status
@@ -221,6 +292,8 @@ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 2021-12-06 11:09:59 writeBinaries.py:l408 INFO	Updating gene families with partition information
 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 162664.27gene family/s]
 2021-12-06 11:09:59 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
+~~~
+{: .output}
 
 All the results will be added to the given 'pangenome.h5' input file.
 
@@ -228,8 +301,12 @@ Step 7
 ===============================================
 **Predict the regions of genome plasticity with RGP module**
 
+~~~
 ppanggolin rgp --pangenome pangenome.h5 --cpu 8
+~~~
+{: .source}
 
+~~~
 2021-12-06 11:28:59 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 2021-12-06 11:28:59 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
 2021-12-06 11:28:59 readBinaries.py:l37 INFO	Getting the current pangenome's status
@@ -247,12 +324,17 @@ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 2021-12-06 11:29:01 writeBinaries.py:l517 INFO	Writing Regions of Genomic Plasticity...
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 130/130 [00:00<00:00, 430354.79region/s]
 2021-12-06 11:29:01 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
-
+~~~
+{: .output}
 
 You also can obtain a list of the plastic regions (RGPs) for each genome by using the module write 
 
+~~~
 ppanggolin write -p pangenome.h5 --regions --output rpg
+~~~
+{: .source}
 
+~~~
 2021-12-06 11:30:05 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin write -p pangenome.h5 --regions --output rpg
 2021-12-06 11:30:05 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
 2021-12-06 11:30:05 readBinaries.py:l37 INFO	Getting the current pangenome's status
@@ -264,16 +346,28 @@ ppanggolin write -p pangenome.h5 --regions --output rpg
 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 175441.19gene family/s]
 2021-12-06 11:30:07 readBinaries.py:l320 INFO	Reading the RGP...
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1237/1237 [00:00<00:00, 436877.24gene/s]
+~~~
+{: .output}
 
 Explore the rgp results
 
+~~~
 cd rgp/
 ls
+~~~
+{: .source}
 
+~~~
 plastic_regions.tsv
+~~~
+{: .output}
 
+~~~
 head plastic_regions.tsv
+~~~
+{: .source}
 
+~~~
 region	                  organism	    contig	            start	 stop	    genes	 contigBorder	 wholeContig
 MtbN0004_contig_15_RGP_0	Mtb_N0004_L3	MtbN0004_contig_15	83651	  93061	  17	   True	         False
 MtbN0004_contig_16_RGP_0	Mtb_N0004_L3	MtbN0004_contig_16	33871	  50925	  23	   False	       False
@@ -284,16 +378,25 @@ MtbN0031_contig_14_RGP_0	Mtb_N0031_L2	MtbN0031_contig_14	81684	  86828	  6	     
 MtbN0031_contig_29_RGP_0	Mtb_N0031_L2	MtbN0031_contig_29	23141	  28818	  8 	   False	       False
 MtbN0031_contig_55_RGP_0	Mtb_N0031_L2	MtbN0031_contig_55	1457	  11465	  16	   False	       False
 MtbN0052_contig_17_RGP_0	Mtb_N0052_L2	MtbN0052_contig_17	43797	  61393	  23	   False	       False
+~~~
+{: .output}
 
 Return to the working directory
+~~~
 cd ..
+~~~
+{: .source}
 
 Step 8
 ===============================================
 **Compute the spots of insertion**
 
+~~~
 ppanggolin spot --pangenome pangenome.h5 --cpu 8
+~~~
+{: .source}
 
+~~~
 2021-12-06 11:46:59 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin spot --pangenome pangenome.h5 --cpu 8
 2021-12-06 11:46:59 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
 2021-12-06 11:46:59 readBinaries.py:l37 INFO	Getting the current pangenome's status
@@ -315,8 +418,12 @@ ppanggolin spot --pangenome pangenome.h5 --cpu 8
 2021-12-06 11:47:01 writeBinaries.py:l522 INFO	Writing Spots of Insertion...
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:00<00:00, 228402.69spot/s]
 2021-12-06 11:47:01 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
+~~~
+{: .output}
+
 
 **THIS VERSION DO NOT ALLOW 'MODULE' NOR 'CONTEXT' ANALYSIS**
+
 
 Step 9
 ===============================================
@@ -330,8 +437,12 @@ PPanGGOLiN provides multiple outputs to describe a pangenome. In this section th
 
 A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a .html file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a .png image file.
 
+~~~
 ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
+~~~
+{: .source}
 
+~~~
 2021-12-06 12:10:30 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 2021-12-06 12:10:30 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
 2021-12-06 12:10:30 readBinaries.py:l37 INFO	Getting the current pangenome's status
@@ -345,11 +456,19 @@ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 83033/83033 [00:00<00:00, 192821.36contig adjacency/s]
 2021-12-06 12:10:32 ucurve.py:l13 INFO	Drawing the U-shaped curve...
 2021-12-06 12:10:32 ucurve.py:l60 INFO	Done drawing the U-shaped curve : 'draw_ucurve/Ushaped_plot.html'
+~~~
+{: .output}
 
+~~~
 cd draw_ucurve/
 ls
+~~~
+{: .source}
 
+~~~
 Ushaped_plot.html
+~~~
+{: .output}
 
 **1.2 *Tile plot***
 A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together on the figure).
@@ -358,8 +477,12 @@ This plot is quite helpful to observe potential structures in your pangenome, an
 
 If you build your pangenome using the 'workflow' subcommand and you have more than 500 organisms, only the 'shell' and the 'persistent' partitions will be drawn, leaving out the 'cloud' as the figure tends to be too heavy for a browser to open it otherwise.
 
+~~~
 ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
+~~~
+{: .source}
 
+~~~
 2021-12-06 12:09:32 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 2021-12-06 12:09:32 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
 2021-12-06 12:09:32 readBinaries.py:l37 INFO	Getting the current pangenome's status
@@ -378,10 +501,17 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 2021-12-06 12:09:35 tile_plot.py:l101 INFO	Done extracting names and numbers. Making the heatmap ...
 2021-12-06 12:09:35 tile_plot.py:l157 INFO	Drawing the figure itself...
 2021-12-06 12:09:37 tile_plot.py:l159 INFO	Done with the tile plot : 'draw_tile/tile_plot.html' 
+~~~
+{: .output}
 
 If you do not want the 'cloud' gene families as it is a lot of data and can be hard to open with a browser sometimes, you can use the following option:
 
+~~~
 ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_tile_nocloud
+~~~
+{: .source}
+
+~~~
 2021-12-06 12:14:19 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_tile_nocloud
 2021-12-06 12:14:19 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
 2021-12-06 12:14:19 readBinaries.py:l37 INFO	Getting the current pangenome's status
@@ -400,12 +530,13 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 2021-12-06 12:14:21 tile_plot.py:l101 INFO	Done extracting names and numbers. Making the heatmap ...
 2021-12-06 12:14:22 tile_plot.py:l157 INFO	Drawing the figure itself...
 2021-12-06 12:14:24 tile_plot.py:l159 INFO	Done with the tile plot : 'draw_tile_nocloud/tile_plot.html' 
+~~~
+{: .output}
 
 **1.3 *Spots plot***
 
 **THIS VERSION DO NOT ALLOW 'MODULE' NOR 'CONTEXT' ANALYSIS**
 
 
-{: .source}
-{: .output}
+
 {% include links.md %}
