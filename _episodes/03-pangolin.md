@@ -185,7 +185,7 @@ pangenome.h5
 ~~~
 {: .output}
 
-The pangenome.h5 file will be used to save all the results of the subsequent analysis 
+The pangenome.h5 file will be used as input and output for all subsequent analysis 
 
 Step 4
 ===============================================
