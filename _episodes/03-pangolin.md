@@ -371,7 +371,7 @@ head plastic_regions.tsv
 region	organism	contig	start	stop	genes	contigBorder	wholeContig
 MtbN0004_contig_15_RGP_0	Mtb_N0004_L3	MtbN0004_contig_15	83651	93061	17	True	False
 MtbN0004_contig_16_RGP_0	Mtb_N0004_L3	MtbN0004_contig_16	33871	50925	23	False	False
-MtbN0004_contig_3_RGP_0               Mtb_N0004_L3	MtbN0004_contig_3	178698	182189	5	True	False
+MtbN0004_contig_3_RGP_0             Mtb_N0004_L3	MtbN0004_contig_3	178698	182189	5	True	False
 MtbN0004_contig_58_RGP_0	Mtb_N0004_L3	MtbN0004_contig_58	8243	18251	16	False	False
 MtbN0031_contig_10_RGP_0	Mtb_N0031_L2	MtbN0031_contig_10	79495	97528	24	False	False
 MtbN0031_contig_14_RGP_0	Mtb_N0031_L2	MtbN0031_contig_14	81684	86828	6	False	False
