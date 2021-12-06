@@ -368,16 +368,16 @@ head plastic_regions.tsv
 {: .source}
 
 ~~~
-region	                  organism	    contig	            start	 stop	    genes	 contigBorder	 wholeContig
-MtbN0004_contig_15_RGP_0	Mtb_N0004_L3	MtbN0004_contig_15	83651	  93061	  17	   True	         False
-MtbN0004_contig_16_RGP_0	Mtb_N0004_L3	MtbN0004_contig_16	33871	  50925	  23	   False	       False
-MtbN0004_contig_3_RGP_0	  Mtb_N0004_L3	MtbN0004_contig_3	  178698	182189	5	     True	         False
-MtbN0004_contig_58_RGP_0	Mtb_N0004_L3	MtbN0004_contig_58	8243	  18251	  16	   False	       False
-MtbN0031_contig_10_RGP_0	Mtb_N0031_L2	MtbN0031_contig_10	79495 	97528	  24	   False	       False
-MtbN0031_contig_14_RGP_0	Mtb_N0031_L2	MtbN0031_contig_14	81684	  86828	  6	     False	       False
-MtbN0031_contig_29_RGP_0	Mtb_N0031_L2	MtbN0031_contig_29	23141	  28818	  8 	   False	       False
-MtbN0031_contig_55_RGP_0	Mtb_N0031_L2	MtbN0031_contig_55	1457	  11465	  16	   False	       False
-MtbN0052_contig_17_RGP_0	Mtb_N0052_L2	MtbN0052_contig_17	43797	  61393	  23	   False	       False
+region	organism	contig	start	stop	genes	contigBorder	wholeContig
+MtbN0004_contig_15_RGP_0	Mtb_N0004_L3	MtbN0004_contig_15	83651	93061	17	True	False
+MtbN0004_contig_16_RGP_0	Mtb_N0004_L3	MtbN0004_contig_16	33871	50925	23	False	False
+MtbN0004_contig_3_RGP_0	Mtb_N0004_L3	MtbN0004_contig_3	178698	182189	5	True	False
+MtbN0004_contig_58_RGP_0	Mtb_N0004_L3	MtbN0004_contig_58	8243	18251	16	False	False
+MtbN0031_contig_10_RGP_0	Mtb_N0031_L2	MtbN0031_contig_10	79495	97528	24	False	False
+MtbN0031_contig_14_RGP_0	Mtb_N0031_L2	MtbN0031_contig_14	81684	86828	6	False	False
+MtbN0031_contig_29_RGP_0	Mtb_N0031_L2	MtbN0031_contig_29	23141	28818	8	False	False
+MtbN0031_contig_55_RGP_0	Mtb_N0031_L2	MtbN0031_contig_55	1457	11465	16	False	False
+MtbN0052_contig_17_RGP_0	Mtb_N0052_L2	MtbN0052_contig_17	43797	61393	23	False	False
 ~~~
 {: .output}
 
@@ -433,7 +433,7 @@ PPanGGOLiN provides multiple outputs to describe a pangenome. In this section th
 
 **1. DRAW**
 
-**1.1 *U-shaped plot***
+**1.1 U-shaped plot**
 
 A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a .html file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a .png image file.
 
@@ -470,7 +470,8 @@ Ushaped_plot.html
 ~~~
 {: .output}
 
-**1.2 *Tile plot***
+**1.2 Tile plot**
+
 A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together on the figure).
 
 This plot is quite helpful to observe potential structures in your pangenome, and can also help you to identify eventual outliers. You can interact with it, and mousing over a tile in the plot will indicate to you which is the gene identifier(s), the gene family and the organism that corresponds to the tile.
@@ -533,7 +534,7 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 ~~~
 {: .output}
 
-**1.3 *Spots plot***
+**1.3 Spots plot**
 
 **THIS VERSION DO NOT ALLOW 'MODULE' NOR 'CONTEXT' ANALYSIS**
 
