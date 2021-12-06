@@ -324,8 +324,86 @@ Step 9
 
 PPanGGOLiN provides multiple outputs to describe a pangenome. In this section the different outputs will be described
 
-**I. DRAW**
-    a) *U
+**1. DRAW**
+
+**1.1 *U-shaped plot***
+
+A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a .html file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a .png image file.
+
+ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
+
+2021-12-06 12:10:30 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
+2021-12-06 12:10:30 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
+2021-12-06 12:10:30 readBinaries.py:l37 INFO	Getting the current pangenome's status
+2021-12-06 12:10:30 readBinaries.py:l294 INFO	Reading pangenome annotations...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 383434.30gene/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 21.97organism/s]
+2021-12-06 12:10:31 readBinaries.py:l307 INFO	Reading pangenome gene families...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 255888.23gene/s]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 178552.47gene family/s]
+2021-12-06 12:10:31 readBinaries.py:l314 INFO	Reading the neighbors graph edges...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 83033/83033 [00:00<00:00, 192821.36contig adjacency/s]
+2021-12-06 12:10:32 ucurve.py:l13 INFO	Drawing the U-shaped curve...
+2021-12-06 12:10:32 ucurve.py:l60 INFO	Done drawing the U-shaped curve : 'draw_ucurve/Ushaped_plot.html'
+
+cd draw_ucurve/
+ls
+
+Ushaped_plot.html
+
+**1.2 *Tile plot***
+A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together on the figure).
+
+This plot is quite helpful to observe potential structures in your pangenome, and can also help you to identify eventual outliers. You can interact with it, and mousing over a tile in the plot will indicate to you which is the gene identifier(s), the gene family and the organism that corresponds to the tile.
+
+If you build your pangenome using the 'workflow' subcommand and you have more than 500 organisms, only the 'shell' and the 'persistent' partitions will be drawn, leaving out the 'cloud' as the figure tends to be too heavy for a browser to open it otherwise.
+
+ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
+
+2021-12-06 12:09:32 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
+2021-12-06 12:09:32 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
+2021-12-06 12:09:32 readBinaries.py:l37 INFO	Getting the current pangenome's status
+2021-12-06 12:09:32 readBinaries.py:l294 INFO	Reading pangenome annotations...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 387154.17gene/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 21.51organism/s]
+2021-12-06 12:09:33 readBinaries.py:l307 INFO	Reading pangenome gene families...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 258514.00gene/s]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 175470.88gene family/s]
+2021-12-06 12:09:33 readBinaries.py:l314 INFO	Reading the neighbors graph edges...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 83033/83033 [00:00<00:00, 196168.75contig adjacency/s]
+2021-12-06 12:09:34 tile_plot.py:l26 INFO	Drawing the tile plot...
+2021-12-06 12:09:34 tile_plot.py:l42 INFO	start with matrice
+2021-12-06 12:09:35 tile_plot.py:l57 INFO	done with making the dendrogram to order the organisms on the plot
+2021-12-06 12:09:35 tile_plot.py:l92 INFO	Getting the gene name(s) and the number for each tile of the plot ...
+2021-12-06 12:09:35 tile_plot.py:l101 INFO	Done extracting names and numbers. Making the heatmap ...
+2021-12-06 12:09:35 tile_plot.py:l157 INFO	Drawing the figure itself...
+2021-12-06 12:09:37 tile_plot.py:l159 INFO	Done with the tile plot : 'draw_tile/tile_plot.html' 
+
+If you do not want the 'cloud' gene families as it is a lot of data and can be hard to open with a browser sometimes, you can use the following option:
+
+ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_tile_nocloud
+2021-12-06 12:14:19 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_tile_nocloud
+2021-12-06 12:14:19 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
+2021-12-06 12:14:19 readBinaries.py:l37 INFO	Getting the current pangenome's status
+2021-12-06 12:14:19 readBinaries.py:l294 INFO	Reading pangenome annotations...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 380327.86gene/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 21.65organism/s]
+2021-12-06 12:14:21 readBinaries.py:l307 INFO	Reading pangenome gene families...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 255772.75gene/s]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 178563.23gene family/s]
+2021-12-06 12:14:21 readBinaries.py:l314 INFO	Reading the neighbors graph edges...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 83033/83033 [00:00<00:00, 191715.85contig adjacency/s]
+2021-12-06 12:14:21 tile_plot.py:l26 INFO	Drawing the tile plot...
+2021-12-06 12:14:21 tile_plot.py:l42 INFO	start with matrice
+2021-12-06 12:14:21 tile_plot.py:l57 INFO	done with making the dendrogram to order the organisms on the plot
+2021-12-06 12:14:21 tile_plot.py:l92 INFO	Getting the gene name(s) and the number for each tile of the plot ...
+2021-12-06 12:14:21 tile_plot.py:l101 INFO	Done extracting names and numbers. Making the heatmap ...
+2021-12-06 12:14:22 tile_plot.py:l157 INFO	Drawing the figure itself...
+2021-12-06 12:14:24 tile_plot.py:l159 INFO	Done with the tile plot : 'draw_tile_nocloud/tile_plot.html' 
+
+**1.3 *Spots plot***
+
+**THIS VERSION DO NOT ALLOW 'MODULE' NOR 'CONTEXT' ANALYSIS**
 
 
 {: .source}
