@@ -330,12 +330,12 @@ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 You also can obtain a list of the plastic regions (RGPs) for each genome by using the module write 
 
 ~~~
-ppanggolin write -p pangenome.h5 --regions --output rpg
+ppanggolin write -p pangenome.h5 --regions --output rgp
 ~~~
 {: .source}
 
 ~~~
-2021-12-06 11:30:05 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin write -p pangenome.h5 --regions --output rpg
+2021-12-06 11:30:05 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin write -p pangenome.h5 --regions --output rgp
 2021-12-06 11:30:05 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
 2021-12-06 11:30:05 readBinaries.py:l37 INFO	Getting the current pangenome's status
 2021-12-06 11:30:05 readBinaries.py:l294 INFO	Reading pangenome annotations...
