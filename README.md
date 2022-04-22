@@ -10,6 +10,10 @@ will work with you to get your lesson listed on the
 [Community Developed Lessons page][community-lessons]
 and make sure you have everything you need to begin developing your new lesson.
 
+## Lesson website
+
+https://paumayell.github.io/pangenomics/
+
 ## What to do next
 
 Before you begin developing your new lesson,
