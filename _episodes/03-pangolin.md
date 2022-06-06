@@ -44,88 +44,76 @@ conda activate Pangenomics
 ~~~
 {: .output}
 
+
 Step 1
 ===============================================
-**Create a work directory for PPanGGOLiN analysis**
+**Identify and explore the genome files (.gbk)**
 
 ~~~
-cd Pangenomics/
-mkdir PPanGGOLiN
-ls -la
+cd ~/GenomeMining/datos/gbk
+ls *.gbk
 ~~~
 {: .source}
 
 ~~~
-drwxrwxr-x  6 betterlab betterlab 4096 Dec  6 08:31 .
-drwxr-xr-x 42 betterlab betterlab 4096 Dec  3 18:37 ..
-drwxrwxr-x  3 betterlab betterlab 4096 Dec  3 16:12 Anvio
-drwxrwxr-x  2 betterlab betterlab 4096 Dec  6 08:32 PPanGGOLiN
-drwxrwxr-x  2 betterlab betterlab 4096 Dec  6 09:08 gbk
+Streptococcus_agalactiae_18RS21.gbk  Streptococcus_agalactiae_CJB111.gbk
+Streptococcus_agalactiae_515.gbk     Streptococcus_agalactiae_COH1.gbk
+Streptococcus_agalactiae_A909.gbk    Streptococcus_agalactiae_H36B.gbk
 ~~~
 {: .output}
 
 
 Step 2
 ===============================================
-**Copy the genome files (.gbk) into the PPanGGOLiN directory**
+**Obtain a tsv-separated file with the genomes information**
+
+Each line of this file represent one organism, first column contains a unique organism name and the second column contains the path to the associate gbk file.
 
 ~~~
-cd gbk
-cp *.gbk ../PPanGGOLiN/.
-cd ../PPanGGOLiN/
-ls
+cd ~/Pangenomics/gbk
+ls *.gbk | cut -d'.' -f1|while read line; do echo $line$'\t~/GenomeMining/datos/gbk/'$line.gbk >> organisms.gbk.list; done
+head organism.gbk.list
 ~~~
 {: .source}
 
 ~~~
-Mtb_N0004_L3.gbk  Mtb_N0069_L1.gbk  Mtb_N0145_L2.gbk  Mtb_N1201_L6.gbk  Mtb_N1272_L5.gbk
-Mtb_N0031_L2.gbk  Mtb_N0072_L1.gbk  Mtb_N0155_L2.gbk  Mtb_N1202_L6.gbk  Mtb_N1274_L3.gbk
-Mtb_N0052_L2.gbk  Mtb_N0091_L6.gbk  Mtb_N0157_L1.gbk  Mtb_N1216_L4.gbk  Mtb_N1283_L4.gbk
-Mtb_N0054_L3.gbk  Mtb_N0136_L4.gbk  Mtb_N1176_L5.gbk  Mtb_N1268_L5.gbk  Mtb_N3913_L7.gbk
+Streptococcus_agalactiae_18RS21	~/GenomeMining/datos/gbk/Streptococcus_agalactiae_18RS21.gbk
+Streptococcus_agalactiae_515	~/GenomeMining/datos/gbk/Streptococcus_agalactiae_515.gbk
+Streptococcus_agalactiae_A909	~/GenomeMining/datos/gbk/Streptococcus_agalactiae_A909.gbk
+Streptococcus_agalactiae_CJB111	~/GenomeMining/datos/gbk/Streptococcus_agalactiae_CJB111.gbk
+Streptococcus_agalactiae_COH1	~/GenomeMining/datos/gbk/Streptococcus_agalactiae_COH1.gbk
+Streptococcus_agalactiae_H36B	~/GenomeMining/datos/gbk/Streptococcus_agalactiae_H36B.gbk
 ~~~
 {: .output}
 
 
 Step 3
 ===============================================
-**Obtain a tsv-separated file with the genomes information**
-
-Each line of this file represent one organism, first column contains a unique organism name and the second column contains the associate gbk file.
-First, we move into the gbk/ directory which contains all the genome files. 
+**Create a work directory for PPanGGOLiN analysis**
 
 ~~~
-cd ~/Pangenomics/gbk
-ls *.gbk | cut -d'.' -f1|while read line; do echo $line$'\t'$line.gbk >> organisms.gbk.list; done
-head organism.gbk.list
+cd 
+cd Pangenomics/
+mkdir ppanggolin
+ls -la
 ~~~
 {: .source}
 
 ~~~
-Mtb_N0004_L3	Mtb_N0004_L3.gbk
-Mtb_N0031_L2	Mtb_N0031_L2.gbk
-Mtb_N0052_L2	Mtb_N0052_L2.gbk
-Mtb_N0054_L3	Mtb_N0054_L3.gbk
-Mtb_N0069_L1	Mtb_N0069_L1.gbk
-Mtb_N0072_L1	Mtb_N0072_L1.gbk
-Mtb_N0091_L6	Mtb_N0091_L6.gbk
-Mtb_N0136_L4	Mtb_N0136_L4.gbk
-Mtb_N0145_L2	Mtb_N0145_L2.gbk
-Mtb_N0155_L2	Mtb_N0155_L2.gbk
+drwxrwxr-x  3 betterlab betterlab 4096 Jun  6 15:10 .
+drwxrwxr-x 16 betterlab betterlab 4096 Jun  6 15:09 ..
+drwxrwxr-x  2 betterlab betterlab 4096 Jun  6 15:10 ppanggolin
 ~~~
 {: .output}
 
-Then, we copy this list into the PPanGGOLiN/ work directory 
+
+Step 4
+===============================================
+**Copy the organisms.gbk.list file into the work directory**
 
 ~~~
-cp organisms.gbk.list ../PPanGGOLiN/.
-~~~
-{: .source}
-
-
-Move into the work directory and verify your organisms list
-
-~~~
-cd ../PPanGGOLiN
+cd ppanggolin
+cp ~/GenomeMining/datos/gbk/organisms.gbk.list .
 ls
 ~~~
 {: .source}
@@ -135,7 +123,8 @@ organisms.gbk.list
 ~~~
 {: .output}
 
-Step 3
+
+Step 5
 ===============================================
 **Genome annotation**
 
