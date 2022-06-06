@@ -223,21 +223,21 @@ ppanggolin graph --pangenome pangenome.h5 --cpu 8
 {: .source}
 
 ~~~
-2021-12-06 10:46:22 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin graph --pangenome pangenome.h5 --cpu 8
-2021-12-06 10:46:22 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
-2021-12-06 10:46:22 readBinaries.py:l37 INFO	Getting the current pangenome's status
-2021-12-06 10:46:22 readBinaries.py:l294 INFO	Reading pangenome annotations...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 382162.71gene/s]
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 21.38organism/s]
-2021-12-06 10:46:23 readBinaries.py:l307 INFO	Reading pangenome gene families...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 254976.13gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 176288.18gene family/s]
-2021-12-06 10:46:23 makeGraph.py:l56 INFO	Computing the neighbors graph...
-Processing Mtb_N3913_L7: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 70.11organism/s]
-2021-12-06 10:46:24 makeGraph.py:l74 INFO	Done making the neighbors graph.
-2021-12-06 10:46:24 writeBinaries.py:l508 INFO	Writing the edges...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5686/5686 [00:00<00:00, 130941.02edge/s]
-2021-12-06 10:46:24 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
+2022-06-06 16:01:49 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin graph --pangenome pangenome.h5 --cpu 8
+2022-06-06 16:01:49 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2022-06-06 16:01:49 readBinaries.py:l37 INFO    Getting the current pangenome's status
+2022-06-06 16:01:49 readBinaries.py:l294 INFO   Reading pangenome annotations...
+100%|███████████████████████████████████████████████████████████████████████████████| 14288/14288 [00:00<00:00, 350954.07gene/s]
+100%|███████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 35.74organism/s]
+2022-06-06 16:01:49 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|███████████████████████████████████████████████████████████████████████████████| 13633/13633 [00:00<00:00, 311021.25gene/s]
+100%|██████████████████████████████████████████████████████████████████████████| 2894/2894 [00:00<00:00, 199554.73gene family/s]
+2022-06-06 16:01:49 makeGraph.py:l56 INFO       Computing the neighbors graph...
+Processing Streptococcus_agalactiae_H36B: 100%|████████████████████████████████████████████| 6/6 [00:00<00:00, 316.89organism/s]
+2022-06-06 16:01:49 makeGraph.py:l74 INFO       Done making the neighbors graph.
+2022-06-06 16:01:49 writeBinaries.py:l508 INFO  Writing the edges...
+100%|█████████████████████████████████████████████████████████████████████████████████| 3188/3188 [00:00<00:00, 719746.00edge/s]
+2022-06-06 16:01:49 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
 
