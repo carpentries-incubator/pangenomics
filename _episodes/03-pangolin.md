@@ -70,7 +70,6 @@ Step 2
 Each line of this file represent one organism, first column contains a unique organism name and the second column contains the path to the associate gbk file.
 
 ~~~
-cd ~/Pangenomics/gbk
 ls *.gbk | cut -d'.' -f1|while read line; do echo $line$'\t~/GenomeMining/datos/gbk/'$line.gbk >> organisms.gbk.list; done
 head organism.gbk.list
 ~~~
@@ -93,7 +92,7 @@ Step 3
 
 ~~~
 cd 
-cd Pangenomics/
+cd ~/Pangenomics
 mkdir ppanggolin
 ls -la
 ~~~
