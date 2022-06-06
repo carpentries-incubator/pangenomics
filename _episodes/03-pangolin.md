@@ -172,7 +172,7 @@ pangenome.h5
 
 The pangenome.h5 file will be used as input and output for all subsequent analysis 
 
-Step 4
+Step 6
 ===============================================
 **Gene clustering**
 
@@ -182,32 +182,32 @@ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 {: .source}
 
 ~~~
-2021-12-06 10:39:37 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin cluster --pangenome pangenome.h5 --cpu 8
-2021-12-06 10:39:37 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
-2021-12-06 10:39:37 readBinaries.py:l37 INFO	Getting the current pangenome's status
-2021-12-06 10:39:37 readBinaries.py:l78 INFO	Extracting and writing CDS sequences from a .h5 pangenome file to a fasta file...
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:01<00:00, 78048.92gene/s]
-2021-12-06 10:39:38 cluster.py:l187 INFO	Clustering all of the genes sequences...
-2021-12-06 10:39:38 cluster.py:l45 INFO	Creating sequence database...
-2021-12-06 10:39:39 cluster.py:l54 INFO	Clustering sequences...
-2021-12-06 10:39:41 cluster.py:l56 INFO	Extracting cluster representatives...
-2021-12-06 10:39:41 cluster.py:l68 INFO	Writing gene to family informations
-2021-12-06 10:39:41 cluster.py:l195 INFO	Associating fragments to their original gene family...
-2021-12-06 10:39:41 cluster.py:l30 INFO	Aligning cluster representatives...
-2021-12-06 10:39:45 cluster.py:l35 INFO	Extracting alignments...
-2021-12-06 10:39:45 cluster.py:l97 INFO	Starting with 6184 families
-2021-12-06 10:39:45 cluster.py:l126 INFO	Ending with 4945 gene families
-2021-12-06 10:39:45 cluster.py:l148 INFO	Adding protein sequences to the gene families
-2021-12-06 10:39:45 cluster.py:l130 INFO	Adding 85940 genes to the gene families
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 429762.91gene/s]
-2021-12-06 10:39:45 cluster.py:l286 INFO	Done with the clustering
-2021-12-06 10:39:45 writeBinaries.py:l499 INFO	Writing gene families and gene associations...
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 207957.34gene family/s]
-2021-12-06 10:39:45 writeBinaries.py:l501 INFO	Writing gene families information...
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 263469.34gene family/s]
-2021-12-06 10:39:45 writeBinaries.py:l421 INFO	Updating annotations with fragment information
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 333993.84gene/s]
-2021-12-06 10:39:45 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
+2022-06-06 16:01:06 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin cluster --pangenome pangenome.h5 --cpu 8
+2022-06-06 16:01:06 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2022-06-06 16:01:06 readBinaries.py:l37 INFO    Getting the current pangenome's status
+2022-06-06 16:01:06 readBinaries.py:l78 INFO    Extracting and writing CDS sequences from a .h5 pangenome file to a fasta file...
+100%|███████████████████████████████████████████████████████████████████████████████| 13633/13633 [00:00<00:00, 113867.25gene/s]
+2022-06-06 16:01:06 cluster.py:l187 INFO        Clustering all of the genes sequences...
+2022-06-06 16:01:06 cluster.py:l45 INFO Creating sequence database...
+2022-06-06 16:01:06 cluster.py:l54 INFO Clustering sequences...
+2022-06-06 16:01:07 cluster.py:l56 INFO Extracting cluster representatives...
+2022-06-06 16:01:07 cluster.py:l68 INFO Writing gene to family informations
+2022-06-06 16:01:07 cluster.py:l195 INFO        Associating fragments to their original gene family...
+2022-06-06 16:01:07 cluster.py:l30 INFO Aligning cluster representatives...
+2022-06-06 16:01:09 cluster.py:l35 INFO Extracting alignments...
+2022-06-06 16:01:09 cluster.py:l97 INFO Starting with 4565 families
+2022-06-06 16:01:09 cluster.py:l126 INFO        Ending with 2894 gene families
+2022-06-06 16:01:09 cluster.py:l148 INFO        Adding protein sequences to the gene families
+2022-06-06 16:01:09 cluster.py:l130 INFO        Adding 13633 genes to the gene families
+100%|███████████████████████████████████████████████████████████████████████████████| 13633/13633 [00:00<00:00, 611201.39gene/s]
+2022-06-06 16:01:09 cluster.py:l286 INFO        Done with the clustering
+2022-06-06 16:01:09 writeBinaries.py:l499 INFO  Writing gene families and gene associations...
+100%|██████████████████████████████████████████████████████████████████████████| 2894/2894 [00:00<00:00, 670180.86gene family/s]
+2022-06-06 16:01:09 writeBinaries.py:l501 INFO  Writing gene families information...
+100%|██████████████████████████████████████████████████████████████████████████| 2894/2894 [00:00<00:00, 375787.62gene family/s]
+2022-06-06 16:01:09 writeBinaries.py:l421 INFO  Updating annotations with fragment information
+100%|███████████████████████████████████████████████████████████████████████████████| 14288/14288 [00:00<00:00, 459857.85gene/s]
+2022-06-06 16:01:09 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
 
