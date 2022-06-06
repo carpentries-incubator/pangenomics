@@ -135,15 +135,15 @@ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 {: .source}
 
 ~~~
-2021-12-06 10:36:41 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin annotate --anno organisms.gbk.list --output pangenome
-2021-12-06 10:36:41 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
-2021-12-06 10:36:41 annotate.py:l338 INFO	Reading organisms.gbk.list the list of organism files ...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:04<00:00,  4.34file/s]
-2021-12-06 10:36:46 writeBinaries.py:l481 INFO	Writing genome annotations...
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 104.24genome/s]
-2021-12-06 10:36:46 writeBinaries.py:l494 INFO	writing the protein coding gene dna sequences
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 100732.00gene/s]
-2021-12-06 10:36:47 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome/pangenome.h5
+2022-06-06 15:55:00 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin annotate --anno organisms.gbk.list --output pangenome
+2022-06-06 15:55:00 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2022-06-06 15:55:00 annotate.py:l338 INFO       Reading organisms.gbk.list the list of organism files ...
+100%|███████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00,  6.53file/s]
+2022-06-06 15:55:01 writeBinaries.py:l481 INFO  Writing genome annotations...
+100%|████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 133.20genome/s]
+2022-06-06 15:55:02 writeBinaries.py:l494 INFO  writing the protein coding gene dna sequences
+100%|███████████████████████████████████████████████████████████████████████████████| 13633/13633 [00:00<00:00, 129708.48gene/s]
+2022-06-06 15:55:02 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome/pangenome.h5
 ~~~
 {: .output}
 
@@ -154,10 +154,7 @@ ls
 {: .source}
 
 ~~~
-Mtb_N0004_L3.gbk  Mtb_N0069_L1.gbk  Mtb_N0145_L2.gbk  Mtb_N1201_L6.gbk  Mtb_N1272_L5.gbk  pangenome
-Mtb_N0031_L2.gbk  Mtb_N0072_L1.gbk  Mtb_N0155_L2.gbk  Mtb_N1202_L6.gbk  Mtb_N1274_L3.gbk  organisms.gbk.list
-Mtb_N0052_L2.gbk  Mtb_N0091_L6.gbk  Mtb_N0157_L1.gbk  Mtb_N1216_L4.gbk  Mtb_N1283_L4.gbk
-Mtb_N0054_L3.gbk  Mtb_N0136_L4.gbk  Mtb_N1176_L5.gbk  Mtb_N1268_L5.gbk  Mtb_N3913_L7.gbk
+organisms.gbk.list  pangenome
 ~~~
 {: .output}
 
