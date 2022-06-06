@@ -70,7 +70,7 @@ Step 2
 Each line of this file represent one organism, first column contains a unique organism name and the second column contains the path to the associate gbk file.
 
 ~~~
-ls *.gbk | cut -d'.' -f1|while read line; do echo $line$'\t~/GenomeMining/datos/gbk/'$line.gbk >> organisms.gbk.list; done
+ls *.gbk | cut -d'.' -f1|while read line; do echo $line$'\t/home/betterlab/GenomeMining/datos/gbk/'$line.gbk >> organisms.gbk.list; done
 head organism.gbk.list
 ~~~
 {: .source}
