@@ -3,7 +3,7 @@ FIXME 💢 Example: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4285900.
 
 # Pangenome Analysis in Prokaryotes Lesson
 
-This lesson is part of the [Comparative Genomics Workshop](https://czirion.github.io/comparative-genomics-workshop/).
+This lesson is part of the [Comparative Bacterial Genomics Workshop](https://czirion.github.io/comparative-genomics-workshop/).
 
 [Lesson Page](https://paumayell.github.io/pangenomics/index.html)
 
