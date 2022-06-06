@@ -213,7 +213,7 @@ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 
 The results are saved in the pangenome.h5 file given as input
 
-Step 5
+Step 7
 ===============================================
 **Build the pangenome graph**
 
