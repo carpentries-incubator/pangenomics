@@ -1,5 +1,5 @@
 ---
-title: "PGAP"
+title: "Other resources"
 teaching: 0
 exercises: 0
 questions:
@@ -9,6 +9,6 @@ objectives:
 keypoints:
 - "First key point. Brief Answer to questions. (FIXME)"
 ---
-# PGAP
+# Other resources
 
 {% include links.md %}
