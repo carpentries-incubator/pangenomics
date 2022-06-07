@@ -29,6 +29,27 @@ PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It par
 
 PPanGGOLiN analysis can start from genomic DNA sequences (.fasta) or annotated genomes (.gbk) of whole genomes, Metagenomic Assembled Genomes (MAG), and Single-cell Amplified Genomes (SAG), useful for large-scale environmental studies, including the non-cultivable species pangenome.  It is designed to scale up to tens of thousands of genomes. In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that predicts Regions of Genomic Plasticity (RGP) for each genome. RGPs are groups of genes made of shell and cloud genomes in the pangenome chart, most of which arise from horizontal gene transfer and correspond to genomic islands. RGPs from different genomes are then grouped into insertion sites based on their conserved persistent flanking genes.
 
+> ## Exercise 1. Basic commands `.challenge`
+> Choose the correct order to execute the commands in order to compute the Ppanggolin results in a graph:  
+> 
+> Commands:
+> > 1. cluster: Cluster proteins in protein families.
+> > 2. partition: partition the pangenome graph.
+> > 3. rgp: predicts Regions of Genomic Plasticity in the genomes of your pangenome.
+> > 4. annotate: Annotate genomes.
+> > 5. graph: Create the pangenome graph.
+> > 6. spot: Predicts spots in your pangenome
+> > 7. draw: Draw figures representing the pangenome through different aspects
+> a. 1, 2, 3, 4, 5, 6, 7.
+> b. 4, 1, 5, 7, 6, 3, 2.
+> c. 4, 1, 5, 2, 3, 6, 7.
+> d. 4, 2, 1, 6, 3, 5, 7.
+> > ## Solution
+> >c
+> {: .solution}
+{: .challenge}
+
+
 Step by step pangenome analysis with PPanGGOLiN
 ===============================================
 
