@@ -605,9 +605,10 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > ## Exercise 3: Exploring the pangenome graph.
 > 1. In your terminal, execute the following command: 
 > 
-> ```text
+> ~~~
 > ppanggolin write -p pangenome.h5 --gexf
-> ```
+> ~~~
+> {: .source}
 > 
 > 2. With `scp` copy the produced file in your local computer. 
 > 3. Open the file in the Gephi program. 
