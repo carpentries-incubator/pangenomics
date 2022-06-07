@@ -369,7 +369,7 @@ cd ..
 ~~~
 {: .source}
 
-Step 8
+Step 10
 ===============================================
 **Compute the spots of insertion**
 
@@ -379,27 +379,21 @@ ppanggolin spot --pangenome pangenome.h5 --cpu 8
 {: .source}
 
 ~~~
-2021-12-06 11:46:59 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin spot --pangenome pangenome.h5 --cpu 8
-2021-12-06 11:46:59 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
-2021-12-06 11:46:59 readBinaries.py:l37 INFO	Getting the current pangenome's status
-2021-12-06 11:46:59 readBinaries.py:l294 INFO	Reading pangenome annotations...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 384355.02gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 21.97organism/s]
-2021-12-06 11:47:00 readBinaries.py:l307 INFO	Reading pangenome gene families...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 255481.24gene/s]
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 177932.10gene family/s]
-2021-12-06 11:47:01 readBinaries.py:l320 INFO	Reading the RGP...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1237/1237 [00:00<00:00, 438501.86gene/s]
-2021-12-06 11:47:01 spot.py:l129 INFO	Detecting multigenic families...
-2021-12-06 11:47:01 pangenome.py:l311 INFO	20 gene families are defined as being multigenic. (duplicated in more than 0.05 of the genomes)
-2021-12-06 11:47:01 spot.py:l132 INFO	Detecting hotspots in the pangenome...
-2021-12-06 11:47:01 spot.py:l82 INFO	66 RGPs were not used as they are on a contig border (or have less than 3 persistent gene families until the contig border)
-2021-12-06 11:47:01 spot.py:l83 INFO	64 RGPs are being used to predict spots of insertion
-2021-12-06 11:47:01 spot.py:l85 INFO	14 number of different pairs of flanking gene families
-2021-12-06 11:47:01 spot.py:l140 INFO	11 spots were detected
-2021-12-06 11:47:01 writeBinaries.py:l522 INFO	Writing Spots of Insertion...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:00<00:00, 228402.69spot/s]
-2021-12-06 11:47:01 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
+2022-06-07 11:36:58 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin spot --pangenome pangenome.h5 --cpu 8
+2022-06-07 11:36:58 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2022-06-07 11:36:58 readBinaries.py:l37 INFO    Getting the current pangenome's status
+2022-06-07 11:36:58 readBinaries.py:l294 INFO   Reading pangenome annotations...
+100%|███████████████████████████████████████████████████████████| 14288/14288 [00:00<00:00, 354747.56gene/s]100%|███████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 35.78organism/s]2022-06-07 11:36:58 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|███████████████████████████████████████████████████████████| 13633/13633 [00:00<00:00, 314108.54gene/s]100%|██████████████████████████████████████████████████████| 2894/2894 [00:00<00:00, 208454.68gene family/s]2022-06-07 11:36:58 readBinaries.py:l320 INFO   Reading the RGP...
+100%|█████████████████████████████████████████████████████████████| 1341/1341 [00:00<00:00, 487650.57gene/s]2022-06-07 11:36:58 spot.py:l129 INFO   Detecting multigenic families...
+2022-06-07 11:36:58 pangenome.py:l311 INFO      84 gene families are defined as being multigenic. (duplicated in more than 0.05 of the genomes)
+2022-06-07 11:36:58 spot.py:l132 INFO   Detecting hotspots in the pangenome...
+2022-06-07 11:36:58 spot.py:l82 INFO    65 RGPs were not used as they are on a contig border (or have less than 3 persistent gene families until the contig border)
+2022-06-07 11:36:58 spot.py:l83 INFO    34 RGPs are being used to predict spots of insertion
+2022-06-07 11:36:58 spot.py:l85 INFO    21 number of different pairs of flanking gene families
+2022-06-07 11:36:58 spot.py:l140 INFO   19 spots were detected
+2022-06-07 11:36:58 writeBinaries.py:l522 INFO  Writing Spots of Insertion...
+100%|█████████████████████████████████████████████████████████████████| 19/19 [00:00<00:00, 430766.36spot/s]2022-06-07 11:36:58 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
 
