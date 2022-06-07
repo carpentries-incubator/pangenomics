@@ -32,7 +32,7 @@ PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It par
 
 PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://zenodo.org/record/6595388/files/Streptococcus_agalactiae_ATCC_BAA_1138.fasta?download=1)) or annotated genomes ([.gbk](https://zenodo.org/record/6595388/files/Streptococcus_agalactiae_ATCC_BAA_1138.gbk?download=1)) of whole genomes, Metagenomic Assembled Genomes (MAG), and Single-cell Amplified Genomes (SAG), useful for large-scale environmental studies, including the non-cultivable species pangenome.  It is designed to scale up to tens of thousands of genomes. In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that predicts Regions of Genomic Plasticity (RGP) for each genome. RGPs are groups of genes made of shell and cloud genomes in the pangenome chart, most of which arise from horizontal gene transfer and correspond to genomic islands. RGPs from different genomes are then grouped into insertion sites based on their conserved persistent flanking genes.
 
-> ## Exercise 1. Partitions `.challenge`
+> ## Exercise 1: Partitions. 
 >   Which are the pangenome partitions made by PPanGGOLiN? 
 >   
 > a) Persistent, shell and cloud-gene. 
@@ -578,7 +578,7 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 {: .output}
 
 **1.3 Spots plot**
-> ## Exercise 2. Basic commands `.challenge`
+> ## Exercise 2: Basic commands.
 >   Choose the indispensable commands to create a U-shaped plot.
 > 
 > Commands:
@@ -602,12 +602,12 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > {: .solution}
 {: .challenge}
 
-> ## Exercise 3. Exploring the pangenome graph `.challenge`
+> ## Exercise 3: Exploring the pangenome graph.
 > 1. In your terminal, execute the following command: 
-> ~~~
+> 
+> ```text
 > ppanggolin write -p pangenome.h5 --gexf
-> ~~~
-> {: .source}
+> ```
 > 
 > 2. With `scp` copy the produced file in your local computer. 
 > 3. Open the file in the Gephi program. 
