@@ -32,25 +32,17 @@ PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It par
 
 PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://zenodo.org/record/6595388/files/Streptococcus_agalactiae_ATCC_BAA_1138.fasta?download=1)) or annotated genomes ([.gbk](https://zenodo.org/record/6595388/files/Streptococcus_agalactiae_ATCC_BAA_1138.gbk?download=1)) of whole genomes, Metagenomic Assembled Genomes (MAG), and Single-cell Amplified Genomes (SAG), useful for large-scale environmental studies, including the non-cultivable species pangenome.  It is designed to scale up to tens of thousands of genomes. In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that predicts Regions of Genomic Plasticity (RGP) for each genome. RGPs are groups of genes made of shell and cloud genomes in the pangenome chart, most of which arise from horizontal gene transfer and correspond to genomic islands. RGPs from different genomes are then grouped into insertion sites based on their conserved persistent flanking genes.
 
-> ## Exercise 1. Basic commands `.challenge`
-> Choose the correct order to execute these commands to compute the Ppanggolin results in a graph:  
-> 
-> Commands:
-> > 1. cluster: Cluster proteins in protein families.
-> > 2. partition: partition the pangenome graph.
-> > 3. rgp: predicts Regions of Genomic Plasticity in the genomes of your pangenome.
-> > 4. annotate: Annotate genomes.
-> > 5. graph: Create the pangenome graph.
-> > 6. spot: Predicts spots in your pangenome
-> > 7. draw: Draw figures representing the pangenome through different aspects
-> a. 1, 2, 3, 4, 5, 6, 7.
-> b. 4, 1, 5, 7, 6, 3, 2.
-> c. 4, 1, 5, 2, 3, 6, 7.
-> d. 4, 2, 1, 6, 3, 5, 7.
+> ## Exercise 1. Partitions `.challenge`
+>   Which are the pangenome partitions made by PPanGGOLiN?
+> a. Persistent, shell and cloud-gene. 
+> b. Softcore, shell and cloud-gene. 
+> c. Extended core, soft core and shell. 
+> d. Hard core, extended core and shell. 
 > > ## Solution
-> >c
+> >a
 > {: .solution}
 {: .challenge}
+
 
 
 Step by step pangenome analysis with PPanGGOLiN
@@ -582,6 +574,43 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 {: .output}
 
 **1.3 Spots plot**
+> ## Exercise 2. Basic commands `.challenge`
+>   Choose the indispensables commands to create a U-shaped plot.
+> 
+> Commands:
+> 1. cluster: Cluster proteins in protein families.
+> 2. partition: partition the pangenome graph.
+> 3. rgp: predicts Regions of Genomic Plasticity in the genomes of your pangenome.
+> 4. annotate: Annotate genomes.
+> 5. graph: Create the pangenome graph.
+> 6. spot: Predicts spots in your pangenome
+> 7. draw: Draw figures representing the pangenome through different aspects
+> >
+> a. 1, 2, 3, 4, 5.
+> 
+> b. 4, 1, 5, 7, 6.
+> 
+> c. 4, 1, 5, 2, 7.
+> 
+> d. 4, 2, 1, 6, 3.
+> > ## Solution
+> >c
+> {: .solution}
+{: .challenge}
+
+> ## Exercise 3. Exploring the pangenome graph `.challenge`
+> 1. In your terminal, execute the following command: 
+> ~~~
+> ppanggolin write -p pangenome.h5 --gexf
+> ~~~
+> 2. With `scp` copy the produced file in your local computer. 
+> 3. Open the file in the Gephi program. 
+> 4. Go to the layout section and in the selection bar choose the ForceAtlas2. 
+> 5. In Tunning section mark the stronger gravity box and set the scale in 4000.
+> 6. Finally color the nodes according to partition regarding to the number of organisms, number of genes, proteins function (product), gene neighborhood (edges).
+> {: .solution}
+{: .challenge}
+
 
 **THIS VERSION DO NOT ALLOW 'MODULE' NOR 'CONTEXT' ANALYSIS**
 
