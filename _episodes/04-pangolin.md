@@ -614,7 +614,12 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > 3. Open the file in the Gephi program. 
 > 4. Go to the layout section and in the selection bar choose the ForceAtlas2. 
 > 5. In Tunning section mark the stronger gravity box and set the scale in 4000.
-> 6. Finally color the nodes according to partition regarding to the number of organisms, number of genes, proteins function (product), gene neighborhood (edges).
+> 6. Finally color the nodes according to:
+> > * Partition. 
+> > * Number of organisms. 
+> > * Number of genes. 
+> > * Proteins function (product).
+> > * Gene neighborhood (edges).
 > 
 {: .challenge}
 
