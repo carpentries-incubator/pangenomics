@@ -401,7 +401,7 @@ ppanggolin spot --pangenome pangenome.h5 --cpu 8
 **THIS VERSION DO NOT ALLOW 'MODULE' NOR 'CONTEXT' ANALYSIS**
 
 
-Step 9
+Step 11
 ===============================================
 **Compute the pangenome results**
 
@@ -419,19 +419,19 @@ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 {: .source}
 
 ~~~
-2021-12-06 12:10:30 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
-2021-12-06 12:10:30 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
-2021-12-06 12:10:30 readBinaries.py:l37 INFO	Getting the current pangenome's status
-2021-12-06 12:10:30 readBinaries.py:l294 INFO	Reading pangenome annotations...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 383434.30gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 21.97organism/s]
-2021-12-06 12:10:31 readBinaries.py:l307 INFO	Reading pangenome gene families...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 255888.23gene/s]
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 178552.47gene family/s]
-2021-12-06 12:10:31 readBinaries.py:l314 INFO	Reading the neighbors graph edges...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 83033/83033 [00:00<00:00, 192821.36contig adjacency/s]
-2021-12-06 12:10:32 ucurve.py:l13 INFO	Drawing the U-shaped curve...
-2021-12-06 12:10:32 ucurve.py:l60 INFO	Done drawing the U-shaped curve : 'draw_ucurve/Ushaped_plot.html'
+2022-06-07 11:38:13 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
+2022-06-07 11:38:13 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2022-06-07 11:38:13 readBinaries.py:l37 INFO    Getting the current pangenome's status
+2022-06-07 11:38:13 readBinaries.py:l294 INFO   Reading pangenome annotations...
+100%|███████████████████████████████████████████████████████████████████████████| 14288/14288 [00:00<00:00, 348029.34gene/s]
+100%|███████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 35.89organism/s]
+2022-06-07 11:38:13 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|███████████████████████████████████████████████████████████████████████████| 13633/13633 [00:00<00:00, 310056.59gene/s]
+100%|██████████████████████████████████████████████████████████████████████| 2894/2894 [00:00<00:00, 210734.65gene family/s]
+2022-06-07 11:38:13 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
+100%|███████████████████████████████████████████████████████████████| 11958/11958 [00:00<00:00, 291606.76contig adjacency/s]
+2022-06-07 11:38:13 ucurve.py:l13 INFO  Drawing the U-shaped curve...
+2022-06-07 11:38:13 ucurve.py:l60 INFO  Done drawing the U-shaped curve : 'draw_ucurve/Ushaped_plot.html'
 ~~~
 {: .output}
 
@@ -460,24 +460,23 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 {: .source}
 
 ~~~
-2021-12-06 12:09:32 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
-2021-12-06 12:09:32 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
-2021-12-06 12:09:32 readBinaries.py:l37 INFO	Getting the current pangenome's status
-2021-12-06 12:09:32 readBinaries.py:l294 INFO	Reading pangenome annotations...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 387154.17gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 21.51organism/s]
-2021-12-06 12:09:33 readBinaries.py:l307 INFO	Reading pangenome gene families...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 258514.00gene/s]
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 175470.88gene family/s]
-2021-12-06 12:09:33 readBinaries.py:l314 INFO	Reading the neighbors graph edges...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 83033/83033 [00:00<00:00, 196168.75contig adjacency/s]
-2021-12-06 12:09:34 tile_plot.py:l26 INFO	Drawing the tile plot...
-2021-12-06 12:09:34 tile_plot.py:l42 INFO	start with matrice
-2021-12-06 12:09:35 tile_plot.py:l57 INFO	done with making the dendrogram to order the organisms on the plot
-2021-12-06 12:09:35 tile_plot.py:l92 INFO	Getting the gene name(s) and the number for each tile of the plot ...
-2021-12-06 12:09:35 tile_plot.py:l101 INFO	Done extracting names and numbers. Making the heatmap ...
-2021-12-06 12:09:35 tile_plot.py:l157 INFO	Drawing the figure itself...
-2021-12-06 12:09:37 tile_plot.py:l159 INFO	Done with the tile plot : 'draw_tile/tile_plot.html' 
+2022-06-07 11:39:11 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2022-06-07 11:39:11 readBinaries.py:l37 INFO    Getting the current pangenome's status
+2022-06-07 11:39:11 readBinaries.py:l294 INFO   Reading pangenome annotations...
+100%|███████████████████████████████████████████████████████████████████████████| 14288/14288 [00:00<00:00, 352967.39gene/s]
+100%|███████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 36.38organism/s]
+2022-06-07 11:39:12 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|███████████████████████████████████████████████████████████████████████████| 13633/13633 [00:00<00:00, 307975.82gene/s]
+100%|██████████████████████████████████████████████████████████████████████| 2894/2894 [00:00<00:00, 209000.24gene family/s]
+2022-06-07 11:39:12 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
+100%|███████████████████████████████████████████████████████████████| 11958/11958 [00:00<00:00, 290174.42contig adjacency/s]
+2022-06-07 11:39:12 tile_plot.py:l26 INFO       Drawing the tile plot...
+2022-06-07 11:39:12 tile_plot.py:l42 INFO       start with matrice
+2022-06-07 11:39:12 tile_plot.py:l57 INFO       done with making the dendrogram to order the organisms on the plot
+2022-06-07 11:39:12 tile_plot.py:l92 INFO       Getting the gene name(s) and the number for each tile of the plot ...
+2022-06-07 11:39:12 tile_plot.py:l101 INFO      Done extracting names and numbers. Making the heatmap ...
+2022-06-07 11:39:12 tile_plot.py:l157 INFO      Drawing the figure itself...
+2022-06-07 11:39:13 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile/tile_plot.html'
 ~~~
 {: .output}
 
@@ -489,24 +488,23 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 {: .source}
 
 ~~~
-2021-12-06 12:14:19 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_tile_nocloud
-2021-12-06 12:14:19 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
-2021-12-06 12:14:19 readBinaries.py:l37 INFO	Getting the current pangenome's status
-2021-12-06 12:14:19 readBinaries.py:l294 INFO	Reading pangenome annotations...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 380327.86gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 21.65organism/s]
-2021-12-06 12:14:21 readBinaries.py:l307 INFO	Reading pangenome gene families...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 255772.75gene/s]
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 178563.23gene family/s]
-2021-12-06 12:14:21 readBinaries.py:l314 INFO	Reading the neighbors graph edges...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 83033/83033 [00:00<00:00, 191715.85contig adjacency/s]
-2021-12-06 12:14:21 tile_plot.py:l26 INFO	Drawing the tile plot...
-2021-12-06 12:14:21 tile_plot.py:l42 INFO	start with matrice
-2021-12-06 12:14:21 tile_plot.py:l57 INFO	done with making the dendrogram to order the organisms on the plot
-2021-12-06 12:14:21 tile_plot.py:l92 INFO	Getting the gene name(s) and the number for each tile of the plot ...
-2021-12-06 12:14:21 tile_plot.py:l101 INFO	Done extracting names and numbers. Making the heatmap ...
-2021-12-06 12:14:22 tile_plot.py:l157 INFO	Drawing the figure itself...
-2021-12-06 12:14:24 tile_plot.py:l159 INFO	Done with the tile plot : 'draw_tile_nocloud/tile_plot.html' 
+2022-06-07 11:39:49 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2022-06-07 11:39:49 readBinaries.py:l37 INFO    Getting the current pangenome's status
+2022-06-07 11:39:49 readBinaries.py:l294 INFO   Reading pangenome annotations...
+100%|███████████████████████████████████████████████████████████████████████████| 14288/14288 [00:00<00:00, 354502.04gene/s]
+100%|███████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 36.02organism/s]
+2022-06-07 11:39:49 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|███████████████████████████████████████████████████████████████████████████| 13633/13633 [00:00<00:00, 302087.56gene/s]
+100%|██████████████████████████████████████████████████████████████████████| 2894/2894 [00:00<00:00, 208537.04gene family/s]
+2022-06-07 11:39:49 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
+100%|███████████████████████████████████████████████████████████████| 11958/11958 [00:00<00:00, 289063.96contig adjacency/s]
+2022-06-07 11:39:49 tile_plot.py:l26 INFO       Drawing the tile plot...
+2022-06-07 11:39:49 tile_plot.py:l42 INFO       start with matrice
+2022-06-07 11:39:49 tile_plot.py:l57 INFO       done with making the dendrogram to order the organisms on the plot
+2022-06-07 11:39:49 tile_plot.py:l92 INFO       Getting the gene name(s) and the number for each tile of the plot ...
+2022-06-07 11:39:49 tile_plot.py:l101 INFO      Done extracting names and numbers. Making the heatmap ...
+2022-06-07 11:39:49 tile_plot.py:l157 INFO      Drawing the figure itself...
+2022-06-07 11:39:50 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile_nocloud/tile_plot.html'
 ~~~
 {: .output}
 
