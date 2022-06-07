@@ -293,23 +293,23 @@ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 {: .source}
 
 ~~~
-2021-12-06 11:28:59 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin rgp --pangenome pangenome.h5 --cpu 8
-2021-12-06 11:28:59 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
-2021-12-06 11:28:59 readBinaries.py:l37 INFO	Getting the current pangenome's status
-2021-12-06 11:28:59 readBinaries.py:l294 INFO	Reading pangenome annotations...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 389209.92gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 22.12organism/s]
-2021-12-06 11:29:00 readBinaries.py:l307 INFO	Reading pangenome gene families...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 258946.34gene/s]
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 177141.87gene family/s]
-2021-12-06 11:29:01 genomicIsland.py:l197 INFO	Detecting multigenic families...
-2021-12-06 11:29:01 pangenome.py:l311 INFO	20 gene families are defined as being multigenic. (duplicated in more than 0.05 of the genomes)
-2021-12-06 11:29:01 genomicIsland.py:l199 INFO	Compute Regions of Genomic Plasticity ...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 183.34genomes/s]
-2021-12-06 11:29:01 genomicIsland.py:l204 INFO	Predicted 130 RGP
-2021-12-06 11:29:01 writeBinaries.py:l517 INFO	Writing Regions of Genomic Plasticity...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 130/130 [00:00<00:00, 430354.79region/s]
-2021-12-06 11:29:01 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
+2022-06-07 11:30:30 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin rgp --pangenome pangenome.h5 --cpu 8
+2022-06-07 11:30:30 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2022-06-07 11:30:30 readBinaries.py:l37 INFO    Getting the current pangenome's status
+2022-06-07 11:30:30 readBinaries.py:l294 INFO   Reading pangenome annotations...
+100%|███████████████████████████████████████████████████████████████████████| 14288/14288 [00:00<00:00, 356031.06gene/s]
+100%|███████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 36.61organism/s]
+2022-06-07 11:30:30 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|███████████████████████████████████████████████████████████████████████| 13633/13633 [00:00<00:00, 305359.16gene/s]
+100%|██████████████████████████████████████████████████████████████████| 2894/2894 [00:00<00:00, 208354.49gene family/s]
+2022-06-07 11:30:30 genomicIsland.py:l197 INFO  Detecting multigenic families...
+2022-06-07 11:30:30 pangenome.py:l311 INFO      84 gene families are defined as being multigenic. (duplicated in more than 0.05 of the genomes)
+2022-06-07 11:30:30 genomicIsland.py:l199 INFO  Compute Regions of Genomic Plasticity ...
+100%|███████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 292.55genomes/s]
+2022-06-07 11:30:30 genomicIsland.py:l204 INFO  Predicted 99 RGP
+2022-06-07 11:30:30 writeBinaries.py:l517 INFO  Writing Regions of Genomic Plasticity...
+100%|███████████████████████████████████████████████████████████████████████████| 99/99 [00:00<00:00, 303979.57region/s]
+2022-06-07 11:30:30 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
 
@@ -321,17 +321,13 @@ ppanggolin write -p pangenome.h5 --regions --output rgp
 {: .source}
 
 ~~~
-2021-12-06 11:30:05 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin write -p pangenome.h5 --regions --output rgp
-2021-12-06 11:30:05 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
-2021-12-06 11:30:05 readBinaries.py:l37 INFO	Getting the current pangenome's status
-2021-12-06 11:30:05 readBinaries.py:l294 INFO	Reading pangenome annotations...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 382028.80gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 21.61organism/s]
-2021-12-06 11:30:06 readBinaries.py:l307 INFO	Reading pangenome gene families...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 254608.91gene/s]
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 175441.19gene family/s]
-2021-12-06 11:30:07 readBinaries.py:l320 INFO	Reading the RGP...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1237/1237 [00:00<00:00, 436877.24gene/s]
+2022-06-07 11:31:02 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin write -p pangenome.h5 --regions --output rgp
+2022-06-07 11:31:02 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2022-06-07 11:31:02 readBinaries.py:l37 INFO    Getting the current pangenome's status
+2022-06-07 11:31:02 readBinaries.py:l294 INFO   Reading pangenome annotations...
+100%|███████████████████████████████████████████████████████████████████████| 14288/14288 [00:00<00:00, 350408.22gene/s]100%|███████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 35.38organism/s]2022-06-07 11:31:02 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|███████████████████████████████████████████████████████████████████████| 13633/13633 [00:00<00:00, 305108.25gene/s]100%|██████████████████████████████████████████████████████████████████| 2894/2894 [00:00<00:00, 205156.94gene family/s]2022-06-07 11:31:02 readBinaries.py:l320 INFO   Reading the RGP...
+100%|█████████████████████████████████████████████████████████████████████████| 1341/1341 [00:00<0((((Pang(((Pangenomics) 
 ~~~
 {: .output}
 
@@ -354,16 +350,16 @@ head plastic_regions.tsv
 {: .source}
 
 ~~~
-region	organism	contig	start	stop	genes	contigBorder	wholeContig
-MtbN0004_contig_15_RGP_0	Mtb_N0004_L3	MtbN0004_contig_15	83651	93061	17	True	False
-MtbN0004_contig_16_RGP_0	Mtb_N0004_L3	MtbN0004_contig_16	33871	50925	23	False	False
-MtbN0004_contig_3_RGP_0         Mtb_N0004_L3	MtbN0004_contig_3	178698	182189	5	True	False
-MtbN0004_contig_58_RGP_0	Mtb_N0004_L3	MtbN0004_contig_58	8243	18251	16	False	False
-MtbN0031_contig_10_RGP_0	Mtb_N0031_L2	MtbN0031_contig_10	79495	97528	24	False	False
-MtbN0031_contig_14_RGP_0	Mtb_N0031_L2	MtbN0031_contig_14	81684	86828	6	False	False
-MtbN0031_contig_29_RGP_0	Mtb_N0031_L2	MtbN0031_contig_29	23141	28818	8	False	False
-MtbN0031_contig_55_RGP_0	Mtb_N0031_L2	MtbN0031_contig_55	1457	11465	16	False	False
-MtbN0052_contig_17_RGP_0	Mtb_N0052_L2	MtbN0052_contig_17	43797	61393	23	False	False
+region                  organism                        contig          start   stop    genes   contigBorder    wholeContig
+AAJO01000002.1_RGP_0    Streptococcus_agalactiae_18RS21 AAJO01000002.1  16227   25790   6       False           False
+AAJO01000011.1_RGP_0    Streptococcus_agalactiae_18RS21 AAJO01000011.1  2       27630   22      True            False
+AAJO01000013.1_RGP_0    Streptococcus_agalactiae_18RS21 AAJO01000013.1  3       25511   42      True            True
+AAJO01000018.1_RGP_0    Streptococcus_agalactiae_18RS21 AAJO01000018.1  1428    10630   13      False           False
+AAJO01000034.1_RGP_0    Streptococcus_agalactiae_18RS21 AAJO01000034.1  2       5670    6       True            False
+AAJO01000044.1_RGP_0    Streptococcus_agalactiae_18RS21 AAJO01000044.1  14      13465   16      True            True
+AAJO01000046.1_RGP_0    Streptococcus_agalactiae_18RS21 AAJO01000046.1  156     13045   14      True            True
+AAJO01000061.1_RGP_0    Streptococcus_agalactiae_18RS21 AAJO01000061.1  3       11272   11      True            True
+AAJO01000073.1_RGP_0    Streptococcus_agalactiae_18RS21 AAJO01000073.1  1       7595    8       True            False
 ~~~
 {: .output}
 
