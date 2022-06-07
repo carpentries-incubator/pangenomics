@@ -161,7 +161,7 @@ organisms.gbk.list  pangenome
 Move into the pangenome/ directory and explore it. 
 ~~~
 cd pangenome/
-ls
+ls -lah
 ~~~
 {: .source}
 
@@ -211,7 +211,17 @@ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .output}
 
-The results are saved in the pangenome.h5 file given as input
+The results are saved in the pangenome.h5 file given as input.
+
+~~~
+ls -lah pangenome.h5
+~~~
+{: .source}
+
+~~~
+pangenome.h5
+~~~
+{: .output}
 
 Step 7
 ===============================================
@@ -241,7 +251,17 @@ Processing Streptococcus_agalactiae_H36B: 100%|███████████
 ~~~
 {: .output}
 
-The results are saved in the pangenome.h5 file given as input
+The results are saved in the pangenome.h5 file given as input.
+
+~~~
+ls -lah pangenome.h5
+~~~
+{: .source}
+
+~~~
+pangenome.h5
+~~~
+{: .output}
 
 Step 8
 ===============================================
@@ -283,6 +303,16 @@ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 
 All the results will be added to the given 'pangenome.h5' input file.
 
+~~~
+ls -lah pangenome.h5
+~~~
+{: .source}
+
+~~~
+pangenome.h5
+~~~
+{: .output}
+
 Step 9
 ===============================================
 **Predict the regions of genome plasticity with RGP module**
@@ -310,6 +340,16 @@ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 2022-06-07 11:30:30 writeBinaries.py:l517 INFO  Writing Regions of Genomic Plasticity...
 100%|███████████████████████████████████████████████████████████████████████████| 99/99 [00:00<00:00, 303979.57region/s]
 2022-06-07 11:30:30 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+~~~
+{: .output}
+
+~~~
+ls -lah pangenome.h5
+~~~
+{: .source}
+
+~~~
+pangenome.h5
 ~~~
 {: .output}
 
@@ -397,6 +437,15 @@ ppanggolin spot --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .output}
 
+~~~
+ls -lah pangenome.h5
+~~~
+{: .source}
+
+~~~
+pangenome.h5
+~~~
+{: .output}
 
 **THIS VERSION DO NOT ALLOW 'MODULE' NOR 'CONTEXT' ANALYSIS**
 
