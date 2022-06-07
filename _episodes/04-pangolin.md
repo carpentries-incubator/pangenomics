@@ -590,13 +590,13 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > 6. spot: Predicts spots in your pangenome
 > 7. draw: Draw figures representing the pangenome through different aspects
 > 
-> a. 1, 2, 3, 4, 5.
+> a) 1, 2, 3, 4, 5.
 > 
-> b. 4, 1, 5, 7, 6.
+> b) 4, 1, 5, 7, 6.
 > 
-> c. 4, 1, 5, 2, 7.
+> c) 4, 1, 5, 2, 7.
 > 
-> d. 4, 2, 1, 6, 3.
+> d) 4, 2, 1, 6, 3.
 > > ## Solution
 > >c
 > {: .solution}
@@ -604,6 +604,9 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 
 > ## Exercise 3. Exploring the pangenome graph `.challenge`
 > 1. In your terminal, execute the following command: 
+> ~~~
+> ppanggolin write -p pangenome.h5 --gexf
+> ~~~
 > 2. With `scp` copy the produced file in your local computer. 
 > 3. Open the file in the Gephi program. 
 > 4. Go to the layout section and in the selection bar choose the ForceAtlas2. 
