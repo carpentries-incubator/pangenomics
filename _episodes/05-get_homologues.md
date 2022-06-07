@@ -15,7 +15,8 @@ keypoints:
 
 Connect to the working server using the *ssh* command and enter the password
 ~~~
-ssh betterlab@132.248.196.38
+mkdir get_homologues_clus
+cd get_homologues_clus
 ~~~
 {: .source}
 
