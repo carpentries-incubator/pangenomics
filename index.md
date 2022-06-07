@@ -11,7 +11,7 @@ FIXME: home page introduction
 
 > ## Prerequisites
 >
-> FIXME
+> A basic understanding of linux system files is needed
 {: .prereq}
 
 {% include links.md %}
