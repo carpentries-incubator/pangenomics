@@ -243,7 +243,7 @@ Processing Streptococcus_agalactiae_H36B: 100%|███████████
 
 The results are saved in the pangenome.h5 file given as input
 
-Step 6
+Step 8
 ===============================================
 **Pangenome partition**
 
@@ -258,31 +258,32 @@ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 {: .source}
 
 ~~~
-2021-12-06 11:09:56 main.py:l180 INFO	Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin partition --pangenome pangenome.h5 --cpu 8 --force
-2021-12-06 11:09:56 main.py:l181 INFO	PPanGGOLiN version: 1.1.136
-2021-12-06 11:09:56 readBinaries.py:l37 INFO	Getting the current pangenome's status
-2021-12-06 11:09:56 readBinaries.py:l294 INFO	Reading pangenome annotations...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 86820/86820 [00:00<00:00, 387372.86gene/s]
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:00<00:00, 21.51organism/s]
-2021-12-06 11:09:57 readBinaries.py:l307 INFO	Reading pangenome gene families...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85940/85940 [00:00<00:00, 256223.45gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 177297.84gene family/s]
-2021-12-06 11:09:57 readBinaries.py:l314 INFO	Reading the neighbors graph edges...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 83033/83033 [00:00<00:00, 192353.08contig adjacency/s]
-2021-12-06 11:09:58 partition.py:l356 INFO	Estimating the optimal number of partitions...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:01<00:00, 18.50Number of number of partitions/s]
-2021-12-06 11:09:59 partition.py:l358 INFO	The number of partitions has been evaluated at 3
-2021-12-06 11:09:59 partition.py:l376 INFO	Partitioning...
-2021-12-06 11:09:59 partition.py:l436 INFO	Partitionned 20 genomes in 0.35 seconds.
-2021-12-06 11:09:59 writeBinaries.py:l408 INFO	Updating gene families with partition information
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4945/4945 [00:00<00:00, 162664.27gene family/s]
-2021-12-06 11:09:59 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
+2022-06-07 11:28:56 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin partition --pangenome pangenome.h5 --cpu 8
+2022-06-07 11:28:56 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2022-06-07 11:28:56 readBinaries.py:l37 INFO    Getting the current pangenome's status
+2022-06-07 11:28:56 readBinaries.py:l294 INFO   Reading pangenome annotations...
+100%|███████████████████████████████████████████████████████████████████████| 14288/14288 [00:00<00:00, 340902.17gene/s]
+100%|███████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 35.44organism/s]
+2022-06-07 11:28:56 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|███████████████████████████████████████████████████████████████████████| 13633/13633 [00:00<00:00, 305842.61gene/s]
+100%|██████████████████████████████████████████████████████████████████| 2894/2894 [00:00<00:00, 200557.07gene family/s]
+2022-06-07 11:28:56 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
+100%|███████████████████████████████████████████████████████████| 11958/11958 [00:00<00:00, 289813.92contig adjacency/s]
+2022-06-07 11:28:56 partition.py:l343 WARNING   The number of selected organisms is too low (6 organisms used) to robustly partition the graph
+2022-06-07 11:28:56 partition.py:l356 INFO      Estimating the optimal number of partitions...
+100%|███████████████████████████████████████████████████████| 19/19 [00:00<00:00, 59.88Number of number of partitions/s]
+2022-06-07 11:28:57 partition.py:l358 INFO      The number of partitions has been evaluated at 3
+2022-06-07 11:28:57 partition.py:l376 INFO      Partitioning...
+2022-06-07 11:28:57 partition.py:l436 INFO      Partitionned 6 genomes in 0.07 seconds.
+2022-06-07 11:28:57 writeBinaries.py:l408 INFO  Updating gene families with partition information
+100%|██████████████████████████████████████████████████████████████████| 2894/2894 [00:00<00:00, 195908.84gene family/s]
+2022-06-07 11:28:57 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
 
 All the results will be added to the given 'pangenome.h5' input file.
 
-Step 7
+Step 9
 ===============================================
 **Predict the regions of genome plasticity with RGP module**
 
