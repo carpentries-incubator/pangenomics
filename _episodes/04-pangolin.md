@@ -33,11 +33,11 @@ PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It par
 PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://zenodo.org/record/6595388/files/Streptococcus_agalactiae_ATCC_BAA_1138.fasta?download=1)) or annotated genomes ([.gbk](https://zenodo.org/record/6595388/files/Streptococcus_agalactiae_ATCC_BAA_1138.gbk?download=1)) of whole genomes, Metagenomic Assembled Genomes (MAG), and Single-cell Amplified Genomes (SAG), useful for large-scale environmental studies, including the non-cultivable species pangenome.  It is designed to scale up to tens of thousands of genomes. In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that predicts Regions of Genomic Plasticity (RGP) for each genome. RGPs are groups of genes made of shell and cloud genomes in the pangenome chart, most of which arise from horizontal gene transfer and correspond to genomic islands. RGPs from different genomes are then grouped into insertion sites based on their conserved persistent flanking genes.
 
 > ## Exercise 1. Partitions `.challenge`
->   Which are the pangenome partitions made by PPanGGOLiN?
-> a. Persistent, shell and cloud-gene. 
-> b. Softcore, shell and cloud-gene. 
-> c. Extended core, soft core and shell. 
-> d. Hard core, extended core and shell. 
+>   Which are the pangenome partitions made by PPanGGOLiN? 
+> a) Persistent, shell and cloud-gene. 
+> b) Softcore, shell and cloud-gene. 
+> c) Extended core, soft core and shell. 
+> d) Hard core, extended core and shell. 
 > > ## Solution
 > >a
 > {: .solution}
@@ -585,7 +585,7 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > 5. graph: Create the pangenome graph.
 > 6. spot: Predicts spots in your pangenome
 > 7. draw: Draw figures representing the pangenome through different aspects
-> >
+> 
 > a. 1, 2, 3, 4, 5.
 > 
 > b. 4, 1, 5, 7, 6.
@@ -599,7 +599,7 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 {: .challenge}
 
 > ## Exercise 3. Exploring the pangenome graph `.challenge`
-> 1. In your terminal, execute the following command: 
+>  1. In your terminal, execute the following command: 
 > ~~~
 > ppanggolin write -p pangenome.h5 --gexf
 > ~~~
