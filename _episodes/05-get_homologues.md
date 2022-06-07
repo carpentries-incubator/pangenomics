@@ -11,9 +11,8 @@ keypoints:
 - "First key point. Brief Answer to questions. (FIXME)"
 ---
 # Get_Homologues
-
-
-Connect to the working server using the *ssh* command and enter the password
+## Step 1
+We need to create a new folder
 ~~~
 mkdir get_homologues_clus
 cd get_homologues_clus
