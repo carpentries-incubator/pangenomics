@@ -16,7 +16,7 @@ keypoints:
 
 ---
 
-Instalation of NCBI-genome-downloader package
+Instalation of NCBI-genome-download package
 
 NCBI Genome Downloading are a script to download bacterial and fungal genomes from NCBI after they
 restructured their FTP a while ago. You can call the package typing:
@@ -132,17 +132,32 @@ optional arguments:
 Once we know about the flags we can use, we are ready to use the package. Then our first genome download
 is going to be for the strains of Streptococcus equinus in FASTA format:
 
-```
-ncbi-genome-download --formats fasta --genera "Streptococcus equinus" bacteria
-```
+~~~
+ncbi-genome-download --formats fasta .""--section genbank"". --genera "Streptococcus equinus" bacteria
+~~~
+{: .bash}
+
+The above code will display a new genbank folder with the folders named with their assembly NCBI number.
+We need then to extract these files from each folder, uncompress them and rename the files in a more descriptive way, 
+like species and strain name. For these, we can use a for loop.
+
+~~~
+for
+~~~
+{: .output}
+
+Then we can explore the gbk files. It is important to know these files because they will be used for the posterior
+analysis. It will give you information about the coding sequences, their locus, the name of 
+the protein, and the full nucleotide sequence of the assembly.
+
+------------------Image
 
 
+# Prokka
 
-
-
-
-
-
+Annotation is a process of identifying the locations of genes and all the coding regions in a genome and determining 
+what those genes do. 
+Is a software tool to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files.
 
 ## Output Files
 
