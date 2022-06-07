@@ -12,4 +12,16 @@ keypoints:
 ---
 # Get_Homologues
 
+
+Connect to the working server using the *ssh* command and enter the password
+~~~
+ssh betterlab@132.248.196.38
+~~~
+{: .source}
+
+~~~
+betterlab@132.248.196.38's password:
+~~~
+{: .output}
+
 {% include links.md %}
