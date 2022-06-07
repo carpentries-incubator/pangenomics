@@ -610,6 +610,11 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > ~~~
 > {: .source}
 > 
+> ```python
+> for i in range(5):
+>     print("Hello")
+> ```
+> 
 > 2. With `scp` copy the produced file in your local computer. 
 > 3. Open the file in the Gephi program. 
 > 4. Go to the layout section and in the selection bar choose the ForceAtlas2. 
