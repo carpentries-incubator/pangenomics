@@ -34,9 +34,13 @@ PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://zenod
 
 > ## Exercise 1. Partitions `.challenge`
 >   Which are the pangenome partitions made by PPanGGOLiN? 
+>   
 > a) Persistent, shell and cloud-gene. 
+> 
 > b) Softcore, shell and cloud-gene. 
+> 
 > c) Extended core, soft core and shell. 
+> 
 > d) Hard core, extended core and shell. 
 > > ## Solution
 > >a
@@ -575,7 +579,7 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 
 **1.3 Spots plot**
 > ## Exercise 2. Basic commands `.challenge`
->   Choose the indispensables commands to create a U-shaped plot.
+>   Choose the indispensable commands to create a U-shaped plot.
 > 
 > Commands:
 > 1. cluster: Cluster proteins in protein families.
