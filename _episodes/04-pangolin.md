@@ -92,7 +92,7 @@ Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partiti
 > 
 > d) Hard core, extended core and shell. 
 > > ## Solution
-> >a
+> >a. as it was said before, PPanGGOLiN partitionates a pangenome into persistent-, shell- and, cloud-gene families.
 > {: .solution}
 {: .challenge}
 
@@ -774,7 +774,8 @@ For versions 1.2.30 and above.
 > 
 > d) 4, 2, 1, 6, 3.
 > > ## Solution
-> >c
+> >c. Because the first step is always annotate the genes, then cluster the proteins within its corresponding families, after that is necessary create the pangenome 
+> >graph, partitione it and finally with draw command create the U-shaped plot.
 > {: .solution}
 {: .challenge}
 
