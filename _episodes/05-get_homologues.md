@@ -76,9 +76,6 @@ betterlab@132.248.196.38's password:
 > ## Exercise 2: 
 > 
 > Complete the lines of code to obtain the required information
-> What is the interpret the Venn diagrams?
-> Which do you think the best clustering algorithms?
-
 >> ## Solution
 >> 
 > {: .solution}
