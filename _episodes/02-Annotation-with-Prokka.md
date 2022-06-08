@@ -30,7 +30,7 @@ conda install -c bioconda ncbi-genome-download
 ~~~
 {: .source}
 
-The full list of parameters you can incorporate in your donwloads can be obtained by typing:
+The full list of parameters you can incorporate in your dowmloads can be obtained by typing:
 
 ~~~
 ncbi-genome-download --help
@@ -148,35 +148,16 @@ cd dc_workshop/data
 ~~~
 {: .bash}
 
-If we list **`ls`** this folder we can check a couple of folders. Each of this represents a different strain of Streptococcus agalactiae used in Tettelin et al (2005), each folder contains the raw data (fasta and gbk formats) downloaded directly from NCBI. As an example of execution our first genome download will be the strains of Streptococcus equinus in FASTA format:
+If you list the contents of this directory (using the `ls` command), you'll see several folders, each of which contain the raw data of different strains of Streptococcus agalactiae used in Tettelin et al (2005). We will add a new entry to this directory by downloading a FASTA file of the genoms of all Streptococcus equinus strains available on NCBI:
 
 ~~~
 ncbi-genome-download --formats fasta  --genera "Streptococcus equinus" bacteria
 ~~~
 {: .bash}
 
-~~~
+The above code will display a new genbank directory with subdirectories named after their assembly NCBI number.
 
-~~~
-{: .output}
-
-The above code will display a new genbank folder with the folders named with their assembly NCBI number.
-We need then to extract these files from each folder, uncompress them and rename the files in a more descriptive way,
-like species and strain name. For these, we can use a for loop.
-
-~~~
-for
-~~~
-{: .output}
-
-Then we can explore the gbk files. It is important to know these files because they will be used for the posterior
-analysis. It will give you information about the coding sequences, their locus, the name of
-the protein, and the full nucleotide sequence of the assembly. Either way, you can adjust the parameters in the
-command line to download in another format like ´.gbk´ for example
-
-------------------Image
-
-In this case we are going to use the data we already had from Tettelin et al (2005).
+The `gbk` files contained within this folder are used for the posterior analysis. It provides information about the coding sequences, their locus, the name of the protein, and the full nucleotide sequence of the assembly. By setting the `--formats` parameter to `genbank`, you tell the script to download `gbk` files.
 
 > ## Exercise 1: Downloading data from NCBI with the command line
 >
@@ -403,3 +384,11 @@ QSINTAKNTLKGIECIYALYKKNRRSLQIYGFSPCHEISIMLAS*
 > >
 > {: .solution}
 {: .challenge}
+
+> ## Discussion 1: Number of tRNAs
+> 
+> Inside the `atcc31377` directory, run the command `wc -l trnas.tsv` to get the number of lines in the file. Excluding the first line (which contains the header), observe that there are 66 tRNAs, whereas the total number of coding codons (i.e. the one that are not stop codons) is 61. This means that there are several genes that produce the same tRNA. How would you explain this fact?
+> 
+> > ## Solution
+> > 
+> > The existence of many genes producing the same product (such as the same tRNA) can happen due to duplications of genes during the evolutionary history of a taxon.
