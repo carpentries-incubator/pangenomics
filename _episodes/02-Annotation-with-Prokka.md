@@ -26,7 +26,9 @@ ncbi-genome-download --help
 ```
 and you will get a full list of parameters you can incorporate for your downloading and use as a guide 
 to use the package.  
-  usage: ncbi-genome-download [-h] [-s {refseq,genbank}] [-F FILE_FORMATS]
+
+usage: 
+  ncbi-genome-download [-h] [-s {refseq,genbank}] [-F FILE_FORMATS]
                             [-l ASSEMBLY_LEVELS] [-g GENERA] [--genus GENERA]
                             [--fuzzy-genus] [-S STRAINS] [-T SPECIES_TAXIDS]
                             [-t TAXIDS] [-A ASSEMBLY_ACCESSIONS]
@@ -37,17 +39,17 @@ to use the package.
                             [-M TYPE_MATERIALS]
                             groups
   positional arguments:  
-  groups                The NCBI taxonomic groups to download (default: all).
+    groups              The NCBI taxonomic groups to download (default: all).
                         A comma-separated list of taxonomic groups is also
                         possible. For example: "bacteria,viral"Choose from:
                         ['all', 'archaea', 'bacteria', 'fungi',
                         'invertebrate', 'metagenomes', 'plant', 'protozoa',
                         'vertebrate_mammalian', 'vertebrate_other', 'viral']  
-  optional arguments:  
-  -h, --help            show this help message and exit  
-  -s {refseq,genbank}, --section {refseq,genbank}  
+    optional arguments:  
+    -h, --help            show this help message and exit  
+    -s {refseq,genbank}, --section {refseq,genbank}  
                         NCBI section to download (default: refseq)  
-  -F FILE_FORMATS, --formats FILE_FORMATS  
+    -F FILE_FORMATS, --formats FILE_FORMATS  
                         Which formats to download (default: genbank).A comma-
                         separated list of formats is also possible. For
                         example: "fasta,assembly-report". Choose from:
@@ -55,21 +57,21 @@ to use the package.
                         'protein-fasta', 'genpept', 'wgs', 'cds-fasta', 'rna-
                         fna', 'rna-fasta', 'assembly-report', 'assembly-
                         stats', 'all']  
-  -l ASSEMBLY_LEVELS, --assembly-levels ASSEMBLY_LEVELS  
+    -l ASSEMBLY_LEVELS, --assembly-levels ASSEMBLY_LEVELS  
                         Assembly levels of genomes to download (default: all).  
                         A comma-separated list of assembly levels is also
                         possible. For example: "complete,chromosome". Choose
                         from: ['all', 'complete', 'chromosome', 'scaffold',
                         'contig']  
-   -g GENERA, --genera GENERA  
+    -g GENERA, --genera GENERA  
                         Only download sequences of the provided genera. A
                         comma-seperated list of genera is also possible. For
                         example: "Streptomyces coelicolor,Escherichia coli".
                         (default: [])  
-   --genus GENERA        Deprecated alias of --genera  
-   --fuzzy-genus         Use a fuzzy search on the organism name instead of an
+    --genus GENERA        Deprecated alias of --genera  
+    --fuzzy-genus         Use a fuzzy search on the organism name instead of an
                          exact match.
-   -S STRAINS, --strains STRAINS  
+    -S STRAINS, --strains STRAINS  
                         Only download sequences of the given strain(s). A
                         comma-separated list of strain names is possible, as
                         well as a path to a filename containing one name per
