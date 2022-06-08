@@ -22,6 +22,14 @@ keypoints:
 - Identification of orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes.
 - Definition of pan- and core-genomes by calculation of overlapping sets of proteins.
 
+## Considerations
+Please ensure that you are in the environment of Pangenomics. You can omit his step if you have activated the environment.
+
+~~~
+conda activate Pangenomics
+~~~
+{: .source}
+Now, We ensure that get_homologues is install
 ~~~
 get_homologues.pl -h
 ~~~
@@ -87,13 +95,6 @@ Options that control clustering:
 -z add soft-core to genome composition analysis                (optional, requires -c [OMCL|COGS])
 ~~~
 {: .output}
-
-## Considerations
-Please ensure that you are in the environment of Pangenomics. You can omit his step if you have activated the environment.
-~~~
-conda activate Pangenomics
-~~~
-{: .source}
 
 ## Step 1. Generate a folder get_homologues
 It's necessary that we create a new folder when all results are sent.
