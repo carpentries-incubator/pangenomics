@@ -5,7 +5,7 @@ exercises: 5 min
 questions:
 - "What is Get_Homologues?"
 - "What is Clustering?"
-- "Which are the clustering algorithms tha use Get_Homologues?"
+- "Which are the clustering algorithms that use Get_Homologues?"
 
 objectives:
 - "Clustering orthologous proteins from Gen Bank files."	
@@ -97,7 +97,7 @@ search file in the file browser on your computer.
 > |------------------------------+------------------------------------------------------------------------------|  
 > | **algorithms**                           |     **Information required**                                     |  
 > |------------------------------+------------------------------------------------------------------------------|  
-> | > musician[____,____]                       |  Pieces composed by Shakira                                  |  
+> | BDBH                      |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
 > |------------------------------+------------------------------------------------------------------------------|  
 > | > (musician______)___2  | Pieces composed by all musicians if they were half of productive (The half of their actual pieces) |   
 > |------------------------------+------------------------------------------------------------------------------|  
