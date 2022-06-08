@@ -76,31 +76,11 @@ betterlab@132.248.196.38's password:
 > ## Exercise 2: 
 > 
 > Complete the lines of code to obtain the required information
-> 
-> |------------------------------+------------------------------------------------------------------------------|  
-> | **Code**                                        |     **Information required**                                     |  
-> |------------------------------+------------------------------------------------------------------------------|  
-> | > musician[____,____]                       |  Pieces composed by Shakira                                  |  
-> |------------------------------+------------------------------------------------------------------------------|  
-> | > (musician______)___2  | Pieces composed by all musicians if they were half of productive (The half of their actual pieces) |   
-> |------------------------------+------------------------------------------------------------------------------|  
-> | > musician$_____ <- c(_____,_____,_____)    | Redefine the `likes` column to make all the musicians popular!  |  
-> |------------------------------+------------------------------------------------------------------------------| 
->
->
-> がんばれ! (ganbate; *good luck*):
+> What is the interpret the Venn diagrams?
+> Which do you think the best clustering algorithms?
+
 >> ## Solution
 >> 
->> |------------------------------+------------------------------------------------------------------------------|  
->> | **Code**                                        |     **Information required**                                     |  
->> |------------------------------+------------------------------------------------------------------------------|  
->> | > musician[3,"pieces"]                       |  Pieces composed by Shakira                                  |  
->> |------------------------------+------------------------------------------------------------------------------|  
->> | > (musician$pieces)/2  | Pieces composed by all musicians if they were half of productive (The half of their actual pieces) |   
->> |------------------------------+------------------------------------------------------------------------------|  
->> | > musician$likes <- c("TRUE","TRUE","TRUE")    | Redefine the `likes` columne to make all the musicians popular!  |  
->> |------------------------------+------------------------------------------------------------------------------| 
->>
 > {: .solution}
 {: .challenge} 
 
