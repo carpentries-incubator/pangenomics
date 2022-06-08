@@ -103,7 +103,7 @@ Step 1
 **Create a work directory for PPanGGOLiN analysis**
 
 ~~~
-cd ~/Pangenomics
+cd ~/dc_workshop/results/pangenome
 mkdir ppanggolin
 ls -la
 ~~~
@@ -128,7 +128,7 @@ Step 2
 **Identify and explore the genome files (.gbk)**
 
 ~~~
-cd ~/GenomeMining/datos/gbk
+cd ~/dc_workshop/results/annotated
 ls *.gbk
 ~~~
 {: .source}
@@ -147,26 +147,26 @@ Step 3
 Each line of this file represent one organism, first column contains a unique organism name and the second column contains the path to the associate gbk file.
 
 ~~~
-ls agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\t/home/betterlab/GenomeMining/datos/gbk/'$line.gbk >> ~/Pangenomics/ppanggolin/organisms.gbk.list; done
+ls agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\t/home/betterlab/dc_workshop/results/annotated/'$line.gbk >> ~/dc_workshop/results/pangenome/ppanggolin/organisms.gbk.list; done
 ~~~
 {: .source}
 
 Move to the working directory.
 ~~~
 cd 
-cd ~/Pangenomics/ppanggolin
+cd ~/dc_workshop/results/pangenome/ppanggolin/
 ls
 head organism.gbk.list
 ~~~
 {: .source}
 
 ~~~
-agalactiae_18RS21_prokka        /home/betterlab/GenomeMining/datos/gbk/agalactiae_18RS21_prokka.gbk
-agalactiae_515_prokka   /home/betterlab/GenomeMining/datos/gbk/agalactiae_515_prokka.gbk
-agalactiae_A909_prokka  /home/betterlab/GenomeMining/datos/gbk/agalactiae_A909_prokka.gbk
-agalactiae_CJB111_prokka        /home/betterlab/GenomeMining/datos/gbk/agalactiae_CJB111_prokka.gbk
-agalactiae_COH1_prokka  /home/betterlab/GenomeMining/datos/gbk/agalactiae_COH1_prokka.gbk
-agalactiae_H36B_prokka  /home/betterlab/GenomeMining/datos/gbk/agalactiae_H36B_prokka.gbk
+agalactiae_18RS21        /home/betterlab/dc_workshop/results/annotated/agalactiae_18RS21.gbk
+agalactiae_515   /home/betterlab/dc_workshop/results/annotated/agalactiae_515.gbk
+agalactiae_A909  /home/betterlab/dc_workshop/results/annotated/agalactiae_A909.gbk
+agalactiae_CJB111        /home/betterlab/dc_workshop/results/annotated/agalactiae_CJB111.gbk
+agalactiae_COH1  /home/betterlab/dc_workshop/results/annotated/agalactiae_COH1.gbk
+agalactiae_H36B  /home/betterlab/dc_workshop/results/annotated/agalactiae_H36B.gbk
 ~~~
 {: .output}
 
@@ -660,7 +660,7 @@ cd .\Desktop\Workshop\
 
 Copy the image to your directory using `scp` and write the password of the server.
 ~~~
-scp betterlab@132.248.196.38:/home/betterlab/Pangenomics/ppanggolin/pangenome/draw_ucurve/Ushaped_plot.html .
+scp betterlab@132.248.196.38:/dc_workshop/results/pangenome/ppanggolin/pangenome/draw_ucurve/Ushaped_plot.html .
 ~~~
 {: .source}
 
