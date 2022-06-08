@@ -1,11 +1,11 @@
 ---
 title: "Get_Homologues"
-teaching: 0
-exercises: 0
+teaching: 20 min
+exercises: 5 min
 questions:
 - "What is Get_Homologues?"
-- "What is Clusterin?"
-- "Which are the clustering algorithms?"
+- "What is Clustering?"
+- "Which are the clustering algorithms tha use Get_Homologues?"
 
 objectives:
 - "Clustering orthologous proteins from Gen Bank files."	
@@ -25,7 +25,7 @@ GET_HOMOLOGUES: a versatile software package for pan-genome analysis is maintain
 ## Considerations
 Please ensure that you be in the environment Pangenomics
 ~~~
-Conda activate Pangenomics
+conda activate Pangenomics
 ~~~
 {: .source}
 
@@ -72,5 +72,36 @@ get_homologues.pl -d /home/betterlab/GenomeMining/datos/gbk -e -M
 betterlab@132.248.196.38's password:
 ~~~
 {: .output}
+
+> ## Exercise 2: 
+> 
+> Complete the lines of code to obtain the required information
+> 
+> |------------------------------+------------------------------------------------------------------------------|  
+> | **Code**                                        |     **Information required**                                     |  
+> |------------------------------+------------------------------------------------------------------------------|  
+> | > musician[____,____]                       |  Pieces composed by Shakira                                  |  
+> |------------------------------+------------------------------------------------------------------------------|  
+> | > (musician______)___2  | Pieces composed by all musicians if they were half of productive (The half of their actual pieces) |   
+> |------------------------------+------------------------------------------------------------------------------|  
+> | > musician$_____ <- c(_____,_____,_____)    | Redefine the `likes` column to make all the musicians popular!  |  
+> |------------------------------+------------------------------------------------------------------------------| 
+>
+>
+> がんばれ! (ganbate; *good luck*):
+>> ## Solution
+>> 
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | **Code**                                        |     **Information required**                                     |  
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | > musician[3,"pieces"]                       |  Pieces composed by Shakira                                  |  
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | > (musician$pieces)/2  | Pieces composed by all musicians if they were half of productive (The half of their actual pieces) |   
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | > musician$likes <- c("TRUE","TRUE","TRUE")    | Redefine the `likes` columne to make all the musicians popular!  |  
+>> |------------------------------+------------------------------------------------------------------------------| 
+>>
+> {: .solution}
+{: .challenge} 
 
 {% include links.md %}
