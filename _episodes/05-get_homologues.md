@@ -4,18 +4,23 @@ teaching: 0
 exercises: 0
 questions:
 - "What is Get_Homologues?"
-- "¿Que es Get_Homologues?"
-- "¿Que es Clusterin protein?"
-- "¿Que es un diagrama de Venn?"
-- "¿Cual los son los algoritmos de clustering?"
+- "¿What is Clusterin?"
+- "¿Which are the clustering algorithms?"
 
 objectives:
-- "First learning objective. (FIXME)"
+- "Clustering orthologous proteins from Gen Bank files."	
+- Create a Venn diagram using diferents clustering algorithms."
+    - BDBH
+    - COGS
+    - OMCL
+- "Implemented and intepreted the evolutionary history using Clustering orthologous proteins."
+
 keypoints:
 - "First key point. Brief Answer to questions. (FIXME)"
 ---
 
 # Get_Homologues
+GET_HOMOLOGUES: a versatile software package for pan-genome analysis is maintained by Bruno Contreras-Moreira (bcontreras at eead.csic.es) and Pablo Vinuesa (vinuesa at ccg.unam.mx). 
 - Clustering protein and nucleotide sequences in homologous (possibly orthologous) groups, on the grounds of sequence similarity.
 - Identification of orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes.
 - Definition of pan- and core-genomes by calculation of overlapping sets of proteins.
@@ -41,16 +46,24 @@ betterlab@132.248.196.38's password:
 {: .output}
 
 ## Step 2
-Use clustering COGtriangle algorithm (COGS, PubMed=20439257)
+To generate the directory clusters with BDBH, this option is default.
 ~~~
-get_homologues.pl -d /home/betterlab/GenomeMining/datos/gbk -e -G 
+get_homologues.pl -d datos/gbk
 ~~~
 {: .source}
 
+To generate the directory cluster with COG 
 ~~~
-betterlab@132.248.196.38's password:
+get_homologues.pl -d datos/gbk -G
 ~~~
-{: .output}
+{: .source}
+
+To Generate the OMCL cluster directory
+~~~
+get_homologues.pl -d datos/gbk -M
+~~~
+{: .source}
+
 ## Step 3
 Use orthoMCL algorithm (OMCL, PubMed=12952885)
 ~~~
