@@ -766,7 +766,7 @@ For versions 1.2.30 and above.
 > 1. In your terminal, execute the following command: 
 > 
 > ~~~
-> ppanggolin write -p pangenome.h5 --gexf
+> ppanggolin write -p pangenome.h5 --gexf --output gexf
 > ~~~
 > {: .source}
 > 
