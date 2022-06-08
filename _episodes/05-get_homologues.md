@@ -22,6 +22,10 @@ keypoints:
 - Identification of orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes.
 - Definition of pan- and core-genomes by calculation of overlapping sets of proteins.
 
+<a href="../fig/GET_HOMOLOGUES_flow_char.jpeg">
+  <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" alt="Aquí va el texto que describe a la imagen." />
+</a>
+
 ## Considerations
 Please ensure that you are in the environment of Pangenomics. You can omit his step if you have activated the environment.
 
@@ -146,10 +150,6 @@ get_homologues.pl -d dc_workshop/data/*/*.gbk -M
 ~~~
 {: .source}
 
-<a href="../fig/venn_t0_gethomologues.svg">
-  <img src="../fig/venn_t0_gethomologues.svg" alt="Aquí va el texto que describe a la imagen." />
-</a>
-
 ## Step 3. Compare all clusters from diferent algoritms
 ~~~
 compare_clusters.pl -o alg_intersection -m -d\
@@ -171,6 +171,10 @@ usuario@ip password:
 {: .output}
 
 search file in the file browser on your computer.
+
+<a href="../fig/venn_t0_gethomologues.svg">
+  <img src="../fig/venn_t0_gethomologues.svg" alt="Aquí va el texto que describe a la imagen." />
+</a>
 
 ## Step 4. Obtaining a pangenome matrix
 
