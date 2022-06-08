@@ -5,15 +5,12 @@ exercises: 0
 questions:
 - "How to download NCBI genomic data from the command line?"
 - "What is a quick way to annotate a FASTA file and obtain different outputs?"
-
-
 objectives:
 - "Explore ncbi-genome-download as a tool for genomic data fetching from the NCBI."
 - "Learn how to use the Prokka genome annotation utility."
 keypoints:
 - "ncbi-genome-download is a set of scripts to download genomes from the NCBI FTP servers implemented in Python."
 - "Prokka is a command line utility that provides rapid prokaryotic genome annotation written in Perl."
-
 ---
 
 ## ncbi-genome-download: Get genomic data from the NCBI
@@ -33,7 +30,7 @@ conda install -c bioconda ncbi-genome-download
 ~~~
 {: .source}
 
-The full list of parameters you can incorporate in your donwloads can be obtained by typing 
+The full list of parameters you can incorporate in your donwloads can be obtained by typing:
 
 ~~~
 ncbi-genome-download --help
@@ -325,61 +322,63 @@ You may specify your queries as much as you like. Type `prokka --help` in the co
 
 ## Command line options
 
-    General:
-      --help            This help
-      --version         Print version and exit
-      --citation        Print citation for referencing Prokka
-      --quiet           No screen output (default OFF)
-      --debug           Debug mode: keep all temporary files (default OFF)
-    Setup:
-      --listdb          List all configured databases
-      --setupdb         Index all installed databases
-      --cleandb         Remove all database indices
-      --depends         List all software dependencies
-    Outputs:
-      --outdir [X]      Output folder [auto] (default '')
-      --force           Force overwriting existing output folder (default OFF)
-      --prefix [X]      Filename output prefix [auto] (default '')
-      --addgenes        Add 'gene' features for each 'CDS' feature (default OFF)
-      --locustag [X]    Locus tag prefix (default 'PROKKA')
-      --increment [N]   Locus tag counter increment (default '1')
-      --gffver [N]      GFF version (default '3')
-      --compliant       Force Genbank/ENA/DDJB compliance: --genes --mincontiglen 200 --centre XXX (default OFF)
-      --centre [X]      Sequencing centre ID. (default '')
-    Organism details:
-      --genus [X]       Genus name (default 'Genus')
-      --species [X]     Species name (default 'species')
-      --strain [X]      Strain name (default 'strain')
-      --plasmid [X]     Plasmid name or identifier (default '')
-    Annotations:
-      --kingdom [X]     Annotation mode: Archaea|Bacteria|Mitochondria|Viruses (default 'Bacteria')
-      --gcode [N]       Genetic code / Translation table (set if --kingdom is set) (default '0')
-      --prodigaltf [X]  Prodigal training file (default '')
-      --gram [X]        Gram: -/neg +/pos (default '')
-      --usegenus        Use genus-specific BLAST databases (needs --genus) (default OFF)
-      --proteins [X]    Fasta file of trusted proteins to first annotate from (default '')
-      --hmms [X]        Trusted HMM to first annotate from (default '')
-      --metagenome      Improve gene predictions for highly fragmented genomes (default OFF)
-      --rawproduct      Do not clean up /product annotation (default OFF)
-    Computation:
-      --fast            Fast mode - skip CDS /product searching (default OFF)
-      --cpus [N]        Number of CPUs to use [0=all] (default '8')
-      --mincontiglen [N] Minimum contig size [NCBI needs 200] (default '1')
-      --evalue [n.n]    Similarity e-value cut-off (default '1e-06')
-      --rfam            Enable searching for ncRNAs with Infernal+Rfam (SLOW!) (default '0')
-      --norrna          Don't run rRNA search (default OFF)
-      --notrna          Don't run tRNA search (default OFF)
-      --rnammer         Prefer RNAmmer over Barrnap for rRNA prediction (default OFF)
+~~~
+General:
+  --help            This help
+  --version         Print version and exit
+  --citation        Print citation for referencing Prokka
+  --quiet           No screen output (default OFF)
+  --debug           Debug mode: keep all temporary files (default OFF)
+Setup:
+  --listdb          List all configured databases
+  --setupdb         Index all installed databases
+  --cleandb         Remove all database indices
+  --depends         List all software dependencies
+Outputs:
+  --outdir [X]      Output folder [auto] (default '')
+  --force           Force overwriting existing output folder (default OFF)
+  --prefix [X]      Filename output prefix [auto] (default '')
+  --addgenes        Add 'gene' features for each 'CDS' feature (default OFF)
+  --locustag [X]    Locus tag prefix (default 'PROKKA')
+  --increment [N]   Locus tag counter increment (default '1')
+  --gffver [N]      GFF version (default '3')
+  --compliant       Force Genbank/ENA/DDJB compliance: --genes --mincontiglen 200 --centre XXX (default OFF)
+  --centre [X]      Sequencing centre ID. (default '')
+Organism details:
+  --genus [X]       Genus name (default 'Genus')
+  --species [X]     Species name (default 'species')
+  --strain [X]      Strain name (default 'strain')
+  --plasmid [X]     Plasmid name or identifier (default '')
+Annotations:
+  --kingdom [X]     Annotation mode: Archaea|Bacteria|Mitochondria|Viruses (default 'Bacteria')
+  --gcode [N]       Genetic code / Translation table (set if --kingdom is set) (default '0')
+  --prodigaltf [X]  Prodigal training file (default '')
+  --gram [X]        Gram: -/neg +/pos (default '')
+  --usegenus        Use genus-specific BLAST databases (needs --genus) (default OFF)
+  --proteins [X]    Fasta file of trusted proteins to first annotate from (default '')
+  --hmms [X]        Trusted HMM to first annotate from (default '')
+  --metagenome      Improve gene predictions for highly fragmented genomes (default OFF)
+  --rawproduct      Do not clean up /product annotation (default OFF)
+Computation:
+  --fast            Fast mode - skip CDS /product searching (default OFF)
+  --cpus [N]        Number of CPUs to use [0=all] (default '8')
+  --mincontiglen [N] Minimum contig size [NCBI needs 200] (default '1')
+  --evalue [n.n]    Similarity e-value cut-off (default '1e-06')
+  --rfam            Enable searching for ncRNAs with Infernal+Rfam (SLOW!) (default '0')
+  --norrna          Don't run rRNA search (default OFF)
+  --notrna          Don't run tRNA search (default OFF)
+  --rnammer         Prefer RNAmmer over Barrnap for rRNA prediction (default OFF)
+~~~
 
+The detailed one consists of a special encoded three-part description line. The parts are the `/EC_number`, the `/gene` code, then the `/product` - and they are separated by a special "~~~" sequence:
 
-    The detailed one consists of a special encoded three-part description line. The parts are the `/EC_number`, the `/gene` code, then the `/product` - and they are separated by a special "~~~" sequence:
-
-```
+~~~
 >SeqID EC_number~~~gene~~~product~~~COG
-```
+~~~
 
 Here are some examples. Note that not all parts need to be present, but the "~~~" should still be there:
-```
+
+~~~
 >YP_492693.1 2.1.1.48~~~ermC~~~rRNA adenine N-6-methyltransferase~~~COG1234
 MNEKNIKHSQNFITSKHNIDKIMTNIRLNEHDNIFEIGSGKGHFTLELVQRCNFVTAIEI
 DHKLCKTTENKLVDHDNFQVLNKDILQFKFPKNQSYKIFGNIPYNISTDIIRKIVF*
@@ -389,4 +388,4 @@ LKKLPGIDDPMVKNEMFRGVGMVLAGVAVGAALVWLVPWVYNLFQ*
 >YP_492694.1 ~~~~~~transposase~~~
 MNYFRYKQFNKDVITVAVGYYLRYALSYRDISEILRGRGVNVHHSTVYRWVQEYAPILYQ
 QSINTAKNTLKGIECIYALYKKNRRSLQIYGFSPCHEISIMLAS*
-```
+~~~
