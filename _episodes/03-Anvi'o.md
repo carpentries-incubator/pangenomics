@@ -929,13 +929,13 @@ http://132.248.196.38:8080
 >
 >For more info see [this.](https://merenlab.org/2016/11/08/pangenomics-v2/#inferring-the-homogeneity-of-gene-clusters)
 >
->Go to this [page](https://anvio.org/help/main/programs/anvi-get-sequences-for-gene-clusters/) and explore the pangenome graph according to the homogeneity index.
+>Go to this [page](https://anvio.org/help/main/programs/anvi-get-sequences-for-gene-clusters/) and explore the pangenome graph according to the following homogeneity index.
 >
 >a) Order the pangenome based on the geometric homogeneity index and inspect a gene cluster with a relatively low score.
 >
 >b) Filter the gene cluster according to a functional homogeneity index above 0.25. 
 >
->c) How can you estimate evolutionary relationships between genomes? With the `concatenated-gene-alignment-fasta` produce the phylogenomic tree and explore it.
+>Extra) How can you estimate evolutionary relationships between genomes? With the `concatenated-gene-alignment-fasta` produce the phylogenomic tree and explore it.
 > >## Solution
 >> a) Go to the main settings panel and modify the “items order”.
 >>
@@ -948,7 +948,7 @@ anvi-get-sequences-for-gene-clusters -g genomes-storage-db \
 >>~~~
 >>{: .language-bash}
 >>
->>c) 
+>>Extra)Explore this [page.](https://anvio.org/help/main/programs/anvi-gen-phylogenomic-tree/)
 >{: .solution}
 {: .challenge}
   
