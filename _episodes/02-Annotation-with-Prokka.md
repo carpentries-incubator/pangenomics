@@ -392,3 +392,5 @@ QSINTAKNTLKGIECIYALYKKNRRSLQIYGFSPCHEISIMLAS*
 > > ## Solution
 > > 
 > > The existence of many genes producing the same product (such as the same tRNA) can happen due to duplications of genes during the evolutionary history of a taxon.
+> {: .solution}
+{: .challenge}
