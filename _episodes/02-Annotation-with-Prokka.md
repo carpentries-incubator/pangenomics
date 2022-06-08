@@ -27,6 +27,7 @@ ncbi-genome-download --help
 and you will get a full list of parameters you can incorporate for your downloading and use as a guide 
 to use the package.  
 
+```
   usage:  
    ncbi-genome-download [-h] [-s {refseq,genbank}] [-F FILE_FORMATS]  
                             [-l ASSEMBLY_LEVELS] [-g GENERA] [--genus GENERA]  
@@ -127,6 +128,7 @@ to use the package.
                           "reference,synonym". Choose from: ['any', 'all',
                           'type', 'reference', 'synonym', 'proxytype',
                           'neotype'].  
+```
 
 Once we know about the flags we can use, we are ready to use the package but first we need to go to our data folder.
 
@@ -273,8 +275,8 @@ example.fsa example.tbl example.err example.log example.txt example.tsv
       --rnammer         Prefer RNAmmer over Barrnap for rRNA prediction (default OFF)
       
      
-    The detailed one consists of a special encoded three-part description line. The parts are the `/EC_number`, 
-the `/gene` code, then the `/product` - and they are separated by a special "~~~" sequence:
+    The detailed one consists of a special encoded three-part description line. The parts are the `/EC_number`, the `/gene` code, then the `/product` - and they are separated by a special "~~~" sequence:
+    
 ```
 >SeqID EC_number~~~gene~~~product~~~COG
 ```
