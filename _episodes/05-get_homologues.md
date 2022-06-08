@@ -97,11 +97,11 @@ search file in the file browser on your computer.
 > |------------------------------+------------------------------------------------------------------------------|  
 > | **algorithms**                           |     **Information required**                                     |  
 > |------------------------------+------------------------------------------------------------------------------|  
-> |                       |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
+> | ___________________ |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
 > |------------------------------+------------------------------------------------------------------------------|  
-> |  | Merges triangles of inter-genomic symmetrical best matches |   
+> | ___________________ | Merges triangles of inter-genomic symmetrical best matches |   
 > |------------------------------+------------------------------------------------------------------------------|  
-> |     | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
+> | ___________________ | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
 > |------------------------------+------------------------------------------------------------------------------| 
 >
 >
