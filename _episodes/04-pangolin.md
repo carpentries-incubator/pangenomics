@@ -663,7 +663,6 @@ scp betterlab@132.248.196.38:/home/betterlab/Pangenomics/ppanggolin/pangenome/dr
 {: .source}
 
 ~~~
-betterlab@132.248.196.38's password:
 Ushaped_plot.html                                                                     100% 3405KB   3.2MB/s   00:01
 ~~~
 {: .output}
