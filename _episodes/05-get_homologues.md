@@ -21,6 +21,7 @@ keypoints:
 - Clustering protein and nucleotide sequences in homologous (possibly orthologous) groups, on the grounds of sequence similarity.
 - Identification of orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes.
 - Definition of pan- and core-genomes by calculation of overlapping sets of proteins.
+
 ~~~
 get_homologues.pl -h
 ~~~
