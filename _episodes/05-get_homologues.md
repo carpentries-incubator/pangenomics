@@ -147,7 +147,7 @@ get_homologues.pl -d dc_workshop/data/*/*.gbk -M
 {: .source}
 
 <a href="../fig/venn_t0_gethomologues.svg">
-  <img src="../figvenn_t0_gethomologues.svg" alt="Aquí va el texto que describe a la imagen." />
+  <img src="../fig/venn_t0_gethomologues.svg" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
 ## Step 3. Compare all clusters from diferent algoritms
