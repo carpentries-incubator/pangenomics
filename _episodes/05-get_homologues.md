@@ -124,104 +124,12 @@ get_homologues.pl -d dc_workshop/data/*/*.gbk
 ~~~
 {: .source}
 ~~~
- /home/betterlab/.conda/envs/Pangenomics/bin/get_homologues.pl -i 0 -d data_get -o 0 -X 0 -e 0 -f 0 -r 0 -t all -c 0 -z 0 -I 0 -m local -n 2 -M 0 -G 0 -p 0 -C 75 -S 1 -E 1e-05 -F 1.5 -N 0 -B 50 -b 0 -s 0 -D 0 -g 0 -a '0' -x 0 -R 0 -A 0 -P 0
+number_of_clusters = 1105
+cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_.cluster_list
+cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_
 
- version 28042022
- results_directory=/home/betterlab/dc_workshop/results/pangenome/get_homologues/data_get_homologues
- parameters: MAXEVALUEBLASTSEARCH=0.01 MAXPFAMSEQS=250 BATCHSIZE=100 KEEPSCNDHSPS=1
- diamond job:0
-
- checking input files...
- agalactiae_18RS21_prokka.gbk 1960
- agalactiae_515_prokka.gbk 2059
- agalactiae_A909_prokka.gbk 2067
- agalactiae_CJB111_prokka.gbk 2044
- agalactiae_COH1_prokka.gbk 2143
- agalactiae_H36B_prokka.gbk 2166
-
- 6 genomes, 12439 sequences
-
- taxa considered = 6 sequences = 12439 residues = 3548657 MIN_BITSCORE_SIM = 18.3
-
- mask=agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_ (_algBDBH)
-
- running makeblastdb with /home/betterlab/dc_workshop/results/pangenome/get_homologues/data_get_homologues/agalactiae_18RS21_prokka.gbk.fasta
-
- running makeblastdb with /home/betterlab/dc_workshop/results/pangenome/get_homologues/data_get_homologues/agalactiae_515_prokka.gbk.fasta
-
- running makeblastdb with /home/betterlab/dc_workshop/results/pangenome/get_homologues/data_get_homologues/agalactiae_A909_prokka.gbk.fasta
-
- running makeblastdb with /home/betterlab/dc_workshop/results/pangenome/get_homologues/data_get_homologues/agalactiae_CJB111_prokka.gbk.fasta
-
- running makeblastdb with /home/betterlab/dc_workshop/results/pangenome/get_homologues/data_get_homologues/agalactiae_COH1_prokka.gbk.fasta
-
- running makeblastdb with /home/betterlab/dc_workshop/results/pangenome/get_homologues/data_get_homologues/agalactiae_H36B_prokka.gbk.fasta
-
- running BLAST searches ...
- done
-
- concatenating and sorting BLAST/DIAMOND results...
- sorting _agalactiae_18RS21_prokka.gbk results (2.8MB)
- sorting _agalactiae_515_prokka.gbk results (3MB)
- sorting _agalactiae_A909_prokka.gbk results (3MB)
- sorting _agalactiae_CJB111_prokka.gbk results (3MB)
- sorting _agalactiae_COH1_prokka.gbk results (3.2MB)
- sorting _agalactiae_H36B_prokka.gbk results (3.1MB)
- done
-
-
- parsing blast result! (/home/betterlab/dc_workshop/results/pangenome/get_homologues/data_get_homologues/tmp/all.blast , 18MB)
- parsing file finished
-
- creating indexes, this might take some time (lines=3.15e+05) ...
-
- construct_taxa_indexes: number of taxa found = 6
- number of file addresses/BLAST queries = 1.2e+04
-
- clustering orthologous sequences
-
- clustering inparalogues in agalactiae_18RS21_prokka.gbk (reference)
- 162 sequences
-
- clustering inparalogues in agalactiae_515_prokka.gbk
- 13 sequences
-
- finding BDBHs between agalactiae_18RS21_prokka.gbk and agalactiae_515_prokka.gbk
- 1382 sequences
-
- clustering inparalogues in agalactiae_A909_prokka.gbk
- 51 sequences
-
- finding BDBHs between agalactiae_18RS21_prokka.gbk and agalactiae_A909_prokka.gbk
- 1455 sequences
-
- clustering inparalogues in agalactiae_CJB111_prokka.gbk
- 23 sequences
-
- finding BDBHs between agalactiae_18RS21_prokka.gbk and agalactiae_CJB111_prokka.gbk
- 1413 sequences
-
- clustering inparalogues in agalactiae_COH1_prokka.gbk
- 60 sequences
-
- finding BDBHs between agalactiae_18RS21_prokka.gbk and agalactiae_COH1_prokka.gbk
- 1369 sequences
-
- clustering inparalogues in agalactiae_H36B_prokka.gbk
- 71 sequences
-
- finding BDBHs between agalactiae_18RS21_prokka.gbk and agalactiae_H36B_prokka.gbk
- 1390 sequences
-
- looking for valid ORF clusters (n_of_taxa=6)...
-
-
- number_of_clusters = 1105
- cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_.cluster_list
- cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_
-
- runtime: 840 wallclock secs (13.44 usr  0.24 sys + 593.88 cusr 10.63 csys = 618.19 CPU)
- RAM use: 65.8 MB
+runtime: 840 wallclock secs (13.44 usr  0.24 sys + 593.88 cusr 10.63 csys = 618.19 CPU)
+RAM use: 65.8 MB
 ~~~
 {: .output}
 
@@ -237,6 +145,10 @@ To Generate the OMCL cluster director y(OMCL, PubMed=12952885)
 get_homologues.pl -d dc_workshop/data/*/*.gbk -M
 ~~~
 {: .source}
+
+<a href="../fig/venn_t0_gethomologues.svg">
+  <img src="../figvenn_t0_gethomologues.svg" alt="Aquí va el texto que describe a la imagen." />
+</a>
 
 ## Step 3. Compare all clusters from diferent algoritms
 ~~~
