@@ -1,5 +1,5 @@
 ---
-title: "Anvi'o"
+title: "Interactive pangenome graphics"
 teaching: 15 min
 exercises: 40 min
 questions:
@@ -25,136 +25,6 @@ It brings together many aspects of today's cutting-edge strategies including **g
 
 ## The basic process to construct a pangenome starting with genbank files
 
-
-Connect to the working server using the *ssh* command and enter the password
-~~~
-ssh betterlab@132.248.196.38
-~~~
-{: .source}
-
-~~~
-betterlab@132.248.196.38's password:
-~~~
-{: .output}
-
-
-Type the password provided by your instructors. 
-**Note.** When typing the password, it will not be shown in the terminal for security reasons. Don't panic, is normal!
-Once conexion has been established correctly, the header of your terminal will change and instead, it will show the server information. 
-~~~
-(base) betterlab@betterlabub:~$
-~~~
-{: .output}
-
-
-Create a new directory named "Anvio" into the Pangenomics directory
-~~~
-cd Pangenomics/
-mkdir Anvio
-ls -la
-~~~
-{: .source}
-
-~~~
-drwxrwxr-x  6 betterlab betterlab     4096 Dec  3 07:26 .
-drwxr-xr-x 42 betterlab betterlab     4096 Dec  2 08:29 ..
-drwxrwxr-x  2 betterlab betterlab     4096 Dec  3 07:26 Anvio
-~~~
-{: .output}
-
-Move into the directory Anvio and create a new directory named "MTBC" 
-~~~
-cd Anvio/
-mkdir MTBC
-ls -la
-~~~
-{: .source}
-
-~~~
-drwxrwxr-x 3 betterlab betterlab     4096 Dec  3 16:12 .
-drwxrwxr-x 4 betterlab betterlab     4096 Dec  3 16:12 ..
-drwxrwxr-x 3 betterlab betterlab     4096 Dec  3 09:33 MTBC
-~~~
-{: .output}
-
-Move into the directory MTBC/ and obtain the complete path to this directory
-
-~~~
-cd MTBC/
-pwd
-~~~
-{: .source}
-
-~~~
-/home/betterlab/Pangenomics/Anvio/MTBC
-~~~
-{: .output}
-
-Disconnect from server
-~~~
-exit
-~~~
-{: .source}
-
-~~~
-(base) YOUR_PERSONAL_COMPUTER_INFO:~ USER$
-~~~
-{: .output}
-
-
-In your computer, move to the direcotry which contains the genomes of interest
-~~~
-cd /home/arya/Documents/Paulina/Pangenome/data/
-ls
-~~~
-{: .source}
-
-~~~
-Mtb_N0004_L3.gbk  Mtb_N0072_L1.gbk  Mtb_N0157_L1.gbk  Mtb_N1268_L5.gbk
-Mtb_N0031_L2.gbk  Mtb_N0091_L6.gbk  Mtb_N1176_L5.gbk  Mtb_N1272_L5.gbk
-Mtb_N0052_L2.gbk  Mtb_N0136_L4.gbk  Mtb_N1201_L6.gbk  Mtb_N1274_L3.gbk
-Mtb_N0054_L3.gbk  Mtb_N0145_L2.gbk  Mtb_N1202_L6.gbk  Mtb_N1283_L4.gbk
-Mtb_N0069_L1.gbk  Mtb_N0155_L2.gbk  Mtb_N1216_L4.gbk  Mtb_N3913_L7.gbk
-~~~
-{: .output}
-
-
-Copy the genomes from your personal computer to the recently created Pangenomics directory into the server, using the *scp* command, the server IP and the MTBC directory path you obtained above
-~~~
-scp *.gbk betterlab@132.248.196.38:/home/betterlab/Pangenomics/Anvio/MTBC/.
-~~~
-{: .source}
-
-
-Conect again to the server using the same terminal or a new one
-~~~
-ssh betterlab@132.248.196.38
-~~~
-{: .source}
-
-~~~
-betterlab@132.248.196.38's password:
-~~~
-{: .output}
-
-Move into your MTBC directory and check your uploads
-~~~
-cd Pangenomics/Anvio/MTBC/
-ls
-~~~
-{: .source}
-
-~~~
-Mtb_N0004_L3.gbk  Mtb_N0072_L1.gbk  Mtb_N0157_L1.gbk  Mtb_N1268_L5.gbk
-Mtb_N0031_L2.gbk  Mtb_N0091_L6.gbk  Mtb_N1176_L5.gbk  Mtb_N1272_L5.gbk
-Mtb_N0052_L2.gbk  Mtb_N0136_L4.gbk  Mtb_N1201_L6.gbk  Mtb_N1274_L3.gbk
-Mtb_N0054_L3.gbk  Mtb_N0145_L2.gbk  Mtb_N1202_L6.gbk  Mtb_N1283_L4.gbk
-Mtb_N0069_L1.gbk  Mtb_N0155_L2.gbk  Mtb_N1216_L4.gbk  Mtb_N3913_L7.gbk
-~~~
-{: .output}
-
-
-
 To start using Anvi'o, activate the conda environment used to installation.
 Instead of (base), the beginning of the line code will be (Pangenomics) indicated that the environment is active. 
 ~~~
@@ -167,19 +37,128 @@ conda activate Pangenomics
 ~~~
 {: .output}
 
-To this point, we are ready to construct a Pangenome of the 20 representative MTBC genomes. 
-Please notice that we avoided including "-" symbol within the name of the genbank files. In the future, when using your personal genomes and reproduce this methodology, do the same. It will save you some code issues.
-
-Let's do it!
-
 
 Ten steps workflow to construct a Pangenome in Anvi'o
 ===============================================
+Move into the directory results
+
+Create a directory for Anvi'o analysis
+ 
+mkdir anvi-o
+cd anvi-o
+
+Create a directory that will storage all the files necessary to construct the genomes database
+$ mkdir genome-db
+
+1. Process the genome files
+
+ls ~/Pangenomics/Shaday/gbk_ncbi/*.gbk | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/dc_workshop/results/annotated/$line.gbk -O genome-db/$line; done
+
+$ cd genome-db
+
+Salida
+agalactiae_18RS21-contigs.fa               agalactiae_A909-contigs.fa                 agalactiae_COH1-contigs.fa
+agalactiae_18RS21-external-functions.txt   agalactiae_A909-external-functions.txt     agalactiae_COH1-external-functions.txt
+agalactiae_18RS21-external-gene-calls.txt  agalactiae_A909-external-gene-calls.txt    agalactiae_COH1-external-gene-calls.txt
+agalactiae_515-contigs.fa                  agalactiae_CJB111-contigs.fa               agalactiae_H36B-contigs.fa
+agalactiae_515-external-functions.txt      agalactiae_CJB111-external-functions.txt   agalactiae_H36B-external-functions.txt
+agalactiae_515-external-gene-calls.txt     agalactiae_CJB111-external-gene-calls.txt  agalactiae_H36B-external-gene-calls.txt
+
+2. Reformat the fasta files
+
+$  ls *fa |while read line; do anvi-script-reformat-fasta $line -o $line\.fasta; done
+
+Salida
+agalactiae_18RS21-contigs.fa               agalactiae_A909-contigs.fa                 agalactiae_COH1-contigs.fa
+agalactiae_18RS21-contigs.fa.fasta         agalactiae_A909-contigs.fa.fasta           agalactiae_COH1-contigs.fa.fasta
+agalactiae_18RS21-external-functions.txt   agalactiae_A909-external-functions.txt     agalactiae_COH1-external-functions.txt
+agalactiae_18RS21-external-gene-calls.txt  agalactiae_A909-external-gene-calls.txt    agalactiae_COH1-external-gene-calls.txt
+agalactiae_515-contigs.fa                  agalactiae_CJB111-contigs.fa               agalactiae_H36B-contigs.fa
+agalactiae_515-contigs.fa.fasta            agalactiae_CJB111-contigs.fa.fasta         agalactiae_H36B-contigs.fa.fasta
+agalactiae_515-external-functions.txt      agalactiae_CJB111-external-functions.txt   agalactiae_H36B-external-functions.txt
+agalactiae_515-external-gene-calls.txt     agalactiae_CJB111-external-gene-calls.txt  agalactiae_H36B-external-gene-calls.txt
+
+
+3. Create a database per genome
+$ ls *fasta | while read line; do anvi-gen-contigs-database -T 4 -f $line -o $line-contigs.db; done
+
+$ ls
+agalactiae_18RS21-contigs.fa                   agalactiae_A909-contigs.fa                     agalactiae_COH1-contigs.fa
+agalactiae_18RS21-contigs.fa.fasta             agalactiae_A909-contigs.fa.fasta               agalactiae_COH1-contigs.fa.fasta
+agalactiae_18RS21-contigs.fa.fasta-contigs.db  agalactiae_A909-contigs.fa.fasta-contigs.db    agalactiae_COH1-contigs.fa.fasta-contigs.db
+agalactiae_18RS21-external-functions.txt       agalactiae_A909-external-functions.txt         agalactiae_COH1-external-functions.txt
+agalactiae_18RS21-external-gene-calls.txt      agalactiae_A909-external-gene-calls.txt        agalactiae_COH1-external-gene-calls.txt
+agalactiae_515-contigs.fa                      agalactiae_CJB111-contigs.fa                   agalactiae_H36B-contigs.fa
+agalactiae_515-contigs.fa.fasta                agalactiae_CJB111-contigs.fa.fasta             agalactiae_H36B-contigs.fa.fasta
+agalactiae_515-contigs.fa.fasta-contigs.db     agalactiae_CJB111-contigs.fa.fasta-contigs.db  agalactiae_H36B-contigs.fa.fasta-contigs.db
+agalactiae_515-external-functions.txt          agalactiae_CJB111-external-functions.txt       agalactiae_H36B-external-functions.txt
+agalactiae_515-external-gene-calls.txt         agalactiae_CJB111-external-gene-calls.txt      agalactiae_H36B-external-gene-calls.txt
+
+4. Create a list of ids and their corresponding genome database
+$ ls *.fa | cut -d '-' -f1 | while read line; do echo $line$'\t'$line-contigs.db >>external-genomes.db; done
+$ head external-genomes.txt
+agalactiae_18RS21	agalactiae_18RS21-contigs.db
+agalactiae_515	agalactiae_515-contigs.db
+agalactiae_A909	agalactiae_A909-contigs.db
+agalactiae_CJB111	agalactiae_CJB111-contigs.db
+agalactiae_COH1	agalactiae_COH1-contigs.db
+agalactiae_H36B	agalactiae_H36B-contigs.db
+
+5. Modify the headers of the list external-genomes.txt
+$ nano external-genomes.txt
+  GNU nano 4.8                                                             external-genomes.txt                                                                       
+agalactiae_18RS21       agalactiae_18RS21-contigs.db
+agalactiae_515  agalactiae_515-contigs.db
+agalactiae_A909 agalactiae_A909-contigs.db
+agalactiae_CJB111       agalactiae_CJB111-contigs.db
+agalactiae_COH1 agalactiae_COH1-contigs.db
+agalactiae_H36B agalactiae_H36B-contigs.db
+
+
+
+
+
+^G Get Help     ^O Write Out    ^W Where Is     ^K Cut Text     ^J Justify      ^C Cur Pos      M-U Undo        M-A Mark Text   M-] To Bracket  M-Q Previous
+^X Exit         ^R Read File    ^\ Replace      ^U Paste Text   ^T To Spell     ^_ Go To Line   M-E Redo        M-6 Copy Text   ^Q Where Was    M-W Next
+
+head external-genomes.txt
+name	contigs_db_path
+agalactiae_18RS21	agalactiae_18RS21-contigs.db
+agalactiae_515	agalactiae_515-contigs.db
+agalactiae_A909	agalactiae_A909-contigs.db
+agalactiae_CJB111	agalactiae_CJB111-contigs.db
+agalactiae_COH1	agalactiae_COH1-contigs.db
+agalactiae_H36B	agalactiae_H36B-contigs.db
+
+6. Rename the .db files
+$ rename s'/.fa.fasta-contigs.db/.db/' *db
+$ ls *.db
+agalactiae_18RS21-contigs.db  agalactiae_A909-contigs.db    agalactiae_COH1-contigs.db
+agalactiae_515-contigs.db     agalactiae_CJB111-contigs.db  agalactiae_H36B-contigs.db
+
+7. Create the Pangenome database
+$ anvi-gen-genomes-storage -e external-genomes.txt -o AGALACTIAE_GENOMES.db
+$ ls
+AGALACTIAE_GENOMES.db                      agalactiae_A909-contigs.db                 agalactiae_COH1-contigs.fa
+agalactiae_18RS21-contigs.db               agalactiae_A909-contigs.fa                 agalactiae_COH1-contigs.fa.fasta
+agalactiae_18RS21-contigs.fa               agalactiae_A909-contigs.fa.fasta           agalactiae_COH1-external-functions.txt
+agalactiae_18RS21-contigs.fa.fasta         agalactiae_A909-external-functions.txt     agalactiae_COH1-external-gene-calls.txt
+agalactiae_18RS21-external-functions.txt   agalactiae_A909-external-gene-calls.txt    agalactiae_H36B-contigs.db
+agalactiae_18RS21-external-gene-calls.txt  agalactiae_CJB111-contigs.db               agalactiae_H36B-contigs.fa
+agalactiae_515-contigs.db                  agalactiae_CJB111-contigs.fa               agalactiae_H36B-contigs.fa.fasta
+agalactiae_515-contigs.fa                  agalactiae_CJB111-contigs.fa.fasta         agalactiae_H36B-external-functions.txt
+agalactiae_515-contigs.fa.fasta            agalactiae_CJB111-external-functions.txt   agalactiae_H36B-external-gene-calls.txt
+agalactiae_515-external-functions.txt      agalactiae_CJB111-external-gene-calls.txt  external-genomes.txt
+agalactiae_515-external-gene-calls.txt     agalactiae_COH1-contigs.db
+
+
+
+
+
 
 Step 1
 ===============================================
 **Process the genome files (.gbk)**
-
 
 This script takes a GenBank file, and outputs a FASTA file, as well as two additional TAB-delimited output files for external gene calls and gene functions that can be used with the programs anvi-gen-contigs-database and anvi-import-functions.
 
