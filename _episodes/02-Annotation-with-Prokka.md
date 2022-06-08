@@ -27,7 +27,7 @@ ncbi-genome-download --help
 and you will get a full list of parameters you can incorporate for your downloading and use as a guide 
 to use the package.  
 
-usage: 
+usage:  
   ncbi-genome-download [-h] [-s {refseq,genbank}] [-F FILE_FORMATS]
                             [-l ASSEMBLY_LEVELS] [-g GENERA] [--genus GENERA]
                             [--fuzzy-genus] [-S STRAINS] [-T SPECIES_TAXIDS]
@@ -70,55 +70,55 @@ usage:
                         (default: [])  
     --genus GENERA        Deprecated alias of --genera  
     --fuzzy-genus         Use a fuzzy search on the organism name instead of an
-                         exact match.
-    -S STRAINS, --strains STRAINS  
+                         exact match.  
+    -S STRAINS, --strains STRAINS   
                         Only download sequences of the given strain(s). A
                         comma-separated list of strain names is possible, as
                         well as a path to a filename containing one name per
                         line.  
-   -T SPECIES_TAXIDS, --species-taxids SPECIES_TAXIDS  
+    -T SPECIES_TAXIDS, --species-taxids SPECIES_TAXIDS  
                         Only download sequences of the provided species NCBI
                         taxonomy IDs. A comma-separated list of species taxids
                         is also possible. For example: "52342,12325".
                         (default: [])  
-   -t TAXIDS, --taxids TAXIDS  
+    -t TAXIDS, --taxids TAXIDS  
                         Only download sequences of the provided NCBI taxonomy
                         IDs. A comma-separated list of taxids is also
                         possible. For example: "9606,9685". (default: [])  
-   -A ASSEMBLY_ACCESSIONS, --assembly-accessions ASSEMBLY_ACCESSIONS  
+    -A ASSEMBLY_ACCESSIONS, --assembly-accessions ASSEMBLY_ACCESSIONS  
                         Only download sequences matching the provided NCBI
                         assembly accession(s). A comma-separated list of
                         accessions is possible, as well as a path to a
                         filename containing one accession per line.  
-   -R REFSEQ_CATEGORIES, --refseq-categories REFSEQ_CATEGORIES  
+    -R REFSEQ_CATEGORIES, --refseq-categories REFSEQ_CATEGORIES  
                         Only download sequences of the provided refseq
                         categories (default: all)  
-   --refseq-category REFSEQ_CATEGORIES  
+    --refseq-category REFSEQ_CATEGORIES  
                         Deprecated alias for --refseq-categories  
-   -o OUTPUT, --output-folder OUTPUT   
+    -o OUTPUT, --output-folder OUTPUT   
                         Create output hierarchy in specified folder (default:
                         /home/betterlab)  
-   --flat-output         Dump all files right into the output folder without
+    --flat-output         Dump all files right into the output folder without
                         creating any subfolders.  
-   -H, --human-readable  Create links in human-readable hierarchy (might fail
+    -H, --human-readable  Create links in human-readable hierarchy (might fail
                         on Windows)  
-   -P, --progress-bar    Create a progress bar for indicating the download
+    -P, --progress-bar    Create a progress bar for indicating the download
                         progress  
-   -u URI, --uri URI     NCBI base URI to use (default:
+    -u URI, --uri URI     NCBI base URI to use (default:
                         https://ftp.ncbi.nih.gov/genomes)  
-   -p N, --parallel N    Run N downloads in parallel (default: 1)  
-   -r N, --retries N     Retry download N times when connection to NCBI fails
+    -p N, --parallel N    Run N downloads in parallel (default: 1)  
+    -r N, --retries N     Retry download N times when connection to NCBI fails
                         (default: 0)  
-   -m METADATA_TABLE, --metadata-table METADATA_TABLE  
+    -m METADATA_TABLE, --metadata-table METADATA_TABLE  
                         Save tab-delimited file with genome metadata  
-   -n, --dry-run         Only check which files to download, don't download
-                        genome files.
-   -N, --no-cache        Don't cache the assembly summary file in
-                        /home/betterlab/.cache/ncbi-genome-download.
-   -v, --verbose         increase output verbosity
-   -d, --debug           print debugging information  
-   -V, --version         print version information
-   -M TYPE_MATERIALS, --type-materials TYPE_MATERIALS  
+    -n, --dry-run         Only check which files to download, don't download
+                        genome files.  
+    -N, --no-cache        Don't cache the assembly summary file in
+                        /home/betterlab/.cache/ncbi-genome-download.  
+    -v, --verbose         increase output verbosity  
+    -d, --debug           print debugging information   
+    -V, --version         print version information  
+    -M TYPE_MATERIALS, --type-materials TYPE_MATERIALS  
                         Specifies the relation to type material for the
                         assembly (default: any). "any" will include assemblies
                         with no relation to type material value defined, "all"
@@ -126,7 +126,7 @@ usage:
                         comma-separated list of relatons. For example:
                         "reference,synonym". Choose from: ['any', 'all',
                         'type', 'reference', 'synonym', 'proxytype',
-                        'neotype'] .  
+                        'neotype'].  
 
 Once we know about the flags we can use, we are ready to use the package. Then our first genome download
 is going to be for the strains of Streptococcus equinus in FASTA format:
