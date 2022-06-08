@@ -137,6 +137,11 @@ ncbi-genome-download --formats fasta .""--section genbank"". --genera "Streptoco
 ~~~
 {: .bash}
 
+~~~
+
+~~~
+{: .output}
+
 The above code will display a new genbank folder with the folders named with their assembly NCBI number.
 We need then to extract these files from each folder, uncompress them and rename the files in a more descriptive way, 
 like species and strain name. For these, we can use a for loop.
@@ -156,10 +161,44 @@ the protein, and the full nucleotide sequence of the assembly.
 # Prokka
 
 Annotation is a process of identifying the locations of genes and all the coding regions in a genome and determining 
-what those genes do. 
-Is a software tool to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files.
+what those genes do. For this, an unknown sequence is enriched with information relating genomic position, regulatory 
+sequences, repeats, gene name and protein products [2](https://en.wikipedia.org/wiki/DNA_annotation). This information
+is stored in genomic databases to help future analysis processing new data.
 
-## Output Files
+Prokka is a command-line software tool to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files[2](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false).
+It expects a preassembled genomic DNA sequences in FASTA format, which is the only mandatory parameter to the software.
+For annotation, Prokka relies on external features and databases to identify the genomic features within the contigs.
+
+| Tool(reference) | Features predicted |
+| --------- | ----------- |
+|Prodigal (Hyatt 2010 )   | Coding Sequence (CDS) |
+| RNAmmer ( Lagesen et al. , 2007 )  | Ribosomla RNA genes (rRNA) |
+| Aragorn ( Laslett and Canback, 2004 )  | Transfer RNA genes |
+| SignalP ( Petersen et al. , 2011 )  | Signal leader peptides|
+| Infernal ( Kolbe and Eddy, 2011 )  | Non-coding RNA|
+
+Proteins coding genes are annotates in two stages. Prodigal identifies the coordinates of candidate genes, but does not 
+describe the putative gene product. The traditional way to predict what a gene codes for is to compare it with a large
+database of known sequences, usually at a protein level, and transfer the annotation of the best significant match. 
+Prokka uses this method, but in a hierarchical manner, starting with a smaller trustworthy database, moving to medium 
+sized but domain specific databases and finally to curated models of protein families.  
+
+Beginning with Prokka, we need to set up on the folder where we have the assembly (FASTA) files of interest. As a simple 
+example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
+
+~~~
+prokka example.fasta --outdir exdir --prefix exf
+~~~
+{: .bash}
+
+~~~
+example.gff example.gbk example.fna example.faa example.ffn example.sqn
+example.fsa example.tbl example.err example.log example.txt example.tsv
+~~~
+{: .output}
+
+
+
 
 | Extension | Description |
 | --------- | ----------- |
