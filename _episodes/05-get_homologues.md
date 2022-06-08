@@ -33,7 +33,6 @@ Now, We ensure that get_homologues is install
 ~~~
 get_homologues.pl -h
 ~~~
-{: .source}
 {: .laguage-bash}
 
 ~~~
