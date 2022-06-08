@@ -44,17 +44,17 @@ In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that pred
 
 **Outputs**
 
-PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it will provide with a HDF-5 file named "pangenome.h5". This file stores all the information about your pangenome and the analysis that were run. You can extract information to obtain
+PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it will provide with a HDF-5 file named "pangenome.h5". This file stores all the information about your pangenome and the analysis that were run. You can extract information this file to get
 
-**U-shaped plot**
+- **U-shaped plot**
 
 A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a .html file.
 
-**tile plot**
+- **tile plot**
 
 A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together on the figure). In addition, it is a .html file.
 
-**pangenomeGraph files**
+- **pangenomeGraph files**
 
 You can get the .gexf files. It is will contain the gene families as nodes and the edges between gene families describing their relationship.
 They can be manipulated and visualised through a software called Gephi, with which we have made extensive testings, or potentially any other softwares or libraries that can read gexf files such as networkx or gexf-js among others.
