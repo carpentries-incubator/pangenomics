@@ -1,11 +1,11 @@
 ---
-title: "PPanGGOLiN"
+title: "Neighbouring analysis of gene families in a pangenome"
 teaching: 20
 exercises: 30
 questions:
-- "What is PPanGGOLiN?"
-- "Which kind of pangenome analysis can be obtained with PPanGGOLiN?"
-- "How to run a PPanGGOLiN analysis?"
+- "How can you predict the regions of genome plasticity?"
+- "How can you identify the spots of insertions?"
+- "How can you visualize the relationship between gene families?"
 
 objectives:
 - "Understand the fundaments of the PPanGGOLiN tool."
@@ -17,8 +17,6 @@ keypoints:
 - "PPanGGOLiN integrates protein-coding genes and their genomic neighborhood to build a graph."
 - "panRGP method predicts Regions of Genomic Plasticity which are grouped into insertion sites based on their conserved persistent flanking genes."
 - "PPanGGOLiN is designed to scale up to tens of thousand of geneomes, including whole genomes, metagenomes and single-cell annotated genomes."
-requirements:
-- "Install [gephi](https://gephi.org/) to visualize the graphs"
 ---
 
 <a href="../fig/01-04-01.png">
@@ -75,6 +73,9 @@ They can be manipulated and visualised through a software called Gephi, with whi
 <a href="../fig/01-04-05.png">
   <img src="../fig/01-04-05.png" width="512" height="512" alt="" />
 </a>
+
+Requirements:
+- "Install [gephi](https://gephi.org/) to visualize the graphs"
 
 For more details you can check this article
 Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partitioned pangenome graph. PLOS Computational Biology 16(3): e1007732. [https://doi.org/10.1371/journal.pcbi.1007732](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732).
