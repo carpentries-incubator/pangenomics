@@ -193,19 +193,78 @@ database of known sequences, usually at a protein level, and transfer the annota
 Prokka uses this method, but in a hierarchical manner, starting with a smaller trustworthy database, moving to medium 
 sized but domain specific databases and finally to curated models of protein families.  
 
-Beginning with Prokka, we need to set up on the folder where we have the assembly (FASTA) files of interest. As a simple 
-example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
+Beginning with Prokka, we need to set up on the folder where we have the assembly (FASTA) files of interest. As an simple initial example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
 
 ~~~
 prokka example.fasta --outdir exdir --prefix exf
 ~~~
-{: .bash}
+{: .source}
+
+This command creates the following system of files:
 
 ~~~
-example.gff example.gbk example.fna example.faa example.ffn example.sqn
-example.fsa example.tbl example.err example.log example.txt example.tsv
+exdir/
+├── exf.err
+├── exf.faa
+├── exf.ffn
+├── exf.fna
+├── exf.fsa
+├── exf.gbk
+├── exf.gff
+├── exf.log
+├── exf.sqn
+├── exf.tbl
+├── exf.tsv
+└── exf.txt
 ~~~
 {: .output}
+
+You can also add further details regarding the organism you search and the way the files will be annotated. For instance, if you'd like to annotate an archaeon of the genus *Nitrososphaera*, you would execute the following command:
+
+~~~
+prokka example.fasta --kingdom Archaea --genus Nitrososphaera --outdir exdir
+~~~
+
+You may specify your queries as much as you like. Remember that you can use the `--help` option to get the complete list of parameters available.
+
+> ## Exercise: tRNAs extraction with Prokka
+> 
+> Using Prokka, create a TSV file that only contains the tRNAs of the Streptococcus agalactiae 18RS21 strain, whose FASTA file can be downloaded [here](https://zenodo.org/record/6622053).
+> 
+> > ## Solution
+> > 
+> > First, we download the ZIP file from the provided link.
+> > 
+> > ~~~
+> > wget https://zenodo.org/record/6622053/files/dc_workshop.zip
+> > ~~~
+> > {: .source}
+> > 
+> > Next, we unzip the file.
+> > 
+> > ~~~
+> > unzip dc_workshop.zip
+> > ~~~
+> > {: .source}
+> > 
+> > Then, we perform the annotation with Prokka and save all files as `18RS21` in a directory titled `18RS21_prokka`.
+> > 
+> > ~~~
+> > cd dc_workshop/data/18RS21
+> > prokka Streptococcus_agalactiae_18RS21.fasta --outdir 18RS21_prokka --prefix 18RS21
+> > ~~~
+> > {: .source}
+> > 
+> > Now we must filter the data we need and save the outputs to a file named `trnas.tsv`
+> > 
+> > ~~~
+> > cd 18RS21_prokka
+> > head -n 1 18RS21.tsv > trnas.tsv # Get column headers
+> > grep $'\t'tRNA$'\t' 18RS21.tsv >> trnas.tsv # Append all lines that contain tRNA
+> > ~~~
+> > 
+> {: .solution}
+{: .challenge}
 
 
 
