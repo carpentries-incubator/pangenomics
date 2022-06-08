@@ -137,7 +137,7 @@ cd dc_workshop/data
 ~~~
 {: .bash}
 
-If we list ´ls´ this folder we can check a couple of folders. Each of this represents a different strain of Streptococcus agalactiae used in Tettelin et al (2005), each folder contains the raw data (fasta and gbk formats) downloaded directly from NCBI. As an example of execution our first genome download will be the strains of Streptococcus equinus in FASTA format:
+If we list **`ls`** this folder we can check a couple of folders. Each of this represents a different strain of Streptococcus agalactiae used in Tettelin et al (2005), each folder contains the raw data (fasta and gbk formats) downloaded directly from NCBI. As an example of execution our first genome download will be the strains of Streptococcus equinus in FASTA format:
 
 ~~~
 ncbi-genome-download --formats fasta  --genera "Streptococcus equinus" bacteria
