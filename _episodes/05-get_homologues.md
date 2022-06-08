@@ -4,8 +4,8 @@ teaching: 0
 exercises: 0
 questions:
 - "What is Get_Homologues?"
-- "¿What is Clusterin?"
-- "¿Which are the clustering algorithms?"
+- "What is Clusterin?"
+- "Which are the clustering algorithms?"
 
 objectives:
 - "Clustering orthologous proteins from Gen Bank files."	
