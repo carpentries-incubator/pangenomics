@@ -8,7 +8,7 @@ questions:
 - "Which are the clustering algorithms that use Get_Homologues?"
 
 objectives:
-- "Clustering orthologous proteins from Gen Bank files."	
+- "Clustering orthologous proteins from Gen Bank files."
 - "Create a Venn diagram using diferents clustering algorithms."
 - "Implemented and interpreted the evolutionary history using Clustering orthologous proteins."
 
