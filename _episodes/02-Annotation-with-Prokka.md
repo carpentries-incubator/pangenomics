@@ -167,6 +167,44 @@ command line to download in another format like ´.gbk´ for example
 
 In this case we are going to use the data we already had from Tettelin et al (2005). 
 
+> ## Exercise 1: Downloading data from NCBI with the command line
+> 
+> Using `ncbi-genome-download`, get a FASTA file of the ATCC 31377 strain of the Streptococcus ratti bacterium and save it to an output directory titled `ratti`. Then, unzip the `gz` file and move the FASTA file all they back to the `ratti` directory. After you've done that, delete the `refseq` directory.
+> 
+> > ## Solution
+> > 
+> > First, we run the download utility.
+> > 
+> > ~~~
+> > ncbi-genome-download -F fasta -g "Streptococcus ratti" -S "ATCC 31377" -o ratti bacteria
+> > ~~~
+> > {: .source}
+> > 
+> > Next, we navigate to the downloaded `gz` file and unzip it.
+> > 
+> > ~~~
+> > cd ratti/refseq/bacteria/GCF_008803015.1/
+> > gunzip GCF_008803015.1_ASM880301v1_genomic.fna.gz
+> > ~~~
+> > {: .source}
+> > 
+> > Then, we move the unzipped FASTA file to the `ratti` directory.
+> > 
+> > ~~~
+> > mv GCF_008803015.1_ASM880301v1_genomic.fna ../../..
+> > ~~~
+> > {: .source}
+> > 
+> > Finally, we delete the `refseq` directory.
+> > 
+> > ~~~
+> > cd ../../..
+> > rm -rf refseq
+> > ~~~
+> > {: .source}
+> > 
+> {: .solution}
+{: .challenge}
 
 # Prokka
 
@@ -244,41 +282,27 @@ prokka example.fasta --kingdom Archaea --genus Nitrososphaera --outdir exdir
 
 You may specify your queries as much as you like. Type `prokka --help` in the command line to get the complete list of parameters available.
 
-> ## Exercise: tRNAs extraction with Prokka
+> ## Exercise 2: tRNAs extraction with Prokka
 > 
-> Using Prokka, create a TSV file that only contains the tRNAs of the Streptococcus agalactiae 18RS21 strain, whose FASTA file can be downloaded [here](https://zenodo.org/record/6622053).
+> Using Prokka, create a TSV file that only contains the tRNAs of the Streptococcus ratti ATCC 31377 strain that you have downloaded in Exercise 1.
 > 
 > > ## Solution
 > > 
-> > First, we download the ZIP file from the provided link.
+> > First, we perform the annotation with Prokka and save all files as `atcc31377` in a directory titled `atcc31377`.
 > > 
 > > ~~~
-> > wget https://zenodo.org/record/6622053/files/dc_workshop.zip
-> > ~~~
-> > {: .source}
-> > 
-> > Next, we unzip the file.
-> > 
-> > ~~~
-> > unzip dc_workshop.zip
-> > ~~~
-> > {: .source}
-> > 
-> > Then, we perform the annotation with Prokka and save all files as `18RS21` in a directory titled `18RS21_prokka`.
-> > 
-> > ~~~
-> > cd dc_workshop/data/18RS21
-> > prokka Streptococcus_agalactiae_18RS21.fasta --outdir 18RS21_prokka --prefix 18RS21
+> > prokka GCF_008803015.1_ASM880301v1_genomic.fna --outdir atcc31377 --prefix atcc31377
 > > ~~~
 > > {: .source}
 > > 
 > > Now we must filter the data we need and save the outputs to a file named `trnas.tsv`
 > > 
 > > ~~~
-> > cd 18RS21_prokka
-> > head -n 1 18RS21.tsv > trnas.tsv # Get column headers
-> > grep $'\t'tRNA$'\t' 18RS21.tsv >> trnas.tsv # Append all lines that contain tRNA
+> > cd atcc31377
+> > head -n 1 atcc31377.tsv > trnas.tsv # Get column headers
+> > grep $'\t'tRNA$'\t' atcc31377.tsv >> trnas.tsv # Append all lines that contain tRNA
 > > ~~~
+> > {: .source}
 > > 
 > {: .solution}
 {: .challenge}
