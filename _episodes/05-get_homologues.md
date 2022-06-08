@@ -107,18 +107,18 @@ search file in the file browser on your computer.
 >
 >> ## Solution
 >> 
-> |------------------------------+------------------------------------------------------------------------------|  
-> | **algorithms**                           |     **Information required**                                     |  
-> |------------------------------+------------------------------------------------------------------------------|  
-> | BDBH                      |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
-> |------------------------------+------------------------------------------------------------------------------|  
-> | COGS  | Merges triangles of inter-genomic symmetrical best matches |   
-> |------------------------------+------------------------------------------------------------------------------|  
-> | OMCL    | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
-> |------------------------------+------------------------------------------------------------------------------| 
-> 
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | **algorithms**                           |     **Information required**                                     |  
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | BDBH                      |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | COGS  | Merges triangles of inter-genomic symmetrical best matches |   
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | OMCL    | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
+>> |------------------------------+------------------------------------------------------------------------------| 
+>> 
 >>
-> {: .solution}
+>> {: .solution}
 {: .challenge} 
 
 
