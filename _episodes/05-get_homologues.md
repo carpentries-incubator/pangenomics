@@ -29,7 +29,7 @@ conda activate Pangenomics
 ~~~
 {: .source}
 
-## Step 1
+## Step 1. Generate a folder get_homologues
 It's necessary that we create a new folder when all results are sent.
 ~~~
 mkdir ~dc_workshop/results/pangenome/get_homologues
@@ -37,7 +37,7 @@ cd ~dc_workshop/results/pangenome/get_homologues
 ~~~
 {: .source}
 
-## Step 2 Generate the directory clusters
+## Step 2. Generate the directory clusters
 To generate the directory clusters with BDBH, this option is default.
 ~~~
 get_homologues.pl -d dc_workshop/data/*/*.gbk
@@ -57,7 +57,7 @@ get_homologues.pl -d dc_workshop/data/*/*.gbk -M
 ~~~
 {: .source}
 
-## Step 3 Compare all clusters from diferent algoritms
+## Step 3. Compare all clusters from diferent algoritms
 ~~~
 compare_clusters.pl -o alg_intersection -m -d\
 gbk_homologues/A909_f0_alltaxa_algBDBH_e0_,\
@@ -76,13 +76,15 @@ scp user@ip:/path/to/file/venn_t0.pdf .
 usuario@ip password:
 ~~~
 {: .output}
-psw:##
+
 search file in the file browser on your computer.
 
+## Step 4. Obtaining a pangenome matrix
 
-> ## Exercise 2: 
+
+> ## Exercise 1: 
 > 
-> Complete the lines of code to obtain the required information
+> What is the interpret the Venn diagrams?
 >> ## Solution
 >> 
 > {: .solution}
