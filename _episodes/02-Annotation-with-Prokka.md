@@ -11,7 +11,8 @@ objectives:
 - "Explore ncbi-genome-download as a tool for genomic data fetching from the NCBI."
 - "Learn how to use the Prokka genome annotation utility."
 keypoints:
--
+- "ncbi-genome-download is a set of scripts to download genomes from the NCBI FTP servers implemented in Python."
+- "Prokka is a command line utility that provides rapid prokaryotic genome annotation written in Perl."
 
 ---
 
