@@ -219,13 +219,30 @@ exdir/
 ~~~
 {: .output}
 
+The following table describes the contents of each output file:
+
+| Extension | Description |
+| --------- | ----------- |
+| .gff | This is the master annotation in GFF3 format, containing both sequences and annotations. It can be viewed directly in Artemis or IGV. |
+| .gbk | This is a standard Genbank file derived from the master .gff. If the input to prokka was a multi-FASTA, then this will be a multi-Genbank, with one record for each sequence. |
+| .fna | Nucleotide FASTA file of the input contig sequences. |
+| .faa | Protein FASTA file of the translated CDS sequences. |
+| .ffn | Nucleotide FASTA file of all the prediction transcripts (CDS, rRNA, tRNA, tmRNA, misc_RNA) |
+| .sqn | An ASN1 format "Sequin" file for submission to Genbank. It needs to be edited to set the correct taxonomy, authors, related publication etc. |
+| .fsa | Nucleotide FASTA file of the input contig sequences, used by "tbl2asn" to create the .sqn file. It is mostly the same as the .fna file, but with extra Sequin tags in the sequence description lines. |
+| .tbl | Feature Table file, used by "tbl2asn" to create the .sqn file. |
+| .err | Unacceptable annotations - the NCBI discrepancy report. |
+| .log | Contains all the output that Prokka produced during its run. This is a record of what settings you used, even if the --quiet option was enabled. |
+| .txt | Statistics relating to the annotated features found. |
+| .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product |
+
 You can also add further details regarding the organism you search and the way the files will be annotated. For instance, if you'd like to annotate an archaeon of the genus *Nitrososphaera*, you would execute the following command:
 
 ~~~
 prokka example.fasta --kingdom Archaea --genus Nitrososphaera --outdir exdir
 ~~~
 
-You may specify your queries as much as you like. Remember that you can use the `--help` option to get the complete list of parameters available.
+You may specify your queries as much as you like. Type `prokka --help` in the command line to get the complete list of parameters available.
 
 > ## Exercise: tRNAs extraction with Prokka
 > 
@@ -266,23 +283,6 @@ You may specify your queries as much as you like. Remember that you can use the 
 > {: .solution}
 {: .challenge}
 
-
-
-
-| Extension | Description |
-| --------- | ----------- |
-| .gff | This is the master annotation in GFF3 format, containing both sequences and annotations. It can be viewed directly in Artemis or IGV. |
-| .gbk | This is a standard Genbank file derived from the master .gff. If the input to prokka was a multi-FASTA, then this will be a multi-Genbank, with one record for each sequence. |
-| .fna | Nucleotide FASTA file of the input contig sequences. |
-| .faa | Protein FASTA file of the translated CDS sequences. |
-| .ffn | Nucleotide FASTA file of all the prediction transcripts (CDS, rRNA, tRNA, tmRNA, misc_RNA) |
-| .sqn | An ASN1 format "Sequin" file for submission to Genbank. It needs to be edited to set the correct taxonomy, authors, related publication etc. |
-| .fsa | Nucleotide FASTA file of the input contig sequences, used by "tbl2asn" to create the .sqn file. It is mostly the same as the .fna file, but with extra Sequin tags in the sequence description lines. |
-| .tbl | Feature Table file, used by "tbl2asn" to create the .sqn file. |
-| .err | Unacceptable annotations - the NCBI discrepancy report. |
-| .log | Contains all the output that Prokka produced during its run. This is a record of what settings you used, even if the --quiet option was enabled. |
-| .txt | Statistics relating to the annotated features found. |
-| .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product |
 
 
 ## Command line options
