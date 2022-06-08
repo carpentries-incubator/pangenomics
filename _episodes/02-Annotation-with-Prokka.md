@@ -16,16 +16,16 @@ keypoints:
 
 ---
 
-Instalation of NCBI-genome-download package
+Instalation of NCBI-genome-download package  
 
 NCBI Genome Downloading are a script to download bacterial and fungal genomes from NCBI after they
-restructured their FTP a while ago. You can call the package typing:
+restructured their FTP a while ago. You can call the package typing:  
 
 ```
 ncbi-genome-download --help
 ```
 and you will get a full list of parameters you can incorporate for your downloading and use as a guide 
-to use the package.
+to use the package.  
 
 usage: ncbi-genome-download [-h] [-s {refseq,genbank}] [-F FILE_FORMATS]
                             [-l ASSEMBLY_LEVELS] [-g GENERA] [--genus GENERA]
