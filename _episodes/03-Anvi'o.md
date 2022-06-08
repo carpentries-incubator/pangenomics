@@ -921,6 +921,30 @@ http://132.248.196.38:8080
 ~~~
 {: .output}
 
+  
+> ## Exercise 1: The homogeneity of gene clusters.
+>Anvi’oo allows us to identify different levels of disagreements between amino acid sequences in different genomes. Amino acid sequences from different genomes in a gene cluster that are almost identical tell us that the gene cluster is highly homogeneous. 
+> The **geometric homogeneity index** tell us the degree of geometric configuration between the genes of a gene cluster and the **functional homogeneity index** considers aligned residues and quantifies differences across residues in a site.
+For more info see [this.](https://merenlab.org/2016/11/08/pangenomics-v2/#inferring-the-homogeneity-of-gene-clusters)
+Go to this [page](https://anvio.org/help/main/programs/anvi-get-sequences-for-gene-clusters/) and explore the pangenome graph according to the homogeneity index.
+>a) Order the pangenome based on the geometric homogeneity index and inspect a gene cluster with a relatively low score.
+>b) Filter the gene cluster according to a functional homogeneity index above 0.25. 
+>c) How can you estimate evolutionary relationships between genomes? With the `concatenated-gene-alignment-fasta` produce the phylogenomic tree and explore it.
+> >## Solution
+>> a) Go to the main settings panel and modify the “items order”.
+>> b) 
+>>~~~
+anvi-get-sequences-for-gene-clusters -g genomes-storage-db \
+                                     -p pan-db \
+                                     -o genes-fasta \
+                                     --min-functional-homogenity-index 0.25
+>>~~~
+>>{: .language-bash}
+>>c) 
+>{: .solution}
+{: .challenge}
+  
+  
 > ## Exercise 2. Splitting the pangenome.
 > 1. Read about [anvi-split](https://anvio.org/help/main/programs/anvi-split/) 
 > 2. With this program split your pangenome in independent pangenomes that:
