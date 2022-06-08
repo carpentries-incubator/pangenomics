@@ -10,9 +10,6 @@ questions:
 objectives:
 - "Clustering orthologous proteins from Gen Bank files."	
 - Create a Venn diagram using diferents clustering algorithms."
-    - BDBH
-    - COGS
-    - OMCL
 - "Implemented and intepreted the evolutionary history using Clustering orthologous proteins."
 
 keypoints:
