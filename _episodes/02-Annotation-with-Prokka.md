@@ -13,7 +13,7 @@ keypoints:
 - "Prokka is a command line utility that provides rapid prokaryotic genome annotation written in Perl."
 ---
 
-## ncbi-genome-download: Get genomic data from the NCBI
+## ncbi-genome-download: Get Genomic Data from the NCBI
 
 The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. This tool can be installed with PIP or with Anaconda. If you wish to install it with PIP, it is advisable to have an up-to-date version of this package manager before performing the installation.
 
@@ -217,7 +217,7 @@ In this case we are going to use the data we already had from Tettelin et al (20
 > {: .solution}
 {: .challenge}
 
-# Prokka
+## Prokka: Annotating Genomes
 
 Annotation is a process of identifying the locations of genes and all the coding regions in a genome and determining
 what those genes do. For this, an unknown sequence is enriched with information relating genomic position, regulatory
@@ -249,7 +249,7 @@ prokka example.fasta --outdir exdir --prefix exf
 ~~~
 {: .source}
 
-This command creates the following system of files:
+If you run `tree` command you can preview the system of files created by Prokka:
 
 ~~~
 exdir/
@@ -290,37 +290,9 @@ You can also add further details regarding the organism you search and the way t
 ~~~
 prokka example.fasta --kingdom Archaea --genus Nitrososphaera --outdir exdir
 ~~~
+{: .source}
 
-You may specify your queries as much as you like. Type `prokka --help` in the command line to get the complete list of parameters available.
-
-> ## Exercise 2: tRNAs extraction with Prokka
->
-> Using Prokka, create a TSV file that only contains the tRNAs of the Streptococcus ratti ATCC 31377 strain that you have downloaded in Exercise 1.
->
-> > ## Solution
-> >
-> > First, we perform the annotation with Prokka and save all files as `atcc31377` in a directory titled `atcc31377`.
-> >
-> > ~~~
-> > prokka GCF_008803015.1_ASM880301v1_genomic.fna --outdir atcc31377 --prefix atcc31377
-> > ~~~
-> > {: .source}
-> >
-> > Now we must filter the data we need and save the outputs to a file named `trnas.tsv`
-> >
-> > ~~~
-> > cd atcc31377
-> > head -n 1 atcc31377.tsv > trnas.tsv # Get column headers
-> > grep $'\t'tRNA$'\t' atcc31377.tsv >> trnas.tsv # Append all lines that contain tRNA
-> > ~~~
-> > {: .source}
-> >
-> {: .solution}
-{: .challenge}
-
-
-
-## Command line options
+You may specify your queries as much as you like. Type `prokka --help` in the command line to get the complete list of available parameters:
 
 ~~~
 General:
@@ -369,12 +341,21 @@ Computation:
   --notrna          Don't run tRNA search (default OFF)
   --rnammer         Prefer RNAmmer over Barrnap for rRNA prediction (default OFF)
 ~~~
+{: .output}
+
+Prokka can understand FASTA files with plain or detailed tag formats. A plain tag format looks like this:
+
+~~~
+>SeqID product
+~~~
+{: .output}
 
 The detailed one consists of a special encoded three-part description line. The parts are the `/EC_number`, the `/gene` code, then the `/product` - and they are separated by a special "~~~" sequence:
 
 ~~~
 >SeqID EC_number~~~gene~~~product~~~COG
 ~~~
+{: .output}
 
 Here are some examples. Note that not all parts need to be present, but the "~~~" should still be there:
 
@@ -389,3 +370,29 @@ LKKLPGIDDPMVKNEMFRGVGMVLAGVAVGAALVWLVPWVYNLFQ*
 MNYFRYKQFNKDVITVAVGYYLRYALSYRDISEILRGRGVNVHHSTVYRWVQEYAPILYQ
 QSINTAKNTLKGIECIYALYKKNRRSLQIYGFSPCHEISIMLAS*
 ~~~
+{: .output}
+
+> ## Exercise 2: tRNAs extraction with Prokka
+>
+> Using Prokka, create a TSV file that only contains the tRNAs of the Streptococcus ratti ATCC 31377 strain that you have downloaded in Exercise 1.
+>
+> > ## Solution
+> >
+> > First, we perform the annotation with Prokka and save all files as `atcc31377` in a directory titled `atcc31377`.
+> >
+> > ~~~
+> > prokka GCF_008803015.1_ASM880301v1_genomic.fna --outdir atcc31377 --prefix atcc31377
+> > ~~~
+> > {: .source}
+> >
+> > Now we must filter the data we need and save the outputs to a file named `trnas.tsv`
+> >
+> > ~~~
+> > cd atcc31377
+> > head -n 1 atcc31377.tsv > trnas.tsv # Get column headers
+> > grep $'\t'tRNA$'\t' atcc31377.tsv >> trnas.tsv # Append all lines that contain tRNA
+> > ~~~
+> > {: .source}
+> >
+> {: .solution}
+{: .challenge}
