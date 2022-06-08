@@ -1,7 +1,7 @@
 ---
 title: "Downloading and Annotating Genomic Data"
-teaching: 0
-exercises: 0
+teaching: 35
+exercises: 15
 questions:
 - "How to download NCBI genomic data from the command line?"
 - "What is a quick way to annotate a FASTA file and obtain different outputs?"
