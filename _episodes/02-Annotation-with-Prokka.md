@@ -1,5 +1,5 @@
 ---
-title: "Downloading and Annotating NCBI Data"
+title: "Downloading and Annotating Genomic Data"
 teaching: 0
 exercises: 0
 questions:
@@ -9,13 +9,13 @@ objectives:
 - "Explore ncbi-genome-download as a tool for genomic data fetching from the NCBI."
 - "Learn how to use the Prokka genome annotation utility."
 keypoints:
-- "ncbi-genome-download is a set of scripts to download genomes from the NCBI FTP servers implemented in Python."
+- "The `ncbi-genome-download` package is a set of scripts to download genomes from the NCBI FTP servers implemented in Python."
 - "Prokka is a command line utility that provides rapid prokaryotic genome annotation written in Perl."
 ---
 
-## ncbi-genome-download: Get Genomic Data from the NCBI
+## The `ncbi-genome-download` package: Getting Genomic Data from the NCBI
 
-The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. This tool can be installed with PIP or with Anaconda. If you wish to install it with PIP, it is advisable to have an up-to-date version of this package manager before performing the installation.
+The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. Because this tool is written in Python, it can be installed with PIP or with Anaconda. If you wish to install it with PIP, it is advisable to have an up-to-date version of this package manager before performing the installation.
 
 ~~~
 pip install --upgrade pip
@@ -224,7 +224,7 @@ what those genes do. For this, an unknown sequence is enriched with information 
 sequences, repeats, gene name and protein products [1](https://en.wikipedia.org/wiki/DNA_annotation). This information
 is stored in genomic databases to help future analysis processing new data.
 
-Prokka is a command-line software tool to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files[2](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false).
+Prokka is a command-line software tool created in Perl to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files[2](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false).
 It expects a preassembled genomic DNA sequences in FASTA format, which is the only mandatory parameter to the software.
 For annotation, Prokka relies on external features and databases to identify the genomic features within the contigs.
 
@@ -236,20 +236,27 @@ For annotation, Prokka relies on external features and databases to identify the
 | SignalP ( Petersen et al. , 2011 )  | Signal leader peptides|
 | Infernal ( Kolbe and Eddy, 2011 )  | Non-coding RNA|
 
-Proteins coding genes are annotates in two stages. Prodigal identifies the coordinates of candidate genes, but does not
+Proteins coding genes are annotated in two stages. Prodigal identifies the coordinates of candidate genes, but does not
 describe the putative gene product. The traditional way to predict what a gene codes for is to compare it with a large
 database of known sequences, usually at a protein level, and transfer the annotation of the best significant match.
 Prokka uses this method, but in a hierarchical manner, starting with a smaller trustworthy database, moving to medium
-sized but domain specific databases and finally to curated models of protein families.  
+sized but domain specific databases and finally to curated models of protein families.
 
-Beginning with Prokka, we need to set up on the folder where we have the assembly (FASTA) files of interest. As an simple initial example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
+To get started with Prokka, we must first install it. The recommended method of installation is through Anaconda:
+
+~~~
+conda install -c conda-forge -c bioconda -c defaults prokka
+~~~
+{: .source}
+
+Next, we need to change to the directory where we have the assembly (FASTA) files of interest. As a simple initial example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
 
 ~~~
 prokka example.fasta --outdir exdir --prefix exf
 ~~~
 {: .source}
 
-If you run `tree` command you can preview the system of files created by Prokka:
+If you run the `tree` command in the current directory, you can preview the system of files created by Prokka:
 
 ~~~
 exdir/
@@ -372,7 +379,7 @@ QSINTAKNTLKGIECIYALYKKNRRSLQIYGFSPCHEISIMLAS*
 ~~~
 {: .output}
 
-> ## Exercise 2: tRNAs extraction with Prokka
+> ## Exercise 2: Extracting tRNAs with Prokka
 >
 > Using Prokka, create a TSV file that only contains the tRNAs of the Streptococcus ratti ATCC 31377 strain that you have downloaded in Exercise 1.
 >
