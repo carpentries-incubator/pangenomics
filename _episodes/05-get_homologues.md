@@ -106,8 +106,15 @@ cd  ~dc_workshop/results/pangenome/get_homologues/data_get
 We need to create a Symbolic link with the file *.gbk*
 ~~~
 find ~/dc_workshop/results/annotated/. -name "*agalactiae*.gbk*" -exec ln -s {} . ';'
+ls ~dc_workshop/results/pangenome/get_homologues/data_get
 ~~~
 {: .source}
+
+~~~
+agalactiae_18RS21_prokka.gbk  agalactiae_A909_prokka.gbk    agalactiae_COH1_prokka.gbk
+agalactiae_515_prokka.gbk     agalactiae_CJB111_prokka.gbk  agalactiae_H36B_prokka.gbk
+~~~
+{: .output}
 
 ## Step 2. Generate the directory clusters
 To generate the directory clusters with BDBH, this option is default.
