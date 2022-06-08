@@ -1,18 +1,17 @@
 ---
-title: "Download data and annotation with Prokka"
+title: "Downloading and Annotating NCBI Data"
 teaching: 0
 exercises: 0
 questions:
-- "Available tools for NCBI downloading data"
-- "What is a Prokka?"
-- "How to install Prokka"
-- "Which means 'annotation' and how can I perform one?"
+- "How to download NCBI genomic data from the command line?"
+- "What is a quick way to annotate a FASTA file and obtain different outputs?"
 
 
 objectives:
-- "Explain how to download genomic data and perform an annotation analysis"
+- "Explore ncbi-genome-download as a tool for genomic data fetching from the NCBI."
+- "Learn how to use the Prokka genome annotation utility."
 keypoints:
-- 
+-
 
 ---
 
@@ -24,7 +23,7 @@ restructured their FTP a while ago. You can call the package typing:
 ```
 ncbi-genome-download --help
 ```
-and you will get a full list of parameters you can incorporate for your downloading and use as a guide 
+and you will get a full list of parameters you can incorporate for your downloading and use as a guide
 to use the package.  
 
 ```
@@ -37,7 +36,7 @@ to use the package.
                             [--refseq-category REFSEQ_CATEGORIES] [-o OUTPUT]  
                             [--flat-output] [-H] [-P] [-u URI] [-p N] [-r N]  
                             [-m METADATA_TABLE] [-n] [-N] [-v] [-d] [-V]  
-                            [-M TYPE_MATERIALS] 
+                            [-M TYPE_MATERIALS]
                             groups
     positional arguments:  
       groups              The NCBI taxonomic groups to download (default: all).
@@ -150,7 +149,7 @@ ncbi-genome-download --formats fasta  --genera "Streptococcus equinus" bacteria
 {: .output}
 
 The above code will display a new genbank folder with the folders named with their assembly NCBI number.
-We need then to extract these files from each folder, uncompress them and rename the files in a more descriptive way, 
+We need then to extract these files from each folder, uncompress them and rename the files in a more descriptive way,
 like species and strain name. For these, we can use a for loop.
 
 ~~~
@@ -159,57 +158,57 @@ for
 {: .output}
 
 Then we can explore the gbk files. It is important to know these files because they will be used for the posterior
-analysis. It will give you information about the coding sequences, their locus, the name of 
-the protein, and the full nucleotide sequence of the assembly. Either way, you can adjust the parameters in the 
+analysis. It will give you information about the coding sequences, their locus, the name of
+the protein, and the full nucleotide sequence of the assembly. Either way, you can adjust the parameters in the
 command line to download in another format like ´.gbk´ for example
 
 ------------------Image
 
-In this case we are going to use the data we already had from Tettelin et al (2005). 
+In this case we are going to use the data we already had from Tettelin et al (2005).
 
 > ## Exercise 1: Downloading data from NCBI with the command line
-> 
+>
 > Using `ncbi-genome-download`, get a FASTA file of the ATCC 31377 strain of the Streptococcus ratti bacterium and save it to an output directory titled `ratti`. Then, unzip the `gz` file and move the FASTA file all they back to the `ratti` directory. After you've done that, delete the `refseq` directory.
-> 
+>
 > > ## Solution
-> > 
+> >
 > > First, we run the download utility.
-> > 
+> >
 > > ~~~
 > > ncbi-genome-download -F fasta -g "Streptococcus ratti" -S "ATCC 31377" -o ratti bacteria
 > > ~~~
 > > {: .source}
-> > 
+> >
 > > Next, we navigate to the downloaded `gz` file and unzip it.
-> > 
+> >
 > > ~~~
 > > cd ratti/refseq/bacteria/GCF_008803015.1/
 > > gunzip GCF_008803015.1_ASM880301v1_genomic.fna.gz
 > > ~~~
 > > {: .source}
-> > 
+> >
 > > Then, we move the unzipped FASTA file to the `ratti` directory.
-> > 
+> >
 > > ~~~
 > > mv GCF_008803015.1_ASM880301v1_genomic.fna ../../..
 > > ~~~
 > > {: .source}
-> > 
+> >
 > > Finally, we delete the `refseq` directory.
-> > 
+> >
 > > ~~~
 > > cd ../../..
 > > rm -rf refseq
 > > ~~~
 > > {: .source}
-> > 
+> >
 > {: .solution}
 {: .challenge}
 
 # Prokka
 
-Annotation is a process of identifying the locations of genes and all the coding regions in a genome and determining 
-what those genes do. For this, an unknown sequence is enriched with information relating genomic position, regulatory 
+Annotation is a process of identifying the locations of genes and all the coding regions in a genome and determining
+what those genes do. For this, an unknown sequence is enriched with information relating genomic position, regulatory
 sequences, repeats, gene name and protein products [1](https://en.wikipedia.org/wiki/DNA_annotation). This information
 is stored in genomic databases to help future analysis processing new data.
 
@@ -225,10 +224,10 @@ For annotation, Prokka relies on external features and databases to identify the
 | SignalP ( Petersen et al. , 2011 )  | Signal leader peptides|
 | Infernal ( Kolbe and Eddy, 2011 )  | Non-coding RNA|
 
-Proteins coding genes are annotates in two stages. Prodigal identifies the coordinates of candidate genes, but does not 
+Proteins coding genes are annotates in two stages. Prodigal identifies the coordinates of candidate genes, but does not
 describe the putative gene product. The traditional way to predict what a gene codes for is to compare it with a large
-database of known sequences, usually at a protein level, and transfer the annotation of the best significant match. 
-Prokka uses this method, but in a hierarchical manner, starting with a smaller trustworthy database, moving to medium 
+database of known sequences, usually at a protein level, and transfer the annotation of the best significant match.
+Prokka uses this method, but in a hierarchical manner, starting with a smaller trustworthy database, moving to medium
 sized but domain specific databases and finally to curated models of protein families.  
 
 Beginning with Prokka, we need to set up on the folder where we have the assembly (FASTA) files of interest. As an simple initial example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
@@ -283,27 +282,27 @@ prokka example.fasta --kingdom Archaea --genus Nitrososphaera --outdir exdir
 You may specify your queries as much as you like. Type `prokka --help` in the command line to get the complete list of parameters available.
 
 > ## Exercise 2: tRNAs extraction with Prokka
-> 
+>
 > Using Prokka, create a TSV file that only contains the tRNAs of the Streptococcus ratti ATCC 31377 strain that you have downloaded in Exercise 1.
-> 
+>
 > > ## Solution
-> > 
+> >
 > > First, we perform the annotation with Prokka and save all files as `atcc31377` in a directory titled `atcc31377`.
-> > 
+> >
 > > ~~~
 > > prokka GCF_008803015.1_ASM880301v1_genomic.fna --outdir atcc31377 --prefix atcc31377
 > > ~~~
 > > {: .source}
-> > 
+> >
 > > Now we must filter the data we need and save the outputs to a file named `trnas.tsv`
-> > 
+> >
 > > ~~~
 > > cd atcc31377
 > > head -n 1 atcc31377.tsv > trnas.tsv # Get column headers
 > > grep $'\t'tRNA$'\t' atcc31377.tsv >> trnas.tsv # Append all lines that contain tRNA
 > > ~~~
 > > {: .source}
-> > 
+> >
 > {: .solution}
 {: .challenge}
 
@@ -356,10 +355,10 @@ You may specify your queries as much as you like. Type `prokka --help` in the co
       --norrna          Don't run rRNA search (default OFF)
       --notrna          Don't run tRNA search (default OFF)
       --rnammer         Prefer RNAmmer over Barrnap for rRNA prediction (default OFF)
-      
-     
+
+
     The detailed one consists of a special encoded three-part description line. The parts are the `/EC_number`, the `/gene` code, then the `/product` - and they are separated by a special "~~~" sequence:
-    
+
 ```
 >SeqID EC_number~~~gene~~~product~~~COG
 ```
