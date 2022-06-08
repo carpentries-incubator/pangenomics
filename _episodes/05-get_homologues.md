@@ -16,7 +16,7 @@ keypoints:
 - "First key point. Brief Answer to questions. (FIXME)"
 ---
 
-# Get_Homologues a versatile software package for pan-genome analysis is maintained by Bruno Contreras-Moreira and Pablo Vinuesa . 
+# Get_Homologues a versatile software package for pan-genome analysis is maintained by Bruno Contreras-Moreira and Pablo Vinuesa. 
 ## Main Task
 - Clustering protein and nucleotide sequences in homologous (possibly orthologous) groups, on the grounds of sequence similarity.
 - Identification of orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes.
@@ -89,5 +89,38 @@ search file in the file browser on your computer.
 >> 
 > {: .solution}
 {: .challenge} 
+
+> ## Exercise 2: 
+> 
+> Complete the line blank with the correct clustering algorithms
+> 
+> |------------------------------+------------------------------------------------------------------------------|  
+> | **algorithms**                           |     **Information required**                                     |  
+> |------------------------------+------------------------------------------------------------------------------|  
+> | > musician[____,____]                       |  Pieces composed by Shakira                                  |  
+> |------------------------------+------------------------------------------------------------------------------|  
+> | > (musician______)___2  | Pieces composed by all musicians if they were half of productive (The half of their actual pieces) |   
+> |------------------------------+------------------------------------------------------------------------------|  
+> | > musician$_____ <- c(_____,_____,_____)    | Redefine the `likes` column to make all the musicians popular!  |  
+> |------------------------------+------------------------------------------------------------------------------| 
+>
+>
+> がんばれ! (ganbate; *good luck*):
+>> ## Solution
+>> 
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | **Code**                                        |     **Information required**                                     |  
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | > musician[3,"pieces"]                       |  Pieces composed by Shakira                                  |  
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | > (musician$pieces)/2  | Pieces composed by all musicians if they were half of productive (The half of their actual pieces) |   
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | > musician$likes <- c("TRUE","TRUE","TRUE")    | Redefine the `likes` columne to make all the musicians popular!  |  
+>> |------------------------------+------------------------------------------------------------------------------| 
+>>
+> {: .solution}
+{: .challenge} 
+
+
 
 {% include links.md %}
