@@ -97,26 +97,26 @@ search file in the file browser on your computer.
 > |------------------------------+------------------------------------------------------------------------------|  
 > | **algorithms**                           |     **Information required**                                     |  
 > |------------------------------+------------------------------------------------------------------------------|  
-> | BDBH                      |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
+> |                       |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
 > |------------------------------+------------------------------------------------------------------------------|  
-> | > (musician______)___2  | Pieces composed by all musicians if they were half of productive (The half of their actual pieces) |   
+> |  | Merges triangles of inter-genomic symmetrical best matches |   
 > |------------------------------+------------------------------------------------------------------------------|  
-> | > musician$_____ <- c(_____,_____,_____)    | Redefine the `likes` column to make all the musicians popular!  |  
+> |     | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
 > |------------------------------+------------------------------------------------------------------------------| 
 >
 >
-> がんばれ! (ganbate; *good luck*):
 >> ## Solution
 >> 
->> |------------------------------+------------------------------------------------------------------------------|  
->> | **Code**                                        |     **Information required**                                     |  
->> |------------------------------+------------------------------------------------------------------------------|  
->> | > musician[3,"pieces"]                       |  Pieces composed by Shakira                                  |  
->> |------------------------------+------------------------------------------------------------------------------|  
->> | > (musician$pieces)/2  | Pieces composed by all musicians if they were half of productive (The half of their actual pieces) |   
->> |------------------------------+------------------------------------------------------------------------------|  
->> | > musician$likes <- c("TRUE","TRUE","TRUE")    | Redefine the `likes` columne to make all the musicians popular!  |  
->> |------------------------------+------------------------------------------------------------------------------| 
+> |------------------------------+------------------------------------------------------------------------------|  
+> | **algorithms**                           |     **Information required**                                     |  
+> |------------------------------+------------------------------------------------------------------------------|  
+> | BDBH                      |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
+> |------------------------------+------------------------------------------------------------------------------|  
+> | COGS  | Merges triangles of inter-genomic symmetrical best matches |   
+> |------------------------------+------------------------------------------------------------------------------|  
+> | OMCL    | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
+> |------------------------------+------------------------------------------------------------------------------| 
+> 
 >>
 > {: .solution}
 {: .challenge} 
