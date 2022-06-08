@@ -3,8 +3,10 @@ title: "Interactive pangenome graphics"
 teaching: 15 min
 exercises: 40 min
 questions:
-- "What is Anvi'o?"
-- "How can I obtain a pangenome analysis in Anvi'o?"
+- "How can I obtain an interactive pangenome plot?"
+- "How to obtain the enrichement analysis of the gene families?"
+- "How to compute the ANI values between the genomes of the pangenome?"
+- "How can I measure the homogeneity of the gene families?"
 objectives:
 - "Establish a dataset of genomes to obtain their pangenome"
 - "Perform a basic workflow to obtain a pangenome in Anvi'o"
