@@ -43,7 +43,9 @@ A **clade** (*kládos*, 'branch'), also known as *monophyletic group*, is a grou
 ![Figure 2. Cladogram representation](../fig/Cladogram.png)
 
 
-
+## Exercise 
+Download data. 
+`wget https://zenodo.org/record/6622053/files/dc_workshop.zip?download=1`
 
 
 ## Brief description of *Mycobacterium tuberculosis* dataset
