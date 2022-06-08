@@ -23,7 +23,7 @@ keypoints:
 - Definition of pan- and core-genomes by calculation of overlapping sets of proteins.
 
 <a href="../fig/GET_HOMOLOGUES_flow_char.jpeg">
-  <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" alt="Aquí va el texto que describe a la imagen." />
+  <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" width="435" height="631" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
 ## Considerations
