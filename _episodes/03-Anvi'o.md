@@ -953,7 +953,7 @@ anvi-get-sequences-for-gene-clusters -g genomes-storage-db \
 {: .challenge}
   
   
-> ## Exercise 2. Splitting the pangenome.
+> ## Exercise 2: Splitting the pangenome.
 > 1. Read about [anvi-split](https://anvio.org/help/main/programs/anvi-split/) 
 > 2. With this program split your pangenome in independent pangenomes that:
 > > * Contains only singletons.
