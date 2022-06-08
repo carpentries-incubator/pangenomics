@@ -888,4 +888,12 @@ http://132.248.196.38:8080
 ~~~
 {: .output}
 
+> ## Exercise 2. Splitting the pangenome.
+> 1. Read about [anvi-split](https://anvio.org/help/main/programs/anvi-split/) 
+> 2. With this program split your pangenome in independent pangenomes that:
+> > * Contains only singletons.
+> > * Contains only core gene clusters
+> Tip: [anvi-display-pan](https://anvio.org/help/main/programs/anvi-display-pan/) can be usefull
+{: .challenge}
+
 {% include links.md %}
