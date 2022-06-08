@@ -27,112 +27,118 @@ ncbi-genome-download --help
 and you will get a full list of parameters you can incorporate for your downloading and use as a guide 
 to use the package.  
 
-usage:  
-  ncbi-genome-download [-h] [-s {refseq,genbank}] [-F FILE_FORMATS]
-                            [-l ASSEMBLY_LEVELS] [-g GENERA] [--genus GENERA]
-                            [--fuzzy-genus] [-S STRAINS] [-T SPECIES_TAXIDS]
-                            [-t TAXIDS] [-A ASSEMBLY_ACCESSIONS]
-                            [-R REFSEQ_CATEGORIES]
-                            [--refseq-category REFSEQ_CATEGORIES] [-o OUTPUT]
-                            [--flat-output] [-H] [-P] [-u URI] [-p N] [-r N]
-                            [-m METADATA_TABLE] [-n] [-N] [-v] [-d] [-V]
-                            [-M TYPE_MATERIALS]
+  usage:  
+   ncbi-genome-download [-h] [-s {refseq,genbank}] [-F FILE_FORMATS]  
+                            [-l ASSEMBLY_LEVELS] [-g GENERA] [--genus GENERA]  
+                            [--fuzzy-genus] [-S STRAINS] [-T SPECIES_TAXIDS]  
+                            [-t TAXIDS] [-A ASSEMBLY_ACCESSIONS]  
+                            [-R REFSEQ_CATEGORIES]  
+                            [--refseq-category REFSEQ_CATEGORIES] [-o OUTPUT]  
+                            [--flat-output] [-H] [-P] [-u URI] [-p N] [-r N]  
+                            [-m METADATA_TABLE] [-n] [-N] [-v] [-d] [-V]  
+                            [-M TYPE_MATERIALS] 
                             groups
-  positional arguments:  
-    groups              The NCBI taxonomic groups to download (default: all).
-                        A comma-separated list of taxonomic groups is also
-                        possible. For example: "bacteria,viral"Choose from:
-                        ['all', 'archaea', 'bacteria', 'fungi',
-                        'invertebrate', 'metagenomes', 'plant', 'protozoa',
-                        'vertebrate_mammalian', 'vertebrate_other', 'viral']  
-    optional arguments:  
-    -h, --help            show this help message and exit  
-    -s {refseq,genbank}, --section {refseq,genbank}  
-                        NCBI section to download (default: refseq)  
-    -F FILE_FORMATS, --formats FILE_FORMATS  
-                        Which formats to download (default: genbank).A comma-
-                        separated list of formats is also possible. For
-                        example: "fasta,assembly-report". Choose from:
-                        ['genbank', 'fasta', 'rm', 'features', 'gff',
-                        'protein-fasta', 'genpept', 'wgs', 'cds-fasta', 'rna-
-                        fna', 'rna-fasta', 'assembly-report', 'assembly-
-                        stats', 'all']  
-    -l ASSEMBLY_LEVELS, --assembly-levels ASSEMBLY_LEVELS  
-                        Assembly levels of genomes to download (default: all).  
-                        A comma-separated list of assembly levels is also
-                        possible. For example: "complete,chromosome". Choose
-                        from: ['all', 'complete', 'chromosome', 'scaffold',
-                        'contig']  
-    -g GENERA, --genera GENERA  
-                        Only download sequences of the provided genera. A
-                        comma-seperated list of genera is also possible. For
-                        example: "Streptomyces coelicolor,Escherichia coli".
-                        (default: [])  
-    --genus GENERA        Deprecated alias of --genera  
-    --fuzzy-genus         Use a fuzzy search on the organism name instead of an
-                         exact match.  
-    -S STRAINS, --strains STRAINS   
-                        Only download sequences of the given strain(s). A
-                        comma-separated list of strain names is possible, as
-                        well as a path to a filename containing one name per
-                        line.  
-    -T SPECIES_TAXIDS, --species-taxids SPECIES_TAXIDS  
-                        Only download sequences of the provided species NCBI
-                        taxonomy IDs. A comma-separated list of species taxids
-                        is also possible. For example: "52342,12325".
-                        (default: [])  
-    -t TAXIDS, --taxids TAXIDS  
-                        Only download sequences of the provided NCBI taxonomy
-                        IDs. A comma-separated list of taxids is also
-                        possible. For example: "9606,9685". (default: [])  
-    -A ASSEMBLY_ACCESSIONS, --assembly-accessions ASSEMBLY_ACCESSIONS  
-                        Only download sequences matching the provided NCBI
-                        assembly accession(s). A comma-separated list of
-                        accessions is possible, as well as a path to a
-                        filename containing one accession per line.  
-    -R REFSEQ_CATEGORIES, --refseq-categories REFSEQ_CATEGORIES  
-                        Only download sequences of the provided refseq
-                        categories (default: all)  
-    --refseq-category REFSEQ_CATEGORIES  
-                        Deprecated alias for --refseq-categories  
-    -o OUTPUT, --output-folder OUTPUT   
-                        Create output hierarchy in specified folder (default:
-                        /home/betterlab)  
-    --flat-output         Dump all files right into the output folder without
-                        creating any subfolders.  
-    -H, --human-readable  Create links in human-readable hierarchy (might fail
-                        on Windows)  
-    -P, --progress-bar    Create a progress bar for indicating the download
-                        progress  
-    -u URI, --uri URI     NCBI base URI to use (default:
-                        https://ftp.ncbi.nih.gov/genomes)  
-    -p N, --parallel N    Run N downloads in parallel (default: 1)  
-    -r N, --retries N     Retry download N times when connection to NCBI fails
-                        (default: 0)  
-    -m METADATA_TABLE, --metadata-table METADATA_TABLE  
-                        Save tab-delimited file with genome metadata  
-    -n, --dry-run         Only check which files to download, don't download
-                        genome files.  
-    -N, --no-cache        Don't cache the assembly summary file in
-                        /home/betterlab/.cache/ncbi-genome-download.  
-    -v, --verbose         increase output verbosity  
-    -d, --debug           print debugging information   
-    -V, --version         print version information  
-    -M TYPE_MATERIALS, --type-materials TYPE_MATERIALS  
-                        Specifies the relation to type material for the
-                        assembly (default: any). "any" will include assemblies
-                        with no relation to type material value defined, "all"
-                        will download only assemblies with a defined value. A
-                        comma-separated list of relatons. For example:
-                        "reference,synonym". Choose from: ['any', 'all',
-                        'type', 'reference', 'synonym', 'proxytype',
-                        'neotype'].  
+    positional arguments:  
+      groups              The NCBI taxonomic groups to download (default: all).
+                          A comma-separated list of taxonomic groups is also
+                          possible. For example: "bacteria,viral"Choose from:
+                          ['all', 'archaea', 'bacteria', 'fungi',
+                          'invertebrate', 'metagenomes', 'plant', 'protozoa',
+                          'vertebrate_mammalian', 'vertebrate_other', 'viral']  
+      optional arguments:  
+      -h, --help            show this help message and exit  
+      -s {refseq,genbank}, --section {refseq,genbank}  
+                          NCBI section to download (default: refseq)  
+      -F FILE_FORMATS, --formats FILE_FORMATS  
+                          Which formats to download (default: genbank).A comma-
+                          separated list of formats is also possible. For
+                          example: "fasta,assembly-report". Choose from:
+                          ['genbank', 'fasta', 'rm', 'features', 'gff',
+                          'protein-fasta', 'genpept', 'wgs', 'cds-fasta', 'rna-
+                          fna', 'rna-fasta', 'assembly-report', 'assembly-
+                          stats', 'all']  
+      -l ASSEMBLY_LEVELS, --assembly-levels ASSEMBLY_LEVELS  
+                          Assembly levels of genomes to download (default: all).  
+                          A comma-separated list of assembly levels is also
+                          possible. For example: "complete,chromosome". Choose
+                          from: ['all', 'complete', 'chromosome', 'scaffold',
+                          'contig']  
+      -g GENERA, --genera GENERA  
+                          Only download sequences of the provided genera. A
+                          comma-seperated list of genera is also possible. For
+                          example: "Streptomyces coelicolor,Escherichia coli".
+                          (default: [])  
+      --genus GENERA        Deprecated alias of --genera  
+      --fuzzy-genus         Use a fuzzy search on the organism name instead of an
+                           exact match.  
+      -S STRAINS, --strains STRAINS   
+                          Only download sequences of the given strain(s). A
+                          comma-separated list of strain names is possible, as
+                          well as a path to a filename containing one name per
+                          line.  
+      -T SPECIES_TAXIDS, --species-taxids SPECIES_TAXIDS  
+                          Only download sequences of the provided species NCBI
+                          taxonomy IDs. A comma-separated list of species taxids
+                          is also possible. For example: "52342,12325".
+                          (default: [])  
+      -t TAXIDS, --taxids TAXIDS  
+                          Only download sequences of the provided NCBI taxonomy
+                          IDs. A comma-separated list of taxids is also
+                          possible. For example: "9606,9685". (default: [])  
+      -A ASSEMBLY_ACCESSIONS, --assembly-accessions ASSEMBLY_ACCESSIONS  
+                          Only download sequences matching the provided NCBI
+                          assembly accession(s). A comma-separated list of
+                          accessions is possible, as well as a path to a
+                          filename containing one accession per line.  
+      -R REFSEQ_CATEGORIES, --refseq-categories REFSEQ_CATEGORIES  
+                          Only download sequences of the provided refseq
+                          categories (default: all)  
+      --refseq-category REFSEQ_CATEGORIES  
+                          Deprecated alias for --refseq-categories  
+      -o OUTPUT, --output-folder OUTPUT   
+                          Create output hierarchy in specified folder (default:
+                          /home/betterlab)  
+      --flat-output         Dump all files right into the output folder without
+                          creating any subfolders.  
+      -H, --human-readable  Create links in human-readable hierarchy (might fail
+                          on Windows)  
+      -P, --progress-bar    Create a progress bar for indicating the download
+                          progress  
+      -u URI, --uri URI     NCBI base URI to use (default:
+                          https://ftp.ncbi.nih.gov/genomes)  
+      -p N, --parallel N    Run N downloads in parallel (default: 1)  
+      -r N, --retries N     Retry download N times when connection to NCBI fails
+                          (default: 0)  
+      -m METADATA_TABLE, --metadata-table METADATA_TABLE  
+                          Save tab-delimited file with genome metadata  
+      -n, --dry-run         Only check which files to download, don't download
+                          genome files.  
+      -N, --no-cache        Don't cache the assembly summary file in
+                          /home/betterlab/.cache/ncbi-genome-download.  
+      -v, --verbose         increase output verbosity  
+      -d, --debug           print debugging information   
+      -V, --version         print version information  
+      -M TYPE_MATERIALS, --type-materials TYPE_MATERIALS  
+                          Specifies the relation to type material for the
+                          assembly (default: any). "any" will include assemblies
+                          with no relation to type material value defined, "all"
+                          will download only assemblies with a defined value. A
+                          comma-separated list of relatons. For example:
+                          "reference,synonym". Choose from: ['any', 'all',
+                          'type', 'reference', 'synonym', 'proxytype',
+                          'neotype'].  
 
-Once we know about the flags we can use, we are ready to use the package. Then our first genome download
-is going to be for the strains of Streptococcus equinus in FASTA format:
+Once we know about the flags we can use, we are ready to use the package but first we need to go to our data folder.
 
 ~~~
-ncbi-genome-download --formats fasta .""--section genbank"". --genera "Streptococcus equinus" bacteria
+cd dc_workshop/data
+~~~
+{: .bash}
+
+If we list ´ls´ this folder we can check a couple of folders. Each of this represents a different strain of Streptococcus agalactiae used in Tettelin et al (2005), each folder contains the raw data (fasta and gbk formats) downloaded directly from NCBI. As an example of execution our first genome download will be the strains of Streptococcus equinus in FASTA format:
+
+~~~
+ncbi-genome-download --formats fasta  --genera "Streptococcus equinus" bacteria
 ~~~
 {: .bash}
 
@@ -152,16 +158,19 @@ for
 
 Then we can explore the gbk files. It is important to know these files because they will be used for the posterior
 analysis. It will give you information about the coding sequences, their locus, the name of 
-the protein, and the full nucleotide sequence of the assembly.
+the protein, and the full nucleotide sequence of the assembly. Either way, you can adjust the parameters in the 
+command line to download in another format like ´.gbk´ for example
 
 ------------------Image
+
+In this case we are going to use the data we already had from Tettelin et al (2005). 
 
 
 # Prokka
 
 Annotation is a process of identifying the locations of genes and all the coding regions in a genome and determining 
 what those genes do. For this, an unknown sequence is enriched with information relating genomic position, regulatory 
-sequences, repeats, gene name and protein products [2](https://en.wikipedia.org/wiki/DNA_annotation). This information
+sequences, repeats, gene name and protein products [1](https://en.wikipedia.org/wiki/DNA_annotation). This information
 is stored in genomic databases to help future analysis processing new data.
 
 Prokka is a command-line software tool to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files[2](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false).
