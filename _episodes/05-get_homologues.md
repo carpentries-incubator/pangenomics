@@ -21,6 +21,71 @@ keypoints:
 - Clustering protein and nucleotide sequences in homologous (possibly orthologous) groups, on the grounds of sequence similarity.
 - Identification of orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes.
 - Definition of pan- and core-genomes by calculation of overlapping sets of proteins.
+~~~
+get_homologues.pl -h
+~~~
+{: .source}
+
+~~~
+-v print version, credits and checks installation
+-d directory with input FASTA files ( .faa / .fna ),           (overrides -i,
+   GenBank files ( .gbk ), 1 per genome, or a subdirectory      use of pre-clustered sequences
+   ( subdir.clusters / subdir_ ) with pre-clustered sequences   ignores -c, -g)
+   ( .faa / .fna ); allows for new files to be added later;    
+   creates output folder named 'directory_homologues'
+-i input amino acid FASTA file with [taxon names] in headers,  (required unless -d is set)
+   creates output folder named 'file_homologues'
+
+Optional parameters:
+-o only run BLAST/Pfam searches and exit                       (useful to pre-compute searches)
+-c report genome composition analysis                          (follows order in -I file if enforced,
+                                                                ignores -r,-t,-e)
+-R set random seed for genome composition analysis             (optional, requires -c, example -R 1234,
+                                                                required for mixing -c with -c -a runs)
+-m runmode [local|cluster|dryrun]                              (default local)
+-n nb of threads for BLAST/HMMER/MCL in 'local' runmode        (default=2)
+-I file with .faa/.gbk files in -d to be included              (takes all by default, requires -d)
+
+Algorithms instead of default bidirectional best-hits (BDBH):
+-G use COGtriangle algorithm (COGS, PubMed=20439257)           (requires 3+ genomes|taxa)
+-M use orthoMCL algorithm (OMCL, PubMed=12952885)
+
+Options that control sequence similarity searches:
+-X use diamond instead of blastp                               (optional, set threads with -n)
+-C min %coverage in BLAST pairwise alignments                  (range [1-100],default=75)
+-E max E-value                                                 (default=1e-05,max=0.01)
+-D require equal Pfam domain composition                       (best with -m cluster or -n threads)
+   when defining similarity-based orthology
+-S min %sequence identity in BLAST query/subj pairs            (range [1-100],default=1 [BDBH|OMCL])
+-N min BLAST neighborhood correlation PubMed=18475320          (range [0,1],default=0 [BDBH|OMCL])
+-b compile core-genome with minimum BLAST searches             (ignores -c [BDBH])
+
+Options that control clustering:
+-t report sequence clusters including at least t taxa          (default t=numberOfTaxa,
+                                                                t=0 reports all clusters [OMCL|COGS])
+-a report clusters of sequence features in GenBank files       (requires -d and .gbk files,
+   instead of default 'CDS' GenBank features                    example -a 'tRNA,rRNA',
+                                                                NOTE: uses blastn instead of blastp,
+                                                                ignores -g,-D)
+-g report clusters of intergenic sequences flanked by ORFs     (requires -d and .gbk files)
+   in addition to default 'CDS' clusters
+-f filter by %length difference within clusters                (range [1-100], by default sequence
+                                                                length is not checked)
+-r reference proteome .faa/.gbk file                           (by default takes file with
+                                                                least sequences; with BDBH sets
+                                                                first taxa to start adding genes)
+-e exclude clusters with inparalogues                          (by default inparalogues are
+                                                                included)
+-x allow sequences in multiple COG clusters                    (by default sequences are allocated
+                                                                to single clusters [COGS])
+-F orthoMCL inflation value                                    (range [1-5], default=1.5 [OMCL])
+-A calculate average identity of clustered sequences,          (optional, creates tab-separated matrix,
+ by default uses blastp results but can use blastn with -a      recommended with -t 0 [OMCL|COGS])
+-P calculate percentage of conserved proteins (POCP),          (optional, creates tab-separated matrix,
+ by default uses blastp results but can use blastn with -a      recommended with -t 0 [OMCL|COGS])
+-z add soft-core to genome composition analysis                (optional, requires -c [OMCL|COGS])
+~~~
+{: .output}
 
 ## Considerations
 Please ensure that you are in the environment of Pangenomics. You can omit his step if you have activated the environment.
