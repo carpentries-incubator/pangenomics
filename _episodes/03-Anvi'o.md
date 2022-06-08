@@ -40,35 +40,52 @@ conda activate Pangenomics
 
 Ten steps workflow to construct a Pangenome in Anvi'o
 ===============================================
-Move into the directory results
-
-Create a directory for Anvi'o analysis
- 
+Move into the directory results and create a directory for the Anvi'o analysis
+~~~
+cd results
 mkdir anvi-o
 cd anvi-o
+~~~
+{: .source}
 
-Create a directory that will storage all the files necessary to construct the genomes database
-$ mkdir genome-db
+Create a directory that will be used to storage all the files necessary to construct the genomes database
+~~~
+mkdir genome-db
+~~~
+{: .source}
 
-1. Process the genome files
 
+1. Process the genome files (.gbk) with the `anvi-script-process-genbank` function. Remember that the .gbk files are not in this working directory
+~~~
 ls ~/Pangenomics/Shaday/gbk_ncbi/*.gbk | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/dc_workshop/results/annotated/$line.gbk -O genome-db/$line; done
+~~~
+{: .source}
 
-$ cd genome-db
+~~~
+cd genome-db
+ls
+~~~
+{: .source}
 
-Salida
+~~~
 agalactiae_18RS21-contigs.fa               agalactiae_A909-contigs.fa                 agalactiae_COH1-contigs.fa
 agalactiae_18RS21-external-functions.txt   agalactiae_A909-external-functions.txt     agalactiae_COH1-external-functions.txt
 agalactiae_18RS21-external-gene-calls.txt  agalactiae_A909-external-gene-calls.txt    agalactiae_COH1-external-gene-calls.txt
 agalactiae_515-contigs.fa                  agalactiae_CJB111-contigs.fa               agalactiae_H36B-contigs.fa
 agalactiae_515-external-functions.txt      agalactiae_CJB111-external-functions.txt   agalactiae_H36B-external-functions.txt
 agalactiae_515-external-gene-calls.txt     agalactiae_CJB111-external-gene-calls.txt  agalactiae_H36B-external-gene-calls.txt
+~~~
+{: .output}
+
 
 2. Reformat the fasta files
 
-$  ls *fa |while read line; do anvi-script-reformat-fasta $line -o $line\.fasta; done
+~~~
+ls *fa |while read line; do anvi-script-reformat-fasta --seq-type NT $line -o $line\.fasta; done
+~~~
+{: .source}
 
-Salida
+~~~
 agalactiae_18RS21-contigs.fa               agalactiae_A909-contigs.fa                 agalactiae_COH1-contigs.fa
 agalactiae_18RS21-contigs.fa.fasta         agalactiae_A909-contigs.fa.fasta           agalactiae_COH1-contigs.fa.fasta
 agalactiae_18RS21-external-functions.txt   agalactiae_A909-external-functions.txt     agalactiae_COH1-external-functions.txt
@@ -77,12 +94,18 @@ agalactiae_515-contigs.fa                  agalactiae_CJB111-contigs.fa         
 agalactiae_515-contigs.fa.fasta            agalactiae_CJB111-contigs.fa.fasta         agalactiae_H36B-contigs.fa.fasta
 agalactiae_515-external-functions.txt      agalactiae_CJB111-external-functions.txt   agalactiae_H36B-external-functions.txt
 agalactiae_515-external-gene-calls.txt     agalactiae_CJB111-external-gene-calls.txt  agalactiae_H36B-external-gene-calls.txt
+~~~
+{: .output}
 
+3. Create a database per genome with the `anvi-gen-contigs-database` script
 
-3. Create a database per genome
-$ ls *fasta | while read line; do anvi-gen-contigs-database -T 4 -f $line -o $line-contigs.db; done
+~~~
+ls *fasta | while read line; do anvi-gen-contigs-database -T 4 -f $line -o $line-contigs.db; done
+ls
+~~~
+{: .source}
 
-$ ls
+~~~
 agalactiae_18RS21-contigs.fa                   agalactiae_A909-contigs.fa                     agalactiae_COH1-contigs.fa
 agalactiae_18RS21-contigs.fa.fasta             agalactiae_A909-contigs.fa.fasta               agalactiae_COH1-contigs.fa.fasta
 agalactiae_18RS21-contigs.fa.fasta-contigs.db  agalactiae_A909-contigs.fa.fasta-contigs.db    agalactiae_COH1-contigs.fa.fasta-contigs.db
@@ -93,16 +116,26 @@ agalactiae_515-contigs.fa.fasta                agalactiae_CJB111-contigs.fa.fast
 agalactiae_515-contigs.fa.fasta-contigs.db     agalactiae_CJB111-contigs.fa.fasta-contigs.db  agalactiae_H36B-contigs.fa.fasta-contigs.db
 agalactiae_515-external-functions.txt          agalactiae_CJB111-external-functions.txt       agalactiae_H36B-external-functions.txt
 agalactiae_515-external-gene-calls.txt         agalactiae_CJB111-external-gene-calls.txt      agalactiae_H36B-external-gene-calls.txt
+~~~
+{: .output}
 
-4. Create a list of ids and their corresponding genome database
-$ ls *.fa | cut -d '-' -f1 | while read line; do echo $line$'\t'$line-contigs.db >>external-genomes.db; done
-$ head external-genomes.txt
+
+4. When using external genomes in anvi'o, a list of the genome ids and their corresponding genome database is required. This list will 
+~~~
+ls *.fa | cut -d '-' -f1 | while read line; do echo $line$'\t'$line-contigs.db >>external-genomes.txt; done
+head external-genomes.txt
+~~~
+{: .source}
+
+~~~
 agalactiae_18RS21	agalactiae_18RS21-contigs.db
 agalactiae_515	agalactiae_515-contigs.db
 agalactiae_A909	agalactiae_A909-contigs.db
 agalactiae_CJB111	agalactiae_CJB111-contigs.db
 agalactiae_COH1	agalactiae_COH1-contigs.db
 agalactiae_H36B	agalactiae_H36B-contigs.db
+~~~
+{: .output}
 
 5. Modify the headers of the list external-genomes.txt
 $ nano external-genomes.txt
