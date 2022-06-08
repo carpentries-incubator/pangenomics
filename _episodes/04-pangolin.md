@@ -54,6 +54,8 @@ A U-shaped plot is a figure presenting the number of families (y axis) per numbe
 
 A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together on the figure). In addition, it is a .html file.
 
+![Figure a. U-shaped plot](../fig/Ushaped_plot.png)![Figure b. Tile plot](../fig/tile_plot_core.png)![Figure c. Tile plot no cloud](../fig/tile_plot.png)
+
 - **pangenomeGraph files**
 
 You can get the .gexf files. It is will contain the gene families as nodes and the edges between gene families describing their relationship.
