@@ -33,7 +33,13 @@ conda activate Pangenomics
 It's necessary that we create a new folder when all results are sent.
 ~~~
 mkdir ~dc_workshop/results/pangenome/get_homologues
-cd ~dc_workshop/results/pangenome/get_homologues
+mkdir ~dc_workshop/results/pangenome/get_homologues/data_get
+cd  ~dc_workshop/results/pangenome/get_homologues/data_get
+~~~
+{: .source}
+We need to create a Symbolic link with the file *.gbk*
+~~~
+find ~/dc_workshop/results/annotated/. -name "*agalactiae*.gbk*" -exec ln -s {} . ';'
 ~~~
 {: .source}
 
