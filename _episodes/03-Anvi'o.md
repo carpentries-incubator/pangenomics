@@ -15,8 +15,9 @@ keypoints:
 - "Anvi’o is an open-source, community-driven analysis and visualization platform for microbial ‘omics. "
 ---
 
-
-![Figure 1. Anvi'o network representation](../fig/anvio-network.png)
+<a href="../fig/01-04-01.png">
+  <img src="../fig/01-03-01.png" alt="Anvi'o network representation" />
+</a>
 
 ## Anvi'o
 
