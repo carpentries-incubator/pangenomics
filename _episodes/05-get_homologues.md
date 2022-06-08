@@ -1,5 +1,5 @@
 ---
-title: "Get_Homologues"
+title: "Clustering proteins and nucleotide"
 teaching: 20 min
 exercises: 5 min
 questions:
