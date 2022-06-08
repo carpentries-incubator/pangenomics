@@ -57,7 +57,28 @@ get_homologues.pl -d dc_workshop/data/*/*.gbk -M
 ~~~
 {: .source}
 
-## Step 3
+## Step 3 Compare all clusters from diferent algoritms
+~~~
+compare_clusters.pl -o alg_intersection -m -d\
+gbk_homologues/A909_f0_alltaxa_algBDBH_e0_,\
+gbk_homologues/A909_f0_alltaxa_algCOG_e0_,\
+gbk_homologues/A909_f0_alltaxa_algOMCL_e0_
+~~~
+{: .source}
+
+Use the scp protocol in order to see the venn diagram
+~~~
+scp user@ip:/path/to/file/venn_t0.pdf .
+~~~
+{: .source}
+
+~~~
+usuario@ip password:
+~~~
+{: .output}
+psw:##
+search file in the file browser on your computer.
+
 
 > ## Exercise 2: 
 > 
