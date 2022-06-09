@@ -302,6 +302,9 @@ $ get_homologues.pl -d data_get -t 0 -M
 {: .output}
 
 then we use the option 
+~~~~
+$ ls -d data_get_homologues/0taxa
+~~~~
 
 ~~~
 $ compare_clusters.pl -o prueba_intersection -m -d\ 
