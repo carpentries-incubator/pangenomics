@@ -16,7 +16,8 @@ keypoints:
 - "First key point. Brief Answer to questions. (FIXME)"
 ---
 
-# Get_Homologues a versatile software package for pan-genome analysis is maintained by Bruno Contreras-Moreira and Pablo Vinuesa. 
+Get_Homologues a versatile software package for pan-genome analysis is maintained by Bruno Contreras-Moreira and Pablo Vinuesa. 
+## Introducction 
 ## Main Task
 - Clustering protein and nucleotide sequences in homologous (possibly orthologous) groups, on the grounds of sequence similarity.
 - Identification of orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes.
@@ -110,8 +111,8 @@ Options that control clustering:
 ## Step 1. Generate a folder get_homologues
 It's necessary that we create a new folder when all results are sent.
 ~~~
-$ mkdir ~/dc_workshop/results/pangenome/get_homologues #Create directory 'get_homologues'
-$ mkdir ~/dc_workshop/results/pangenome/get_homologues/data_get #Create directory 'data_get' inside directory 'get_homologues'
+
+$ mkdir -p ~/dc_workshop/results/pangenome/get_homologues/data_get #Create directory (-p create all parents)
 $ cd  ~/dc_workshop/results/pangenome/get_homologues/data_get # Change to the directory 'data_get'
 ~~~
 {: .language-bash}
