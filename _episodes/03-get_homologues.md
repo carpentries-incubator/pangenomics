@@ -287,7 +287,7 @@ $ get_homologues.pl -d data_get -t 0 -M
 {: .output}
 
 ~~~
-$ get_homologues.pl -d data_get -t 0 -M
+$ get_homologues.pl -d data_get -t 0 -G
 ~~~
 {: .language-bash}
  
