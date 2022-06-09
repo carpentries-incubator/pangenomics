@@ -118,8 +118,8 @@ $ cd  ~/dc_workshop/results/pangenome/get_homologues/data_get # Change to the di
 {: .language-bash}
 We need to create a Symbolic link with the file *.gbk*
 ~~~
-find ~/dc_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {} . ';' 
-ls ~dc_workshop/results/pangenome/get_homologues/data_get #List the symbolic link
+$ find ~/dc_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {} . ';' 
+$ ls ~dc_workshop/results/pangenome/get_homologues/data_get #List the symbolic link
 ~~~
 {: .language-bash}
 
@@ -251,12 +251,12 @@ gbk_homologues/A909_f0_alltaxa_algOMCL_e0_
 
 Use the scp protocol in order to see the venn diagram
 ~~~
-scp user@ip:/path/to/file/venn_t0.pdf .
+$ scp user@ip:/path/to/file/venn_t0.pdf .
 ~~~
 {: .language-bash}
 
 ~~~
-usuario@ip password:
+$ usuario@ip password:
 ~~~
 {: .output}
 
