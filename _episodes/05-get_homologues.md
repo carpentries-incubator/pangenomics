@@ -129,6 +129,11 @@ agalactiae_515_prokka.gbk     agalactiae_CJB111_prokka.gbk  agalactiae_H36B_prok
 {: .output}
 
 ## Step 2. Generate the directory clusters
+~~~
+$ cd  ~/dc_workshop/results/pangenome/get_homologues/
+~~~
+{: .language-bash}
+
 To generate the directory clusters with BDBH, this option is default.
 ~~~
 $ get_homologues.pl -d data_get
