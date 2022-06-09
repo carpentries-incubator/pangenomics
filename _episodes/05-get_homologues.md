@@ -184,13 +184,21 @@ search file in the file browser on your computer.
 </a>
 
 ## Step 4. Obtaining a pangenome matrix
+first we use the -t 0 option with COG ang OMCL alghortims to include all possible clusters, including those which might not contain sequences from all input genomes (taxa)
 ~~~
-compare_clusters.pl -o prueba_intersection -m -d\
-data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_,\
-data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
+get_homologues.pl -d data_get -t 0 -M
 ~~~
 {: .language-bash}
 
+~~~
+# number_of_clusters = 3632
+# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.cluster_list
+# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_
+
+# runtime:  3 wallclock secs ( 1.41 usr  0.12 sys +  0.36 cusr  0.06 csys =  1.95 CPU)
+# RAM use: 59.9 MB
+~~~
+{: .output}
 
 > ## Exercise 1: 
 > 
