@@ -769,11 +769,36 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > 5. In Tunning section mark the stronger gravity box and set the scale in 4000.
 > 6. Finally color the nodes according to:
 > > a) Partition. 
-> > b) Number of organisms. 
+> > 
+> > b) Number of organisms.
+> >
 > > c) Number of genes. 
+> > 
 > > d) Proteins function (product).
+> > 
 > > e) Gene neighborhood (edges).
-> 
+> > >  ## Solution
+> > > a) <a href="../fig/01-04-06.png">
+> > > <img src="../fig/01-04-06.png" alt="" />
+> > > </a>
+> > > 
+> > > b) <a href="../fig/01-04-07.png">
+> > > <img src="../fig/01-04-07.png" alt="" />
+> > > </a>
+> > > 
+> > > > > >c) <a href="../fig/01-04-08.png">
+> > > <img src="../fig/01-04-08.png" alt="" />
+> > > </a>
+> > > 
+> > > c) <a href="../fig/01-04-09.png">
+> > > <img src="../fig/01-04-09.png" alt="" />
+> > > </a>
+> > > 
+> > > d) <a href="../fig/01-04-10.png">
+> > > <img src="../fig/01-04-10.png" alt="" />
+> > > </a>
+> {: .solution}
+{: .challenge}
 {: .challenge}
 
 
