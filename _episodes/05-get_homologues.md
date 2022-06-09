@@ -32,17 +32,11 @@ Please ensure that you are in the environment of Pangenomics. You can omit his s
 ~~~
 conda activate Pangenomics
 ~~~
-{: .source}
+{: .language-bash}
 Now, We ensure that get_homologues is install
 
 ~~~
 get_homologues.pl -h
-~~~
-{: .language-bash}
-
-~~~
-$ git config --global user.name "Your Name"
-$ git config --global user.email "yourname@domain.name"
 ~~~
 {: .language-bash}
 
@@ -120,13 +114,13 @@ mkdir ~dc_workshop/results/pangenome/get_homologues
 mkdir ~dc_workshop/results/pangenome/get_homologues/data_get
 cd  ~dc_workshop/results/pangenome/get_homologues/data_get
 ~~~
-{: .source}
+{: .language-bash}
 We need to create a Symbolic link with the file *.gbk*
 ~~~
 find ~/dc_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {} . ';'
 ls ~dc_workshop/results/pangenome/get_homologues/data_get
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 agalactiae_18RS21_prokka.gbk  agalactiae_A909_prokka.gbk    agalactiae_COH1_prokka.gbk
@@ -139,23 +133,14 @@ To generate the directory clusters with BDBH, this option is default.
 ~~~
 get_homologues.pl -d dc_workshop/data/*/*.gbk
 ~~~
-{: .source}
-~~~
-number_of_clusters = 1105
-cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_.cluster_list
-cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_
-
-runtime: 840 wallclock secs (13.44 usr  0.24 sys + 593.88 cusr 10.63 csys = 618.19 CPU)
-RAM use: 65.8 MB
-~~~
-{: .output}
+{: .language-bash}
 
 To generate the directory cluster with COG 
 
 ~~~
 get_homologues.pl -d dc_workshop/data/*/*.gbk -G
 ~~~
-{: .source}
+{: .language-bash}
 To Generate the OMCL cluster director y(OMCL, PubMed=12952885)
 
 ~~~
@@ -170,13 +155,22 @@ gbk_homologues/A909_f0_alltaxa_algBDBH_e0_,\
 gbk_homologues/A909_f0_alltaxa_algCOG_e0_,\
 gbk_homologues/A909_f0_alltaxa_algOMCL_e0_
 ~~~
-{: .source}
+{: .language-bash}
+~~~
+number_of_clusters = 1105
+cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_.cluster_list
+cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_
+
+runtime: 840 wallclock secs (13.44 usr  0.24 sys + 593.88 cusr 10.63 csys = 618.19 CPU)
+RAM use: 65.8 MB
+~~~
+{: .output}
 
 Use the scp protocol in order to see the venn diagram
 ~~~
 scp user@ip:/path/to/file/venn_t0.pdf .
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 usuario@ip password:
