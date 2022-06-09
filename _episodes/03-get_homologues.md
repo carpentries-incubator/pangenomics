@@ -232,11 +232,14 @@ $ get_homologues.pl -d data_get -M
 
 
 ## Step 3. Compare all clusters from different algorithms
+
+
 ~~~
-$ compare_clusters.pl -o alg_intersection -m -d\
-data_get_homologues/A909_f0_alltaxa_algBDBH_e0_,\
-dta_get_homologues/A909_f0_alltaxa_algCOG_e0_,\
-data_get_homologues/A909_f0_alltaxa_algOMCL_e0_
+$ ls -d data_get_homologues/alltaxa
+~~~
+
+~~~
+$ compare_clusters.pl -o alg_intersection -m -d data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_ ,data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_ ,data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_
 ~~~
 {: .language-bash}
 ~~~
