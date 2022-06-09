@@ -30,13 +30,13 @@ keypoints:
 Please ensure that you are in the environment of Pangenomics. You can omit his step if you have activated the environment.
 
 ~~~
-conda activate Pangenomics
+$ conda activate Pangenomics
 ~~~
 {: .language-bash}
 Now, We ensure that get_homologues is install
 
 ~~~
-$ get_homologues.pl -h
+$ get_homologues.pl -h #This command display the options
 ~~~
 {: .language-bash}
 
@@ -110,15 +110,15 @@ Options that control clustering:
 ## Step 1. Generate a folder get_homologues
 It's necessary that we create a new folder when all results are sent.
 ~~~
-$ mkdir ~/dc_workshop/results/pangenome/get_homologues
-$ mkdir ~/dc_workshop/results/pangenome/get_homologues/data_get
-$ cd  ~/dc_workshop/results/pangenome/get_homologues/data_get
+$ mkdir ~/dc_workshop/results/pangenome/get_homologues #Create directory 'get_homologues'
+$ mkdir ~/dc_workshop/results/pangenome/get_homologues/data_get #Create directory 'data_get' inside directory 'get_homologues'
+$ cd  ~/dc_workshop/results/pangenome/get_homologues/data_get # Change to the directory 'data_get'
 ~~~
 {: .language-bash}
 We need to create a Symbolic link with the file *.gbk*
 ~~~
-find ~/dc_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {} . ';'
-ls ~dc_workshop/results/pangenome/get_homologues/data_get
+find ~/dc_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {} . ';' 
+ls ~dc_workshop/results/pangenome/get_homologues/data_get #List the symbolic link
 ~~~
 {: .language-bash}
 
@@ -139,6 +139,10 @@ To generate the directory clusters with BDBH, this option is default.
 $ get_homologues.pl -d data_get
 ~~~
 {: .language-bash}
+
+> ## Notes
+> When run the script above typically takes about 20 minutes.
+{: .callout}
 
 ~~~
 # finding BDBHs between agalactiae_18RS21_prokka.gbk and agalactiae_COH1_prokka.gbk
@@ -264,13 +268,45 @@ search file in the file browser on your computer.
 ## Step 4. Obtaining a pangenome matrix
 first we use the -t 0 option with COG ang OMCL alghortims to include all possible clusters, including those which might not contain sequences from all input genomes (taxa)
 ~~~
-compare_clusters.pl -o data_get_intersection -m -d\ 
+$ get_homologues.pl -d data_get -t 0 -M
+~~~
+{: .language-bash}
+
+~~~
+# number_of_clusters = 3632
+# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.cluster_list
+# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_
+
+# runtime:  3 wallclock secs ( 1.41 usr  0.12 sys +  0.36 cusr  0.06 csys =  1.95 CPU)
+# RAM use: 59.9 MB
+~~~
+{: .output}
+
+~~~
+$ get_homologues.pl -d data_get -t 0 -M
+~~~
+{: .language-bash}
+ 
+~~~
+# number_of_clusters = 3634
+# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.cluster_list
+# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
+
+# runtime:  5 wallclock secs ( 2.07 usr  0.26 sys +  0.52 cusr  0.08 csys =  2.93 CPU)
+# RAM use: 54.2 MB
+~~~
+{: .output}
+
+then we use the option 
+
+~~~
+$ compare_clusters.pl -o prueba_intersection -m -d\ 
 data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_,\
 data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 ~~~
 {: .language-bash}
 
-~~~
+~~~ 
 # pangenome_phylip file = prueba_intersection2/pangenome_matrix_t0.phylip
 # pangenome_FASTA file = prueba_intersection2/pangenome_matrix_t0.fasta
 # pangenome CSV file (Scoary) = prueba_intersection2/pangenome_matrix_t0.tr.csv
@@ -282,6 +318,7 @@ data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 # Venn region file: prueba_intersection2/unique_agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.venn_t0.txt (186)
 ~~~
 {: .output}
+
 
 > ## Exercise 1: 
 > 
