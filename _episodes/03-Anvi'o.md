@@ -45,7 +45,7 @@ conda activate Pangenomics
 ~~~
 {: .output}
 
-Move into the directory named **results** and create a new directory for the Anvi'o analysis
+Move into the directory named **results** and create a new directory called **anvi-o** for the Anvi'o analysis
 ~~~
 cd dc-workshop/results
 mkdir anvi-o
@@ -59,15 +59,22 @@ mkdir genome-db
 ~~~
 {: .source}
 
+**Note:** The bacterial genomes that will be used in this practice come from the Prokka annotation analysis. We will use the .gbk files as input for the Anvi'o workflow. The .gbk files can be found in ~/dc-workshop/results/annotated
 
-Ten steps workflow to construct a Pangenome in Anvi'o
+
+Let's do it!
+
+
+Ten steps guide to build a Pangenome in Anvi'o
 ===============================================
 
 Step 1
 ===============================================
-Process the genome files (.gbk) with the `anvi-script-process-genbank` function. Remember that the .gbk files are not in this working directory
+
+Process the genome files (.gbk) with the `anvi-script-process-genbank` script
+
 ~~~
-ls ~/Pangenomics/Shaday/gbk_ncbi/*.gbk | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/dc_workshop/results/annotated/$line.gbk -O genome-db/$line; done
+ls ~/dc-workshop/results/annotated/agalactiae* | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/dc_workshop/results/annotated/$line.gbk -O genome-db/$line; done
 ~~~
 {: .source}
 
@@ -89,7 +96,7 @@ agalactiae_515-external-gene-calls.txt     agalactiae_CJB111-external-gene-calls
 
 Step 2
 ===============================================
-Reformat the fasta files
+Reformat the fasta files using the `anvi-script-reformat-fasta` script
 
 ~~~
 ls *fa |while read line; do anvi-script-reformat-fasta --seq-type NT $line -o $line\.fasta; done
@@ -134,7 +141,7 @@ agalactiae_515-external-gene-calls.txt         agalactiae_CJB111-external-gene-c
 
 Step 4
 ===============================================
-When using external genomes in anvi'o, a list of the genome ids and their corresponding genome database is required. This list will 
+When using external genomes in anvi'o, a list of the genome ids and their corresponding genome database is required. This list tells Anvi'o which genomes will be processed to construct the pangenome. 
 ~~~
 ls *.fa | cut -d '-' -f1 | while read line; do echo $line$'\t'$line-contigs.db >>external-genomes.txt; done
 head external-genomes.txt
@@ -208,7 +215,7 @@ agalactiae_515-contigs.db     agalactiae_CJB111-contigs.db  agalactiae_H36B-cont
 
 Step 7
 ===============================================
-Execute HMM sources to identify matching genes in a given contig.db file
+Execute HMM analysis with the `anvi-run-hmms` script to identify matching genes in each contigs database file
 
 ~~~
 ls *contigs.db | while read line; do anvi-run-hmms -c $line; done
@@ -224,7 +231,7 @@ Salida
 
 Step 8
 ===============================================
-Create the Pangenome database
+Create the genome database `genomes-storage-db` using the `anvi-gen-genomes-storage` script. In this case, we named this `genomes-storage-db` as **AGALACTIAE_GENOMES.db**, which will be used downstream as input in other process.
 
 ~~~
 anvi-gen-genomes-storage -e external-genomes.txt -o AGALACTIAE_GENOMES.db
@@ -249,7 +256,8 @@ agalactiae_515-external-gene-calls.txt     agalactiae_COH1-contigs.db
 
 Step 9
 ===============================================
-Construct the pangenome with the database created above
+Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named **AGALACTIAE_GENOMES.db** as input 
+
 ~~~
 anvi-pan-genome -g AGALACTIAE_GENOMES.db \
                 --project-name "PANGENOME-AGALACTIAE" \
@@ -269,7 +277,7 @@ SALIDA
 
 Step 10
 ===============================================
-Create the interactive pangenome plot 
+Create the interactive pangenome with the `anvi-display-pan` script using as input the `genomes-storage-db` **AGALACTIAE_GENOMES.db** and the `pan-db` **PANGENOME-AGALACTIAE-PAN.db** (located in AGALACTIAE directory)
 
 ~~~
 anvi-display-pan -g AGALACTIAE_GENOMES.db \
@@ -283,7 +291,7 @@ SALIDA
 {: .output}
 
 
-Whitout disturbing the active terminal, open a window in your prefered browser (recommended Chrome), copy-paste the following link and select the bottom `Draw` to see your results and start interacting with your pangenome
+Whitout disturbing the active terminal, open a new window in your prefered browser (recommended Chrome), copy-paste the following link and click on the bottom `Draw` to see your results and start interacting with your pangenome
 
 ~~~
 http://132.248.196.38:8080
