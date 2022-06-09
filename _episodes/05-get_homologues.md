@@ -1,7 +1,7 @@
 ---
 title: "Clustering Proteins and Nucleotides"
-teaching: 20 min
-exercises: 5 min
+teaching: 20
+exercises: 5 
 questions:
 - "What is Get_Homologues?"
 - "What is Clustering?"
