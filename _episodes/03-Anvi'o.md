@@ -40,13 +40,14 @@ conda activate Pangenomics
 {: .source}
 
 ~~~
-(Pangenomics) betterlab@betterlabub:~/Pangenomics/Anvio/MTBC$
+(Pangenomics) betterlab@betterlabub:~$
+
 ~~~
 {: .output}
 
 Move into the directory named **results** and create a new directory called **anvi-o** for the Anvi'o analysis
 ~~~
-cd dc-workshop/results
+cd dc_workshop/results
 mkdir anvi-o
 cd anvi-o
 ~~~
