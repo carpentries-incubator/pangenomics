@@ -307,7 +307,7 @@ $ ls -d data_get_homologues/0taxa
 ~~~~
 
 ~~~
-$ compare_clusters.pl -o prueba_intersection -m -d\ 
+$ compare_clusters.pl -o alg_intersection -m -d\ 
 data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_,\
 data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 ~~~
