@@ -30,8 +30,7 @@ Anvi’o is an open-source, community-driven analysis and visualization platform
 It brings together many aspects of today's cutting-edge strategies including **genomics, metagenomics, metatranscriptomics, phylogenomics, microbial population genetis, pangenomics and metapangenomis** in an *integrated* and *easy-to-use* fashion thorugh extensive interactive visualization capabilities. 
 
 
-
-## Get all ready to start the Anvi'o workflow to build a pangenome
+### Get all ready to start the Anvi'o workflow to build a pangenome
 
 To start using Anvi'o, activate the conda environment **Pangenomics** 
 
@@ -65,11 +64,9 @@ mkdir genome-db
 Let's do it!
 
 
-Ten steps guide to build a Pangenome in Anvi'o
-===============================================
+## Ten steps guide to build a Pangenome in Anvi'o
 
-Step 1
-===============================================
+### Step 1
 
 Process the genome files (.gbk) with the `anvi-script-process-genbank` script
 
@@ -98,8 +95,8 @@ agalactiae_A909_prokka-external-gene-calls.txt    agalactiae_H36B_prokka-externa
 ~~~
 {: .output}
 
-Step 2
-===============================================
+### Step 2
+
 Reformat the fasta files using the `anvi-script-reformat-fasta` script
 
 ~~~
@@ -125,8 +122,8 @@ agalactiae_A909_prokka-external-gene-calls.txt    agalactiae_H36B_prokka-externa
 ~~~
 {: .output}
 
-Step 3
-===============================================
+### Step 3
+
 Create a database per genome with the `anvi-gen-contigs-database` script
 
 ~~~
@@ -155,8 +152,8 @@ agalactiae_A909_prokka-external-gene-calls.txt        agalactiae_H36B_prokka-ext
 ~~~
 {: .output}
 
-Step 4
-===============================================
+### Step 4
+
 When using external genomes in anvi'o, a list of the genome ids and their corresponding genome database is required. This list tells Anvi'o which genomes will be processed to construct the pangenome. 
 ~~~
 ls *.fa | cut -d '-' -f1 | while read line; do echo $line$'\t'$line-contigs.db >>external-genomes.txt; done
@@ -174,8 +171,8 @@ agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
 ~~~
 {: .output}
 
-Step 5
-===============================================
+### Step 5
+
 Modify the headers of the list external-genomes.txt
 ~~~
 nano external-genomes.txt
@@ -215,8 +212,8 @@ agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
 ~~~
 {: .output}
 
-Step 6
-===============================================
+### Step 6
+
 Rename the .db files
 
 ~~~
@@ -232,8 +229,7 @@ agalactiae_515_prokka-contigs.db     agalactiae_CJB111_prokka-contigs.db  agalac
 ~~~
 {: .output}
 
-Step 7
-===============================================
+### Step 7
 Execute HMM analysis with the `anvi-run-hmms` script to identify matching genes in each contigs database file
 
 ~~~
@@ -291,8 +287,8 @@ Gene calls added to db .......................: 4 (from source "Ribosomal_RNA_23
 {: .output}
 
 
-Step 8
-===============================================
+### Step 8
+
 Create the genome database `genomes-storage-db` using the `anvi-gen-genomes-storage` script. In this case, we named this `genomes-storage-db` as **AGALACTIAE_GENOMES.db**, which will be used downstream as input in other process.
 
 ~~~
@@ -308,8 +304,8 @@ agalactiae_A909_prokka-contigs.db    AGALACTIAE_GENOMES.db
 ~~~
 {: .output}
 
-Step 9
-===============================================
+### Step 9
+
 Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named **AGALACTIAE_GENOMES.db** as input 
 
 ~~~
@@ -386,8 +382,8 @@ If you publish your findings, please do not forget to properly credit this tool.
 {: .output}
 
 
-Step 10
-===============================================
+### Step 10
+
 Create the interactive pangenome with the `anvi-display-pan` script using as input the `genomes-storage-db` **AGALACTIAE_GENOMES.db** and the `pan-db` **PANGENOME-AGALACTIAE-PAN.db** (located in AGALACTIAE directory)
 
 ~~~
