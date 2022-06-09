@@ -15,22 +15,9 @@ keypoints:
 
 ## The `ncbi-genome-download` package: Getting Genomic Data from the NCBI
 
-The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. Because this tool is written in Python, it can be installed with PIP or with Anaconda. If you wish to install it with PIP, it is advisable to have an up-to-date version of this package manager before performing the installation.
+The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. This [package]((https://github.com/kblin)) is highly useful because we can access to the genomic databases in a very specific way. Then, it will be easier to get the data directly in our work directory.
 
-~~~
-pip install --upgrade pip
-pip install ncbi-genome-download
-~~~
-{: .source}
-
-If you wish to use Anaconda, run the following:
-
-~~~
-conda install -c bioconda ncbi-genome-download
-~~~
-{: .source}
-
-The full list of parameters you can incorporate in your downloads can be obtained by typing:
+The full list of parameters you can incorporate in your dowmloads can be obtained by typing:
 
 ~~~
 ncbi-genome-download --help
@@ -141,21 +128,21 @@ usage:
 ~~~
 {: .output}
 
-Once we know about the flags we can use, we are ready to use the package but first we need to go to our data folder.
+Once we know about the flags we can use, we are ready to use the package but first we need to go to our data directory.
 
 ~~~
 cd dc_workshop/data
 ~~~
 {: .bash}
 
-If you list the contents of this directory (using the `ls` command), you'll see several folders, each of which contains the raw data of different strains of *Streptococcus agalactiae* used in Tettelin et al (2005). We will add a new entry to this directory by downloading a FASTA file of the genomes of all *Streptococcus equinus* strains available on NCBI:
+If you list the contents of this directory (using the `ls` command), you'll see several folders, each of which contain the raw data of different strains of Streptococcus agalactiae used in Tettelin et al (2005). We will add a new entry to this directory by downloading a FASTA file of the genomes of all Streptococcus constellatus strains available on NCBI:
 
 ~~~
-ncbi-genome-download --formats fasta  --genera "Streptococcus equinus" bacteria
+ncbi-genome-download --formats fasta  --genera "Streptococcus constellatus" bacteria
 ~~~
 {: .bash}
 
-The above code will display a new genbank directory with subdirectories named after their assembly NCBI number.
+The above code will display a new Genbank directory with subdirectories named after their NCBI assembly number.
 
 The `gbk` files contained within this folder are used for the posterior analysis. It provides information about the coding sequences, their locus, the name of the protein, and the full nucleotide sequence of the assembly. By setting the `--formats` parameter to `genbank`, you tell the script to download `gbk` files.
 
@@ -238,18 +225,18 @@ The `gbk` files contained within this folder are used for the posterior analysis
 ## Prokka: Annotating Genomes
 
 Annotation is a process of identifying the locations of genes and all the coding regions in a genome and determining
-what those genes do. For this, an unknown sequence is enriched with information relating genomic position, regulatory
+what those genes are for. For this, an unknown sequence is enriched with information relating genomic position, regulatory
 sequences, repeats, gene name and protein products [1](https://en.wikipedia.org/wiki/DNA_annotation). This information
 is stored in genomic databases to help future analysis processing new data.
 
 Prokka is a command-line software tool created in Perl to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files[2](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false).
-It expects a preassembled genomic DNA sequences in FASTA format, which is the only mandatory parameter to the software.
+It expects a preassembled genomic DNA sequences in FASTA format as the input file, which is the only mandatory parameter to the software.
 For annotation, Prokka relies on external features and databases to identify the genomic features within the contigs.
 
 | Tool(reference) | Features predicted |
 | --------- | ----------- |
 |Prodigal (Hyatt 2010 )   | Coding Sequence (CDS) |
-| RNAmmer ( Lagesen et al. , 2007 )  | Ribosomal RNA genes (rRNA) |
+| RNAmmer ( Lagesen et al. , 2007 )  | Ribosomla RNA genes (rRNA) |
 | Aragorn ( Laslett and Canback, 2004 )  | Transfer RNA genes |
 | SignalP ( Petersen et al. , 2011 )  | Signal leader peptides|
 | Infernal ( Kolbe and Eddy, 2011 )  | Non-coding RNA|
@@ -260,12 +247,7 @@ database of known sequences, usually at a protein level, and transfer the annota
 Prokka uses this method, but in a hierarchical manner, starting with a smaller trustworthy database, moving to medium
 sized but domain specific databases and finally to curated models of protein families.
 
-To get started with Prokka, we must first install it. The recommended method of installation is through Anaconda:
-
-~~~
-conda install -c conda-forge -c bioconda -c defaults prokka
-~~~
-{: .source}
+To get started with Prokka, we must first install it, [here](https://czirion.github.io/comparative-genomics-workshop/setup.html) you can find the set up page. 
 
 Next, we need to change to the directory where we have the assembly (FASTA) files of interest. As a simple initial example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
 
@@ -308,7 +290,7 @@ The following table describes the contents of each output file:
 | .err | Unacceptable annotations - the NCBI discrepancy report. |
 | .log | Contains all the output that Prokka produced during its run. This is a record of what settings you used, even if the --quiet option was enabled. |
 | .txt | Statistics relating to the annotated features found. |
-| .tsv | Tab-separated file of all features: locus_tag, ftype, len_bp, gene, EC_number, COG, product |
+| .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product |
 
 You can also add further details regarding the organism you search and the way the files will be annotated. For instance, if you'd like to annotate an archaeon of the genus *Nitrososphaera*, you would execute the following command:
 
