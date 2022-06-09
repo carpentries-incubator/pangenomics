@@ -230,7 +230,7 @@ $ get_homologues.pl -d data_get -M
 {: .output}
 
 
-## Step 3. Compare all clusters from diferent algoritms
+## Step 3. Compare all clusters from different algorithms
 ~~~
 $ compare_clusters.pl -o alg_intersection -m -d\
 gbk_homologues/A909_f0_alltaxa_algBDBH_e0_,\
