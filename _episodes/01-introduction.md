@@ -12,3 +12,13 @@ objectives:
 ---
 
 
+> ## Prepare your genome database 
+> Make sure you have the six genomes previously described. If you do not have them yet, you can download them with the following instruction
+> 
+> ~~~
+> cd ~
+> wget https://zenodo.org/record/6622053/files/dc_workshop.zip?download=1
+> ~~~
+> {: .laguage-bash}
+{: .checklist}
+
