@@ -17,7 +17,7 @@ objectives:
 > 
 > ~~~
 > cd ~
-> wget https://zenodo.org/record/6622053/files/dc_workshop.zip?download=1
+> wget https://zenodo.org/record/6622053/files/dc_workshop.zip
 > ~~~
 > {: .laguage-bash}
 {: .checklist}
