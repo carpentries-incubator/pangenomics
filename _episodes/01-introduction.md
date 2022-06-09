@@ -45,14 +45,6 @@ A **clade** (*kládos*, 'branch'), also known as *monophyletic group*, is a grou
 
 ![Figure 2. Cladogram representation](../fig/Cladogram.png)
 
-> ## Exercise
-> Download the genome sequences 
-> 
-> ~~~
-> wget https://zenodo.org/record/6622053/files/dc_workshop.zip?download=1
-> ~~~
-> {: .laguage-bash}
-{: .checklist}
 
 ## Brief description of *Streptococcus agalactiae* dataset
 
@@ -71,6 +63,15 @@ For this lesson purposes, we selected 6 *Streptococcus agalactiae* genomes...
 |*S. agalactiae*  COH1    | Human   |            |             |                     |
 |*S. agalactiae*  H36B    | Human   |            |             |                     |
 
+
+> ## Prepare your genome database 
+> Make sure you have the six genomes previously described. If you do not have them yet, you can download them with the following instruction
+> 
+> ~~~
+> wget https://zenodo.org/record/6622053/files/dc_workshop.zip?download=1
+> ~~~
+> {: .laguage-bash}
+{: .checklist}
 
 
 {% include links.md %}
