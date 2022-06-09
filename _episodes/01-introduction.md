@@ -48,36 +48,23 @@ Download data.
 `wget https://zenodo.org/record/6622053/files/dc_workshop.zip?download=1`
 
 
-## Brief description of *Mycobacterium tuberculosis* dataset
+## Brief description of *Streptococcus agalactiae* dataset
 
-For this lesson purposes, we selected 6 *Streptococcus agalactiae* genomes. 
+For this lesson purposes, we selected 6 *Streptococcus agalactiae* genomes... 
 
 
 **Selected genomes**
 
 
-| Organism                | Host    | Lineage    | Country     | SRA accesion number |
+| Organism                | Host    | Serotype   | Country     | SRA accesion number |
 |-------------------------|---------|------------|-------------|---------------------|
-|*M. tuberculosis*  N0004 | Human   | L3         |USA          | ERR2704697          |
-|*M. tuberculosis*  N0031 | Human   | L2         |USA          | ERR2704676          |
-|*M. tuberculosis*  N0052 | Human   | L2         |USA          | ERR2704699          |
-|*M. tuberculosis*  N0054 | Human   | L3         |USA          | ERR2704678          |
-|*M. tuberculosis*  N0069 | Human   | L1         |China        | ERR2704679          |
-|*M. tuberculosis*  N0072 | Human   | L1         |USA          | ERR2704680          |
-|*M. tuberculosis*  N0091 | Human   | L6         |Gambia       | ERR2704681          |
-|*M. tuberculosis*  N0136 | Human   | L4         |USA          | ERR2704700          |
-|*M. tuberculosis*  N0145 | Human   | L2         |USA          | ERR2704702          |
-|*M. tuberculosis*  N0155 | Human   | L2         |USA          | ERR2704684          |
-|*M. tuberculosis*  N0157 | Human   | L1         |USA          | ERR2704704          |
-|*M. tuberculosis*  N1176 | Human   | L5         |Ghana        | ERR2704686          |
-|*M. tuberculosis*  N1201 | Human   | L6         |Ghana        | ERR2704687          |
-|*M. tuberculosis*  N1202 | Human   | L6         |Ghana        | ERR2704688          |
-|*M. tuberculosis*  N1216 | Human   | L4         |Ghana        | ERR2704689          |
-|*M. tuberculosis*  N1268 | Human   | L5         |Sierra Leone | ERR2704690          |
-|*M. tuberculosis*  N1272 | Human   | L5         |Germany      | ERR2704692          |
-|*M. tuberculosis*  N1274 | Human   | L3         |Germany      | ERR2704693          |
-|*M. tuberculosis*  N1283 | Human   | L4         |Germany      | ERR2704709          |
-|*M. tuberculosis*  N3913 | Human   | L7         |Australia    | ERR2704711          |
+|*S. agalactiae*  18RS21  | Human   |            |             |                     |
+|*S. agalactiae*  515     | Human   |            |             |                     |
+|*S. agalactiae*  A909    | Human   |            |             |                     |
+|*S. agalactiae*  CJB111  | Human   |            |             |                     |
+|*S. agalactiae*  COH1    | Human   |            |             |                     |
+|*S. agalactiae*  H36B    | Human   |            |             |                     |
+
 
 
 {% include links.md %}
