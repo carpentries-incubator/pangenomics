@@ -100,9 +100,8 @@ Options that control clustering:
 ~~~
 {: .output}
 
-> ## Notas extra o comentarios
->
-> El tipo de esta caja es: `{: .callout}`
+> ## Notes
+> Get_homologues suggests that you run your data with a directory because you could add a new file *.gbk* in the future, if necessary.
 {: .callout}
 
 ~~~
