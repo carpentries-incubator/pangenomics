@@ -4,14 +4,13 @@ teaching: 10
 exercises: 10
 questions:
 - "What is a pangenome?"
-- "What are the principal components of a pangenome?"
-- "Which means 'open pangenome' and 'closed pangenome'?"
+- "What kind of biological data is analyzed in "
 - "How can I perform a pangenome analysis?"
 
 objectives:
 - "To learn to perform a pangenome analysis by using different bioinformatic tools"
 - "To understand the concept of *pangenome* and its principal components"
-- "To discuss the impact 
+- "To discuss the impact "
 keypoints:
 - "The pangenome is the entire set of genes from all strains of a clade."
 - "The principal components of a pangenome are: 'core', 'shell', and 'dispensable'"
