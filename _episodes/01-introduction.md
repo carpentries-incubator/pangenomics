@@ -24,7 +24,7 @@ keypoints:
 
 ## What is a pangenome?
 
-The term **pangenome** derives from the Greek *pan*, meaning 'whole' or 'everything', while *genome* describes an organism's complete genetic material. In 2005, Tettelin et al. used the term pangenome by first time to describe the entire collection of genes from a group of bacteria. Currently, this term has been used for other grups of organisms, including plants, animals, fungi, virus, etc. Today, the pangenome is defined as the entire set of genes from all strains of a clade.
+The term **pangenome** derives from the Greek *pan*, meaning 'whole' or 'everything', while *genome* describes an organism's complete genetic material. In 2005, Tettelin *et al.* used the term pangenome by first time to describe the entire collection of genes from a group of pathogenic bacteria, named *Streptococcus agalactiae*. Nowadays, pangenome concept has been also applied to other organisms including plants, animals, fungi, virus, etc. Today, the pangenome is defined as the entire set of genes from all strains of a clade.
 
 The pangenome could be divided in three principal components: **core genome** which contains genes present in all the strains compared, **shell genome** a proportion of genes absent in one or more strains and **dispensable genome** comprised by genes that are unique to each strain. 
 
