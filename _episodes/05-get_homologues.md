@@ -100,6 +100,10 @@ Options that control clustering:
 ~~~
 {: .output}
 
+~~~
+Note: Get_homologues suggests that you run your data with a directory because you could add a new file *.gbk* in the future, if necessary.
+~~~
+{: .callout}
 ## Step 1. Generate a folder get_homologues
 It's necessary that we create a new folder when all results are sent.
 ~~~
