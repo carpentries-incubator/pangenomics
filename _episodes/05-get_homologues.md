@@ -38,7 +38,14 @@ Now, We ensure that get_homologues is install
 ~~~
 get_homologues.pl -h
 ~~~
-{: .laguage-bash}
+{: .language-bash}
+
+~~~
+$ git config --global user.name "Your Name"
+$ git config --global user.email "yourname@domain.name"
+~~~
+{: .language-bash}
+
 
 ~~~
 -v print version, credits and checks installation
