@@ -18,7 +18,7 @@ keypoints:
 - "The principal components of a pangenome are: 'core', 'shell', and 'dispensable'"
 - "An *open pangenome* occurs when the size of the pangenome increases considerably every added genome"
 - "A *closed pangenome* occurs when only few gene families are incorporated to the pangenome when a new member of the clade is added" 
-- "A pangenome can be obtained by gathering and computing the complete genome sequence of the members of a clade by using specialized bioinformatic tools"
+- "A pangenome can be obtained by gathering and comparing the complete genome sequences of the members of a clade by using specialized bioinformatic tools"
 
 ---
 
