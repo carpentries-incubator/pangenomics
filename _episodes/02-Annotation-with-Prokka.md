@@ -15,20 +15,8 @@ keypoints:
 
 ## The `ncbi-genome-download` package: Getting Genomic Data from the NCBI
 
-The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. Because this tool is written in Python, it can be installed with PIP or with Anaconda. If you wish to install it with PIP, it is advisable to have an up-to-date version of this package manager before performing the installation.
-
-~~~
-pip install --upgrade pip
-pip install ncbi-genome-download
-~~~
-{: .source}
-
-If you wish to use Anaconda, run the following:
-
-~~~
-conda install -c bioconda ncbi-genome-download
-~~~
-{: .source}
+The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. 
+This package is highly useful because we can access to the genomic databases in a very specific way. Then, it will be easier to get the data directly in our work directory.
 
 The full list of parameters you can incorporate in your dowmloads can be obtained by typing:
 
@@ -223,12 +211,7 @@ database of known sequences, usually at a protein level, and transfer the annota
 Prokka uses this method, but in a hierarchical manner, starting with a smaller trustworthy database, moving to medium
 sized but domain specific databases and finally to curated models of protein families.
 
-To get started with Prokka, we must first install it. The recommended method of installation is through Anaconda:
-
-~~~
-conda install -c conda-forge -c bioconda -c defaults prokka
-~~~
-{: .source}
+To get started with Prokka, we must first install it, [here](https://czirion.github.io/comparative-genomics-workshop/setup.html) you can find the set up page. 
 
 Next, we need to change to the directory where we have the assembly (FASTA) files of interest. As a simple initial example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
 
