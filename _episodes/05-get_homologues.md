@@ -184,6 +184,12 @@ search file in the file browser on your computer.
 </a>
 
 ## Step 4. Obtaining a pangenome matrix
+~~~
+compare_clusters.pl -o prueba_intersection -m -d\
+data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_,\
+data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
+~~~
+{: .language-bash}
 
 
 > ## Exercise 1: 
