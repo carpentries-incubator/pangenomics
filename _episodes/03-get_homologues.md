@@ -119,7 +119,7 @@ $ cd  ~/gm_workshop/results/pangenome/get_homologues/data_get # Change to the di
 We need to create a Symbolic link with the file *.gbk*
 ~~~
 $ find ~/gm_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {} . ';' 
-$ ls ~gm_workshop/results/pangenome/get_homologues/data_get #List the symbolic link
+$ ls ~/gm_workshop/results/pangenome/get_homologues/data_get #List the symbolic link
 ~~~
 {: .language-bash}
 
