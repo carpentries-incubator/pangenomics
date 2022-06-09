@@ -12,7 +12,7 @@ objectives:
 - "Learn which biological data are needed as inputs in a pangenome analysis"
 - "Discuss applications and questions that could be solved with a pangenome analysis"
 
-- keypoints:
+keypoints:
 - "The pangenome is the entire set of genes from all strains of a clade."
 - "The principal subsets a pangenome are: core, shell, and dispensable genome."
 - "An *open pangenome* occurs when the size of the pangenome increases considerably every added genome"
