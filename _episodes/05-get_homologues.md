@@ -1,5 +1,5 @@
 ---
-title: "Clustering proteins and nucleotides"
+title: "Clustering Proteins and Nucleotides"
 teaching: 20 min
 exercises: 5 min
 questions:
