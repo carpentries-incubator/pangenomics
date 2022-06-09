@@ -110,9 +110,9 @@ Options that control clustering:
 ## Step 1. Generate a folder get_homologues
 It's necessary that we create a new folder when all results are sent.
 ~~~
-$ mkdir ~dc_workshop/results/pangenome/get_homologues
-$ mkdir ~dc_workshop/results/pangenome/get_homologues/data_get
-$ cd  ~dc_workshop/results/pangenome/get_homologues/data_get
+$ mkdir ~/dc_workshop/results/pangenome/get_homologues
+$ mkdir ~/dc_workshop/results/pangenome/get_homologues/data_get
+$ cd  ~/dc_workshop/results/pangenome/get_homologues/data_get
 ~~~
 {: .language-bash}
 We need to create a Symbolic link with the file *.gbk*
