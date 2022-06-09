@@ -15,9 +15,22 @@ keypoints:
 
 ## The `ncbi-genome-download` package: Getting Genomic Data from the NCBI
 
-The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. This [package]((https://github.com/kblin)) is highly useful because we can access to the genomic databases in a very specific way. Then, it will be easier to get the data directly in our work directory.
+The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. Because this tool is written in Python, it can be installed with PIP or with Anaconda. If you wish to install it with PIP, it is advisable to have an up-to-date version of this package manager before performing the installation.
 
-The full list of parameters you can incorporate in your dowmloads can be obtained by typing:
+~~~
+pip install --upgrade pip
+pip install ncbi-genome-download
+~~~
+{: .source}
+
+If you wish to use Anaconda, run the following:
+
+~~~
+conda install -c bioconda ncbi-genome-download
+~~~
+{: .source}
+
+The full list of parameters you can incorporate in your downloads can be obtained by typing:
 
 ~~~
 ncbi-genome-download --help
@@ -128,38 +141,75 @@ usage:
 ~~~
 {: .output}
 
-Once we know about the flags we can use, we are ready to use the package but first we need to go to our data directory.
+Once we know about the flags we can use, we are ready to use the package but first we need to go to our data folder.
 
 ~~~
 cd dc_workshop/data
 ~~~
 {: .bash}
 
-If you list the contents of this directory (using the `ls` command), you'll see several folders, each of which contain the raw data of different strains of Streptococcus agalactiae used in Tettelin et al (2005). We will add a new entry to this directory by downloading a FASTA file of the genomes of all Streptococcus constellatus strains available on NCBI:
+If you list the contents of this directory (using the `ls` command), you'll see several folders, each of which contains the raw data of different strains of *Streptococcus agalactiae* used in Tettelin et al (2005). We will add a new entry to this directory by downloading a FASTA file of the genomes of all *Streptococcus equinus* strains available on NCBI:
 
 ~~~
-ncbi-genome-download --formats fasta  --genera "Streptococcus constellatus" bacteria
+ncbi-genome-download --formats fasta  --genera "Streptococcus equinus" bacteria
 ~~~
 {: .bash}
 
-The above code will display a new Genbank directory with subdirectories named after their NCBI assembly number.
+The above code will display a new genbank directory with subdirectories named after their assembly NCBI number.
 
 The `gbk` files contained within this folder are used for the posterior analysis. It provides information about the coding sequences, their locus, the name of the protein, and the full nucleotide sequence of the assembly. By setting the `--formats` parameter to `genbank`, you tell the script to download `gbk` files.
 
 > ## Exercise 1: Downloading data from NCBI with the command line
->
-> Using `ncbi-genome-download`, get a FASTA file of the ATCC 31377 strain of the Streptococcus ratti bacterium and save it to an output directory titled `ratti`. Then, unzip the `gz` file and move the FASTA file all they back to the `ratti` directory. After you've done that, delete the `refseq` directory.
+> 
+> Suppose you are asked to perform the following sequence of actions:
+> 
+> 1. Download a FASTA file of the ATCC 31377 strain of the *Streptococcus ratti* bacterium and save it to an output directory titled `ratti`.
+> 2. Change to the directory of the FASTA file and unzip it.
+> 3. Move the FASTA file all the way back to the `ratti` directory.
+> 4. Change to the `ratti` directory and delete the `refseq` subdirectory created by the downloading tool.
+> 
+> Complete the following set of commands to perform the previous steps:
+> 
+> Step 1.
+> 
+> ~~~
+> ncbi-genome-download -F __________ -g __________ -S __________ -o __________ bacteria
+> ~~~
+> {: .source}
+> 
+> Step 2.
+> 
+> ~~~
+> cd __________/refseq/bacteria/GCF_008803015.1/
+> __________ GCF_008803015.1_ASM880301v1_genomic.fna.gz
+> ~~~
+> {: .source}
+> 
+> Step 3.
+> 
+> ~~~
+> mv GCF_008803015.1_ASM880301v1_genomic.fna __________
+> ~~~
+> {: .source}
+> 
+> Step 4.
+> 
+> ~~~
+> cd __________
+> rm -rf refseq
+> ~~~
+> {: .source}
 >
 > > ## Solution
 > >
-> > First, we run the download utility.
+> > Step 1. Using the information provided in the step, we completed each blank space with the corresponding word:
 > >
 > > ~~~
 > > ncbi-genome-download -F fasta -g "Streptococcus ratti" -S "ATCC 31377" -o ratti bacteria
 > > ~~~
 > > {: .source}
 > >
-> > Next, we navigate to the downloaded `gz` file and unzip it.
+> > Step 2. The previous command creates a `ratti` subdirectory. To get to the FASTA file we must go through a sequence of subdirectories and then apply the `gunzip` command to unzip the FASTA file:
 > >
 > > ~~~
 > > cd ratti/refseq/bacteria/GCF_008803015.1/
@@ -167,14 +217,14 @@ The `gbk` files contained within this folder are used for the posterior analysis
 > > ~~~
 > > {: .source}
 > >
-> > Then, we move the unzipped FASTA file to the `ratti` directory.
+> > Step 3. We now have an unzipped FASTA file. The parent directory `ratti` is located three directories above the current one. To get to the first parent directory, one would type `..`; if you want to get to the second parent directory, you would use `../..`. Thus, to move the FASTA file to the `ratti` directory, we need to type:
 > >
 > > ~~~
 > > mv GCF_008803015.1_ASM880301v1_genomic.fna ../../..
 > > ~~~
 > > {: .source}
 > >
-> > Finally, we delete the `refseq` directory.
+> > Step 4. Finally, we move back to the `ratti` directory (in a similar manner as in the previous step) and delete the `refseq` directory.
 > >
 > > ~~~
 > > cd ../../..
@@ -188,18 +238,18 @@ The `gbk` files contained within this folder are used for the posterior analysis
 ## Prokka: Annotating Genomes
 
 Annotation is a process of identifying the locations of genes and all the coding regions in a genome and determining
-what those genes are for. For this, an unknown sequence is enriched with information relating genomic position, regulatory
+what those genes do. For this, an unknown sequence is enriched with information relating genomic position, regulatory
 sequences, repeats, gene name and protein products [1](https://en.wikipedia.org/wiki/DNA_annotation). This information
 is stored in genomic databases to help future analysis processing new data.
 
 Prokka is a command-line software tool created in Perl to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files[2](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false).
-It expects a preassembled genomic DNA sequences in FASTA format as the input file, which is the only mandatory parameter to the software.
+It expects a preassembled genomic DNA sequences in FASTA format, which is the only mandatory parameter to the software.
 For annotation, Prokka relies on external features and databases to identify the genomic features within the contigs.
 
 | Tool(reference) | Features predicted |
 | --------- | ----------- |
 |Prodigal (Hyatt 2010 )   | Coding Sequence (CDS) |
-| RNAmmer ( Lagesen et al. , 2007 )  | Ribosomla RNA genes (rRNA) |
+| RNAmmer ( Lagesen et al. , 2007 )  | Ribosomal RNA genes (rRNA) |
 | Aragorn ( Laslett and Canback, 2004 )  | Transfer RNA genes |
 | SignalP ( Petersen et al. , 2011 )  | Signal leader peptides|
 | Infernal ( Kolbe and Eddy, 2011 )  | Non-coding RNA|
@@ -210,7 +260,12 @@ database of known sequences, usually at a protein level, and transfer the annota
 Prokka uses this method, but in a hierarchical manner, starting with a smaller trustworthy database, moving to medium
 sized but domain specific databases and finally to curated models of protein families.
 
-To get started with Prokka, we must first install it, [here](https://czirion.github.io/comparative-genomics-workshop/setup.html) you can find the set up page. 
+To get started with Prokka, we must first install it. The recommended method of installation is through Anaconda:
+
+~~~
+conda install -c conda-forge -c bioconda -c defaults prokka
+~~~
+{: .source}
 
 Next, we need to change to the directory where we have the assembly (FASTA) files of interest. As a simple initial example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
 
@@ -253,7 +308,7 @@ The following table describes the contents of each output file:
 | .err | Unacceptable annotations - the NCBI discrepancy report. |
 | .log | Contains all the output that Prokka produced during its run. This is a record of what settings you used, even if the --quiet option was enabled. |
 | .txt | Statistics relating to the annotated features found. |
-| .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product |
+| .tsv | Tab-separated file of all features: locus_tag, ftype, len_bp, gene, EC_number, COG, product |
 
 You can also add further details regarding the organism you search and the way the files will be annotated. For instance, if you'd like to annotate an archaeon of the genus *Nitrososphaera*, you would execute the following command:
 
@@ -344,21 +399,37 @@ QSINTAKNTLKGIECIYALYKKNRRSLQIYGFSPCHEISIMLAS*
 
 > ## Exercise 2: Extracting tRNAs with Prokka
 >
-> Using Prokka, annotate the FASTA format assembly of the Streptococcus ratti ATCC 31377 strain that you have downloaded in Exercise 1. Then explore the output files, focus on the TSV one and extract the tRNAs in a new file.
+> Suppose you are now asked to annotate the FASTA file you downloaded in Exercise 1 and output the results to a subdirectory called `annotated` within the `ratti` directory. Then, a research team asks you to provide them a TSV file titled `trnas.tsv` that only contains *S. ratti'*s tRNAs. This file must contain the same headers as the original TSV file, followed by the rows that correspond to tRNAs. Complete the following sequence of commands to perform this actions:
+> 
+> ~~~
+> prokka GCF_008803015.1_ASM880301v1_genomic.fna --outdir __________ --prefix atcc31377
+> ~~~
+> {: .source}
+> 
+> ~~~
+> cd __________
+> ~~~
+> {: .source}
+> 
+> ~~~
+> __________ -n 1 atcc31377.tsv > trnas.tsv  # Get column headers
+> grep __________ atcc31377.tsv >> trnas.tsv # Append all lines that contain tRNAs
+> ~~~
+> {: .source}
 >
 > > ## Solution
 > >
-> > First, we perform the annotation with Prokka and save all files as `atcc31377` in a directory titled `atcc31377`.
+> > First, we perform the annotation with Prokka and save all files as `atcc31377` in a directory titled `annotated`.
 > >
 > > ~~~
-> > prokka GCF_008803015.1_ASM880301v1_genomic.fna --outdir atcc31377 --prefix atcc31377
+> > prokka GCF_008803015.1_ASM880301v1_genomic.fna --outdir annotated --prefix atcc31377
 > > ~~~
 > > {: .source}
 > >
-> > Now we must filter the data we need and save the outputs to a file named `trnas.tsv`
+> > After switching to the `annotated` directory, we shall now filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). We then append the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'`(this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
 > >
 > > ~~~
-> > cd atcc31377
+> > cd annotated
 > > head -n 1 atcc31377.tsv > trnas.tsv # Get column headers
 > > grep $'\t'tRNA$'\t' atcc31377.tsv >> trnas.tsv # Append all lines that contain tRNA
 > > ~~~
@@ -369,7 +440,7 @@ QSINTAKNTLKGIECIYALYKKNRRSLQIYGFSPCHEISIMLAS*
 
 > ## Discussion 1: Number of tRNAs
 > 
-> Inside the `atcc31377` directory, run the command `wc -l trnas.tsv` to get the number of lines in the file. Excluding the first line (which contains the header), observe that there are 66 tRNAs, whereas the total number of coding codons (i.e. the one that are not stop codons) is 61. This means that there are several genes that produce the same tRNA. How would you explain this fact?
+> Inside the `annotated` directory, run the command `wc -l trnas.tsv` to get the number of lines in the file. Excluding the first line (which contains the header), observe that there are 66 tRNAs, whereas the [standard codon table](https://en.wikipedia.org/wiki/DNA_and_RNA_codon_tables#Translation_table_1) contains 61 coding codons (i.e. the ones that are not stop codons). This means that there are several genes that produce the same tRNA. How would you explain this fact?
 > 
 > > ## Solution
 > > 
