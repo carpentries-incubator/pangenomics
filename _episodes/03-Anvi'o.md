@@ -37,7 +37,7 @@ To start using Anvi'o, activate the conda environment **Pangenomics**
 ~~~
 conda activate Pangenomics
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 (Pangenomics) betterlab@betterlabub:~$
@@ -51,13 +51,13 @@ cd dc_workshop/results
 mkdir anvi-o
 cd anvi-o
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 In order to better organize our Anvi'o results, create a new directory named **genome-db** that will be used to storage the genome database needed for the Anvi'o pangenome worflow
 ~~~
 mkdir genome-db
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 **Note:** The bacterial genomes that will be used in this practice come from the Prokka annotation analysis. We will use the .gbk files as input for the Anvi'o workflow. The .gbk files can be found in ~/dc-workshop/results/annotated
 
@@ -74,13 +74,13 @@ Process the genome files (.gbk) with the `anvi-script-process-genbank` script
 ~~~
 ls ~/dc_workshop/results/annotated/agalactiae* | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/dc_workshop/results/annotated/$line.gbk -O genome-db/$line; done
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 cd genome-db
 ls
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 agalactiae_18RS21_prokka-contigs.fa               agalactiae_CJB111_prokka-contigs.fa
@@ -104,7 +104,7 @@ Reformat the fasta files using the `anvi-script-reformat-fasta` script
 ls *fa |while read line; do anvi-script-reformat-fasta --seq-type NT $line -o $line\.fasta; done
 ls
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 agalactiae_18RS21_prokka-contigs.fa               agalactiae_CJB111_prokka-contigs.fa
@@ -131,7 +131,7 @@ Create a database per genome with the `anvi-gen-contigs-database` script
 ls *fasta | while read line; do anvi-gen-contigs-database -T 4 -f $line -o $line-contigs.db; done
 ls
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 agalactiae_18RS21_prokka-contigs.fa                   agalactiae_CJB111_prokka-contigs.fa
@@ -160,7 +160,7 @@ When using external genomes in anvi'o, a list of the genome ids and their corres
 ls *.fa | cut -d '-' -f1 | while read line; do echo $line$'\t'$line-contigs.db >>external-genomes.txt; done
 head external-genomes.txt
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 agalactiae_18RS21_prokka        agalactiae_18RS21_prokka-contigs.db
@@ -178,7 +178,7 @@ Modify the headers of the list external-genomes.txt
 ~~~
 nano external-genomes.txt
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
   GNU nano 4.8                                                             external-genomes.txt                                                                       
@@ -199,7 +199,7 @@ agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
 ~~~
 head external-genomes.txt
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 name    contigs_db_path
@@ -221,7 +221,7 @@ Rename the .db files
 rename s'/.fa.fasta-contigs.db/.db/' *db
 ls *.db
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 agalactiae_18RS21_prokka-contigs.db  agalactiae_A909_prokka-contigs.db    agalactiae_COH1_prokka-contigs.db
@@ -236,7 +236,7 @@ Execute HMM analysis with the `anvi-run-hmms` script to identify matching genes 
 ~~~
 ls *contigs.db | while read line; do anvi-run-hmms -c $line; done
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 
@@ -296,7 +296,7 @@ Create the genome database `genomes-storage-db` using the `anvi-gen-genomes-stor
 anvi-gen-genomes-storage -e external-genomes.txt -o AGALACTIAE_GENOMES.db
 ls *.db
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 agalactiae_18RS21_prokka-contigs.db  agalactiae_CJB111_prokka-contigs.db  agalactiae_H36B_prokka-contigs.db
@@ -318,7 +318,7 @@ anvi-pan-genome -g AGALACTIAE_GENOMES.db \
                 --mcl-inflation 10 \
                 --use-ncbi-blast
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 WARNING
@@ -391,7 +391,7 @@ Create the interactive pangenome with the `anvi-display-pan` script using as inp
 anvi-display-pan -g AGALACTIAE_GENOMES.db \
     -p AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db
 ~~~
-{: .language-bash}
+{: .laguage-bash}
 
 ~~~
 * The server is up and running 🎉
@@ -449,7 +449,7 @@ anvi-get-sequences-for-gene-clusters -g genomes-storage-db \
                                      -o genes-fasta \
                                      --min-functional-homogenity-index 0.25
 >>~~~
->>{: .language-bash}
+>>{: .laguage-bash}
 >>
 >>Extra)Explore this [page.](https://anvio.org/help/main/programs/anvi-gen-phylogenomic-tree/)
 >{: .solution}
