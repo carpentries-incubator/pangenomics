@@ -80,6 +80,7 @@ They can be manipulated and visualised through a software called Gephi, with whi
 
 > ## References:
 > For more details you can check this article:
+> 
 > Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partitioned pangenome graph. PLOS Computational Biology 16(3): e1007732. [https://doi.org/10.1371/journal.pcbi.1007732](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732).
 {: .callout}
 
