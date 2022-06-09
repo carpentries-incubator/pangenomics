@@ -761,7 +761,7 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > ~~~
 > ppanggolin write -p pangenome.h5 --gexf --output gexf
 > ~~~
-> {: .language-bash}
+> {: .source}
 > 
 > 2. With `scp` copy the produced file in your local computer. 
 > 3. Open the file in the Gephi program. 
