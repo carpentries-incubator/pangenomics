@@ -1,5 +1,5 @@
 ---
-title: "Neighbouring analysis of gene families in a pangenome"
+title: "Neighbouring Analysis of Gene Families in a Pangenome"
 teaching: 20
 exercises: 30
 questions:
@@ -9,43 +9,47 @@ questions:
 
 objectives:
 - "Understand the fundaments of the PPanGGOLiN tool."
-- "Identify the principal differences between PPanGGOLiN and other pangenome tools"
-- "Conduct a basic workflow with PPanGGOLiN"
-- "Interpret the mains results of PPanGGOLiN"
+- "Identify the principal differences between PPanGGOLiN and other pangenome tools."
+- "Conduct a basic workflow with PPanGGOLiN."
+- "Interpret the mains results of PPanGGOLiN."
 keypoints:
 - "PPanGGOLiN is a sotfware to create and manipulate prokaryotic pangenomes."
 - "PPanGGOLiN integrates protein-coding genes and their genomic neighborhood to build a graph."
 - "panRGP method predicts Regions of Genomic Plasticity which are grouped into insertion sites based on their conserved persistent flanking genes."
 - "PPanGGOLiN is designed to scale up to tens of thousand of geneomes, including whole genomes, metagenomes and single-cell annotated genomes."
+
+>## Requirements:
+> Install [gephi](https://gephi.org/) to visualize the graphs.
+>{: .prereq}
 ---
 
 <a href="../fig/01-04-01.png">
   <img src="../fig/01-04-01.png" alt="" />
 </a>
 
-PPanGGOLiN
+# PPanGGOLiN
 ===============================================
 **Partitioned PanGenome Graph Of Linked Neighbors**
 
-PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It partitionates a pangenome into persistent-, shell- and, cloud-gene families through a graphical model and a statistical approach rather than using fixed thresholds. Unlike other methods, PPanGGOLiN integrates both information about protein-coding genes and their genomic neighborhood to build a graph of gene families where each node is a gene family and the edges represent a relation of genetic contiguity. Therefore, two gene families that are consistent neighbors in the graph are more likely to belong to the same partition, yielding a partitioned pangenome graph (PPG) made up of persistent, shell, and cloud nodes. The resulting plot looks like a subway map, where the rails represent the genomes.The following table shows how the classes are defined
+PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It partitionates a pangenome into persistent-, shell- and, cloud-gene families through a graphical model and a statistical approach rather than using fixed thresholds. Unlike other methods, PPanGGOLiN integrates both information about protein-coding genes and their genomic neighborhood to build a graph of gene families where each node is a gene family and the edges represent a relation of genetic contiguity. Therefore, two gene families that are consistent neighbors in the graph are more likely to belong to the same partition, yielding a partitioned pangenome graph (PPG) made up of persistent, shell, and cloud nodes. The resulting plot looks like a subway map, where the rails represent the genomes. The following table shows how the classes are defined.
 
 |        Classes        	|                               Definition                              	|
 |:---------------------:	|:---------------------------------------------------------------------:	|
-| **Persistent genome** 	|          for the gene families present in almost all genomes.         	|
-|    **Shell genome**   	| for gene families present at intermediate frequencies in the genomes. 	|
-|    **Cloud genome**   	|       for gene gamiles present at low frequency in the species.       	|
+| **Persistent genome** 	|          For the gene families present in almost all genomes.         	|
+|    **Shell genome**   	| For gene families present at intermediate frequencies in the genomes. 	|
+|    **Cloud genome**   	|       For gene familes present at low frequency in the species.       	|
 
-**Input files**
+## Input files
 
 PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://zenodo.org/record/6595388/files/Streptococcus_agalactiae_ATCC_BAA_1138.fasta?download=1)) or annotated genomes ([.gbk](https://zenodo.org/record/6595388/files/Streptococcus_agalactiae_ATCC_BAA_1138.gbk?download=1)) of whole genomes, Metagenomic Assembled Genomes (MAG), and Single-cell Amplified Genomes (SAG), useful for large-scale environmental studies, including the non-cultivable species pangenome.  It is designed to scale up to tens of thousands of genomes. 
 
 In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that predicts Regions of Genomic Plasticity (RGP) for each genome. RGPs are groups of genes made of shell and cloud genomes in the pangenome chart, most of which arise from horizontal gene transfer and correspond to genomic islands. RGPs from different genomes are then grouped into insertion sites based on their conserved persistent flanking genes.
 
-**Outputs**
+## Outputs
 
-PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it will provide with a HDF-5 file named "pangenome.h5". This file stores all the information about your pangenome and the analysis that were run. You can extract information this file to get
+PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it will provide with a HDF-5 file named "pangenome.h5". This file stores all the information about your pangenome and the analysis that were run. You can extract information this file to get.
 
-- **U-shaped plot**
+### U-shaped plot
 
 A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a .html file.
 
@@ -53,7 +57,7 @@ A U-shaped plot is a figure presenting the number of families (y axis) per numbe
   <img src="../fig/01-04-02.png" width="960" height="438" alt="" />
 </a>
 
-- **tile plot**
+### Tile plot
 
 A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together on the figure). In addition, it is a .html file.
 
@@ -65,7 +69,7 @@ A tile plot is a heatmap representing the gene families (y axis) in the organism
   <img src="../fig/01-04-04.png" width="956.5" height="434.5" alt="" />
 </a>
 
-- **pangenomeGraph files**
+### PangenomeGraph files
 
 You can get the .gexf files. It is will contain the gene families as nodes and the edges between gene families describing their relationship.
 They can be manipulated and visualised through a software called Gephi, with which we have made extensive testings, or potentially any other softwares or libraries that can read gexf files such as networkx or gexf-js among others.
@@ -74,12 +78,7 @@ They can be manipulated and visualised through a software called Gephi, with whi
   <img src="../fig/01-04-05.png" width="512" height="512" alt="" />
 </a>
 
-Requirements:
-- "Install [gephi](https://gephi.org/) to visualize the graphs"
-
-For more details you can check this article
-Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partitioned pangenome graph. PLOS Computational Biology 16(3): e1007732. [https://doi.org/10.1371/journal.pcbi.1007732](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732).
-
+For more details you can check this article Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partitioned pangenome graph. PLOS Computational Biology 16(3): e1007732. [https://doi.org/10.1371/journal.pcbi.1007732](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732).
 
 > ## Exercise 1: Partitions. 
 >   Which are the pangenome partitions made by PPanGGOLiN? 
@@ -98,10 +97,10 @@ Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partiti
 
 
 
-Step by step pangenome analysis with PPanGGOLiN
+## Step by step pangenome analysis with PPanGGOLiN
 ===============================================
 
-Before start using PPanGGOLiN, activate the Pangenomics environment 
+Before start using PPanGGOLiN, activate the Pangenomics environment. 
 
 ~~~
 conda activate Pangenomics
@@ -114,7 +113,7 @@ conda activate Pangenomics
 {: .output}
 
 
-Step 1
+### Step 1
 ===============================================
 **Create a work directory for PPanGGOLiN analysis**
 
@@ -133,13 +132,13 @@ drwxrwxr-x  2 betterlab betterlab 4096 Jun  6 15:10 ppanggolin
 {: .output}
 
 
-Return to the main directory
+Return to the main directory.
 ~~~
 cd ..
 ~~~
 {: .source}
 
-Step 2
+### Step 2
 ===============================================
 **Identify and explore the genome files (.gbk)**
 
@@ -155,8 +154,7 @@ agalactiae_515_prokka.gbk     agalactiae_CJB111_prokka.gbk  agalactiae_H36B_prok
 ~~~
 {: .output}
 
-
-Step 3
+### Step 3
 ===============================================
 **Obtain a tsv-separated file with the genomes information**
 
@@ -186,11 +184,11 @@ agalactiae_H36B  /home/betterlab/dc_workshop/results/annotated/agalactiae_H36B.g
 ~~~
 {: .output}
 
-Step 4
+### Step 4
 ===============================================
 **Genome annotation**
 
-Using the organisms list, annotation of genomes is made with the 'annotate' module of PPanGGOLiN
+Using the organisms list, annotation of genomes is made with the 'annotate' module of PPanGGOLiN.
 
 ~~~
 ppanggolin annotate --anno organisms.gbk.list --output pangenome
@@ -210,7 +208,7 @@ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 ~~~
 {: .output}
 
-Now a new directory was created
+Now a new directory was created.
 ~~~
 ls
 ~~~
@@ -233,9 +231,9 @@ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-The pangenome.h5 file will be used as input and output for all subsequent analysis 
+The pangenome.h5 file will be used as input and output for all subsequent analysis.
 
-Step 5
+### Step 5
 ===============================================
 **Gene clustering**
 
@@ -286,7 +284,7 @@ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-Step 6
+### Step 6
 ===============================================
 **Build the pangenome graph**
 
@@ -326,7 +324,7 @@ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-Step 7
+### Step 7
 ===============================================
 **Pangenome partition**
 
@@ -376,7 +374,7 @@ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-Step 8
+### Step 8
 ===============================================
 **Predict the regions of genome plasticity with RGP module**
 
@@ -416,7 +414,7 @@ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-You also can obtain a list of the plastic regions (RGPs) for each genome by using the module write 
+You also can obtain a list of the plastic regions (RGPs) for each genome by using the module write.
 
 ~~~
 ppanggolin write -p pangenome.h5 --regions --output rgp
@@ -438,7 +436,7 @@ ppanggolin write -p pangenome.h5 --regions --output rgp
 ~~~
 {: .output}
 
-Explore the rgp results
+Explore the rgp results.
 
 ~~~
 cd rgp/
@@ -470,7 +468,7 @@ AAJO01000087.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000087.1  512     
 ~~~
 {: .output}
 
-Return to the working directory
+Return to the working directory.
 ~~~
 cd ..
 ~~~
@@ -486,7 +484,7 @@ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-Step 9
+### Step 9
 ===============================================
 **Compute the spots of insertion**
 
@@ -595,7 +593,7 @@ spot_9  1       3               1                       4               0       
 ~~~
 {: .output}
 
-Return to the working directory
+Return to the working directory.
 ~~~
 cd ..
 ~~~
@@ -611,18 +609,14 @@ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-**THIS VERSION DO NOT ALLOW 'MODULE' NOR 'CONTEXT' ANALYSIS**
 
-
-Step 10
+### Step 10
 ===============================================
 **Compute the pangenome results**
 
-PPanGGOLiN provides multiple outputs to describe a pangenome. In this section the different outputs will be described
+PPanGGOLiN provides multiple outputs to describe a pangenome. In this section the different outputs will be described.
 
-**1. DRAW**
-
-**1.1 U-shaped plot**
+#### 1 U-shaped plot
 
 A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a .html file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a .png image file.
 
@@ -659,14 +653,14 @@ Ushaped_plot.html
 ~~~
 {: .output}
 
-Return to the working directory
+Return to the working directory.
 ~~~
 cd ..
 ~~~
 {: .source}
 
 
-**Visualize this result**
+#### Visualize this result
 
 Open a new terminal locally. Then move to the desire directory where the images will be download.
 ~~~
@@ -687,7 +681,7 @@ Ushaped_plot.html                                                               
 
 You can open the html file locally.
 
-**1.2 Tile plot**
+#### 2 Tile plot
 
 A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together on the figure).
 
@@ -751,9 +745,6 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 ~~~
 {: .output}
 
-**1.3 Spots plot**
-For versions 1.2.30 and above.
-
 > ## Exercise 2: Basic commands.
 >   Choose the indispensable commands to create a U-shaped plot.
 > 
@@ -799,10 +790,6 @@ For versions 1.2.30 and above.
 > > * Gene neighborhood (edges).
 > 
 {: .challenge}
-
-
-**THIS VERSION DO NOT ALLOW 'MODULE' NOR 'CONTEXT' ANALYSIS**
-
 
 
 {% include links.md %}
