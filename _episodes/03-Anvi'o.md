@@ -74,7 +74,7 @@ Step 1
 Process the genome files (.gbk) with the `anvi-script-process-genbank` script
 
 ~~~
-ls ~/dc-workshop/results/annotated/agalactiae* | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/dc_workshop/results/annotated/$line.gbk -O genome-db/$line; done
+ls ~/dc_workshop/results/annotated/agalactiae* | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/dc_workshop/results/annotated/$line.gbk -O genome-db/$line; done
 ~~~
 {: .source}
 
@@ -85,12 +85,16 @@ ls
 {: .source}
 
 ~~~
-agalactiae_18RS21-contigs.fa               agalactiae_A909-contigs.fa                 agalactiae_COH1-contigs.fa
-agalactiae_18RS21-external-functions.txt   agalactiae_A909-external-functions.txt     agalactiae_COH1-external-functions.txt
-agalactiae_18RS21-external-gene-calls.txt  agalactiae_A909-external-gene-calls.txt    agalactiae_COH1-external-gene-calls.txt
-agalactiae_515-contigs.fa                  agalactiae_CJB111-contigs.fa               agalactiae_H36B-contigs.fa
-agalactiae_515-external-functions.txt      agalactiae_CJB111-external-functions.txt   agalactiae_H36B-external-functions.txt
-agalactiae_515-external-gene-calls.txt     agalactiae_CJB111-external-gene-calls.txt  agalactiae_H36B-external-gene-calls.txt
+agalactiae_18RS21_prokka-contigs.fa               agalactiae_CJB111_prokka-contigs.fa
+agalactiae_18RS21_prokka-external-functions.txt   agalactiae_CJB111_prokka-external-functions.txt
+agalactiae_18RS21_prokka-external-gene-calls.txt  agalactiae_CJB111_prokka-external-gene-calls.txt
+agalactiae_515_prokka-contigs.fa                  agalactiae_COH1_prokka-contigs.fa
+agalactiae_515_prokka-external-functions.txt      agalactiae_COH1_prokka-external-functions.txt
+agalactiae_515_prokka-external-gene-calls.txt     agalactiae_COH1_prokka-external-gene-calls.txt
+agalactiae_A909_prokka-contigs.fa                 agalactiae_H36B_prokka-contigs.fa
+agalactiae_A909_prokka-external-functions.txt     agalactiae_H36B_prokka-external-functions.txt
+agalactiae_A909_prokka-external-gene-calls.txt    agalactiae_H36B_prokka-external-gene-calls.txt
+
 ~~~
 {: .output}
 
@@ -100,18 +104,24 @@ Reformat the fasta files using the `anvi-script-reformat-fasta` script
 
 ~~~
 ls *fa |while read line; do anvi-script-reformat-fasta --seq-type NT $line -o $line\.fasta; done
+ls
 ~~~
 {: .source}
 
 ~~~
-agalactiae_18RS21-contigs.fa               agalactiae_A909-contigs.fa                 agalactiae_COH1-contigs.fa
-agalactiae_18RS21-contigs.fa.fasta         agalactiae_A909-contigs.fa.fasta           agalactiae_COH1-contigs.fa.fasta
-agalactiae_18RS21-external-functions.txt   agalactiae_A909-external-functions.txt     agalactiae_COH1-external-functions.txt
-agalactiae_18RS21-external-gene-calls.txt  agalactiae_A909-external-gene-calls.txt    agalactiae_COH1-external-gene-calls.txt
-agalactiae_515-contigs.fa                  agalactiae_CJB111-contigs.fa               agalactiae_H36B-contigs.fa
-agalactiae_515-contigs.fa.fasta            agalactiae_CJB111-contigs.fa.fasta         agalactiae_H36B-contigs.fa.fasta
-agalactiae_515-external-functions.txt      agalactiae_CJB111-external-functions.txt   agalactiae_H36B-external-functions.txt
-agalactiae_515-external-gene-calls.txt     agalactiae_CJB111-external-gene-calls.txt  agalactiae_H36B-external-gene-calls.txt
+agalactiae_18RS21_prokka-contigs.fa               agalactiae_CJB111_prokka-contigs.fa
+agalactiae_18RS21_prokka-contigs.fa.fasta         agalactiae_CJB111_prokka-contigs.fa.fasta
+agalactiae_18RS21_prokka-external-functions.txt   agalactiae_CJB111_prokka-external-functions.txt
+agalactiae_18RS21_prokka-external-gene-calls.txt  agalactiae_CJB111_prokka-external-gene-calls.txt
+agalactiae_515_prokka-contigs.fa                  agalactiae_COH1_prokka-contigs.fa
+agalactiae_515_prokka-contigs.fa.fasta            agalactiae_COH1_prokka-contigs.fa.fasta
+agalactiae_515_prokka-external-functions.txt      agalactiae_COH1_prokka-external-functions.txt
+agalactiae_515_prokka-external-gene-calls.txt     agalactiae_COH1_prokka-external-gene-calls.txt
+agalactiae_A909_prokka-contigs.fa                 agalactiae_H36B_prokka-contigs.fa
+agalactiae_A909_prokka-contigs.fa.fasta           agalactiae_H36B_prokka-contigs.fa.fasta
+agalactiae_A909_prokka-external-functions.txt     agalactiae_H36B_prokka-external-functions.txt
+agalactiae_A909_prokka-external-gene-calls.txt    agalactiae_H36B_prokka-external-gene-calls.txt
+
 ~~~
 {: .output}
 
@@ -126,16 +136,22 @@ ls
 {: .source}
 
 ~~~
-agalactiae_18RS21-contigs.fa                   agalactiae_A909-contigs.fa                     agalactiae_COH1-contigs.fa
-agalactiae_18RS21-contigs.fa.fasta             agalactiae_A909-contigs.fa.fasta               agalactiae_COH1-contigs.fa.fasta
-agalactiae_18RS21-contigs.fa.fasta-contigs.db  agalactiae_A909-contigs.fa.fasta-contigs.db    agalactiae_COH1-contigs.fa.fasta-contigs.db
-agalactiae_18RS21-external-functions.txt       agalactiae_A909-external-functions.txt         agalactiae_COH1-external-functions.txt
-agalactiae_18RS21-external-gene-calls.txt      agalactiae_A909-external-gene-calls.txt        agalactiae_COH1-external-gene-calls.txt
-agalactiae_515-contigs.fa                      agalactiae_CJB111-contigs.fa                   agalactiae_H36B-contigs.fa
-agalactiae_515-contigs.fa.fasta                agalactiae_CJB111-contigs.fa.fasta             agalactiae_H36B-contigs.fa.fasta
-agalactiae_515-contigs.fa.fasta-contigs.db     agalactiae_CJB111-contigs.fa.fasta-contigs.db  agalactiae_H36B-contigs.fa.fasta-contigs.db
-agalactiae_515-external-functions.txt          agalactiae_CJB111-external-functions.txt       agalactiae_H36B-external-functions.txt
-agalactiae_515-external-gene-calls.txt         agalactiae_CJB111-external-gene-calls.txt      agalactiae_H36B-external-gene-calls.txt
+agalactiae_18RS21_prokka-contigs.fa                   agalactiae_CJB111_prokka-contigs.fa
+agalactiae_18RS21_prokka-contigs.fa.fasta             agalactiae_CJB111_prokka-contigs.fa.fasta
+agalactiae_18RS21_prokka-contigs.fa.fasta-contigs.db  agalactiae_CJB111_prokka-contigs.fa.fasta-contigs.db
+agalactiae_18RS21_prokka-external-functions.txt       agalactiae_CJB111_prokka-external-functions.txt
+agalactiae_18RS21_prokka-external-gene-calls.txt      agalactiae_CJB111_prokka-external-gene-calls.txt
+agalactiae_515_prokka-contigs.fa                      agalactiae_COH1_prokka-contigs.fa
+agalactiae_515_prokka-contigs.fa.fasta                agalactiae_COH1_prokka-contigs.fa.fasta
+agalactiae_515_prokka-contigs.fa.fasta-contigs.db     agalactiae_COH1_prokka-contigs.fa.fasta-contigs.db
+agalactiae_515_prokka-external-functions.txt          agalactiae_COH1_prokka-external-functions.txt
+agalactiae_515_prokka-external-gene-calls.txt         agalactiae_COH1_prokka-external-gene-calls.txt
+agalactiae_A909_prokka-contigs.fa                     agalactiae_H36B_prokka-contigs.fa
+agalactiae_A909_prokka-contigs.fa.fasta               agalactiae_H36B_prokka-contigs.fa.fasta
+agalactiae_A909_prokka-contigs.fa.fasta-contigs.db    agalactiae_H36B_prokka-contigs.fa.fasta-contigs.db
+agalactiae_A909_prokka-external-functions.txt         agalactiae_H36B_prokka-external-functions.txt
+agalactiae_A909_prokka-external-gene-calls.txt        agalactiae_H36B_prokka-external-gene-calls.txt
+
 ~~~
 {: .output}
 
@@ -149,12 +165,12 @@ head external-genomes.txt
 {: .source}
 
 ~~~
-agalactiae_18RS21	agalactiae_18RS21-contigs.db
-agalactiae_515	agalactiae_515-contigs.db
-agalactiae_A909	agalactiae_A909-contigs.db
-agalactiae_CJB111	agalactiae_CJB111-contigs.db
-agalactiae_COH1	agalactiae_COH1-contigs.db
-agalactiae_H36B	agalactiae_H36B-contigs.db
+agalactiae_18RS21_prokka        agalactiae_18RS21_prokka-contigs.db
+agalactiae_515_prokka   agalactiae_515_prokka-contigs.db
+agalactiae_A909_prokka  agalactiae_A909_prokka-contigs.db
+agalactiae_CJB111_prokka        agalactiae_CJB111_prokka-contigs.db
+agalactiae_COH1_prokka  agalactiae_COH1_prokka-contigs.db
+agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
 ~~~
 {: .output}
 
@@ -168,12 +184,13 @@ nano external-genomes.txt
 
 ~~~
   GNU nano 4.8                                                             external-genomes.txt                                                                       
-agalactiae_18RS21       agalactiae_18RS21-contigs.db
-agalactiae_515  agalactiae_515-contigs.db
-agalactiae_A909 agalactiae_A909-contigs.db
-agalactiae_CJB111       agalactiae_CJB111-contigs.db
-agalactiae_COH1 agalactiae_COH1-contigs.db
-agalactiae_H36B agalactiae_H36B-contigs.db
+agalactiae_18RS21_prokka        agalactiae_18RS21_prokka-contigs.db
+agalactiae_515_prokka   agalactiae_515_prokka-contigs.db
+agalactiae_A909_prokka  agalactiae_A909_prokka-contigs.db
+agalactiae_CJB111_prokka        agalactiae_CJB111_prokka-contigs.db
+agalactiae_COH1_prokka  agalactiae_COH1_prokka-contigs.db
+agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
+
 
 
 ^G Get Help     ^O Write Out    ^W Where Is     ^K Cut Text     ^J Justify      ^C Cur Pos      M-U Undo        M-A Mark Text   M-] To Bracket  M-Q Previous
@@ -187,13 +204,14 @@ head external-genomes.txt
 {: .source}
 
 ~~~
-name	contigs_db_path
-agalactiae_18RS21	agalactiae_18RS21-contigs.db
-agalactiae_515	agalactiae_515-contigs.db
-agalactiae_A909	agalactiae_A909-contigs.db
-agalactiae_CJB111	agalactiae_CJB111-contigs.db
-agalactiae_COH1	agalactiae_COH1-contigs.db
-agalactiae_H36B	agalactiae_H36B-contigs.db
+name    contigs_db_path
+agalactiae_18RS21_prokka        agalactiae_18RS21_prokka-contigs.db
+agalactiae_515_prokka   agalactiae_515_prokka-contigs.db
+agalactiae_A909_prokka  agalactiae_A909_prokka-contigs.db
+agalactiae_CJB111_prokka        agalactiae_CJB111_prokka-contigs.db
+agalactiae_COH1_prokka  agalactiae_COH1_prokka-contigs.db
+agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
+
 ~~~
 {: .output}
 
@@ -208,8 +226,9 @@ ls *.db
 {: .source}
 
 ~~~
-agalactiae_18RS21-contigs.db  agalactiae_A909-contigs.db    agalactiae_COH1-contigs.db
-agalactiae_515-contigs.db     agalactiae_CJB111-contigs.db  agalactiae_H36B-contigs.db
+agalactiae_18RS21_prokka-contigs.db  agalactiae_A909_prokka-contigs.db    agalactiae_COH1_prokka-contigs.db
+agalactiae_515_prokka-contigs.db     agalactiae_CJB111_prokka-contigs.db  agalactiae_H36B_prokka-contigs.db
+
 ~~~
 {: .output}
 
@@ -219,12 +238,55 @@ Execute HMM analysis with the `anvi-run-hmms` script to identify matching genes 
 
 ~~~
 ls *contigs.db | while read line; do anvi-run-hmms -c $line; done
-ls
 ~~~
 {: .source}
 
 ~~~
-Salida
+
+HMM Profiling for Ribosomal_RNA_16S
+===============================================
+Reference ....................................: Seeman T, https://github.com/tseemann/barrnap
+Kind .........................................: Ribosomal_RNA_16S
+Alphabet .....................................: RNA
+Context ......................................: CONTIG
+Domain .......................................: N/A
+HMM model path ...............................: /tmp/tmpjguiut54/Ribosomal_RNA_16S.hmm
+Number of genes in HMM model .................: 3
+Noise cutoff term(s) .........................: --cut_ga
+Number of CPUs will be used for search .......: 1
+HMMer program used for search ................: nhmmscan
+Temporary work dir ...........................: /tmp/tmp9q6mevny
+Log file for thread 0 ........................: /tmp/tmp9q6mevny/RNA_contig_sequences.fa.0_log
+Done 🎊
+
+Number of raw hits in table file .............: 7
+Number of weak hits removed by HMMER parser ..: 0
+Number of hits in annotation dict  ...........: 7
+Pruned .......................................: 3 out of 7 hits were removed due to redundancy
+Gene calls added to db .......................: 4 (from source "Ribosomal_RNA_16S")
+
+HMM Profiling for Ribosomal_RNA_23S
+===============================================
+Reference ....................................: Seeman T, https://github.com/tseemann/barrnap
+Kind .........................................: Ribosomal_RNA_23S
+Alphabet .....................................: RNA
+Context ......................................: CONTIG
+Domain .......................................: N/A
+HMM model path ...............................: /tmp/tmpjguiut54/Ribosomal_RNA_23S.hmm
+Number of genes in HMM model .................: 2
+Noise cutoff term(s) .........................: --cut_ga
+Number of CPUs will be used for search .......: 1
+HMMer program used for search ................: nhmmscan
+Temporary work dir ...........................: /tmp/tmp9q6mevny
+Log file for thread 0 ........................: /tmp/tmp9q6mevny/RNA_contig_sequences.fa.0_log
+Done 🎊
+
+Number of raw hits in table file .............: 7
+Number of weak hits removed by HMMER parser ..: 0
+Number of hits in annotation dict  ...........: 7
+Pruned .......................................: 3 out of 7 hits were removed due to redundancy
+Gene calls added to db .......................: 4 (from source "Ribosomal_RNA_23S")
+
 ~~~
 {: .output}
 
@@ -235,22 +297,14 @@ Create the genome database `genomes-storage-db` using the `anvi-gen-genomes-stor
 
 ~~~
 anvi-gen-genomes-storage -e external-genomes.txt -o AGALACTIAE_GENOMES.db
-ls
+ls *.db
 ~~~
 {: .source}
 
 ~~~
-AGALACTIAE_GENOMES.db                      agalactiae_A909-contigs.db                 agalactiae_COH1-contigs.fa
-agalactiae_18RS21-contigs.db               agalactiae_A909-contigs.fa                 agalactiae_COH1-contigs.fa.fasta
-agalactiae_18RS21-contigs.fa               agalactiae_A909-contigs.fa.fasta           agalactiae_COH1-external-functions.txt
-agalactiae_18RS21-contigs.fa.fasta         agalactiae_A909-external-functions.txt     agalactiae_COH1-external-gene-calls.txt
-agalactiae_18RS21-external-functions.txt   agalactiae_A909-external-gene-calls.txt    agalactiae_H36B-contigs.db
-agalactiae_18RS21-external-gene-calls.txt  agalactiae_CJB111-contigs.db               agalactiae_H36B-contigs.fa
-agalactiae_515-contigs.db                  agalactiae_CJB111-contigs.fa               agalactiae_H36B-contigs.fa.fasta
-agalactiae_515-contigs.fa                  agalactiae_CJB111-contigs.fa.fasta         agalactiae_H36B-external-functions.txt
-agalactiae_515-contigs.fa.fasta            agalactiae_CJB111-external-functions.txt   agalactiae_H36B-external-gene-calls.txt
-agalactiae_515-external-functions.txt      agalactiae_CJB111-external-gene-calls.txt  external-genomes.txt
-agalactiae_515-external-gene-calls.txt     agalactiae_COH1-contigs.db
+agalactiae_18RS21_prokka-contigs.db  agalactiae_CJB111_prokka-contigs.db  agalactiae_H36B_prokka-contigs.db
+agalactiae_515_prokka-contigs.db     agalactiae_COH1_prokka-contigs.db
+agalactiae_A909_prokka-contigs.db    AGALACTIAE_GENOMES.db
 ~~~
 {: .output}
 
@@ -270,7 +324,64 @@ anvi-pan-genome -g AGALACTIAE_GENOMES.db \
 {: .source}
 
 ~~~
-SALIDA
+WARNING
+===============================================
+If you publish results from this workflow, please do not forget to cite DIAMOND
+(doi:10.1038/nmeth.3176), unless you use it with --use-ncbi-blast flag, and MCL
+(http://micans.org/mcl/ and doi:10.1007/978-1-61779-361-5_15)
+
+Functions found ..............................:
+Genomes storage ..............................: Initialized (storage hash: hash299bb5bf)
+Num genomes in storage .......................: 6
+Num genomes will be used .....................: 6
+Pan database .................................: A new database,
+                                                /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db,
+                                                has been created.
+Exclude partial gene calls ...................: False
+
+AA sequences FASTA ...........................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/combined-aas.fa
+
+Num AA sequences reported ....................: 13,548
+Num excluded gene calls ......................: 0
+Unique AA sequences FASTA ....................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/combined-aas.fa.unique
+
+WARNING
+===============================================
+You elected to use NCBI's `blastp` for amino acid sequence search. Running
+blastp will be significantly slower than DIAMOND, but in some cases, slightly
+more sensitive. We are unsure about whether the slight increase in sensitivity
+may justify significant increase in run time, but you are the boss.
+
+
+NCBI BLAST MAKEDB
+===============================================
+BLAST search db ..............................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/combined-aas.fa.unique
+
+NCBI BLAST SEARCH
+===============================================
+BLAST results ................................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/blast-search-results.txt
+
+MCL INPUT
+===============================================
+Min percent identity .........................: 0.0
+Minbit .......................................: 0.5
+Filtered search results ......................: 92,757 edges stored
+MCL input ....................................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/mcl-input.txt
+
+MCL
+===============================================
+MCL inflation ................................: 10.0
+MCL output ...................................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/mcl-clusters.txt
+Number of MCL clusters .......................: 2,711
+
+CITATION
+===============================================
+The workflow you are using will likely use 'muscle' by Edgar,
+doi:10.1093/nar/gkh340 (http://www.drive5.com/muscle) to align your sequences.
+If you publish your findings, please do not forget to properly credit this tool.
+
+* Your pangenome is ready with a total of 2,711 gene clusters across 6 genomes 🎉
+
 ~~~
 {: .output}
 
@@ -286,7 +397,24 @@ anvi-display-pan -g AGALACTIAE_GENOMES.db \
 {: .source}
 
 ~~~
-SALIDA
+* The server is up and running 🎉
+
+WARNING
+===============================================
+If you are using OSX and if the server terminates prematurely before you can see
+anything in your browser, try running the same command by putting 'sudo ' at the
+beginning of it (you will be prompted to enter your password if sudo requires
+super user credentials on your system). If your browser does not show up, try
+manually entering the URL shown below into the address bar of your favorite
+browser. *cough* CHROME *cough*.
+
+
+Server address ...............................: http://0.0.0.0:8080
+
+* When you are ready, press CTRL+C once to terminate the server and go back to the
+command line.
+
+
 ~~~
 {: .output}
 
