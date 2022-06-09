@@ -3,7 +3,7 @@ title: "Introduction to pangenomics"
 teaching: 10
 exercises: 10
 questions:
-- "What is the meaning of *pangenome* concept?"
+- "What is the meaning of *pangenome*?"
 - "What kind of biological data can be are integrated and analyzed in a pangenome?"
 - "What factors affect the structure of a pangenome?"
 
@@ -24,7 +24,7 @@ keypoints:
 
 ## What is a pangenome?
 
-The term **pangenome** derives from the Greek *pan*, meaning 'whole' or 'everything', while *genome* describes an organism's complete genetic material. In 2005, Tettelin *et al.* used the term pangenome by first time to describe the entire collection of genes from a group of pathogenic bacteria, named *Streptococcus agalactiae*. Nowadays, pangenome concept has been also applied to other organisms including plants, animals, fungi, virus, etc. Today, the pangenome is defined as the entire set of genes from all strains of a clade.
+The term **pangenome** derives from the Greek *pan*, meaning 'whole' or 'everything', while *genome* describes an organism's complete genetic material. In 2005, Tettelin *et al.* used the term pangenome by first time to describe the entire collection of genes from a group of pathogenic bacteria, named *Streptococcus agalactiae*. Nowadays, pangenome concept has been also applied to other organisms including plants, animals, fungi, virus, etc. To summarize, the term pangenome is defined as the entire set of genes from all strains of a clade.
 
 The pangenome could be divided in three principal components: **core genome** which contains genes present in all the strains compared, **shell genome** a proportion of genes absent in one or more strains and **dispensable genome** comprised by genes that are unique to each strain. 
 
@@ -45,11 +45,14 @@ A **clade** (*kládos*, 'branch'), also known as *monophyletic group*, is a grou
 
 ![Figure 2. Cladogram representation](../fig/Cladogram.png)
 
-
-## Exercise 
-Download data. 
-`wget https://zenodo.org/record/6622053/files/dc_workshop.zip?download=1`
-
+> ## Exercise
+> Download the genome sequences 
+> 
+> ~~~
+> wget https://zenodo.org/record/6622053/files/dc_workshop.zip?download=1
+> ~~~
+> {: .laguage-bash}
+{: .checklist}
 
 ## Brief description of *Streptococcus agalactiae* dataset
 
