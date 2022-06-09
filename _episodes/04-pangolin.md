@@ -18,9 +18,10 @@ keypoints:
 - "panRGP method predicts Regions of Genomic Plasticity which are grouped into insertion sites based on their conserved persistent flanking genes."
 - "PPanGGOLiN is designed to scale up to tens of thousand of geneomes, including whole genomes, metagenomes and single-cell annotated genomes."
 ---
->## Requirements:
+
+> ## Requirements:
 > Install [gephi](https://gephi.org/) to visualize the graphs.
->{: .prereq}
+{: .prereq}
 
 <a href="../fig/01-04-01.png">
   <img src="../fig/01-04-01.png" alt="" />
