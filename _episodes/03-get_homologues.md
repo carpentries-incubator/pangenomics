@@ -31,7 +31,7 @@ Get_Homologues a versatile software package for pan-genome analysis is maintaine
 Please ensure that you are in the environment of Pangenomics. You can omit his step if you have activated the environment.
 
 ~~~
-$ conda activate Pangenomics
+$ conda activate Pangenomics_Globals  
 ~~~
 {: .language-bash}
 Now, We ensure that get_homologues is install
