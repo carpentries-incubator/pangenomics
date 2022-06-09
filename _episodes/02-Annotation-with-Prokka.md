@@ -13,9 +13,9 @@ keypoints:
 - "Prokka is a command line utility that provides rapid prokaryotic genome annotation written in Perl."
 ---
 
-## The `[ncbi-genome-download](https://github.com/kblin)` package: Getting Genomic Data from the NCBI
+## The `ncbi-genome-download` package: Getting Genomic Data from the NCBI
 
-The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. This package is highly useful because we can access to the genomic databases in a very specific way. Then, it will be easier to get the data directly in our work directory.
+The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. This [package]((https://github.com/kblin)) is highly useful because we can access to the genomic databases in a very specific way. Then, it will be easier to get the data directly in our work directory.
 
 The full list of parameters you can incorporate in your dowmloads can be obtained by typing:
 
