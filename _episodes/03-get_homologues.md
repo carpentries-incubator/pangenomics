@@ -112,14 +112,14 @@ Options that control clustering:
 It's necessary that we create a new folder when all results are sent.
 ~~~
 
-$ mkdir -p ~/dc_workshop/results/pangenome/get_homologues/data_get #Create directory (-p create all parents)
-$ cd  ~/dc_workshop/results/pangenome/get_homologues/data_get # Change to the directory 'data_get'
+$ mkdir -p ~/gm_workshop/results/pangenome/get_homologues/data_get #Create directory (-p create all parents)
+$ cd  ~/gm_workshop/results/pangenome/get_homologues/data_get # Change to the directory 'data_get'
 ~~~
 {: .language-bash}
 We need to create a Symbolic link with the file *.gbk*
 ~~~
-$ find ~/dc_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {} . ';' 
-$ ls ~dc_workshop/results/pangenome/get_homologues/data_get #List the symbolic link
+$ find ~/gm_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {} . ';' 
+$ ls ~gm_workshop/results/pangenome/get_homologues/data_get #List the symbolic link
 ~~~
 {: .language-bash}
 
@@ -131,7 +131,7 @@ agalactiae_515_prokka.gbk     agalactiae_CJB111_prokka.gbk  agalactiae_H36B_prok
 
 ## Step 2. Generate the directory clusters
 ~~~
-$ cd  ~/dc_workshop/results/pangenome/get_homologues/
+$ cd  ~/gm_workshop/results/pangenome/get_homologues/
 ~~~
 {: .language-bash}
 
@@ -215,7 +215,7 @@ $ get_homologues.pl -d data_get -M
 # running MCL (inflation=1.5) ...
 # running MCL finished
 
-# find_OMCL_clusters: parsing clusters (/home/betterlab/dc_workshop/results/pangenome/get_homologues_pr/data_get_homologues/tmp/all_ortho.mcl)
+# find_OMCL_clusters: parsing clusters (/home/betterlab/gm_workshop/results/pangenome/get_homologues_pr/data_get_homologues/tmp/all_ortho.mcl)
 
 
 # looking for valid ORF clusters (n_of_taxa=6)...
