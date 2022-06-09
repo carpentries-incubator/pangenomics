@@ -31,10 +31,10 @@ It brings together many aspects of today's cutting-edge strategies including **g
 
 
 
-## The basic process to construct a pangenome starting with genbank files
+## Get all ready to start the Anvi'o workflow to build a pangenome
 
-To start using Anvi'o, activate the conda environment used to installation.
-Instead of (base), the beginning of the line code will be (Pangenomics) indicated that the environment is active. 
+To start using Anvi'o, activate the conda environment **Pangenomics** 
+
 ~~~
 conda activate Pangenomics
 ~~~
@@ -45,22 +45,23 @@ conda activate Pangenomics
 ~~~
 {: .output}
 
-
-Ten steps workflow to construct a Pangenome in Anvi'o
-===============================================
-Move into the directory results and create a directory for the Anvi'o analysis
+Move into the directory named **results** and create a new directory for the Anvi'o analysis
 ~~~
-cd results
+cd dc-workshop/results
 mkdir anvi-o
 cd anvi-o
 ~~~
 {: .source}
 
-Create a directory that will be used to storage all the files necessary to construct the genomes database
+In order to better organize our Anvi'o results, create a new directory named **genome-db** that will be used to storage the genome database needed for the Anvi'o pangenome worflow
 ~~~
 mkdir genome-db
 ~~~
 {: .source}
+
+
+Ten steps workflow to construct a Pangenome in Anvi'o
+===============================================
 
 Step 1
 ===============================================
