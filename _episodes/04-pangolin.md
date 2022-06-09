@@ -108,7 +108,7 @@ Before start using PPanGGOLiN, activate the Pangenomics environment.
 ~~~
 conda activate Pangenomics
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 (Pangenomics) betterlab@betterlabub:~$
@@ -123,7 +123,7 @@ cd ~/dc_workshop/results/pangenome
 mkdir ppanggolin
 ls -la
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 drwxrwxr-x  3 betterlab betterlab 4096 Jun  6 15:10 .
@@ -137,7 +137,7 @@ Return to the main directory.
 ~~~
 cd ..
 ~~~
-{: .source}
+{: .language-bash}
 
 ### Step 2: Identify and explore the genome files
 
@@ -147,7 +147,7 @@ cd ..
 cd ~/dc_workshop/results/annotated
 ls *.gbk
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 agalactiae_18RS21_prokka.gbk  agalactiae_A909_prokka.gbk    agalactiae_COH1_prokka.gbk  equinus_strain_HJ50.gbk  thermophilus_LMD-9.gbk
@@ -162,7 +162,7 @@ Each line of this file represent one organism, first column contains a unique or
 ~~~
 ls agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\t/home/betterlab/dc_workshop/results/annotated/'$line.gbk >> ~/dc_workshop/results/pangenome/ppanggolin/organisms.gbk.list; done
 ~~~
-{: .source}
+{: .language-bash}
 
 Move to the working directory.
 ~~~
@@ -171,7 +171,7 @@ cd ~/dc_workshop/results/pangenome/ppanggolin/
 ls
 head organisms.gbk.list
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 agalactiae_18RS21        /home/betterlab/dc_workshop/results/annotated/agalactiae_18RS21.gbk
@@ -190,7 +190,7 @@ Using the organisms list, annotation of genomes is made with the 'annotate' modu
 ~~~
 ppanggolin annotate --anno organisms.gbk.list --output pangenome
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 2022-06-07 19:42:23 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin annotate --anno organisms.gbk.list --output pangenome
@@ -209,7 +209,7 @@ Now a new directory was created.
 ~~~
 ls
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 organisms.gbk.list  pangenome
@@ -221,7 +221,7 @@ Move into the pangenome/ directory and explore it.
 cd pangenome/
 ls -lah pangenome.h5
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 -rw-rw-r-- 1 betterlab betterlab 6.4M Jun  7 19:42 pangenome.h5
@@ -235,7 +235,7 @@ The pangenome.h5 file will be used as input and output for all subsequent analys
 ~~~
 ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 2022-06-07 19:45:05 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin cluster --pangenome pangenome.h5 --cpu 8
@@ -272,7 +272,7 @@ The results are saved in the pangenome.h5 file given as input.
 ~~~
 ls -lah pangenome.h5
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 -rw-rw-r-- 1 betterlab betterlab 7.1M Jun  7 19:45 pangenome.h5
@@ -284,7 +284,7 @@ ls -lah pangenome.h5
 ~~~
 ppanggolin graph --pangenome pangenome.h5 --cpu 8 
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 2022-06-07 19:46:13 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin graph --pangenome pangenome.h5 --cpu 8
@@ -310,7 +310,7 @@ The results are saved in the pangenome.h5 file given as input.
 ~~~
 ls -lah pangenome.h5
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 -rw-rw-r-- 1 betterlab betterlab 7.1M Jun  7 19:46 pangenome.h5
@@ -327,7 +327,7 @@ In most cases, you should let the statistical criterion used by PPanGGOLiN find 
 ~~~
 ppanggolin partition --pangenome pangenome.h5 --cpu 8
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 2022-06-07 19:47:17 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin partition --pangenome pangenome.h5 --cpu 8
@@ -358,7 +358,7 @@ All the results will be added to the given 'pangenome.h5' input file.
 ~~~
 ls -lah pangenome.h5
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 -rw-rw-r-- 1 betterlab betterlab 7.2M Jun  7 19:47 pangenome.h5
@@ -370,7 +370,7 @@ ls -lah pangenome.h5
 ~~~
 ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 2022-06-07 19:48:13 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin rgp --pangenome pangenome.h5 --cpu 8
@@ -396,7 +396,7 @@ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 ~~~
 ls -lah pangenome.h5
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 -rw-rw-r-- 1 betterlab betterlab 7.2M Jun  7 19:48 pangenome.h5
@@ -408,7 +408,7 @@ You also can obtain a list of the plastic regions (RGPs) for each genome by usin
 ~~~
 ppanggolin write -p pangenome.h5 --regions --output rgp
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 2022-06-07 19:49:07 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin write -p pangenome.h5 --regions --output rgp
@@ -431,7 +431,7 @@ Explore the rgp results.
 cd rgp/
 ls
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 plastic_regions.tsv
@@ -441,7 +441,7 @@ plastic_regions.tsv
 ~~~
 head plastic_regions.tsv
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 region                  organism                        contig          start   stop    genes   contigBorder    wholeContig
@@ -461,12 +461,12 @@ Return to the working directory.
 ~~~
 cd ..
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 ls -lah pangenome.h5
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 -rw-rw-r-- 1 betterlab betterlab 7.2M Jun  7 19:48 pangenome.h5
@@ -478,7 +478,7 @@ ls -lah pangenome.h5
 ~~~
 ppanggolin spot --pangenome pangenome.h5 --cpu 8
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 2022-06-07 19:52:43 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin spot --pangenome pangenome.h5 --cpu 8
@@ -510,7 +510,7 @@ You also can obtain a list of the spots for each genome by using the module writ
 ~~~
 ppanggolin write -p pangenome.h5 --spots --output spots
 ~~~
-{: .source}
+{: .language-bash}
 ~~~
 2022-06-07 19:54:06 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin write -p pangenome.h5 --spots --output spots
 2022-06-07 19:54:06 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
@@ -535,7 +535,7 @@ Explore the spots results.
 cd spots/
 ls
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 spots.tsv  summarize_spots.tsv
@@ -545,7 +545,7 @@ spots.tsv  summarize_spots.tsv
 ~~~
 head spots.tsv
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 spot_id rgp_id
@@ -564,7 +564,7 @@ spot_1  AAJS01000021.1_RGP_0
 ~~~
 head summarize_spots.tsv
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 spot    nb_rgp  nb_families     nb_unique_family_sets   mean_nb_genes   stdev_nb_genes  max_nb_genes    min_nb_genes
@@ -584,12 +584,12 @@ Return to the working directory.
 ~~~
 cd ..
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 ls -lah pangenome.h5
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 -rw-rw-r-- 1 betterlab betterlab 7.2M Jun  7 19:52 pangenome.h5
@@ -608,7 +608,7 @@ A U-shaped plot is a figure presenting the number of families (y axis) per numbe
 ~~~
 ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 2022-06-07 19:59:03 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurvep
@@ -631,7 +631,7 @@ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 cd draw_ucurve/
 ls
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 Ushaped_plot.html
@@ -642,7 +642,7 @@ Return to the working directory.
 ~~~
 cd ..
 ~~~
-{: .source}
+{: .language-bash}
 
 
 #### Visualize the result
@@ -651,13 +651,13 @@ Open a new terminal locally. Then move to the desire directory where the images 
 ~~~
 cd .\Desktop\Workshop\
 ~~~
-{: .source}
+{: .language-bash}
 
 Copy the image to your directory using `scp` and write the password of the server.
 ~~~
 scp betterlab@132.248.196.38:~/dc_workshop/results/pangenome/ppanggolin/pangenome/draw_ucurve/Ushaped_plot.html .
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 Ushaped_plot.html                                                                     100% 3405KB   3.2MB/s   00:01
@@ -677,7 +677,7 @@ If you build your pangenome using the 'workflow' subcommand and you have more th
 ~~~
 ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 2022-06-07 20:04:15 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
@@ -706,7 +706,7 @@ If you do not want the 'cloud' gene families as it is a lot of data and can be h
 ~~~
 ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_tile_nocloud
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 2022-06-07 20:04:53 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_tile_nocloud
@@ -761,18 +761,18 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > ~~~
 > ppanggolin write -p pangenome.h5 --gexf --output gexf
 > ~~~
-> {: .source}
+> {: .language-bash}
 > 
 > 2. With `scp` copy the produced file in your local computer. 
 > 3. Open the file in the Gephi program. 
 > 4. Go to the layout section and in the selection bar choose the ForceAtlas2. 
 > 5. In Tunning section mark the stronger gravity box and set the scale in 4000.
 > 6. Finally color the nodes according to:
-> > * Partition. 
-> > * Number of organisms. 
-> > * Number of genes. 
-> > * Proteins function (product).
-> > * Gene neighborhood (edges).
+> > a) Partition. 
+> > b) Number of organisms. 
+> > c) Number of genes. 
+> > d) Proteins function (product).
+> > e) Gene neighborhood (edges).
 > 
 {: .challenge}
 
