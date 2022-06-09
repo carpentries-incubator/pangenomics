@@ -141,21 +141,21 @@ usage:
 ~~~
 {: .output}
 
-Once we know about the flags we can use, we are ready to use the package but first we need to go to our data folder.
+Once we know about the flags we can use, we are ready to use the package but first we need to go to our data directory.
 
 ~~~
 cd dc_workshop/data
 ~~~
 {: .bash}
 
-If you list the contents of this directory (using the `ls` command), you'll see several folders, each of which contain the raw data of different strains of Streptococcus agalactiae used in Tettelin et al (2005). We will add a new entry to this directory by downloading a FASTA file of the genoms of all Streptococcus equinus strains available on NCBI:
+If you list the contents of this directory (using the `ls` command), you'll see several folders, each of which contain the raw data of different strains of Streptococcus agalactiae used in Tettelin et al (2005). We will add a new entry to this directory by downloading a FASTA file of the genomes of all Streptococcus constellatus strains available on NCBI:
 
 ~~~
-ncbi-genome-download --formats fasta  --genera "Streptococcus equinus" bacteria
+ncbi-genome-download --formats fasta  --genera "Streptococcus constellatus" bacteria
 ~~~
 {: .bash}
 
-The above code will display a new genbank directory with subdirectories named after their assembly NCBI number.
+The above code will display a new Genbank directory with subdirectories named after their NCBI assembly number.
 
 The `gbk` files contained within this folder are used for the posterior analysis. It provides information about the coding sequences, their locus, the name of the protein, and the full nucleotide sequence of the assembly. By setting the `--formats` parameter to `genbank`, you tell the script to download `gbk` files.
 
@@ -201,12 +201,12 @@ The `gbk` files contained within this folder are used for the posterior analysis
 ## Prokka: Annotating Genomes
 
 Annotation is a process of identifying the locations of genes and all the coding regions in a genome and determining
-what those genes do. For this, an unknown sequence is enriched with information relating genomic position, regulatory
+what those genes are for. For this, an unknown sequence is enriched with information relating genomic position, regulatory
 sequences, repeats, gene name and protein products [1](https://en.wikipedia.org/wiki/DNA_annotation). This information
 is stored in genomic databases to help future analysis processing new data.
 
 Prokka is a command-line software tool created in Perl to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files[2](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false).
-It expects a preassembled genomic DNA sequences in FASTA format, which is the only mandatory parameter to the software.
+It expects a preassembled genomic DNA sequences in FASTA format as the input file, which is the only mandatory parameter to the software.
 For annotation, Prokka relies on external features and databases to identify the genomic features within the contigs.
 
 | Tool(reference) | Features predicted |
@@ -362,7 +362,7 @@ QSINTAKNTLKGIECIYALYKKNRRSLQIYGFSPCHEISIMLAS*
 
 > ## Exercise 2: Extracting tRNAs with Prokka
 >
-> Using Prokka, create a TSV file that only contains the tRNAs of the Streptococcus ratti ATCC 31377 strain that you have downloaded in Exercise 1.
+> Using Prokka, annotate the FASTA format assembly of the Streptococcus ratti ATCC 31377 strain that you have downloaded in Exercise 1. Then explore the output files, focus on the TSV one and extract the tRNAs in a new file.
 >
 > > ## Solution
 > >
