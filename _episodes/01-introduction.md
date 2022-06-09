@@ -3,19 +3,21 @@ title: "Introduction to pangenomics"
 teaching: 10
 exercises: 10
 questions:
-- "What is a pangenome?"
-- "What kind of biological data is analyzed in "
-- "How can I perform a pangenome analysis?"
+- "What is the meaning of *pangenome* concept?"
+- "What kind of biological data can be are integrated and analyzed in a pangenome?"
+- "What factors affect the structure of a pangenome?"
 
 objectives:
-- "To learn to perform a pangenome analysis by using different bioinformatic tools"
-- "To understand the concept of *pangenome* and its principal components"
-- "To discuss the impact "
+- "Understand the concept of *pangenome*"
+- "Define the different structures of the pangenomes"
+- "Learn what kind of biological data are needed to perform a pangenome analysis"
+- "To discuss applications and questions that could be solved with a pangenome analysis"
+
 keypoints:
 - "The pangenome is the entire set of genes from all strains of a clade."
 - "The principal components of a pangenome are: 'core', 'shell', and 'dispensable'"
-- "Open pangenome occurs when the size of the pangenome increases considerably every added genome (p. e. *Escherichia coli*)"
-- "Closed pangenome occurs when only few gene families are incorporated to the pangenome when a new member of the clade is added." 
+- "An *open pangenome* occurs when the size of the pangenome increases considerably every added genome"
+- "A *closed pangenome* occurs when only few gene families are incorporated to the pangenome when a new member of the clade is added" 
 - "A pangenome can be obtained by gathering and computing the complete genome sequence of the members of a clade by using specialized bioinformatic tools"
 
 ---
