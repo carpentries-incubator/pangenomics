@@ -140,18 +140,91 @@ $ get_homologues.pl -d data_get
 ~~~
 {: .language-bash}
 
+~~~
+# finding BDBHs between agalactiae_18RS21_prokka.gbk and agalactiae_COH1_prokka.gbk
+# 1369 sequences
+
+# clustering inparalogues in agalactiae_H36B_prokka.gbk
+# 71 sequences
+
+# finding BDBHs between agalactiae_18RS21_prokka.gbk and agalactiae_H36B_prokka.gbk
+# 1390 sequences
+
+# looking for valid ORF clusters (n_of_taxa=6)...
+
+
+# number_of_clusters = 1105
+# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_.cluster_list
+# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_
+
+# runtime: 838 wallclock secs (10.78 usr  0.25 sys + 560.38 cusr 10.61 csys = 582.02 CPU)
+# RAM use: 65.8 MB
+~~~
+{: .output}
+
 To generate the directory cluster with COG 
 
 ~~~
 $ get_homologues.pl -d data_get -G
 ~~~
 {: .language-bash}
+
+~~~
+# creating indexes, this might take some time (lines=3.15e+05) ...
+
+# construct_taxa_indexes: number of taxa found = 6
+# number of file addresses/BLAST queries = 1.2e+04
+
+# clustering orthologous sequences
+# checking lineage-specific expansions
+# making COGs
+# prunning COGs
+# done
+
+# looking for valid ORF clusters (n_of_taxa=6)...
+
+
+# number_of_clusters = 1115
+# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_.cluster_list
+# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_
+
+# runtime: 17 wallclock secs ( 1.51 usr  0.07 sys +  3.12 cusr  0.83 csys =  5.53 CPU)
+# RAM use: 60.0 MB
+~~~
+{: .output}
+
 To Generate the OMCL cluster director y(OMCL, PubMed=12952885)
 
 ~~~
 $ get_homologues.pl -d data_get -M
 ~~~
 {: .source}
+
+~~~
+# identifying inparalogs in agalactiae_COH1_prokka.gbk
+# 60 sequences
+
+# identifying inparalogs in agalactiae_H36B_prokka.gbk
+# 71 sequences
+
+# running MCL (inflation=1.5) ...
+# running MCL finished
+
+# find_OMCL_clusters: parsing clusters (/home/betterlab/dc_workshop/results/pangenome/get_homologues_pr/data_get_homologues/tmp/all_ortho.mcl)
+
+
+# looking for valid ORF clusters (n_of_taxa=6)...
+
+
+# number_of_clusters = 1110
+# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_.cluster_list
+# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_
+
+# runtime:  6 wallclock secs ( 3.51 usr  0.13 sys +  0.88 cusr  0.31 csys =  4.83 CPU)
+# RAM use: 67.0 MB
+~~~
+{: .output}
+
 
 ## Step 3. Compare all clusters from diferent algoritms
 ~~~
