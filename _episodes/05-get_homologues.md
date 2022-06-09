@@ -36,7 +36,7 @@ conda activate Pangenomics
 Now, We ensure that get_homologues is install
 
 ~~~
-get_homologues.pl -h
+$ get_homologues.pl -h
 ~~~
 {: .language-bash}
 
@@ -110,9 +110,9 @@ Options that control clustering:
 ## Step 1. Generate a folder get_homologues
 It's necessary that we create a new folder when all results are sent.
 ~~~
-mkdir ~dc_workshop/results/pangenome/get_homologues
-mkdir ~dc_workshop/results/pangenome/get_homologues/data_get
-cd  ~dc_workshop/results/pangenome/get_homologues/data_get
+$ mkdir ~dc_workshop/results/pangenome/get_homologues
+$ mkdir ~dc_workshop/results/pangenome/get_homologues/data_get
+$ cd  ~dc_workshop/results/pangenome/get_homologues/data_get
 ~~~
 {: .language-bash}
 We need to create a Symbolic link with the file *.gbk*
@@ -131,26 +131,26 @@ agalactiae_515_prokka.gbk     agalactiae_CJB111_prokka.gbk  agalactiae_H36B_prok
 ## Step 2. Generate the directory clusters
 To generate the directory clusters with BDBH, this option is default.
 ~~~
-get_homologues.pl -d dc_workshop/data/*/*.gbk
+$ get_homologues.pl -d data_get
 ~~~
 {: .language-bash}
 
 To generate the directory cluster with COG 
 
 ~~~
-get_homologues.pl -d dc_workshop/data/*/*.gbk -G
+$ get_homologues.pl -d data_get -G
 ~~~
 {: .language-bash}
 To Generate the OMCL cluster director y(OMCL, PubMed=12952885)
 
 ~~~
-get_homologues.pl -d dc_workshop/data/*/*.gbk -M
+$ get_homologues.pl -d data_get -M
 ~~~
 {: .source}
 
 ## Step 3. Compare all clusters from diferent algoritms
 ~~~
-compare_clusters.pl -o alg_intersection -m -d\
+$ compare_clusters.pl -o alg_intersection -m -d\
 gbk_homologues/A909_f0_alltaxa_algBDBH_e0_,\
 gbk_homologues/A909_f0_alltaxa_algCOG_e0_,\
 gbk_homologues/A909_f0_alltaxa_algOMCL_e0_
