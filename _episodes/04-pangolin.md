@@ -779,28 +779,28 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > > 
 > > e) Gene neighborhood (edges).
 > > 
-> >   ## Solution
-> > a) <a href="../fig/01-04-06.png">
-> > <img src="../fig/01-04-06.png" alt="" />
-> > </a>
-> > 
-> > b) <a href="../fig/01-04-07.png">
-> > <img src="../fig/01-04-07.png" alt="" />
-> > </a>
-> > 
-> > c) <a href="../fig/01-04-08.png">
-> > <img src="../fig/01-04-08.png" alt="" />
-> > </a>
-> > 
-> > d) <a href="../fig/01-04-09.png">
-> > <img src="../fig/01-04-09.png" alt="" />
-> > </a>
-> > 
-> > e) <a href="../fig/01-04-10.png">
-> > <img src="../fig/01-04-10.png" alt="" />
-> > </a>
-> > {: .solution}
-> {: .challenge}
+> > > ## Solution
+> > > a) <a href="../fig/01-04-06.png">
+> > > <img src="../fig/01-04-06.png" alt="" />
+> > > </a>
+> > >
+> > > b) <a href="../fig/01-04-07.png">
+> > > <img src="../fig/01-04-07.png" alt="" />
+> > > </a>
+> > >
+> > > c) <a href="../fig/01-04-08.png">
+> > > <img src="../fig/01-04-08.png" alt="" />
+> > > </a>
+> > >
+> > > d) <a href="../fig/01-04-09.png">
+> > > <img src="../fig/01-04-09.png" alt="" />
+> > > </a>
+> > >
+> > > e) <a href="../fig/01-04-10.png">
+> > > <img src="../fig/01-04-10.png" alt="" />
+> > > </a>
+> > >{: .solution}
+> >{: .challenge}
 
 
 {% include links.md %}
