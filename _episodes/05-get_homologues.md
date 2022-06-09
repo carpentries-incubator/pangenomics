@@ -239,12 +239,12 @@ gbk_homologues/A909_f0_alltaxa_algOMCL_e0_
 ~~~
 {: .language-bash}
 ~~~
-number_of_clusters = 1105
-cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_.cluster_list
-cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_
+# number_of_clusters = 1105
+# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_.cluster_list
+# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_
 
-runtime: 840 wallclock secs (13.44 usr  0.24 sys + 593.88 cusr 10.63 csys = 618.19 CPU)
-RAM use: 65.8 MB
+# runtime: 840 wallclock secs (13.44 usr  0.24 sys + 593.88 cusr 10.63 csys = 618.19 CPU)
+# RAM use: 65.8 MB
 ~~~
 {: .output}
 
