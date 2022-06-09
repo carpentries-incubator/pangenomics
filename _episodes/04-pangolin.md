@@ -799,8 +799,8 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > > > e) <a href="../fig/01-04-10.png">
 > > > <img src="../fig/01-04-10.png" alt="" />
 > > > </a>
-> > >{: .solution}
-> >{: .challenge}
+> >{: .solution}
+>{: .challenge}
 
 
 {% include links.md %}
