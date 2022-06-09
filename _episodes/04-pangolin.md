@@ -78,7 +78,10 @@ They can be manipulated and visualised through a software called Gephi, with whi
   <img src="../fig/01-04-05.png" width="512" height="512" alt="" />
 </a>
 
-For more details you can check this article Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partitioned pangenome graph. PLOS Computational Biology 16(3): e1007732. [https://doi.org/10.1371/journal.pcbi.1007732](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732).
+> ## References:
+> For more details you can check this article:
+> Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partitioned pangenome graph. PLOS Computational Biology 16(3): e1007732. [https://doi.org/10.1371/journal.pcbi.1007732](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732).
+{: .callout}
 
 > ## Exercise 1: Partitions. 
 >   Which are the pangenome partitions made by PPanGGOLiN? 
@@ -112,9 +115,7 @@ conda activate Pangenomics
 {: .output}
 
 
-### Step 1
-
-**Create a work directory for PPanGGOLiN analysis**
+### Step 1: Create a work directory
 
 ~~~
 cd ~/dc_workshop/results/pangenome
@@ -137,8 +138,9 @@ cd ..
 ~~~
 {: .source}
 
-### Step 2
-**Identify and explore the genome files (.gbk)**
+### Step 2: Identify and explore the genome files
+
+
 
 ~~~
 cd ~/dc_workshop/results/annotated
@@ -152,8 +154,7 @@ agalactiae_515_prokka.gbk     agalactiae_CJB111_prokka.gbk  agalactiae_H36B_prok
 ~~~
 {: .output}
 
-### Step 3
-**Obtain a tsv-separated file with the genomes information**
+### Step 3: Obtain genome list
 
 Each line of this file represent one organism, first column contains a unique organism name and the second column contains the path to the associate gbk file.
 
@@ -181,8 +182,7 @@ agalactiae_H36B  /home/betterlab/dc_workshop/results/annotated/agalactiae_H36B.g
 ~~~
 {: .output}
 
-### Step 4
-**Genome annotation**
+### Step 4: Genome annotation
 
 Using the organisms list, annotation of genomes is made with the 'annotate' module of PPanGGOLiN.
 
@@ -229,8 +229,7 @@ ls -lah pangenome.h5
 
 The pangenome.h5 file will be used as input and output for all subsequent analysis.
 
-### Step 5
-**Gene clustering**
+### Step 5: Gene clustering
 
 ~~~
 ppanggolin cluster --pangenome pangenome.h5 --cpu 8
@@ -279,8 +278,7 @@ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-### Step 6
-**Build the pangenome graph**
+### Step 6: Build the pangenome graph
 
 ~~~
 ppanggolin graph --pangenome pangenome.h5 --cpu 8 
@@ -318,8 +316,7 @@ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-### Step 7
-**Pangenome partition**
+### Step 7: Pangenome partition
 
 This is the step that will assign gene families to the 'persistent', 'shell', or 'cloud' partitions.
 The one parameter that might be of importance is the '-K', or '--nb_of_partitions' parameter. This will define the number of classes used to partition the pangenome. This may be of use if you expect to have well-defined subpopulations in your pangenome and you know exactly how many. If not, that number if detected automatically through an ICL criterion. The idea is that the most present partition will be 'persistent', the least present will be 'cloud', and all the others will be 'shell'. The number of partitions corresponding to the shell will be the number of expected subpopulations in your pangenome. (So if you expect 5 subpopulations, you could use -K 7).
@@ -367,8 +364,7 @@ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-### Step 8
-**Predict the regions of genome plasticity with RGP module**
+### Step 8: Plasticity regions
 
 ~~~
 ppanggolin rgp --pangenome pangenome.h5 --cpu 8
@@ -476,8 +472,7 @@ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-### Step 9
-**Compute the spots of insertion**
+### Step 9: Spots of insertion
 
 ~~~
 ppanggolin spot --pangenome pangenome.h5 --cpu 8
@@ -601,8 +596,7 @@ ls -lah pangenome.h5
 {: .output}
 
 
-### Step 10
-**Compute the pangenome results**
+### Step 10: Draw pangenome plots
 
 PPanGGOLiN provides multiple outputs to describe a pangenome. In this section the different outputs will be described.
 
@@ -650,7 +644,7 @@ cd ..
 {: .source}
 
 
-#### Visualize this result
+#### Visualize the result
 
 Open a new terminal locally. Then move to the desire directory where the images will be download.
 ~~~
@@ -660,7 +654,7 @@ cd .\Desktop\Workshop\
 
 Copy the image to your directory using `scp` and write the password of the server.
 ~~~
-scp betterlab@132.248.196.38:/dc_workshop/results/pangenome/ppanggolin/pangenome/draw_ucurve/Ushaped_plot.html .
+scp betterlab@132.248.196.38:~/dc_workshop/results/pangenome/ppanggolin/pangenome/draw_ucurve/Ushaped_plot.html .
 ~~~
 {: .source}
 
