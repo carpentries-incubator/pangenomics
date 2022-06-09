@@ -34,6 +34,12 @@ conda activate Pangenomics
 ~~~
 {: .source}
 Now, We ensure that get_homologues is install
+
+> get_homologues.pl -h
+
+{: .laguage-bash}
+
+
 ~~~
 get_homologues.pl -h
 ~~~
@@ -104,10 +110,7 @@ Options that control clustering:
 > Get_homologues suggests that you run your data with a directory because you could add a new file *.gbk* in the future, if necessary.
 {: .callout}
 
-~~~
-Note: Get_homologues suggests that you run your data with a directory because you could add a new file *.gbk* in the future, if necessary.
-~~~
-{: .callout}
+
 ## Step 1. Generate a folder get_homologues
 It's necessary that we create a new folder when all results are sent.
 ~~~
