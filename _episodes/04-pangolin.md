@@ -106,7 +106,7 @@ They can be manipulated and visualised through a software called Gephi, with whi
 Before start using PPanGGOLiN, activate the Pangenomics environment. 
 
 ~~~
-conda activate Pangenomics
+$ conda activate Pangenomics
 ~~~
 {: .language-bash}
 
@@ -119,9 +119,9 @@ conda activate Pangenomics
 ### Step 1: Create a work directory
 
 ~~~
-cd ~/dc_workshop/results/pangenome
-mkdir ppanggolin
-ls -la
+$ cd ~/gm_workshop/results/pangenome
+$ mkdir ppanggolin
+$ ls -la
 ~~~
 {: .language-bash}
 
@@ -135,7 +135,7 @@ drwxrwxr-x  2 betterlab betterlab 4096 Jun  6 15:10 ppanggolin
 
 Return to the main directory.
 ~~~
-cd ..
+$ cd ..
 ~~~
 {: .language-bash}
 
@@ -144,8 +144,8 @@ cd ..
 
 
 ~~~
-cd ~/dc_workshop/results/annotated
-ls *.gbk
+$ cd ~/gm_workshop/results/annotated
+$ ls *.gbk
 ~~~
 {: .language-bash}
 
@@ -160,26 +160,26 @@ agalactiae_515_prokka.gbk     agalactiae_CJB111_prokka.gbk  agalactiae_H36B_prok
 Each line of this file represent one organism, first column contains a unique organism name and the second column contains the path to the associate gbk file.
 
 ~~~
-ls agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\t/home/betterlab/dc_workshop/results/annotated/'$line.gbk >> ~/dc_workshop/results/pangenome/ppanggolin/organisms.gbk.list; done
+$ ls agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\t/home/betterlab/gm_workshop/results/annotated/'$line.gbk >> ~/gm_workshop/results/pangenome/ppanggolin/organisms.gbk.list; done
 ~~~
 {: .language-bash}
 
 Move to the working directory.
 ~~~
-cd 
-cd ~/dc_workshop/results/pangenome/ppanggolin/
-ls
-head organisms.gbk.list
+$ cd 
+$ cd ~/gm_workshop/results/pangenome/ppanggolin/
+$ ls
+$ head organisms.gbk.list
 ~~~
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21        /home/betterlab/dc_workshop/results/annotated/agalactiae_18RS21.gbk
-agalactiae_515   /home/betterlab/dc_workshop/results/annotated/agalactiae_515.gbk
-agalactiae_A909  /home/betterlab/dc_workshop/results/annotated/agalactiae_A909.gbk
-agalactiae_CJB111        /home/betterlab/dc_workshop/results/annotated/agalactiae_CJB111.gbk
-agalactiae_COH1  /home/betterlab/dc_workshop/results/annotated/agalactiae_COH1.gbk
-agalactiae_H36B  /home/betterlab/dc_workshop/results/annotated/agalactiae_H36B.gbk
+agalactiae_18RS21        /home/betterlab/gm_workshop/results/annotated/agalactiae_18RS21.gbk
+agalactiae_515   /home/betterlab/gm_workshop/results/annotated/agalactiae_515.gbk
+agalactiae_A909  /home/betterlab/gm_workshop/results/annotated/agalactiae_A909.gbk
+agalactiae_CJB111        /home/betterlab/gm_workshop/results/annotated/agalactiae_CJB111.gbk
+agalactiae_COH1  /home/betterlab/gm_workshop/results/annotated/agalactiae_COH1.gbk
+agalactiae_H36B  /home/betterlab/gm_workshop/results/annotated/agalactiae_H36B.gbk
 ~~~
 {: .output}
 
@@ -188,7 +188,7 @@ agalactiae_H36B  /home/betterlab/dc_workshop/results/annotated/agalactiae_H36B.g
 Using the organisms list, annotation of genomes is made with the 'annotate' module of PPanGGOLiN.
 
 ~~~
-ppanggolin annotate --anno organisms.gbk.list --output pangenome
+$ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 ~~~
 {: .language-bash}
 
@@ -207,7 +207,7 @@ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 
 Now a new directory was created.
 ~~~
-ls
+$ ls
 ~~~
 {: .language-bash}
 
@@ -218,8 +218,8 @@ organisms.gbk.list  pangenome
 
 Move into the pangenome/ directory and explore it. 
 ~~~
-cd pangenome/
-ls -lah pangenome.h5
+$ cd pangenome/
+$ ls -lah pangenome.h5
 ~~~
 {: .language-bash}
 
@@ -233,7 +233,7 @@ The pangenome.h5 file will be used as input and output for all subsequent analys
 ### Step 5: Gene clustering
 
 ~~~
-ppanggolin cluster --pangenome pangenome.h5 --cpu 8
+$ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
 
@@ -270,7 +270,7 @@ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 The results are saved in the pangenome.h5 file given as input.
 
 ~~~
-ls -lah pangenome.h5
+$ ls -lah pangenome.h5
 ~~~
 {: .language-bash}
 
@@ -282,7 +282,7 @@ ls -lah pangenome.h5
 ### Step 6: Build the pangenome graph
 
 ~~~
-ppanggolin graph --pangenome pangenome.h5 --cpu 8 
+$ ppanggolin graph --pangenome pangenome.h5 --cpu 8 
 ~~~
 {: .language-bash}
 
@@ -308,7 +308,7 @@ Processing agalactiae_H36B_prokka: 100%|█████████████�
 The results are saved in the pangenome.h5 file given as input.
 
 ~~~
-ls -lah pangenome.h5
+$ ls -lah pangenome.h5
 ~~~
 {: .language-bash}
 
@@ -325,7 +325,7 @@ The one parameter that might be of importance is the '-K', or '--nb_of_partition
 In most cases, you should let the statistical criterion used by PPanGGOLiN find the optimal number of partitions for you.
 
 ~~~
-ppanggolin partition --pangenome pangenome.h5 --cpu 8
+$ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
 
@@ -356,7 +356,7 @@ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 All the results will be added to the given 'pangenome.h5' input file.
 
 ~~~
-ls -lah pangenome.h5
+$ ls -lah pangenome.h5
 ~~~
 {: .language-bash}
 
@@ -368,7 +368,7 @@ ls -lah pangenome.h5
 ### Step 8: Plasticity regions
 
 ~~~
-ppanggolin rgp --pangenome pangenome.h5 --cpu 8
+$ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
 
@@ -394,7 +394,7 @@ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 {: .output}
 
 ~~~
-ls -lah pangenome.h5
+$ ls -lah pangenome.h5
 ~~~
 {: .language-bash}
 
@@ -406,7 +406,7 @@ ls -lah pangenome.h5
 You also can obtain a list of the plastic regions (RGPs) for each genome by using the module write.
 
 ~~~
-ppanggolin write -p pangenome.h5 --regions --output rgp
+$ ppanggolin write -p pangenome.h5 --regions --output rgp
 ~~~
 {: .language-bash}
 
@@ -428,8 +428,8 @@ ppanggolin write -p pangenome.h5 --regions --output rgp
 Explore the rgp results.
 
 ~~~
-cd rgp/
-ls
+$ cd rgp/
+$ ls
 ~~~
 {: .language-bash}
 
@@ -439,7 +439,7 @@ plastic_regions.tsv
 {: .output}
 
 ~~~
-head plastic_regions.tsv
+$ head plastic_regions.tsv
 ~~~
 {: .language-bash}
 
@@ -459,24 +459,24 @@ AAJO01000087.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000087.1  512     
 
 Return to the working directory.
 ~~~
-cd ..
+$ cd ..
 ~~~
 {: .language-bash}
 
 ~~~
-ls -lah pangenome.h5
+$ ls -lah pangenome.h5
 ~~~
 {: .language-bash}
 
 ~~~
--rw-rw-r-- 1 betterlab betterlab 7.2M Jun  7 19:48 pangenome.h5
+$ -rw-rw-r-- 1 betterlab betterlab 7.2M Jun  7 19:48 pangenome.h5
 ~~~
 {: .output}
 
 ### Step 9: Spots of insertion
 
 ~~~
-ppanggolin spot --pangenome pangenome.h5 --cpu 8
+$ ppanggolin spot --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
 
@@ -508,7 +508,7 @@ ppanggolin spot --pangenome pangenome.h5 --cpu 8
 You also can obtain a list of the spots for each genome by using the module write.
 
 ~~~
-ppanggolin write -p pangenome.h5 --spots --output spots
+$ ppanggolin write -p pangenome.h5 --spots --output spots
 ~~~
 {: .language-bash}
 ~~~
@@ -532,8 +532,8 @@ ppanggolin write -p pangenome.h5 --spots --output spots
 Explore the spots results.
 
 ~~~
-cd spots/
-ls
+$ cd spots/
+$ ls
 ~~~
 {: .language-bash}
 
@@ -543,7 +543,7 @@ spots.tsv  summarize_spots.tsv
 {: .output}
 
 ~~~
-head spots.tsv
+$ head spots.tsv
 ~~~
 {: .language-bash}
 
@@ -562,7 +562,7 @@ spot_1  AAJS01000021.1_RGP_0
 {: .output}
 
 ~~~
-head summarize_spots.tsv
+$ head summarize_spots.tsv
 ~~~
 {: .language-bash}
 
@@ -582,12 +582,12 @@ spot_9  1       3               1                       4               0       
 
 Return to the working directory.
 ~~~
-cd ..
+$ cd ..
 ~~~
 {: .language-bash}
 
 ~~~
-ls -lah pangenome.h5
+$ ls -lah pangenome.h5
 ~~~
 {: .language-bash}
 
@@ -606,7 +606,7 @@ PPanGGOLiN provides multiple outputs to describe a pangenome. In this section th
 A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a .html file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a .png image file.
 
 ~~~
-ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
+$ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 ~~~
 {: .language-bash}
 
@@ -628,8 +628,8 @@ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 {: .output}
 
 ~~~
-cd draw_ucurve/
-ls
+$ cd draw_ucurve/
+$ ls
 ~~~
 {: .language-bash}
 
@@ -640,7 +640,7 @@ Ushaped_plot.html
 
 Return to the working directory.
 ~~~
-cd ..
+$ cd ..
 ~~~
 {: .language-bash}
 
@@ -649,13 +649,13 @@ cd ..
 
 Open a new terminal locally. Then move to the desire directory where the images will be download.
 ~~~
-cd .\Desktop\Workshop\
+$ cd .\Desktop\Workshop\
 ~~~
 {: .language-bash}
 
 Copy the image to your directory using `scp` and write the password of the server.
 ~~~
-scp betterlab@132.248.196.38:~/dc_workshop/results/pangenome/ppanggolin/pangenome/draw_ucurve/Ushaped_plot.html .
+$ scp betterlab@132.248.196.38:~/gm_workshop/results/pangenome/ppanggolin/pangenome/draw_ucurve/Ushaped_plot.html .
 ~~~
 {: .language-bash}
 
@@ -675,7 +675,7 @@ This plot is quite helpful to observe potential structures in your pangenome, an
 If you build your pangenome using the 'workflow' subcommand and you have more than 500 organisms, only the 'shell' and the 'persistent' partitions will be drawn, leaving out the 'cloud' as the figure tends to be too heavy for a browser to open it otherwise.
 
 ~~~
-ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
+$ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 ~~~
 {: .language-bash}
 
@@ -704,7 +704,7 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 If you do not want the 'cloud' gene families as it is a lot of data and can be hard to open with a browser sometimes, you can use the following option:
 
 ~~~
-ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_tile_nocloud
+$ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_tile_nocloud
 ~~~
 {: .language-bash}
 
@@ -759,7 +759,7 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > 1. In your terminal, execute the following command: 
 > 
 > ~~~
-> ppanggolin write -p pangenome.h5 --gexf --output gexf
+> $ ppanggolin write -p pangenome.h5 --gexf --output gexf
 > ~~~
 > {: .language-bash}
 >  
