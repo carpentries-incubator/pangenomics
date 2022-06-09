@@ -1,18 +1,23 @@
 ---
 title: "Interactive pangenome graphics"
-teaching: 15 min
-exercises: 40 min
+teaching: 15
+exercises: 40
 questions:
 - "How can I obtain an interactive pangenome plot?"
-- "How to obtain the enrichement analysis of the gene families?"
-- "How to compute the ANI values between the genomes of the pangenome?"
 - "How can I measure the homogeneity of the gene families?"
+- "How to obtain an enrichement analysis of the gene families?"
+- "How to compute the ANI values between the genomes of the pangenome?"
+
 objectives:
-- "Establish a dataset of genomes to obtain their pangenome"
-- "Perform a basic workflow to obtain a pangenome in Anvi'o"
-- "Understand and interpret the pangenome results"
+- "Construct a pangenome following the Anvi'o workflow"
+- "Visualize and interact with the pangenome graph"
+- "Compute and visualize the ANI values of the genomes from the pangenome"
+- "Perform a functional enrichment analysis on a group of genomes from the pangenome"
+
 keypoints:
-- "Anvi’o is an open-source, community-driven analysis and visualization platform for microbial ‘omics. "
+- "Anvi’o can build a pangenome starting from genomes or metagenomes, or a combination of both"
+- "Anvi'o allows to interactively visualize your pangenomes"
+- "Anvi'o platform includes additional scripts to explore the geometric and biochemical homogeneity of the gene clusters, to compute and visualize the ANI values of the genomes, to conduct a functional enrichment analysis in a group of genomes, among others"
 ---
 
 <a href="../fig/01-04-01.png">
