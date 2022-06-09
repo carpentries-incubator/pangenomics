@@ -186,17 +186,22 @@ search file in the file browser on your computer.
 ## Step 4. Obtaining a pangenome matrix
 first we use the -t 0 option with COG ang OMCL alghortims to include all possible clusters, including those which might not contain sequences from all input genomes (taxa)
 ~~~
-get_homologues.pl -d data_get -t 0 -M
+compare_clusters.pl -o data_get_intersection -m -d\ 
+data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_,\
+data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 ~~~
 {: .language-bash}
 
 ~~~
-# number_of_clusters = 3632
-# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.cluster_list
-# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_
+# pangenome_phylip file = prueba_intersection2/pangenome_matrix_t0.phylip
+# pangenome_FASTA file = prueba_intersection2/pangenome_matrix_t0.fasta
+# pangenome CSV file (Scoary) = prueba_intersection2/pangenome_matrix_t0.tr.csv
+# input set: prueba_intersection2/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.venn_t0.txt
+# input set: prueba_intersection2/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.venn_t0.txt
 
-# runtime:  3 wallclock secs ( 1.41 usr  0.12 sys +  0.36 cusr  0.06 csys =  1.95 CPU)
-# RAM use: 59.9 MB
+# Venn diagram = prueba_intersection2/venn_t0.pdf prueba_intersection2/venn_t0.svg
+# Venn region file: prueba_intersection2/unique_agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.venn_t0.txt (182)
+# Venn region file: prueba_intersection2/unique_agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.venn_t0.txt (186)
 ~~~
 {: .output}
 
