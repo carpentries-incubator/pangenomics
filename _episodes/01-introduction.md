@@ -4,27 +4,27 @@ teaching: 10
 exercises: 10
 questions:
 - "What is the meaning of *pangenome*?"
-- "What kind of biological data can be are integrated and analyzed in a pangenome?"
+- "What kind of biological data are analyzed in a pangenome?"
 - "What factors affect the structure of a pangenome?"
 
 objectives:
 - "Understand the concept of *pangenome*"
-- "Define the different structures of the pangenomes"
-- "Learn what kind of biological data are needed to perform a pangenome analysis"
-- "To discuss applications and questions that could be solved with a pangenome analysis"
+- "Define the different subsets of the *pangenome*"
+- "Learn which biological data are needed as inputs in a pangenome analysis"
+- "Discuss applications and questions that could be solved with a pangenome analysis"
 
 keypoints:
 - "The pangenome is the entire set of genes from all strains of a clade."
-- "The principal components of a pangenome are: 'core', 'shell', and 'dispensable'"
+- "The principal subsets a pangenome are: 'core', 'shell', and 'dispensable'" genome.
 - "An *open pangenome* occurs when the size of the pangenome increases considerably every added genome"
 - "A *closed pangenome* occurs when only few gene families are incorporated to the pangenome when a new member of the clade is added" 
-- "A pangenome can be obtained by gathering and comparing the complete genome sequences of the members of a clade by using specialized bioinformatic tools"
+- "A pangenome can be obtained by comparing the complete genome sequences of all members of a clade."
 
 ---
 
 ## What is a pangenome?
 
-The term **pangenome** derives from the Greek *pan*, meaning 'whole' or 'everything', while *genome* describes an organism's complete genetic material. In 2005, Tettelin *et al.* used the term pangenome by first time to describe the entire collection of genes from a group of pathogenic bacteria, named *Streptococcus agalactiae*. Nowadays, pangenome concept has been also applied to other organisms including plants, animals, fungi, virus, etc. To summarize, the term pangenome is defined as the entire set of genes from all strains of a clade.
+The term **pangenome** derives from the Greek *pan*, meaning 'whole' or 'everything', while *genome* describes an organism's complete genetic material. In 2005, Tettelin *et al.* used the term pangenome by the first time to describe the entire collection of genes from a group of pathogenic bacteria, named *Streptococcus agalactiae*. Nowadays, pangenome concept has been also applied to other organisms including plants, animals, fungi, virus, etc. To summarize, the term pangenome is defined as the entire set of genes from all strains of a clade.
 
 The pangenome could be divided in three principal components: **core genome** which contains genes present in all the strains compared, **shell genome** a proportion of genes absent in one or more strains and **dispensable genome** comprised by genes that are unique to each strain. 
 
@@ -39,7 +39,7 @@ There are two classes of pangenomes: open and closed. An **open pangenome** occu
 
 Selection of proper data to construct a pangenome analysis is a crucial task of the process. By definition, a pangenome represents the entire set of genes from all strains in a clade. Thus, let's define and understand what a clade is. 
 
-A **clade** (*kládos*, 'branch'), also known as *monophyletic group*, is a group of organisms that share the same common ancestor. In a phylogenetic tree, clades can be distinguished by identified the common ancestor of branch subgroups. For instance, in Fig.2, the blue and red subgroups are considered clades but green subgruop is not a clade, it is a *parahyletic group*. Why is that? Becuse it excludes the blue clade which has descended from the same common ancestor. Instead, the green and blue subgroups together form a clade.
+A **clade** (*kládos*, 'branch'), also known as *monophyletic group*, is a group of organisms that share the same common ancestor. In a phylogenetic tree, clades can be distinguished by identified the common ancestor of branch subgroups. For instance, in Fig.2, the blue and red subgroups are considered clades but green subgruop is not a clade, it is a *parahyletic group*. Why is that? Because it excludes the blue clade which has descended from the same common ancestor. Instead, the green and blue subgroups together form a clade.
 
 
 
@@ -68,6 +68,7 @@ For this lesson purposes, we selected 6 *Streptococcus agalactiae* genomes...
 > Make sure you have the six genomes previously described. If you do not have them yet, you can download them with the following instruction
 > 
 > ~~~
+> cd ~
 > wget https://zenodo.org/record/6622053/files/dc_workshop.zip?download=1
 > ~~~
 > {: .laguage-bash}
