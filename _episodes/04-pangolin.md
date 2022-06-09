@@ -799,7 +799,6 @@ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_til
 > > > </a>
 > {: .solution}
 {: .challenge}
-{: .challenge}
 
 
 {% include links.md %}
