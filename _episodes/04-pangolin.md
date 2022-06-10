@@ -193,15 +193,16 @@ $ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 {: .language-bash}
 
 ~~~
-2022-06-07 19:42:23 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin annotate --anno organisms.gbk.list --output pangenome
-2022-06-07 19:42:23 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-07 19:42:23 annotate.py:l338 INFO       Reading organisms.gbk.list the list of organism files ...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00,  8.11file/s]
-2022-06-07 19:42:23 writeBinaries.py:l481 INFO  Writing genome annotations...
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 307.56genome/s]
-2022-06-07 19:42:24 writeBinaries.py:l494 INFO  writing the protein coding gene dna sequences
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 163883.44gene/s]
-2022-06-07 19:42:24 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome/pangenome.h5
+2022-06-09 23:09:00 main.py:l180 INFO   Command: /opt/anaconda3/envs/Pangenomics_Global/bin/ppanggolin annotate --anno organisms.gbk.list --output pangenome
+2022-06-09 23:09:00 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2022-06-09 23:09:00 annotate.py:l338 INFO       Reading organisms.gbk.list the list of organism files ...
+100%|███████████████████████████████████████████| 6/6 [00:00<00:00,  8.28file/s]
+2022-06-09 23:09:01 writeBinaries.py:l481 INFO  Writing genome annotations...
+100%|████████████████████████████████████████| 6/6 [00:00<00:00, 319.70genome/s]
+2022-06-09 23:09:01 writeBinaries.py:l494 INFO  writing the protein coding gene dna sequences
+100%|███████████████████████████████| 12439/12439 [00:00<00:00, 163659.81gene/s]
+2022-06-09 23:09:01 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome/pangenome.h5
+
 ~~~
 {: .output}
 
@@ -224,7 +225,8 @@ $ ls -lah pangenome.h5
 {: .language-bash}
 
 ~~~
--rw-rw-r-- 1 betterlab betterlab 6.4M Jun  7 19:42 pangenome.h5
+-rw-r--r-- 1 alumno4 rstudio 6.4M Jun  9 23:09 pangenome.h5
+
 ~~~
 {: .output}
 
@@ -238,36 +240,17 @@ $ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
-2022-06-07 19:45:05 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin cluster --pangenome pangenome.h5 --cpu 8
-2022-06-07 19:45:05 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-07 19:45:05 readBinaries.py:l37 INFO    Getting the current pangenome's status
-2022-06-07 19:45:05 readBinaries.py:l78 INFO    Extracting and writing CDS sequences from a .h5 pangenome file to a fasta file...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 113947.57gene/s]
-2022-06-07 19:45:05 cluster.py:l187 INFO        Clustering all of the genes sequences...
-2022-06-07 19:45:05 cluster.py:l45 INFO Creating sequence database...
-2022-06-07 19:45:05 cluster.py:l54 INFO Clustering sequences...
-2022-06-07 19:45:06 cluster.py:l56 INFO Extracting cluster representatives...
-2022-06-07 19:45:06 cluster.py:l68 INFO Writing gene to family informations
-2022-06-07 19:45:06 cluster.py:l195 INFO        Associating fragments to their original gene family...
-2022-06-07 19:45:06 cluster.py:l30 INFO Aligning cluster representatives...
-2022-06-07 19:45:07 cluster.py:l35 INFO Extracting alignments...
-2022-06-07 19:45:07 cluster.py:l97 INFO Starting with 3739 families
-2022-06-07 19:45:07 cluster.py:l126 INFO        Ending with 2671 gene families
-2022-06-07 19:45:07 cluster.py:l148 INFO        Adding protein sequences to the gene families
-2022-06-07 19:45:07 cluster.py:l130 INFO        Adding 12439 genes to the gene families
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 611690.85gene/s]
-2022-06-07 19:45:07 cluster.py:l286 INFO        Done with the clustering
-2022-06-07 19:45:07 writeBinaries.py:l499 INFO  Writing gene families and gene associations...
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 751373.98gene family/s]
-2022-06-07 19:45:07 writeBinaries.py:l501 INFO  Writing gene families information...
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 548144.93gene family/s]
-2022-06-07 19:45:07 writeBinaries.py:l421 INFO  Updating annotations with fragment information
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13319/13319 [00:00<00:00, 568485.52gene/s]
-2022-06-07 19:45:07 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+100%|██████████████████████████| 2671/2671 [00:00<00:00, 774649.84gene family/s]
+2022-06-09 23:11:46 writeBinaries.py:l501 INFO  Writing gene families information...
+100%|██████████████████████████| 2671/2671 [00:00<00:00, 551518.04gene family/s]
+2022-06-09 23:11:46 writeBinaries.py:l421 INFO  Updating annotations with fragment information
+100%|███████████████████████████████| 13319/13319 [00:00<00:00, 559002.70gene/s]
+2022-06-09 23:11:46 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+
 ~~~
 {: .output}
 
-The results are saved in the pangenome.h5 file given as input.
+The results are saved in the pangenome.h5 file given as input. We can notice that the size of the file has increased.
 
 ~~~
 $ ls -lah pangenome.h5
@@ -275,7 +258,7 @@ $ ls -lah pangenome.h5
 {: .language-bash}
 
 ~~~
--rw-rw-r-- 1 betterlab betterlab 7.1M Jun  7 19:45 pangenome.h5
+-rw-r--r-- 1 alumno4 rstudio 7.1M Jun  9 23:11 pangenome.h5
 ~~~
 {: .output}
 
@@ -287,21 +270,15 @@ $ ppanggolin graph --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
-2022-06-07 19:46:13 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin graph --pangenome pangenome.h5 --cpu 8
-2022-06-07 19:46:13 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-07 19:46:13 readBinaries.py:l37 INFO    Getting the current pangenome's status
-2022-06-07 19:46:13 readBinaries.py:l294 INFO   Reading pangenome annotations...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13319/13319 [00:00<00:00, 382119.33gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 38.63organism/s]
-2022-06-07 19:46:13 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 309688.71gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 238442.58gene family/s]
-2022-06-07 19:46:13 makeGraph.py:l56 INFO       Computing the neighbors graph...
-Processing agalactiae_H36B_prokka: 100%|█████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 337.94organism/s]
-2022-06-07 19:46:13 makeGraph.py:l74 INFO       Done making the neighbors graph.
-2022-06-07 19:46:13 writeBinaries.py:l508 INFO  Writing the edges...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2912/2912 [00:00<00:00, 704494.04edge/s]
-2022-06-07 19:46:13 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+100%|███████████████████████████████| 12439/12439 [00:00<00:00, 305768.35gene/s]
+100%|██████████████████████████| 2671/2671 [00:00<00:00, 243379.16gene family/s]
+2022-06-09 23:13:45 makeGraph.py:l56 INFO       Computing the neighbors graph...
+Processing agalactiae_H36B_prokka: 100%|███| 6/6 [00:00<00:00, 352.82organism/s]
+2022-06-09 23:13:45 makeGraph.py:l74 INFO       Done making the neighbors graph.
+2022-06-09 23:13:45 writeBinaries.py:l508 INFO  Writing the edges...
+100%|█████████████████████████████████| 2912/2912 [00:00<00:00, 724167.75edge/s]
+2022-06-09 23:13:45 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+
 ~~~
 {: .output}
 
@@ -313,7 +290,7 @@ $ ls -lah pangenome.h5
 {: .language-bash}
 
 ~~~
--rw-rw-r-- 1 betterlab betterlab 7.1M Jun  7 19:46 pangenome.h5
+-rw-r--r-- 1 alumno4 rstudio 7.1M Jun  9 23:13 pangenome.h5
 ~~~
 {: .output}
 
@@ -330,26 +307,14 @@ $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
-2022-06-07 19:47:17 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin partition --pangenome pangenome.h5 --cpu 8
-2022-06-07 19:47:17 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-07 19:47:17 readBinaries.py:l37 INFO    Getting the current pangenome's status
-2022-06-07 19:47:17 readBinaries.py:l294 INFO   Reading pangenome annotations...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13319/13319 [00:00<00:00, 367799.32gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 37.88organism/s]
-2022-06-07 19:47:17 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 298702.93gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 232378.88gene family/s]
-2022-06-07 19:47:17 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 11146/11146 [00:00<00:00, 288366.65contig adjacency/s]
-2022-06-07 19:47:17 partition.py:l343 WARNING   The number of selected organisms is too low (6 organisms used) to robustly partition the graph
-2022-06-07 19:47:17 partition.py:l356 INFO      Estimating the optimal number of partitions...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:00<00:00, 59.85Number of number of partitions/s]
-2022-06-07 19:47:17 partition.py:l358 INFO      The number of partitions has been evaluated at 3
-2022-06-07 19:47:17 partition.py:l376 INFO      Partitioning...
-2022-06-07 19:47:17 partition.py:l436 INFO      Partitionned 6 genomes in 0.06 seconds.
-2022-06-07 19:47:17 writeBinaries.py:l408 INFO  Updating gene families with partition information
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 259040.56gene family/s]
-2022-06-07 19:47:17 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+100%|███████████████| 19/19 [00:00<00:00, 59.43Number of number of partitions/s]
+2022-06-09 23:14:41 partition.py:l358 INFO      The number of partitions has been evaluated at 3
+2022-06-09 23:14:41 partition.py:l376 INFO      Partitioning...
+2022-06-09 23:14:41 partition.py:l436 INFO      Partitionned 6 genomes in 0.06 seconds.
+2022-06-09 23:14:41 writeBinaries.py:l408 INFO  Updating gene families with partition information
+100%|██████████████████████████| 2671/2671 [00:00<00:00, 267011.13gene family/s]
+2022-06-09 23:14:41 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+
 ~~~
 {: .output}
 
@@ -361,7 +326,7 @@ $ ls -lah pangenome.h5
 {: .language-bash}
 
 ~~~
--rw-rw-r-- 1 betterlab betterlab 7.2M Jun  7 19:47 pangenome.h5
+-rw-r--r-- 1 alumno4 rstudio 7.2M Jun  9 23:14 pangenome.h5
 ~~~
 {: .output}
 
@@ -373,23 +338,12 @@ $ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
-2022-06-07 19:48:13 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin rgp --pangenome pangenome.h5 --cpu 8
-2022-06-07 19:48:13 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-07 19:48:13 readBinaries.py:l37 INFO    Getting the current pangenome's status
-2022-06-07 19:48:13 readBinaries.py:l294 INFO   Reading pangenome annotations...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13319/13319 [00:00<00:00, 385204.76gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 38.11organism/s]
-2022-06-07 19:48:13 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 300816.13gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 242567.63gene family/s]
-2022-06-07 19:48:13 genomicIsland.py:l197 INFO  Detecting multigenic families...
-2022-06-07 19:48:13 pangenome.py:l311 INFO      64 gene families are defined as being multigenic. (duplicated in more than 0.05 of the genomes)
-2022-06-07 19:48:13 genomicIsland.py:l199 INFO  Compute Regions of Genomic Plasticity ...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 337.12genomes/s]
-2022-06-07 19:48:13 genomicIsland.py:l204 INFO  Predicted 85 RGP
-2022-06-07 19:48:13 writeBinaries.py:l517 INFO  Writing Regions of Genomic Plasticity...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 85/85 [00:00<00:00, 311095.85region/s]
-2022-06-07 19:48:13 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+100%|███████████████████████████████████████| 6/6 [00:00<00:00, 345.70genomes/s]
+2022-06-09 23:15:18 genomicIsland.py:l204 INFO  Predicted 85 RGP
+2022-06-09 23:15:18 writeBinaries.py:l517 INFO  Writing Regions of Genomic Plasticity...
+100%|███████████████████████████████████| 85/85 [00:00<00:00, 291033.34region/s]
+2022-06-09 23:15:18 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+
 ~~~
 {: .output}
 
@@ -399,7 +353,7 @@ $ ls -lah pangenome.h5
 {: .language-bash}
 
 ~~~
--rw-rw-r-- 1 betterlab betterlab 7.2M Jun  7 19:48 pangenome.h5
+-rw-r--r-- 1 alumno4 rstudio 7.2M Jun  9 23:15 pangenome.h5
 ~~~
 {: .output}
 
@@ -411,17 +365,11 @@ $ ppanggolin write -p pangenome.h5 --regions --output rgp
 {: .language-bash}
 
 ~~~
-2022-06-07 19:49:07 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin write -p pangenome.h5 --regions --output rgp
-2022-06-07 19:49:07 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-07 19:49:07 readBinaries.py:l37 INFO    Getting the current pangenome's status
-2022-06-07 19:49:07 readBinaries.py:l294 INFO   Reading pangenome annotations...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13319/13319 [00:00<00:00, 388218.98gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 37.74organism/s]
-2022-06-07 19:49:07 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 300460.99gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 246333.16gene family/s]
-2022-06-07 19:49:07 readBinaries.py:l320 INFO   Reading the RGP...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1156/1156 [00:00<00:00, 466347.54gene/s]
+100%|███████████████████████████████| 12439/12439 [00:00<00:00, 301748.66gene/s]
+100%|██████████████████████████| 2671/2671 [00:00<00:00, 247241.04gene family/s]
+2022-06-09 23:16:09 readBinaries.py:l320 INFO   Reading the RGP...
+100%|█████████████████████████████████| 1156/1156 [00:00<00:00, 476194.80gene/s]
+(Pangenomics_Global) alumno4@betterlabub:~
 ~~~
 {: .output}
 
@@ -444,16 +392,17 @@ $ head plastic_regions.tsv
 {: .language-bash}
 
 ~~~
-region                  organism                        contig          start   stop    genes   contigBorder    wholeContig
-AAJO01000011.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000011.1  6863    27451   20      True            False
-AAJO01000013.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000013.1  564     25430   36      True            True
-AAJO01000034.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000034.1  95      5670    6       True            False
-AAJO01000044.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000044.1  14      13435   16      True            True
-AAJO01000046.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000046.1  156     13006   13      True            True
-AAJO01000061.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000061.1  84      10318   9       True            True
-AAJO01000073.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000073.1  91      7595    8       True            False
-AAJO01000077.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000077.1  1440    7746    7       True            False
-AAJO01000087.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000087.1  512     7469    9       True            True
+region  organism        contig  start   stop    genes   contigBorder    wholeContig
+AAJO01000011.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000011.1  6863   27451    20      True    False
+AAJO01000013.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000013.1  564    25430    36      True    True
+AAJO01000034.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000034.1  95     5670     6       True    False
+AAJO01000044.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000044.1  14     13435    16      True    True
+AAJO01000046.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000046.1  156    13006    13      True    True
+AAJO01000061.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000061.1  84     10318    9       True    True
+AAJO01000073.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000073.1  91     7595     8       True    False
+AAJO01000077.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000077.1  1440   7746     7       True    False
+AAJO01000087.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000087.1  512    7469     9       True    True
+
 ~~~
 {: .output}
 
@@ -469,7 +418,7 @@ $ ls -lah pangenome.h5
 {: .language-bash}
 
 ~~~
-$ -rw-rw-r-- 1 betterlab betterlab 7.2M Jun  7 19:48 pangenome.h5
+-rw-r--r-- 1 alumno4 rstudio 7.2M Jun  9 23:15 pangenome.h5
 ~~~
 {: .output}
 
@@ -481,27 +430,13 @@ $ ppanggolin spot --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
-2022-06-07 19:52:43 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin spot --pangenome pangenome.h5 --cpu 8
-2022-06-07 19:52:43 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-07 19:52:43 readBinaries.py:l37 INFO    Getting the current pangenome's status
-2022-06-07 19:52:43 readBinaries.py:l294 INFO   Reading pangenome annotations...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13319/13319 [00:00<00:00, 390089.49gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 38.46organism/s]
-2022-06-07 19:52:43 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 306454.43gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 240831.20gene family/s]
-2022-06-07 19:52:43 readBinaries.py:l320 INFO   Reading the RGP...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1156/1156 [00:00<00:00, 479823.40gene/s]
-2022-06-07 19:52:43 spot.py:l129 INFO   Detecting multigenic families...
-2022-06-07 19:52:43 pangenome.py:l311 INFO      64 gene families are defined as being multigenic. (duplicated in more than 0.05 of the genomes)
-2022-06-07 19:52:43 spot.py:l132 INFO   Detecting hotspots in the pangenome...
-2022-06-07 19:52:43 spot.py:l82 INFO    57 RGPs were not used as they are on a contig border (or have less than 3 persistent gene families until the contig border)
-2022-06-07 19:52:43 spot.py:l83 INFO    28 RGPs are being used to predict spots of insertion
-2022-06-07 19:52:43 spot.py:l85 INFO    21 number of different pairs of flanking gene families
-2022-06-07 19:52:43 spot.py:l140 INFO   18 spots were detected
-2022-06-07 19:52:43 writeBinaries.py:l522 INFO  Writing Spots of Insertion...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 18/18 [00:00<00:00, 535443.06spot/s]
-2022-06-07 19:52:43 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+2022-06-09 23:17:58 spot.py:l83 INFO    28 RGPs are being used to predict spots of insertion
+2022-06-09 23:17:58 spot.py:l85 INFO    21 number of different pairs of flanking gene families
+2022-06-09 23:17:58 spot.py:l140 INFO   18 spots were detected
+2022-06-09 23:17:58 writeBinaries.py:l522 INFO  Writing Spots of Insertion...
+100%|█████████████████████████████████████| 18/18 [00:00<00:00, 559240.53spot/s]
+2022-06-09 23:17:58 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+
 ~~~
 {: .output}
 
@@ -512,20 +447,11 @@ $ ppanggolin write -p pangenome.h5 --spots --output spots
 ~~~
 {: .language-bash}
 ~~~
-2022-06-07 19:54:06 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin write -p pangenome.h5 --spots --output spots
-2022-06-07 19:54:06 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-07 19:54:06 readBinaries.py:l37 INFO    Getting the current pangenome's status
-2022-06-07 19:54:06 readBinaries.py:l294 INFO   Reading pangenome annotations...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13319/13319 [00:00<00:00, 384113.53gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 38.33organism/s]
-2022-06-07 19:54:06 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 300269.04gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 242798.94gene family/s]
-2022-06-07 19:54:06 readBinaries.py:l320 INFO   Reading the RGP...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1156/1156 [00:00<00:00, 484183.69gene/s]
-2022-06-07 19:54:06 readBinaries.py:l326 INFO   Reading the spots...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 28/28 [00:00<00:00, 180400.17region/s]
-2022-06-07 19:54:06 writeFlat.py:l504 INFO      Done writing spots in : 'spots/summarize_spots.tsv'
+100%|█████████████████████████████████| 1156/1156 [00:00<00:00, 482881.73gene/s]
+2022-06-09 23:19:17 readBinaries.py:l326 INFO   Reading the spots...
+100%|███████████████████████████████████| 28/28 [00:00<00:00, 188508.04region/s]
+2022-06-09 23:19:17 writeFlat.py:l504 INFO      Done writing spots in : 'spots/summarize_spots.tsv'
+
 ~~~
 {: .output}
 
@@ -549,15 +475,15 @@ $ head spots.tsv
 
 ~~~
 spot_id rgp_id
-spot_10 CP000114.1_RGP_0
-spot_6  CP000114.1_RGP_11
-spot_11 CP000114.1_RGP_4
-spot_11 AAJQ01000021.1_RGP_0
-spot_7  CP000114.1_RGP_1
-spot_9  CP000114.1_RGP_12
-spot_8  CP000114.1_RGP_9
-spot_1  AAJP01000001.1_RGP_0
-spot_1  AAJS01000021.1_RGP_0
+spot_3  CP000114.1_RGP_4
+spot_3  AAJQ01000021.1_RGP_0
+spot_15 AAJQ01000032.1_RGP_0
+spot_5  CP000114.1_RGP_0
+spot_6  CP000114.1_RGP_3
+spot_9  CP000114.1_RGP_2
+spot_14 CP000114.1_RGP_12
+spot_10 AAJQ01000005.1_RGP_0
+spot_10 CP000114.1_RGP_6
 ~~~
 {: .output}
 
@@ -568,15 +494,16 @@ $ head summarize_spots.tsv
 
 ~~~
 spot    nb_rgp  nb_families     nb_unique_family_sets   mean_nb_genes   stdev_nb_genes  max_nb_genes    min_nb_genes
-spot_2  4       41              4                       14              4.967           20              9
-spot_4  4       27              4                       11.25           0.957           12              10
-spot_1  3       7               2                       4.333           0.577           5               4
-spot_11 2       19              2                       18              0.0             18              18
-spot_14 2       7               1                       7.5             0.707           8               7
-spot_10 1       58              1                       58              0               58              58
-spot_6  1       5               1                       5               0               5               5
-spot_7  1       45              1                       46              0               46              46
-spot_9  1       3               1                       4               0               4               4
+spot_10 4       27      4       11.25   0.957   12      10
+spot_1  4       41      4       14      4.967   20      9
+spot_2  3       7       2       4.333   0.577   5       4
+spot_3  2       19      2       18      0.0     18      18
+spot_7  2       7       1       7.5     0.707   8       7
+spot_15 1       16      1       16      0       16      16
+spot_5  1       58      1       58      0       58      58
+spot_6  1       27      1       27      0       27      27
+spot_9  1       39      1       39      0       39      39
+
 ~~~
 {: .output}
 
@@ -592,7 +519,8 @@ $ ls -lah pangenome.h5
 {: .language-bash}
 
 ~~~
--rw-rw-r-- 1 betterlab betterlab 7.2M Jun  7 19:52 pangenome.h5
+-rw-r--r-- 1 alumno4 rstudio 7.2M Jun  9 23:17 pangenome.h5
+
 ~~~
 {: .output}
 
@@ -611,19 +539,12 @@ $ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 {: .language-bash}
 
 ~~~
-2022-06-07 19:59:03 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurvep
-2022-06-07 19:59:03 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-07 19:59:03 readBinaries.py:l37 INFO    Getting the current pangenome's status
-2022-06-07 19:59:03 readBinaries.py:l294 INFO   Reading pangenome annotations...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13319/13319 [00:00<00:00, 392038.62gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 38.36organism/s]
-2022-06-07 19:59:04 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 311209.02gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 242888.43gene family/s]
-2022-06-07 19:59:04 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 11146/11146 [00:00<00:00, 298708.75contig adjacency/s]
-2022-06-07 19:59:04 ucurve.py:l13 INFO  Drawing the U-shaped curve...
-2022-06-07 19:59:09 ucurve.py:l60 INFO  Done drawing the U-shaped curve : 'draw_ucurvep/Ushaped_plot.html'
+100%|███████████████████████████████| 12439/12439 [00:00<00:00, 306179.27gene/s]
+100%|██████████████████████████| 2671/2671 [00:00<00:00, 238518.72gene family/s]
+2022-06-09 23:21:04 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
+100%|███████████████████| 11146/11146 [00:00<00:00, 300498.23contig adjacency/s]
+2022-06-09 23:21:04 ucurve.py:l13 INFO  Drawing the U-shaped curve...
+2022-06-09 23:21:05 ucurve.py:l60 INFO  Done drawing the U-shaped curve : 'draw_ucurve/Ushaped_plot.html'
 ~~~
 {: .output}
 
@@ -680,24 +601,11 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 {: .language-bash}
 
 ~~~
-2022-06-07 20:04:15 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
-2022-06-07 20:04:15 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-07 20:04:15 readBinaries.py:l37 INFO    Getting the current pangenome's status
-2022-06-07 20:04:15 readBinaries.py:l294 INFO   Reading pangenome annotations...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13319/13319 [00:00<00:00, 388345.82gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 38.48organism/s]
-2022-06-07 20:04:16 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 311316.73gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 250105.73gene family/s]
-2022-06-07 20:04:16 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 11146/11146 [00:00<00:00, 298983.85contig adjacency/s]
-2022-06-07 20:04:16 tile_plot.py:l26 INFO       Drawing the tile plot...
-2022-06-07 20:04:16 tile_plot.py:l42 INFO       start with matrice
-2022-06-07 20:04:16 tile_plot.py:l57 INFO       done with making the dendrogram to order the organisms on the plot
-2022-06-07 20:04:16 tile_plot.py:l92 INFO       Getting the gene name(s) and the number for each tile of the plot ...
-2022-06-07 20:04:16 tile_plot.py:l101 INFO      Done extracting names and numbers. Making the heatmap ...
-2022-06-07 20:04:16 tile_plot.py:l157 INFO      Drawing the figure itself...
-2022-06-07 20:04:17 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile/tile_plot.html'
+2022-06-09 23:22:00 tile_plot.py:l92 INFO       Getting the gene name(s) and the number for each tile of the plot ...
+2022-06-09 23:22:00 tile_plot.py:l101 INFO      Done extracting names and numbers. Making the heatmap ...
+2022-06-09 23:22:00 tile_plot.py:l157 INFO      Drawing the figure itself...
+2022-06-09 23:22:01 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile/tile_plot.html'
+
 ~~~
 {: .output}
 
@@ -709,24 +617,14 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 {: .language-bash}
 
 ~~~
-2022-06-07 20:04:53 main.py:l180 INFO   Command: /home/betterlab/.conda/envs/Pangenomics/bin/ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_tile_nocloud
-2022-06-07 20:04:53 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-07 20:04:53 readBinaries.py:l37 INFO    Getting the current pangenome's status
-2022-06-07 20:04:53 readBinaries.py:l294 INFO   Reading pangenome annotations...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 13319/13319 [00:00<00:00, 384216.56gene/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 37.77organism/s]
-2022-06-07 20:04:54 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12439/12439 [00:00<00:00, 304821.53gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 2671/2671 [00:00<00:00, 245792.71gene family/s]
-2022-06-07 20:04:54 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 11146/11146 [00:00<00:00, 296810.38contig adjacency/s]
-2022-06-07 20:04:54 tile_plot.py:l26 INFO       Drawing the tile plot...
-2022-06-07 20:04:54 tile_plot.py:l42 INFO       start with matrice
-2022-06-07 20:04:54 tile_plot.py:l57 INFO       done with making the dendrogram to order the organisms on the plot
-2022-06-07 20:04:54 tile_plot.py:l92 INFO       Getting the gene name(s) and the number for each tile of the plot ...
-2022-06-07 20:04:54 tile_plot.py:l101 INFO      Done extracting names and numbers. Making the heatmap ...
-2022-06-07 20:04:54 tile_plot.py:l157 INFO      Drawing the figure itself...
-2022-06-07 20:04:54 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile_nocloud/tile_plot.html'
+100%|███████████████████| 11146/11146 [00:00<00:00, 288459.17contig adjacency/s]
+2022-06-09 23:22:27 tile_plot.py:l26 INFO       Drawing the tile plot...
+2022-06-09 23:22:27 tile_plot.py:l42 INFO       start with matrice
+2022-06-09 23:22:27 tile_plot.py:l57 INFO       done with making the dendrogram to order the organisms on the plot
+2022-06-09 23:22:27 tile_plot.py:l92 INFO       Getting the gene name(s) and the number for each tile of the plot ...
+2022-06-09 23:22:27 tile_plot.py:l101 INFO      Done extracting names and numbers. Making the heatmap ...
+2022-06-09 23:22:27 tile_plot.py:l157 INFO      Drawing the figure itself...
+2022-06-09 23:22:27 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile_nocloud/tile_plot.html'
 ~~~
 {: .output}
 
