@@ -20,8 +20,8 @@ keypoints:
 - "Anvi'o platform includes additional scripts to explore the geometric and biochemical homogeneity of the gene clusters, to compute and visualize the ANI values of the genomes, to conduct a functional enrichment analysis in a group of genomes, among others"
 ---
 
-<a href="../fig/01-04-01.png">
-  <img src="../fig/01-04-01.png" alt="Anvi'o network representation" />
+<a href="../fig/01-03-01.png">
+  <img src="../fig/01-03-01.png" alt="Anvi'o network representation" />
 </a>
 
 ## Anvi'o
