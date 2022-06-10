@@ -21,7 +21,7 @@ keypoints:
 ---
 
 <a href="../fig/01-04-01.png">
-  <img src="../fig/01-03-01.png" alt="Anvi'o network representation" />
+  <img src="../fig/01-04-01.png" alt="Anvi'o network representation" />
 </a>
 
 ## Anvi'o
