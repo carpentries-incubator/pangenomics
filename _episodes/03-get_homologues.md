@@ -110,8 +110,8 @@ Options that control clustering:
 
 ## Step 1. Generate a folder get_homologues
 It's necessary that we create a new folder when all results are sent.
-~~~
 
+~~~
 $ mkdir -p ~/gm_workshop/results/pangenome/get_homologues/data_get #Create directory (-p create all parents)
 $ cd  ~/gm_workshop/results/pangenome/get_homologues/data_get # Change to the directory 'data_get'
 ~~~
