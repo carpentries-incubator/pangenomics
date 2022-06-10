@@ -272,7 +272,7 @@ then we use the option
 ~~~~
 $ ls -d data_get_homologues/0taxa #list directories cluster COG and OMCL
 ~~~~
-
+## Step 5. Compare only clustering algoriths COG and OMCL
 ~~~
 $ compare_clusters.pl -o alg_intersection -m -d\ 
 data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_,\
