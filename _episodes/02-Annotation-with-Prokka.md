@@ -190,7 +190,7 @@ $ rm -r refseq
 > > Step 1. Using the information provided in the step, we completed each blank space with the corresponding word:
 > >
 > > ~~~
-> > ncbi-genome-download -F fasta --genera "Streptococcus " -A GCF_000011825.1 -o thermophilusLMG18311 bacteria
+> > $ ncbi-genome-download -F fasta --genera "Streptococcus " -A GCF_000011825.1 -o thermophilusLMG18311 bacteria
 > > ~~~
 > > {: .source}
 > >
@@ -222,12 +222,12 @@ $ rm -r refseq
 
 ## Prokka: Annotating Genomes
 
-Annotation is a process of identifying the locations of genes and all the coding regions in a genome and determining
+[Annotation](https://en.wikipedia.org/wiki/DNA_annotation) is a process of identifying the coordinates of genes and all the coding regions in a genome and determining
 what those genes are for. For this, an unknown sequence is enriched with information relating genomic position, regulatory
-sequences, repeats, gene name and protein products [1](https://en.wikipedia.org/wiki/DNA_annotation). This information
+sequences, repeats, gene name and protein products. This information
 is stored in genomic databases to help future analysis processing new data.
 
-Prokka is a command-line software tool created in Perl to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files[2](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false).
+[Prokka](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false) is a command-line software tool created in Perl to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files.
 It expects a preassembled genomic DNA sequences in FASTA format as the input file, which is the only mandatory parameter to the software.
 For annotation, Prokka relies on external features and databases to identify the genomic features within the contigs.
 
@@ -245,6 +245,10 @@ database of known sequences, usually at a protein level, and transfer the annota
 Prokka uses this method, but in a hierarchical manner, starting with a smaller trustworthy database, moving to medium
 sized but domain specific databases and finally to curated models of protein families.
 
+> ## Notes
+> [Environment variables](https://opensource.com/article/19/8/what-are-environment-variables) are special variables that contain information about your loggin session. These can be useful when you want to [manage](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment) default or new settings that your system usually ignores. For instance, you can download a specific package with a downgraded version of perl if needed. 
+{: .callout}
+
 Next, we need to change to the directory where we have the assembly (FASTA) files of interest. As a simple initial example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
 
 ~~~
@@ -252,6 +256,19 @@ $ cd ../results/annotated/
 $ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ../../thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
 ~~~
 {: .source}
+
+In this example, we have told Trimmomatic to:
+
+| code   | meaning |
+| ------- | ---------- |
+| --prefix | Filename output prefix [auto] (default '') |
+| --outdir | Output folder [auto] (default '') |
+| --kingdom | Annotation mode: Archaea|Bacteria|Mitochondria|Viruses (default 'Bacteria')|
+| --genus | Genus name (default 'Genus') |
+| --strain | Strain name (default 'strain') |
+| --usegenus | Use genus-specific BLAST databases (needs --genus) (default OFF) |
+| --addgens |Add 'gene' features for each 'CDS' feature (default OFF) |
+
 
 Now prokka has generated a new folder. Lets get in and if you run the `tree` command in the current directory, you can preview the system of files created by Prokka:
 
@@ -290,11 +307,11 @@ We encourage you to explore each output nevertheless, the following table descri
 | .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product |
 
 You can also modify parameters as much as you need regarding the organism, gene and even locus tag you are looking for. 
-l
+
 
 > ## Exercise 2: Extracting tRNAs with Prokka
 >
-> Suppose you are now asked to annotate the FASTA file you downloaded in Exercise 1 and output the results to a subdirectory called `annotated` within the `ratti` directory. Then, a research team asks you to provide them a TSV file titled `trnas.tsv` that only contains *S. ratti'*s tRNAs. This file must contain the same headers as the original TSV file, followed by the rows that correspond to tRNAs. Complete the following sequence of commands to perform this actions:
+> Suppose you are now asked to annotate the FASTA file you downloaded in Exercise 1 and output the results to a subdirectory called `annotated` within the `thermophilusLMG18311_prokka` directory. Then, a research team asks you to provide them a TSV file titled `trnas.tsv` that only contains *S. thermophilus'*s tRNAs. This file must contain the same headers as the original TSV file, followed by the rows that correspond to tRNAs. Complete the following sequence of commands to perform this actions:
 > 
 > ~~~
 > $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311_prokka ../../thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes 
@@ -325,9 +342,9 @@ l
 > > After switching to the `thermophilusLMD9_prokka` directory, we shall now filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). We then append the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'`(this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
 > >
 > > ~~~
-> > cd annotated
-> > head -n 1 thermophilusLMD9_prokka.tsv > trnas.tsv # Get column headers
-> > grep $'\t'tRNA$'\t' thermophilusLMD9_prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
+> > $cd annotated
+> > $head -n 1 thermophilusLMD9_prokka.tsv > trnas.tsv # Get column headers
+> > $grep $'\t'tRNA$'\t' thermophilusLMD9_prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
 > > ~~~
 > > {: .source}
 > >
