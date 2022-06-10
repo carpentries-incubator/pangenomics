@@ -198,27 +198,31 @@ $ ls -d data_get_homologues/*alltaxa* #List the genome reference
 ~~~
 
 ~~~
-$ compare_clusters.pl -o alg_intersection -m -d data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_ ,data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_ ,data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_
+$ compare_clusters.pl -o alg_intersection -m -d\
+data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_ ,\
+data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_ ,\
+data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_
 ~~~
 {: .language-bash}
 ~~~
-# number_of_clusters = 1105
-# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_.cluster_list
-# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_
-
-# runtime: 840 wallclock secs (13.44 usr  0.24 sys + 593.88 cusr 10.63 csys = 618.19 CPU)
-# RAM use: 65.8 MB
+# Venn diagram = alg_intersection/venn_t0.pdf alg_intersection/venn_t0.svg
+# Venn region file: alg_intersection/unique_agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_.venn_t0.txt (8)
+# Venn region file: alg_intersection/unique_agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_.venn_t0.txt (31)
+# Venn region file: alg_intersection/unique_agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_.venn_t0.txt (16)
+# Venn region file: alg_intersection/intersection_agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0__agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_.venn_t0.txt (5)
+# Venn region file: alg_intersection/intersection_agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0__agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_.venn_t0.txt (15)
+# Venn region file: alg_intersection/intersection_agalactiae18RS21prokka_f0_alltaxa_algCOG_e0__agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_.venn_t0.txt (2)
 ~~~
 {: .output}
 
 Use the scp protocol in order to see the venn diagram
 ~~~
-$ scp user@ip:/path/to/file/venn_t0.pdf .
+$ scp alumno6@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pangenome/get_homologues/alg_intersection/*.svg .
 ~~~
 {: .language-bash}
 
 ~~~
-$ usuario@ip password:
+$ alumno6@bioinformatica.matmor.unam.mx's password:
 ~~~
 {: .output}
 
@@ -236,12 +240,12 @@ $ get_homologues.pl -d data_get -t 0 -M
 {: .language-bash}
 
 ~~~
-# number_of_clusters = 3632
-# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.cluster_list
-# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_
+# number_of_clusters = 3634
+# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.cluster_list
+# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 
-# runtime:  3 wallclock secs ( 1.41 usr  0.12 sys +  0.36 cusr  0.06 csys =  1.95 CPU)
-# RAM use: 59.9 MB
+# runtime:  4 wallclock secs ( 1.25 usr  0.15 sys +  0.27 cusr  0.05 csys =  1.72 CPU)
+# RAM use: 49.9 MB
 ~~~
 {: .output}
 
@@ -251,12 +255,12 @@ $ get_homologues.pl -d data_get -t 0 -G
 {: .language-bash}
  
 ~~~
-# number_of_clusters = 3634
-# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.cluster_list
-# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
+# number_of_clusters = 3632
+# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.cluster_list
+# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_
 
-# runtime:  5 wallclock secs ( 2.07 usr  0.26 sys +  0.52 cusr  0.08 csys =  2.93 CPU)
-# RAM use: 54.2 MB
+# runtime:  4 wallclock secs ( 1.41 usr  0.10 sys +  0.30 cusr  0.03 csys =  1.84 CPU)
+# RAM use: 55.5 MB
 ~~~
 {: .output}
 
