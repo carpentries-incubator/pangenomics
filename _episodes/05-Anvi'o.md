@@ -27,7 +27,7 @@ keypoints:
 ## Anvi'o
 
 Anvi’o is an open-source, community-driven analysis and visualization platform for microbial ‘omics.
-It brings together many aspects of today's cutting-edge strategies including **genomics, metagenomics, metatranscriptomics, phylogenomics, microbial population genetis, pangenomics and metapangenomis** in an *integrated* and *easy-to-use* fashion thorugh extensive interactive visualization capabilities. 
+It brings together many aspects of today's cutting-edge strategies including **genomics, metagenomics, metatranscriptomics, phylogenomics, microbial population genetis, pangenomics and metapangenomics** in an *integrated* and *easy-to-use* fashion thorugh extensive interactive visualization capabilities. 
 
 
 ### Get all ready to start the Anvi'o workflow to build a pangenome
