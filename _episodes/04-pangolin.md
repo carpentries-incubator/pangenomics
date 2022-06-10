@@ -20,7 +20,7 @@ keypoints:
 ---
 
 > ## Requirements:
-> Install [gephi](https://gephi.org/) to visualize the graphs.
+> Install [gephi](https://gephi.org/) in your local machine to visualize the graphs.
 {: .prereq}
 
 <a href="../fig/01-04-01.png">
@@ -71,7 +71,7 @@ A tile plot is a heatmap representing the gene families (y axis) in the organism
 
 ### PangenomeGraph files
 
-You can get the .gexf files. It is will contain the gene families as nodes and the edges between gene families describing their relationship.
+You can get the .gexf files. It will contain the gene families as nodes and the edges between gene families describing their relationship.
 They can be manipulated and visualised through a software called Gephi, with which we have made extensive testings, or potentially any other softwares or libraries that can read gexf files such as networkx or gexf-js among others.
 
 <a href="../fig/01-04-05.png">
@@ -121,21 +121,10 @@ $ conda activate Pangenomics
 ~~~
 $ cd ~/gm_workshop/results/pangenome
 $ mkdir ppanggolin
-$ ls -la
 ~~~
 {: .language-bash}
 
-~~~
-drwxrwxr-x  3 betterlab betterlab 4096 Jun  6 15:10 .
-drwxrwxr-x 16 betterlab betterlab 4096 Jun  6 15:09 ..
-drwxrwxr-x  2 betterlab betterlab 4096 Jun  6 15:10 ppanggolin
-~~~
-{: .output}
-
-
 ### Step 2: Identify and explore the genome files
-
-
 
 ~~~
 $ ls ~/gm_workshop/results/annotated/*.gbk
@@ -666,37 +655,37 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 > 4. Go to the layout section and in the selection bar choose the ForceAtlas2. 
 > 5. In Tunning section mark the stronger gravity box and set the scale in 4000.
 > 6. Finally color the nodes according to:
-> > a) Partition. 
-> > 
-> > b) Number of organisms.
+> a) Partition. 
+>  
+> b) Number of organisms.
+> 
+> c) Number of genes. 
+>  
+> d) Proteins function (product).
+>  
+> e) Gene neighborhood (edges).
+>  
+> > ## Solution
+> > a) <a href="../fig/01-04-06.png">
+> > <img src="../fig/01-04-06.png" alt="" />
+> > </a>
 > >
-> > c) Number of genes. 
+> > b) <a href="../fig/01-04-07.png">
+> > <img src="../fig/01-04-07.png" alt="" />
+> > </a>
 > > 
-> > d) Proteins function (product).
+> > c) <a href="../fig/01-04-08.png">
+> > <img src="../fig/01-04-08.png" alt="" />
+> > </a>
 > > 
-> > e) Gene neighborhood (edges).
+> > d) <a href="../fig/01-04-09.png">
+> > <img src="../fig/01-04-09.png" alt="" />
+> > </a>
 > > 
-> > > ## Solution
-> > > a) <a href="../fig/01-04-06.png">
-> > > <img src="../fig/01-04-06.png" alt="" />
-> > > </a>
-> > >
-> > > b) <a href="../fig/01-04-07.png">
-> > > <img src="../fig/01-04-07.png" alt="" />
-> > > </a>
-> > >
-> > > c) <a href="../fig/01-04-08.png">
-> > > <img src="../fig/01-04-08.png" alt="" />
-> > > </a>
-> > >
-> > > d) <a href="../fig/01-04-09.png">
-> > > <img src="../fig/01-04-09.png" alt="" />
-> > > </a>
-> > >
-> > > e) <a href="../fig/01-04-10.png">
-> > > <img src="../fig/01-04-10.png" alt="" />
-> > > </a>
-> > {: .solution}
+> > e) <a href="../fig/01-04-10.png">
+> > <img src="../fig/01-04-10.png" alt="" />
+> > </a>
+> {: .solution}
 {: .challenge}
 
 
