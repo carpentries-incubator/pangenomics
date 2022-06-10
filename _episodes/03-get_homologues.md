@@ -197,10 +197,14 @@ Get_Homologues for default the algorithm BDBH takes from the set of genomes to t
 $ ls -d data_get_homologues/*alltaxa* #List the genome reference
 ~~~
 
+> ## Notes
+> After typing the comma in the following command line make sure you don't leave a space after the comma. This could cause an error.
+{: .callout}
+
 ~~~
 $ compare_clusters.pl -o alg_intersection -m -d\
-data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_ ,\
-data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_ ,\
+data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_,\
+data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_,\
 data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_
 ~~~
 {: .language-bash}
@@ -244,7 +248,7 @@ $ get_homologues.pl -d data_get -t 0 -M
 # cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.cluster_list
 # cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 
-# runtime:  4 wallclock secs ( 1.25 usr  0.15 sys +  0.27 cusr  0.05 csys =  1.72 CPU)
+# runtime:  4 wallclock secs ( 1.30 usr  0.16 sys +  0.30 cusr  0.04 csys =  1.80 CPU)
 # RAM use: 49.9 MB
 ~~~
 {: .output}
@@ -266,7 +270,7 @@ $ get_homologues.pl -d data_get -t 0 -G
 
 then we use the option 
 ~~~~
-$ ls -d data_get_homologues/0taxa
+$ ls -d data_get_homologues/0taxa #list directories cluster COG and OMCL
 ~~~~
 
 ~~~
@@ -277,15 +281,9 @@ data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 {: .language-bash}
 
 ~~~ 
-# pangenome_phylip file = prueba_intersection2/pangenome_matrix_t0.phylip
-# pangenome_FASTA file = prueba_intersection2/pangenome_matrix_t0.fasta
-# pangenome CSV file (Scoary) = prueba_intersection2/pangenome_matrix_t0.tr.csv
-# input set: prueba_intersection2/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.venn_t0.txt
-# input set: prueba_intersection2/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.venn_t0.txt
-
-# Venn diagram = prueba_intersection2/venn_t0.pdf prueba_intersection2/venn_t0.svg
-# Venn region file: prueba_intersection2/unique_agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.venn_t0.txt (182)
-# Venn region file: prueba_intersection2/unique_agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.venn_t0.txt (186)
+# Venn diagram = alg_intersection/venn_t0.pdf alg_intersection/venn_t0.svg
+# Venn region file: alg_intersection/unique_agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.venn_t0.txt (182)
+# Venn region file: alg_intersection/unique_agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.venn_t0.txt (186)
 ~~~
 {: .output}
 
