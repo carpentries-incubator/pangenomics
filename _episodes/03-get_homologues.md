@@ -265,8 +265,8 @@ $ usuario@ip password:
 
 search file in the file browser on your computer.
 
-<a href="../fig/venn_t0_gethomologues.svg">
-  <img src="../fig/venn_t0_gethomologues.svg" alt="Aquí va el texto que describe a la imagen." />
+<a href="../fig/venn_t0_GET_HOMOLOGUES.svg">
+  <img src="../fig/venn_t0_GET_HOMOLOGUES.svg" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
 ## Step 4. Obtaining a pangenome matrix
