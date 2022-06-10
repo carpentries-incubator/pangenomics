@@ -1,6 +1,6 @@
 ---
 title: "Downloading and Annotating Genomic Data"
-teaching: 35
+teaching: 20
 exercises: 15
 questions:
 - "How to download NCBI genomic data from the command line?"
@@ -20,7 +20,7 @@ The NCBI Genome Downloading Scripts provide a shell command that allows users to
 The full list of parameters you can incorporate in your dowmloads can be obtained by typing:
 
 ~~~
-ncbi-genome-download --help
+$ ncbi-genome-download --help
 ~~~
 {: .source}
 
@@ -45,128 +45,134 @@ usage:
                         ['genbank', 'fasta', 'rm', 'features', 'gff',
                         'protein-fasta', 'genpept', 'wgs', 'cds-fasta', 'rna-
                         fna', 'rna-fasta', 'assembly-report', 'assembly-
-                        stats', 'all']  
-    -l ASSEMBLY_LEVELS, --assembly-levels ASSEMBLY_LEVELS  
-                        Assembly levels of genomes to download (default: all).  
-                        A comma-separated list of assembly levels is also
-                        possible. For example: "complete,chromosome". Choose
-                        from: ['all', 'complete', 'chromosome', 'scaffold',
-                        'contig']  
+                        stats', 'all'] 
     -g GENERA, --genera GENERA  
                         Only download sequences of the provided genera. A
                         comma-seperated list of genera is also possible. For
                         example: "Streptomyces coelicolor,Escherichia coli".
                         (default: [])  
-    --genus GENERA        Deprecated alias of --genera  
-    --fuzzy-genus         Use a fuzzy search on the organism name instead of an
-                         exact match.  
     -S STRAINS, --strains STRAINS   
                         Only download sequences of the given strain(s). A
                         comma-separated list of strain names is possible, as
                         well as a path to a filename containing one name per
-                        line.  
-    -T SPECIES_TAXIDS, --species-taxids SPECIES_TAXIDS  
-                        Only download sequences of the provided species NCBI
-                        taxonomy IDs. A comma-separated list of species taxids
-                        is also possible. For example: "52342,12325".
-                        (default: [])  
-    -t TAXIDS, --taxids TAXIDS  
-                        Only download sequences of the provided NCBI taxonomy
-                        IDs. A comma-separated list of taxids is also
-                        possible. For example: "9606,9685". (default: [])  
+                        line.   
     -A ASSEMBLY_ACCESSIONS, --assembly-accessions ASSEMBLY_ACCESSIONS  
                         Only download sequences matching the provided NCBI
                         assembly accession(s). A comma-separated list of
                         accessions is possible, as well as a path to a
-                        filename containing one accession per line.  
-    -R REFSEQ_CATEGORIES, --refseq-categories REFSEQ_CATEGORIES  
-                        Only download sequences of the provided refseq
-                        categories (default: all)  
-    --refseq-category REFSEQ_CATEGORIES  
-                        Deprecated alias for --refseq-categories  
+                        filename containing one accession per line.   
     -o OUTPUT, --output-folder OUTPUT   
                         Create output hierarchy in specified folder (default:
                         /home/betterlab)  
-    --flat-output         Dump all files right into the output folder without
-                        creating any subfolders.  
-    -H, --human-readable  Create links in human-readable hierarchy (might fail
-                        on Windows)  
-    -P, --progress-bar    Create a progress bar for indicating the download
-                        progress  
-    -u URI, --uri URI     NCBI base URI to use (default:
-                        https://ftp.ncbi.nih.gov/genomes)  
-    -p N, --parallel N    Run N downloads in parallel (default: 1)  
-    -r N, --retries N     Retry download N times when connection to NCBI fails
-                        (default: 0)  
     -m METADATA_TABLE, --metadata-table METADATA_TABLE  
                         Save tab-delimited file with genome metadata  
     -n, --dry-run         Only check which files to download, don't download
                         genome files.  
-    -N, --no-cache        Don't cache the assembly summary file in
-                        /home/betterlab/.cache/ncbi-genome-download.  
-    -v, --verbose         increase output verbosity  
-    -d, --debug           print debugging information   
-    -V, --version         print version information  
-    -M TYPE_MATERIALS, --type-materials TYPE_MATERIALS  
-                        Specifies the relation to type material for the
-                        assembly (default: any). "any" will include assemblies
-                        with no relation to type material value defined, "all"
-                        will download only assemblies with a defined value. A
-                        comma-separated list of relatons. For example:
-                        "reference,synonym". Choose from: ['any', 'all',
-                        'type', 'reference', 'synonym', 'proxytype',
-                        'neotype'].  
 ~~~
 {: .output}
 
 Once we know about the flags we can use, we are ready to use the package but first we need to go to our data directory.
 
 ~~~
-cd dc_workshop/data
+$ cd dc_workshop/data
 ~~~
-{: .bash}
+{: .language-bash}
 
-If you list the contents of this directory (using the `ls` command), you'll see several folders, each of which contain the raw data of different strains of Streptococcus agalactiae used in Tettelin et al (2005). We will add a new entry to this directory by downloading a FASTA file of the genomes of all Streptococcus constellatus strains available on NCBI:
+If you list the contents of this directory (using the `ls` command), you'll see several folders, each of which contain the raw data of different strains of *Streptococcus agalactiae* used in Tettelin *et al*., (2005) in `.gbk` and `.fasta` format. 
 
 ~~~
-ncbi-genome-download --formats fasta  --genera "Streptococcus constellatus" bacteria
+$ ls 
 ~~~
-{: .bash}
+{: .language-bash}
 
-The above code will display a new Genbank directory with subdirectories named after their NCBI assembly number.
+~~~
+18RS21/  515/  A909/  COH1/  CJB111/  H36B/ 
+~~~
+{: .output}
 
-The `gbk` files contained within this folder are used for the posterior analysis. It provides information about the coding sequences, their locus, the name of the protein, and the full nucleotide sequence of the assembly. By setting the `--formats` parameter to `genbank`, you tell the script to download `gbk` files.
+We are interested in download a FASTA format of *Streptococcus thermophilus* LMD-9 strain from on NCBI. The `-n` flag allow us to check for this assembly availability before data downloading.
+
+~~~
+$ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -n -o thermophilusLMD9 bacteria
+~~~
+{: .language-bash}
+
+~~~
+Considering the following 1 assemblies for download:
+GCF_000014485.1 Streptococcus thermophilus LMD-9        LMD-9
+~~~
+{: .output}
+
+We will add a new entry to this directory by downloading the available assembly in a directory named `thermophilusLMD9`:
+
+~~~
+$ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -o thermophilusLMD9 bacteria
+~~~
+{: .language-bash}
+
+After this execution, we will find the newly created directory and, at the bottom of the folder, the compressed assembly of interest named after the NCBI assembly number. We can check this by:
+
+~~~
+$ cd thermophilusLMD9/refseq/bacteria/GCF_000014485.1/
+$ ls
+~~~
+{: .language-bash}
+
+~~~
+GCF_000014485.1_ASM1448v1_genomic.fna.gz  MD5SUMS
+~~~
+{: .output}
+For a posterior analysis of this sequence, we need to decompress it
+
+~~~
+$ gunzip thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_000014485.1_ASM1448v1_genomic.fna.gz
+~~~
+{: .language-bash}
+
+Now we can explore the file and move it to the main directory `thermophilusLMD9`
+
+```
+$ mv GCF_008803015.1_ASM880301v1_genomic.fna ../../..
+$ cd ../../..
+$ rm -r refseq
+```
+{: .language-bash}
+
+
+> ## Notes
+> In this example, we used the format FASTA to fetch our assembly. Nevertheless, we can use the flag `--help` to switch for other formats. For example, the `gbk` format files contained information about the coding sequences, their locus, the name of the protein, and the full nucleotide sequence of the assembly. At the same time it is a format also used for double-check the annotation.
+{: .callout}
 
 > ## Exercise 1: Downloading data from NCBI with the command line
 > 
 > Suppose you are asked to perform the following sequence of actions:
 > 
-> 1. Download a FASTA file of the ATCC 31377 strain of the *Streptococcus ratti* bacterium and save it to an output directory titled `ratti`.
+> 1. Download a FASTA format assembly of the *Streptococcus thermophilus* with the NCBI assembly number `GCF_000011825.1` and save it to an output directory titled `thermophilusLMG18311`.
 > 2. Change to the directory of the FASTA file and unzip it.
-> 3. Move the FASTA file all the way back to the `ratti` directory.
-> 4. Change to the `ratti` directory and delete the `refseq` subdirectory created by the downloading tool.
+> 3. Move the FASTA file all the way back to the `thermophilusLMG18311` directory.
+> 4. Change to the `thermophilusLMG18311` directory and delete the `refseq` subdirectory created by the downloading tool.
 > 
 > Complete the following set of commands to perform the previous steps:
 > 
 > Step 1.
 > 
 > ~~~
-> ncbi-genome-download -F __________ -g __________ -S __________ -o __________ bacteria
+> ncbi-genome-download -F __________ --genera __________ -A __________ -o __________ bacteria
 > ~~~
 > {: .source}
 > 
 > Step 2.
 > 
 > ~~~
-> cd __________/refseq/bacteria/GCF_008803015.1/
-> __________ GCF_008803015.1_ASM880301v1_genomic.fna.gz
+> cd __________/refseq/bacteria/GCF_000011825.1/
+> __________ GCF_000011825.1_ASM1182v1_genomic.fna.gz
 > ~~~
 > {: .source}
 > 
 > Step 3.
 > 
 > ~~~
-> mv GCF_008803015.1_ASM880301v1_genomic.fna __________
+> mv GCF_000011825.1_ASM1182v1_genomic.fna __________
 > ~~~
 > {: .source}
 > 
@@ -183,30 +189,30 @@ The `gbk` files contained within this folder are used for the posterior analysis
 > > Step 1. Using the information provided in the step, we completed each blank space with the corresponding word:
 > >
 > > ~~~
-> > ncbi-genome-download -F fasta -g "Streptococcus ratti" -S "ATCC 31377" -o ratti bacteria
+> > ncbi-genome-download -F fasta --genera "Streptococcus " -A GCF_000011825.1 -o thermophilusLMG18311 bacteria
 > > ~~~
 > > {: .source}
 > >
-> > Step 2. The previous command creates a `ratti` subdirectory. To get to the FASTA file we must go through a sequence of subdirectories and then apply the `gunzip` command to unzip the FASTA file:
+> > Step 2. The previous command creates a `thermophilusLMG18311` subdirectory. To get to the FASTA file we must go through a sequence of subdirectories and then apply the `gunzip` command to unzip the FASTA file:
 > >
 > > ~~~
-> > cd ratti/refseq/bacteria/GCF_008803015.1/
-> > gunzip GCF_008803015.1_ASM880301v1_genomic.fna.gz
-> > ~~~
-> > {: .source}
-> >
-> > Step 3. We now have an unzipped FASTA file. The parent directory `ratti` is located three directories above the current one. To get to the first parent directory, one would type `..`; if you want to get to the second parent directory, you would use `../..`. Thus, to move the FASTA file to the `ratti` directory, we need to type:
-> >
-> > ~~~
-> > mv GCF_008803015.1_ASM880301v1_genomic.fna ../../..
+> > $ cd thermophilusLMG18311/refseq/bacteria/GCF_000011825.1/
+> > $ gunzip GCF_000011825.1_ASM1182v1_genomic.fna.gz
 > > ~~~
 > > {: .source}
 > >
-> > Step 4. Finally, we move back to the `ratti` directory (in a similar manner as in the previous step) and delete the `refseq` directory.
+> > Step 3. We now have an unzipped FASTA file. The parent directory `thermophilusLMG18311` is located three directories above the current one. To get to the first parent directory, one would type `..`; if you want to get to the second parent directory, you would use `../..`. Thus, to move the FASTA file to the `thermophilusLMG18311` directory, we need to type:
 > >
 > > ~~~
-> > cd ../../..
-> > rm -rf refseq
+> > $ mv GCF_000011825.1_ASM1182v1_genomic.fna ../../..
+> > ~~~
+> > {: .source}
+> >
+> > Step 4. Finally, we move back to the `thermophilusLMG18311` directory (in a similar manner as in the previous step) and delete the `refseq` directory.
+> >
+> > ~~~
+> > $ cd ../../..
+> > $ rm -rf refseq
 > > ~~~
 > > {: .source}
 > >
@@ -238,35 +244,34 @@ database of known sequences, usually at a protein level, and transfer the annota
 Prokka uses this method, but in a hierarchical manner, starting with a smaller trustworthy database, moving to medium
 sized but domain specific databases and finally to curated models of protein families.
 
-To get started with Prokka, we must first install it, [here](https://czirion.github.io/comparative-genomics-workshop/setup.html) you can find the set up page. 
-
 Next, we need to change to the directory where we have the assembly (FASTA) files of interest. As a simple initial example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
 
 ~~~
-prokka example.fasta --outdir exdir --prefix exf
+$ cd ../results/annotated/
+$ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ../../thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
 ~~~
 {: .source}
 
-If you run the `tree` command in the current directory, you can preview the system of files created by Prokka:
+Now prokka has generated a new folder. Lets get in and if you run the `tree` command in the current directory, you can preview the system of files created by Prokka:
 
 ~~~
 exdir/
-├── exf.err
-├── exf.faa
-├── exf.ffn
-├── exf.fna
-├── exf.fsa
-├── exf.gbk
-├── exf.gff
-├── exf.log
-├── exf.sqn
-├── exf.tbl
-├── exf.tsv
-└── exf.txt
+├── thermophilusLMD9_prokka.err
+├── thermophilusLMD9_prokka.faa
+├── thermophilusLMD9_prokka.ffn
+├── thermophilusLMD9_prokka.fna
+├── thermophilusLMD9_prokka.fsa
+├── thermophilusLMD9_prokka.gbk
+├── thermophilusLMD9_prokka.gff
+├── thermophilusLMD9_prokka.log
+├── thermophilusLMD9_prokka.sqn
+├── thermophilusLMD9_prokka.tbl
+├── thermophilusLMD9_prokka.tsv
+└── thermophilusLMD9_prokka.txt
 ~~~
 {: .output}
 
-The following table describes the contents of each output file:
+We encourage you to explore each output nevertheless, the following table describes the contents of each output file:
 
 | Extension | Description |
 | --------- | ----------- |
@@ -283,128 +288,45 @@ The following table describes the contents of each output file:
 | .txt | Statistics relating to the annotated features found. |
 | .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product |
 
-You can also add further details regarding the organism you search and the way the files will be annotated. For instance, if you'd like to annotate an archaeon of the genus *Nitrososphaera*, you would execute the following command:
-
-~~~
-prokka example.fasta --kingdom Archaea --genus Nitrososphaera --outdir exdir
-~~~
-{: .source}
-
-You may specify your queries as much as you like. Type `prokka --help` in the command line to get the complete list of available parameters:
-
-~~~
-General:
-  --help            This help
-  --version         Print version and exit
-  --citation        Print citation for referencing Prokka
-  --quiet           No screen output (default OFF)
-  --debug           Debug mode: keep all temporary files (default OFF)
-Setup:
-  --listdb          List all configured databases
-  --setupdb         Index all installed databases
-  --cleandb         Remove all database indices
-  --depends         List all software dependencies
-Outputs:
-  --outdir [X]      Output folder [auto] (default '')
-  --force           Force overwriting existing output folder (default OFF)
-  --prefix [X]      Filename output prefix [auto] (default '')
-  --addgenes        Add 'gene' features for each 'CDS' feature (default OFF)
-  --locustag [X]    Locus tag prefix (default 'PROKKA')
-  --increment [N]   Locus tag counter increment (default '1')
-  --gffver [N]      GFF version (default '3')
-  --compliant       Force Genbank/ENA/DDJB compliance: --genes --mincontiglen 200 --centre XXX (default OFF)
-  --centre [X]      Sequencing centre ID. (default '')
-Organism details:
-  --genus [X]       Genus name (default 'Genus')
-  --species [X]     Species name (default 'species')
-  --strain [X]      Strain name (default 'strain')
-  --plasmid [X]     Plasmid name or identifier (default '')
-Annotations:
-  --kingdom [X]     Annotation mode: Archaea|Bacteria|Mitochondria|Viruses (default 'Bacteria')
-  --gcode [N]       Genetic code / Translation table (set if --kingdom is set) (default '0')
-  --prodigaltf [X]  Prodigal training file (default '')
-  --gram [X]        Gram: -/neg +/pos (default '')
-  --usegenus        Use genus-specific BLAST databases (needs --genus) (default OFF)
-  --proteins [X]    Fasta file of trusted proteins to first annotate from (default '')
-  --hmms [X]        Trusted HMM to first annotate from (default '')
-  --metagenome      Improve gene predictions for highly fragmented genomes (default OFF)
-  --rawproduct      Do not clean up /product annotation (default OFF)
-Computation:
-  --fast            Fast mode - skip CDS /product searching (default OFF)
-  --cpus [N]        Number of CPUs to use [0=all] (default '8')
-  --mincontiglen [N] Minimum contig size [NCBI needs 200] (default '1')
-  --evalue [n.n]    Similarity e-value cut-off (default '1e-06')
-  --rfam            Enable searching for ncRNAs with Infernal+Rfam (SLOW!) (default '0')
-  --norrna          Don't run rRNA search (default OFF)
-  --notrna          Don't run tRNA search (default OFF)
-  --rnammer         Prefer RNAmmer over Barrnap for rRNA prediction (default OFF)
-~~~
-{: .output}
-
-Prokka can understand FASTA files with plain or detailed tag formats. A plain tag format looks like this:
-
-~~~
->SeqID product
-~~~
-{: .output}
-
-The detailed one consists of a special encoded three-part description line. The parts are the `/EC_number`, the `/gene` code, then the `/product` - and they are separated by a special "~~~" sequence:
-
-~~~
->SeqID EC_number~~~gene~~~product~~~COG
-~~~
-{: .output}
-
-Here are some examples. Note that not all parts need to be present, but the "~~~" should still be there:
-
-~~~
->YP_492693.1 2.1.1.48~~~ermC~~~rRNA adenine N-6-methyltransferase~~~COG1234
-MNEKNIKHSQNFITSKHNIDKIMTNIRLNEHDNIFEIGSGKGHFTLELVQRCNFVTAIEI
-DHKLCKTTENKLVDHDNFQVLNKDILQFKFPKNQSYKIFGNIPYNISTDIIRKIVF*
->YP_492697.1 ~~~traB~~~transfer complex protein TraB~~~
-MIKKFSLTTVYVAFLSIVLSNITLGAENPGPKIEQGLQQVQTFLTGLIVAVGICAGVWIV
-LKKLPGIDDPMVKNEMFRGVGMVLAGVAVGAALVWLVPWVYNLFQ*
->YP_492694.1 ~~~~~~transposase~~~
-MNYFRYKQFNKDVITVAVGYYLRYALSYRDISEILRGRGVNVHHSTVYRWVQEYAPILYQ
-QSINTAKNTLKGIECIYALYKKNRRSLQIYGFSPCHEISIMLAS*
-~~~
-{: .output}
+You can also modify parameters as much as you need regarding the organism, gene and even locus tag you are looking for. 
+l
 
 > ## Exercise 2: Extracting tRNAs with Prokka
 >
 > Suppose you are now asked to annotate the FASTA file you downloaded in Exercise 1 and output the results to a subdirectory called `annotated` within the `ratti` directory. Then, a research team asks you to provide them a TSV file titled `trnas.tsv` that only contains *S. ratti'*s tRNAs. This file must contain the same headers as the original TSV file, followed by the rows that correspond to tRNAs. Complete the following sequence of commands to perform this actions:
 > 
 > ~~~
-> prokka GCF_008803015.1_ASM880301v1_genomic.fna --outdir __________ --prefix atcc31377
+> $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311_prokka ../../thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes 
 > ~~~
 > {: .source}
 > 
 > ~~~
-> cd __________
+> $ cd __________
 > ~~~
 > {: .source}
 > 
 > ~~~
-> __________ -n 1 atcc31377.tsv > trnas.tsv  # Get column headers
-> grep __________ atcc31377.tsv >> trnas.tsv # Append all lines that contain tRNAs
+> $ __________ -n 1 thermophilusLMG18311_prokka.tsv > trnas.tsv  # Get column headers
+> $ grep __________ thermophilusLMG18311_prokka.tsv >> trnas.tsv # Append all lines that contain tRNAs
 > ~~~
 > {: .source}
 >
 > > ## Solution
 > >
-> > First, we perform the annotation with Prokka and save all files as `atcc31377` in a directory titled `annotated`.
+> > First, we perform the annotation with Prokka and save all files as `thermophilusLMG18311_prokka`.
 > >
 > > ~~~
-> > prokka GCF_008803015.1_ASM880301v1_genomic.fna --outdir annotated --prefix atcc31377
+> > $ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes 
+../../thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
 > > ~~~
 > > {: .source}
 > >
-> > After switching to the `annotated` directory, we shall now filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). We then append the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'`(this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
+> > After switching to the `thermophilusLMD9_prokka` directory, we shall now filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). We then append the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'`(this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
 > >
 > > ~~~
 > > cd annotated
-> > head -n 1 atcc31377.tsv > trnas.tsv # Get column headers
-> > grep $'\t'tRNA$'\t' atcc31377.tsv >> trnas.tsv # Append all lines that contain tRNA
+> > head -n 1 thermophilusLMD9_prokka.tsv > trnas.tsv # Get column headers
+> > grep $'\t'tRNA$'\t' thermophilusLMD9_prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
 > > ~~~
 > > {: .source}
 > >
