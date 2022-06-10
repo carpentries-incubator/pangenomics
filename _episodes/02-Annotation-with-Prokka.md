@@ -122,6 +122,7 @@ $ ls
 GCF_000014485.1_ASM1448v1_genomic.fna.gz  MD5SUMS
 ~~~
 {: .output}
+
 For a posterior analysis of this sequence, we need to decompress it
 
 ~~~
