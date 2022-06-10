@@ -58,7 +58,7 @@ PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it w
 
 ### U-shaped plot
 
-A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a .html file.
+A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a `.html` file.
 
 <a href="../fig/01-04-02.png">
   <img src="../fig/01-04-02.png" width="960" height="438" alt="" />
@@ -66,7 +66,7 @@ A U-shaped plot is a figure presenting the number of families (y axis) per numbe
 
 ### Tile plot
 
-A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together on the figure). In addition, it is a .html file.
+A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together on the figure). In addition, it is a `.html` file.
 
 <a href="../fig/01-04-03.png">
   <img src="../fig/01-04-03.png" width="956.5" height="453.5" alt="" />
@@ -85,7 +85,7 @@ A tile plot is a heatmap representing the gene families (y axis) in the organism
 ### PangenomeGraph files
 
 You can get the .gexf files. It will contain the gene families as nodes and the edges between gene families describing their relationship.
-They can be manipulated and visualised through a software called Gephi, with which we have made extensive testings, or potentially any other softwares or libraries that can read gexf files such as networkx or gexf-js among others.
+They can be manipulated and visualised through a software called Gephi, with which we have made extensive testings, or potentially any other softwares or libraries that can read `.gexf` files such as networkx or gexf-js among others.
 
 <a href="../fig/01-04-05.png">
   <img src="../fig/01-04-05.png" width="512" height="512" alt="" />
@@ -150,7 +150,7 @@ $ find ~/gm_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {
 
 ### Step 3: Obtain genome list
 
-Each line of this file represent one organism, first column contains a unique organism name and the second column contains the path to the associate gbk file.
+Each line of this file represent one organism, first column contains a unique organism name and the second column contains the path to the associate `.gbk` file.
 
 ~~~
 $ ls agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\t'$line.gbk >> organisms.gbk.list; done
@@ -179,7 +179,7 @@ agalactiae_H36B_prokka  agalactiae_H36B_prokka.gbk
 
 ### Step 4: Genome annotation
 
-Using the organisms list, annotation of genomes is made with the 'annotate' module of PPanGGOLiN.
+Using the organisms list, annotation of genomes is made with the `annotate` module of PPanGGOLiN.
 
 ~~~
 $ ppanggolin annotate --anno organisms.gbk.list --output pangenome
@@ -211,7 +211,7 @@ organisms.gbk.list  pangenome
 ~~~
 {: .output}
 
-Move into the pangenome/ directory and explore it. 
+Move into the `pangenome/` directory and explore it. 
 ~~~
 $ cd pangenome/
 $ ls -lah pangenome.h5
@@ -224,7 +224,7 @@ $ ls -lah pangenome.h5
 ~~~
 {: .output}
 
-The pangenome.h5 file will be used as input and output for all subsequent analysis.
+The `pangenome.h5` file will be used as input and output for all subsequent analysis.
 
 ### Step 5: Gene clustering
 
@@ -244,7 +244,7 @@ $ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .output}
 
-The results are saved in the pangenome.h5 file given as input. We can notice that the size of the file has increased.
+The results are saved in the `pangenome.h5` file given as input. We can notice that the size of the file has increased.
 
 ~~~
 $ ls -lah pangenome.h5
@@ -276,7 +276,7 @@ Processing agalactiae_H36B_prokka: 100%|███| 6/6 [00:00<00:00, 352.82organ
 ~~~
 {: .output}
 
-The results are saved in the pangenome.h5 file given as input.
+The results are saved in the `pangenome.h5` file given as input.
 
 ~~~
 $ ls -lah pangenome.h5
@@ -291,7 +291,7 @@ $ ls -lah pangenome.h5
 ### Step 7: Pangenome partition
 
 This is the step that will assign gene families to the 'persistent', 'shell', or 'cloud' partitions.
-The one parameter that might be of importance is the '-K', or '--nb_of_partitions' parameter. This will define the number of classes used to partition the pangenome. This may be of use if you expect to have well-defined subpopulations in your pangenome and you know exactly how many. If not, that number if detected automatically through an ICL criterion. The idea is that the most present partition will be 'persistent', the least present will be 'cloud', and all the others will be 'shell'. The number of partitions corresponding to the shell will be the number of expected subpopulations in your pangenome. (So if you expect 5 subpopulations, you could use -K 7).
+The one parameter that might be of importance is the `-K`, or `--nb_of_partitions` parameter. This will define the number of classes used to partition the pangenome. This may be of use if you expect to have well-defined subpopulations in your pangenome and you know exactly how many. If not, that number if detected automatically through an ICL criterion. The idea is that the most present partition will be 'persistent', the least present will be 'cloud', and all the others will be 'shell'. The number of partitions corresponding to the shell will be the number of expected subpopulations in your pangenome. (So if you expect 5 subpopulations, you could use `-K 7`).
 
 In most cases, you should let the statistical criterion used by PPanGGOLiN find the optimal number of partitions for you.
 
@@ -312,7 +312,7 @@ $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .output}
 
-All the results will be added to the given 'pangenome.h5' input file.
+All the results will be added to the given `pangenome.h5` input file.
 
 ~~~
 $ ls -lah pangenome.h5
@@ -400,7 +400,7 @@ AAJO01000087.1_RGP_0    agalactiae_18RS21_prokka        AAJO01000087.1  512    7
 ~~~
 {: .output}
 
-Return to the working directory.
+Return to the `pangenome/` directory.
 ~~~
 $ cd ..
 ~~~
@@ -501,7 +501,7 @@ spot_9  1       39      1       39      0       39      39
 ~~~
 {: .output}
 
-Return to the working directory.
+Return to the `pangenome/` directory.
 ~~~
 $ cd ..
 ~~~
@@ -531,7 +531,7 @@ PPanGGOLiN provides multiple outputs to describe a pangenome. In this section th
 
 #### U-shaped plot
 
-A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a .html file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a .png image file.
+A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a `.html` file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a `.png` image file.
 
 ~~~
 $ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
