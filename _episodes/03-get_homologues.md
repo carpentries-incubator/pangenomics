@@ -287,6 +287,9 @@ data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 ~~~
 {: .output}
 
+<a href="../fig/venn_t0_COG_OMCL.svg">
+  <img src="../fig/venn_t0_COG_OMCL.svg" alt="Aquí va el texto que describe a la imagen." />
+</a>
 
 > ## Exercise 1: 
 > 
