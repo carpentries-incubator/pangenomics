@@ -44,7 +44,7 @@ PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It par
 > Core
 > Soft core
 > Persistent
-> {: .discussion}
+{: .discussion}
 
 ## Input files
 
@@ -80,7 +80,7 @@ A tile plot is a heatmap representing the gene families (y axis) in the organism
 > 
 > 
 > 
-> {: .discussion}
+{: .discussion}
 
 ### PangenomeGraph files
 
@@ -523,7 +523,7 @@ $ ls -lah pangenome.h5
 > 
 > 
 > 
-> {: .discussion}
+{: .discussion}
 
 ### Step 10: Draw pangenome plots
 
