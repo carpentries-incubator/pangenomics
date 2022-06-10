@@ -32,10 +32,10 @@ It brings together many aspects of today's cutting-edge strategies including **g
 
 ### Get all ready to start the Anvi'o workflow to build a pangenome
 
-To start using Anvi'o, activate the conda environment **Pangenomics** 
+To start using Anvi'o, activate the conda environment `Pangenomics_Global` 
 
 ~~~
-conda activate Pangenomics
+conda activate Pangenomics_Global
 ~~~
 {: .laguage-bash}
 
@@ -45,21 +45,22 @@ conda activate Pangenomics
 ~~~
 {: .output}
 
-Move into the directory named **results** and create a new directory called **anvi-o** for the Anvi'o analysis
+Move into the directory named `results` and create a new directory called `anvi-o` for the Anvi'o analysis
 ~~~
-cd dc_workshop/results
+cd ~/gm_workshop/results/pangenome
 mkdir anvi-o
+
 cd anvi-o
 ~~~
 {: .laguage-bash}
 
-In order to better organize our Anvi'o results, create a new directory named **genome-db** that will be used to storage the genome database needed for the Anvi'o pangenome worflow
+In order to better organize our Anvi'o results, create a new directory named `genome-db` that will be used to storage the genome database needed for the Anvi'o pangenome worflow
 ~~~
 mkdir genome-db
 ~~~
 {: .laguage-bash}
 
-**Note:** The bacterial genomes that will be used in this practice come from the Prokka annotation analysis. We will use the .gbk files as input for the Anvi'o workflow. The .gbk files can be found in ~/dc-workshop/results/annotated
+**Note:** The bacterial genomes that will be used in this practice come from the Prokka annotation analysis. We will use the .gbk files as input for the Anvi'o workflow. The .gbk files can be found in ~/gm_workshop/results/annotated
 
 
 Let's do it!
@@ -72,7 +73,7 @@ Let's do it!
 Process the genome files (.gbk) with the `anvi-script-process-genbank` script
 
 ~~~
-ls ~/dc_workshop/results/annotated/agalactiae* | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/dc_workshop/results/annotated/$line.gbk -O genome-db/$line; done
+ls ~/gm_workshop/results/annotated/agalactiae* | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/gm_workshop/results/annotated/$line.gbk -O genome-db/$line; done
 ~~~
 {: .laguage-bash}
 
@@ -174,7 +175,7 @@ agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
 
 ### Step 5
 
-Modify the headers of the list external-genomes.txt
+Modify the headers of the list `external-genomes.txt`
 ~~~
 nano external-genomes.txt
 ~~~
@@ -215,7 +216,7 @@ agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
 
 ### Step 6
 
-Rename the .db files
+Rename the `.db` files
 
 ~~~
 rename s'/.fa.fasta-contigs.db/.db/' *db
@@ -332,15 +333,15 @@ Genomes storage ..............................: Initialized (storage hash: hash2
 Num genomes in storage .......................: 6
 Num genomes will be used .....................: 6
 Pan database .................................: A new database,
-                                                /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db,
+                                                /home/betterlab/gm_workshop/results/anvi-o/genome-db/AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db,
                                                 has been created.
 Exclude partial gene calls ...................: False
 
-AA sequences FASTA ...........................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/combined-aas.fa
+AA sequences FASTA ...........................: /home/betterlab/gm_workshop/results/anvi-o/genome-db/AGALACTIAE/combined-aas.fa
 
 Num AA sequences reported ....................: 13,548
 Num excluded gene calls ......................: 0
-Unique AA sequences FASTA ....................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/combined-aas.fa.unique
+Unique AA sequences FASTA ....................: /home/betterlab/gm_workshop/results/anvi-o/genome-db/AGALACTIAE/combined-aas.fa.unique
 
 WARNING
 ===============================================
@@ -352,23 +353,23 @@ may justify significant increase in run time, but you are the boss.
 
 NCBI BLAST MAKEDB
 ===============================================
-BLAST search db ..............................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/combined-aas.fa.unique
+BLAST search db ..............................: /home/betterlab/gm_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/combined-aas.fa.unique
 
 NCBI BLAST SEARCH
 ===============================================
-BLAST results ................................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/blast-search-results.txt
+BLAST results ................................: /home/betterlab/gm_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/blast-search-results.txt
 
 MCL INPUT
 ===============================================
 Min percent identity .........................: 0.0
 Minbit .......................................: 0.5
 Filtered search results ......................: 92,757 edges stored
-MCL input ....................................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/mcl-input.txt
+MCL input ....................................: /home/betterlab/gm_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/mcl-input.txt
 
 MCL
 ===============================================
 MCL inflation ................................: 10.0
-MCL output ...................................: /home/betterlab/dc_workshop/results/anvi-o/genome-db/AGALACTIAE/mcl-clusters.txt
+MCL output ...................................: /home/betterlab/gm_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/mcl-clusters.txt
 Number of MCL clusters .......................: 2,711
 
 CITATION
