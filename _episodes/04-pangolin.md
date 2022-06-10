@@ -41,9 +41,10 @@ PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It par
 
 
 > ## Discussion
-> Core
-> Soft core
-> Persistent
+> Some authors call *soft core* to persistent. 
+> 
+> What it is *core*? What it is the term that PanGGolin authors used for core?
+> 
 {: .discussion}
 
 ## Input files
@@ -77,9 +78,11 @@ A tile plot is a heatmap representing the gene families (y axis) in the organism
 </a>
 
 > ## Discussion
+> If you use the option `nocloud` option, you will not see the 'cloud' gene families. 
 > 
+> What do you think this might be useful?
 > 
-> 
+> In the graph, you can see a little bar with the legend `Multicopy`, what do you think it is?
 {: .discussion}
 
 ### PangenomeGraph files
@@ -520,8 +523,7 @@ $ ls -lah pangenome.h5
 
 
 > ## Discussion
-> 
-> 
+> What it is the difference between RGP regions and spots of insertion?
 > 
 {: .discussion}
 
