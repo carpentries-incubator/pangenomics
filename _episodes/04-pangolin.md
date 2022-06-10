@@ -133,19 +133,12 @@ drwxrwxr-x  2 betterlab betterlab 4096 Jun  6 15:10 ppanggolin
 {: .output}
 
 
-Return to the main directory.
-~~~
-$ cd ..
-~~~
-{: .language-bash}
-
 ### Step 2: Identify and explore the genome files
 
 
 
 ~~~
-$ cd ~/gm_workshop/results/annotated
-$ ls *.gbk
+$ ls ~/gm_workshop/results/annotated/*.gbk
 ~~~
 {: .language-bash}
 
@@ -155,12 +148,18 @@ agalactiae_515_prokka.gbk     agalactiae_CJB111_prokka.gbk  agalactiae_H36B_prok
 ~~~
 {: .output}
 
+Now, we need to create a Symbolic link with the file *.gbk*  (remember the previous episode)
+~~~
+$ find ~/gm_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {} . ';' 
+~~~
+{: .language-bash}
+
 ### Step 3: Obtain genome list
 
 Each line of this file represent one organism, first column contains a unique organism name and the second column contains the path to the associate gbk file.
 
 ~~~
-$ ls agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\t/home/betterlab/gm_workshop/results/annotated/'$line.gbk >> ~/gm_workshop/results/pangenome/ppanggolin/organisms.gbk.list; done
+$ ls agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\t'$line.gbk >> organisms.gbk.list; done
 ~~~
 {: .language-bash}
 
