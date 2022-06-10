@@ -36,15 +36,6 @@ usage:
                           [-m METADATA_TABLE] [-n] [-N] [-v] [-d] [-V]  
                           [-M TYPE_MATERIALS]
                           groups
-  positional arguments:  
-    groups              The NCBI taxonomic groups to download (default: all).
-                        A comma-separated list of taxonomic groups is also
-                        possible. For example: "bacteria,viral"Choose from:
-                        ['all', 'archaea', 'bacteria', 'fungi',
-                        'invertebrate', 'metagenomes', 'plant', 'protozoa',
-                        'vertebrate_mammalian', 'vertebrate_other', 'viral']  
-    optional arguments:  
-    -h, --help            show this help message and exit  
     -s {refseq,genbank}, --section {refseq,genbank}  
                         NCBI section to download (default: refseq)  
     -F FILE_FORMATS, --formats FILE_FORMATS  
