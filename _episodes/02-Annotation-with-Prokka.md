@@ -1,6 +1,6 @@
 ---
 title: "Downloading and Annotating Genomic Data"
-teaching: 20
+teaching: 30
 exercises: 15
 questions:
 - "How to download NCBI genomic data from the command line?"
