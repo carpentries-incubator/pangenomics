@@ -60,7 +60,7 @@ mkdir genome-db
 ~~~
 {: .laguage-bash}
 
-**Note:** The bacterial genomes that will be used in this practice come from the Prokka annotation analysis. We will use the .gbk files as input for the Anvi'o workflow. The .gbk files can be found in ~/gm_workshop/results/annotated
+**Note:** The bacterial genomes that will be used in this practice come from the Prokka annotation analysis. We will use the `.gbk` files as input for the Anvi'o workflow. The `.gbk` files can be found in `~/gm_workshop/results/annotated`.
 
 
 Let's do it!
@@ -70,7 +70,7 @@ Let's do it!
 
 ### Step 1
 
-Process the genome files (.gbk) with the `anvi-script-process-genbank` script
+Process the genome files (`.gbk`) with the `anvi-script-process-genbank` script
 
 ~~~
 ls ~/gm_workshop/results/annotated/agalactiae* | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/gm_workshop/results/annotated/$line.gbk -O genome-db/$line; done
@@ -308,7 +308,7 @@ agalactiae_A909_prokka-contigs.db    AGALACTIAE_GENOMES.db
 
 ### Step 9
 
-Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named **AGALACTIAE_GENOMES.db** as input 
+Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named `AGALACTIAE_GENOMES.db` as input 
 
 ~~~
 anvi-pan-genome -g AGALACTIAE_GENOMES.db \
@@ -386,7 +386,7 @@ If you publish your findings, please do not forget to properly credit this tool.
 
 ### Step 10
 
-Create the interactive pangenome with the `anvi-display-pan` script using as input the `genomes-storage-db` **AGALACTIAE_GENOMES.db** and the `pan-db` **PANGENOME-AGALACTIAE-PAN.db** (located in AGALACTIAE directory)
+Create the interactive pangenome with the `anvi-display-pan` script using as input the `genomes-storage-db`  `AGALACTIAE_GENOMES.db` and the `pan-db`  `PANGENOME-AGALACTIAE-PAN.db` (located in `AGALACTIAE` directory)
 
 ~~~
 anvi-display-pan -g AGALACTIAE_GENOMES.db \
@@ -441,7 +441,7 @@ Whitout disturbing the active terminal, open a new window in your prefered brows
 >
 >Extra) How can you estimate evolutionary relationships between genomes? With the `concatenated-gene-alignment-fasta` produce the phylogenomic tree and explore it.
 > >## Solution
->> a) Go to the main settings panel and modify the “items order”.
+>> a) Go to the main settings panel and modify the `items order`.
 >>
 >> b) 
 >>~~~
@@ -458,7 +458,7 @@ anvi-get-sequences-for-gene-clusters -g genomes-storage-db \
   
   
 > ## Exercise 2: Splitting the pangenome.
-> 1. Read about [anvi-split](https://anvio.org/help/main/programs/anvi-split/) 
+> 1. Read about [`anvi-split`](https://anvio.org/help/main/programs/anvi-split/) 
 > 2. With this program split your pangenome in independent pangenomes that:
 > > * Contains only singletons.
 > > * Contains only core gene clusters.
