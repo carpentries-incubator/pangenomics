@@ -9,20 +9,22 @@ objectives:
 - "Explore ncbi-genome-download as a tool for genomic data fetching from the NCBI."
 - "Learn how to use the Prokka genome annotation utility."
 keypoints:
-- "The `ncbi-genome-download` package is a set of scripts to download genomes from the NCBI FTP servers implemented in Python."
-- "Prokka is a command line utility that provides rapid prokaryotic genome annotation written in Perl."
+- "The `ncbi-genome-download` package is a set of scripts to download genomes from the NCBI."
+- "Prokka is a command line utility that provides rapid prokaryotic genome annotation."
 ---
 
 ## The `ncbi-genome-download` package: Getting Genomic Data from the NCBI
 
-The NCBI Genome Downloading Scripts provide a shell command that allows users to download bacterial and fungal genomes from the NCBI. This [package]((https://github.com/kblin)) is highly useful because we can access to the genomic databases in a very specific way. Then, it will be easier to get the data directly in our work directory.
+The NCBI Genome Downloading Scripts provide a shell command that allows users to download genomes from the NCBI. This [package]((https://github.com/kblin) is highly useful because we can specify our queries as much as we like. It will simplify us the process of getting the data directly in our work directory.
 
-The full list of parameters you can incorporate in your dowmloads can be obtained by typing:
+The full list of parameters you can incorporate in your downloads can be obtained by typing:
 
 ~~~
 $ ncbi-genome-download --help
 ~~~
-{: .source}
+{: .language-bash}
+
+This command outputs a long user manual; some of the most important parameters are:
 
 ~~~
 usage:  
@@ -35,9 +37,7 @@ usage:
                           [--flat-output] [-H] [-P] [-u URI] [-p N] [-r N]  
                           [-m METADATA_TABLE] [-n] [-N] [-v] [-d] [-V]  
                           [-M TYPE_MATERIALS]
-                          groups
-    -s {refseq,genbank}, --section {refseq,genbank}  
-                        NCBI section to download (default: refseq)  
+                          groups 
     -F FILE_FORMATS, --formats FILE_FORMATS  
                         Which formats to download (default: genbank).A comma-
                         separated list of formats is also possible. For
@@ -55,30 +55,28 @@ usage:
                         Only download sequences of the given strain(s). A
                         comma-separated list of strain names is possible, as
                         well as a path to a filename containing one name per
-                        line.   
+                        line.
     -A ASSEMBLY_ACCESSIONS, --assembly-accessions ASSEMBLY_ACCESSIONS  
                         Only download sequences matching the provided NCBI
                         assembly accession(s). A comma-separated list of
                         accessions is possible, as well as a path to a
-                        filename containing one accession per line.   
+                        filename containing one accession per line.
     -o OUTPUT, --output-folder OUTPUT   
                         Create output hierarchy in specified folder (default:
-                        /home/betterlab)  
-    -m METADATA_TABLE, --metadata-table METADATA_TABLE  
-                        Save tab-delimited file with genome metadata  
+                        /home/betterlab) 
     -n, --dry-run         Only check which files to download, don't download
                         genome files.  
 ~~~
 {: .output}
 
-Once we know about the flags we can use, we are ready to use the package but first we need to go to our data directory.
+We are now ready to use the package. First, we need to go to our data directory.
 
 ~~~
 $ cd dc_workshop/data
 ~~~
 {: .language-bash}
 
-If you list the contents of this directory (using the `ls` command), you'll see several folders, each of which contain the raw data of different strains of *Streptococcus agalactiae* used in Tettelin *et al*., (2005) in `.gbk` and `.fasta` format. 
+If you list the contents of this directory (using the `ls` command), you'll see several directories, each of which contains the raw data of different strains of *Streptococcus agalactiae* used in Tettelin *et al*., (2005) in `.gbk` and `.fasta` formats. 
 
 ~~~
 $ ls 
@@ -90,10 +88,10 @@ $ ls
 ~~~
 {: .output}
 
-We are interested in download a FASTA format of *Streptococcus thermophilus* LMD-9 strain from on NCBI. The `-n` flag allow us to check for this assembly availability before data downloading.
+Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek for is available on the database, and, it case it is, what exactly it contains. To do so, we must include a `-n` flag within our command. For instance, if we wish to check availability of the genome of the LMD-9 strain of the *Streptococcus thermophilus* bacterium in FASTA format, we would type the following:
 
 ~~~
-$ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -n -o thermophilusLMD9 bacteria
+$ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -n bacteria
 ~~~
 {: .language-bash}
 
@@ -103,14 +101,14 @@ GCF_000014485.1 Streptococcus thermophilus LMD-9        LMD-9
 ~~~
 {: .output}
 
-We will add a new entry to this directory by downloading the available assembly in a directory named `thermophilusLMD9`:
+As you can see, there is one assembly available assigned to the number `GCF_000014485.1`. We will now proceed to download it to an output directory titled `thermophilusLMD9`:
 
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -o thermophilusLMD9 bacteria
 ~~~
 {: .language-bash}
 
-After this execution, we will find the newly created directory and, at the bottom of the folder, the compressed assembly of interest named after the NCBI assembly number. We can check this by:
+This script downloads a compressed FASTA file into a specific directory:
 
 ~~~
 $ cd thermophilusLMD9/refseq/bacteria/GCF_000014485.1/
@@ -123,33 +121,33 @@ GCF_000014485.1_ASM1448v1_genomic.fna.gz  MD5SUMS
 ~~~
 {: .output}
 
-For a posterior analysis of this sequence, we need to decompress it
+To view it, we must decompress it using `gunzip`:
 
 ~~~
 $ gunzip thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_000014485.1_ASM1448v1_genomic.fna.gz
 ~~~
 {: .language-bash}
 
-Now we can explore the file and move it to the main directory `thermophilusLMD9`
+We can now explore the file and move it to the main directory `thermophilusLMD9`, and delete the `refseq` directory as it is not longer needed:
 
 ```
 $ mv GCF_008803015.1_ASM880301v1_genomic.fna ../../..
 $ cd ../../..
-$ rm -r refseq
+$ rm -rf refseq
 ```
 {: .language-bash}
 
 
 > ## Notes
-> In this example, we used the format FASTA to fetch our assembly. Nevertheless, we can use the flag `--help` to switch for other formats. For example, the `gbk` format files contained information about the coding sequences, their locus, the name of the protein, and the full nucleotide sequence of the assembly. At the same time it is a format also used for double-check the annotation.
+> In this example, we downloaded the genome in FASTA format. However, we can use the `--format` or `-F` flags to get any other format of interest. For example, the `gbk` format files (which contain information about the coding sequences, their locus, the name of the protein and the full nucleotide sequence of the assembly, and are useful for annotation double-checking) can be downloaded by specifying our queries with `--format genbank`.
 {: .callout}
 
 > ## Exercise 1: Downloading data from NCBI with the command line
 > 
 > Suppose you are asked to perform the following sequence of actions:
 > 
-> 1. Download a FASTA format assembly of the *Streptococcus thermophilus* with the NCBI assembly number `GCF_000011825.1` and save it to an output directory titled `thermophilusLMG18311`.
-> 2. Change to the directory of the FASTA file and unzip it.
+> 1. Download the genome of *Streptococcus thermophilus* with the NCBI assembly number `GCF_000011825.1` in a FASTA format and save it to an output directory titled `thermophilusLMG18311`.
+> 2. Change to the directory where the FASTA file is located and unzip it.
 > 3. Move the FASTA file all the way back to the `thermophilusLMG18311` directory.
 > 4. Change to the `thermophilusLMG18311` directory and delete the `refseq` subdirectory created by the downloading tool.
 > 
@@ -158,39 +156,39 @@ $ rm -r refseq
 > Step 1.
 > 
 > ~~~
-> ncbi-genome-download -F __________ --genera __________ -A __________ -o __________ bacteria
+> $ ncbi-genome-download -F __________ --genera __________ -A __________ -o __________ bacteria
 > ~~~
 > {: .source}
 > 
 > Step 2.
 > 
 > ~~~
-> cd __________/refseq/bacteria/GCF_000011825.1/
-> __________ GCF_000011825.1_ASM1182v1_genomic.fna.gz
+> $ cd __________/refseq/bacteria/GCF_000011825.1/
+> $ __________ GCF_000011825.1_ASM1182v1_genomic.fna.gz
 > ~~~
 > {: .source}
 > 
 > Step 3.
 > 
 > ~~~
-> mv GCF_000011825.1_ASM1182v1_genomic.fna __________
+> $ mv GCF_000011825.1_ASM1182v1_genomic.fna __________
 > ~~~
 > {: .source}
 > 
 > Step 4.
 > 
 > ~~~
-> cd __________
-> rm -rf refseq
+> $ cd __________
+> $ rm -rf refseq
 > ~~~
 > {: .source}
 >
 > > ## Solution
 > >
-> > Step 1. Using the information provided in the step, we completed each blank space with the corresponding word:
+> > Step 1. Using the information provided in the step, we complete each blank space with the corresponding word:
 > >
 > > ~~~
-> > $ ncbi-genome-download -F fasta --genera "Streptococcus " -A GCF_000011825.1 -o thermophilusLMG18311 bacteria
+> > $ ncbi-genome-download -F fasta --genera "Streptococcus thermophilus" -A GCF_000011825.1 -o thermophilusLMG18311 bacteria
 > > ~~~
 > > {: .source}
 > >
@@ -219,6 +217,8 @@ $ rm -r refseq
 > >
 > {: .solution}
 {: .challenge}
+
+Make sure you have downloaded both strains of *S. thermophilus*, the one from the example (LMD-9) and the one from the exercise (LMG 18311), as they will be needed in this and later episodes.
 
 ## Prokka: Annotating Genomes
 
@@ -334,17 +334,16 @@ You can also modify parameters as much as you need regarding the organism, gene 
 > > First, we perform the annotation with Prokka and save all files as `thermophilusLMG18311_prokka`.
 > >
 > > ~~~
-> > $ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes 
-../../thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
+> > $ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ../../thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
 > > ~~~
 > > {: .source}
 > >
 > > After switching to the `thermophilusLMD9_prokka` directory, we shall now filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). We then append the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'`(this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
 > >
 > > ~~~
-> > $cd annotated
-> > $head -n 1 thermophilusLMD9_prokka.tsv > trnas.tsv # Get column headers
-> > $grep $'\t'tRNA$'\t' thermophilusLMD9_prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
+> > $ cd annotated
+> > $ head -n 1 thermophilusLMD9_prokka.tsv > trnas.tsv # Get column headers
+> > $ grep $'\t'tRNA$'\t' thermophilusLMD9_prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
 > > ~~~
 > > {: .source}
 > >
@@ -359,4 +358,4 @@ You can also modify parameters as much as you need regarding the organism, gene 
 > > 
 > > The existence of many genes producing the same product (such as the same tRNA) can happen due to duplications of genes during the evolutionary history of a taxon.
 > {: .solution}
-{: .challenge}
+{: .discussion}
