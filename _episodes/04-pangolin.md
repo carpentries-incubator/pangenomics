@@ -39,6 +39,13 @@ PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It par
 |    **Shell genome**   	| For gene families present at intermediate frequencies in the genomes. 	|
 |    **Cloud genome**   	|       For gene familes present at low frequency in the species.       	|
 
+
+> ## Discussion
+> Core
+> Soft core
+> Persistent
+> {: .discussion}
+
 ## Input files
 
 PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleFASTA.fasta)) or annotated genomes ([.gbk](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleGBK.gbk)) of whole genomes, Metagenomic Assembled Genomes (MAG), and Single-cell Amplified Genomes (SAG), useful for large-scale environmental studies, including the non-cultivable species pangenome.  It is designed to scale up to tens of thousands of genomes. 
@@ -47,7 +54,7 @@ In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that pred
 
 ## Outputs
 
-PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it will provide with a HDF-5 file named "pangenome.h5". This file stores all the information about your pangenome and the analysis that were run. You can extract information this file to get.
+PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it will provide with a HDF-5 file named `pangenome.h5`. This file stores all the information about your pangenome and the analyses that were run. You can extract information this file to get.
 
 ### U-shaped plot
 
@@ -69,6 +76,12 @@ A tile plot is a heatmap representing the gene families (y axis) in the organism
   <img src="../fig/01-04-04.png" width="956.5" height="434.5" alt="" />
 </a>
 
+> ## Discussion
+> 
+> 
+> 
+> {: .discussion}
+
 ### PangenomeGraph files
 
 You can get the .gexf files. It will contain the gene families as nodes and the edges between gene families describing their relationship.
@@ -77,12 +90,6 @@ They can be manipulated and visualised through a software called Gephi, with whi
 <a href="../fig/01-04-05.png">
   <img src="../fig/01-04-05.png" width="512" height="512" alt="" />
 </a>
-
-> ## References:
-> For more details you can check this article:
-> 
-> Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partitioned pangenome graph. PLOS Computational Biology 16(3): e1007732. [https://doi.org/10.1371/journal.pcbi.1007732](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732).
-{: .callout}
 
 > ## Exercise 1: Partitions. 
 >   Which are the pangenome partitions made by PPanGGOLiN? 
@@ -98,8 +105,6 @@ They can be manipulated and visualised through a software called Gephi, with whi
 > >a. As it was said before, PPanGGOLiN partitionates a pangenome into persistent-, shell- and, cloud-gene families.
 > {: .solution}
 {: .challenge}
-
-
 
 ## Step by step pangenome analysis with PPanGGOLiN
 
@@ -514,6 +519,12 @@ $ ls -lah pangenome.h5
 {: .output}
 
 
+> ## Discussion
+> 
+> 
+> 
+> {: .discussion}
+
 ### Step 10: Draw pangenome plots
 
 PPanGGOLiN provides multiple outputs to describe a pangenome. In this section the different outputs will be described.
@@ -655,6 +666,7 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 > 4. Go to the layout section and in the selection bar choose the ForceAtlas2. 
 > 5. In Tunning section mark the stronger gravity box and set the scale in 4000.
 > 6. Finally color the nodes according to:
+> 
 > a) Partition. 
 >  
 > b) Number of organisms.
@@ -688,5 +700,11 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 > {: .solution}
 {: .challenge}
 
+
+> ## References:
+> For more details you can check this article:
+> 
+> Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partitioned pangenome graph. PLOS Computational Biology 16(3): e1007732. [https://doi.org/10.1371/journal.pcbi.1007732](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732).
+{: .callout}
 
 {% include links.md %}
