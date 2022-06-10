@@ -173,12 +173,13 @@ $ head organisms.gbk.list
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21        /home/betterlab/gm_workshop/results/annotated/agalactiae_18RS21.gbk
-agalactiae_515   /home/betterlab/gm_workshop/results/annotated/agalactiae_515.gbk
-agalactiae_A909  /home/betterlab/gm_workshop/results/annotated/agalactiae_A909.gbk
-agalactiae_CJB111        /home/betterlab/gm_workshop/results/annotated/agalactiae_CJB111.gbk
-agalactiae_COH1  /home/betterlab/gm_workshop/results/annotated/agalactiae_COH1.gbk
-agalactiae_H36B  /home/betterlab/gm_workshop/results/annotated/agalactiae_H36B.gbk
+agalactiae_18RS21_prokka        agalactiae_18RS21_prokka.gbk
+agalactiae_515_prokka   agalactiae_515_prokka.gbk
+agalactiae_A909_prokka  agalactiae_A909_prokka.gbk
+agalactiae_CJB111_prokka        agalactiae_CJB111_prokka.gbk
+agalactiae_COH1_prokka  agalactiae_COH1_prokka.gbk
+agalactiae_H36B_prokka  agalactiae_H36B_prokka.gbk
+
 ~~~
 {: .output}
 
