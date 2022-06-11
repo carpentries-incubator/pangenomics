@@ -307,6 +307,22 @@ search file in the file browser on your computer.
   <img src="../fig/pan_genome_algBDBH.tab_core_Tettelin.png" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
+> ## Exercise 3: 
+> 
+> Lets explore the the proteins that result from intersection with grep 
+~~~
+ls alg_intersection | grep clpX
+~~~
+{: .language-bash}
+
+Why do you think these genes are at the intersection?
+Is this cluster gene essential for a living?
+What other gene do you think can be in this output folder?
+
+>> ## Solution
+clpX is a gene that encodes a part of a protease found in mitochondria, which is essential for living. The reason why they are in the intersection folder is that these cluster genes belong to the core genome
+{: .challenge} 
+
 ## Step 4. Obtaining a pangenome matrix
 first we use the -t 0 option with COG ang OMCL alghortims to include all possible clusters, including those which might not contain sequences from all input genomes (taxa)
 ~~~
@@ -365,7 +381,7 @@ data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
   <img src="../fig/venn_t0_COG_OMCL.svg" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
-> ## Exercise 1: 
+> ## Exercise 3: 
 > 
 > What is the interpret the Venn diagrams?
 >> ## Solution
