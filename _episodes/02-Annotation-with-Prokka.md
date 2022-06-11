@@ -18,11 +18,11 @@ keypoints:
 The NCBI Genome Downloading Scripts provide a shell command that allows users to download genomes from the NCBI. This [package]((https://github.com/kblin) is highly useful because we can specify our queries as much as we like. It will simplify us the process of getting the data directly in our work directory.
 
 ~~~
-$ conda activate GenomeMining_Global
+$ conda activate Prokka_Global
 ~~~
 {: .language-bash}
 ~~~
-(GenomeMining_Global) $
+(Prokka_Global) $
 ~~~
 {: .output}
 
