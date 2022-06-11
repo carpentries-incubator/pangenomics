@@ -68,8 +68,18 @@ For this lesson purposes, we selected 6 *Streptococcus agalactiae* genomes...
 > ~~~
 > $ cd ~
 > $ wget https://zenodo.org/record/6622053/files/dc_workshop.zip
+> $ unzip dc_workshop.zip
 > ~~~
 > {: .laguage-bash}
+> 
+> ~~~
+>  ... 
+>   inflating: dc_workshop/data/COH1/Streptococcus_agalactiae_COH1.gbk  
+>   creating: dc_workshop/data/H36B/
+>  inflating: dc_workshop/data/H36B/Streptococcus_agalactiae_H36B.fasta  
+>  inflating: dc_workshop/data/H36B/Streptococcus_agalactiae_H36B.gbk  
+> ~~~
+> {: output}
 {: .checklist}
 
 {% include links.md %}
