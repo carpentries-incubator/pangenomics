@@ -1,5 +1,5 @@
 ---
-title: "Clustering Proteins and Nucleotides"
+title: "Clustering Protein Families"
 teaching: 20
 exercises: 5 
 questions:
