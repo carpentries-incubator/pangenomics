@@ -66,15 +66,7 @@ Algorithms instead of default bidirectional best-hits (BDBH):
 -G use COGtriangle algorithm (COGS, PubMed=20439257)           (requires 3+ genomes|taxa)
 -M use orthoMCL algorithm (OMCL, PubMed=12952885)
 
-Options that control sequence similarity searches:
--X use diamond instead of blastp                               (optional, set threads with -n)
--C min %coverage in BLAST pairwise alignments                  (range [1-100],default=75)
--E max E-value                                                 (default=1e-05,max=0.01)
--D require equal Pfam domain composition                       (best with -m cluster or -n threads)
-   when defining similarity-based orthology
--S min %sequence identity in BLAST query/subj pairs            (range [1-100],default=1 [BDBH|OMCL])
--N min BLAST neighborhood correlation PubMed=18475320          (range [0,1],default=0 [BDBH|OMCL])
--b compile core-genome with minimum BLAST searches             (ignores -c [BDBH])
+[...]
 
 Options that control clustering:
 -t report sequence clusters including at least t taxa          (default t=numberOfTaxa,
@@ -92,14 +84,7 @@ Options that control clustering:
                                                                 first taxa to start adding genes)
 -e exclude clusters with inparalogues                          (by default inparalogues are
                                                                 included)
--x allow sequences in multiple COG clusters                    (by default sequences are allocated
-                                                                to single clusters [COGS])
--F orthoMCL inflation value                                    (range [1-5], default=1.5 [OMCL])
--A calculate average identity of clustered sequences,          (optional, creates tab-separated matrix,
- by default uses blastp results but can use blastn with -a      recommended with -t 0 [OMCL|COGS])
--P calculate percentage of conserved proteins (POCP),          (optional, creates tab-separated matrix,
- by default uses blastp results but can use blastn with -a      recommended with -t 0 [OMCL|COGS])
--z add soft-core to genome composition analysis                (optional, requires -c [OMCL|COGS])
+[...]
 ~~~
 {: .output}
 
@@ -236,9 +221,18 @@ $ alumno6@bioinformatica.matmor.unam.mx's password:
 
 > ## Exercise 1: 
 > 
-> What is the interpret the Venn diagrams?
+> Lets explore the the proteins that result from intersection with grep 
+>~~~
+>ls alg_intersection | grep clpX
+>~~~
+>{: .language-bash}
+>
+>Why do you think these genes are at the intersection?
+>Is this cluster gene essential for a living?
+>What other gene do you think can be in this output folder?
+>
 >> ## Solution
->> 
+>>clpX is a gene that encodes a part of a protease found in mitochondria, which is essential for living. The reason why they are in the intersection folder is that >>these cluster genes belong to the core genome
 > {: .solution}
 {: .challenge} 
 
@@ -307,21 +301,8 @@ search file in the file browser on your computer.
   <img src="../fig/pan_genome_algBDBH.tab_core_Tettelin.png" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
-> ## Exercise 3: 
-> 
-> Lets explore the the proteins that result from intersection with grep 
-~~~
-ls alg_intersection | grep clpX
-~~~
-{: .language-bash}
 
-Why do you think these genes are at the intersection?
-Is this cluster gene essential for a living?
-What other gene do you think can be in this output folder?
 
->> ## Solution
-clpX is a gene that encodes a part of a protease found in mitochondria, which is essential for living. The reason why they are in the intersection folder is that these cluster genes belong to the core genome
-{: .challenge} 
 
 ## Step 4. Obtaining a pangenome matrix
 first we use the -t 0 option with COG ang OMCL alghortims to include all possible clusters, including those which might not contain sequences from all input genomes (taxa)
