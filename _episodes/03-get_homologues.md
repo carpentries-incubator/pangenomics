@@ -378,9 +378,32 @@ data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 
 ## Step 5. Create a cladogram with our data
 
-pangenome_matrix_t0.phylip.ph
-<a href="../fig/venn_t0_COG_OMCL.svg">
-  <img src="../fig/venn_t0_COG_OMCL.svg" alt="Aquí va el texto que describe a la imagen." />
+Now let's create a cladogram with the file pangenome_matrix_t0.phylip.ph which is one of the different versions of the same pangenome matrix. This version contains a tree in Newick format. Let us make sure that is in Newick format and change the extension to visualize in microreact.org, lets' check with the head command:
+~~~
+head alg_intersection/pangenome_matrix_t0.phylip.ph
+~~~
+{: .language-bash}
+
+then we rename the file replacing the extension .ph to .nwk with the mv command:
+
+~~~
+mv pangenome_matrix_t0.phylip.ph pangenome_matrix_t0.phylip.nwk
+~~~
+{: .language-bash}
+
+Use the scp protocol to download the cladogram and see on microreact
+
+~~~
+scp user@132.248.196.38:/home/alumno9/gm_workshop/results/pangenome/get_homologues/alg_intersection/*nwk
+~~~
+{: .language-bash}
+
+<a href="../fig/tree.png">
+  <img src="../fig/tree.png" alt="Aquí va el texto que describe a la imagen." />
+</a>
+
+<a href="../fig/legend.png">
+  <img src="../fig/legend.png" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
 > ## Exercise 3: 
