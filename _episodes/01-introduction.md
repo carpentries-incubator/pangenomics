@@ -66,8 +66,8 @@ For this lesson purposes, we selected 6 *Streptococcus agalactiae* genomes...
 > Make sure you have the six genomes previously described. If you do not have them yet, you can download them with the following instruction
 > 
 > ~~~
-> cd ~
-> wget https://zenodo.org/record/6622053/files/dc_workshop.zip
+> $ cd ~
+> $ wget https://zenodo.org/record/6622053/files/dc_workshop.zip
 > ~~~
 > {: .laguage-bash}
 {: .checklist}
