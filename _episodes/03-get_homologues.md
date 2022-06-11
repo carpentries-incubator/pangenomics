@@ -221,15 +221,16 @@ $ alumno6@bioinformatica.matmor.unam.mx's password:
 
 > ## Exercise 1: 
 > 
-> Lets explore the the proteins that result from intersection with grep 
+> Lets explore one of the gene clusters that result from the intersection of all algorithms with grep command: 
 >~~~
 >ls alg_intersection | grep clpX
 >~~~
 >{: .language-bash}
 >
->Why do you think these genes are at the intersection?
->Is this cluster gene essential for a living?
->What other gene do you think can be in this output folder?
+>Why do you think these genes are at the intersection?/
+>Is this cluster gene essential for a living?/
+>What other gene do you think can be in this output folder?/
+>
 >
 >> ## Solution
 >>clpX is a gene that encodes a part of a protease found in mitochondria, which is essential for living. The reason why they are in the intersection folder is that >>these cluster genes belong to the core genome
@@ -301,8 +302,27 @@ search file in the file browser on your computer.
   <img src="../fig/pan_genome_algBDBH.tab_core_Tettelin.png" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
-
-
+> ## Exercise 3: 
+> 
+> Now we add another genome of the Streptococcus family. Let's probe with thermophilus_LMG_18311_prokka.gbk which are in the annotated folder.
+> We need to make a symbolic path in our data_get directory:
+> ~~~ 
+> find ~/gm_workshop/results/annotated/. -name "*thermophilus_LMG_18311_prokka.gbk*" -exec ln -s {} . ';'
+> ~~~
+> {: .language-bash}
+> Now we ask for clustering his gene sequences with the get_homologues.pl default algorithm
+> ~~~
+> get_homologues.pl -d data_get
+> ~~~
+> {: .language-bash}
+> What do you think happens to the number of gene clusters?/
+> Does it increase or decrease?
+>>Solution
+>> As we can check in the output:
+>> ~~~
+>>  
+> {: .solution}
+{: .challenge} 
 
 ## Step 4. Obtaining a pangenome matrix
 first we use the -t 0 option with COG ang OMCL alghortims to include all possible clusters, including those which might not contain sequences from all input genomes (taxa)
@@ -387,13 +407,7 @@ scp user@132.248.196.38:/home/alumno9/gm_workshop/results/pangenome/get_homologu
   <img src="../fig/legend.png" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
-> ## Exercise 3: 
-> 
-> 
->>
->> 
-> {: .solution}
-{: .challenge} 
+
 
 > ## Exercise 2: 
 > 
