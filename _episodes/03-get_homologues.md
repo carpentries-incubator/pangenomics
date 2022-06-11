@@ -356,13 +356,14 @@ $ get_homologues.pl -d data_get -t 0 -G
 {: .output}
 
 then we use the option 
+
 ~~~~
 $ ls -d data_get_homologues/*0taxa* #list cluster directories of COG and OMCL 
 ~~~~
+{: .language-bash}
 
-## Step 5. Compare only clustering algoriths COG and OMCL
 ~~~
-$ compare_clusters.pl -o alg_intersection -m -d\ 
+$ compare_clusters.pl -o alg_intersection -m -T -d\ 
 data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_,\
 data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 ~~~
@@ -375,48 +376,23 @@ data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 ~~~
 {: .output}
 
+## Step 5. Create a cladogram with our data
 
-
+pangenome_matrix_t0.phylip.ph
 <a href="../fig/venn_t0_COG_OMCL.svg">
   <img src="../fig/venn_t0_COG_OMCL.svg" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
 > ## Exercise 3: 
 > 
-> What is the interpret the Venn diagrams?
->> ## Solution
+> 
+>>
 >> 
 > {: .solution}
 {: .challenge} 
 
 > ## Exercise 2: 
 > 
-> Complete the line blank with the correct clustering algorithms
-> 
-> |------------------------------+------------------------------------------------------------------------------|  
-> | **algorithms**                           |     **Information required**                                     |  
-> |------------------------------+------------------------------------------------------------------------------|  
-> | ___________________ |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
-> |------------------------------+------------------------------------------------------------------------------|  
-> | ___________________ | Merges triangles of inter-genomic symmetrical best matches |   
-> |------------------------------+------------------------------------------------------------------------------|  
-> | ___________________ | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
-> |------------------------------+------------------------------------------------------------------------------| 
->
->
->> ## Solution
->> 
->> |------------------------------+------------------------------------------------------------------------------|  
->> | **algorithms**                           |     **Information required**                                     |  
->> |------------------------------+------------------------------------------------------------------------------|  
->> | BDBH                      |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
->> |------------------------------+------------------------------------------------------------------------------|  
->> | COGS  | Merges triangles of inter-genomic symmetrical best matches |   
->> |------------------------------+------------------------------------------------------------------------------|  
->> | OMCL    | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
->> |------------------------------+------------------------------------------------------------------------------| 
->> 
->>
 > {: .solution}
 {: .challenge} 
 
