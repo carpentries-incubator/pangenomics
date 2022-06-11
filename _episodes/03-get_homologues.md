@@ -219,13 +219,6 @@ data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_
 ~~~
 {: .output}
 
-Use plot_pancore-matrix.pl to plot the core and pan-genome
-
-~~~
-$ plot_pancore_matrix.pl -i data_get_homologues/pan_genome_algCOG.tab
-~~~
-{: .language-bash}
-
 Use the scp protocol in order to see the venn diagram
 ~~~
 $ scp alumno6@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pangenome/get_homologues/alg_intersection/*.svg .
@@ -237,20 +230,81 @@ $ alumno6@bioinformatica.matmor.unam.mx's password:
 ~~~
 {: .output}
 
-Use the scp protocol in order to see the pan and core-genome size plot
+<a href="../fig/venn_t0_GET_HOMOLOGUES.svg">
+  <img src="../fig/venn_t0_GET_HOMOLOGUES.svg" alt="Aquí va el texto que describe a la imagen." />
+</a>
+
+> ## Exercise 1: 
+> 
+> What is the interpret the Venn diagrams?
+>> ## Solution
+>> 
+> {: .solution}
+{: .challenge} 
+
+> ## Exercise 2: 
+> 
+> Complete the line blank with the correct clustering algorithms
+> 
+> |------------------------------+------------------------------------------------------------------------------|  
+> | **algorithms**                           |     **Information required**                                     |  
+> |------------------------------+------------------------------------------------------------------------------|  
+> | ___________________ |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
+> |------------------------------+------------------------------------------------------------------------------|  
+> | ___________________ | Merges triangles of inter-genomic symmetrical best matches |   
+> |------------------------------+------------------------------------------------------------------------------|  
+> | ___________________ | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
+> |------------------------------+------------------------------------------------------------------------------| 
+>
+>
+>> ## Solution
+>> 
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | **algorithms**                           |     **Information required**                                     |  
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | BDBH                      |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | COGS  | Merges triangles of inter-genomic symmetrical best matches |   
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | OMCL    | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
+>> |------------------------------+------------------------------------------------------------------------------| 
+>> 
+>>
+> {: .solution}
+{: .challenge} 
+
+## Step 4. Plot core- and pan-genome clustering from BDBH algorithm
+
+Use plot_pancore-matrix.pl to plot the core and pan-genome
+
 ~~~
-$ scp alumno6@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pangenome/get_homologues/alg_intersection/pan* .
+$ plot_pancore_matrix.pl -i data_get_homologues/pan_genome_algBDBH.tab
 ~~~
 {: .language-bash}
 ~~~
-$ alumno6@bioinformatica.matmor.unam.mx's password:
+# /opt/anaconda3/envs/Pangenomics_Global/bin/plot_pancore_matrix.pl -i data_get_homologues/pan_genome_algBDBH.tab -f core_Tettelin -F 0.80 -a
+# outfiles: data_get_homologues/pan_genome_algBDBH.tab_core_Tettelin.log , data_get_homologues/pan_genome_algBDBH.tab_core_Tettelin.png , data_get_homologues/pan_genome_algBDBH.tab_core_Tettelin.pdf , data_get_homologues/pan_genome_algBDBH.tab_core_Tettelin.svg
+~~~
+{: .output}
+
+Use the scp protocol to see the pan and core-genome plot
+~~~
+$ scp user@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pangenome/get_homologues/alg_intersection/*_genome_algBDBH.tab_core_Tettelin.png
+~~~
+{: .language-bash}
+~~~
+$ user@bioinformatica.matmor.unam.mx's password:
 ~~~
 {: .output}
 
 search file in the file browser on your computer.
 
-<a href="../fig/venn_t0_GET_HOMOLOGUES.svg">
-  <img src="../fig/venn_t0_GET_HOMOLOGUES.svg" alt="Aquí va el texto que describe a la imagen." />
+<a href="../fig/core_genome_algBDBH.tab_core_Tettelin.png">
+  <img src="../fig/core_genome_algBDBH.tab_core_Tettelin.png" alt="Aquí va el texto que describe a la imagen." />
+</a>
+
+<a href="../fig/pan_genome_algBDBH.tab_core_Tettelin.png">
+  <img src="../fig/pan_genome_algBDBH.tab_core_Tettelin.png" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
 ## Step 4. Obtaining a pangenome matrix
@@ -287,8 +341,9 @@ $ get_homologues.pl -d data_get -t 0 -G
 
 then we use the option 
 ~~~~
-$ ls -d data_get_homologues/0taxa #list directories cluster COG and OMCL
+$ ls -d data_get_homologues/*0taxa* #list cluster directories of COG and OMCL 
 ~~~~
+
 ## Step 5. Compare only clustering algoriths COG and OMCL
 ~~~
 $ compare_clusters.pl -o alg_intersection -m -d\ 
@@ -304,9 +359,7 @@ data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 ~~~
 {: .output}
 
-<a href="../fig/venn_t0_GET_HOMOLOGUES.svg">
-  <img src="../fig/venn_t0_GET_HOMOLOGUES.svg" alt="Aquí va el texto que describe a la imagen." />
-</a>
+
 
 <a href="../fig/venn_t0_COG_OMCL.svg">
   <img src="../fig/venn_t0_COG_OMCL.svg" alt="Aquí va el texto que describe a la imagen." />
