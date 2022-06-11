@@ -4,7 +4,7 @@ teaching: 30
 exercises: 15
 questions:
 - "How to download NCBI genomic data from the command line?"
-- "What is a quick way to annotate a FASTA file and obtain different outputs?"
+- "How to annotate genome FASTA files?"
 objectives:
 - "Explore ncbi-genome-download as a tool for genomic data fetching from the NCBI."
 - "Learn how to use the Prokka genome annotation utility."
@@ -17,8 +17,16 @@ keypoints:
 
 The NCBI Genome Downloading Scripts provide a shell command that allows users to download genomes from the NCBI. This [package]((https://github.com/kblin) is highly useful because we can specify our queries as much as we like. It will simplify us the process of getting the data directly in our work directory.
 
-The full list of parameters you can incorporate in your downloads can be obtained by typing:
+~~~
+$ conda activate GenomeMining_Global
+~~~
+{: .language-bash}
+~~~
+(GenomeMining_Global) $
+~~~
+{: .output}
 
+The full list of parameters you can incorporate in your downloads can be obtained by typing:
 ~~~
 $ ncbi-genome-download --help
 ~~~
