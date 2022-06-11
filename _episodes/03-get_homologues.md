@@ -202,7 +202,7 @@ $ ls -d data_get_homologues/*alltaxa* #List the genome reference
 {: .callout}
 
 ~~~
-$ compare_clusters.pl -o alg_intersection -m -d\
+$ compare_clusters.pl -o alg_intersection -d\
 data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_,\
 data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_,\
 data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_
@@ -219,12 +219,29 @@ data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_
 ~~~
 {: .output}
 
+Use plot_pancore-matrix.pl to plot the core and pan-genome
+
+~~~
+$ plot_pancore_matrix.pl -i data_get_homologues/pan_genome_algCOG.tab
+~~~
+{: .language-bash}
+
 Use the scp protocol in order to see the venn diagram
 ~~~
 $ scp alumno6@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pangenome/get_homologues/alg_intersection/*.svg .
 ~~~
 {: .language-bash}
 
+~~~
+$ alumno6@bioinformatica.matmor.unam.mx's password:
+~~~
+{: .output}
+
+Use the scp protocol in order to see the pan and core-genome size plot
+~~~
+$ scp alumno6@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pangenome/get_homologues/alg_intersection/pan* .
+~~~
+{: .language-bash}
 ~~~
 $ alumno6@bioinformatica.matmor.unam.mx's password:
 ~~~
@@ -286,6 +303,10 @@ data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 # Venn region file: alg_intersection/unique_agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.venn_t0.txt (186)
 ~~~
 {: .output}
+
+<a href="../fig/venn_t0_GET_HOMOLOGUES.svg">
+  <img src="../fig/venn_t0_GET_HOMOLOGUES.svg" alt="Aquí va el texto que describe a la imagen." />
+</a>
 
 <a href="../fig/venn_t0_COG_OMCL.svg">
   <img src="../fig/venn_t0_COG_OMCL.svg" alt="Aquí va el texto que describe a la imagen." />
