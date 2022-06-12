@@ -256,18 +256,26 @@ $ rm -r thermophilusLMD9/refseq
 > {: .solution}
 {: .challenge}
 
-Make sure you have downloaded both strains of *S. thermophilus*, the one from the example (LMD-9) and the one from the exercise (LMG 18311), as they will be needed in this and later episodes.
+Make sure you have downloaded both strains of *S. thermophilus*, the one 
+from the example (LMD-9) and the one from the exercise (LMG 18311), 
+as they will be needed in this and later episodes.
 
 ## Prokka: Annotating Genomes
 
-[Annotation](https://en.wikipedia.org/wiki/DNA_annotation) is a process of identifying the coordinates of genes and all the coding regions in a genome and determining
-what those genes are for. For this, an unknown sequence is enriched with information relating genomic position, regulatory
+[Annotation](https://en.wikipedia.org/wiki/DNA_annotation) is a process of 
+identifying the coordinates of genes and all the coding regions 
+in a genome and determining what those genes are for. For this, an unknown 
+sequence is enriched with information relating genomic position, regulatory
 sequences, repeats, gene name and protein products. This information
 is stored in genomic databases to help future analysis processing new data.
 
-[Prokka](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false) is a command-line software tool created in Perl to annotate bacterial, archaeal and viral genomes and reproduce standards-compliant output files.
-It expects a preassembled genomic DNA sequences in FASTA format as the input file, which is the only mandatory parameter to the software.
-For annotation, Prokka relies on external features and databases to identify the genomic features within the contigs.
+[Prokka](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false) 
+is a command-line software tool created in Perl to annotate bacterial, 
+archaeal and viral genomes and reproduce standards-compliant output files.
+It expects a preassembled genomic DNA sequences in FASTA format as the input 
+file, which is the only mandatory parameter to the software.
+For annotation, Prokka relies on external features and databases to 
+identify the genomic features within the contigs.
 
 | Tool(reference) | Features predicted |
 | --------- | ----------- |
@@ -292,7 +300,9 @@ models of protein families.
 > [Environment variables](https://opensource.com/article/19/8/what-are-environment-variables) are special variables that contain information about your loggin session. These can be useful when you want to [manage](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment) default or new settings that your system usually ignores. For instance, you can download a specific package with a downgraded version of perl if needed. 
 {: .callout}
 
-Next, we need to change to the directory where we have the assembly (FASTA) files of interest. As a simple initial example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
+Next, we need to change to the directory where we have the assembly (FASTA) 
+files of interest. As a simple initial example of execution, we can annotate 
+a FASTA file and define names for our output directory and files like this:
 
 ~~~
 $ mkdir -p ~/gm_workshop/results/annotated/
@@ -312,7 +322,7 @@ You are ready to run your first annotation.
 ~~~
 $ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
 ~~~
-{: .source}
+{: .bash-language}
 
 In this example, we have told prokka to:
 
@@ -422,22 +432,56 @@ You can also modify parameters as much as you need regarding the organism, gene 
 {: .discussion}
 
 
+
+
+Lets first obtain the strain name of each fasta.  
+~~~
+ls */*fasta |while read line; do strain=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1); echo $strain; done
+~~~
+{: .bash-language}
+
+~~~
+18RS21
+515
+A909
+CJB111
+COH1
+H36B
+~~~
+{: .output}
+
 You are ready to run all your annotations.  
 ~~~
 $ cd ~/gm_workshop/data 
 $ ls */*gbk | while read line
 > do 
-> prokka --prefix $line\_prokka --outdir $line\_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes $line
+> strainName=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1)
+> echo prokka $line --kingdom Bacteria --genus Streptococcus --species agalactie --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactie_${strainName}\.prokka --outdir ~/gm_workshop/results/annotated/Streptococcus_agalactie_${strainName}\_prokka
 > done
 ~~~
-{: .source}
+{: .bash-language}
 
 ~~~
-$ mv */*prokka ../results/annotated/
+...
+prokka COH1/Streptococcus_agalactiae_COH1.fasta --kingdom Bacteria --genus Streptococcus --species agalactie --strain COH1 --usegenus --addgenes --prefix Streptococcus_agalactie_COH1.prokka --outdir /home/alumno17/gm_workshop/results/annotated/Streptococcus_agalactie_COH1_prokka
+prokka H36B/Streptococcus_agalactiae_H36B.fasta --kingdom Bacteria --genus Streptococcus --species agalactie --strain H36B --usegenus --addgenes --prefix Streptococcus_agalactie_H36B.prokka --outdir /home/alumno17/gm_workshop/results/annotated/Streptococcus_agalactie_H36B_prokka
+~~~
+{: .output}
+
+~~~
+$ cd ~/gm_workshop/data 
+$ ls */*gbk | while read line
+> do 
+> strainName=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1)
+> echo prokka $line --kingdom Bacteria --genus Streptococcus --species agalactie --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactie_${strainName}\.prokka --outdir ~/gm_workshop/results/annotated/Streptococcus_agalactie_${strainName}\_prokka
+> done
+~~~
+{: .bash-language}
+
+~~~
 $ ls ~/gm_workshop/results/annotated/
 ~~~
-{: .source}
-
+{: .bash-language}
 ~~~
 Streptococcus_agalactiae_18RS21.gbk_prokka  Streptococcus_agalactiae_COH1.gbk_prokka  
 Streptococcus_agalactiae_515.gbk_prokka     Streptococcus_agalactiae_H36B.gbk_prokka  
