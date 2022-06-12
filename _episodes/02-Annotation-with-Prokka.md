@@ -420,8 +420,24 @@ You can also modify parameters as much as you need regarding the organism, gene 
 
 You are ready to run your first annotation.  
 ~~~
-$ ls ~/gm_workshop/data/*/*.fna | while read line
-do
-prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
+$ cd data 
+$ ls */*gbk | while read line
+> do 
+> prokka --prefix $line\_prokka --outdir $line\_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes $line
+> done
 ~~~
 {: .source}
+
+~~~
+$ mv */*prokka ../results/annotated/
+$ ls ~/gm_workshop/results/annotated/
+~~~
+{: .source}
+
+~~~
+Streptococcus_agalactiae_18RS21.gbk_prokka  Streptococcus_agalactiae_COH1.gbk_prokka  
+Streptococcus_agalactiae_515.gbk_prokka     Streptococcus_agalactiae_H36B.gbk_prokka  
+Streptococcus_agalactiae_A909.gbk_prokka    thermophilusLMD9_prokka  
+Streptococcus_agalactiae_CJB111.gbk_prokka  
+~~~
+{: .output}
