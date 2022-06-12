@@ -142,8 +142,7 @@ $ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S 
 This script downloads a compressed FASTA file into a specific directory:
 
 ~~~
-$ cd thermophilusLMD9/refseq/bacteria/GCF_000014485.1/
-$ ls
+$ ls thermophilusLMD9/refseq/bacteria/GCF_000014485.1/
 ~~~
 {: .language-bash}
 
@@ -162,8 +161,7 @@ $ gunzip thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_000014485.1_ASM144
 We can now explore the file and move it to the main directory `thermophilusLMD9`, and delete the `refseq` directory as it is not longer needed:
 
 ```
-$ mv GCF_008803015.1_ASM880301v1_genomic.fna ../../..
-$ cd ../../..
+$ mv thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_008803015.1_ASM880301v1_genomic.fna .
 $ rm -rf refseq
 ```
 {: .language-bash}
