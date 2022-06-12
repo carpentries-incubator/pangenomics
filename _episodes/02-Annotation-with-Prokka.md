@@ -22,7 +22,7 @@ us the process of getting the data directly in our work directory. Lets first ac
 the ncbi-genome-download conda environment.  
 
 ~~~
-$ conda activate  /opt/anaconda3/envs/ncbi-genome-download 
+$ conda activate ncbi-genome-download 
 ~~~
 {: .language-bash}
 
