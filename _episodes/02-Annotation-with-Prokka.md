@@ -479,6 +479,7 @@ $ ls */*fasta | while read line
 {: .language-bash}
 
 ~~~
+$ mv ~/gm_workshop/results/annotated/*/*gbk ~/gm_workshop/results/annotated/
 $ ls ~/gm_workshop/results/annotated/
 ~~~
 {: .language-bash}
