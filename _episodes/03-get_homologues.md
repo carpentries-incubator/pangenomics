@@ -174,6 +174,10 @@ $ get_homologues.pl -d data_get -M
 ~~~
 {: .output}
 
+> ## Notes
+If we add the option -e the resulting clusters will contain only single-copy genes from each taxon, i.e. the orthologues. This flag form singleton clusters, which are created when you exclude clusters with inparalogues. This is useful to make genome-level phylogenetic analyses in only single copy-genes.
+{: .callout}
+
 
 ## Step 3. Compare all clusters from different algorithms
 
@@ -206,14 +210,10 @@ data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_
 
 Use the scp protocol in order to see the venn diagram
 ~~~
-$ scp alumno6@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pangenome/get_homologues/alg_intersection/*.svg .
+$ scp user@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pangenome/get_homologues/alg_intersection/*.svg .
 ~~~
 {: .language-bash}
 
-~~~
-$ alumno6@bioinformatica.matmor.unam.mx's password:
-~~~
-{: .output}
 
 <a href="../fig/venn_t0_GET_HOMOLOGUES.svg">
   <img src="../fig/venn_t0_GET_HOMOLOGUES.svg" alt="Aquí va el texto que describe a la imagen." />
@@ -327,13 +327,13 @@ search file in the file browser on your computer.
 >>    # RAM use: 65.5 MB
 >> ~~~
 >>    {: .output}
->> The number of clusters decrease from  1105 to 685. This is because the number of genes that all genomes share, i.e. core genome, decrease as we add another genome, while the pangenome increase. We can see this with command :
+>> The number of clusters decreases from  1105 to 685. This is because the number of genes that all genomes share, i.e. core genome, decreases as we add another genome, while the pangenome increase. We can see this with the command :
 >> ~~~
 >> less data_get_homologues/pan_genome_algBDBH.tab
 >> ~~~
 >> {: .language-bash}
 > {: .solution}
-{: .challenge} 
+{: .challenge}  
 
 ## Step 4. Obtaining a pangenome matrix
 first we use the -t 0 option with COG ang OMCL alghortims to include all possible clusters, including those which might not contain sequences from all input genomes (taxa)
