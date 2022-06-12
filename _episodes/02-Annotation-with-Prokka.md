@@ -166,7 +166,7 @@ We can now explore the file and move it to the main directory `thermophilusLMD9`
 
 ```
 $ mv thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_000014485.1_ASM1448v1_genomic.fna thermophilusLMD9/
-$ rm -rf refseq
+$ rm -r thermophilusLMD9/refseq
 ```
 {: .language-bash}
 
