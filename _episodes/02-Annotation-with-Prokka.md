@@ -119,11 +119,10 @@ $ ls
 ~~~
 {: .output}
 
-Prior to downloading anything from the NCBI, it is advisable to verify if the
-information we seek for is available on the database, and, it case it is, 
-what exactly it contains. To do so, we must include a `-n` flag within our command. 
-For instance, if we wish to check availability of the genome of the LMD-9 strain of 
-the *Streptococcus thermophilus* bacterium in FASTA format, we would type the following:
+Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek
+is available on the database, and, in case it is, what exactly it contains. To do so, we must include
+a -n flag within our command. For instance, if we wish to check the availability of the genome of the
+LMD-9 strain of the Streptococcus thermophilus bacterium in FASTA format, we would type the following:
 
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -n bacteria
