@@ -277,11 +277,16 @@ For annotation, Prokka relies on external features and databases to identify the
 | SignalP ( Petersen et al. , 2011 )  | Signal leader peptides|
 | Infernal ( Kolbe and Eddy, 2011 )  | Non-coding RNA|
 
-Proteins coding genes are annotated in two stages. Prodigal identifies the coordinates of candidate genes, but does not
-describe the putative gene product. The traditional way to predict what a gene codes for is to compare it with a large
-database of known sequences, usually at a protein level, and transfer the annotation of the best significant match.
-Prokka uses this method, but in a hierarchical manner, starting with a smaller trustworthy database, moving to medium
-sized but domain specific databases and finally to curated models of protein families.
+Proteins coding genes are annotated in two stages. Prodigal identifies 
+the coordinates of candidate genes, but does not describe the putative 
+gene product. The traditional way to predict what a gene codes 
+for is to compare it with a large
+database of known sequences, usually at a protein level, 
+and transfer the annotation of the best significant match.
+Prokka uses this method, but in a hierarchical manner, starting 
+with a smaller trustworthy database, moving to medium
+sized but domain specific databases and finally to curated 
+models of protein families.
 
 > ## Notes
 > [Environment variables](https://opensource.com/article/19/8/what-are-environment-variables) are special variables that contain information about your loggin session. These can be useful when you want to [manage](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment) default or new settings that your system usually ignores. For instance, you can download a specific package with a downgraded version of perl if needed. 
@@ -362,9 +367,8 @@ We encourage you to explore each output nevertheless, the following table descri
 You can also modify parameters as much as you need regarding the organism, gene and even locus tag you are looking for. 
 
 > ## Other genome annotation services
-> [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/) are other valuable web-based genome annotation services
-> You can use [myRAST](https://github.com/nselem/myrast) a docker container of RAST. 
-> {: .callout}
+> [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/) are other valuable web-based genome annotation services. You can use [myRAST](https://github.com/nselem/myrast) a docker container of RAST. 
+{: .callout}
 
 > ## Exercise 2: Extracting tRNAs with Prokka
 >
