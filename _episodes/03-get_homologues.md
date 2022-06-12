@@ -4,16 +4,16 @@ teaching: 20
 exercises: 5 
 questions:
 - "What is Get_Homologues?"
-- "What is Clustering?"
+- "How can gene Families be clustered?"
 - "Which are the clustering algorithms that use Get_Homologues?"
 
 objectives:
-- "Clustering orthologous proteins from Gen Bank files."
+- "Clustering orthologous proteins from Genbank files."
 - "Create a Venn diagram using diferents clustering algorithms."
-- "Implemented and interpreted the evolutionary history using Clustering orthologous proteins."
+- "Reconstruct the evolutionary history using Clustering of orthologous proteins."
 
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "Get_Homologues is a pangenome analysis software that obtains the core families"
 ---
 
 Get_Homologues a versatile software package for pan-genome analysis is maintained by Bruno Contreras-Moreira and Pablo Vinuesa. 
