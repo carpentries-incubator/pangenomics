@@ -269,7 +269,7 @@ sequence is enriched with information relating genomic position, regulatory
 sequences, repeats, gene name and protein products. This information
 is stored in genomic databases to help future analysis processing new data.
 
-[Prokka](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517?login=false) 
+[Prokka](https://github.com/tseemann/prokka) 
 is a command-line software tool created in Perl to annotate bacterial, 
 archaeal and viral genomes and reproduce standards-compliant output files.
 It expects a preassembled genomic DNA sequences in FASTA format as the input 
@@ -376,8 +376,8 @@ We encourage you to explore each output nevertheless, the following table descri
 
 You can also modify parameters as much as you need regarding the organism, gene and even locus tag you are looking for. 
 
-> ## Other genome annotation services
-> [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/) are other valuable web-based genome annotation services. You can use [myRAST](https://github.com/nselem/myrast) a docker container of RAST. 
+> ## Genome annotation services
+> To know more about prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/) are other valuable web-based genome annotation services. Rast also provides a user interface where you can storage your private genomes and share them with your colleagues. To use RAST as a commandline tool you can use the docker container [myRAST](https://github.com/nselem/myrast). 
 {: .callout}
 
 > ## Exercise 2: Extracting tRNAs with Prokka
