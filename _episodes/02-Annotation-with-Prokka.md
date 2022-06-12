@@ -93,15 +93,21 @@ conda environment.
 ~~~
 ncbi-genome-download: command not found 
 ~~~
-{:. output}
-We are now ready to use the package. First, we need to go to our data directory.
+{: .error}
 
+Inside the environment we are ready to use the package. 
+Though we only write the prompt like '$' we are inside (ncbi-genome-download)
+First, we need to go to our data directory.
 ~~~
-$ cd dc_workshop/data
+(ncbi-genome-download) $ cd dc_workshop/data
 ~~~
 {: .language-bash}
 
-If you list the contents of this directory (using the `ls` command), you'll see several directories, each of which contains the raw data of different strains of *Streptococcus agalactiae* used in Tettelin *et al*., (2005) in `.gbk` and `.fasta` formats. 
+If you list the contents of this directory (using the `ls` command), 
+you'll see several directories, each of which contains the raw data 
+of different strains of *Streptococcus agalactiae* used 
+in [Tettelin *et al*., (2005)](https://www.pnas.org/doi/10.1073/pnas.0506758102) 
+in `.gbk` and `.fasta` formats. 
 
 ~~~
 $ ls 
