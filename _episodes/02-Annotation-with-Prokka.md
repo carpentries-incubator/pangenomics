@@ -292,10 +292,18 @@ Next, we need to change to the directory where we have the assembly (FASTA) file
 ~~~
 $ mkdir -p ~/gm_workshop/results/annotated/
 $ cd ~/gm_workshop/results/annotated/
-$ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
+$ conda deactivate
+$ conda activate Prokka_Global
 ~~~
 {: .source}
 
+Now you must be inside the environment  
+~~~
+(Prokka_Global) $
+~~~
+{: .source}
+
+You are ready to run your first annotation.  
 ~~~
 $ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
 ~~~
@@ -314,7 +322,8 @@ In this example, we have told prokka to:
 | --addgens |Add 'gene' features for each 'CDS' feature (default OFF) |
 
 
-Now prokka has generated a new folder. Lets get in and if you run the `tree` command in the current directory, you can preview the system of files created by Prokka:
+Now prokka has generated a new folder. Lets get in and if you run the `tree` command 
+in the current directory, you can preview the system of files created by Prokka:
 
 ~~~
 exdir/
@@ -408,3 +417,11 @@ You can also modify parameters as much as you need regarding the organism, gene 
 > {: .solution}
 {: .discussion}
 
+
+You are ready to run your first annotation.  
+~~~
+$ ls ~/gm_workshop/data/*/*.fna | while read line
+do
+prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
+~~~
+{: .source}
