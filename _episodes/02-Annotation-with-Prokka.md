@@ -375,7 +375,7 @@ You can also modify parameters as much as you need regarding the organism, gene 
 > Suppose you are now asked to annotate the FASTA file you downloaded in Exercise 1 and output the results to a subdirectory called `annotated` within the `thermophilusLMG18311_prokka` directory. Then, a research team asks you to provide them a TSV file titled `trnas.tsv` that only contains *S. thermophilus'*s tRNAs. This file must contain the same headers as the original TSV file, followed by the rows that correspond to tRNAs. Complete the following sequence of commands to perform this actions:
 > 
 > ~~~
-> $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311_prokka ../../thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes 
+> $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311_prokka ../../data/thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes 
 > ~~~
 > {: .source}
 > 
@@ -395,16 +395,16 @@ You can also modify parameters as much as you need regarding the organism, gene 
 > > First, we perform the annotation with Prokka and save all files as `thermophilusLMG18311_prokka`.
 > >
 > > ~~~
-> > $ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ../../thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
+> > $ prokka --prefix thermophilusLMG18311_prokka --outdir thermophilusLMG18311_prokka --kingdom Bacteria --genus Streptococcus --strain LMG18311 --usegenus --addgenes ../../data/thermophilusLMG18311/GCF_000011825.1_ASM1182v1_genomic.fna
 > > ~~~
 > > {: .source}
 > >
-> > After switching to the `thermophilusLMD9_prokka` directory, we shall now filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). We then append the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'`(this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
+> > After switching to the `thermophilusLMG18311_prokka` directory, we shall now filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). We then append the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'`(this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
 > >
 > > ~~~
 > > $ cd annotated
-> > $ head -n 1 thermophilusLMD9_prokka.tsv > trnas.tsv # Get column headers
-> > $ grep $'\t'tRNA$'\t' thermophilusLMD9_prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
+> > $ head -n 1 thermophilusLMG18311_prokka.tsv > trnas.tsv # Get column headers
+> > $ grep $'\t'tRNA$'\t' thermophilusLMG18311_prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
 > > ~~~
 > > {: .source}
 > >
@@ -422,7 +422,7 @@ You can also modify parameters as much as you need regarding the organism, gene 
 {: .discussion}
 
 
-You are ready to run your first annotation.  
+You are ready to run all your annotations.  
 ~~~
 $ cd data 
 $ ls */*gbk | while read line
