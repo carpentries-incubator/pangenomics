@@ -196,7 +196,7 @@ $ rm -r thermophilusLMD9/refseq
 > ~~~
 > $ ncbi-genome-download -F __________ --genera __________ -A __________ -o __________ bacteria
 > ~~~
-> {: .source}
+> {: .language-bash}
 > 
 > Step 2.
 > 
@@ -204,14 +204,14 @@ $ rm -r thermophilusLMD9/refseq
 > $ cd __________/refseq/bacteria/GCF_000011825.1/
 > $ __________ GCF_000011825.1_ASM1182v1_genomic.fna.gz
 > ~~~
-> {: .source}
+> {: .language-bash}
 > 
 > Step 3.
 > 
 > ~~~
 > $ mv GCF_000011825.1_ASM1182v1_genomic.fna __________
 > ~~~
-> {: .source}
+> {: .language-bash}
 > 
 > Step 4.
 > 
@@ -219,7 +219,7 @@ $ rm -r thermophilusLMD9/refseq
 > $ cd __________
 > $ rm -rf refseq
 > ~~~
-> {: .source}
+> {: .language-bash}
 >
 > > ## Solution
 > >
@@ -228,7 +228,7 @@ $ rm -r thermophilusLMD9/refseq
 > > ~~~
 > > $ ncbi-genome-download -F fasta --genera "Streptococcus thermophilus" -A GCF_000011825.1 -o thermophilusLMG18311 bacteria
 > > ~~~
-> > {: .source}
+> > {: .language-bash}
 > >
 > > Step 2. The previous command creates a `thermophilusLMG18311` subdirectory. To get to the FASTA file we must go through a sequence of subdirectories and then apply the `gunzip` command to unzip the FASTA file:
 > >
@@ -236,14 +236,14 @@ $ rm -r thermophilusLMD9/refseq
 > > $ cd thermophilusLMG18311/refseq/bacteria/GCF_000011825.1/
 > > $ gunzip GCF_000011825.1_ASM1182v1_genomic.fna.gz
 > > ~~~
-> > {: .source}
+> > {: .language-bash}
 > >
 > > Step 3. We now have an unzipped FASTA file. The parent directory `thermophilusLMG18311` is located three directories above the current one. To get to the first parent directory, one would type `..`; if you want to get to the second parent directory, you would use `../..`. Thus, to move the FASTA file to the `thermophilusLMG18311` directory, we need to type:
 > >
 > > ~~~
 > > $ mv GCF_000011825.1_ASM1182v1_genomic.fna ../../..
 > > ~~~
-> > {: .source}
+> > {: .language-bash}
 > >
 > > Step 4. Finally, we move back to the `thermophilusLMG18311` directory (in a similar manner as in the previous step) and delete the `refseq` directory.
 > >
@@ -251,7 +251,7 @@ $ rm -r thermophilusLMD9/refseq
 > > $ cd ../../..
 > > $ rm -rf refseq
 > > ~~~
-> > {: .source}
+> > {: .language-bash}
 > >
 > {: .solution}
 {: .challenge}
@@ -310,19 +310,19 @@ $ cd ~/gm_workshop/results/annotated/
 $ conda deactivate
 $ conda activate Prokka_Global
 ~~~
-{: .source}
+{: .language-bash}
 
 Now you must be inside the environment  
 ~~~
 (Prokka_Global) $
 ~~~
-{: .source}
+{: .language-bash}
 
 You are ready to run your first annotation.  
 ~~~
 $ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
 ~~~
-{: .bash-language}
+{: .language-bash}
 
 In this example, we have told prokka to:
 
@@ -387,18 +387,18 @@ You can also modify parameters as much as you need regarding the organism, gene 
 > ~~~
 > $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311_prokka ../../data/thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes 
 > ~~~
-> {: .source}
+> {: .language-bash}
 > 
 > ~~~
 > $ cd __________
 > ~~~
-> {: .source}
+> {: .language-bash}
 > 
 > ~~~
 > $ __________ -n 1 thermophilusLMG18311_prokka.tsv > trnas.tsv  # Get column headers
 > $ grep __________ thermophilusLMG18311_prokka.tsv >> trnas.tsv # Append all lines that contain tRNAs
 > ~~~
-> {: .source}
+> {: .language-bash}
 >
 > > ## Solution
 > >
@@ -407,7 +407,7 @@ You can also modify parameters as much as you need regarding the organism, gene 
 > > ~~~
 > > $ prokka --prefix thermophilusLMG18311_prokka --outdir thermophilusLMG18311_prokka --kingdom Bacteria --genus Streptococcus --strain LMG18311 --usegenus --addgenes ../../data/thermophilusLMG18311/GCF_000011825.1_ASM1182v1_genomic.fna
 > > ~~~
-> > {: .source}
+> > {: .language-bash}
 > >
 > > After switching to the `thermophilusLMG18311_prokka` directory, we shall now filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). We then append the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'`(this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
 > >
@@ -416,7 +416,7 @@ You can also modify parameters as much as you need regarding the organism, gene 
 > > $ head -n 1 thermophilusLMG18311_prokka.tsv > trnas.tsv # Get column headers
 > > $ grep $'\t'tRNA$'\t' thermophilusLMG18311_prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
 > > ~~~
-> > {: .source}
+> > {: .language-bash}
 > >
 > {: .solution}
 {: .challenge}
@@ -438,7 +438,7 @@ Lets first obtain the strain name of each fasta.
 ~~~
 ls */*fasta |while read line; do strain=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1); echo $strain; done
 ~~~
-{: .bash-language}
+{: .language-bash}
 
 ~~~
 18RS21
@@ -453,13 +453,13 @@ H36B
 You are ready to run all your annotations.  
 ~~~
 $ cd ~/gm_workshop/data 
-$ ls */*gbk | while read line
+$ ls */*fasta | while read line
 > do 
 > strainName=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1)
 > echo prokka $line --kingdom Bacteria --genus Streptococcus --species agalactie --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactie_${strainName}\.prokka --outdir ~/gm_workshop/results/annotated/Streptococcus_agalactie_${strainName}\_prokka
 > done
 ~~~
-{: .bash-language}
+{: .language-bash}
 
 ~~~
 ...
@@ -470,18 +470,18 @@ prokka H36B/Streptococcus_agalactiae_H36B.fasta --kingdom Bacteria --genus Strep
 
 ~~~
 $ cd ~/gm_workshop/data 
-$ ls */*gbk | while read line
+$ ls */*fasta | while read line
 > do 
 > strainName=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1)
 > echo prokka $line --kingdom Bacteria --genus Streptococcus --species agalactie --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactie_${strainName}\.prokka --outdir ~/gm_workshop/results/annotated/Streptococcus_agalactie_${strainName}\_prokka
 > done
 ~~~
-{: .bash-language}
+{: .language-bash}
 
 ~~~
 $ ls ~/gm_workshop/results/annotated/
 ~~~
-{: .bash-language}
+{: .language-bash}
 ~~~
 Streptococcus_agalactiae_18RS21.gbk_prokka  Streptococcus_agalactiae_COH1.gbk_prokka  
 Streptococcus_agalactiae_515.gbk_prokka     Streptococcus_agalactiae_H36B.gbk_prokka  
