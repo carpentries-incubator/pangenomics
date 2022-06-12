@@ -119,7 +119,11 @@ $ ls
 ~~~
 {: .output}
 
-Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek for is available on the database, and, it case it is, what exactly it contains. To do so, we must include a `-n` flag within our command. For instance, if we wish to check availability of the genome of the LMD-9 strain of the *Streptococcus thermophilus* bacterium in FASTA format, we would type the following:
+Prior to downloading anything from the NCBI, it is advisable to verify if the
+information we seek for is available on the database, and, it case it is, 
+what exactly it contains. To do so, we must include a `-n` flag within our command. 
+For instance, if we wish to check availability of the genome of the LMD-9 strain of 
+the *Streptococcus thermophilus* bacterium in FASTA format, we would type the following:
 
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -n bacteria
@@ -168,7 +172,12 @@ $ rm -rf refseq
 
 
 > ## Notes
-> In this example, we downloaded the genome in FASTA format. However, we can use the `--format` or `-F` flags to get any other format of interest. For example, the `gbk` format files (which contain information about the coding sequences, their locus, the name of the protein and the full nucleotide sequence of the assembly, and are useful for annotation double-checking) can be downloaded by specifying our queries with `--format genbank`.
+> In this example, we downloaded the genome in FASTA format. However, we can
+>  use the `--format` or `-F` flags to get any other format of interest. 
+>  For example, the `gbk` format files (which contain information about the 
+>  coding sequences, their locus, the name of the protein and the full 
+>  nucleotide sequence of the assembly, and are useful for annotation double-checking) 
+>  can be downloaded by specifying our queries with `--format genbank`.
 {: .callout}
 
 > ## Exercise 1: Downloading data from NCBI with the command line
@@ -281,12 +290,18 @@ sized but domain specific databases and finally to curated models of protein fam
 Next, we need to change to the directory where we have the assembly (FASTA) files of interest. As a simple initial example of execution, we can annotate a FASTA file and define names for our output directory and files like this:
 
 ~~~
-$ cd ../results/annotated/
-$ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ../../thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
+$ mkdir -p ~/gm_workshop/results/annotated/
+$ cd ~/gm_workshop/results/annotated/
+$ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
 ~~~
 {: .source}
 
-In this example, we have told Trimmomatic to:
+~~~
+$ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
+~~~
+{: .source}
+
+In this example, we have told prokka to:
 
 | code   | meaning |
 | ------- | ---------- |
@@ -337,6 +352,10 @@ We encourage you to explore each output nevertheless, the following table descri
 
 You can also modify parameters as much as you need regarding the organism, gene and even locus tag you are looking for. 
 
+> ## Other genome annotation services
+> [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/) are other valuable web-based genome annotation services
+> You can use [myRAST](https://github.com/nselem/myrast) a docker container of RAST. 
+> {: .callout}
 
 > ## Exercise 2: Extracting tRNAs with Prokka
 >
@@ -388,3 +407,4 @@ You can also modify parameters as much as you need regarding the organism, gene 
 > > The existence of many genes producing the same product (such as the same tRNA) can happen due to duplications of genes during the evolutionary history of a taxon.
 > {: .solution}
 {: .discussion}
+
