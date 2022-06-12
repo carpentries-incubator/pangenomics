@@ -473,7 +473,7 @@ $ cd ~/gm_workshop/data
 $ ls */*fasta | while read line
 > do 
 > strainName=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1)
-> echo prokka $line --kingdom Bacteria --genus Streptococcus --species agalactie --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactie_${strainName}\.prokka --outdir ~/gm_workshop/results/annotated/Streptococcus_agalactie_${strainName}\_prokka
+> prokka $line --kingdom Bacteria --genus Streptococcus --species agalactie --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactie_${strainName}\.prokka --outdir ~/gm_workshop/results/annotated/Streptococcus_agalactie_${strainName}\_prokka
 > done
 ~~~
 {: .language-bash}
