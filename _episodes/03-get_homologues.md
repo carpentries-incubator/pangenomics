@@ -4,16 +4,16 @@ teaching: 20
 exercises: 5 
 questions:
 - "What is Get_Homologues?"
-- "How can gene Families be clustered?"
+- "What is Clustering?"
 - "Which are the clustering algorithms that use Get_Homologues?"
 
 objectives:
-- "Clustering orthologous proteins from Genbank files."
+- "Clustering orthologous proteins from Gen Bank files."
 - "Create a Venn diagram using diferents clustering algorithms."
-- "Reconstruct the evolutionary history using Clustering of orthologous proteins."
+- "Implemented and interpreted the evolutionary history using Clustering orthologous proteins."
 
 keypoints:
-- "Get_Homologues is a pangenome analysis software that obtains the core families"
+- "First key point. Brief Answer to questions. (FIXME)"
 ---
 
 Get_Homologues a versatile software package for pan-genome analysis is maintained by Bruno Contreras-Moreira and Pablo Vinuesa. 
@@ -120,9 +120,9 @@ $ cd  ~/gm_workshop/results/pangenome/get_homologues/
 ~~~
 {: .language-bash}
 
-To generate the directory clusters with BDBH, this option is default.
+To generate the directory clusters with BDBH, this option is default. We use the -c flag to generate a report from core and pangenome.
 ~~~
-$ get_homologues.pl -d data_get
+$ get_homologues.pl -d data_get -c
 ~~~
 {: .language-bash}
 
@@ -310,9 +310,9 @@ search file in the file browser on your computer.
 > find ~/gm_workshop/results/annotated/. -name "*thermophilus_LMG_18311_prokka.gbk*" -exec ln -s {} . ';'
 > ~~~
 > {: .language-bash}
-> Now we ask for clustering his gene sequences with the get_homologues.pl default algorithm
+> Now we ask for clustering all gene sequences with the get_homologues.pl default algorithm
 > ~~~
-> get_homologues.pl -d data_get
+> get_homologues.pl -d data_get -c
 > ~~~
 > {: .language-bash}
 > What do you think happens to the number of gene clusters?/
@@ -320,7 +320,18 @@ search file in the file browser on your computer.
 >>Solution
 >> As we can check in the output:
 >> ~~~
->>  
+>>    # number_of_clusters = 685
+>>    # cluster_list = data_get_homologues/thermophilusLMG18311prokka_f0_alltaxa_algBDBH_e0_.cluster_list
+>>    # cluster_directory = data_get_homologues/thermophilusLMG18311prokka_f0_alltaxa_algBDBH_e0_
+>>    # runtime: 963 wallclock secs (10.12 usr  0.23 sys + 545.19 cusr  7.67 csys = 563.21 CPU)
+>>    # RAM use: 65.5 MB
+>> ~~~
+>>    {: .output}
+>> The number of clusters decrease from  1105 to 685. This is because the number of genes that all genomes share, i.e. core genome, decrease as we add another genome, while the pangenome increase. We can see this with command :
+>> ~~~
+>> less data_get_homologues/pan_genome_algBDBH.tab
+>> ~~~
+>> {: .language-bash}
 > {: .solution}
 {: .challenge} 
 
