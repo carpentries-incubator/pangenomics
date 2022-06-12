@@ -161,7 +161,7 @@ $ gunzip thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_000014485.1_ASM144
 We can now explore the file and move it to the main directory `thermophilusLMD9`, and delete the `refseq` directory as it is not longer needed:
 
 ```
-$ mv thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_008803015.1_ASM880301v1_genomic.fna .
+$ mv thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_000014485.1_ASM1448v1_genomic.fna thermophilusLMD9/
 $ rm -rf refseq
 ```
 {: .language-bash}
