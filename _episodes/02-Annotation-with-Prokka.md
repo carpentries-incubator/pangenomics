@@ -402,7 +402,7 @@ You can also modify parameters as much as you need regarding the organism, gene 
 > > After switching to the `thermophilusLMG18311_prokka` directory, we shall now filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). We then append the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'`(this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
 > >
 > > ~~~
-> > $ cd annotated
+> > $ cd thermophilusLMG18311_prokka
 > > $ head -n 1 thermophilusLMG18311_prokka.tsv > trnas.tsv # Get column headers
 > > $ grep $'\t'tRNA$'\t' thermophilusLMG18311_prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
 > > ~~~
@@ -413,7 +413,7 @@ You can also modify parameters as much as you need regarding the organism, gene 
 
 > ## Discussion 1: Number of tRNAs
 > 
-> Inside the `annotated` directory, run the command `wc -l trnas.tsv` to get the number of lines in the file. Excluding the first line (which contains the header), observe that there are 66 tRNAs, whereas the [standard codon table](https://en.wikipedia.org/wiki/DNA_and_RNA_codon_tables#Translation_table_1) contains 61 coding codons (i.e. the ones that are not stop codons). This means that there are several genes that produce the same tRNA. How would you explain this fact?
+> Inside the `annotated` directory, run the command `wc -l trnas.tsv` to get the number of lines in the file. Excluding the first line (which contains the header), observe that there are 67 tRNAs, whereas the [standard codon table](https://en.wikipedia.org/wiki/DNA_and_RNA_codon_tables#Translation_table_1) contains 61 coding codons (i.e. the ones that are not stop codons). This means that there are several genes that produce the same tRNA. How would you explain this fact?
 > 
 > > ## Solution
 > > 
@@ -424,7 +424,7 @@ You can also modify parameters as much as you need regarding the organism, gene 
 
 You are ready to run all your annotations.  
 ~~~
-$ cd data 
+$ cd ~/gm_workshop/data 
 $ ls */*gbk | while read line
 > do 
 > prokka --prefix $line\_prokka --outdir $line\_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes $line
@@ -442,6 +442,6 @@ $ ls ~/gm_workshop/results/annotated/
 Streptococcus_agalactiae_18RS21.gbk_prokka  Streptococcus_agalactiae_COH1.gbk_prokka  
 Streptococcus_agalactiae_515.gbk_prokka     Streptococcus_agalactiae_H36B.gbk_prokka  
 Streptococcus_agalactiae_A909.gbk_prokka    thermophilusLMD9_prokka  
-Streptococcus_agalactiae_CJB111.gbk_prokka  
+Streptococcus_agalactiae_CJB111.gbk_prokka  thermophilusLMG18311_prokka
 ~~~
 {: .output}
