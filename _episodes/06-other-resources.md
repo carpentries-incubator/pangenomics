@@ -9,6 +9,12 @@ objectives:
 keypoints:
 - "First key point. Brief Answer to questions. (FIXME)"
 ---
-# Other resources
+## Other resources
 
+FIXME
+
+## Carpentries Philosophy
+A good lesson should be as complete and clear that becomes easy to teach by any instructor. 
+Carpentries lessons are developed for the community, and now you are part of us. 
+This lesson is being developed and we are sure that you can colaborate and help us improve it.
 {% include links.md %}
