@@ -257,7 +257,28 @@ $ rm -r thermophilusLMD9/refseq
 
 Make sure you have downloaded both strains of *S. thermophilus*, the one 
 from the example (LMD-9) and the one from the exercise (LMG 18311), 
-as they will be needed in this and later episodes.
+as they will be needed in this and later episodes. Finally, its a good practice 
+to keep your rawdata untouched, with this in mind you can remove the writing
+permision of the data directory.  
+
+~~~
+$ chmod -w ~/gm_workshop/data/
+$ ls ~/gm_workshop/data/
+~~~
+{: .language-bash}
+
+~~~
+drwxr-xr-x 2 alumno17 alumno17    4096 Jun  6 13:20 18RS21  
+drwxr-xr-x 2 alumno17 alumno17    4096 Jun  6 13:21 515  
+drwxr-xr-x 2 alumno17 alumno17    4096 Jun  6 13:21 A909  
+-rw-r--r-- 1 alumno17 alumno17 1460118 Jun 12 12:20 antismash_db.csv  
+drwxr-xr-x 2 alumno17 alumno17    4096 Jun  6 13:21 CJB111  
+drwxr-xr-x 2 alumno17 alumno17    4096 Jun  6 13:21 COH1  
+drwxr-xr-x 2 alumno17 alumno17    4096 Jun  6 13:21 H36B  
+drwxr-xr-x 2 alumno17 alumno17    4096 Jun 13 15:25 thermophilusLMD9  
+drwxr-xr-x 2 alumno17 alumno17    4096 Jun 13 15:26 thermophilusLMG18311  
+~~~
+{: .output}
 
 ## Prokka: Annotating Genomes
 
