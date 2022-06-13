@@ -456,7 +456,8 @@ You can also modify parameters as much as you need regarding the organism, gene 
 
 Lets first obtain the strain name of each fasta.  
 ~~~
-ls */*fasta |while read line; do strain=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1); echo $strain; done
+$ cd ~/gm_workshop/data
+$ ls */*fasta |while read line; do strain=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1); echo $strain; done
 ~~~
 {: .language-bash}
 
@@ -472,7 +473,6 @@ H36B
 
 You are ready to run all your annotations.  
 ~~~
-$ cd ~/gm_workshop/data 
 $ ls */*fasta | while read line
 > do 
 > strainName=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1)
