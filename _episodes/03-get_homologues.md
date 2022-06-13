@@ -103,14 +103,14 @@ $ cd  ~/gm_workshop/results/pangenome/get_homologues/data_get # Change to the di
 {: .language-bash}
 We need to create a Symbolic link with the file *.gbk*
 ~~~
-$ find ~/gm_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {} . ';' 
+$ find ~/gm_workshop/results/annotated/. -name "*Streptococcus_agalactie_[A-Z]*.prokka.gbk*" -exec ln -s {} . ';' 
 $ ls ~/gm_workshop/results/pangenome/get_homologues/data_get #List the symbolic link
 ~~~
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka.gbk  agalactiae_A909_prokka.gbk    agalactiae_COH1_prokka.gbk
-agalactiae_515_prokka.gbk     agalactiae_CJB111_prokka.gbk  agalactiae_H36B_prokka.gbk
+Streptococcus_agalactie_A909.prokka.gbk    Streptococcus_agalactie_COH1.prokka.gbk
+Streptococcus_agalactie_CJB111.prokka.gbk  Streptococcus_agalactie_H36B.prokka.gbk
 ~~~
 {: .output}
 
@@ -304,10 +304,10 @@ search file in the file browser on your computer.
 
 > ## Exercise 3: 
 > 
-> Now we add another genome of the Streptococcus family. Let's probe with thermophilus_LMG_18311_prokka.gbk which are in the annotated folder.
+> Now we add another genome of the Streptococcus family. Let's probe with another S. agalactie genomes which are in the annotated folder.
 > We need to make a symbolic path in our data_get directory:
 > ~~~ 
-> find ~/gm_workshop/results/annotated/. -name "*thermophilus_LMG_18311_prokka.gbk*" -exec ln -s {} . ';'
+> find ~/gm_workshop/results/annotated/. -name "*Streptococcus_agalactie_[1-9]*.prokka.gbk*" -exec ln -s {} . ';'
 > ~~~
 > {: .language-bash}
 > Now we ask for clustering all gene sequences with the get_homologues.pl default algorithm
