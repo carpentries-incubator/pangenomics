@@ -396,9 +396,6 @@ We encourage you to explore each output nevertheless, the following table descri
 
 You can also modify parameters as much as you need regarding the organism, gene and even locus tag you are looking for. 
 
-> ## Genome annotation services
-> To know more about prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provides a web-user interface where you can storage your private genomes and share them with your colleagues. To use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast). 
-{: .callout}
 
 > ## Exercise 2: Extracting tRNAs with Prokka
 >
@@ -510,3 +507,8 @@ Streptococcus_agalactiae_A909.gbk_prokka    thermophilusLMD9_prokka
 Streptococcus_agalactiae_CJB111.gbk_prokka  thermophilusLMG18311_prokka
 ~~~
 {: .output}
+
+
+> ## Genome annotation services
+> To know more about prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provides a web-user interface where you can storage your private genomes and share them with your colleagues. To use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast). 
+{: .callout}
