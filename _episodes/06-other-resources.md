@@ -1,11 +1,11 @@
 ---
 title: "Other resources"
-teaching: 0
+teaching: 5
 exercises: 0
 questions:
-- "Key question (FIXME)"
+- "What other resources can I use to study pangenomics?"
 objectives:
-- "First learning objective. (FIXME)"
+- "Know more resources that can be used to study pangenomics."
 keypoints:
 - "First key point. Brief Answer to questions. (FIXME)"
 ---
