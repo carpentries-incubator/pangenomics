@@ -1,5 +1,5 @@
 ---
-title: "Introduction to pangenomics"
+title: "Introduction to Pangenomics"
 teaching: 10
 exercises: 10
 questions:
@@ -7,25 +7,33 @@ questions:
 - "What kind of biological data are analyzed in a pangenome?"
 - "Which factors affect the structure of a pangenome?"
 objectives:
-- "Understand the concept of *pangenome*"
-- "Define the different subsets of the *pangenome*"
+- "Understand the concept of pangenome"
+- "Define the different subsets of the pangenome"
 - "Learn which biological data are integrated in a pangenome analysis"
 - "Discuss applications and questions that could be solved with a pangenome analysis"
 
 keypoints:
 - "A pangenome is the entire set of genes from all strains of a clade."
 - "The principal subsets of the pangenome are: core, shell, and dispensable genome."
-- "An *open pangenome* occurs when the size of the pangenome increases considerably every added genome"
-- "A *closed pangenome* occurs when only few gene families are incorporated to the pangenome when a new member of the clade is added" 
+- "An *open pangenome* occurs when the size of the pangenome increases considerably with every added genome."
+- "A *closed pangenome* occurs when only few gene families are incorporated to the pangenome when a new genome is added." 
 - "A pangenome can be obtained by comparing the complete genome sequences of all members of a clade."
 ---
 ## What is a pangenome?
 
-The term **pangenome** derives from the Greek *pan*, meaning 'whole' or 'everything', while *genome* describes an organism's complete genetic material. In 2005, Tettelin *et al.* used the term pangenome by the first time to describe the entire collection of genes from a group of pathogenic bacteria, named *Streptococcus agalactiae*. Nowadays, pangenome concept has been also applied to other organisms including plants, animals, fungi, virus, etc. To summarize, the term pangenome is defined as the entire set of genes from all strains of a clade.
+The term **pangenome** derives from the Greek *pan*, meaning 'whole' or 'everything', while *genome* describes 
+an organism's complete genetic material. In 2005, Tettelin *et al.* used the term pangenome by the first time 
+to describe the entire collection of genes from a group of pathogenic bacteria, named *Streptococcus agalactiae*. 
+Nowadays, pangenome concept has been also applied to other organisms including plants, animals, fungi, virus, etc. 
+To summarize, the term pangenome is defined as the entire set of genes from all strains of a clade.
 
-The pangenome could be divided in three principal components: **core genome** which contains genes present in all the strains compared, **shell genome** a proportion of genes absent in one or more strains and **dispensable genome** comprised by genes that are unique to each strain. 
+The pangenome can be divided in three principal components: **core genome** which contains genes present 
+in all the strains compared, **shell genome** a proportion of genes absent in one or more strains 
+and **dispensable genome** comprised by genes that are unique to each strain. 
 
-There are two classes of pangenomes: open and closed. An **open pangenome** occurs when the size of the pangenome increases considerably every added genome (p. e. *Escherichia coli*). Whereas, a **closed pangenome** results when only few gene families are incorporated to the pangenome when a new member is added.
+There are two classes of pangenomes: open and closed. An **open pangenome** occurs when the size of the 
+pangenome increases considerably every added genome (p. e. *Escherichia coli*). Whereas, a **closed pangenome** 
+results when only few gene families are incorporated to the pangenome when a new member is added.
 
 
 ![Figure 1. Characteristics of open and closed pangenomes](../fig/Characteristics_of_open_and_closed_pangenomes.png)
