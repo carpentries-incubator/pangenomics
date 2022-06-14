@@ -318,16 +318,16 @@ search file in the file browser on your computer.
 > {: .language-bash}
 > What do you think happens to the number of gene clusters?/
 > Does it increase or decrease?
->>Solution
+>> Solution
 >> As we can check in the output:
 >> ~~~
->>    # number_of_clusters = 685
->>    # cluster_list = data_get_homologues/thermophilusLMG18311prokka_f0_alltaxa_algBDBH_e0_.cluster_list
->>    # cluster_directory = data_get_homologues/thermophilusLMG18311prokka_f0_alltaxa_algBDBH_e0_
->>    # runtime: 963 wallclock secs (10.12 usr  0.23 sys + 545.19 cusr  7.67 csys = 563.21 CPU)
->>    # RAM use: 65.5 MB
+>> # number_of_clusters = 685
+>> # cluster_list = data_get_homologues/thermophilusLMG18311prokka_f0_alltaxa_algBDBH_e0_.cluster_list
+>> # cluster_directory = data_get_homologues/thermophilusLMG18311prokka_f0_alltaxa_algBDBH_e0_
+>> # runtime: 963 wallclock secs (10.12 usr  0.23 sys + 545.19 cusr  7.67 csys = 563.21 CPU)
+>> # RAM use: 65.5 MB
 >> ~~~
->>{: .output}
+>> {: .output}
 >>    
 >> The number of clusters decreases from  1105 to 685. This is because the number of genes that all genomes share, i.e. core genome, decreases as we add another
 >> genome, while the pangenome increase. We can see this with the command :
