@@ -132,12 +132,12 @@ $ get_homologues.pl -d data_get -c
 {: .callout}
 
 ~~~
-# number_of_clusters = 1433
-# cluster_list = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algBDBH_e0_.cluster_list
-# cluster_directory = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algBDBH_e0_
+# number_of_clusters = 1177
+# cluster_list = data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algBDBH_e0_.cluster_list
+# cluster_directory = data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algBDBH_e0_
 
-# runtime: 377 wallclock secs (16.92 usr  0.53 sys + 220.66 cusr  3.64 csys = 241.75 CPU)
-# RAM use: 58.4 MB
+# runtime: 581 wallclock secs (19.27 usr  0.49 sys + 303.82 cusr  4.51 csys = 328.09 CPU)
+# RAM use: 62.1 MB
 ~~~
 {: .output}
 
@@ -149,12 +149,12 @@ $ get_homologues.pl -d data_get -G
 {: .language-bash}
 
 ~~~
-# number_of_clusters = 1430
-# cluster_list = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algCOG_e0_.cluster_list
-# cluster_directory = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algCOG_e0_
+# number_of_clusters = 1180
+# cluster_list = data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algCOG_e0_.cluster_list
+# cluster_directory = data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algCOG_e0_
 
-# runtime: 16 wallclock secs ( 0.83 usr  0.08 sys +  1.71 cusr  0.51 csys =  3.13 CPU)
-# RAM use: 45.8 MB
+# runtime: 15 wallclock secs ( 0.82 usr  0.05 sys +  1.79 cusr  0.52 csys =  3.18 CPU)
+# RAM use: 50.9 MB
 ~~~
 {: .output}
 
@@ -166,12 +166,12 @@ $ get_homologues.pl -d data_get -M
 {: .source}
 
 ~~~
-# number_of_clusters = 1442
-# cluster_list = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algOMCL_e0_.cluster_list
-# cluster_directory = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algOMCL_e0_
+# number_of_clusters = 1181
+# cluster_list = data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algOMCL_e0_.cluster_list
+# cluster_directory = data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algOMCL_e0_
 
-# runtime:  4 wallclock secs ( 1.86 usr  0.13 sys +  0.59 cusr  0.26 csys =  2.84 CPU)
-# RAM use: 49.5 MB
+# runtime:  5 wallclock secs ( 2.02 usr  0.11 sys +  0.49 cusr  0.24 csys =  2.86 CPU)
+# RAM use: 55.4 MB
 ~~~
 {: .output}
 
