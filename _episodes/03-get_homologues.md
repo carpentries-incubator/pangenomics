@@ -321,15 +321,13 @@ search file in the file browser on your computer.
 >> ## Solution
 >> As we can check in the output:
 >> ~~~
->> # number_of_clusters = 685
->> # cluster_list = data_get_homologues/thermophilusLMG18311prokka_f0_alltaxa_algBDBH_e0_.cluster_list
->> # cluster_directory = data_get_homologues/thermophilusLMG18311prokka_f0_alltaxa_algBDBH_e0_
->> # runtime: 963 wallclock secs (10.12 usr  0.23 sys + 545.19 cusr  7.67 csys = 563.21 CPU)
->> # RAM use: 65.5 MB
+>> # number_of_clusters = 1105
+>> # runtime: 247 wallclock secs ( 9.44 usr  0.37 sys + 128.79 cusr  1.90 csys = 140.50 CPU)
+>> # RAM use: 56.4 MB
 >> ~~~
 >> {: .output}
 >>    
->> The number of clusters decreases from  1105 to 685. This is because the number of genes that all genomes share, i.e. core genome, decreases as we add another
+>> The number of clusters decreases from  1177 to 1105. This is because the number of genes that all genomes share, i.e. core genome, decreases as we add another
 >> genome, while the pangenome increase. We can see this with the command :
 >> ~~~
 >> less data_get_homologues/pan_genome_algBDBH.tab
@@ -348,11 +346,11 @@ $ get_homologues.pl -d data_get -t 0 -M
 
 ~~~
 # number_of_clusters = 3634
-# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.cluster_list
-# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
+# cluster_list = data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algOMCL_e0_.cluster_list
+# cluster_directory = data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algOMCL_e0_
 
-# runtime:  4 wallclock secs ( 1.30 usr  0.16 sys +  0.30 cusr  0.04 csys =  1.80 CPU)
-# RAM use: 49.9 MB
+# runtime:  5 wallclock secs ( 2.10 usr  0.12 sys +  0.61 cusr  0.32 csys =  3.15 CPU)
+# RAM use: 60.3 MB
 ~~~
 {: .output}
 
@@ -363,11 +361,11 @@ $ get_homologues.pl -d data_get -t 0 -G
  
 ~~~
 # number_of_clusters = 3632
-# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.cluster_list
-# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_
+# cluster_list = data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algCOG_e0_.cluster_list
+# cluster_directory = data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algCOG_e0_
 
-# runtime:  4 wallclock secs ( 1.41 usr  0.10 sys +  0.30 cusr  0.03 csys =  1.84 CPU)
-# RAM use: 55.5 MB
+# runtime: 17 wallclock secs ( 1.39 usr  0.12 sys +  2.46 cusr  0.71 csys =  4.68 CPU)
+# RAM use: 56.0 MB
 ~~~
 {: .output}
 
@@ -379,16 +377,16 @@ $ ls -d data_get_homologues/*0taxa* #list cluster directories of COG and OMCL
 {: .language-bash}
 
 ~~~
-$ compare_clusters.pl -o alg_intersection -m -T -d\ 
-data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algCOG_e0_,\
-data_get_homologues/agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
+$ compare_clusters.pl -o alg_intersection -m -T -d/ 
+data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algCOG_e0_,/
+data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algOMCL_e0_
 ~~~
 {: .language-bash}
 
 ~~~ 
 # Venn diagram = alg_intersection/venn_t0.pdf alg_intersection/venn_t0.svg
-# Venn region file: alg_intersection/unique_agalactiae18RS21prokka_f0_0taxa_algCOG_e0_.venn_t0.txt (182)
-# Venn region file: alg_intersection/unique_agalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.venn_t0.txt (186)
+# Venn region file: alg_intersection/unique_Streptococcusagalactie18RS21_f0_0taxa_algCOG_e0_.venn_t0.txt (182)
+# Venn region file: alg_intersection/unique_Streptococcusagalactie18RS21_f0_0taxa_algOMCL_e0_.venn_t0.txt (186)
 ~~~
 {: .output}
 
