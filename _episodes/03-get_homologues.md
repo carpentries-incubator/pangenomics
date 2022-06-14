@@ -192,20 +192,20 @@ $ ls -d data_get_homologues/*alltaxa* #List the genome reference
 {: .callout}
 
 ~~~
-$ compare_clusters.pl -o alg_intersection -d\
-data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_,\
-data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_,\
-data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_
+$ compare_clusters.pl -o alg_intersection -d/
+data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algBDBH_e0_,/
+data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algCOG_e0_,/
+data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algOMCL_e0_
 ~~~
 {: .language-bash}
 ~~~
 # Venn diagram = alg_intersection/venn_t0.pdf alg_intersection/venn_t0.svg
-# Venn region file: alg_intersection/unique_agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_.venn_t0.txt (8)
-# Venn region file: alg_intersection/unique_agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_.venn_t0.txt (31)
-# Venn region file: alg_intersection/unique_agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_.venn_t0.txt (16)
-# Venn region file: alg_intersection/intersection_agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0__agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_.venn_t0.txt (5)
-# Venn region file: alg_intersection/intersection_agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0__agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_.venn_t0.txt (15)
-# Venn region file: alg_intersection/intersection_agalactiae18RS21prokka_f0_alltaxa_algCOG_e0__agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_.venn_t0.txt (2)
+# Venn region file: alg_intersection/unique_Streptococcusagalactie18RS21_f0_alltaxa_algBDBH_e0_.venn_t0.txt (9)
+# Venn region file: alg_intersection/unique_Streptococcusagalactie18RS21_f0_alltaxa_algCOG_e0_.venn_t0.txt (28)
+# Venn region file: alg_intersection/unique_Streptococcusagalactie18RS21_f0_alltaxa_algOMCL_e0_.venn_t0.txt (14)
+# Venn region file: alg_intersection/intersection_Streptococcusagalactie18RS21_f0_alltaxa_algBDBH_e0__Streptococcusagalactie18RS21_f0_alltaxa_algCOG_e0_.venn_t0.txt (1)
+# Venn region file: alg_intersection/intersection_Streptococcusagalactie18RS21_f0_alltaxa_algBDBH_e0__Streptococcusagalactie18RS21_f0_alltaxa_algOMCL_e0_.venn_t0.txt (16)
+# Venn region file: alg_intersection/intersection_Streptococcusagalactie18RS21_f0_alltaxa_algCOG_e0__Streptococcusagalactie18RS21_f0_alltaxa_algOMCL_e0_.venn_t0.txt (0)
 ~~~
 {: .output}
 
