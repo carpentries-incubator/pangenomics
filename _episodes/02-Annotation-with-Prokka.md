@@ -263,7 +263,7 @@ permision of the data directory.
 
 ~~~
 $ chmod -w ~/gm_workshop/data/
-$ ls ~/gm_workshop/data/
+$ ls -lh ~/gm_workshop/data/
 ~~~
 {: .language-bash}
 
