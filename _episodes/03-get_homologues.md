@@ -131,12 +131,12 @@ $ get_homologues.pl -d data_get -c
 {: .callout}
 
 ~~~
-# number_of_clusters = 1105
-# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_.cluster_list
-# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algBDBH_e0_
+# number_of_clusters = 1433
+# cluster_list = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algBDBH_e0_.cluster_list
+# cluster_directory = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algBDBH_e0_
 
-# runtime: 771 wallclock secs ( 9.01 usr  0.21 sys + 419.58 cusr  6.00 csys = 434.80 CPU)
-# RAM use: 61.1 MB
+# runtime: 377 wallclock secs (16.92 usr  0.53 sys + 220.66 cusr  3.64 csys = 241.75 CPU)
+# RAM use: 58.4 MB
 ~~~
 {: .output}
 
@@ -148,12 +148,12 @@ $ get_homologues.pl -d data_get -G
 {: .language-bash}
 
 ~~~
-# number_of_clusters = 1115
-# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_.cluster_list
-# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algCOG_e0_
+# number_of_clusters = 1430
+# cluster_list = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algCOG_e0_.cluster_list
+# cluster_directory = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algCOG_e0_
 
-# runtime: 16 wallclock secs ( 1.06 usr  0.08 sys +  2.50 cusr  0.68 csys =  4.32 CPU)
-# RAM use: 55.4 MB
+# runtime: 16 wallclock secs ( 0.83 usr  0.08 sys +  1.71 cusr  0.51 csys =  3.13 CPU)
+# RAM use: 45.8 MB
 ~~~
 {: .output}
 
@@ -165,12 +165,12 @@ $ get_homologues.pl -d data_get -M
 {: .source}
 
 ~~~
-# number_of_clusters = 1110
-# cluster_list = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_.cluster_list
-# cluster_directory = data_get_homologues/agalactiae18RS21prokka_f0_alltaxa_algOMCL_e0_
+# number_of_clusters = 1442
+# cluster_list = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algOMCL_e0_.cluster_list
+# cluster_directory = data_get_homologues/StreptococcusagalactieCJB111_f0_alltaxa_algOMCL_e0_
 
-# runtime:  6 wallclock secs ( 3.13 usr  0.11 sys +  0.56 cusr  0.34 csys =  4.14 CPU)
-# RAM use: 61.9 MB
+# runtime:  4 wallclock secs ( 1.86 usr  0.13 sys +  0.59 cusr  0.26 csys =  2.84 CPU)
+# RAM use: 49.5 MB
 ~~~
 {: .output}
 
