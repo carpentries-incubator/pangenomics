@@ -109,8 +109,9 @@ $ ls ~/gm_workshop/results/pangenome/get_homologues/data_get #List the symbolic 
 {: .language-bash}
 
 ~~~
-Streptococcus_agalactie_A909.prokka.gbk    Streptococcus_agalactie_COH1.prokka.gbk
-Streptococcus_agalactie_CJB111.prokka.gbk  Streptococcus_agalactie_H36B.prokka.gbk
+Streptococcus_agalactie_18RS21.prokka.gbk  Streptococcus_agalactie_COH1.prokka.gbk
+Streptococcus_agalactie_A909.prokka.gbk    Streptococcus_agalactie_H36B.prokka.gbk
+Streptococcus_agalactie_CJB111.prokka.gbk
 ~~~
 {: .output}
 
