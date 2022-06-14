@@ -103,7 +103,7 @@ $ cd  ~/gm_workshop/results/pangenome/get_homologues/data_get # Change to the di
 {: .language-bash}
 We need to create a Symbolic link with the file *.gbk*
 ~~~
-$ find ~/gm_workshop/results/annotated/. -name "*Streptococcus_agalactie_[A-Z]*.prokka.gbk*" -exec ln -s {} . ';' 
+$ find ~/gm_workshop/results/annotated/. -name "*Streptococcus_agalactie_*[A-Z]*.prokka.gbk*" -exec ln -s {} . ';' 
 $ ls ~/gm_workshop/results/pangenome/get_homologues/data_get #List the symbolic link
 ~~~
 {: .language-bash}
@@ -326,8 +326,10 @@ search file in the file browser on your computer.
 >>    # runtime: 963 wallclock secs (10.12 usr  0.23 sys + 545.19 cusr  7.67 csys = 563.21 CPU)
 >>    # RAM use: 65.5 MB
 >> ~~~
->>    {: .output}
->> The number of clusters decreases from  1105 to 685. This is because the number of genes that all genomes share, i.e. core genome, decreases as we add another genome, while the pangenome increase. We can see this with the command :
+>>{: .output}
+>>    
+>> The number of clusters decreases from  1105 to 685. This is because the number of genes that all genomes share, i.e. core genome, decreases as we add another
+>> genome, while the pangenome increase. We can see this with the command :
 >> ~~~
 >> less data_get_homologues/pan_genome_algBDBH.tab
 >> ~~~
