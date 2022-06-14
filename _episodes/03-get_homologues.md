@@ -318,7 +318,7 @@ search file in the file browser on your computer.
 > {: .language-bash}
 > What do you think happens to the number of gene clusters?/
 > Does it increase or decrease?
->> Solution
+>> ## Solution
 >> As we can check in the output:
 >> ~~~
 >> # number_of_clusters = 685
