@@ -335,6 +335,7 @@ search file in the file browser on your computer.
 >> less data_get_homologues/pan_genome_algBDBH.tab
 >> ~~~
 >> {: .language-bash}
+>> 
 > {: .solution}
 {: .challenge}  
 
