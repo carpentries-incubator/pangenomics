@@ -1,5 +1,5 @@
 ---
-title: "Downloading and Annotating Genomic Data"
+title: "Annotating Genomic Data"
 teaching: 30
 exercises: 15
 questions:
