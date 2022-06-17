@@ -163,7 +163,7 @@ To Generate the OMCL cluster directory (OMCL, PubMed=12952885)
 ~~~
 $ get_homologues.pl -d data_get -M
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 # number_of_clusters = 1181
@@ -186,6 +186,7 @@ Get_Homologues for default the algorithm BDBH takes from the set of genomes to t
 ~~~
 $ ls -d data_get_homologues/*alltaxa* #List the genome reference
 ~~~
+{: .language-bash}
 
 > ## Notes
 > After typing the comma in the following command line make sure you don't leave a space after the comma. This could cause an error.
