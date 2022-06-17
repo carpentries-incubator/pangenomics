@@ -130,7 +130,7 @@ We encourage you to explore each output nevertheless, the following table descri
 You can also modify parameters as much as you need regarding the organism, gene and even locus tag you are looking for. 
 
 
-> ## Exercise 2: Extracting tRNAs with Prokka
+> ## Exercise 1: Extracting tRNAs with Prokka
 >
 > Suppose you are now asked to annotate the FASTA file you downloaded in Exercise 1 and output the results to a subdirectory called `annotated` within the `thermophilusLMG18311_prokka` directory. Then, a research team asks you to provide them a TSV file titled `trnas.tsv` that only contains *S. thermophilus'*s tRNAs. This file must contain the same headers as the original TSV file, followed by the rows that correspond to tRNAs. Complete the following sequence of commands to perform this actions:
 > 
