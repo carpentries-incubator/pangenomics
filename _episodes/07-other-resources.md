@@ -1,5 +1,5 @@
 ---
-title: "Other resources"
+title: "Other Resources"
 teaching: 5
 exercises: 0
 questions:
