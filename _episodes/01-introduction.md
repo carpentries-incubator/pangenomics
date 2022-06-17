@@ -78,7 +78,7 @@ For this lesson purposes, we selected 6 *Streptococcus agalactiae* genomes...
 > $ wget https://zenodo.org/record/6636296/files/gm_workshop.zip
 > $ unzip gm_workshop.zip
 > ~~~
-> {: .laguage-bash}
+> {: .language-bash}
 > 
 > ~~~
 >  ... 
@@ -87,7 +87,7 @@ For this lesson purposes, we selected 6 *Streptococcus agalactiae* genomes...
 >  inflating: dc_workshop/data/H36B/Streptococcus_agalactiae_H36B.fasta  
 >  inflating: dc_workshop/data/H36B/Streptococcus_agalactiae_H36B.gbk  
 > ~~~
-> {: output}
+> {: .output}
 {: .checklist}
 
 {% include links.md %}
