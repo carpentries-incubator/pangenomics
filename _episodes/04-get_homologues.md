@@ -225,7 +225,7 @@ $ scp user@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pange
 > 
 > Lets explore one of the gene clusters that result from the intersection of all algorithms with grep command: 
 >~~~
->ls alg_intersection | grep clpX
+> $ ls alg_intersection | grep clpX
 >~~~
 >{: .language-bash}
 >
@@ -309,12 +309,12 @@ search file in the file browser on your computer.
 > Now we add another genome of the Streptococcus family. Let's probe with another S. agalactie genomes which are in the annotated folder.
 > We need to make a symbolic path in our data_get directory:
 > ~~~ 
-> find ~/gm_workshop/results/annotated/. -name "*Streptococcus_agalactie_[1-9]*.prokka.gbk*" -exec ln -s {} . ';'
+> $ find ~/gm_workshop/results/annotated/. -name "*Streptococcus_agalactie_[1-9]*.prokka.gbk*" -exec ln -s {} . ';'
 > ~~~
 > {: .language-bash}
 > Now we ask for clustering all gene sequences with the get_homologues.pl default algorithm
 > ~~~
-> get_homologues.pl -d data_get -c
+> $ get_homologues.pl -d data_get -c
 > ~~~
 > {: .language-bash}
 > What do you think happens to the number of gene clusters?/
@@ -331,7 +331,7 @@ search file in the file browser on your computer.
 >> The number of clusters decreases from  1177 to 1105. This is because the number of genes that all genomes share, i.e. core genome, decreases as we add another
 >> genome, while the pangenome increase. We can see this with the command :
 >> ~~~
->> less data_get_homologues/pan_genome_algBDBH.tab
+>> $ less data_get_homologues/pan_genome_algBDBH.tab
 >> ~~~
 >> {: .language-bash}
 >> 
@@ -395,21 +395,21 @@ data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algOMCL_e0_
 
 Now let's create a cladogram with the file pangenome_matrix_t0.phylip.ph which is one of the different versions of the same pangenome matrix. This version contains a tree in Newick format. Let us make sure that is in Newick format and change the extension to visualize in microreact.org, lets' check with the head command:
 ~~~
-head alg_intersection/pangenome_matrix_t0.phylip.ph
+$ head alg_intersection/pangenome_matrix_t0.phylip.ph
 ~~~
 {: .language-bash}
 
 then we rename the file replacing the extension .ph to .nwk with the mv command:
 
 ~~~
-mv pangenome_matrix_t0.phylip.ph pangenome_matrix_t0.phylip.nwk
+$ mv pangenome_matrix_t0.phylip.ph pangenome_matrix_t0.phylip.nwk
 ~~~
 {: .language-bash}
 
 Use the scp protocol to download the cladogram and see on microreact
 
 ~~~
-scp user@132.248.196.38:/home/alumno9/gm_workshop/results/pangenome/get_homologues/alg_intersection/*nwk
+$ scp user@132.248.196.38:/home/alumno9/gm_workshop/results/pangenome/get_homologues/alg_intersection/*nwk
 ~~~
 {: .language-bash}
 
