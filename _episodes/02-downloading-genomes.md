@@ -258,6 +258,17 @@ as they will be needed in this and later episodes. Finally, its a good practice
 to keep your rawdata untouched, with this in mind you can remove the writing
 permision of the data directory.  
 
+> ## Discussion
+>  Until now we have only download one file each time. How would you look for many genomes at the same time? 
+> > One idea would be looking for all the genomes in one genera such as _Streptococcus_
+> >  ~~~
+> > $  ncbi-genome-download -F fasta --genera "Streptococcus " -n bacteria
+> > ~~~
+> > {: .language-bash}
+> >
+> {: .solution}
+{: .challenge}
+
 ~~~
 $ chmod -w ~/gm_workshop/data/
 $ ls -lh ~/gm_workshop/data/
