@@ -15,7 +15,7 @@ keypoints:
 The NCBI Genome Downloading Scripts provide a shell command that 
 allows users to download genomes from the NCBI. This [package](https://github.com/kblin) 
 is highly useful because we can specify our queries as much as we like. It will simplify 
-us the process of getting the data directly in our work directory. Lets first activate
+us the process of getting the data directly in our work directory. Let's first activate
 the ncbi-genome-download conda environment.  
 
 ~~~
