@@ -28,7 +28,7 @@ $ conda activate ncbi-genome-download
 ~~~
 {: .output}
 
-The full list of parameters you can incorporate in your downloads can be obtained by typing:
+The full list of parameters to incorporate in your downloads can be obtained by typing:
 ~~~
 $ ncbi-genome-download --help
 ~~~
@@ -79,8 +79,8 @@ usage:
 ~~~
 {: .output}
 
-If you type ncbi-genome download and you get the error command-not-found
-that maybe because you are in base and not inside the ncbi-genome-download
+If you type ncbi-genome download and you get the error command-not-found,
+that could be because you are in base and not inside the ncbi-genome-download
 conda environment.  
 ~~~
 (base) $ ncbi-genome-download 
@@ -92,7 +92,7 @@ ncbi-genome-download: command not found
 ~~~
 {: .error}
 
-Inside the environment we are ready to use the package. 
+Once inside the environment we are ready to use the package. 
 Though we only write the prompt like '$' we are inside (ncbi-genome-download)
 First, we need to go to our data directory.
 ~~~
@@ -117,8 +117,8 @@ $ ls
 {: .output}
 
 Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek
-is available on the database, and, in case it is, what exactly it contains. To do so, we must include
-a -n flag within our command. For instance, if we wish to check the availability of the genome of the
+is available on the database and its content. Include
+the -n flag within your command to avoid this information to be download. For instance, if we wish to check the availability of the genome of the
 LMD-9 strain of the Streptococcus thermophilus bacterium in FASTA format, we would type the following:
 
 ~~~
