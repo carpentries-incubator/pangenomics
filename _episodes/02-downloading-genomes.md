@@ -117,7 +117,7 @@ $ ls
 {: .output}
 
 Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek
-is available on the database and its content. Include
+is available in the database and its content. Include
 the -n flag within your command to avoid this information to be download. For instance, if we wish to check the availability of the genome of the
 LMD-9 strain of the Streptococcus thermophilus bacterium in FASTA format, we would type the following:
 
@@ -132,7 +132,7 @@ GCF_000014485.1 Streptococcus thermophilus LMD-9        LMD-9
 ~~~
 {: .output}
 
-As you can see, there is one assembly available assigned to the number `GCF_000014485.1`. We will now proceed to download it to an output directory titled `thermophilusLMD9`:
+As you can see, there is one assembly available assigned to the number `GCF_000014485.1`. We will now proceed to download it to an output directory entitled `thermophilusLMD9`:
 
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -o thermophilusLMD9 bacteria
@@ -151,14 +151,14 @@ GCF_000014485.1_ASM1448v1_genomic.fna.gz  MD5SUMS
 ~~~
 {: .output}
 
-To view it, we must decompress it using `gunzip`:
+In order to view it, we must decompress it using `gunzip`:
 
 ~~~
 $ gunzip thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_000014485.1_ASM1448v1_genomic.fna.gz
 ~~~
 {: .language-bash}
 
-We can now explore the file and move it to the main directory `thermophilusLMD9`, and delete the `refseq` directory as it is not longer needed:
+Now we can explore the file and move it to the main directory `thermophilusLMD9`, and delete the `refseq` directory as it is not longer needed:
 
 ```
 $ mv thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_000014485.1_ASM1448v1_genomic.fna thermophilusLMD9/
@@ -168,7 +168,7 @@ $ rm -r thermophilusLMD9/refseq
 
 
 > ## Notes
-> In this example, we downloaded the genome in FASTA format. However, we can
+> In this example, we have downloaded the genome in FASTA format. However, we can
 >  use the `--format` or `-F` flags to get any other format of interest. 
 >  For example, the `gbk` format files (which contain information about the 
 >  coding sequences, their locus, the name of the protein and the full 
@@ -176,11 +176,11 @@ $ rm -r thermophilusLMD9/refseq
 >  can be downloaded by specifying our queries with `--format genbank`.
 {: .callout}
 
-> ## Exercise 1: Downloading data from NCBI with the command line
+> ## Exercise 1: Downloading data from NCBI using the command line
 > 
 > Suppose you are asked to perform the following sequence of actions:
 > 
-> 1. Download the genome of *Streptococcus thermophilus* with the NCBI assembly number `GCF_000011825.1` in a FASTA format and save it to an output directory titled `thermophilusLMG18311`.
+> 1. Download the genome of *Streptococcus thermophilus* with the NCBI assembly number `GCF_000011825.1` in a FASTA format and save it to an output directory entitled `thermophilusLMG18311`.
 > 2. Change to the directory where the FASTA file is located and unzip it.
 > 3. Move the FASTA file all the way back to the `thermophilusLMG18311` directory.
 > 4. Change to the `thermophilusLMG18311` directory and delete the `refseq` subdirectory created by the downloading tool.
@@ -219,7 +219,7 @@ $ rm -r thermophilusLMD9/refseq
 >
 > > ## Solution
 > >
-> > Step 1. Using the information provided in the step, we complete each blank space with the corresponding word:
+> > Step 1. Using the provided information, we complete each blank space with the corresponding word:
 > >
 > > ~~~
 > > $ ncbi-genome-download -F fasta --genera "Streptococcus thermophilus" -A GCF_000011825.1 -o thermophilusLMG18311 bacteria
@@ -234,7 +234,7 @@ $ rm -r thermophilusLMD9/refseq
 > > ~~~
 > > {: .language-bash}
 > >
-> > Step 3. We now have an unzipped FASTA file. The parent directory `thermophilusLMG18311` is located three directories above the current one. To get to the first parent directory, one would type `..`; if you want to get to the second parent directory, you would use `../..`. Thus, to move the FASTA file to the `thermophilusLMG18311` directory, we need to type:
+> > Step 3. We have now an unzipped FASTA file. The parent directory `thermophilusLMG18311` is located three directories above the current one. To get to the first parent directory, you would type `..`; if you want to get to the second parent directory, you would use `../..`. Thus, to move the FASTA file to the `thermophilusLMG18311` directory, we need to type:
 > >
 > > ~~~
 > > $ mv GCF_000011825.1_ASM1182v1_genomic.fna ../../..
@@ -252,15 +252,14 @@ $ rm -r thermophilusLMD9/refseq
 > {: .solution}
 {: .challenge}
 
-Make sure you have downloaded both strains of *S. thermophilus*, the one 
-from the example (LMD-9) and the one from the exercise (LMG 18311), 
-as they will be needed in this and later episodes. Finally, its a good practice 
-to keep your rawdata untouched, with this in mind you can remove the writing
+Make sure you have downloaded both strains of *S. thermophilus*, LMD-9 and LMG 18311, 
+as they will be required in this and upcoming episodes. Finally, it is a good practice 
+to keep your rawdata untouched, taking this into account you can remove the writing
 permision of the data directory.  
 
 > ## Discussion
->  Until now we have only download one file each time. How would you look for many genomes at the same time? 
-> > One idea would be looking for all the genomes in one genera such as _Streptococcus_
+>  Until now we have downloaded only one file at a time. How would you look for several genomes at the same time? 
+> > One idea would be to look for all the genomes in one genera such as _Streptococcus_
 > >  ~~~
 > > $  ncbi-genome-download -F fasta --genera "Streptococcus " -n bacteria
 > > ~~~
