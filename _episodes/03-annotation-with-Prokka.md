@@ -15,9 +15,9 @@ keypoints:
 
 ## Prokka: Annotating Genomes
 
-[Annotation](https://en.wikipedia.org/wiki/DNA_annotation) is a process of 
+[Annotation](https://en.wikipedia.org/wiki/DNA_annotation) is the process of 
 identifying the coordinates of genes and all the coding regions 
-in a genome and determining what those genes are for. For this, an unknown 
+in a genome and determining what those genes are for. In order to do this, an unknown 
 sequence is enriched with information relating genomic position, regulatory
 sequences, repeats, gene name and protein products. This information
 is stored in genomic databases to help future analysis processing new data.
@@ -25,7 +25,7 @@ is stored in genomic databases to help future analysis processing new data.
 [Prokka](https://github.com/tseemann/prokka) 
 is a command-line software tool created in Perl to annotate bacterial, 
 archaeal and viral genomes and reproduce standards-compliant output files.
-It expects a preassembled genomic DNA sequences in FASTA format as the input 
+It requires a preassembled genomic DNA sequences in FASTA format as input 
 file, which is the only mandatory parameter to the software.
 For annotation, Prokka relies on external features and databases to 
 identify the genomic features within the contigs.
@@ -33,19 +33,19 @@ identify the genomic features within the contigs.
 | Tool(reference) | Features predicted |
 | --------- | ----------- |
 |Prodigal (Hyatt 2010 )   | Coding Sequence (CDS) |
-| RNAmmer ( Lagesen et al. , 2007 )  | Ribosomla RNA genes (rRNA) |
+| RNAmmer ( Lagesen et al. , 2007 )  | Ribosomal RNA genes (rRNA) |
 | Aragorn ( Laslett and Canback, 2004 )  | Transfer RNA genes |
 | SignalP ( Petersen et al. , 2011 )  | Signal leader peptides|
 | Infernal ( Kolbe and Eddy, 2011 )  | Non-coding RNA|
 
 Proteins coding genes are annotated in two stages. Prodigal identifies 
 the coordinates of candidate genes, but does not describe the putative 
-gene product. The traditional way to predict what a gene codes 
-for is to compare it with a large
+gene product. Usually, in order to predict what a gene encodes 
+for, it is compared with a large
 database of known sequences, usually at a protein level, 
 and transfer the annotation of the best significant match.
-Prokka uses this method, but in a hierarchical manner, starting 
-with a smaller trustworthy database, moving to medium
+Prokka uses this method, but in a hierarchical manner. It starts 
+with a small trustworthy database, it then moves to medium
 sized but domain specific databases and finally to curated 
 models of protein families.
 
