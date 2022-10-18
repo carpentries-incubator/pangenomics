@@ -10,14 +10,14 @@ questions:
 objectives:
 - "Clustering orthologous proteins from Gen Bank files."
 - "Create a Venn diagram using diferents clustering algorithms."
-- "Implemented and interpreted the evolutionary history using Clustering orthologous proteins."
+- "Implement and interpret the evolutionary history using Clustering orthologous proteins."
 
 keypoints:
 - "First key point. Brief Answer to questions. (FIXME)"
 ---
 
 Get_Homologues a versatile software package for pan-genome analysis is maintained by Bruno Contreras-Moreira and Pablo Vinuesa. 
-## Introducction 
+## Introduction 
 ## Main Task
 - Clustering protein and nucleotide sequences in homologous (possibly orthologous) groups, on the grounds of sequence similarity.
 - Identification of orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes.
