@@ -88,8 +88,7 @@ In this example, we have told prokka to:
 | --addgens |Add 'gene' features for each 'CDS' feature (default OFF) |
 
 
-Now prokka has generated a new folder. Lets get in and if you run the `tree` command 
-in the current directory, you can preview the system of files created by Prokka:
+Now prokka has generated a new folder. If you run the `tree` command inside the new generated directory, you can preview the system of files created by Prokka:
 
 ~~~
 exdir/
@@ -108,7 +107,7 @@ exdir/
 ~~~
 {: .output}
 
-We encourage you to explore each output nevertheless, the following table describes the contents of each output file:
+We encourage you to explore each output. The following table describes the contents of each output file:
 
 | Extension | Description |
 | --------- | ----------- |
@@ -118,19 +117,19 @@ We encourage you to explore each output nevertheless, the following table descri
 | .faa | Protein FASTA file of the translated CDS sequences. |
 | .ffn | Nucleotide FASTA file of all the prediction transcripts (CDS, rRNA, tRNA, tmRNA, misc_RNA) |
 | .sqn | An ASN1 format "Sequin" file for submission to Genbank. It needs to be edited to set the correct taxonomy, authors, related publication etc. |
-| .fsa | Nucleotide FASTA file of the input contig sequences, used by "tbl2asn" to create the .sqn file. It is mostly the same as the .fna file, but with extra Sequin tags in the sequence description lines. |
+| .fsa | Nucleotide FASTA file of the input contig sequences, used by "tbl2asn" to create the .sqn file. It is almost the same as the .fna file, but with extra Sequin tags in the sequence description lines. |
 | .tbl | Feature Table file, used by "tbl2asn" to create the .sqn file. |
 | .err | Unacceptable annotations - the NCBI discrepancy report. |
-| .log | Contains all the output that Prokka produced during its run. This is a record of what settings you used, even if the --quiet option was enabled. |
-| .txt | Statistics relating to the annotated features found. |
+| .log | Contains all the output that Prokka produced during its run. This is the record of the used settings, even if the --quiet option was enabled. |
+| .txt | Statistics related to the found annotated features. |
 | .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product |
 
-You can also modify parameters as much as you need regarding the organism, gene and even locus tag you are looking for. 
+You can also modify parameters as much as you need regarding the organism, the gene and even the locus tag you are looking for. 
 
 
 > ## Exercise 1: Extracting tRNAs with Prokka
 >
-> Suppose you are now asked to annotate the FASTA file you downloaded in Exercise 1 and output the results to a subdirectory called `annotated` within the `thermophilusLMG18311_prokka` directory. Then, a research team asks you to provide them a TSV file titled `trnas.tsv` that only contains *S. thermophilus'*s tRNAs. This file must contain the same headers as the original TSV file, followed by the rows that correspond to tRNAs. Complete the following sequence of commands to perform this actions:
+> Suppose you are asked to annotate the FASTA file you downloaded in Exercise 1 and output the results to a subdirectory called `annotated` within the `thermophilusLMG18311_prokka` directory. Then, a research team requests you a TSV file entitled `trnas.tsv` that contains only *S. thermophilus'*s tRNAs. This file must contain the same headers as the original TSV file, followed by the rows that correspond to tRNAs. Complete the following sequence of commands to perform this actions:
 > 
 > ~~~
 > $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311_prokka ../../data/thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes 
@@ -157,7 +156,7 @@ You can also modify parameters as much as you need regarding the organism, gene 
 > > ~~~
 > > {: .language-bash}
 > >
-> > After switching to the `thermophilusLMG18311_prokka` directory, we shall now filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). We then append the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'`(this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
+> > After switching to the `thermophilusLMG18311_prokka` directory, we should filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). Next, we add the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'`(this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
 > >
 > > ~~~
 > > $ cd thermophilusLMG18311_prokka
@@ -171,7 +170,7 @@ You can also modify parameters as much as you need regarding the organism, gene 
 
 > ## Discussion 1: Number of tRNAs
 > 
-> Inside the `annotated` directory, run the command `wc -l trnas.tsv` to get the number of lines in the file. Excluding the first line (which contains the header), observe that there are 67 tRNAs, whereas the [standard codon table](https://en.wikipedia.org/wiki/DNA_and_RNA_codon_tables#Translation_table_1) contains 61 coding codons (i.e. the ones that are not stop codons). This means that there are several genes that produce the same tRNA. How would you explain this fact?
+> Inside the `annotated` directory, run the command `wc -l trnas.tsv` to get the number of lines in the file. Excluding the first line (which contains the header), observe that there are 67 tRNAs, whereas the [standard codon table](https://en.wikipedia.org/wiki/DNA_and_RNA_codon_tables#Translation_table_1) contains 61 coding codons (i.e. those that are non stop codons). This means that there are several genes that produce the same tRNA. How would you explain this fact?
 > 
 > > ## Solution
 > > 
@@ -182,7 +181,7 @@ You can also modify parameters as much as you need regarding the organism, gene 
 
 
 
-Lets first obtain the strain name of each fasta.  
+Let's first obtain the strain name of each fasta.  
 ~~~
 $ cd ~/gm_workshop/data
 $ ls */*fasta |while read line; do strain=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1); echo $strain; done
@@ -241,5 +240,5 @@ Streptococcus_agalactiae_CJB111.gbk_prokka  thermophilusLMG18311_prokka
 
 
 > ## Genome annotation services
-> To know more about prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provides a web-user interface where you can storage your private genomes and share them with your colleagues. To use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast). 
+> To learn more about prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provide a web-user interface where you can store your private genomes and share them with your colleagues. If you want to use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast). 
 {: .callout}
