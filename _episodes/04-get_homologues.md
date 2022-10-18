@@ -28,13 +28,13 @@ Get_Homologues a versatile software package for pan-genome analysis is maintaine
 </a>
 
 ## Considerations
-Please ensure that you are in the environment of Pangenomics. You can omit his step if you have activated the environment.
+Please ensure that you are in the Pangenomics environment. You can omit this step if you have already activated the environment.
 
 ~~~
 $ conda activate Pangenomics_Global  
 ~~~
 {: .language-bash}
-Now, We ensure that get_homologues is install
+Make sure that get_homologues is install
 
 ~~~
 $ get_homologues.pl -h #This command display the options
@@ -47,7 +47,7 @@ $ get_homologues.pl -h #This command display the options
 -d directory with input FASTA files ( .faa / .fna ),           (overrides -i,
    GenBank files ( .gbk ), 1 per genome, or a subdirectory      use of pre-clustered sequences
    ( subdir.clusters / subdir_ ) with pre-clustered sequences   ignores -c, -g)
-   ( .faa / .fna ); allows for new files to be added later;    
+   ( .faa / .fna ); allows new files to be added later;    
    creates output folder named 'directory_homologues'
 -i input amino acid FASTA file with [taxon names] in headers,  (required unless -d is set)
    creates output folder named 'file_homologues'
@@ -94,7 +94,7 @@ Options that control clustering:
 
 
 ## Step 1. Generate a folder get_homologues
-It's necessary that we create a new folder when all results are sent.
+It's necessary that we create a new folder where all the results will be sent.
 
 ~~~
 $ mkdir -p ~/gm_workshop/results/pangenome/get_homologues/data_get #Create directory (-p create all parents)
@@ -176,7 +176,7 @@ $ get_homologues.pl -d data_get -M
 {: .output}
 
 > ## Notes
-If we add the option -e the resulting clusters will contain only single-copy genes from each taxon, i.e. the orthologues. This flag form singleton clusters, which are created when you exclude clusters with inparalogues. This is useful to make genome-level phylogenetic analyses in only single copy-genes.
+If we add the option -e the resulting clusters will contain only single-copy genes from each taxon, i.e. the orthologues. This flag forms singleton clusters, which are created when you exclude clusters with inparalogues. This is useful to make genome-level phylogenetic analyses in only single copy-genes.
 {: .callout}
 
 
@@ -223,19 +223,19 @@ $ scp user@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pange
 
 > ## Exercise 1: 
 > 
-> Lets explore one of the gene clusters that result from the intersection of all algorithms with grep command: 
+> Let's explore one of the gene clusters that result from the intersection of all algorithms with grep command: 
 >~~~
 > $ ls alg_intersection | grep clpX
 >~~~
 >{: .language-bash}
 >
 >Why do you think these genes are at the intersection?/
->Is this cluster gene essential for a living?/
+>Is this cluster gene essential for living?/
 >What other gene do you think can be in this output folder?/
 >
 >
 >> ## Solution
->>clpX is a gene that encodes a part of a protease found in mitochondria, which is essential for living. The reason why they are in the intersection folder is that >>these cluster genes belong to the core genome
+>>clpX is a gene that encodes part of a protease found in mitochondria, which is essential for living. The reason why they are in the intersection folder is that >>these cluster genes belong to the core genome
 > {: .solution}
 {: .challenge} 
 
