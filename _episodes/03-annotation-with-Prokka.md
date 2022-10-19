@@ -252,7 +252,7 @@ perl -p -i -e 's/\s*Unclassified/ '"${locus}"'/' $file
 ~~~
 {: .language-bash}
 ~~~
-ls *.gbk | while read line
+ls *.gbk | while read file
 do 
 bash correctgbk.sh $file
 done
