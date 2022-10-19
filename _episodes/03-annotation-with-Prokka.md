@@ -243,7 +243,7 @@ Streptococcus_agalactiae_CJB111.gbk_prokka  thermophilusLMG18311_prokka
 > To learn more about prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provide a web-user interface where you can store your private genomes and share them with your colleagues. If you want to use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast). 
 {: .callout}
 
-You need make the file `correctgbk.sh`, for this you use `nano correctgbk.sh` and paste the next script. 
+You need to make the file `correctgbk.sh`, for this you use `nano correctgbk.sh` and paste the next script. 
 ~~~
 file=$1
 locus=$(grep -m 1 "LOCUS" $file |cut -d\  -f 8 |cut -b1-9)  #selecionas de el primer Locus, los primeros caracteres donde empiezan con N
