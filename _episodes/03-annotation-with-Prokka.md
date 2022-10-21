@@ -3,7 +3,7 @@ title: "Annotating Genomic Data"
 teaching: 30
 exercises: 15
 questions:
-- "How to download NCBI genomic data from the command line?"``
+- "How to download NCBI genomic data from the command line?"
 - "How to annotate genome FASTA files?"
 objectives:
 - "Learn how to use the Prokka genome annotation utility."
