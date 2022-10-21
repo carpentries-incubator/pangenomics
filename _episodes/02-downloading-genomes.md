@@ -248,8 +248,10 @@ $ rm -r thermophilusLMD9/refseq
 {: .challenge}
 
 Make sure you have downloaded both strains of *S. thermophilus*, LMD-9 and LMG 18311, 
-as they will be required in this and upcoming episodes. Finally, it is a good practice 
-to keep your rawdata untouched, taking this into account you can remove the writing
+as they will be required in this and upcoming episodes.   
+
+Finally, it is a good practice 
+to keep your raw data untouched, taking this into account you can remove the writing
 permision of the data directory.  
 
 ~~~
