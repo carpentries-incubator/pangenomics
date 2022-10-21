@@ -35,21 +35,20 @@ There are two classes of pangenomes: open and closed. An **open pangenome** occu
 pangenome increases considerably every added genome (p. e. *Escherichia coli*). Whereas, a **closed pangenome** 
 results when only few gene families are incorporated to the pangenome when a new member is added.
 
-
 ![Figure 1. Characteristics of open and closed pangenomes](../fig/Characteristics_of_open_and_closed_pangenomes.png)
-
-
 
 ## How to select a group of genomes to construct a pangenome?
 
-Selection of proper data to construct a pangenome analysis is a crucial task of the process. By definition, a pangenome represents the entire set of genes from all strains in a clade. Thus, let's define and understand what a clade is. 
+Selection of proper data to construct a pangenome analysis is a crucial task of the process. By definition, a pangenome represents 
+the entire set of genes from all strains in a clade. Thus, let's define and understand what a clade is. 
 
-A **clade** (*kládos*, 'branch'), also known as *monophyletic group*, is a group of organisms that share the same common ancestor. In a phylogenetic tree, clades can be distinguished by identified the common ancestor of branch subgroups. For instance, in Fig.2, the blue and red subgroups are considered clades but green subgruop is not a clade, it is a *parahyletic group*. Why is that? Because it excludes the blue clade which has descended from the same common ancestor. Instead, the green and blue subgroups together form a clade.
-
-
+A **clade** (*kládos*, 'branch'), also known as *monophyletic group*, is a group of organisms that share the same common ancestor. 
+In a phylogenetic tree, clades can be distinguished by identified the common ancestor of branch subgroups. For instance, in the 
+following figure, the blue and red subgroups are considered clades but green subgruop is not a clade, it is a *parahyletic group*. 
+Why is that? Because it excludes the blue clade which has descended from the same common ancestor. Instead, the green and blue subgroups 
+together form a clade.
 
 ![Figure 2. Cladogram representation](../fig/Cladogram.png)
-
 
 ## Brief description of *Streptococcus agalactiae* dataset
 
