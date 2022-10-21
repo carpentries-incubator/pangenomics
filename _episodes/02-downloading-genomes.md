@@ -27,6 +27,7 @@ $ conda activate ncbi-genome-download
 (ncbi-genome-download) $
 ~~~
 {: .output}
+For practicality you will see the prompt written only as `$` instead of `(ncbi-genome-download) $`.
 
 The full list of parameters to incorporate in your downloads can be obtained by typing:
 ~~~
@@ -81,22 +82,10 @@ usage:
 
 If you type `ncbi-genome-download` and you get the error `command-not-found`,
 it could be because you are in `base` and not inside the `ncbi-genome-download`
-Conda environment.  
-~~~
-(base) $ ncbi-genome-download 
-~~~
-{: .language-bash}
-
-~~~
-ncbi-genome-download: command not found 
-~~~
-{: .error}
-
-Once inside the environment we are ready to use the package. 
-Though we only write the prompt like '$' we are inside (ncbi-genome-download)
+Conda environment. Once inside the environment we are ready to use the package. 
 First, we need to go to our data directory.
 ~~~
-(ncbi-genome-download) $ cd ~/gm_workshop/data
+$ cd ~/gm_workshop/data
 ~~~
 {: .language-bash}
 
