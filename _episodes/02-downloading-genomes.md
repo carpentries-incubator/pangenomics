@@ -121,22 +121,28 @@ GCF_000014485.1 Streptococcus thermophilus LMD-9        LMD-9
 ~~~
 {: .output}
 
-As you can see, there is one assembly available assigned to the number `GCF_000014485.1`. We will now proceed to download it to an output directory named `thermophilusLMD9`:
+As you can see, there is one assembly available assigned to the number `GCF_000014485.1`. 
+We will now proceed to download it to an output directory named `thermophilusLMD9`:
 
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -o thermophilusLMD9 bacteria
 ~~~
 {: .language-bash}
 
-This script downloads a compressed FASTA file into a specific directory:
+This script downloads a compressed FASTA file into a specific set of directories:
 
 ~~~
-$ ls thermophilusLMD9/refseq/bacteria/GCF_000014485.1/
+$ tree thermophilusLMD9/
 ~~~
 {: .language-bash}
 
 ~~~
-GCF_000014485.1_ASM1448v1_genomic.fna.gz  MD5SUMS
+thermophilusLMD9/
+└── refseq
+    └── bacteria
+        └── GCF_000014485.1
+            ├── GCF_000014485.1_ASM1448v1_genomic.fna.gz
+            └── MD5SUMS
 ~~~
 {: .output}
 
