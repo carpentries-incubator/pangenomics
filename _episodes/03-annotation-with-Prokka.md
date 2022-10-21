@@ -185,40 +185,10 @@ You can also modify parameters as much as you need regarding the organism, the g
 ## Annotating multiple genomes
 
 Now that we know how to annotate genomes with Prokka we can annotate all of 
-the *S. agalactiae* in one run.
-Let's first obtain the strain name of each fasta.  
-~~~
-$ cd ~/gm_workshop/data
-$ ls */*fasta | while read line; do strain=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1); echo $strain; done
-~~~
-{: .language-bash}
-
-~~~
-18RS21
-515
-A909
-CJB111
-COH1
-H36B
-~~~
-{: .output}
-
-You are ready to run all your annotations.  
-~~~
-$ ls */*fasta | while read line
-> do 
-> strainName=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1)
-> echo prokka $line --kingdom Bacteria --genus Streptococcus --species agalactie --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactie_${strainName}\.prokka --outdir ~/gm_workshop/results/annotated/Streptococcus_agalactie_${strainName}\_prokka
-> done
-~~~
-{: .language-bash}
-
-~~~
-...
-prokka COH1/Streptococcus_agalactiae_COH1.fasta --kingdom Bacteria --genus Streptococcus --species agalactie --strain COH1 --usegenus --addgenes --prefix Streptococcus_agalactie_COH1.prokka --outdir /home/alumno17/gm_workshop/results/annotated/Streptococcus_agalactie_COH1_prokka
-prokka H36B/Streptococcus_agalactiae_H36B.fasta --kingdom Bacteria --genus Streptococcus --species agalactie --strain H36B --usegenus --addgenes --prefix Streptococcus_agalactie_H36B.prokka --outdir /home/alumno17/gm_workshop/results/annotated/Streptococcus_agalactie_H36B_prokka
-~~~
-{: .output}
+the *S. agalactie* in one run.
+For this purpose we will use a complex `while` loop that for each of the *S. agalactie* genomes 
+first extracts the strain name and saves it in a variable, and then uses it inside the 
+Prokka command.
 
 ~~~
 $ cd ~/gm_workshop/data 
