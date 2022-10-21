@@ -182,13 +182,14 @@ You can also modify parameters as much as you need regarding the organism, the g
 > {: .solution}
 {: .discussion}
 
+## Annotating multiple genomes
 
-
-
+Now that we know how to annotate genomes with Prokka we can annotate all of 
+the *S. agalactiae* in one run.
 Let's first obtain the strain name of each fasta.  
 ~~~
 $ cd ~/gm_workshop/data
-$ ls */*fasta |while read line; do strain=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1); echo $strain; done
+$ ls */*fasta | while read line; do strain=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1); echo $strain; done
 ~~~
 {: .language-bash}
 
