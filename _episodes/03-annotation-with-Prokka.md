@@ -185,8 +185,8 @@ You can also modify parameters as much as you need regarding the organism, the g
 ## Annotating multiple genomes
 
 Now that we know how to annotate genomes with Prokka we can annotate all of 
-the *S. agalactie* in one run.
-For this purpose we will use a complex `while` loop that for each of the *S. agalactie* genomes 
+the *S. agalactiae* in one run.
+For this purpose we will use a complex `while` loop that for each of the *S. agalactiae* genomes 
 first extracts the strain name and saves it in a variable, and then uses it inside the 
 Prokka command.
 
