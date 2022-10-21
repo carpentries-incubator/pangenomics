@@ -1,14 +1,14 @@
 ---
-title: "Annotating Genomic Data"
+title: "Curating output filez"
 teaching: 30
 exercises: 15
 questions:
-- "How to download NCBI genomic data from the command line?"``
-- "How to annotate genome FASTA files?"
+- "How can I modified all my files?"
 objectives:
-- "Learn how to use the Prokka genome annotation utility."
+- "Write a script to add the NCBI Id to prokka genbank files."
 keypoints:
-- "Prokka is a command line utility that provides rapid prokaryotic genome annotation."
+- "There are always some details that requires manual curation."
+- "Scripts can help you to automatize your work."
 ---
 
 You need to make the file `correctgbk.sh`, for this you use `nano correctgbk.sh` and paste the next script. 
