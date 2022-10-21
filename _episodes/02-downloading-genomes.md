@@ -173,14 +173,14 @@ $ rm -r thermophilusLMD9/refseq
 
 > ## Exercise 1: Downloading data from NCBI using the command line
 > 
-> Suppose you are asked to perform the following sequence of actions:
+> To download the genome of another strain of *S. thermophilus* we need to perform the following stps:
 > 
-> 1. Download the genome of *Streptococcus thermophilus* with the NCBI assembly number `GCF_000011825.1` in a FASTA format and save it to an output directory entitled `thermophilusLMG18311`.
+> 1. Download the genome of *Streptococcus thermophilus* with the NCBI assembly number `GCF_000011825.1` in a FASTA format and save it to an output directory named `thermophilusLMG18311`.
 > 2. Change to the directory where the FASTA file is located and unzip it.
 > 3. Move the FASTA file all the way back to the `thermophilusLMG18311` directory.
 > 4. Change to the `thermophilusLMG18311` directory and delete the `refseq` subdirectory created by the downloading tool.
 > 
-> Complete the following set of commands to perform the previous steps:
+> Complete the following set of commands to carry out the previous steps:
 > 
 > Step 1.
 > 
@@ -240,7 +240,7 @@ $ rm -r thermophilusLMD9/refseq
 > >
 > > ~~~
 > > $ cd ../../..
-> > $ rm -rf refseq
+> > $ rm -r refseq
 > > ~~~
 > > {: .language-bash}
 > >
