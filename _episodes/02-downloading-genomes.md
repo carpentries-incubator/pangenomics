@@ -107,8 +107,8 @@ $ ls
 
 Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek
 is available in the database and its content. Include
-the -n flag within your command to avoid this information to be download. For instance, if we wish to check the availability of the genome of the
-LMD-9 strain of the Streptococcus thermophilus bacterium in FASTA format, we would type the following:
+the `-n` flag within your command to avoid this information to be downloaded. For instance, if we wish to check the availability of the genome of the
+LMD-9 strain of the *Streptococcus thermophilus* bacterium in FASTA format, we would type the following:
 
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -n bacteria
@@ -121,7 +121,7 @@ GCF_000014485.1 Streptococcus thermophilus LMD-9        LMD-9
 ~~~
 {: .output}
 
-As you can see, there is one assembly available assigned to the number `GCF_000014485.1`. We will now proceed to download it to an output directory entitled `thermophilusLMD9`:
+As you can see, there is one assembly available assigned to the number `GCF_000014485.1`. We will now proceed to download it to an output directory named `thermophilusLMD9`:
 
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -o thermophilusLMD9 bacteria
