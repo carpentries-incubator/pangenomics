@@ -162,7 +162,7 @@ $ rm -r thermophilusLMD9/refseq
 {: .language-bash}
 
 
-> ## Notes
+> ## Downloading specific formats
 > In this example, we have downloaded the genome in FASTA format. However, we can
 >  use the `--format` or `-F` flags to get any other format of interest. 
 >  For example, the `gbk` format files (which contain information about the 
