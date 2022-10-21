@@ -15,7 +15,7 @@ keypoints:
 
 [Annotation](https://en.wikipedia.org/wiki/DNA_annotation) is the process of 
 identifying the coordinates of genes and all the coding regions 
-in a genome and determining what those genes are for. In order to do this, an unknown 
+in a genome and determining what proteins are produced from them. In order to do this, an unknown 
 sequence is enriched with information relating genomic position, regulatory
 sequences, repeats, gene name and protein products. This information
 is stored in genomic databases to help future analysis processing new data.
