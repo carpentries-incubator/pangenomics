@@ -16,7 +16,7 @@ The NCBI Genome Downloading Scripts provide a shell command that
 allows users to download genomes from the NCBI. This [package](https://github.com/kblin) 
 is highly useful, it enables to specify our queries as much as we like. It will simplify 
 us the process of getting the data directly into our working directory. Let's first activate
-the ncbi-genome-download conda environment.  
+the `ncbi-genome-download` Conda environment.  
 
 ~~~
 $ conda activate ncbi-genome-download 
@@ -79,9 +79,9 @@ usage:
 ~~~
 {: .output}
 
-If you type ncbi-genome download and you get the error command-not-found,
-that could be because you are in base and not inside the ncbi-genome-download
-conda environment.  
+If you type `ncbi-genome-download` and you get the error `command-not-found`,
+it could be because you are in `base` and not inside the `ncbi-genome-download`
+Conda environment.  
 ~~~
 (base) $ ncbi-genome-download 
 ~~~
