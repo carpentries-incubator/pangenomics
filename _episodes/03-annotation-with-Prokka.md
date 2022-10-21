@@ -28,7 +28,7 @@ file, which is the only mandatory parameter to the software.
 For annotation, Prokka relies on external features and databases to 
 identify the genomic features within the contigs.
 
-| Tool(reference) | Features predicted |
+| Tool (reference) | Features predicted |
 | --------- | ----------- |
 |Prodigal (Hyatt 2010 )   | Coding Sequence (CDS) |
 | RNAmmer ( Lagesen et al. , 2007 )  | Ribosomal RNA genes (rRNA) |
@@ -111,11 +111,11 @@ We encourage you to explore each output. The following table describes the conte
 | Extension | Description |
 | --------- | ----------- |
 | .gff | This is the master annotation in GFF3 format, containing both sequences and annotations. It can be viewed directly in Artemis or IGV. |
-| .gbk | This is a standard Genbank file derived from the master .gff. If the input to prokka was a multi-FASTA, then this will be a multi-Genbank, with one record for each sequence. |
+| .gbk | This is a standard GenBank file derived from the master .gff. If the input to prokka was a multi-FASTA, then this will be a multi-GenBank, with one record for each sequence. |
 | .fna | Nucleotide FASTA file of the input contig sequences. |
 | .faa | Protein FASTA file of the translated CDS sequences. |
 | .ffn | Nucleotide FASTA file of all the prediction transcripts (CDS, rRNA, tRNA, tmRNA, misc_RNA) |
-| .sqn | An ASN1 format "Sequin" file for submission to Genbank. It needs to be edited to set the correct taxonomy, authors, related publication etc. |
+| .sqn | An ASN1 format "Sequin" file for submission to GenBank. It needs to be edited to set the correct taxonomy, authors, related publication etc. |
 | .fsa | Nucleotide FASTA file of the input contig sequences, used by "tbl2asn" to create the .sqn file. It is almost the same as the .fna file, but with extra Sequin tags in the sequence description lines. |
 | .tbl | Feature Table file, used by "tbl2asn" to create the .sqn file. |
 | .err | Unacceptable annotations - the NCBI discrepancy report. |
