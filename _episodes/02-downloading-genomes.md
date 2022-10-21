@@ -252,17 +252,6 @@ as they will be required in this and upcoming episodes. Finally, it is a good pr
 to keep your rawdata untouched, taking this into account you can remove the writing
 permision of the data directory.  
 
-> ## Discussion
->  Until now we have downloaded only one file at a time. How would you look for several genomes at the same time? 
-> > One idea would be to look for all the genomes in one genera such as _Streptococcus_
-> >  ~~~
-> > $  ncbi-genome-download -F fasta --genera "Streptococcus " -n bacteria
-> > ~~~
-> > {: .language-bash}
-> >
-> {: .solution}
-{: .challenge}
-
 ~~~
 $ chmod -w ~/gm_workshop/data/
 $ ls -lh ~/gm_workshop/data/
@@ -282,3 +271,16 @@ drwxr-xr-x 2 alumno17 alumno17    4096 Jun 13 15:26 thermophilusLMG18311
 ~~~
 {: .output}
 
+
+> ## Discussion
+>  Until now we have downloaded only one file at a time. How would you look for several 
+>  genomes at the same time? 
+> > ## Solution
+> > One idea would be to look for all the genomes in one genera such as _Streptococcus_
+> > ~~~
+> > $  ncbi-genome-download -F fasta --genera "Streptococcus " -n bacteria
+> > ~~~
+> > {: .language-bash}
+> >
+> {: .solution}
+{: .challenge}
