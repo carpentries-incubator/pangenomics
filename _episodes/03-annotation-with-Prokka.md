@@ -127,7 +127,13 @@ You can also modify parameters as much as you need regarding the organism, the g
 
 > ## Exercise 1: Extracting tRNAs with Prokka
 >
-> Suppose you are asked to annotate the FASTA file you downloaded in Exercise 1 and output the results to a subdirectory called `annotated` within the `thermophilusLMG18311_prokka` directory. Then, a research team requests you a TSV file entitled `trnas.tsv` that contains only *S. thermophilus'*s tRNAs. This file must contain the same headers as the original TSV file, followed by the rows that correspond to tRNAs. Complete the following sequence of commands to perform this actions:
+> Suppose you are asked to annotate the FASTA file you downloaded in the previous episode and 
+> output the results to a subdirectory called `annotated` within the `thermophilusLMG18311_prokka` 
+> directory. Then, a research team requests you a TSV file named `trnas.tsv` that contains only 
+> *S. thermophilus'*s tRNAs. This file must contain the same headers as the original 
+> TSV file, followed by the rows that correspond to tRNAs. 
+> 
+> Complete the following sequence of commands to perform this actions:
 > 
 > ~~~
 > $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311_prokka ../../data/thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes 
