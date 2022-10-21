@@ -70,12 +70,7 @@ Now you must be inside the environment
 {: .language-bash}
 
 You are ready to run your first annotation.  
-~~~
-$ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
-~~~
-{: .language-bash}
-
-In this example, we have told prokka to:
+In this example, we will use the following options:
 
 | code   | meaning |
 | ------- | ---------- |
@@ -87,8 +82,12 @@ In this example, we have told prokka to:
 | --usegenus | Use genus-specific BLAST databases (needs --genus) (default OFF) |
 | --addgens |Add 'gene' features for each 'CDS' feature (default OFF) |
 
+~~~
+$ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
+~~~
+{: .language-bash}
 
-Now prokka has generated a new folder. If you run the `tree` command inside the new generated directory, you can preview the system of files created by Prokka:
+Now Prokka has generated a new folder. If you run the `tree` command inside the new generated directory, you can preview the system of files created by Prokka:
 
 ~~~
 exdir/
