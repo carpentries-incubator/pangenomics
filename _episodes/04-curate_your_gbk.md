@@ -1,9 +1,9 @@
 ---
-title: "Curating output filez"
+title: "Curating output files"
 teaching: 30
 exercises: 15
 questions:
-- "How can I modified all my files?"
+- "How can I modify all my files?"
 objectives:
 - "Write a script to add the NCBI Id to prokka genbank files."
 keypoints:
