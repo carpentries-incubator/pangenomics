@@ -193,9 +193,9 @@ $ ls -d data_get_homologues/*alltaxa* #List the genome reference
 {: .callout}
 
 ~~~
-$ compare_clusters.pl -o alg_intersection -d/
-data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algBDBH_e0_,/
-data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algCOG_e0_,/
+$ compare_clusters.pl -o alg_intersection -d\
+data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algBDBH_e0_,\
+data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algCOG_e0_,\
 data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algOMCL_e0_
 ~~~
 {: .language-bash}
@@ -212,7 +212,7 @@ data_get_homologues/Streptococcusagalactie18RS21_f0_alltaxa_algOMCL_e0_
 
 Use the scp protocol in order to see the venn diagram
 ~~~
-$ scp user@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pangenome/get_homologues/alg_intersection/*.svg .
+$ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_homologues/alg_intersection/*.svg .
 ~~~
 {: .language-bash}
 
@@ -229,9 +229,9 @@ $ scp user@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pange
 >~~~
 >{: .language-bash}
 >
->Why do you think these genes are at the intersection?/
->Is this cluster gene essential for living?/
->What other gene do you think can be in this output folder?/
+> * Why do you think these genes are at the intersection?
+> * Is this cluster gene essential for living?
+> * What other gene do you think can be in this output folder?
 >
 >
 >> ## Solution
@@ -286,13 +286,9 @@ $ plot_pancore_matrix.pl -i data_get_homologues/pan_genome_algBDBH.tab
 
 Use the scp protocol to see the pan and core-genome plot
 ~~~
-$ scp user@bioinformatica.matmor.unam.mx:/home/alumno6/gm_workshop/results/pangenome/get_homologues/alg_intersection/*_genome_algBDBH.tab_core_Tettelin.png
+$ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_homologues/data_get_homologues/*_genome_algBDBH.tab_core_Tettelin.png
 ~~~
 {: .language-bash}
-~~~
-$ user@bioinformatica.matmor.unam.mx's password:
-~~~
-{: .output}
 
 search file in the file browser on your computer.
 
@@ -378,8 +374,8 @@ $ ls -d data_get_homologues/*0taxa* #list cluster directories of COG and OMCL
 {: .language-bash}
 
 ~~~
-$ compare_clusters.pl -o alg_intersection -m -T -d/ 
-data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algCOG_e0_,/
+$ compare_clusters.pl -o alg_intersection -m -T -d\ 
+data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algCOG_e0_,\
 data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algOMCL_e0_
 ~~~
 {: .language-bash}
@@ -393,7 +389,7 @@ data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algOMCL_e0_
 
 ## Step 5. Create a cladogram with our data
 
-Now let's create a cladogram with the file pangenome_matrix_t0.phylip.ph which is one of the different versions of the same pangenome matrix. This version contains a tree in Newick format. Let us make sure that is in Newick format and change the extension to visualize in microreact.org, lets' check with the head command:
+Now let's create a cladogram with the file `pangenome_matrix_t0.phylip.ph` which is one of the different versions of the same pangenome matrix. This version contains a tree in Newick format. Let us make sure that is in Newick format and change the extension to visualize in microreact.org, lets' check with the head command:
 ~~~
 $ head alg_intersection/pangenome_matrix_t0.phylip.ph
 ~~~
@@ -402,14 +398,14 @@ $ head alg_intersection/pangenome_matrix_t0.phylip.ph
 then we rename the file replacing the extension .ph to .nwk with the mv command:
 
 ~~~
-$ mv pangenome_matrix_t0.phylip.ph pangenome_matrix_t0.phylip.nwk
+$ mv alg_intersection/pangenome_matrix_t0.phylip.ph alg_intersection/pangenome_matrix_t0.phylip.nwk
 ~~~
 {: .language-bash}
 
 Use the scp protocol to download the cladogram and see on microreact
 
 ~~~
-$ scp user@132.248.196.38:/home/alumno9/gm_workshop/results/pangenome/get_homologues/alg_intersection/*nwk
+$ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_homologues/alg_intersection/*nwk .
 ~~~
 {: .language-bash}
 
