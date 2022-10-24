@@ -83,26 +83,29 @@ In this example, we will use the following options:
 | --addgens |Add 'gene' features for each 'CDS' feature (default OFF) |
 
 ~~~
-$ prokka --prefix thermophilusLMD9_prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
+$ prokka --prefix thermophilusLMD9.prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
 ~~~
 {: .language-bash}
 
 Now Prokka has generated a new folder. If you run the `tree` command inside the new generated directory, you can preview the system of files created by Prokka:
 
 ~~~
-exdir/
-├── thermophilusLMD9_prokka.err
-├── thermophilusLMD9_prokka.faa
-├── thermophilusLMD9_prokka.ffn
-├── thermophilusLMD9_prokka.fna
-├── thermophilusLMD9_prokka.fsa
-├── thermophilusLMD9_prokka.gbk
-├── thermophilusLMD9_prokka.gff
-├── thermophilusLMD9_prokka.log
-├── thermophilusLMD9_prokka.sqn
-├── thermophilusLMD9_prokka.tbl
-├── thermophilusLMD9_prokka.tsv
-└── thermophilusLMD9_prokka.txt
+.
+└── thermophilusLMD9_prokka
+    ├── thermophilusLMD9.prokka.err
+    ├── thermophilusLMD9.prokka.faa
+    ├── thermophilusLMD9.prokka.ffn
+    ├── thermophilusLMD9.prokka.fna
+    ├── thermophilusLMD9.prokka.fsa
+    ├── thermophilusLMD9.prokka.gbk
+    ├── thermophilusLMD9.prokka.gff
+    ├── thermophilusLMD9.prokka.log
+    ├── thermophilusLMD9.prokka.sqn
+    ├── thermophilusLMD9.prokka.tbl
+    ├── thermophilusLMD9.prokka.tsv
+    └── thermophilusLMD9.prokka.txt
+
+1 directory, 12 files
 ~~~
 {: .output}
 
@@ -136,7 +139,7 @@ You can also modify parameters as much as you need regarding the organism, the g
 > Complete the following sequence of commands to perform this actions:
 > 
 > ~~~
-> $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311_prokka ../../data/thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes 
+> $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311.prokka ../../data/thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes 
 > ~~~
 > {: .language-bash}
 > 
@@ -146,8 +149,8 @@ You can also modify parameters as much as you need regarding the organism, the g
 > {: .language-bash}
 > 
 > ~~~
-> $ __________ -n 1 thermophilusLMG18311_prokka.tsv > trnas.tsv  # Get column headers
-> $ grep __________ thermophilusLMG18311_prokka.tsv >> trnas.tsv # Append all lines that contain tRNAs
+> $ __________ -n 1 thermophilusLMG18311.prokka.tsv > trnas.tsv  # Get column headers
+> $ grep __________ thermophilusLMG18311.prokka.tsv >> trnas.tsv # Append all lines that contain tRNAs
 > ~~~
 > {: .language-bash}
 >
@@ -156,7 +159,7 @@ You can also modify parameters as much as you need regarding the organism, the g
 > > First, we perform the annotation with Prokka and save all files as `thermophilusLMG18311_prokka`.
 > >
 > > ~~~
-> > $ prokka --prefix thermophilusLMG18311_prokka --outdir thermophilusLMG18311_prokka --kingdom Bacteria --genus Streptococcus --strain LMG18311 --usegenus --addgenes ../../data/thermophilusLMG18311/GCF_000011825.1_ASM1182v1_genomic.fna
+> > $ prokka --prefix thermophilusLMG18311.prokka --outdir thermophilusLMG18311_prokka --kingdom Bacteria --genus Streptococcus --strain LMG18311 --usegenus --addgenes ../../data/thermophilusLMG18311/GCF_000011825.1_ASM1182v1_genomic.fna
 > > ~~~
 > > {: .language-bash}
 > >
@@ -164,8 +167,8 @@ You can also modify parameters as much as you need regarding the organism, the g
 > >
 > > ~~~
 > > $ cd thermophilusLMG18311_prokka
-> > $ head -n 1 thermophilusLMG18311_prokka.tsv > trnas.tsv # Get column headers
-> > $ grep $'\t'tRNA$'\t' thermophilusLMG18311_prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
+> > $ head -n 1 thermophilusLMG18311.prokka.tsv > trnas.tsv # Get column headers
+> > $ grep $'\t'tRNA$'\t' thermophilusLMG18311.prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
 > > ~~~
 > > {: .language-bash}
 > >
@@ -200,16 +203,18 @@ $ ls */*fasta | while read line
 ~~~
 {: .language-bash}
 
+Since we will only be using the `.gbk` files we will move them to the `results/annotated/` directory and remove the subdirectories.
 ~~~
-$ mv ~/gm_workshop/results/annotated/*/*gbk ~/gm_workshop/results/annotated/
-$ ls ~/gm_workshop/results/annotated/
+$ cd ~/gm_workshop/results/annotated/
+$ mv */*gbk .
+$ rm -r *_prokka
+$ ls
 ~~~
 {: .language-bash}
 ~~~
-Streptococcus_agalactiae_18RS21.gbk_prokka  Streptococcus_agalactiae_COH1.gbk_prokka  
-Streptococcus_agalactiae_515.gbk_prokka     Streptococcus_agalactiae_H36B.gbk_prokka  
-Streptococcus_agalactiae_A909.gbk_prokka    thermophilusLMD9_prokka  
-Streptococcus_agalactiae_CJB111.gbk_prokka  thermophilusLMG18311_prokka
+Streptococcus_agalactie_18RS21.prokka.gbk  Streptococcus_agalactie_CJB111.prokka.gbk  thermophilusLMD9.prokka.gbk
+Streptococcus_agalactie_515.prokka.gbk     Streptococcus_agalactie_COH1.prokka.gbk    thermophilusLMG18311.prokka.gbk
+Streptococcus_agalactie_A909.prokka.gbk    Streptococcus_agalactie_H36B.prokka.gbk
 ~~~
 {: .output}
 
