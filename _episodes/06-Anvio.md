@@ -26,9 +26,8 @@ keypoints:
 
 ## Anvi'o
 
-Anvi’o is an open-source, community-driven analysis and visualization platform for microbial ‘omics.
-It brings together many aspects of today's cutting-edge strategies including **genomics, metagenomics, metatranscriptomics, phylogenomics, microbial population genetis, pangenomics and metapangenomics** in an *integrated* and *easy-to-use* fashion thorugh extensive interactive visualization capabilities. 
-
+Anvi’o is an open-source, community-driven analysis and visualization platform for microbial omics.
+It brings together many aspects of today's cutting-edge strategies, including **genomics, metagenomics, metatranscriptomics, phylogenomics, microbial population genetics, pangenomics, and metapangenomics** in an *integrated* and *easy-to-use* fashion through extensive interactive visualization capabilities. 
 
 ### Get all ready to start the Anvi'o workflow to build a pangenome
 
@@ -39,17 +38,10 @@ conda activate Pangenomics_Global
 ~~~
 {: .language-bash}
 
-~~~
-(Pangenomics) betterlab@betterlabub:~$
-
-~~~
-{: .output}
-
 Move into the directory named `results` and create a new directory called `anvi-o` for the Anvi'o analysis
 ~~~
 cd ~/gm_workshop/results/pangenome
 mkdir anvi-o
-
 cd anvi-o
 ~~~
 {: .language-bash}
@@ -156,7 +148,7 @@ agalactiae_A909_prokka-external-gene-calls.txt        agalactiae_H36B_prokka-ext
 
 ### Step 4
 
-When using external genomes in anvi'o, a list of the genome ids and their corresponding genome database is required. This list tells Anvi'o which genomes will be processed to construct the pangenome. 
+When using external genomes in Anvi'o, a list of the genome IDs and their corresponding genome database is required. This list tells Anvi'o which genomes will be processed to construct the pangenome. 
 ~~~
 ls *.fa | cut -d '-' -f1 | while read line; do echo $line$'\t'$line-contigs.db >>external-genomes.txt; done
 head external-genomes.txt
@@ -427,7 +419,7 @@ Whitout disturbing the active terminal, open a new window in your prefered brows
 
   
 > ## Exercise 1: The homogeneity of gene clusters.
->Anvi’oo allows us to identify different levels of disagreements between amino acid sequences in different genomes. Amino acid sequences from different genomes in a gene cluster that are almost identical tell us that the gene cluster is highly homogeneous. 
+>Anvi’o allows us to identify different levels of disagreements between amino acid sequences in different genomes. Amino acid sequences from different genomes in a gene cluster that are almost identical tell us that the gene cluster is highly homogeneous. 
 >
 > The **geometric homogeneity index** tell us the degree of geometric configuration between the genes of a gene cluster and the **functional homogeneity index** considers aligned residues and quantifies differences across residues in a site.
 >
