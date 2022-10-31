@@ -32,13 +32,12 @@ in all the strains compared, **shell genome** a proportion of genes absent in on
 and **dispensable genome** comprised by genes that are unique to each strain. 
 
 There are two classes of pangenomes: open and closed. An **open pangenome** occurs when the size of the 
-pangenome increases considerably every added genome (p. e. *Escherichia coli*). Whereas, a **closed pangenome** 
+pangenome increases considerably every added genome (e.g. *Escherichia coli*). Whereas, a **closed pangenome** 
 results when only few gene families are incorporated to the pangenome when a new member is added.
 
-![Figure 1. Characteristics of open and closed pangenomes](../fig/Characteristics_of_open_and_closed_pangenomes.png)
 
 <a href="{{ page.root }}/fig/Characteristics_of_open_and_closed_pangenomes.png">
-   <img src="{{ page.root }}/fig/Characteristics_of_open_and_closed_pangenomes.png" alt=" " />
+   <img src="{{ page.root }}/fig/Characteristics_of_open_and_closed_pangenomes.png" alt="Figure 1. Venn diagram representation of a) a closed pangenome and b) an open pangenome, comparing the sizes of their core and accesory genomes. c) Graphic depicting the differences of closed and open pangenomes regarding their size, total genes in pangenome, in relation with the number of sequenced genomes." />
   </a>
 
 ## How to select a group of genomes to construct a pangenome?
@@ -46,17 +45,19 @@ results when only few gene families are incorporated to the pangenome when a new
 Selection of proper data to construct a pangenome analysis is a crucial task of the process. By definition, a pangenome represents 
 the entire set of genes from all strains in a clade. Thus, let's define and understand what a clade is. 
 
-A **clade** (*kládos*, 'branch'), also known as *monophyletic group*, is a group of organisms that share the same common ancestor. 
-In a phylogenetic tree, clades can be distinguished by identified the common ancestor of branch subgroups. For instance, in the 
-following figure, the blue and red subgroups are considered clades but green subgruop is not a clade, it is a *parahyletic group*. 
-Why is that? Because it excludes the blue clade which has descended from the same common ancestor. Instead, the green and blue subgroups 
+A **clade** (*kládos*, 'branch'), also known as a *monophyletic group*, is a group of organisms that share the same common ancestor. 
+In a phylogenetic tree, clades can be distinguished by identifying the common ancestor of branch subgroups. For instance, in the 
+following figure, the blue and red subgroups are considered clades whereas the green subgroup is not a clade, it is a *parahyletic group*. 
+Why is that? Because it excludes the blue clade which has descended from the same common ancestor. Nonetheless, the green and blue subgroups 
 together form a clade.
 
-![Figure 2. Cladogram representation](../fig/Cladogram.png)
+<a href="{{ page.root }}/fig/Cladogram.png">
+   <img src="{{ page.root }}/fig/Cladogram.png" alt="Figure 2. Cladogram representation indicating in blue and red two clades or monophyletic groups and in green a paraphyletic group" />
+  </a>
 
 ## Brief description of *Streptococcus agalactiae* dataset
 
-For this lesson purposes, we selected 6 *Streptococcus agalactiae* genomes... 
+For this lesson purposes, we selected six *Streptococcus agalactiae* genomes. 
 
 
 **Selected genomes**
