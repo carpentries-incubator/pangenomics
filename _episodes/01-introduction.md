@@ -37,6 +37,10 @@ results when only few gene families are incorporated to the pangenome when a new
 
 ![Figure 1. Characteristics of open and closed pangenomes](../fig/Characteristics_of_open_and_closed_pangenomes.png)
 
+<a href="{{ page.root }}/fig/Characteristics_of_open_and_closed_pangenomes.png">
+   <img src="{{ page.root }}/fig/Characteristics_of_open_and_closed_pangenomes.png" alt=" " />
+  </a>
+
 ## How to select a group of genomes to construct a pangenome?
 
 Selection of proper data to construct a pangenome analysis is a crucial task of the process. By definition, a pangenome represents 
