@@ -8,8 +8,8 @@ questions:
 - "Which are the clustering algorithms that use Get_Homologues?"
 
 objectives:
-- "Clustering orthologous proteins from Gen Bank files."
-- "Create a Venn diagram using diferents clustering algorithms."
+- "Clustering orthologous proteins from GenBank files."
+- "Create a Venn diagram using diferent clustering algorithms."
 - "Implement and interpret the evolutionary history using Clustering orthologous proteins."
 
 keypoints:
@@ -128,7 +128,7 @@ $ get_homologues.pl -d data_get -c
 {: .language-bash}
 
 > ## Notes
-> When run the script above typically takes about 20 minutes.
+> This script typically takes about 20 minutes to run.
 {: .callout}
 
 ~~~
@@ -176,13 +176,13 @@ $ get_homologues.pl -d data_get -M
 {: .output}
 
 > ## Notes
-If we add the option -e the resulting clusters will contain only single-copy genes from each taxon, i.e. the orthologues. This flag forms singleton clusters, which are created when you exclude clusters with inparalogues. This is useful to make genome-level phylogenetic analyses in only single copy-genes.
+If we add the option -e the resulting clusters will contain only single-copy genes from each taxon, i.e. the orthologues. This flag forms singleton clusters, which are created when you exclude clusters within paralogues. This is useful to make genome-level phylogenetic analyses in only single copy-genes.
 {: .callout}
 
 
 ## Step 3. Compare all clusters from different algorithms
 
-Get_Homologues for default the algorithm BDBH takes from the set of genomes to the smallest as a reference genome
+Get_Homologues algorithm, BDBH, takes by default the smallest genome from the set of genomes as reference genome
 ~~~
 $ ls -d data_get_homologues/*alltaxa* #List the genome reference
 ~~~
@@ -246,7 +246,7 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 > |------------------------------+------------------------------------------------------------------------------|  
 > | **algorithms**                           |     **Information required**                                     |  
 > |------------------------------+------------------------------------------------------------------------------|  
-> | ___________________ |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
+> | ___________________ |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                                  |  
 > |------------------------------+------------------------------------------------------------------------------|  
 > | ___________________ | Merges triangles of inter-genomic symmetrical best matches |   
 > |------------------------------+------------------------------------------------------------------------------|  
@@ -259,7 +259,7 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 >> |------------------------------+------------------------------------------------------------------------------|  
 >> | **algorithms**                           |     **Information required**                                     |  
 >> |------------------------------+------------------------------------------------------------------------------|  
->> | BDBH                      |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result of merging the latest bidirectional best hits                                  |  
+>> | BDBH                      |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                                  |  
 >> |------------------------------+------------------------------------------------------------------------------|  
 >> | COGS  | Merges triangles of inter-genomic symmetrical best matches |   
 >> |------------------------------+------------------------------------------------------------------------------|  
@@ -290,7 +290,7 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 ~~~
 {: .language-bash}
 
-search file in the file browser on your computer.
+Search the file in the browser on your computer.
 
 <a href="../fig/core_genome_algBDBH.tab_core_Tettelin.png">
   <img src="../fig/core_genome_algBDBH.tab_core_Tettelin.png" alt="Aquí va el texto que describe a la imagen." />
@@ -324,8 +324,8 @@ search file in the file browser on your computer.
 >> ~~~
 >> {: .output}
 >>    
->> The number of clusters decreases from  1177 to 1105. This is because the number of genes that all genomes share, i.e. core genome, decreases as we add another
->> genome, while the pangenome increase. We can see this with the command :
+>> The number of clusters decreases from  1177 to 1105. This is because the number of genes shared by all the genomes, i.e. core genome, decreases as we add another
+>> genome, while the pangenome increases. We can see this with the following command :
 >> ~~~
 >> $ less data_get_homologues/pan_genome_algBDBH.tab
 >> ~~~
@@ -335,7 +335,7 @@ search file in the file browser on your computer.
 {: .challenge}  
 
 ## Step 4. Obtaining a pangenome matrix
-first we use the -t 0 option with COG ang OMCL alghortims to include all possible clusters, including those which might not contain sequences from all input genomes (taxa)
+First we use the -t 0 option with COG ang OMCL algorithms to include all possible clusters, considering those which might not contain sequences from all input genomes (taxa)
 ~~~
 $ get_homologues.pl -d data_get -t 0 -M
 ~~~
@@ -366,7 +366,7 @@ $ get_homologues.pl -d data_get -t 0 -G
 ~~~
 {: .output}
 
-then we use the option 
+Then we use the option 
 
 ~~~~
 $ ls -d data_get_homologues/*0taxa* #list cluster directories of COG and OMCL 
@@ -389,13 +389,13 @@ data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algOMCL_e0_
 
 ## Step 5. Create a cladogram with our data
 
-Now let's create a cladogram with the file `pangenome_matrix_t0.phylip.ph` which is one of the different versions of the same pangenome matrix. This version contains a tree in Newick format. Let us make sure that is in Newick format and change the extension to visualize in microreact.org, lets' check with the head command:
+Now let's create a cladogram with the file `pangenome_matrix_t0.phylip.ph`, which is one of the different versions of the same pangenome matrix. This version contains a tree in Newick format. Make sure that is in Newick format and change the extension to visualize in microreact.org. Let's check with the head command:
 ~~~
 $ head alg_intersection/pangenome_matrix_t0.phylip.ph
 ~~~
 {: .language-bash}
 
-then we rename the file replacing the extension .ph to .nwk with the mv command:
+Rename the file replacing the extension .ph to .nwk with the mv command:
 
 ~~~
 $ mv alg_intersection/pangenome_matrix_t0.phylip.ph alg_intersection/pangenome_matrix_t0.phylip.nwk
