@@ -7,15 +7,15 @@ questions:
 objectives:
 - "Explore ncbi-genome-download as a tool for genomic data fetching from the NCBI."
 keypoints:
-- "The `ncbi-genome-download` package is a set of scripts to download genomes from the NCBI."
+- "The `ncbi-genome-download` package is a set of scripts to download genomes from the NCBI"
 ---
 
 ## The `ncbi-genome-download` package: Getting Genomic Data from the NCBI
 
 The NCBI Genome Downloading Scripts provide a shell command that 
 allows users to download genomes from the NCBI. This [package](https://github.com/kblin) 
-is highly useful, it enables to specify our queries as much as we like. It will simplify 
-us the process of getting the data directly into our working directory. Let's first activate
+is highly useful, it enables to specify queries as much as it is desired. It simplifies
+the process of getting the data directly into the working directory. Firstly, activate
 the `ncbi-genome-download` Conda environment.  
 
 ~~~
@@ -27,7 +27,7 @@ $ conda activate ncbi-genome-download
 (ncbi-genome-download) $
 ~~~
 {: .output}
-For practicality you will see the prompt written only as `$` instead of `(ncbi-genome-download) $`.
+For practicality the prompt is written only as `$` instead of `(ncbi-genome-download) $`.
 
 The full list of parameters to incorporate in your downloads can be obtained by typing:
 ~~~
@@ -83,7 +83,7 @@ usage:
 If you type `ncbi-genome-download` and you get the error `command-not-found`,
 it could be because you are in `base` and not inside the `ncbi-genome-download`
 Conda environment. Once inside the environment we are ready to use the package. 
-First, we need to go to our data directory.
+Next, we need to go to our data directory.
 ~~~
 $ cd ~/gm_workshop/data
 ~~~
@@ -122,7 +122,7 @@ GCF_000014485.1 Streptococcus thermophilus LMD-9        LMD-9
 {: .output}
 
 As you can see, there is one assembly available assigned to the number `GCF_000014485.1`. 
-We will now proceed to download it to an output directory named `thermophilusLMD9`:
+We proceed to download it to an output directory named `thermophilusLMD9`:
 
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -o thermophilusLMD9 bacteria
@@ -173,7 +173,7 @@ $ rm -r thermophilusLMD9/refseq
 
 > ## Exercise 1: Downloading data from NCBI using the command line
 > 
-> To download the genome of another strain of *S. thermophilus* we need to perform the following stps:
+> To download the genome of another strain of *S. thermophilus* we need to perform the following steps:
 > 
 > 1. Download the genome of *Streptococcus thermophilus* with the NCBI assembly number `GCF_000011825.1` in a FASTA format and save it to an output directory named `thermophilusLMG18311`.
 > 2. Change to the directory where the FASTA file is located and unzip it.
