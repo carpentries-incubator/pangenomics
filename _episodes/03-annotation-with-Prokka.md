@@ -36,11 +36,11 @@ identify the genomic features within the contigs.
 | SignalP ( Petersen et al. , 2011 )  | Signal leader peptides|
 | Infernal ( Kolbe and Eddy, 2011 )  | Non-coding RNA|
 
-Proteins coding genes are annotated in two stages. Prodigal identifies 
+Protein coding genes are annotated in two stages. Prodigal identifies 
 the coordinates of candidate genes, but does not describe the putative 
 gene product. Usually, in order to predict what a gene encodes 
 for, it is compared with a large
-database of known sequences, usually at a protein level, 
+database of known sequences, usually at the protein level, 
 and transfer the annotation of the best significant match.
 Prokka uses this method, but in a hierarchical manner. It starts 
 with a small trustworthy database, it then moves to medium
@@ -63,16 +63,15 @@ $ conda activate Prokka_Global
 ~~~
 {: .language-bash}
 
-Now you must be inside the environment  
+Once inside the environment, we are ready to run our first annotation  
 ~~~
 (Prokka_Global) $
 ~~~
 {: .language-bash}
 
-You are ready to run your first annotation.  
 In this example, we will use the following options:
 
-| code   | meaning |
+| Code   | Meaning |
 | ------- | ---------- |
 | --prefix | Filename output prefix [auto] (default '') |
 | --outdir | Output folder [auto] (default '') |
@@ -109,7 +108,7 @@ Now Prokka has generated a new folder. If you run the `tree` command inside the 
 ~~~
 {: .output}
 
-We encourage you to explore each output. The following table describes the contents of each output file:
+We encourage to explore each output. The following table describes the contents of each output file:
 
 | Extension | Description |
 | --------- | ----------- |
