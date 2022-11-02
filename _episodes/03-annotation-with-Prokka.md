@@ -23,7 +23,7 @@ is stored in genomic databases to help future analysis processing new data.
 [Prokka](https://github.com/tseemann/prokka) 
 is a command-line software tool created in Perl to annotate bacterial, 
 archaeal and viral genomes and reproduce standards-compliant output files.
-It requires a preassembled genomic DNA sequences in FASTA format as input 
+It requires preassembled genomic DNA sequences in FASTA format as input 
 file, which is the only mandatory parameter to the software.
 For annotation, Prokka relies on external features and databases to 
 identify the genomic features within the contigs.
@@ -41,7 +41,7 @@ the coordinates of candidate genes, but does not describe the putative
 gene product. Usually, in order to predict what a gene encodes 
 for, it is compared with a large
 database of known sequences, usually at the protein level, 
-and transfer the annotation of the best significant match.
+and transfered the annotation of the best significant match.
 Prokka uses this method, but in a hierarchical manner. It starts 
 with a small trustworthy database, it then moves to medium
 sized but domain specific databases and finally to curated 
@@ -116,16 +116,16 @@ We encourage to explore each output. The following table describes the contents 
 | .gbk | This is a standard GenBank file derived from the master `.gff`. If the input to Prokka was a multi-FASTA, then this will be a multi-GenBank, with one record for each sequence. |
 | .fna | Nucleotide FASTA file of the input contig sequences. |
 | .faa | Protein FASTA file of the translated CDS sequences. |
-| .ffn | Nucleotide FASTA file of all the prediction transcripts (CDS, rRNA, tRNA, tmRNA, misc_RNA) |
+| .ffn | Nucleotide FASTA file of all the prediction transcripts (CDS, rRNA, tRNA, tmRNA, misc_RNA). |
 | .sqn | An ASN1 format "Sequin" file for submission to GenBank. It needs to be edited to set the correct taxonomy, authors, related publication etc. |
 | .fsa | Nucleotide FASTA file of the input contig sequences, used by "tbl2asn" to create the `.sqn` file. It is almost the same as the `.fna` file, but with extra Sequin tags in the sequence description lines. |
 | .tbl | Feature Table file, used by "tbl2asn" to create the `.sqn` file. |
 | .err | Unacceptable annotations - the NCBI discrepancy report. |
 | .log | Contains all the output that Prokka produced during its run. This is the record of the used settings, even if the `--quiet` option was enabled. |
 | .txt | Statistics related to the found annotated features. |
-| .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product |
+| .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product. |
 
-You can also modify parameters as much as you need regarding the organism, the gene and even the locus tag you are looking for. 
+Parameters can be modified as much as needed regarding the organism, the gene and even the locus tag you are looking for. 
 
 > ## Exercise 1: Extracting tRNAs with Prokka
 >
@@ -155,7 +155,7 @@ You can also modify parameters as much as you need regarding the organism, the g
 >
 > > ## Solution
 > >
-> > First, we perform the annotation with Prokka and save all files as `thermophilusLMG18311_prokka`.
+> > Firstly, perform the annotation with Prokka and save all files as `thermophilusLMG18311_prokka`.
 > >
 > > ~~~
 > > $ prokka --prefix thermophilusLMG18311.prokka --outdir thermophilusLMG18311_prokka --kingdom Bacteria --genus Streptococcus --strain LMG18311 --usegenus --addgenes ../../data/thermophilusLMG18311/GCF_000011825.1_ASM1182v1_genomic.fna
@@ -176,7 +176,7 @@ You can also modify parameters as much as you need regarding the organism, the g
 
 > ## Discussion 1: Number of tRNAs
 > 
-> Inside the `annotated` directory, run the command `wc -l trnas.tsv` to get the number of lines in the file. Excluding the first line (which contains the header), observe that there are 67 tRNAs, whereas the [standard codon table](https://en.wikipedia.org/wiki/DNA_and_RNA_codon_tables#Translation_table_1) contains 61 coding codons (i.e. those that are non stop codons). This means that there are several genes that produce the same tRNA. How would you explain this fact?
+> Inside the `annotated` directory, run the command `wc -l trnas.tsv` to get the number of lines in the file. Excluding the first line (which contains the header), observe that there are 67 tRNAs, whereas the [standard codon table](https://en.wikipedia.org/wiki/DNA_and_RNA_codon_tables#Translation_table_1) contains 61 coding codons (i.e. those that are non stop codons). This means that there are several genes that produce the same tRNA. How could you explain this fact?
 > 
 > > ## Solution
 > > 
@@ -188,7 +188,7 @@ You can also modify parameters as much as you need regarding the organism, the g
 
 Now that we know how to annotate genomes with Prokka we can annotate all of 
 the *S. agalactiae* in one run.
-For this purpose we will use a complex `while` loop that for each of the *S. agalactiae* genomes 
+For this purpose we will use a complex `while` loop that, for each of the *S. agalactiae* genomes, 
 first extracts the strain name and saves it in a variable, and then uses it inside the 
 Prokka command.
 
@@ -202,7 +202,7 @@ $ ls */*fasta | while read line
 ~~~
 {: .language-bash}
 
-Since we will only be using the `.gbk` files we will move them to the `results/annotated/` directory and remove the subdirectories.
+Since we are only using the `.gbk` files, we will move them to the `results/annotated/` directory and remove the subdirectories.
 ~~~
 $ cd ~/gm_workshop/results/annotated/
 $ mv */*gbk .
