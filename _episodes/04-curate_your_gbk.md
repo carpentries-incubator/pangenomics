@@ -10,8 +10,10 @@ keypoints:
 - "There are always some details that requires manual curation."
 - "Scripts can help you to automatize your work."
 ---
+## Curating Prokka output files
 
-You need to make the file `correctgbk.sh`, for this you use `nano correctgbk.sh` and paste the next script. 
+Prokka's output files need to be corrected before moving forward with additional analyses. 
+Create the file `correctgbk.sh`. We suggest the use of nano text editor to create your file, `nano correctgbk.sh` and paste the next script. 
 ~~~
 file=$1
 locus=$(grep -m 1 "LOCUS" $file |cut -d\  -f 8 |cut -b1-11)  #selecionas de el primer Locus, los primeros 11 caracteres donde empiezan con N
