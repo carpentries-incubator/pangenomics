@@ -18,12 +18,22 @@ keypoints:
 
 ## What is Get_Homologues?
 
-Get_Homologues a versatile software package for pan-genome analysis, maintained by Bruno Contreras-Moreira and Pablo Vinuesa. Its main task is clustering protein and nucleotide sequences in homologous (possibly orthologous) groups, on the grounds of sequence similarity.
+Get_Homologues is a versatile software package for pan-genome analysis, maintained by Bruno Contreras-Moreira and Pablo Vinuesa. 
+Its main task is grouping or clustering protein and nucleotide sequences in homologous (possibly orthologous) groups, 
+on the grounds of sequence similarity.
+This software identifies orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), 
+conserved across related genomes.
 
+Get_Homologues supports three sequence-clustering algorithmscan cluster homologous gene families using the bidirectional best-hit (BDBH), OrthoMCL (OMCL) or COGtriangles clustering algorithms.
+BDBH algorithm uses one sequence from the reference genome and maintain the clusters growing. 
+OMCL algorithm groups nodes in a BLAST graph to build clusters. 
+And the COG algorithm requires a triangle of reciprocal hits and merges them. 
 
-## Main Task
-- Identification of orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes.
-- Definition of pan- and core-genomes by calculation of overlapping sets of proteins.
+The definiton of pan- and core-genomes by Get_Homologues is done by calculation of overlapping sets of proteins.
+
+%What is clustering and which are the clustering algorithms used by Get_Homologues
+
+BDBH, OMCL and COGtriangles
 
 <a href="../fig/GET_HOMOLOGUES_flow_char.jpeg">
   <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" width="435" height="631" alt="Aquí va el texto que describe a la imagen." />
