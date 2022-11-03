@@ -16,10 +16,12 @@ keypoints:
 - "First key point. Brief Answer to questions. (FIXME)"
 ---
 
-Get_Homologues a versatile software package for pan-genome analysis is maintained by Bruno Contreras-Moreira and Pablo Vinuesa. 
-## Introduction 
+## What is Get_Homologues?
+
+Get_Homologues a versatile software package for pan-genome analysis, maintained by Bruno Contreras-Moreira and Pablo Vinuesa. Its main task is clustering protein and nucleotide sequences in homologous (possibly orthologous) groups, on the grounds of sequence similarity.
+
+
 ## Main Task
-- Clustering protein and nucleotide sequences in homologous (possibly orthologous) groups, on the grounds of sequence similarity.
 - Identification of orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes.
 - Definition of pan- and core-genomes by calculation of overlapping sets of proteins.
 
