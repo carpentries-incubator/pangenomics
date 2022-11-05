@@ -52,10 +52,12 @@ mkdir genome-db
 ~~~
 {: .language-bash}
 
-**Note:** The bacterial genomes that will be used in this practice come from the Prokka annotation analysis. We will use the `.gbk` files as input for the Anvi'o workflow. The `.gbk` files can be found in `~/gm_workshop/results/annotated`.
-
-
-Let's do it!
+> ## Note
+> The bacterial genomes that will be used in this practice 
+>  come from the Prokka annotation analysis. 
+>  We will use the `.gbk` files as input for the Anvi'o workflow. 
+>  The `.gbk` files can be found in `~/gm_workshop/results/annotated`.
+{: .callout}
 
 
 ## Ten steps guide to build a Pangenome in Anvi'o
