@@ -31,11 +31,11 @@ keypoints:
 
 **Partitioned PanGenome Graph Of Linked Neighbors**
 
-PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It partitionates a pangenome into persistent-, shell- and, cloud-gene families through a graphical model and a statistical approach rather than using fixed thresholds. Unlike other methods, PPanGGOLiN integrates both information about protein-coding genes and their genomic neighborhood to build a graph of gene families where each node is a gene family and the edges represent a relation of genetic contiguity. Therefore, two gene families that are consistent neighbors in the graph are more likely to belong to the same partition, yielding a partitioned pangenome graph (PPG) made up of persistent, shell, and cloud nodes. The resulting plot looks like a subway map, where the rails represent the genomes. The following table shows how the classes are defined.
+PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It partitions a pangenome into persistent-, shell- and, cloud-gene families through a graphical model and a statistical approach rather than using fixed thresholds. Unlike other methods, PPanGGOLiN integrates information about protein-coding genes and their genomic neighborhood to build a graph of gene families. Each node in the graph is a gene family and the edges represent a relation of genetic contiguity. Therefore, two gene families that are consistent neighbors in the graph are more likely to belong to the same partition, yielding a partitioned pangenome graph (PPG) made up of persistent, shell, and cloud nodes. The resulting plot looks like a subway map, where the rails represent the genomes. The following table shows how the classes are defined.
 
 |        Classes        	|                               Definition                              	|
 |:---------------------:	|:---------------------------------------------------------------------:	|
-| **Persistent genome** 	|          For the gene families present in almost all genomes.         	|
+| **Persistent genome** 	|          For gene families present in almost all genomes.         	|
 |    **Shell genome**   	| For gene families present at intermediate frequencies in the genomes. 	|
 |    **Cloud genome**   	|       For gene familes present at low frequency in the species.       	|
 
