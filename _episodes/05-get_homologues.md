@@ -8,12 +8,14 @@ questions:
 - "Which are the clustering algorithms that use Get_Homologues?"
 
 objectives:
-- "Clustering orthologous proteins from GenBank files."
-- "Create a Venn diagram using diferent clustering algorithms."
-- "Implement and interpret the evolutionary history using Clustering orthologous proteins."
+- "Clustering orthologous proteins from GenBank files"
+- "Create a Venn diagram using diferent clustering algorithms"
+- "Implement and interpret the evolutionary history using Clustering orthologous proteins"
 
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "Get_Homologues is a software package for pangenome analyses "
+- "Clustering refers to the task of grouping sequences in such a way that sequences in the same group are more similar to each other than to those in other groups "
+- "Three sequence-clustering algorithms are supported by Get_Homologues; BDBH, OMCL and COGtriangles "
 ---
 
 ## What is Get_Homologues?
@@ -103,7 +105,7 @@ Options that control clustering:
 
 
 ## Step 1. Generate a folder get_homologues
-It's necessary that we create a new folder where all the results will be sent.
+It's necessary to create a new folder where all the results will be sent.
 
 ~~~
 $ mkdir -p ~/gm_workshop/results/pangenome/get_homologues/data_get #Create directory (-p create all parents)
@@ -185,7 +187,7 @@ $ get_homologues.pl -d data_get -M
 {: .output}
 
 > ## Notes
-If we add the option -e the resulting clusters will contain only single-copy genes from each taxon, i.e. the orthologues. This flag forms singleton clusters, which are created when you exclude clusters within paralogues. This is useful to make genome-level phylogenetic analyses in only single copy-genes.
+If the option -e is added, the resulting clusters will contain only single-copy genes from each taxon, i.e. the orthologues. This flag forms singleton clusters, which are created when you exclude clusters within paralogues. This is useful to make genome-level phylogenetic analyses in only single copy-genes.
 {: .callout}
 
 
@@ -232,19 +234,19 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 
 > ## Exercise 1: 
 > 
-> Let's explore one of the gene clusters that result from the intersection of all algorithms with grep command: 
+> Explore one of the gene clusters that result from the intersection of all algorithms with grep command: 
 >~~~
 > $ ls alg_intersection | grep clpX
 >~~~
 >{: .language-bash}
 >
-> * Why do you think these genes are at the intersection?
+> * Why are these genes at the intersection?
 > * Is this cluster gene essential for living?
-> * What other gene do you think can be in this output folder?
+> * What other gene coud be present this output folder?
 >
 >
 >> ## Solution
->>clpX is a gene that encodes part of a protease found in mitochondria, which is essential for living. The reason why they are in the intersection folder is that >>these cluster genes belong to the core genome
+>>clpX is a gene that encodes part of a protease found in mitochondria, which is essential for living. The reason why they are in the intersection folder is that these cluster genes belong to the core genome
 > {: .solution}
 {: .challenge} 
 
@@ -253,7 +255,7 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 > Complete the line blank with the correct clustering algorithms
 > 
 > |------------------------------+------------------------------------------------------------------------------|  
-> | **algorithms**                           |     **Information required**                                     |  
+> | **Algorithms**                           |     **Information required**                                     |  
 > |------------------------------+------------------------------------------------------------------------------|  
 > | ___________________ |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                                  |  
 > |------------------------------+------------------------------------------------------------------------------|  
@@ -311,13 +313,13 @@ Search the file in the browser on your computer.
 
 > ## Exercise 3: 
 > 
-> Now we add another genome of the Streptococcus family. Let's probe with another S. agalactie genomes which are in the annotated folder.
-> We need to make a symbolic path in our data_get directory:
+> Add another genome of the Streptococcus family. Try with another S. agalactie genomes which are in the annotated folder.
+> It is required to make a symbolic path in our data_get directory:
 > ~~~ 
 > $ find ~/gm_workshop/results/annotated/. -name "*Streptococcus_agalactie_[1-9]*.prokka.gbk*" -exec ln -s {} . ';'
 > ~~~
 > {: .language-bash}
-> Now we ask for clustering all gene sequences with the get_homologues.pl default algorithm
+> Now ask for clustering all gene sequences with the get_homologues.pl default algorithm
 > ~~~
 > $ get_homologues.pl -d data_get -c
 > ~~~
@@ -344,7 +346,7 @@ Search the file in the browser on your computer.
 {: .challenge}  
 
 ## Step 4. Obtaining a pangenome matrix
-First we use the -t 0 option with COG ang OMCL algorithms to include all possible clusters, considering those which might not contain sequences from all input genomes (taxa)
+Firstly, use the -t 0 option with COG ang OMCL algorithms to include all possible clusters, considering those which might not contain sequences from all input genomes (taxa)
 ~~~
 $ get_homologues.pl -d data_get -t 0 -M
 ~~~
@@ -375,7 +377,7 @@ $ get_homologues.pl -d data_get -t 0 -G
 ~~~
 {: .output}
 
-Then we use the option 
+Then use the option 
 
 ~~~~
 $ ls -d data_get_homologues/*0taxa* #list cluster directories of COG and OMCL 
@@ -398,13 +400,13 @@ data_get_homologues/Streptococcusagalactie18RS21_f0_0taxa_algOMCL_e0_
 
 ## Step 5. Create a cladogram with our data
 
-Now let's create a cladogram with the file `pangenome_matrix_t0.phylip.ph`, which is one of the different versions of the same pangenome matrix. This version contains a tree in Newick format. Make sure that is in Newick format and change the extension to visualize in microreact.org. Let's check with the head command:
+Now create a cladogram with the file `pangenome_matrix_t0.phylip.ph`, which is one of the different versions of the same pangenome matrix. This version contains a tree in Newick format. Make sure that it is in Newick format and change the extension to visualize in microreact.org. Check with the head command:
 ~~~
 $ head alg_intersection/pangenome_matrix_t0.phylip.ph
 ~~~
 {: .language-bash}
 
-Rename the file replacing the extension .ph to .nwk with the mv command:
+Rename the file by replacing the extension .ph to .nwk with the mv command
 
 ~~~
 $ mv alg_intersection/pangenome_matrix_t0.phylip.ph alg_intersection/pangenome_matrix_t0.phylip.nwk
