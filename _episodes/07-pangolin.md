@@ -127,8 +127,7 @@ $ conda activate Pangenomics
 ### Step 1: Create a work directory
 
 ~~~
-$ cd ~/gm_workshop/results/pangenome
-$ mkdir ppanggolin
+$ mkdir -p  ~/gm_workshop/results/pangenome/ppanggolin
 ~~~
 {: .language-bash}
 
