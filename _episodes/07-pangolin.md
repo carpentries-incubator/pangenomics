@@ -114,7 +114,7 @@ They can be manipulated and visualised through a software called Gephi, with whi
 Before start using PPanGGOLiN, activate the Pangenomics environment. 
 
 ~~~
-$ conda activate Pangenomics
+$ conda activate Pangenomics_Global
 ~~~
 {: .language-bash}
 
