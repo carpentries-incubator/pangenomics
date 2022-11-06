@@ -255,6 +255,7 @@ to keep your raw data untouched, taking this into account you can remove the wri
 permision of the data directory.  
 
 ~~~
+$ cd ~/gm_workshop/data/
 $ chmod -w ~/gm_workshop/data/
 $ ls -lh ~/gm_workshop/data/
 ~~~
