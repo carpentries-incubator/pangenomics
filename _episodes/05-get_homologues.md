@@ -232,7 +232,7 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
   <img src="../fig/venn_t0_GET_HOMOLOGUES.svg" alt="Aquí va el texto que describe a la imagen." />
 </a>
 
-> ## Exercise 1: 
+> ## Exercise 1: Comparing clustering algorithms
 > 
 > Explore one of the gene clusters that result from the intersection of all algorithms with grep command: 
 >~~~
@@ -242,15 +242,15 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 >
 > * Why are these genes at the intersection?
 > * Is this cluster gene essential for living?
-> * What other gene coud be present this output folder?
+> * What other gene could be present in this output folder?
 >
 >
 >> ## Solution
->>clpX is a gene that encodes part of a protease found in mitochondria, which is essential for living. The reason why they are in the intersection folder is that these cluster genes belong to the core genome
+>>clpX is a gene that encodes part of a protease found in mitochondria, which is essential for living. The reason why they are in the intersection folder is that these cluster genes belong to the core genome.
 > {: .solution}
 {: .challenge} 
 
-> ## Exercise 2: 
+> ## Exercise 2: Clustering algorithms
 > 
 > Complete the line blank with the correct clustering algorithms
 > 
