@@ -35,7 +35,13 @@ The definiton of pan- and core-genomes by Get_Homologues is done by calculation 
 
 
 <a href="../fig/GET_HOMOLOGUES_flow_char.jpeg">
-  <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" width="435" height="631" alt="Aquí va el texto que describe a la imagen." />
+  <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" width="435" height="631" alt="GET_HOMOLOGUES flow chart. 
+                                                                                Input files are either GenBank or FASTA and can produce different outputs. 
+                                                                                BLAST and Pfam searches are optimized for local and cluster computer environments. 
+                                                                                Once this sequences are sorted and indexed, one of the three clustering algorithms 
+                                                                                (BDBH, OMCL and COGtriangles) yields FASTA files of sequence clusters. 
+                                                                                This clusters could be flanked intergene clusters, 
+                                                                                pan/core-genome size estimates, pangenome matrices and syntenic clusters." />
 </a>
 
 ## Considerations
