@@ -22,6 +22,7 @@ perl -p -i -e 's/\n// if /ORGANISM/' $file  #cambiar
 perl -p -i -e 's/\s*Unclassified/ '"${locus}"'/' $file
 ~~~
 {: .language-bash}
+
 This script change "Unclassified" in the lines "Organisms" from the gbk files by the "strain" or "locus" depending on what you selected.
 ~~~
 ls *.gbk | while read file
