@@ -16,11 +16,13 @@ Prokka's output files need to be corrected before moving forward with additional
 Create the file `correctgbk.sh`. We suggest the use of nano text editor to create your file, `nano correctgbk.sh` and paste the next script. 
 ~~~
 file=$1
-locus=$(grep -m 1 "LOCUS" $file |cut -d\  -f 8 |cut -b1-11)  #selecionas de el primer Locus, los primeros 11 caracteres donde empiezan con N
+locus=$(grep -m 1 "DEFINITION" $file |cut -d " " -f6,7) #if you have details the strain in your gbk files, use this line. Else use the next line.
+#locus=$(grep -m 1 "LOCUS" $file |cut -d\  -f 8 |cut -b1-11)  #select the first 11 characters from the first "LOCUS"
 perl -p -i -e 's/\n// if /ORGANISM/' $file  #cambiar 
 perl -p -i -e 's/\s*Unclassified/ '"${locus}"'/' $file
 ~~~
 {: .language-bash}
+This script change "Unclassified" in the lines "Organisms" from the gbk files by the "strain" or "locus" depending on what you selected.
 ~~~
 ls *.gbk | while read file
 do 
