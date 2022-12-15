@@ -321,7 +321,7 @@ Search the file in the browser on your computer.
 
 > ## Exercise 3: 
 > 
-> Add another genome of the Streptococcus family. Try with another S. agalactie genomes which are in the annotated folder.
+> Add another genome of the Streptococcus family. Try with another S. agalactiae genomes which are in the annotated folder.
 > It is required to make a symbolic path in our data_get directory:
 > ~~~ 
 > $ find ~/gm_workshop/results/annotated/. -name "*Streptococcus_agalactie_[1-9]*.prokka.gbk*" -exec ln -s {} . ';'
@@ -332,7 +332,7 @@ Search the file in the browser on your computer.
 > $ get_homologues.pl -d data_get -c
 > ~~~
 > {: .language-bash}
-> What do you think happens to the number of gene clusters?/
+> What do you think happens to the number of gene clusters?
 > Does it increase or decrease?
 >> ## Solution
 >> As we can check in the output:
@@ -429,11 +429,11 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 {: .language-bash}
 
 <a href="../fig/tree.png">
-  <img src="../fig/tree.png" alt="Aquí va el texto que describe a la imagen." />
+  <img src="../fig/tree.png" alt="Cladogram as visualized in microreact.org representing the relationship between the S. agalactiae strains." />
 </a>
 
 <a href="../fig/legend.png">
-  <img src="../fig/legend.png" alt="Aquí va el texto que describe a la imagen." />
+  <img src="../fig/legend.png" alt="Cladogram legend labeling the S. agalactiae strains 18RS21 (green), 515 (yellow), A909 (purple), CJB111 (red), COH1 (blue) and H36B (orange)." />
 </a>
 
 
