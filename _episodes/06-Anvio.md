@@ -21,7 +21,7 @@ keypoints:
 ---
 
 <a href="../fig/01-03-01.png">
-  <img src="../fig/01-03-01.png" alt="Anvi'o network representation" />
+  <img src="../fig/01-03-01.png" alt="Anvi'o network representation displaying the programs and artifacts that allow the construction of workflows for integrated multiomics." />
 </a>
 
 ## Anvi'o
@@ -414,7 +414,7 @@ command line.
 Whitout disturbing the active terminal, open a new window in your prefered browser (recommended Chrome), copy-paste the following link `http://132.248.196.38:8080` and click on the bottom `Draw` to see your results and start interacting with your pangenome
 
 <a href="../fig/01-03-02.svg">
-  <img src="../fig/01-03-02.svg" width="956.5" height="453.5" alt="" />
+  <img src="../fig/01-03-02.svg" width="956.5" height="453.5" alt="Interactive Anvi'o pangenome for the six S. agalactiae genomes." />
 </a>
 
 {: .output}
