@@ -7,7 +7,7 @@ questions:
 objectives:
 - "Write a script to add the NCBI Id to prokka genbank files."
 keypoints:
-- "There are always some details that requires manual curation."
+- "There are always some details that require manual curation."
 - "Scripts can help you to automatize your work."
 ---
 ## Curating Prokka output files
