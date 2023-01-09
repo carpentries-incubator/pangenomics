@@ -422,7 +422,7 @@ Whitout disturbing the active terminal, open a new window in your prefered brows
 
   
 > ## Exercise 1: The homogeneity of gene clusters.
->Anvi’o allows us to identify different levels of disagreements between amino acid sequences in different genomes. Amino acid sequences from different genomes in a gene cluster that are almost identical tell us that the gene cluster is highly homogeneous. 
+>Anvi’o allows to identify different levels of disagreement between amino acid sequences in different genomes. Amino acid sequences from different genomes in a gene cluster that are almost identical tell us that the gene cluster is highly homogeneous. 
 >
 > The **geometric homogeneity index** tell us the degree of geometric configuration between the genes of a gene cluster and the **functional homogeneity index** considers aligned residues and quantifies differences across residues in a site.
 >
