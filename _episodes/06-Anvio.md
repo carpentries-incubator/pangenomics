@@ -46,7 +46,7 @@ cd anvi-o
 ~~~
 {: .language-bash}
 
-In order to better organize our Anvi'o results, create a new directory named `genome-db` that will be used to storage the genome database needed for the Anvi'o pangenome worflow
+In order to better organize our Anvi'o results, create a new directory named `genome-db` that will be used to store the genome database needed for the Anvi'o pangenome worflow
 ~~~
 mkdir genome-db
 ~~~
@@ -414,7 +414,8 @@ command line.
 Whitout disturbing the active terminal, open a new window in your prefered browser (recommended Chrome), copy-paste the following link `http://132.248.196.38:8080` and click on the bottom `Draw` to see your results and start interacting with your pangenome
 
 <a href="../fig/01-03-02.svg">
-  <img src="../fig/01-03-02.svg" width="956.5" height="453.5" alt="Interactive Anvi'o pangenome for the six S. agalactiae genomes." />
+  <img src="../fig/01-03-02.svg" width="956.5" height="453.5" alt="Interactive Anvio pan genome analysis of six S. agalactiae genomes.
+                                                                   Each circle corresponds to one genome and each radius represents a gene family. " />
 </a>
 
 {: .output}
