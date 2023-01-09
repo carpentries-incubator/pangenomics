@@ -62,7 +62,8 @@ PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it w
 A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a `.html` file.
 
 <a href="../fig/01-04-02.png">
-  <img src="../fig/01-04-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot. The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
+  <img src="../fig/01-04-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot. 
+                                                               The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
 </a>
 
 ### Tile plot
@@ -531,9 +532,9 @@ $ ls -lah pangenome.h5
 
 PPanGGOLiN provides multiple outputs to describe a pangenome. In this section the different outputs will be described.
 
-#### U-shaped plot
+### U-shaped plot
 
-A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a `.html` file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a `.png` image file.
+A U-shaped plot is a figure presenting the number of gene families (y axis) per number of organisms (x axis). It is a `.html` file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a `.png` image file.
 
 ~~~
 $ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
@@ -589,7 +590,7 @@ Ushaped_plot.html                                                               
 
 You can open the html file locally.
 
-#### Tile plot
+### Tile plot
 
 A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together in the figure).
 
