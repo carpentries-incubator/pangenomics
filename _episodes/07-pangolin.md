@@ -636,8 +636,8 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 > 
 > Commands:
 > 1. cluster: Cluster proteins in protein families.
-> 2. partition: partition the pangenome graph.
-> 3. rgp: predicts Regions of Genomic Plasticity in the genomes of your pangenome.
+> 2. partition: Partition the pangenome graph.
+> 3. rgp: Predicts Regions of Genomic Plasticity in the genomes of your pangenome.
 > 4. annotate: Annotate genomes.
 > 5. graph: Create the pangenome graph.
 > 6. spot: Predicts spots in your pangenome.
@@ -682,23 +682,23 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 >  
 > > ## Solution
 > > a) <a href="../fig/01-04-06.png">
-> > <img src="../fig/01-04-06.png" alt="" />
+> > <img src="../fig/01-04-06.png" alt="Gephi visualization with the nodes colored according to PPanGGOLiN partitions, displaying persistent genome in pink and cloud genome in green." />
 > > </a>
 > >
 > > b) <a href="../fig/01-04-07.png">
-> > <img src="../fig/01-04-07.png" alt="" />
+> > <img src="../fig/01-04-07.png" alt="Gephi visualization with the nodes colored according to the number of organisms in the analysis." />
 > > </a>
 > > 
 > > c) <a href="../fig/01-04-08.png">
-> > <img src="../fig/01-04-08.png" alt="" />
+> > <img src="../fig/01-04-08.png" alt="Gephi visualization with the nodes colored according to the number of genes in the analysis." />
 > > </a>
 > > 
 > > d) <a href="../fig/01-04-09.png">
-> > <img src="../fig/01-04-09.png" alt="" />
+> > <img src="../fig/01-04-09.png" alt="Gephi visualization with the nodes colored according to the proteins function." />
 > > </a>
 > > 
 > > e) <a href="../fig/01-04-10.png">
-> > <img src="../fig/01-04-10.png" alt="" />
+> > <img src="../fig/01-04-10.png" alt="Gephi visualization with the nodes colored according to the gene neighborhood." />
 > > </a>
 > {: .solution}
 {: .challenge}
