@@ -13,13 +13,15 @@ keypoints:
 ## Curating Prokka output files
 
 Prokka's output files need to be corrected before moving forward with additional analyses. 
-Create the file `correctgbk.sh`. We suggest the use of nano text editor to create your file, `nano correctgbk.sh` and paste the next script. 
+Create the file `correctgbk.sh`. We suggest the use of nano text editor to create your file, `nano correctgbk.sh` and paste the following script. 
 ~~~
 file=$1
-locus=$(grep -m 1 "DEFINITION" $file |cut -d " " -f6,7) #if you have details the strain in your gbk files, use this line. Else use the next line.
+locus=$(grep -m 1 "DEFINITION" $file |cut -d " " -f6,7) # separate the DENFITION row by spaces and save columns 6 and 7 in the locus variable.
+
+#NOTE If you don't have the strain details in your gbk files, comment the previous line and uncomment the next one.
 #locus=$(grep -m 1 "LOCUS" $file |cut -d\  -f 8 |cut -b1-11)  #select the first 11 characters from the first "LOCUS"
-perl -p -i -e 's/\n// if /ORGANISM/' $file  #cambiar 
-perl -p -i -e 's/\s*Unclassified/ '"${locus}"'/' $file
+perl -p -i -e 's/\n// if /ORGANISM/' $file  #Put the Organism row on a single line 
+perl -p -i -e 's/\s*Unclassified/ '"${locus}"'/' $file    #Change Unclassfied to the value of the locus variable
 ~~~
 {: .language-bash}
 
