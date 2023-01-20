@@ -429,7 +429,7 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 {: .language-bash}
 
 <a href="../fig/tree.png">
-  <img src="../fig/tree.png" alt="Cladogram as visualized in microreact.org representing the relationship between the S. agalactiae strains." />
+  <img src="../fig/tree.png" alt="Cladogram as visualized in microreact.org representing the relationship between the six S. agalactiae strains." />
 </a>
 
 <a href="../fig/legend.png">
@@ -437,11 +437,6 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 </a>
 
 
-
-> ## Exercise 2: 
-> 
-> {: .solution}
-{: .challenge} 
 
 
 
