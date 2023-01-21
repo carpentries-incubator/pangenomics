@@ -9,7 +9,7 @@ questions:
 
 objectives:
 - "Clustering orthologous proteins from GenBank files"
-- "Create a Venn diagram using diferent clustering algorithms"
+- "Create a Venn diagram using different clustering algorithms"
 - "Implement and interpret the evolutionary history using Clustering orthologous proteins"
 
 keypoints:
@@ -31,17 +31,17 @@ BDBH algorithm uses one sequence from the reference genome and maintains the clu
 OMCL algorithm groups nodes in a BLAST graph to build clusters.
 And the COG algorithm requires a triangle of reciprocal hits and merges them.
 
-The definiton of pan- and core-genomes by Get_Homologues is done by calculation of overlapping sets of proteins.
+The definition of pan- and core-genomes by Get_Homologues is done by calculation of overlapping sets of proteins.
 
 
 <a href="../fig/GET_HOMOLOGUES_flow_char.jpeg">
   <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" width="435" height="631" alt="GET_HOMOLOGUES flow chart.
-                                                                            	Input files are either GenBank or FASTA and can produce different outputs.
-                                                                            	BLAST and Pfam searches are optimized for local and cluster computer environments.
-                                                                            	Once this sequences are sorted and indexed, one of the three clustering algorithms
-                                                                            	(BDBH, OMCL and COGtriangles) yields FASTA files of sequence clusters.
-                                                                            	This clusters could be flanked intergene clusters,
-                                                                            	pan/core-genome size estimates, pangenome matrices and syntenic clusters." />
+                                                                       		 Input files are either GenBank or FASTA and can produce different outputs.
+                                                                       		 BLAST and Pfam searches are optimized for local and cluster computer environments.
+                                                                       		 Once this sequences are sorted and indexed, one of the three clustering algorithms
+                                                                       		 (BDBH, OMCL and COGtriangles) yields FASTA files of sequence clusters.
+                                                                       		 This clusters could be flanked intergene clusters,
+                                                                       		 pan/core-genome size estimates, pangenome matrices and syntenic clusters." />
 </a>
 
 ## Considerations
@@ -61,8 +61,8 @@ $ get_homologues.pl -h #This command display the options
 
 ~~~
 -v print version, credits and checks installation
--d directory with input FASTA files ( .faa / .fna ),       	(overrides -i,
-   GenBank files ( .gbk ), 1 per genome, or a subdirectory  	use of pre-clustered sequences
+-d directory with input FASTA files ( .faa / .fna ),  		 (overrides -i,
+   GenBank files ( .gbk ), 1 per genome, or a subdirectory 	 use of pre-clustered sequences
    ( subdir.clusters / subdir_ ) with pre-clustered sequences   ignores -c, -g)
    ( .faa / .fna ); allows new files to be added later;    
    creates output folder named 'directory_homologues'
@@ -70,37 +70,37 @@ $ get_homologues.pl -h #This command display the options
    creates output folder named 'file_homologues'
 
 Optional parameters:
--o only run BLAST/Pfam searches and exit                   	(useful to pre-compute searches)
--c report genome composition analysis                      	(follows order in -I file if enforced,
-                                                            	ignores -r,-t,-e)
--R set random seed for genome composition analysis         	(optional, requires -c, example -R 1234,
-                                                            	required for mixing -c with -c -a runs)
--m runmode [local|cluster|dryrun]                          	(default local)
--n nb of threads for BLAST/HMMER/MCL in 'local' runmode    	(default=2)
--I file with .faa/.gbk files in -d to be included          	(takes all by default, requires -d)
+-o only run BLAST/Pfam searches and exit              		 (useful to pre-compute searches)
+-c report genome composition analysis                 		 (follows order in -I file if enforced,
+                                                       		 ignores -r,-t,-e)
+-R set random seed for genome composition analysis    		 (optional, requires -c, example -R 1234,
+                                                       		 required for mixing -c with -c -a runs)
+-m runmode [local|cluster|dryrun]                     		 (default local)
+-n nb of threads for BLAST/HMMER/MCL in 'local' runmode   	 (default=2)
+-I file with .faa/.gbk files in -d to be included     		 (takes all by default, requires -d)
 
 Algorithms instead of default bidirectional best-hits (BDBH):
--G use COGtriangle algorithm (COGS, PubMed=20439257)       	(requires 3+ genomes|taxa)
+-G use COGtriangle algorithm (COGS, PubMed=20439257)  		 (requires 3+ genomes|taxa)
 -M use orthoMCL algorithm (OMCL, PubMed=12952885)
 
 [...]
 
 Options that control clustering:
--t report sequence clusters including at least t taxa      	(default t=numberOfTaxa,
-                                                            	t=0 reports all clusters [OMCL|COGS])
--a report clusters of sequence features in GenBank files   	(requires -d and .gbk files,
-   instead of default 'CDS' GenBank features                	example -a 'tRNA,rRNA',
-                                                            	NOTE: uses blastn instead of blastp,
-                                                            	ignores -g,-D)
--g report clusters of intergenic sequences flanked by ORFs 	(requires -d and .gbk files)
+-t report sequence clusters including at least t taxa 		 (default t=numberOfTaxa,
+                                                       		 t=0 reports all clusters [OMCL|COGS])
+-a report clusters of sequence features in GenBank files  	 (requires -d and .gbk files,
+   instead of default 'CDS' GenBank features           		 example -a 'tRNA,rRNA',
+                                                       		 NOTE: uses blastn instead of blastp,
+                                                       		 ignores -g,-D)
+-g report clusters of intergenic sequences flanked by ORFs     (requires -d and .gbk files)
    in addition to default 'CDS' clusters
--f filter by %length difference within clusters            	(range [1-100], by default sequence
-                                                            	length is not checked)
--r reference proteome .faa/.gbk file                       	(by default takes file with
-                                                            	least sequences; with BDBH sets
-                                                            	first taxa to start adding genes)
--e exclude clusters with inparalogues                      	(by default inparalogues are
-                                                            	included)
+-f filter by %length difference within clusters       		 (range [1-100], by default sequence
+                                                       		 length is not checked)
+-r reference proteome .faa/.gbk file                  		 (by default takes file with
+                                                       		 least sequences; with BDBH sets
+                                                       		 first taxa to start adding genes)
+-e exclude clusters with inparalogues                 		 (by default inparalogues are
+                                                       		 included)
 [...]
 ~~~
 {: .output}
@@ -127,7 +127,7 @@ $ ls ~/gm_workshop/results/pangenome/get_homologues/data_get #List the symbolic 
 
 ~~~
 Streptococcus_agalactiae_18RS21.prokka.gbk  Streptococcus_agalactiae_COH1.prokka.gbk
-Streptococcus_agalactiae_A909.prokka.gbk	Streptococcus_agalactiae_H36B.prokka.gbk
+Streptococcus_agalactiae_A909.prokka.gbk    Streptococcus_agalactiae_H36B.prokka.gbk
 Streptococcus_agalactiae_CJB111.prokka.gbk
 ~~~
 {: .output}
@@ -236,8 +236,8 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 
 <a href="../fig/venn_t0_GET_HOMOLOGUES.svg">
   <img src="../fig/venn_t0_GET_HOMOLOGUES.svg" alt="Venn diagram of core genomes generated by GET_HOMOLOGUES clustering algorithms.
-                                                	1105 BDBH clusters are labelled in red, 1115 COG are marked in green and 1110 OMCL in blue.
-                                                	1077 consensus clusters were detected by three algorithms." />
+                                           		 1105 BDBH clusters are labeled in red, 1115 COG are marked in green and 1110 OMCL in blue.
+                                           		 1077 consensus clusters were detected by three algorithms." />
 </a>
 
 > ## Exercise 1: Comparing clustering algorithms
@@ -263,9 +263,9 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 > Complete the line blank with the correct clustering algorithms
 >
 > |------------------------------+------------------------------------------------------------------------------|  
-> | **Algorithms**                       	| 	**Information required**                                 	|  
+> | **Algorithms**                  		 |     **Information required**                            		 |  
 > |------------------------------+------------------------------------------------------------------------------|  
-> | ___________________ |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                              	|  
+> | ___________________ |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                         		 |  
 > |------------------------------+------------------------------------------------------------------------------|  
 > | ___________________ | Merges triangles of inter-genomic symmetrical best matches |   
 > |------------------------------+------------------------------------------------------------------------------|  
@@ -276,13 +276,13 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 >> ## Solution
 >>
 >> |------------------------------+------------------------------------------------------------------------------|  
->> | **algorithms**                       	| 	**Information required**                                 	|  
+>> | **algorithms**                  		 |     **Information required**                            		 |  
 >> |------------------------------+------------------------------------------------------------------------------|  
->> | BDBH                  	|  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                              	|  
+>> | BDBH             		 |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                         		 |  
 >> |------------------------------+------------------------------------------------------------------------------|  
 >> | COGS  | Merges triangles of inter-genomic symmetrical best matches |   
 >> |------------------------------+------------------------------------------------------------------------------|  
->> | OMCL	| uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
+>> | OMCL    | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
 >> |------------------------------+------------------------------------------------------------------------------|
 >>
 >>
@@ -441,3 +441,6 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 
 
 {% include links.md %}
+
+
+
