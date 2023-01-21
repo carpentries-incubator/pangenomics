@@ -13,19 +13,19 @@ keypoints:
 
 ## Prokka: Annotating Genomes
 
-[Annotation](https://en.wikipedia.org/wiki/DNA_annotation) is the process of 
-identifying the coordinates of genes and all the coding regions 
-in a genome and determining what proteins are produced from them. In order to do this, an unknown 
+[Annotation](https://en.wikipedia.org/wiki/DNA_annotation) is the process of
+identifying the coordinates of genes and all the coding regions
+in a genome and determining what proteins are produced from them. In order to do this, an unknown
 sequence is enriched with information relating genomic position, regulatory
 sequences, repeats, gene name and protein products. This information
 is stored in genomic databases to help future analysis processing new data.
 
-[Prokka](https://github.com/tseemann/prokka) 
-is a command-line software tool created in Perl to annotate bacterial, 
+[Prokka](https://github.com/tseemann/prokka)
+is a command-line software tool created in Perl to annotate bacterial,
 archaeal and viral genomes and reproduce standards-compliant output files.
-It requires preassembled genomic DNA sequences in FASTA format as input 
+It requires preassembled genomic DNA sequences in FASTA format as input
 file, which is the only mandatory parameter to the software.
-For annotation, Prokka relies on external features and databases to 
+For annotation, Prokka relies on external features and databases to
 identify the genomic features within the contigs.
 
 | Tool (reference) | Features predicted |
@@ -36,23 +36,23 @@ identify the genomic features within the contigs.
 | SignalP ( Petersen et al. , 2011 )  | Signal leader peptides|
 | Infernal ( Kolbe and Eddy, 2011 )  | Non-coding RNA|
 
-Protein coding genes are annotated in two stages. Prodigal identifies 
-the coordinates of candidate genes, but does not describe the putative 
-gene product. Usually, in order to predict what a gene encodes 
+Protein coding genes are annotated in two stages. Prodigal identifies
+the coordinates of candidate genes, but does not describe the putative
+gene product. Usually, in order to predict what a gene encodes
 for, it is compared with a large
-database of known sequences, usually at the protein level, 
-and transfered the annotation of the best significant match.
-Prokka uses this method, but in a hierarchical manner. It starts 
+database of known sequences, usually at the protein level,
+and transferred the annotation of the best significant match.
+Prokka uses this method, but in a hierarchical manner. It starts
 with a small trustworthy database, it then moves to medium
-sized but domain specific databases and finally to curated 
+sized but domain specific databases and finally to curated
 models of protein families.
 
 > ## Notes
-> [Environment variables](https://opensource.com/article/19/8/what-are-environment-variables) are special variables that contain information about your loggin session. These can be useful when you want to [manage](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment) default or new settings that your system usually ignores. For instance, you can download a specific package with a downgraded version of perl if needed. 
+> [Environment variables](https://opensource.com/article/19/8/what-are-environment-variables) are special variables that contain information about your login session. These can be useful when you want to [manage](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment) default or new settings that your system usually ignores. For instance, you can download a specific package with a downgraded version of perl if needed.
 {: .callout}
 
-Next, we need to change to the directory where we have the assembly (FASTA) 
-files of interest. As a simple initial example of execution, we can annotate 
+Next, we need to change to the directory where we have the assembly (FASTA)
+files of interest. As a simple initial example of execution, we can annotate
 a FASTA file and define names for our output directory and files like this:
 
 ~~~
@@ -91,24 +91,24 @@ Now Prokka has generated a new folder. If you run the `tree` command inside the 
 ~~~
 .
 └── thermophilusLMD9_prokka
-    ├── thermophilusLMD9.prokka.err
-    ├── thermophilusLMD9.prokka.faa
-    ├── thermophilusLMD9.prokka.ffn
-    ├── thermophilusLMD9.prokka.fna
-    ├── thermophilusLMD9.prokka.fsa
-    ├── thermophilusLMD9.prokka.gbk
-    ├── thermophilusLMD9.prokka.gff
-    ├── thermophilusLMD9.prokka.log
-    ├── thermophilusLMD9.prokka.sqn
-    ├── thermophilusLMD9.prokka.tbl
-    ├── thermophilusLMD9.prokka.tsv
-    └── thermophilusLMD9.prokka.txt
+	├── thermophilusLMD9.prokka.err
+	├── thermophilusLMD9.prokka.faa
+	├── thermophilusLMD9.prokka.ffn
+	├── thermophilusLMD9.prokka.fna
+	├── thermophilusLMD9.prokka.fsa
+	├── thermophilusLMD9.prokka.gbk
+	├── thermophilusLMD9.prokka.gff
+	├── thermophilusLMD9.prokka.log
+	├── thermophilusLMD9.prokka.sqn
+	├── thermophilusLMD9.prokka.tbl
+	├── thermophilusLMD9.prokka.tsv
+	└── thermophilusLMD9.prokka.txt
 
 1 directory, 12 files
 ~~~
 {: .output}
 
-We encourage to explore each output. The following table describes the contents of each output file:
+We encourage you to explore each output. The following table describes the contents of each output file:
 
 | Extension | Description |
 | --------- | ----------- |
@@ -125,28 +125,28 @@ We encourage to explore each output. The following table describes the contents 
 | .txt | Statistics related to the found annotated features. |
 | .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product. |
 
-Parameters can be modified as much as needed regarding the organism, the gene and even the locus tag you are looking for. 
+Parameters can be modified as much as needed regarding the organism, the gene and even the locus tag you are looking for.
 
 > ## Exercise 1: Extracting tRNAs with Prokka
 >
-> Suppose you are asked to annotate the FASTA file you downloaded in the previous episode and 
-> output the results to a subdirectory called `annotated` within the `thermophilusLMG18311_prokka` 
-> directory. Then, a research team requests you a TSV file named `trnas.tsv` that contains only 
-> *S. thermophilus'*s tRNAs. This file must contain the same headers as the original 
-> TSV file, followed by the rows that correspond to tRNAs. 
-> 
+> Suppose you are asked to annotate the FASTA file you downloaded in the previous episode and
+> output the results to a subdirectory called `annotated` within the `thermophilusLMG18311_prokka`
+> directory. Then, a research team requests you a TSV file named `trnas.tsv` that contains only
+> *S. thermophilus'*s tRNAs. This file must contain the same headers as the original
+> TSV file, followed by the rows that correspond to tRNAs.
+>
 > Complete the following sequence of commands to perform this actions:
-> 
+>
 > ~~~
-> $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311.prokka ../../data/thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes 
+> $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311.prokka ../../data/thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes
 > ~~~
 > {: .language-bash}
-> 
+>
 > ~~~
 > $ cd __________
 > ~~~
 > {: .language-bash}
-> 
+>
 > ~~~
 > $ __________ -n 1 thermophilusLMG18311.prokka.tsv > trnas.tsv  # Get column headers
 > $ grep __________ thermophilusLMG18311.prokka.tsv >> trnas.tsv # Append all lines that contain tRNAs
@@ -175,29 +175,29 @@ Parameters can be modified as much as needed regarding the organism, the gene an
 {: .challenge}
 
 > ## Discussion 1: Number of tRNAs
-> 
+>
 > Inside the `annotated` directory, run the command `wc -l trnas.tsv` to get the number of lines in the file. Excluding the first line (which contains the header), observe that there are 67 tRNAs, whereas the [standard codon table](https://en.wikipedia.org/wiki/DNA_and_RNA_codon_tables#Translation_table_1) contains 61 coding codons (i.e. those that are non stop codons). This means that there are several genes that produce the same tRNA. How could you explain this fact?
-> 
+>
 > > ## Solution
-> > 
+> >
 > > The existence of many genes producing the same product (such as the same tRNA) can happen due to duplications of genes during the evolutionary history of a taxon.
 > {: .solution}
 {: .discussion}
 
 ## Annotating multiple genomes
 
-Now that we know how to annotate genomes with Prokka we can annotate all of 
+Now that we know how to annotate genomes with Prokka we can annotate all of
 the *S. agalactiae* in one run.
-For this purpose we will use a complex `while` loop that, for each of the *S. agalactiae* genomes, 
-first extracts the strain name and saves it in a variable, and then uses it inside the 
+For this purpose we will use a complex `while` loop that, for each of the *S. agalactiae* genomes,
+first extracts the strain name and saves it in a variable, and then uses it inside the
 Prokka command.
 
 ~~~
-$ cd ~/gm_workshop/data 
+$ cd ~/gm_workshop/data
 $ ls */*fasta | while read line
-> do 
+> do
 > strainName=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1)
-> prokka $line --kingdom Bacteria --genus Streptococcus --species agalactie --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactie_${strainName}\.prokka --outdir ~/gm_workshop/results/annotated/Streptococcus_agalactie_${strainName}\_prokka
+> prokka $line --kingdom Bacteria --genus Streptococcus --species agalactiae --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactiae_${strainName}\.prokka --outdir ~/gm_workshop/results/annotated/Streptococcus_agalactiae_${strainName}\_prokka
 > done
 ~~~
 {: .language-bash}
@@ -211,13 +211,16 @@ $ ls
 ~~~
 {: .language-bash}
 ~~~
-Streptococcus_agalactie_18RS21.prokka.gbk  Streptococcus_agalactie_CJB111.prokka.gbk  thermophilusLMD9.prokka.gbk
-Streptococcus_agalactie_515.prokka.gbk     Streptococcus_agalactie_COH1.prokka.gbk    thermophilusLMG18311.prokka.gbk
-Streptococcus_agalactie_A909.prokka.gbk    Streptococcus_agalactie_H36B.prokka.gbk
+Streptococcus_agalactiae_18RS21.prokka.gbk  Streptococcus_agalactiae_CJB111.prokka.gbk  thermophilusLMD9.prokka.gbk
+Streptococcus_agalactiae_515.prokka.gbk 	Streptococcus_agalactiae_COH1.prokka.gbk	thermophilusLMG18311.prokka.gbk
+Streptococcus_agalactiae_A909.prokka.gbk	Streptococcus_agalactiae_H36B.prokka.gbk
 ~~~
 {: .output}
 
 
 > ## Genome annotation services
-> To learn more about prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provide a web-user interface where you can store your private genomes and share them with your colleagues. If you want to use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast). 
+> To learn more about prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provide a web-user interface where you can store your private genomes and share them with your colleagues. If you want to use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast).
 {: .callout}
+
+
+
