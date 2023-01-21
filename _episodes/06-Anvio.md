@@ -5,7 +5,7 @@ exercises: 40
 questions:
 - "How can I obtain an interactive pangenome plot?"
 - "How can I measure the homogeneity of the gene families?"
-- "How to obtain an enrichement analysis of the gene families?"
+- "How to obtain an enrichment analysis of the gene families?"
 - "How to compute the ANI values between the genomes of the pangenome?"
 
 objectives:
@@ -27,11 +27,11 @@ keypoints:
 ## Anvi'o
 
 Anvi’o is an open-source, community-driven analysis and visualization platform for microbial omics.
-It brings together many aspects of today's cutting-edge strategies, including **genomics, metagenomics, metatranscriptomics, phylogenomics, microbial population genetics, pangenomics, and metapangenomics** in an *integrated* and *easy-to-use* fashion through extensive interactive visualization capabilities. 
+It brings together many aspects of today's cutting-edge strategies, including **genomics, metagenomics, metatranscriptomics, phylogenomics, microbial population genetics, pangenomics, and metapangenomics** in an *integrated* and *easy-to-use* fashion through extensive interactive visualization capabilities.
 
 ### Get all ready to start the Anvi'o workflow to build a pangenome
 
-To start using Anvi'o, activate the conda environment `Pangenomics_Global` 
+To start using Anvi'o, activate the conda environment `Pangenomics_Global`
 
 ~~~
 conda activate Pangenomics_Global
@@ -46,16 +46,16 @@ cd anvi-o
 ~~~
 {: .language-bash}
 
-In order to better organize our Anvi'o results, create a new directory named `genome-db` that will be used to store the genome database needed for the Anvi'o pangenome worflow
+In order to better organize our Anvi'o results, create a new directory named `genome-db` that will be used to store the genome database needed for the Anvi'o pangenome workflow
 ~~~
 mkdir genome-db
 ~~~
 {: .language-bash}
 
 > ## Note
-> The bacterial genomes that will be used in this practice 
->  come from the Prokka annotation analysis. 
->  We will use the `.gbk` files as input for the Anvi'o workflow. 
+> The bacterial genomes that will be used in this practice
+>  come from the Prokka annotation analysis.
+>  We will use the `.gbk` files as input for the Anvi'o workflow.
 >  The `.gbk` files can be found in `~/gm_workshop/results/annotated`.
 {: .callout}
 
@@ -78,15 +78,15 @@ ls
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka-contigs.fa               agalactiae_CJB111_prokka-contigs.fa
+agalactiae_18RS21_prokka-contigs.fa           	agalactiae_CJB111_prokka-contigs.fa
 agalactiae_18RS21_prokka-external-functions.txt   agalactiae_CJB111_prokka-external-functions.txt
 agalactiae_18RS21_prokka-external-gene-calls.txt  agalactiae_CJB111_prokka-external-gene-calls.txt
-agalactiae_515_prokka-contigs.fa                  agalactiae_COH1_prokka-contigs.fa
-agalactiae_515_prokka-external-functions.txt      agalactiae_COH1_prokka-external-functions.txt
-agalactiae_515_prokka-external-gene-calls.txt     agalactiae_COH1_prokka-external-gene-calls.txt
-agalactiae_A909_prokka-contigs.fa                 agalactiae_H36B_prokka-contigs.fa
-agalactiae_A909_prokka-external-functions.txt     agalactiae_H36B_prokka-external-functions.txt
-agalactiae_A909_prokka-external-gene-calls.txt    agalactiae_H36B_prokka-external-gene-calls.txt
+agalactiae_515_prokka-contigs.fa              	agalactiae_COH1_prokka-contigs.fa
+agalactiae_515_prokka-external-functions.txt  	agalactiae_COH1_prokka-external-functions.txt
+agalactiae_515_prokka-external-gene-calls.txt 	agalactiae_COH1_prokka-external-gene-calls.txt
+agalactiae_A909_prokka-contigs.fa             	agalactiae_H36B_prokka-contigs.fa
+agalactiae_A909_prokka-external-functions.txt 	agalactiae_H36B_prokka-external-functions.txt
+agalactiae_A909_prokka-external-gene-calls.txt	agalactiae_H36B_prokka-external-gene-calls.txt
 
 ~~~
 {: .output}
@@ -102,18 +102,18 @@ ls
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka-contigs.fa               agalactiae_CJB111_prokka-contigs.fa
-agalactiae_18RS21_prokka-contigs.fa.fasta         agalactiae_CJB111_prokka-contigs.fa.fasta
+agalactiae_18RS21_prokka-contigs.fa           	agalactiae_CJB111_prokka-contigs.fa
+agalactiae_18RS21_prokka-contigs.fa.fasta     	agalactiae_CJB111_prokka-contigs.fa.fasta
 agalactiae_18RS21_prokka-external-functions.txt   agalactiae_CJB111_prokka-external-functions.txt
 agalactiae_18RS21_prokka-external-gene-calls.txt  agalactiae_CJB111_prokka-external-gene-calls.txt
-agalactiae_515_prokka-contigs.fa                  agalactiae_COH1_prokka-contigs.fa
-agalactiae_515_prokka-contigs.fa.fasta            agalactiae_COH1_prokka-contigs.fa.fasta
-agalactiae_515_prokka-external-functions.txt      agalactiae_COH1_prokka-external-functions.txt
-agalactiae_515_prokka-external-gene-calls.txt     agalactiae_COH1_prokka-external-gene-calls.txt
-agalactiae_A909_prokka-contigs.fa                 agalactiae_H36B_prokka-contigs.fa
-agalactiae_A909_prokka-contigs.fa.fasta           agalactiae_H36B_prokka-contigs.fa.fasta
-agalactiae_A909_prokka-external-functions.txt     agalactiae_H36B_prokka-external-functions.txt
-agalactiae_A909_prokka-external-gene-calls.txt    agalactiae_H36B_prokka-external-gene-calls.txt
+agalactiae_515_prokka-contigs.fa              	agalactiae_COH1_prokka-contigs.fa
+agalactiae_515_prokka-contigs.fa.fasta        	agalactiae_COH1_prokka-contigs.fa.fasta
+agalactiae_515_prokka-external-functions.txt  	agalactiae_COH1_prokka-external-functions.txt
+agalactiae_515_prokka-external-gene-calls.txt 	agalactiae_COH1_prokka-external-gene-calls.txt
+agalactiae_A909_prokka-contigs.fa             	agalactiae_H36B_prokka-contigs.fa
+agalactiae_A909_prokka-contigs.fa.fasta       	agalactiae_H36B_prokka-contigs.fa.fasta
+agalactiae_A909_prokka-external-functions.txt 	agalactiae_H36B_prokka-external-functions.txt
+agalactiae_A909_prokka-external-gene-calls.txt	agalactiae_H36B_prokka-external-gene-calls.txt
 
 ~~~
 {: .output}
@@ -129,28 +129,28 @@ ls
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka-contigs.fa                   agalactiae_CJB111_prokka-contigs.fa
-agalactiae_18RS21_prokka-contigs.fa.fasta             agalactiae_CJB111_prokka-contigs.fa.fasta
+agalactiae_18RS21_prokka-contigs.fa               	agalactiae_CJB111_prokka-contigs.fa
+agalactiae_18RS21_prokka-contigs.fa.fasta         	agalactiae_CJB111_prokka-contigs.fa.fasta
 agalactiae_18RS21_prokka-contigs.fa.fasta-contigs.db  agalactiae_CJB111_prokka-contigs.fa.fasta-contigs.db
-agalactiae_18RS21_prokka-external-functions.txt       agalactiae_CJB111_prokka-external-functions.txt
-agalactiae_18RS21_prokka-external-gene-calls.txt      agalactiae_CJB111_prokka-external-gene-calls.txt
-agalactiae_515_prokka-contigs.fa                      agalactiae_COH1_prokka-contigs.fa
-agalactiae_515_prokka-contigs.fa.fasta                agalactiae_COH1_prokka-contigs.fa.fasta
-agalactiae_515_prokka-contigs.fa.fasta-contigs.db     agalactiae_COH1_prokka-contigs.fa.fasta-contigs.db
-agalactiae_515_prokka-external-functions.txt          agalactiae_COH1_prokka-external-functions.txt
-agalactiae_515_prokka-external-gene-calls.txt         agalactiae_COH1_prokka-external-gene-calls.txt
-agalactiae_A909_prokka-contigs.fa                     agalactiae_H36B_prokka-contigs.fa
-agalactiae_A909_prokka-contigs.fa.fasta               agalactiae_H36B_prokka-contigs.fa.fasta
-agalactiae_A909_prokka-contigs.fa.fasta-contigs.db    agalactiae_H36B_prokka-contigs.fa.fasta-contigs.db
-agalactiae_A909_prokka-external-functions.txt         agalactiae_H36B_prokka-external-functions.txt
-agalactiae_A909_prokka-external-gene-calls.txt        agalactiae_H36B_prokka-external-gene-calls.txt
+agalactiae_18RS21_prokka-external-functions.txt   	agalactiae_CJB111_prokka-external-functions.txt
+agalactiae_18RS21_prokka-external-gene-calls.txt  	agalactiae_CJB111_prokka-external-gene-calls.txt
+agalactiae_515_prokka-contigs.fa                  	agalactiae_COH1_prokka-contigs.fa
+agalactiae_515_prokka-contigs.fa.fasta            	agalactiae_COH1_prokka-contigs.fa.fasta
+agalactiae_515_prokka-contigs.fa.fasta-contigs.db 	agalactiae_COH1_prokka-contigs.fa.fasta-contigs.db
+agalactiae_515_prokka-external-functions.txt      	agalactiae_COH1_prokka-external-functions.txt
+agalactiae_515_prokka-external-gene-calls.txt     	agalactiae_COH1_prokka-external-gene-calls.txt
+agalactiae_A909_prokka-contigs.fa                 	agalactiae_H36B_prokka-contigs.fa
+agalactiae_A909_prokka-contigs.fa.fasta           	agalactiae_H36B_prokka-contigs.fa.fasta
+agalactiae_A909_prokka-contigs.fa.fasta-contigs.db	agalactiae_H36B_prokka-contigs.fa.fasta-contigs.db
+agalactiae_A909_prokka-external-functions.txt     	agalactiae_H36B_prokka-external-functions.txt
+agalactiae_A909_prokka-external-gene-calls.txt    	agalactiae_H36B_prokka-external-gene-calls.txt
 
 ~~~
 {: .output}
 
 ### Step 4
 
-When using external genomes in Anvi'o, a list of the genome IDs and their corresponding genome database is required. This list tells Anvi'o which genomes will be processed to construct the pangenome. 
+When using external genomes in Anvi'o, a list of the genome IDs and their corresponding genome database is required. This list tells Anvi'o which genomes will be processed to construct the pangenome.
 ~~~
 ls *.fa | cut -d '-' -f1 | while read line; do echo $line$'\t'$line-contigs.db >>external-genomes.txt; done
 head external-genomes.txt
@@ -158,10 +158,10 @@ head external-genomes.txt
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka        agalactiae_18RS21_prokka-contigs.db
+agalactiae_18RS21_prokka    	agalactiae_18RS21_prokka-contigs.db
 agalactiae_515_prokka   agalactiae_515_prokka-contigs.db
 agalactiae_A909_prokka  agalactiae_A909_prokka-contigs.db
-agalactiae_CJB111_prokka        agalactiae_CJB111_prokka-contigs.db
+agalactiae_CJB111_prokka    	agalactiae_CJB111_prokka-contigs.db
 agalactiae_COH1_prokka  agalactiae_COH1_prokka-contigs.db
 agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
 ~~~
@@ -176,18 +176,18 @@ nano external-genomes.txt
 {: .language-bash}
 
 ~~~
-  GNU nano 4.8                                                             external-genomes.txt                                                                       
-agalactiae_18RS21_prokka        agalactiae_18RS21_prokka-contigs.db
+  GNU nano 4.8                                                         	external-genomes.txt                                                                  	 
+agalactiae_18RS21_prokka    	agalactiae_18RS21_prokka-contigs.db
 agalactiae_515_prokka   agalactiae_515_prokka-contigs.db
 agalactiae_A909_prokka  agalactiae_A909_prokka-contigs.db
-agalactiae_CJB111_prokka        agalactiae_CJB111_prokka-contigs.db
+agalactiae_CJB111_prokka    	agalactiae_CJB111_prokka-contigs.db
 agalactiae_COH1_prokka  agalactiae_COH1_prokka-contigs.db
 agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
 
 
 
-^G Get Help     ^O Write Out    ^W Where Is     ^K Cut Text     ^J Justify      ^C Cur Pos      M-U Undo        M-A Mark Text   M-] To Bracket  M-Q Previous
-^X Exit         ^R Read File    ^\ Replace      ^U Paste Text   ^T To Spell     ^_ Go To Line   M-E Redo        M-6 Copy Text   ^Q Where Was    M-W Next
+^G Get Help 	^O Write Out	^W Where Is 	^K Cut Text 	^J Justify  	^C Cur Pos  	M-U Undo    	M-A Mark Text   M-] To Bracket  M-Q Previous
+^X Exit     	^R Read File	^\ Replace  	^U Paste Text   ^T To Spell 	^_ Go To Line   M-E Redo    	M-6 Copy Text   ^Q Where Was	M-W Next
 ~~~
 {: .output}
 
@@ -197,11 +197,11 @@ head external-genomes.txt
 {: .language-bash}
 
 ~~~
-name    contigs_db_path
-agalactiae_18RS21_prokka        agalactiae_18RS21_prokka-contigs.db
+name	contigs_db_path
+agalactiae_18RS21_prokka    	agalactiae_18RS21_prokka-contigs.db
 agalactiae_515_prokka   agalactiae_515_prokka-contigs.db
 agalactiae_A909_prokka  agalactiae_A909_prokka-contigs.db
-agalactiae_CJB111_prokka        agalactiae_CJB111_prokka-contigs.db
+agalactiae_CJB111_prokka    	agalactiae_CJB111_prokka-contigs.db
 agalactiae_COH1_prokka  agalactiae_COH1_prokka-contigs.db
 agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
 
@@ -219,8 +219,8 @@ ls *.db
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka-contigs.db  agalactiae_A909_prokka-contigs.db    agalactiae_COH1_prokka-contigs.db
-agalactiae_515_prokka-contigs.db     agalactiae_CJB111_prokka-contigs.db  agalactiae_H36B_prokka-contigs.db
+agalactiae_18RS21_prokka-contigs.db  agalactiae_A909_prokka-contigs.db	agalactiae_COH1_prokka-contigs.db
+agalactiae_515_prokka-contigs.db 	agalactiae_CJB111_prokka-contigs.db  agalactiae_H36B_prokka-contigs.db
 
 ~~~
 {: .output}
@@ -285,7 +285,7 @@ Gene calls added to db .......................: 4 (from source "Ribosomal_RNA_23
 
 ### Step 8
 
-Create the genome database `genomes-storage-db` using the `anvi-gen-genomes-storage` script. In this case, we named this `genomes-storage-db` as **AGALACTIAE_GENOMES.db**, which will be used downstream as input in other process.
+Create the genome database `genomes-storage-db` using the `anvi-gen-genomes-storage` script. In this case, we named this `genomes-storage-db` as **AGALACTIAE_GENOMES.db**, which will be used downstream as input in other processes.
 
 ~~~
 anvi-gen-genomes-storage -e external-genomes.txt -o AGALACTIAE_GENOMES.db
@@ -295,23 +295,23 @@ ls *.db
 
 ~~~
 agalactiae_18RS21_prokka-contigs.db  agalactiae_CJB111_prokka-contigs.db  agalactiae_H36B_prokka-contigs.db
-agalactiae_515_prokka-contigs.db     agalactiae_COH1_prokka-contigs.db
-agalactiae_A909_prokka-contigs.db    AGALACTIAE_GENOMES.db
+agalactiae_515_prokka-contigs.db 	agalactiae_COH1_prokka-contigs.db
+agalactiae_A909_prokka-contigs.db	AGALACTIAE_GENOMES.db
 ~~~
 {: .output}
 
 ### Step 9
 
-Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named `AGALACTIAE_GENOMES.db` as input 
+Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named `AGALACTIAE_GENOMES.db` as input
 
 ~~~
 anvi-pan-genome -g AGALACTIAE_GENOMES.db \
-                --project-name "PANGENOME-AGALACTIAE" \
-                --output-dir AGALACTIAE \
-                --num-threads 6 \
-                --minbit 0.5 \
-                --mcl-inflation 10 \
-                --use-ncbi-blast
+            	--project-name "PANGENOME-AGALACTIAE" \
+            	--output-dir AGALACTIAE \
+            	--num-threads 6 \
+            	--minbit 0.5 \
+            	--mcl-inflation 10 \
+            	--use-ncbi-blast
 ~~~
 {: .language-bash}
 
@@ -327,8 +327,8 @@ Genomes storage ..............................: Initialized (storage hash: hash2
 Num genomes in storage .......................: 6
 Num genomes will be used .....................: 6
 Pan database .................................: A new database,
-                                                /home/betterlab/gm_workshop/results/anvi-o/genome-db/AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db,
-                                                has been created.
+                                            	/home/betterlab/gm_workshop/results/anvi-o/genome-db/AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db,
+                                            	has been created.
 Exclude partial gene calls ...................: False
 
 AA sequences FASTA ...........................: /home/betterlab/gm_workshop/results/anvi-o/genome-db/AGALACTIAE/combined-aas.fa
@@ -342,7 +342,7 @@ WARNING
 You elected to use NCBI's `blastp` for amino acid sequence search. Running
 blastp will be significantly slower than DIAMOND, but in some cases, slightly
 more sensitive. We are unsure about whether the slight increase in sensitivity
-may justify significant increase in run time, but you are the boss.
+may justify a significant increase in run time, but you are the boss.
 
 
 NCBI BLAST MAKEDB
@@ -384,7 +384,7 @@ Create the interactive pangenome with the `anvi-display-pan` script using as inp
 
 ~~~
 anvi-display-pan -g AGALACTIAE_GENOMES.db \
-    -p AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db
+	-p AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db
 ~~~
 {: .language-bash}
 
@@ -411,18 +411,18 @@ command line.
 {: .output}
 
 
-Whitout disturbing the active terminal, open a new window in your prefered browser (recommended Chrome), copy-paste the following link `http://132.248.196.38:8080` and click on the bottom `Draw` to see your results and start interacting with your pangenome
+Without disturbing the active terminal, open a new window in your preferred browser (recommended Chrome), copy-paste the following link `http://132.248.196.38:8080` and click on the bottom `Draw` to see your results and start interacting with your pangenome
 
 <a href="../fig/01-03-02.svg">
   <img src="../fig/01-03-02.svg" width="956.5" height="453.5" alt="Interactive Anvio pan genome analysis of six S. agalactiae genomes.
-                                                                   Each circle corresponds to one genome and each radius represents a gene family. " />
+                                                               	Each circle corresponds to one genome and each radius represents a gene family. " />
 </a>
 
 {: .output}
 
-  
+ 
 > ## Exercise 1: The homogeneity of gene clusters.
->Anvi’o allows to identify different levels of disagreement between amino acid sequences in different genomes. Amino acid sequences from different genomes in a gene cluster that are almost identical tell us that the gene cluster is highly homogeneous. 
+>Anvi’o allows to identify different levels of disagreement between amino acid sequences in different genomes. Amino acid sequences from different genomes in a gene cluster that are almost identical tell us that the gene cluster is highly homogeneous.
 >
 > The **geometric homogeneity index** tell us the degree of geometric configuration between the genes of a gene cluster and the **functional homogeneity index** considers aligned residues and quantifies differences across residues in a site.
 >
@@ -432,33 +432,36 @@ Whitout disturbing the active terminal, open a new window in your prefered brows
 >
 >a) Order the pangenome based on the geometric homogeneity index and inspect a gene cluster with a relatively low score.
 >
->b) Filter the gene cluster according to a functional homogeneity index above 0.25. 
+>b) Filter the gene cluster according to a functional homogeneity index above 0.25.
 >
 >Extra) How can you estimate evolutionary relationships between genomes? With the `concatenated-gene-alignment-fasta` produce the phylogenomic tree and explore it.
 > >## Solution
 >> a) Go to the main settings panel and modify the `items order`.
 >>
->> b) 
+>> b)
 >>~~~
 anvi-get-sequences-for-gene-clusters -g genomes-storage-db \
-                                     -p pan-db \
-                                     -o genes-fasta \
-                                     --min-functional-homogenity-index 0.25
+                                 	-p pan-db \
+                                 	-o genes-fasta \
+                                 	--min-functional-homogenity-index 0.25
 >>~~~
 >>{: .language-bash}
 >>
 >>Extra)Explore this [page.](https://anvio.org/help/main/programs/anvi-gen-phylogenomic-tree/)
 >{: .solution}
 {: .challenge}
-  
-  
+ 
+ 
 > ## Exercise 2: Splitting the pangenome.
-> 1. Read about [`anvi-split`](https://anvio.org/help/main/programs/anvi-split/) 
+> 1. Read about [`anvi-split`](https://anvio.org/help/main/programs/anvi-split/)
 > 2. With this program split your pangenome in independent pangenomes that:
 > > * Contains only singletons.
 > > * Contains only core gene clusters.
 >
-> Tip: [anvi-display-pan](https://anvio.org/help/main/programs/anvi-display-pan/) can be usefull
+> Tip: [anvi-display-pan](https://anvio.org/help/main/programs/anvi-display-pan/) can be useful
 {: .challenge}
 
 {% include links.md %}
+
+
+
