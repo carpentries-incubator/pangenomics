@@ -37,7 +37,7 @@ results when only few gene families are incorporated to the pangenome when a new
 
 
 <a href="{{ page.root }}/fig/01-01-01.png">
-   <img src="{{ page.root }}/fig/01-01-01.png" alt="Venn diagram representation of a) a closed pangenome and b) an open pangenome, comparing the sizes of their core and accessory genomes. c) Graphic depicting the differences of closed and open pangenomes regarding their size, total genes in pangenome, in relation with the number of sequenced genomes." />
+   <img src="{{ page.root }}/fig/01-01-01.png" alt="Venn diagram of a) a closed pangenome and b) an open pangenome, comparing the sizes of their core and accessory genomes. c) Graphic depicting the differences of closed and open pangenomes regarding their size, total genes in pangenome, in relation with the number of sequenced genomes." />
   </a>
 
 ## How to select a group of genomes to construct a pangenome?
