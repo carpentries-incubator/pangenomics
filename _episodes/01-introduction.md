@@ -36,8 +36,8 @@ pangenome increases considerably every added genome (e.g. *Escherichia coli*). W
 results when only few gene families are incorporated to the pangenome when a new member is added.
 
 
-<a href="{{ page.root }}/fig/Characteristics_of_open_and_closed_pangenomes.png">
-   <img src="{{ page.root }}/fig/Characteristics_of_open_and_closed_pangenomes.png" alt="Figure 1. Venn diagram representation of a) a closed pangenome and b) an open pangenome, comparing the sizes of their core and accessory genomes. c) Graphic depicting the differences of closed and open pangenomes regarding their size, total genes in pangenome, in relation with the number of sequenced genomes." />
+<a href="{{ page.root }}/fig/01-01-01.png">
+   <img src="{{ page.root }}/fig/01-01-01.png" alt="Venn diagram representation of a) a closed pangenome and b) an open pangenome, comparing the sizes of their core and accessory genomes. c) Graphic depicting the differences of closed and open pangenomes regarding their size, total genes in pangenome, in relation with the number of sequenced genomes." />
   </a>
 
 ## How to select a group of genomes to construct a pangenome?
@@ -51,8 +51,8 @@ following figure, the blue and red subgroups are considered clades whereas the g
 Why is that? Because it excludes the blue clade which has descended from the same common ancestor. Nonetheless, the green and blue subgroups
 together form a clade.
 
-<a href="{{ page.root }}/fig/Cladogram.png">
-   <img src="{{ page.root }}/fig/Cladogram.png" alt="Figure 2. Cladogram representation indicating in blue and red two clades or monophyletic groups and in green a paraphyletic group" />
+<a href="{{ page.root }}/fig/01-01-02.png">
+   <img src="{{ page.root }}/fig/01-01-02.png" alt="Cladogram indicating in blue and red two clades or monophyletic groups and in green a paraphyletic group" />
   </a>
 
 ## Brief description of *Streptococcus agalactiae* dataset
