@@ -83,7 +83,7 @@ $ prokka --prefix thermophilusLMD9.prokka --outdir thermophilusLMD9_prokka --kin
 ~~~
 {: .language-bash}
 
-Now Prokka has generated a new folder. If you run the `tree` command inside the new generated directory, you can preview the system of files created by Prokka:
+Now Prokka has generated a new folder. If you run the `tree` command inside the new directory, you can view the set of files created by Prokka:
 
 ~~~
 .
