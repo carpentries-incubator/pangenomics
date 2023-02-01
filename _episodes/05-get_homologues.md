@@ -227,7 +227,7 @@ data_get_homologues/Streptococcusagalactiae18RS21_f0_alltaxa_algOMCL_e0_
 ~~~
 {: .output}
 
-Use the scp protocol in order to see the venn diagram
+Download the Venn diagram to your local machine to be able to see it.
 ~~~
 $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_homologues/alg_intersection/*.svg .
 ~~~
