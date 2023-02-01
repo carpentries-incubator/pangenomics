@@ -303,13 +303,11 @@ $ plot_pancore_matrix.pl -i data_get_homologues/pan_genome_algBDBH.tab
 ~~~
 {: .output}
 
-Use the scp protocol to see the pan and core-genome plot
+Download the pan and core-genome plots to your local machine.
 ~~~
 $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_homologues/data_get_homologues/*_genome_algBDBH.tab_core_Tettelin.png
 ~~~
 {: .language-bash}
-
-Search the file in the browser on your computer.
 
 <a href="../fig/core_genome_algBDBH.tab_core_Tettelin.png">
   <img src="../fig/core_genome_algBDBH.tab_core_Tettelin.png" alt="Aquí va el texto que describe a la imagen." />
@@ -421,7 +419,7 @@ $ mv alg_intersection/pangenome_matrix_t0.phylip.ph alg_intersection/pangenome_m
 ~~~
 {: .language-bash}
 
-Use the scp protocol to download the cladogram and see on microreact
+Download the cladogram and see on microreact
 
 ~~~
 $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_homologues/alg_intersection/*nwk .
