@@ -50,9 +50,7 @@ models of protein families.
 > [Environment variables](https://opensource.com/article/19/8/what-are-environment-variables) are special variables that contain information about your login session. These can be useful when you want to [manage](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment) default or new settings that your system usually ignores. For instance, you can download a specific package with a downgraded version of perl if needed.
 {: .callout}
 
-Next, we need to change to the directory where we have the assembly (FASTA)
-files of interest. As a simple initial example of execution, we can annotate
-a FASTA file and define names for our output directory and files like this:
+First, we need to create a new directory where our annotated genomes will be.
 
 ~~~
 $ mkdir -p ~/gm_workshop/results/annotated/
@@ -62,7 +60,7 @@ $ conda activate Prokka_Global
 ~~~
 {: .language-bash}
 
-Once inside the environment, we are ready to run our first annotation  
+Once inside the environment, we are ready to run our first annotation.  
 ~~~
 (Prokka_Global) $
 ~~~
