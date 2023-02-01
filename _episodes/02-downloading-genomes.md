@@ -10,7 +10,7 @@ keypoints:
 - "The `ncbi-genome-download` package is a set of scripts to download genomes from the NCBI."
 ---
 
-## The `ncbi-genome-download` package: Getting Genomic Data from the NCBI
+## Getting Genomic Data from the NCBI
 
 The NCBI Genome Downloading Scripts provide a shell command that
 allows users to download genomes from the NCBI. This [package](https://github.com/kblin/ncbi-genome-download)
