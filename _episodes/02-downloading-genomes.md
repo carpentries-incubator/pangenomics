@@ -3,11 +3,11 @@ title: "Downloading Genomic Data"
 teaching: 30
 exercises: 15
 questions:
-- "How to download NCBI genomic data from the command line?"
+- "How to download public genomic data from the command line?"
 objectives:
-- "Explore ncbi-genome-download as a tool for genomic data fetching from the NCBI."
+- "Explore `ncbi-genome-download` as a tool for genomic data fetching from the NCBI."
 keypoints:
-- "The `ncbi-genome-download` package is a set of scripts to download genomes from the NCBI"
+- "The `ncbi-genome-download` package is a set of scripts to download genomes from the NCBI."
 ---
 
 ## The `ncbi-genome-download` package: Getting Genomic Data from the NCBI
