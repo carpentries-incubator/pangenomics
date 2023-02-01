@@ -3,15 +3,14 @@ title: "Annotating Genomic Data"
 teaching: 30
 exercises: 15
 questions:
-- "How to download NCBI genomic data from the command line?"
-- "How to annotate genome FASTA files?"
+- "How can I identify the genes in a genome?"
 objectives:
-- "Learn how to use the Prokka genome annotation utility."
+- "Annotate bacterial genomes using Prokka."
 keypoints:
 - "Prokka is a command line utility that provides rapid prokaryotic genome annotation."
 ---
 
-## Prokka: Annotating Genomes
+## Annotating Genomes
 
 [Annotation](https://en.wikipedia.org/wiki/DNA_annotation) is the process of
 identifying the coordinates of genes and all the coding regions
