@@ -13,7 +13,7 @@ keypoints:
 ## The `ncbi-genome-download` package: Getting Genomic Data from the NCBI
 
 The NCBI Genome Downloading Scripts provide a shell command that
-allows users to download genomes from the NCBI. This [package](https://github.com/kblin)
+allows users to download genomes from the NCBI. This [package](https://github.com/kblin/ncbi-genome-download)
 is highly useful, it enables to specify queries as much as it is desired. It simplifies
 the process of getting the data directly into the working directory. Firstly, activate
 the `ncbi-genome-download` Conda environment.  
