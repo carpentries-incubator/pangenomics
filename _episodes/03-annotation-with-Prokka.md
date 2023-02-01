@@ -72,7 +72,7 @@ In this example, we will use the following options:
 | ------- | ---------- |
 | --prefix | Filename output prefix [auto] (default '') |
 | --outdir | Output folder [auto] (default '') |
-| --kingdom | Annotation mode: Archaea|Bacteria|Mitochondria|Viruses (default 'Bacteria')|
+| --kingdom | Annotation mode: Archaea Bacteria Mitochondria Viruses (default 'Bacteria')|
 | --genus | Genus name (default 'Genus') |
 | --strain | Strain name (default 'strain') |
 | --usegenus | Use genus-specific BLAST databases (needs --genus) (default OFF) |
