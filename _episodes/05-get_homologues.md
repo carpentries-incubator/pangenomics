@@ -351,7 +351,7 @@ $ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_hom
 > {: .solution}
 {: .challenge}  
 
-## Step 4. Obtaining a pangenome matrix
+## Step 5. Obtaining a pangenome matrix
 Firstly, use the -t 0 option with COG ang OMCL algorithms to include all possible clusters, considering those which might not contain sequences from all input genomes (taxa)
 ~~~
 $ get_homologues.pl -d data_get -t 0 -M
@@ -404,7 +404,7 @@ data_get_homologues/Streptococcusagalactiae18RS21_f0_0taxa_algOMCL_e0_
 ~~~
 {: .output}
 
-## Step 5. Create a cladogram with our data
+## Step 6. Create a cladogram with our data
 
 Now create a cladogram with the file `pangenome_matrix_t0.phylip.ph`, which is one of the different versions of the same pangenome matrix. This version contains a tree in Newick format. Make sure that it is in Newick format and change the extension to visualize in microreact.org. Check with the head command:
 ~~~
