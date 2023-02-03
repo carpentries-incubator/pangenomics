@@ -21,10 +21,12 @@ Current maintainers of this lesson are
  
 * [Nelly Selem Mojica](https://github.com/nselem)
 * [Claudia Zirion Martinez](https://github.com/Czirion)
-* [Aaron Espinosa Jaime](https://github.com/aaronejaime)
+* [Shaday Guerrero Flores](https://github.com/shadayguerrero)
 * [Jose Abel Lovaco Flores](https://github.com/fabel134)
-* [Diego Garfias Gallegos](https://github.com/Bedxxe)
-... FIXME 💢
+* [Paulina Mayell Mejía Ponce](https://github.com/paumayell)
+* [Haydeé Peruyero](https://github.com/HaydeePeruyero)
+* [Marisol Navarro Miranda](https://github.com/solnavss)
+* [Úrsula Abad](https://github.com/aursula)
 
 ## Authors
 
