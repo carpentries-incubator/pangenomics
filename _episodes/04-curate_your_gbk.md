@@ -33,3 +33,29 @@ bash correctgbk.sh $file
 done
 ~~~
 {: .language-bash}
+
+
+> ## Annotating your assemblies
+>
+> If you work with your own assembled genomes, other problems may arise when annotating them. One likely problem is that the name of 
+> your contigs is very long, and since Prokka will use those names as the LOCUS names, the LOCUS names may turn out problematic.  
+> Example of contig name:
+> ~~~
+> NODE_1_length_44796_cov_57.856817
+> ~~~
+> Result of LOCUS name in `gbk` file:
+> ~~~
+> LOCUS       NODE_1_length_44796_cov_57.85681744796 bp   DNA linear
+> ~~~
+> Here the coverage and the length of the locus are fused, so this will give problems downstream in your analysis.  
+> 
+> The tool [anvi-script-reformat-fasta](https://anvio.org/help/main/programs/anvi-script-reformat-fasta/) can help you simplify the names 
+> of your assemblies and do other magic, such as remove the small contigs or sequences with too many gaps.  
+> ~~~
+> anvi-script-reformat-fasta my_new_assembly.fasta -o my_reformated_assembly.fasta --simplify-names
+> ~~~
+> {: .language-bash}
+> This will convert `>NODE_1_length_44796_cov_57.856817` into `>c_000000000001` and the LOCUS name into
+> `LOCUS       c_000000000001         44796 bp    DNA     linear`.  
+> Problem solved!
+{: .callout}
