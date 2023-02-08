@@ -107,7 +107,7 @@ $ ls
 
 To construct the first pangenome, several _Streptococcus_ strains were considered.
 Let us search the genome of _Streptoccocus agalactie 515_, one of the original strains.
-`ncbi-douwnload` tool required the strain 515 with the flag `-S 515`, the format selected
+`ncbi-download` tool required the strain 515 with the flag `-S 515`, the format selected
 will be fasta.  
 ~~~
 ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -n bacteria 
@@ -189,7 +189,9 @@ GCF_012593885.1_ASM1259388v1_genomic.fna
 {: .output}
 
 Now, you have _Streptococcus agalactiae 505_ genomic fasta file in a directory.
-But, three more strains were included 
+But, three more strains were included in Tettelin's first pangenome. It is the momment
+to practice what you learned about cicles in the shell lesson. Instead
+of download the genomes one by one, we will write a `while` cycle. 
 With the nano editor, create a file to add the other four strains that 
 Tettelin included in the first pangenome. The missing strains are A909, 
 COH1, and CJB111. Write one strain per line in the file and named it
@@ -211,8 +213,25 @@ CJB111
 ~~~
 {: .output}
 
+First, let us read the lines of Tettelin file. And print
+them in the terminal with the `echo strain $line` command.  
+strain is just a word that we will print, and $line will 
+store the value of each of the lines of Tettelin.txt file. 
+~~~
+cat TettelinList.txt |while read line; 
+do echo strain $line; 
+done
+~~~
+{: .language-bash}
+~~~
+strain A909  
+strain COH1  
+strain CJB111 
+~~~
+{: .output}
 
-
+Now, let us read the instruction of verify with a dry run
+if the genomes are available at NCBI. 
 ~~~
 cat TettelinList.txt |while read line; 
 do echo strain $line; 
@@ -220,11 +239,22 @@ ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $lin
 done
 ~~~
 {: .language-bash}
-~~~
+~~~ 
+strain A909  
+Considering the following 1 assemblies for download:  
+GCF_000012705.1 Streptococcus agalactiae A909   A909  
+strain COH1  
+Considering the following 1 assemblies for download:  
+GCF_000689235.1 Streptococcus agalactiae COH1   COH1  
+strain CJB111  
+Considering the following 2 assemblies for download:  
+GCF_000167755.1 Streptococcus agalactiae CJB111 CJB111  
+GCF_015221735.2 Streptococcus agalactiae CJB111 CJB111  
 ~~~
 {: .output}
 
-
+Genomes of the tree strains have been downloaded. Notice that
+strain CJB111 contains two versions. 
 ~~~
 cat TettelinList.txt |while read line; do echo strain $line; 
   ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -o agalactiae_$line bacteria ; 
@@ -232,11 +262,14 @@ done
 ~~~
 {: .language-bash}
 ~~~
+strain A909  
+strain COH1  
+strain CJB111 
 ~~~
 {: .output}
 
 
-
+Lets 
 ~~~
   $ cat TettelinList.txt | while read line  # Unzip files
    do 
