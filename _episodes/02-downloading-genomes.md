@@ -121,25 +121,75 @@ GCF_012593885.1 Streptococcus agalactiae 515    515
 
 
 Once that we know that the genome is available in NCBI,
-let us download its corresponding fasta file. With the flag 
--o we specified the destiny. 
+let us download its corresponding fasta file. The flag 
+`-o agalactie_515` specified agalactie 515 as the output directory. 
+Notice that the `-n` flag is not included in this command. This is because
+now we will donwloading the genome instead of finding if it is available
+in NCBI.  
 ~~~
-ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactie_515 -n bacteria ;
+ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactiae_515 -n bacteria 
 ~~~
 {: .language-bash}
-~~~
-~~~
-{: .output}
 
-
+Once the prompt `>` is available again, the command `tree` 
+will show the contents of the recently downloaded directory agalactiae_515.  
 ~~~
 tree agalactiae_515
 ~~~
 {: .language-bash}
 ~~~
+agalactiae_515
+└── refseq
+    └── bacteria
+        └── GCF_012593885.1
+            ├── GCF_012593885.1_ASM1259388v1_genomic.fna.gz
+            └── MD5SUMS
+
+3 directories, 2 files
 ~~~
 {: .output}
 
+
+The genome file GCF_012593885.1_ASM1259388v1_genomic.fna.gz 
+it is compressed file inside the directory
+`agalactiae_515/refseq/bacteria/GCF_012593885.1/`. Let us
+decompress the file with `gunzip` and visualize with tree
+to corroborate the file status.
+~~~
+gunzip agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna.gz
+tree agalactiae_515/
+~~~
+{: .language-bash}
+~~~
+agalactiae_515/
+└── refseq
+    └── bacteria
+        └── GCF_012593885.1
+            ├── GCF_012593885.1_ASM1259388v1_genomic.fna
+            └── MD5SUMS
+
+3 directories, 2 files
+~~~
+{: .output}
+
+
+GCF_012593885.1_ASM1259388v1_genomic.fna is now with `fna` extension
+which means is in nucleotide fasta format. Let us move the fasta to 
+agalactiae_515 directory and remove the extra content that we will not 
+use again in this lesson.  
+~~~
+mv agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna agalactiae_515/.
+rm -r agalactiae_515/refseq
+ls agalactiae_515/
+~~~
+{: .language-bash}   
+~~~ 
+GCF_012593885.1_ASM1259388v1_genomic.fna  
+~~~
+{: .output}
+
+Now, you have _Streptococcus agalactiae 505_ genomic fasta file in a directory.
+But, three more strains were included 
 With the nano editor, create a file to add the other four strains that 
 Tettelin included in the first pangenome. The missing strains are A909, 
 COH1, and CJB111. Write one strain per line in the file and named it
@@ -185,43 +235,6 @@ done
 ~~~
 {: .output}
 
-
-~~~
-tree agalactiae_515/
-~~~
-{: .language-bash}
-~~~
-~~~
-{: .output}
-
-
-~~~
-gunzip agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna.gz
-~~~
-{: .language-bash}
-~~~
-~~~
-{: .output}
-
-
-~~~
-tree agalactiae_515/
-~~~
-{: .language-bash}
-~~~
-~~~
-{: .output}
-
-
-~~~
-mv agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna agalactiae_515/.
-rm -r agalactiae_515/refseq
-ls agalactiae_515/
-~~~
-{: .language-bash}   
-~~~
-~~~
-{: .output}
 
 
 ~~~
