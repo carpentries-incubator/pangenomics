@@ -109,11 +109,19 @@ $ ls
 $ nano TettelinList.txt  
 ~~~
 {: .language-bash}
+~~~
+~~~
+{: .output}
+
 
 ~~~
 $ cat TettelinList.txt  
 ~~~
 {: .language-bash}
+~~~
+~~~
+{: .output}
+
 
 ~~~
 515  
@@ -122,22 +130,37 @@ COH1
 CJB111 
 ~~~
 {: .output}
+~~~
+~~~
+{: .output}
 
 
 ~~~
 ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -n bacteria ;
 ~~~
 {: .language-bash}
+~~~
+~~~
+{: .output}
+
 
 ~~~
 ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactie_515 -n bacteria ;
 ~~~
 {: .language-bash}
+~~~
+~~~
+{: .output}
+
 
 ~~~
 tree agalactiae_515
 ~~~
 {: .language-bash}
+~~~
+~~~
+{: .output}
+
 
 ~~~
 cat TettelinList.txt |while read line; 
@@ -146,6 +169,10 @@ ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $lin
 done
 ~~~
 {: .language-bash}
+~~~
+~~~
+{: .output}
+
 
 ~~~
 cat TettelinList.txt |while read line; do echo strain $line; 
@@ -153,22 +180,36 @@ cat TettelinList.txt |while read line; do echo strain $line;
 done
 ~~~
 {: .language-bash}
+~~~
+~~~
+{: .output}
+
 
 ~~~
 tree agalactiae_515/
 ~~~
 {: .language-bash}
+~~~
+~~~
+{: .output}
+
 
 ~~~
 gunzip agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna.gz
 ~~~
 {: .language-bash}
+~~~
+~~~
+{: .output}
 
 
 ~~~
 tree agalactiae_515/
 ~~~
 {: .language-bash}
+~~~
+~~~
+{: .output}
 
 
 ~~~
@@ -177,6 +218,10 @@ rm -r agalactiae_515/refseq
 ls agalactiae_515/
 ~~~
 {: .language-bash}   
+~~~
+~~~
+{: .output}
+
 
 ~~~
   $ cat TettelinList.txt | while read line  # Unzip files
@@ -186,6 +231,10 @@ ls agalactiae_515/
    done
  ~~~
 {: .language-bash}
+~~~
+~~~
+{: .output}
+
 
 ~~~
   cat TettelinList.txt |while read line; 
@@ -197,10 +246,17 @@ ls agalactiae_515/
 {: .language-bash}
 
 ~~~
+~~~
+{: .output}
+
+
+~~~
   tree aga*
 ~~~
 {: .language-bash}
 
+~~~
+~~~
 {: .output}
 
 Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek
