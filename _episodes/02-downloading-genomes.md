@@ -256,9 +256,10 @@ GCF_015221735.2 Streptococcus agalactiae CJB111 CJB111
 Genomes of the tree strains have been downloaded. Notice that
 strain CJB111 contains two versions. 
 ~~~
-cat TettelinList.txt |while read line; do echo strain $line; 
-  ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -o agalactiae_$line bacteria ; 
-done
+$ cat TettelinList.txt |while read line; 
+> do echo downloading strain $line; 
+>  ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -o agalactiae_$line bacteria ; 
+> done
 ~~~
 {: .language-bash}
 ~~~
@@ -269,36 +270,32 @@ strain CJB111
 {: .output}
 
 
-Lets 
+Let us decompress all files. 
 ~~~
   $ cat TettelinList.txt | while read line  # Unzip files
-   do 
-    echo strain $line
-    gunzip agalactiae_$line/refseq/bacteria/*/*gz 
-   done
+  > do 
+  >  echo decompressing file $line
+  >  gunzip agalactiae_$line/refseq/bacteria/*/*gz 
+  > done
  ~~~
 {: .language-bash}
 ~~~
 ~~~
 {: .output}
 
-
+Finally the while cycle will help us to remove unnecessary directories.  
 ~~~
-  cat TettelinList.txt |while read line; 
-  do echo strain $line
-    mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. 
-    rm -r agalactiae_$line/refseq    # remove extra directory
-    done
+ $ cat TettelinList.txt |while read line; 
+ > do 
+ >   echo strain $line
+ >   mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. 
+ >   rm -r agalactiae_$line/refseq    # remove extra directory
+ > done
  ~~~
 {: .language-bash}
 
 ~~~
-~~~
-{: .output}
-
-
-~~~
-  tree aga*
+  tree agalactie*
 ~~~
 {: .language-bash}
 
