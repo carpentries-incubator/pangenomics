@@ -101,24 +101,28 @@ $ ls
 {: .language-bash}
 
 ~~~
-18RS21/  H36B/
+18RS21/   antismash_db.csv  H36B/
 ~~~
 {: .output}
 
 To construct the first pangenome, several _Streptococcus_ strains were considered.
-Let us download the genome of _Streptoccocus agalactie 515_, one of the original strains.
+Let us search the genome of _Streptoccocus agalactie 515_, one of the original strains.
 `ncbi-douwnload` tool required the strain 515 with the flag `-S 515`, the format selected
 will be fasta.  
 ~~~
-ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -n bacteria ;
+ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -n bacteria 
 ~~~
 {: .language-bash}
 ~~~
-
+Considering the following 1 assemblies for download:
+GCF_012593885.1 Streptococcus agalactiae 515    515
 ~~~
 {: .output}
 
 
+Once that we know that the genome is available in NCBI,
+let us download its corresponding fasta file. With the flag 
+-o we specified the destiny. 
 ~~~
 ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactie_515 -n bacteria ;
 ~~~
