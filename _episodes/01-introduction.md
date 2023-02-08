@@ -85,11 +85,17 @@ For this lesson purposes, we selected six *Streptococcus agalactiae* genomes.
 > {: .language-bash}
 >
 > ~~~
->  ...
->   inflating: dc_workshop/data/COH1/Streptococcus_agalactiae_COH1.gbk  
->   creating: dc_workshop/data/H36B/
->  inflating: dc_workshop/data/H36B/Streptococcus_agalactiae_H36B.fasta  
->  inflating: dc_workshop/data/H36B/Streptococcus_agalactiae_H36B.gbk  
+> Archive:  pan_workshop.zip  
+>   creating: pan_workshop/  
+>   creating: pan_workshop/pan_workshop/  
+>   creating: pan_workshop/pan_workshop/data/  
+>  inflating: pan_workshop/pan_workshop/data/antismash_db.csv    
+>   creating: pan_workshop/pan_workshop/data/H36B/    
+>  inflating: pan_workshop/pan_workshop/data/H36B/Streptococcus_agalactiae_H36B.fasta    
+>  inflating: pan_workshop/pan_workshop/data/H36B/Streptococcus_agalactiae_H36B.gbk    
+>   creating: pan_workshop/pan_workshop/data/18RS21/  
+>  inflating: pan_workshop/pan_workshop/data/18RS21/Streptococcus_agalactiae_18RS21.gbk    
+>  inflating: pan_workshop/pan_workshop/data/18RS21/Streptococcus_agalactiae_18RS21.fasta     
 > ~~~
 > {: .output}
 {: .checklist}
