@@ -3,7 +3,7 @@ title: "Introduction to Pangenomics"
 teaching: 10
 exercises: 10
 questions:
-- "What is the origin of the term **pangenome**"
+- "What is a **pangenome**?" 
 - "What kind of biological data are analyzed in a pangenome?"
 - "Which factors affect the structure of a pangenome?"
 objectives:
@@ -79,7 +79,8 @@ For this lesson purposes, we selected six *Streptococcus agalactiae* genomes.
 >
 > ~~~
 > $ cd ~
-> $ wget https://zenodo.org/record/7620503/files/pan_workshop.zip?download=1
+> $ wget https://zenodo.org/record/7620504/files/pan_workshop.zip?download=1
+> mv pan_workshop.zip?download=1 pan_workshop.zip
 > $ unzip pan_workshop.zip
 > ~~~
 > {: .language-bash}
