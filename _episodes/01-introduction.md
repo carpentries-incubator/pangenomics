@@ -79,8 +79,8 @@ For this lesson purposes, we selected six *Streptococcus agalactiae* genomes.
 >
 > ~~~
 > $ cd ~
-> $ wget https://zenodo.org/record/6636296/files/gm_workshop.zip
-> $ unzip gm_workshop.zip
+> $ wget https://zenodo.org/record/7620503/files/pan_workshop.zip?download=1
+> $ unzip pan_workshop.zip
 > ~~~
 > {: .language-bash}
 >
