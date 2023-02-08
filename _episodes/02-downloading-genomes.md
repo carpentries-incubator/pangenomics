@@ -127,7 +127,7 @@ Notice that the `-n` flag is not included in this command. This is because
 now we will donwloading the genome instead of finding if it is available
 in NCBI.  
 ~~~
-ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactiae_515 -n bacteria 
+ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactiae_515 bacteria 
 ~~~
 {: .language-bash}
 
