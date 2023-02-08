@@ -105,41 +105,16 @@ $ ls
 ~~~
 {: .output}
 
-~~~
-$ nano TettelinList.txt  
-~~~
-{: .language-bash}
-~~~
-~~~
-{: .output}
-
-
-~~~
-$ cat TettelinList.txt  
-~~~
-{: .language-bash}
-~~~
-~~~
-{: .output}
-
-
-~~~
-515  
-A909  
-COH1  
-CJB111 
-~~~
-{: .output}
-~~~
-~~~
-{: .output}
-
-
+To construct the first pangenome, several _Streptococcus_ strains were considered.
+Let us download the genome of _Streptoccocus agalactie 515_, one of the original strains.
+`ncbi-douwnload` tool required the strain 515 with the flag `-S 515`, the format selected
+will be fasta.  
 ~~~
 ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -n bacteria ;
 ~~~
 {: .language-bash}
 ~~~
+
 ~~~
 {: .output}
 
@@ -160,6 +135,28 @@ tree agalactiae_515
 ~~~
 ~~~
 {: .output}
+
+With the nano editor, create a file to add the other four strains that 
+Tettelin included in the first pangenome. The missing strains are A909, 
+COH1, and CJB111. Write one strain per line in the file and named it
+"TettelinList.txt"  
+~~~
+$ nano TettelinList.txt  
+~~~
+{: .language-bash}
+
+Visualize "Tettelin.txt" contents with the `cat` command. 
+~~~
+$ cat TettelinList.txt  
+~~~
+{: .language-bash}
+~~~
+A909  
+COH1  
+CJB111 
+~~~
+{: .output}
+
 
 
 ~~~
