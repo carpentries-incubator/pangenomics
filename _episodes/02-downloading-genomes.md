@@ -85,7 +85,7 @@ it could be because you are in `base` and not inside the `ncbi-genome-download`
 Conda environment. Once inside the environment we are ready to use the package.
 Next, we need to go to our data directory.
 ~~~
-$ cd ~/gm_workshop/data
+$ cd ~/pan_workshop/data
 ~~~
 {: .language-bash}
 
@@ -101,8 +101,106 @@ $ ls
 {: .language-bash}
 
 ~~~
-18RS21/  515/  A909/  COH1/  CJB111/  H36B/
+18RS21/  H36B/
 ~~~
+{: .output}
+
+~~~
+$ nano TettelinList.txt  
+~~~
+{: .language-bash}
+
+~~~
+$ cat TettelinList.txt  
+~~~
+{: .language-bash}
+
+~~~
+515  
+A909  
+COH1  
+CJB111 
+~~~
+{: .output}
+
+
+~~~
+ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -n bacteria ;
+~~~
+{: .language-bash}
+
+~~~
+ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactie_515 -n bacteria ;
+~~~
+{: .language-bash}
+
+~~~
+tree agalactiae_515
+~~~
+{: .language-bash}
+
+~~~
+cat TettelinList.txt |while read line; 
+do echo strain $line; 
+ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -n bacteria ;
+done
+~~~
+{: .language-bash}
+
+~~~
+cat TettelinList.txt |while read line; do echo strain $line; 
+  ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -o agalactiae_$line bacteria ; 
+done
+~~~
+{: .language-bash}
+
+~~~
+tree agalactiae_515/
+~~~
+{: .language-bash}
+
+~~~
+gunzip agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna.gz
+~~~
+{: .language-bash}
+
+
+~~~
+tree agalactiae_515/
+~~~
+{: .language-bash}
+
+
+~~~
+mv agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna agalactiae_515/.
+rm -r agalactiae_515/refseq
+ls agalactiae_515/
+~~~
+{: .language-bash}   
+
+~~~
+  $ cat TettelinList.txt | while read line  # Unzip files
+   do 
+    echo strain $line
+    gunzip agalactiae_$line/refseq/bacteria/*/*gz 
+   done
+ ~~~
+{: .language-bash}
+
+~~~
+  cat TettelinList.txt |while read line; 
+  do echo strain $line
+    mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. 
+    rm -r agalactiae_$line/refseq    # remove extra directory
+    done
+ ~~~
+{: .language-bash}
+
+~~~
+  tree aga*
+~~~
+{: .language-bash}
+
 {: .output}
 
 Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek
