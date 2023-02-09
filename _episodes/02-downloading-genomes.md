@@ -294,7 +294,7 @@ Finally the while cycle will help us to remove unnecessary directories.
  > do 
  > echo removing refseq directory of strain $line
  > mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. # Move file to current directory 
- > rm -r agalactiae_$line/refseq    # remove extra directory # Remove refseq directory
+ > rm -r agalactiae_$line/refseq  # Remove refseq directory
  > done
  ~~~
 {: .language-bash}
