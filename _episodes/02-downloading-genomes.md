@@ -101,7 +101,7 @@ $ ls
 {: .language-bash}
 
 ~~~
-18RS21/   antismash_db.csv  H36B/
+18RS21  H36B
 ~~~
 {: .output}
 
