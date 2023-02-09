@@ -494,16 +494,36 @@ drwxr-xr-x 2 alumno17 alumno17	4096 Jun 13 15:26 thermophilusLMG18311
 {: .output}
 
 
-> ## Discussion
->  Until now we have downloaded only one file at a time. How would you look for several
->  genomes at the same time?
+> ## Exercise 1: Unknown strains
+>  Until now we have downloaded only specific strains that we were looking for. Write a command that would tell you which genomes are 
+>  available for all the *Streptococcus* genus.
+>
+> **Bonus**: Make a file with the output of your search.
+> 
 > > ## Solution
-> > One idea would be to look for all the genomes in one genera such as _Streptococcus_
+> > Use the `-n` flag to make it a dry run. 
+> > Search only for the genus *Streptococcus* without using the strain flag.
 > > ~~~
-> > $  ncbi-genome-download -F fasta --genera "Streptococcus " -n bacteria
+> > $  ncbi-genome-download -F fasta --genera "Streptococcus" -n bacteria
 > > ~~~
 > > {: .language-bash}
-> >
+> > ~~~
+> > Considering the following 18331 assemblies for download:
+> > GCF_000959925.1	Streptococcus gordonii	G9B
+> > GCF_000959965.1	Streptococcus gordonii	UB10712
+> > GCF_000963345.1	Streptococcus gordonii	I141
+> > GCF_000970665.2	Streptococcus gordonii	IE35
+> > .
+> > .
+> > .
+> > ~~~
+> > {: .output}
+> > **Bonus**: Redirect your command output to a file with the `>` command.
+> > ~~~
+> > $  ncbi-genome-download -F fasta --genera "Streptococcus" -n bacteria > streptococcus_available_genomes.txt
+> > ~~~
+> > {: .language-bash}
+> > 
 > {: .solution}
 {: .challenge}
 
