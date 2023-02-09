@@ -110,7 +110,7 @@ Let us search the genome of _Streptoccocus agalactie 515_, one of the original s
 `ncbi-download` tool required the strain 515 with the flag `-S 515`, the format selected
 will be fasta.  
 ~~~
-ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -n bacteria 
+$ ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -n bacteria 
 ~~~
 {: .language-bash}
 ~~~
@@ -127,14 +127,14 @@ Notice that the `-n` flag is not included in this command. This is because
 now we will donwloading the genome instead of finding if it is available
 in NCBI.  
 ~~~
-ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactiae_515 bacteria 
+$ ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactiae_515 bacteria 
 ~~~
 {: .language-bash}
 
 Once the prompt `>` is available again, the command `tree` 
 will show the contents of the recently downloaded directory agalactiae_515.  
 ~~~
-tree agalactiae_515
+$ tree agalactiae_515
 ~~~
 {: .language-bash}
 ~~~
@@ -156,8 +156,8 @@ it is compressed file inside the directory
 decompress the file with `gunzip` and visualize with tree
 to corroborate the file status.
 ~~~
-gunzip agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna.gz
-tree agalactiae_515/
+$ gunzip agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna.gz
+$ tree agalactiae_515/
 ~~~
 {: .language-bash}
 ~~~
@@ -178,9 +178,9 @@ which means is in nucleotide fasta format. Let us move the fasta to
 agalactiae_515 directory and remove the extra content that we will not 
 use again in this lesson.  
 ~~~
-mv agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna agalactiae_515/.
-rm -r agalactiae_515/refseq
-ls agalactiae_515/
+$ mv agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna agalactiae_515/.
+$ rm -r agalactiae_515/refseq
+$ ls agalactiae_515/
 ~~~
 {: .language-bash}   
 ~~~ 
@@ -218,9 +218,9 @@ them in the terminal with the `echo strain $line` command.
 strain is just a word that we will print, and $line will 
 store the value of each of the lines of Tettelin.txt file. 
 ~~~
-cat TettelinList.txt |while read line; 
-do echo strain $line; 
-done
+$ cat TettelinList.txt | while read line 
+> do echo strain $line
+> done
 ~~~
 {: .language-bash}
 ~~~
@@ -233,10 +233,11 @@ strain CJB111
 Now, let us read the instruction of verify with a dry run
 if the genomes are available at NCBI. 
 ~~~
-cat TettelinList.txt |while read line; 
-do echo strain $line; 
-ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -n bacteria ;
-done
+$ cat TettelinList.txt | while read line; 
+> do
+> echo strain $line
+> ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -n bacteria
+> done
 ~~~
 {: .language-bash}
 ~~~ 
@@ -256,53 +257,73 @@ GCF_015221735.2 Streptococcus agalactiae CJB111 CJB111
 Genomes of the tree strains have been downloaded. Notice that
 strain CJB111 contains two versions. 
 ~~~
-$ cat TettelinList.txt |while read line; 
-> do echo downloading strain $line; 
->  ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -o agalactiae_$line bacteria ; 
+$ cat TettelinList.txt | while read line 
+> do
+> echo downloading strain $line
+> ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -o agalactiae_$line bacteria
 > done
 ~~~
 {: .language-bash}
 ~~~
-strain A909  
-strain COH1  
-strain CJB111 
+downloading strain A909
+downloading strain COH1
+downloading strain CJB111
 ~~~
 {: .output}
 
 
 Let us decompress all files. 
 ~~~
-  $ cat TettelinList.txt | while read line  # Unzip files
-  > do 
-  >  echo decompressing file $line
-  >  gunzip agalactiae_$line/refseq/bacteria/*/*gz 
-  > done
+$ cat TettelinList.txt | while read line  
+> do 
+> echo decompressing file $line
+> gunzip agalactiae_$line/refseq/bacteria/*/*gz # Unzip files
+> done
  ~~~
 {: .language-bash}
 ~~~
+decompressing file A909
+decompressing file COH1
+decompressing file CJB111
 ~~~
 {: .output}
 
 Finally the while cycle will help us to remove unnecessary directories.  
 ~~~
- $ cat TettelinList.txt |while read line; 
+ $ cat TettelinList.txt | while read line
  > do 
- >   echo strain $line
- >   mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. 
- >   rm -r agalactiae_$line/refseq    # remove extra directory
+ > echo removing refseq directory of strain $line
+ > mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. # Move file to current directory 
+ > rm -r agalactiae_$line/refseq    # remove extra directory # Remove refseq directory
  > done
  ~~~
 {: .language-bash}
+~~~
+removing refseq directory of strain A909
+removing refseq directory of strain COH1
+removing refseq directory of strain CJB111
+~~~
+{: .output}
 
 ~~~
-  tree agalactie*
+$ tree agalactiae_*
 ~~~
 {: .language-bash}
 
 ~~~
+agalactiae_515
+└── GCF_012593885.1_ASM1259388v1_genomic.fna
+agalactiae_A909
+└── GCF_000012705.1_ASM1270v1_genomic.fna
+agalactiae_CJB111
+├── GCF_000167755.1_ASM16775v1_genomic.fna
+└── GCF_015221735.2_ASM1522173v2_genomic.fna
+agalactiae_COH1
+└── GCF_000689235.1_GBCO_p1_genomic.fna
 ~~~
 {: .output}
 
+## FIXME 💢
 Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek
 is available in the database and its content. Include
 the `-n` flag within your command to avoid this information to be downloaded. For instance, if we wish to check the availability of the genome of the
