@@ -106,9 +106,11 @@ $ ls
 {: .output}
 
 To construct the first pangenome, several _Streptococcus_ strains were considered.
-Let us search the genome of _Streptoccocus agalactie 515_, one of the original strains.
-`ncbi-download` tool required the strain 515 with the flag `-S 515`, the format selected
-will be fasta.  
+Let's search the genome of _Streptoccocus agalactie 515_, one of the original strains.    
+Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek
+is available in the database and its content. Include
+the `-n` flag within your command to do a "dry-run", which means to show the available accessions instead of downloading them.
+Uste the flag `--formats` to specify the desired format, `--genera` to specify the genus, and `-S` for the strain. The `ncbi-genome-download` allways ends with the group of organisms, in our case `bacteria`.
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -n bacteria 
 ~~~
@@ -119,20 +121,20 @@ GCF_012593885.1 Streptococcus agalactiae 515    515
 ~~~
 {: .output}
 
-
 Once that we know that the genome is available in NCBI,
 let us download its corresponding fasta file. The flag 
 `-o agalactie_515` specified agalactie 515 as the output directory. 
 Notice that the `-n` flag is not included in this command. This is because
-now we will donwloading the genome instead of finding if it is available
+now we will downloading the genome instead of finding if it is available
 in NCBI.  
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactiae_515 bacteria 
 ~~~
 {: .language-bash}
 
-Once the prompt `>` is available again, the command `tree` 
-will show the contents of the recently downloaded directory agalactiae_515.  
+
+Once the prompt `>` is available again, use the command `tree` 
+to show the contents of the recently downloaded directory agalactiae_515.  
 ~~~
 $ tree agalactiae_515
 ~~~
@@ -150,10 +152,10 @@ agalactiae_515
 {: .output}
 
 
-The genome file GCF_012593885.1_ASM1259388v1_genomic.fna.gz 
+The genome file `GCF_012593885.1_ASM1259388v1_genomic.fna.gz` 
 it is compressed file inside the directory
-`agalactiae_515/refseq/bacteria/GCF_012593885.1/`. Let us
-decompress the file with `gunzip` and visualize with tree
+`agalactiae_515/refseq/bacteria/GCF_012593885.1/`. Let's
+decompress the file with `gunzip` and visualize with `tree`
 to corroborate the file status.
 ~~~
 $ gunzip agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna.gz
@@ -173,7 +175,7 @@ agalactiae_515/
 {: .output}
 
 
-GCF_012593885.1_ASM1259388v1_genomic.fna is now with `fna` extension
+`GCF_012593885.1_ASM1259388v1_genomic.fna` is now with `fna` extension
 which means is in nucleotide fasta format. Let us move the fasta to 
 agalactiae_515 directory and remove the extra content that we will not 
 use again in this lesson.  
@@ -322,63 +324,6 @@ agalactiae_COH1
 └── GCF_000689235.1_GBCO_p1_genomic.fna
 ~~~
 {: .output}
-
-## FIXME 💢
-Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek
-is available in the database and its content. Include
-the `-n` flag within your command to avoid this information to be downloaded. For instance, if we wish to check the availability of the genome of the
-LMD-9 strain of the *Streptococcus thermophilus* bacterium in FASTA format, we would type the following:
-
-~~~
-$ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -n bacteria
-~~~
-{: .language-bash}
-
-~~~
-Considering the following 1 assemblies for download:
-GCF_000014485.1 Streptococcus thermophilus LMD-9    	LMD-9
-~~~
-{: .output}
-
-As you can see, there is one assembly available assigned to the number `GCF_000014485.1`.
-We proceed to download it to an output directory named `thermophilusLMD9`:
-
-~~~
-$ ncbi-genome-download --formats fasta --genera "Streptococcus thermophilus" -S LMD-9 -o thermophilusLMD9 bacteria
-~~~
-{: .language-bash}
-
-This script downloads a compressed FASTA file into a specific set of directories:
-
-~~~
-$ tree thermophilusLMD9/
-~~~
-{: .language-bash}
-
-~~~
-thermophilusLMD9/
-└── refseq
-	└── bacteria
-    	└── GCF_000014485.1
-        	├── GCF_000014485.1_ASM1448v1_genomic.fna.gz
-        	└── MD5SUMS
-~~~
-{: .output}
-
-In order to view it, we must decompress it using `gunzip`:
-
-~~~
-$ gunzip thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_000014485.1_ASM1448v1_genomic.fna.gz
-~~~
-{: .language-bash}
-
-Now we can explore the file and move it to the main directory `thermophilusLMD9`, and delete the `refseq` directory as it is not longer needed:
-
-```
-$ mv thermophilusLMD9/refseq/bacteria/GCF_000014485.1/GCF_000014485.1_ASM1448v1_genomic.fna thermophilusLMD9/
-$ rm -r thermophilusLMD9/refseq
-```
-{: .language-bash}
 
 
 > ## Downloading specific formats
