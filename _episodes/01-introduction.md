@@ -79,26 +79,11 @@ For this lesson purposes, we selected six *Streptococcus agalactiae* genomes.
 >
 > ~~~
 > $ cd ~
-> $ wget https://zenodo.org/record/7620704/files/pan_workshop.zip?download=1  
-> mv pan_workshop.zip?download=1 pan_workshop.zip  
-> $ unzip pan_workshop.zip  
+> $ wget https://zenodo.org/record/7620704/files/pan_workshop.zip?download=1
+> $ unzip 'pan_workshop.zip?download=1'
+> $ rm 'pan_workshop.zip?download=1'
 > ~~~
 > {: .language-bash}
->
-> ~~~
-> Archive:  pan_workshop.zip  
->   creating: pan_workshop/  
->   creating: pan_workshop/pan_workshop/  
->   creating: pan_workshop/pan_workshop/data/  
->  inflating: pan_workshop/pan_workshop/data/antismash_db.csv    
->   creating: pan_workshop/pan_workshop/data/H36B/    
->  inflating: pan_workshop/pan_workshop/data/H36B/Streptococcus_agalactiae_H36B.fasta    
->  inflating: pan_workshop/pan_workshop/data/H36B/Streptococcus_agalactiae_H36B.gbk    
->   creating: pan_workshop/pan_workshop/data/18RS21/  
->  inflating: pan_workshop/pan_workshop/data/18RS21/Streptococcus_agalactiae_18RS21.gbk    
->  inflating: pan_workshop/pan_workshop/data/18RS21/Streptococcus_agalactiae_18RS21.fasta     
-> ~~~
-> {: .output}
 {: .checklist}
 
 {% include links.md %}
