@@ -57,7 +57,7 @@ together form a clade.
 
 ## The *Streptococcus agalactiae* dataset
 
-For this lesson, we will be working with the six *Streptococcus agalactiae* strains that were included in the first pangenome made by *Tettelin *et al., 2005*. The genomes of the strains 18RS21 and H36B are already in our `pan_workshop/data`, but the other ones will be downloaded and annotated in the following episodes.
+For this lesson, we will be working with the six *Streptococcus agalactiae* strains that were included in the first pangenome made by *Tettelin et al., 2005*. The genomes of the strains 18RS21 and H36B are already in our `pan_workshop/data`, but the other ones will be downloaded and annotated in the following episodes.
 
 
 **Metadata**
