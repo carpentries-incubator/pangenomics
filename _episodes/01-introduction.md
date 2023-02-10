@@ -55,22 +55,22 @@ together form a clade.
    <img src="{{ page.root }}/fig/01-01-02.png" alt="Cladogram indicating in blue and red two clades or monophyletic groups and in green a paraphyletic group" />
   </a>
 
-## Brief description of *Streptococcus agalactiae* dataset
+## The *Streptococcus agalactiae* dataset
 
-For this lesson purposes, we selected six *Streptococcus agalactiae* genomes.
-
-
-**Selected genomes**
+For this lesson, we will be working with the six *Streptococcus agalactiae* strains that were included in the first pangenome made by *Tettelin *et al., 2005*. The genomes of the strains 18RS21 and H36B are already in our `pan_workshop/data`, but the other ones will be downloaded and annotated in the following episodes.
 
 
-| Organism            	| Host	| Serotype   | Country 	| SRA accession number |
-|-------------------------|---------|------------|-------------|---------------------|
-|*S. agalactiae*  18RS21  | Human   |        	|         	|                 	|
-|*S. agalactiae*  515 	| Human   |        	|         	|                 	|
-|*S. agalactiae*  A909	| Human   |        	|         	|                 	|
-|*S. agalactiae*  CJB111  | Human   |        	|         	|                 	|
-|*S. agalactiae*  COH1	| Human   |        	|         	|                 	|
-|*S. agalactiae*  H36B	| Human   |        	|         	|                 	|
+**Metadata**
+
+
+|Strain	| Host	| Serotype   |
+|-------------------------|---------|------------|
+|*S. agalactiae*  18RS21  | Human   | II       	|
+|*S. agalactiae*  515 	| Human   | Ia       	|
+|*S. agalactiae*  A909	| Human   | Ia       	|
+|*S. agalactiae*  CJB111  | Human   | V       	|
+|*S. agalactiae*  COH1	| Human   | III       	|
+|*S. agalactiae*  H36B	| Human   | Ib       	|
 
 
 
