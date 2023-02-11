@@ -346,7 +346,7 @@ agalactiae_COH1
 >  can be downloaded by specifying our queries with `--format genbank`.
 {: .callout}
 
-> ## Exercise 1: Downloading data from NCBI using the command line
+> ## Exercise 1: Downloading data from NCBI using the command line FIXME
 >
 > To download the genome of another strain of *S. thermophilus* we need to perform the following steps:
 >
@@ -422,8 +422,6 @@ agalactiae_COH1
 > {: .solution}
 {: .challenge}
 
-Make sure you have downloaded both strains of *S. thermophilus*, LMD-9 and LMG 18311,
-as they will be required in upcoming episodes.   
 
 Finally, it is a good practice
 to keep your raw data untouched, taking this into account you can remove the writing
