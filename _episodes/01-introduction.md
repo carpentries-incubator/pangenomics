@@ -59,7 +59,8 @@ together form a clade.
 
 > ## Exercise 1: Select strains
 >  To construct a Pangenome with several species that includes _S. agalactiae_ Which strains would you select ?
->  
+>  cladograma_streptococcus.png
+>  <a href="{{ page.root }}/fig/cladograma_streptococcus.png"><img src="{{ page.root }}/fig/cladograma_streptococcus.png" alt="Cladogram indicating _Streptococcus_ phylogeny" /></a>
 >  A) Only _S. agalactie_ can be chosen
 >  B) _S. urinalis_, _S. canis_, _S.poricuns_
 >  C)
