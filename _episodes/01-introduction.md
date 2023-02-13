@@ -55,6 +55,22 @@ together form a clade.
    <img src="{{ page.root }}/fig/01-01-02.png" alt="Cladogram indicating in blue and red two clades or monophyletic groups and in green a paraphyletic group" />
   </a>
 
+
+
+> ## Exercise 1: Select strains
+>  To construct a Pangenome with several species that includes _S. agalactiae_ Which strains would you select ?
+>  
+>  A) Only _S. agalactie_ can be chosen
+>  B) _S. urinalis_, _S. canis_, _S.poricuns_
+>  C)
+>  
+> > ## Solution
+> > FIXME 
+> >
+> > 
+> {: .solution}
+{: .challenge}
+
 ## The *Streptococcus agalactiae* dataset
 
 For this lesson, we will be working with the six *Streptococcus agalactiae* strains that were included in the first pangenome made by *Tettelin et al., 2005*. The genomes of the strains 18RS21 and H36B are already in our `pan_workshop/data`, but the other ones will be downloaded and annotated in the following episodes.
