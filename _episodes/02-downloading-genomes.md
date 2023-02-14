@@ -239,6 +239,8 @@ $ cat TettelinList.txt | while read line
 strain A909  
 strain COH1  
 strain CJB111 
+strain NEM316
+strain 2603V/R
 ~~~
 {: .output}
 
@@ -264,6 +266,8 @@ strain CJB111
 Considering the following 2 assemblies for download:  
 GCF_000167755.1 Streptococcus agalactiae CJB111 CJB111  
 GCF_015221735.2 Streptococcus agalactiae CJB111 CJB111  
+strain NEM316
+strain 2603V/R
 ~~~
 {: .output}
 
@@ -286,6 +290,8 @@ $ cat TettelinList.txt | while read line
 downloading strain A909
 downloading strain COH1
 downloading strain CJB111
+downloading strain NEM316
+downloading strain 2603V/R
 ~~~
 {: .output}
 
@@ -314,6 +320,8 @@ get rid of unnecessary directories. To do so, we'll use a `while` cycle as follo
 removing refseq directory of strain A909
 removing refseq directory of strain COH1
 removing refseq directory of strain CJB111
+removing refseq directory of strain NEM316
+removing refseq directory of strain 2603V/R
 ~~~
 {: .output}
 
