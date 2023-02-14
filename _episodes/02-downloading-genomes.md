@@ -267,7 +267,11 @@ Considering the following 2 assemblies for download:
 GCF_000167755.1 Streptococcus agalactiae CJB111 CJB111  
 GCF_015221735.2 Streptococcus agalactiae CJB111 CJB111  
 strain NEM316
+Considering the following 1 assemblies for download:
+GCF_000196055.1 Streptococcus agalactiae NEM316 NEM316
 strain 2603V/R
+Considering the following 1 assemblies for download:
+GCF_000007265.1 Streptococcus agalactiae 2603V/R        2603V/R
 ~~~
 {: .output}
 
