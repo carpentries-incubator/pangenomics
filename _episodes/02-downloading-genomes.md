@@ -219,6 +219,8 @@ $ cat TettelinList.txt
 A909  
 COH1  
 CJB111 
+NEM316
+2603V/R
 ~~~
 {: .output}
 
