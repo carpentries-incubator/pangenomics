@@ -308,7 +308,75 @@ $ gunzip agalactiae_*/refseq/bacteria/*/*gz
  ~~~
 {: .language-bash}
 
-Finally, we need to move the genome files to their corresponding locations and
+Let us visualize the structure of the results
+~~~
+$ tree agalactiae_*
+~~~
+{: .language-bash}
+
+~~~
+agalactiae_2603V
+└── R
+    └── refseq
+        └── bacteria
+            └── GCF_000007265.1
+                ├── GCF_000007265.1_ASM726v1_genomic.fna.gz
+                └── MD5SUMS
+agalactiae_A909
+└── refseq
+    └── bacteria
+        └── GCF_000012705.1
+            ├── GCF_000012705.1_ASM1270v1_genomic.fna
+            └── MD5SUMS
+agalactiae_CJB111
+└── refseq
+    └── bacteria
+        ├── GCF_000167755.1
+        │   ├── GCF_000167755.1_ASM16775v1_genomic.fna
+        │   └── MD5SUMS
+        └── GCF_015221735.2
+            ├── GCF_015221735.2_ASM1522173v2_genomic.fna
+            └── MD5SUMS
+agalactiae_COH1
+└── refseq
+    └── bacteria
+        └── GCF_000689235.1
+            ├── GCF_000689235.1_GBCO_p1_genomic.fna
+            └── MD5SUMS
+agalactiae_NEM316
+└── refseq
+    └── bacteria
+        └── GCF_000196055.1
+            ├── GCF_000196055.1_ASM19605v1_genomic.fna
+            └── MD5SUMS
+
+3 directories, 2 files
+~~~
+{: .output}
+
+We noticed that all fasta files but  GCF_000007265.1_ASM726v1_genomic.fna.gz has been decompressed.
+That decompression failure was because 2603V/R strain has a different directory structure. This structure
+is consequence of the name of the strain since  the characters "\R" is part of the name
+the directory `R` has been added to the output changing the directory structure.
+Differences like this are expected to occur in big data sets, and must be manually
+curated after the general cases has been treated with scripts. In this case the `tree`
+command has helped us to identify that the error. Let us decompress the file 
+GCF_000007265.1_ASM726v1_genomic.fna.gz and move it to the agalactiae_2603V directory.
+
+~~~
+$  gunzip agalactiae_2603V/R/refseq/bacteria/*/*gz
+$  mv agalactiae_2603V/R/refseq/bacteria/*/*.fna agalactiae_2603V/
+$  ls agalactiae_2603V
+~~~
+{: .language-bash}
+
+~~~
+GCF_000007265.1_ASM726v1_genomic.fna  R 
+~~~
+{: .output}
+
+
+Finally, we need to move the other genome files to their corresponding locations and
 get rid of unnecessary directories. To do so, we'll use a `while` cycle as follows:
 
 ~~~
@@ -316,6 +384,7 @@ get rid of unnecessary directories. To do so, we'll use a `while` cycle as follo
  > do 
  > echo removing refseq directory of strain $line
  > mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. 
+ > rm -r agalactiae_$line/[rR]*
  > done
  ~~~
 {: .language-bash}
@@ -328,36 +397,7 @@ removing refseq directory of strain 2603V/R
 ~~~
 {: .output}
 
-~~~
-$ tree agalactiae_*
-~~~
-{: .language-bash}
 
-~~~
-agalactiae_515
-└── GCF_012593885.1_ASM1259388v1_genomic.fna
-agalactiae_A909
-└── GCF_000012705.1_ASM1270v1_genomic.fna
-agalactiae_CJB111
-├── GCF_000167755.1_ASM16775v1_genomic.fna
-└── GCF_015221735.2_ASM1522173v2_genomic.fna
-agalactiae_COH1
-└── GCF_000689235.1_GBCO_p1_genomic.fna
-~~~
-{: .output}
-
-We noticed 2603V/R strain has a different directory structure. This structure
-is because the name of the strain since  the characters "\R" is part of the name
-the directory `R` has been added to the output changing the directory structure.
-Differences like this are expected to occur in big data sets, and must be manually
-curated after the general cases has been treated with scripts. In this case the `tree`
-command has helped us to see that the file had nod been decompressed.
-
-~~~
-$  gunzip agalactiae_2603V/R/refseq/bacteria/*/*gz
-$  mv agalactiae_2603V/R/refseq/bacteria/*/*.fna agalactiae_2603V/
-~~~
-{: .language-bash}
 
 
 At this point, you should have four directories starting with `agalactiae_` containing
