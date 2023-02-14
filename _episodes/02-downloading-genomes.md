@@ -196,12 +196,12 @@ GCF_012593885.1_ASM1259388v1_genomic.fna
 {: .output}
 
 Right now, you have the _Streptococcus agalactiae 505_ genomic `fasta` file in a directory.
-However, three more strains were included in Tettelin's first pangenome. It is the moment
+However, five more strains were included in Tettelin's first pangenome. It is the moment
 to practice what you've learned about cycles in the shell lesson. Instead
 of downloading the genomes one by one, we will write a `while` cycle. 
 With the nano editor, create a file to add the other four strains that 
 Tettelin included in the first pangenome. The missing strains are A909, 
-COH1, and CJB111. Write one strain per line in the file and named it
+COH1, CJB111, NEM316 and 2603V/R. Write one strain per line in the file and named it
 "TettelinList.txt".
 
 ~~~
