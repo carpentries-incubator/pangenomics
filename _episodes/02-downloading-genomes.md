@@ -315,8 +315,7 @@ get rid of unnecessary directories. To do so, we'll use a `while` cycle as follo
  $ cat TettelinList.txt | while read line
  > do 
  > echo removing refseq directory of strain $line
- > mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. # Move file to current directory 
- > rm -r agalactiae_$line/refseq  # Remove refseq directory
+ > mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. 
  > done
  ~~~
 {: .language-bash}
@@ -328,9 +327,6 @@ removing refseq directory of strain NEM316
 removing refseq directory of strain 2603V/R
 ~~~
 {: .output}
-
-At this point, you should have four directories starting with `agalactiae_` containing
-the following:
 
 ~~~
 $ tree agalactiae_*
@@ -349,6 +345,29 @@ agalactiae_COH1
 └── GCF_000689235.1_GBCO_p1_genomic.fna
 ~~~
 {: .output}
+
+We noticed 2603V/R strain has a different directory structure. This structure
+is because the name of the strain since  the characters "\R" is part of the name
+the directory `R` has been added to the output changing the directory structure.
+Differences like this are expected to occur in big data sets, and must be manually
+curated after the general cases has been treated with scripts. In this case the `tree`
+command has helped us to see that the file had nod been decompressed.
+
+~~~
+$  gunzip agalactiae_2603V/R/refseq/bacteria/*/*gz
+$  mv agalactiae_2603V/R/refseq/bacteria/*/*.fna agalactiae_2603V/
+~~~
+{: .language-bash}
+
+
+At this point, you should have four directories starting with `agalactiae_` containing
+the following:
+
+~~~
+$ rm -r agalactiae_*/refseq  # Remove refseq directory
+$ tree agalactiae_*
+~~~
+{: .language-bash}
 
 
 > ## Downloading specific formats
