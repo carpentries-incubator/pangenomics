@@ -87,21 +87,21 @@ Now Prokka has generated a new folder. If you run the `tree` command inside the 
 
 ~~~
 .
-└── thermophilusLMD9_prokka
-	├── thermophilusLMD9.prokka.err
-	├── thermophilusLMD9.prokka.faa
-	├── thermophilusLMD9.prokka.ffn
-	├── thermophilusLMD9.prokka.fna
-	├── thermophilusLMD9.prokka.fsa
-	├── thermophilusLMD9.prokka.gbk
-	├── thermophilusLMD9.prokka.gff
-	├── thermophilusLMD9.prokka.log
-	├── thermophilusLMD9.prokka.sqn
-	├── thermophilusLMD9.prokka.tbl
-	├── thermophilusLMD9.prokka.tsv
-	└── thermophilusLMD9.prokka.txt
+agalactiae_A909_prokka/
+├── agalactiae_A909.prokka.err
+├── agalactiae_A909.prokka.faa
+├── agalactiae_A909.prokka.ffn
+├── agalactiae_A909.prokka.fna
+├── agalactiae_A909.prokka.fsa
+├── agalactiae_A909.prokka.gbk
+├── agalactiae_A909.prokka.gff
+├── agalactiae_A909.prokka.log
+├── agalactiae_A909.prokka.sqn
+├── agalactiae_A909.prokka.tbl
+├── agalactiae_A909.prokka.tsv
+└── agalactiae_A909.prokka.txt
 
-1 directory, 12 files
+0 directories, 12 files
 ~~~
 {: .output}
 
