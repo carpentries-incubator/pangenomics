@@ -394,20 +394,39 @@ removing refseq directory of strain COH1
 removing refseq directory of strain CJB111
 removing refseq directory of strain NEM316
 removing refseq directory of strain 2603V/R
+mv: cannot stat 'agalactiae_2603V/R/refseq/bacteria/*/*.fna': No such file or directory
 ~~~
 {: .output}
 
-
-
+Thats ok, it is just telling us that 2603V/R does not have an fna file in that direction.
 
 At this point, you should have four directories starting with `agalactiae_` containing
 the following:
 
 ~~~
-$ rm -r agalactiae_*/refseq  # Remove refseq directory
+$ rm -r agalactiae_*/R  # Remove refseq directory
 $ tree agalactiae_*
 ~~~
 {: .language-bash}
+
+~~~
+agalactiae_2603V
+└── GCF_000007265.1_ASM726v1_genomic.fna
+agalactiae_515
+└── GCF_012593885.1_ASM1259388v1_genomic.fna
+agalactiae_A909
+└── GCF_000012705.1_ASM1270v1_genomic.fna
+agalactiae_CJB111
+├── GCF_000167755.1_ASM16775v1_genomic.fna
+└── GCF_015221735.2_ASM1522173v2_genomic.fna
+agalactiae_COH1
+└── GCF_000689235.1_GBCO_p1_genomic.fna
+agalactiae_NEM316
+└── GCF_000196055.1_ASM19605v1_genomic.fna
+
+0 directories, 1 file
+~~~
+{: .output}
 
 
 > ## Downloading specific formats
