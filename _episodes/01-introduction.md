@@ -57,17 +57,18 @@ together form a clade.
 
 
 
-> ## Exercise 1: Select strains
->  To construct a Pangenome with several species that includes _S. agalactiae_ Which strains would you select ?
->  cladograma_streptococcus.png
+> ## Exercise 1: Select strains for a genus pangenome  
+>  The next figure shows a simplification of the phylogenetic relationships in the genus _Streptococcus_ given in the article [Comparative Genomics of the Bacterial Genus Streptococcus Illuminates Evolutionary Implications of Species Groups](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0101229) by Gao X-Y, et al (2014). Observe the figure and discuss which strains would you select to construct a Pangenome that includes _S. agalactiae_ among several other species? 
+>  
 >  <a href="{{ page.root }}/fig/01-01-03.png"><img src="{{ page.root }}/fig/01-01-03.png" alt="Cladogram indicating _Streptococcus_ phylogeny" /></a>
->  A) Only _S. agalactie_ can be chosen
->  B) _S. urinalis_, _S. canis_, _S.poricuns_
->  C)
+>  A) Only _S. agalactie_ can be chosen  
+>  B) _S. urinalis_, _S. canis_, _S.poricuns_  
+>  C)  _S. urinalis_ ,_S. agalactie_ 
 >  
 > > ## Solution
-> > FIXME 
-> >
+> > A) No. A genus pangenome is possible, then it must include all genomes available for the species in the genera, not only _S. agalactie_ 
+> > B) No. Chosing _S. urinalis_, _S. canis_, _S.poricuns_ will leave out many species that we shoul include in order to avoid parafileptic
+> > C) Yes. 
 > > 
 > {: .solution}
 {: .challenge}
