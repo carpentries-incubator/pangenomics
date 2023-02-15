@@ -53,8 +53,8 @@ models of protein families.
 First, we need to create a new directory where our annotated genomes will be.
 
 ~~~
-$ mkdir -p ~/gm_workshop/results/annotated/
-$ cd ~/gm_workshop/results/annotated/
+$ mkdir -p ~/pan_workshop/results/annotated/
+$ cd ~/pan_workshop/results/annotated/
 $ conda deactivate
 $ conda activate Prokka_Global
 ~~~
@@ -79,7 +79,7 @@ In this example, we will use the following options:
 | --addgens |Add 'gene' features for each 'CDS' feature (default OFF) |
 
 ~~~
-$ prokka --prefix thermophilusLMD9.prokka --outdir thermophilusLMD9_prokka --kingdom Bacteria --genus Streptococcus --strain LMD9 --usegenus --addgenes ~/gm_workshop/data/thermophilusLMD9/GCF_000014485.1_ASM1448v1_genomic.fna
+$ prokka --prefix agalactiae_A909.prokka --outdir agalactiae_A909_prokka --kingdom Bacteria --genus Streptococcus --strain A909 --usegenus --addgenes ~/pan_workshop/data/agalactiae_A909/GCF_000012705.1_ASM1270v1_genomic.fna
 ~~~
 {: .language-bash}
 
@@ -190,18 +190,18 @@ first extracts the strain name and saves it in a variable, and then uses it insi
 Prokka command.
 
 ~~~
-$ cd ~/gm_workshop/data
+$ cd ~/pan_workshop/data
 $ ls */*fasta | while read line
 > do
 > strainName=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1)
-> prokka $line --kingdom Bacteria --genus Streptococcus --species agalactiae --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactiae_${strainName}\.prokka --outdir ~/gm_workshop/results/annotated/Streptococcus_agalactiae_${strainName}\_prokka
+> prokka $line --kingdom Bacteria --genus Streptococcus --species agalactiae --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactiae_${strainName}\.prokka --outdir ~/pan_workshop/results/annotated/Streptococcus_agalactiae_${strainName}\_prokka
 > done
 ~~~
 {: .language-bash}
 
 Since we are only using the `.gbk` files, we will move them to the `results/annotated/` directory and remove the subdirectories.
 ~~~
-$ cd ~/gm_workshop/results/annotated/
+$ cd ~/pan_workshop/results/annotated/
 $ mv */*gbk .
 $ rm -r *_prokka
 $ ls
