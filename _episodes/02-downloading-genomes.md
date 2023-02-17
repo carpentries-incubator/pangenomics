@@ -12,12 +12,17 @@ keypoints:
 
 ## Getting Genomic Data from the NCBI
 
+The main source of publicly available genomes is NCBI, so to be able to obtain the genomes of *S. agalactiae* that we are missing, we are 
+going to download them from the NCBI using the command-line.
 The NCBI Genome Downloading Scripts provide a shell command that
 allows users to download genomes from the NCBI. This [package](https://github.com/kblin/ncbi-genome-download)
 is highly useful, it enables to specify queries as much as it is desired. It simplifies
-the process of getting the data directly into the working directory. Firstly, activate
-the `ncbi-genome-download` Conda environment.  
+the process of getting the data directly into the working directory. 
 
+To use the `ncbi-genome-download` package we need to activate the Conda environment where it is installed. 
+If you want to know more about Conda and environments visit this [link](https://docs.conda.io/en/latest/).
+
+Let's activate the `ncbi-genome-download` Conda environment to beggin.  
 ~~~
 $ conda activate ncbi-genome-download
 ~~~
@@ -183,6 +188,12 @@ agalactiae_515/
 which means is in a nucleotide `fasta` format. Let us move the file to the
 `agalactiae_515` directory and remove the extra content that we will not 
 use again in this lesson.
+
+## MD5SUMS file
+> Apart from the fasta file that we wanted, a file called `MD5SUMS` was also downloaded. This file has a unique code that identifies the conent of the 
+> files of interest, so you can use it to check the integrity of your downloaded copy. We will not cover that step in the lesson but you can check 
+> this [article](https://www.geeksforgeeks.org/md5sum-linux-command/) to see how you can use it.
+{: .callout}
 
 ~~~
 $ mv agalactiae_515/refseq/bacteria/GCF_012593885.1/GCF_012593885.1_ASM1259388v1_genomic.fna agalactiae_515/.
@@ -438,108 +449,23 @@ agalactiae_NEM316
 >  can be downloaded by specifying our queries with `--format genbank`.
 {: .callout}
 
-> ## Exercise 1: Downloading data from NCBI using the command line FIXME
->
-> To download the genome of another strain of *S. thermophilus* we need to perform the following steps:
->
-> 1. Download the genome of *Streptococcus thermophilus* with the NCBI assembly number `GCF_000011825.1` in a `fasta` format and save it to an output directory named `thermophilusLMG18311`.
-> 2. Change to the directory where the `fasta` file is located and unzip it.
-> 3. Move the `fasta` file all the way back to the `thermophilusLMG18311` directory.
-> 4. Change to the `thermophilusLMG18311` directory and delete the `refseq` subdirectory created by the downloading tool.
->
-> Complete the following set of commands to carry out the previous steps:
->
-> Step 1.
->
-> ~~~
-> $ ncbi-genome-download -F __________ --genera __________ -A __________ -o __________ bacteria
-> ~~~
-> {: .language-bash}
->
-> Step 2.
->
-> ~~~
-> $ cd __________/refseq/bacteria/GCF_000011825.1/
-> $ __________ GCF_000011825.1_ASM1182v1_genomic.fna.gz
-> ~~~
-> {: .language-bash}
->
-> Step 3.
->
-> ~~~
-> $ mv GCF_000011825.1_ASM1182v1_genomic.fna __________
-> ~~~
-> {: .language-bash}
->
-> Step 4.
->
-> ~~~
-> $ cd __________
-> $ rm -rf refseq
-> ~~~
-> {: .language-bash}
->
-> > ## Solution
-> >
-> > Step 1. Using the provided information, we complete each blank space with the corresponding word:
-> >
-> > ~~~
-> > $ ncbi-genome-download -F fasta --genera "Streptococcus thermophilus" -A GCF_000011825.1 -o thermophilusLMG18311 bacteria
-> > ~~~
-> > {: .language-bash}
-> >
-> > Step 2. The previous command creates a `thermophilusLMG18311` subdirectory. To get to the `fasta` file we must go through a sequence of subdirectories and then apply the `gunzip` command to unzip the `fasta` file:
-> >
-> > ~~~
-> > $ cd thermophilusLMG18311/refseq/bacteria/GCF_000011825.1/
-> > $ gunzip GCF_000011825.1_ASM1182v1_genomic.fna.gz
-> > ~~~
-> > {: .language-bash}
-> >
-> > Step 3. We have now an unzipped `fasta` file. The parent directory `thermophilusLMG18311` is located three directories above the current one. To get to the first parent directory, you would type `..`; if you want to get to the second parent directory, you would use `../..`. Thus, to move the `fasta` file to the `thermophilusLMG18311` directory, we need to type:
-> >
-> > ~~~
-> > $ mv GCF_000011825.1_ASM1182v1_genomic.fna ../../..
-> > ~~~
-> > {: .language-bash}
-> >
-> > Step 4. Finally, we move back to the `thermophilusLMG18311` directory (in a similar manner as in the previous step) and delete the `refseq` directory.
-> >
-> > ~~~
-> > $ cd ../../..
-> > $ rm -r refseq
-> > ~~~
-> > {: .language-bash}
-> >
-> {: .solution}
-{: .challenge}
-
-
 Finally, it is a good practice
 to keep your raw data untouched, taking this into account you can remove the writing
 permission of the data directory.  
 
 ~~~
 $ cd ~/pan_workshop/data/
-$ chmod -w ~/pan_workshop/data/*
-$ ls -lh ~/pan_workshop/data/
+$ chmod -w ~/pan_workshop/data/
+$ ls -lh ~/pan_workshop/
 ~~~
 {: .language-bash}
 
 ~~~
-dr-xr-xr-x 2 alumno17 alumno17 4.0K feb  9 18:27 18RS21
-dr-xr-xr-x 2 alumno17 alumno17 4.0K feb  9 18:27 agalactiae_515
-dr-xr-xr-x 2 alumno17 alumno17 4.0K feb  9 18:27 agalactiae_A909
-dr-xr-xr-x 2 alumno17 alumno17 4.0K feb  9 18:27 agalactiae_CJB111
-dr-xr-xr-x 2 alumno17 alumno17 4.0K feb  9 18:27 agalactiae_COH1
--r--r--r-- 1 alumno17 alumno17 1.4M jun 12  2022 antismash_db.csv
-dr-xr-xr-x 2 alumno17 alumno17 4.0K feb  9 18:27 H36B
--r--r--r-- 1 alumno17 alumno17   17 feb  9 18:03 TettelinList.txt
-dr-xr-xr-x 2 alumno17 alumno17 4.0K feb  9 18:27 thermophilusLMG18311  
+dr-xr-xr-x 10 user inves 4.0K feb 17 09:11 data
 ~~~
 {: .output}
 
-> ## Exercise 2: Unknown strains
+> ## Exercise 1: Unknown strains
 >  Until now we have downloaded only specific strains that we were looking for. Write a command that would tell you which genomes are 
 >  available for all the *Streptococcus* genus.
 >
