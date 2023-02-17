@@ -208,6 +208,8 @@ GCF_012593885.1_ASM1259388v1_genomic.fna
 ~~~
 {: .output}
 
+## Download multiple genomes
+
 Right now, you have the _S. agalactiae 505_ genomic `fasta` file in a directory.
 However, five more strains were included in Tettelin's first pangenome. It is the moment
 to practice what you've learned about loops in the shell lesson. Instead
