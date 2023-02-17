@@ -107,7 +107,7 @@ $ ls
 {: .language-bash}
 
 ~~~
-18RS21  H36B
+agalactiae_18RS21  agalactiae_H36B
 ~~~
 {: .output}
 
@@ -337,6 +337,8 @@ agalactiae_2603V
             └── GCF_000007265.1
                 ├── GCF_000007265.1_ASM726v1_genomic.fna.gz
                 └── MD5SUMS
+agalactiae_515
+└── GCF_012593885.1_ASM1259388v1_genomic.fna
 agalactiae_A909
 └── refseq
     └── bacteria
@@ -347,8 +349,8 @@ agalactiae_CJB111
 └── refseq
     └── bacteria
         ├── GCF_000167755.1
-        │   ├── GCF_000167755.1_ASM16775v1_genomic.fna
-        │   └── MD5SUMS
+        │   ├── GCF_000167755.1_ASM16775v1_genomic.fna
+        │   └── MD5SUMS
         └── GCF_015221735.2
             ├── GCF_015221735.2_ASM1522173v2_genomic.fna
             └── MD5SUMS
@@ -358,6 +360,9 @@ agalactiae_COH1
         └── GCF_000689235.1
             ├── GCF_000689235.1_GBCO_p1_genomic.fna
             └── MD5SUMS
+agalactiae_H36B
+├── Streptococcus_agalactiae_H36B.fna
+└── Streptococcus_agalactiae_H36B.gbk
 agalactiae_NEM316
 └── refseq
     └── bacteria
@@ -393,6 +398,7 @@ GCF_000007265.1_ASM726v1_genomic.fna
 
 Finally, we need to move the other genome files to their corresponding locations and
 get rid of unnecessary directories. To do so, we'll use a `while` cycle as follows:
+Beware of the typos! Take it slowly and make sure you are sending the files to the correct location. 
 
 ~~~
  $ cat TettelinList.txt | while read line
@@ -414,6 +420,8 @@ mv: cannot stat 'agalactiae_2603V/R/refseq/bacteria/*/*.fna': No such file or di
 
 Thats ok, it is just telling us that the `agalactiae_2603V/R/` does not have an `fna` file, which is what we wanted.
 
+Use the `tree` command to make sure that everything is in its right place.
+
 Now let's remove the `refseq/` directories completely:
 
 ~~~
@@ -431,10 +439,11 @@ removing refseq directory of strain COH1
 removing refseq directory of strain CJB111
 removing refseq directory of strain NEM316
 removing refseq directory of strain 2603V/R
+rm: cannot remove 'agalactiae_2603V/R/refseq': No such file or directory
 ~~~
 {: .output}
 
-At this point, you should have six directories starting with `agalactiae_` containing
+At this point, you should have eight directories starting with `agalactiae_` containing
 the following:
 
 ~~~
@@ -443,6 +452,9 @@ $ tree agalactiae_*
 {: .language-bash}
 
 ~~~
+agalactiae_18RS21
+├── Streptococcus_agalactiae_18RS21.fna
+└── Streptococcus_agalactiae_18RS21.gbk
 agalactiae_2603V
 └── GCF_000007265.1_ASM726v1_genomic.fna
 agalactiae_515
@@ -454,6 +466,9 @@ agalactiae_CJB111
 └── GCF_015221735.2_ASM1522173v2_genomic.fna
 agalactiae_COH1
 └── GCF_000689235.1_GBCO_p1_genomic.fna
+agalactiae_H36B
+├── Streptococcus_agalactiae_H36B.fna
+└── Streptococcus_agalactiae_H36B.gbk
 agalactiae_NEM316
 └── GCF_000196055.1_ASM19605v1_genomic.fna
 
