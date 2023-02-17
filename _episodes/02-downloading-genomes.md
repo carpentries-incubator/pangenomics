@@ -471,23 +471,6 @@ agalactiae_NEM316
 >  can be downloaded by specifying our queries with `--format genbank`.
 {: .callout}
 
-Finally, it is a good practice
-to keep your raw data untouched, taking this into account you can remove the writing
-permission of the data directory.  
-
-~~~
-$ cd ~/pan_workshop/
-$ chmod -w data/
-$ ls -lh
-~~~
-{: .language-bash}
-
-~~~
-total 4.0K
-dr-xr-xr-x 10 user inves 4.0K feb 17 10:19 data
-~~~
-{: .output}
-
 > ## Exercise 1: Unknown strains
 >  Until now we have downloaded only specific strains that we were looking for. Write a command that would tell you which genomes are 
 >  available for all the *Streptococcus* genus.
