@@ -74,7 +74,7 @@ In this example, we will use the following options:
 | --addgens |Add 'gene' features for each 'CDS' feature (default OFF) |
 
 ~~~
-$ prokka --prefix agalactiae_A909.prokka --outdir agalactiae_A909_prokka --kingdom Bacteria --genus Streptococcus --species agalactiae --strain A909 --usegenus --addgenes ~/pan_workshop/data/agalactiae_A909/GCF_000012705.1_ASM1270v1_genomic.fna
+$ prokka --prefix agalactiae_A909_prokka --outdir agalactiae_A909_prokka --kingdom Bacteria --genus Streptococcus --species agalactiae --strain A909 --usegenus --addgenes ~/pan_workshop/data/agalactiae_A909/GCF_000012705.1_ASM1270v1_genomic.fna
 ~~~
 {: .language-bash}
 
@@ -191,13 +191,39 @@ For this purpose we will use a complex `while` loop that, for each of the *S. ag
 first extracts the strain name and saves it in a variable, and then uses it inside the
 Prokka command.
 
+To get the strain names easily we will update our `TettelinList.txt` to add the strain names 
+that it does not have and change the problematic name of the strain 2603V/R.
+We could just open the file in nano and edit it, but we will do it by coding the changes.  
+With `echo` we will add each strain name in a new line, and with `sed` we will remove the 
+characters `/R` of the problematic strain name.
 ~~~
-$ cd ~/pan_workshop/data
-$ ls */*fasta | while read line
-> do
-> strainName=$(echo $line|cut -d'_' -f3 |cut -d'.' -f1)
-> prokka $line --kingdom Bacteria --genus Streptococcus --species agalactiae --strain $strainName --usegenus --addgenes --prefix Streptococcus_agalactiae_${strainName}\.prokka --outdir ~/pan_workshop/results/annotated/Streptococcus_agalactiae_${strainName}\_prokka
-> done
+cd ~/pan_workshop/data/
+echo "18RS21" >> TettelinList.txt 
+echo "H36B" >> TettelinList.txt
+echo "515" >> TettelinList.txt 
+sed -i 's/\/R//' TettelinList.txt
+cat TettelinList.txt
+~~~
+{: .language-bash}
+~~
+A909  
+COH1  
+CJB111 
+NEM316
+2603V
+18RS21
+H36B
+515
+~~~
+{: .output}
+
+~~~
+$ cat TettelinList.txt | while read line
+> do 
+> prokka agalactiae_$line/*.fna --kingdom Bacteria --genus Streptococcus --species agalactiae \
+> --strain $line --usegenus --addgenes --prefix Streptococcus_agalactiae_${line}_prokka \
+> --outdir ~/pan_workshop/results/annotated/Streptococcus_agalactiae_${line}_prokka;
+>  done
 ~~~
 {: .language-bash}
 
@@ -210,9 +236,10 @@ $ ls
 ~~~
 {: .language-bash}
 ~~~
-Streptococcus_agalactiae_18RS21.prokka.gbk  Streptococcus_agalactiae_CJB111.prokka.gbk  thermophilusLMD9.prokka.gbk
-Streptococcus_agalactiae_515.prokka.gbk 	Streptococcus_agalactiae_COH1.prokka.gbk	thermophilusLMG18311.prokka.gbk
-Streptococcus_agalactiae_A909.prokka.gbk	Streptococcus_agalactiae_H36B.prokka.gbk
+Streptococcus_agalactiae_18RS21_prokka.gbk  Streptococcus_agalactiae_CJB111_prokka.gbk
+Streptococcus_agalactiae_2603V_prokka.gbk   Streptococcus_agalactiae_COH1_prokka.gbk
+Streptococcus_agalactiae_515_prokka.gbk     Streptococcus_agalactiae_H36B_prokka.gbk
+Streptococcus_agalactiae_A909_prokka.gbk    Streptococcus_agalactiae_NEM316_prokka.gbk
 ~~~
 {: .output}
 
