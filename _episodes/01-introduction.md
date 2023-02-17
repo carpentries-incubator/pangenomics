@@ -22,7 +22,7 @@ keypoints:
 ## What is a pangenome?
 
 The term **pangenome** derives from the Greek *pan*, meaning 'whole' or 'everything', while *genome* describes
-an organism's complete genetic material. In 2005, [Tettelin *et al.*https://www.pnas.org/doi/10.1073/pnas.0506758102]() used the name pangenome for the first time
+an organism's complete genetic material. In 2005, [Tettelin *et al.*](https://www.pnas.org/doi/10.1073/pnas.0506758102]) used the name pangenome for the first time
 to explain the entire collection of genes from a group of pathogenic bacteria named *Streptococcus agalactiae*.
 The pangenome concept has been applied to other organisms, including plants, animals, fungi, viruses, etc.
 To summarize, a pangenome is the entire set of genes from all clade strains.
@@ -63,7 +63,7 @@ together form a clade.
   </a>
 
 > ## Exercise 1: Select strains for a genus pangenome  
->  The following figure shows a simplification of a section of the phylogenetic relationships in the genus _Streptococcus_ given by [Gao et al. (2014)]https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0101229).  
+>  The following figure shows a simplification of a section of the phylogenetic relationships in the genus _Streptococcus_ given by [Gao et al. (2014)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0101229).  
 >  Observe the figure and discuss:
 >  Which strains would you select to construct a Pangenome that includes _S. agalactiae_ if you wanted to investigate a pangenome of a  
 >  broader taxonomic level than species? 
@@ -75,12 +75,12 @@ together form a clade.
 >  D)  All the species in the figure
 >  
 > > ## Solution
-> > There are several ways to include _S. agalactiae_ in a more comprehensive pangenome. We will discuss some of these possibilities. 
-> > A) A species pangenome is possible if we include only genome of *S. agalactiae*, but right now we want a bigger pangenome.
-> > B) No. Chosing _S. urinalis_, _S. agalactiae_ would make a paraphyletic group, because we are not including the rest of the species in the clade.  
+> > There are several ways to include _S. agalactiae_ in a more comprehensive pangenome. We will discuss some of these possibilities.  
+> > A) A species pangenome is possible if we include only genome of *S. agalactiae*, but right now we want a bigger pangenome.  
+> > B) No. Chosing _S. urinalis_, _S. agalactiae_ would make a paraphyletic group, because we are not including the rest of the species in the clade.   
 > > C) No.  _S. porcinus_ and _S. pseudoporcinus_ do form a monophyletic group, so it would be apropriate to make a pangenome of those species, but it
-> > does not include _S. agalactiae_ :(
-> > D) Yes. Including genomes of all the species in the clade is the only way to have a monophyletic group that includes *S. agalactiae*.
+> > does not include _S. agalactiae_ :(  
+> > D) Yes. Including genomes of all the species in the clade is the only way to have a monophyletic group that includes *S. agalactiae*.  
 > > 
 > {: .solution}
 {: .challenge}
