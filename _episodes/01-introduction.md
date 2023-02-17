@@ -62,7 +62,7 @@ together form a clade.
    <img src="{{ page.root }}/fig/01-01-02.png" alt=" Cladogram indicating in blue and red two clades or monophyletic groups and green a paraphyletic group" />
   </a>
 
-> ## Exercise 1: Select strains for a genus pangenome  
+> ## Exercise 1: Selecting taxa for a pangenome  
 >  The following figure shows a simplification of a section of the phylogenetic relationships in the genus _Streptococcus_ given by [Gao et al. (2014)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0101229).  
 >  Observe the figure and discuss:
 >  If you wanted to investigate a pangenome of a  
