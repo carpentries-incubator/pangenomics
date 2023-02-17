@@ -22,8 +22,8 @@ keypoints:
 ## What is a pangenome?
 
 The term **pangenome** derives from the Greek *pan*, meaning 'whole' or 'everything', while *genome* describes
-an organism's complete genetic material. In 2005, Tettelin *et al.* used the name pangenome for the first time
-to explain the entire collection of genes from a group of pathogenic bacteria named *_Streptococcus agalactiae_*.
+an organism's complete genetic material. In 2005, [Tettelin *et al.*https://www.pnas.org/doi/10.1073/pnas.0506758102]() used the name pangenome for the first time
+to explain the entire collection of genes from a group of pathogenic bacteria named *Streptococcus agalactiae*.
 The pangenome concept has been applied to other organisms, including plants, animals, fungi, viruses, etc.
 To summarize, a pangenome is the entire set of genes from all clade strains.
 
@@ -39,6 +39,15 @@ results when only a few gene families are incorporated into the pangenome when a
    <img src="{{ page.root }}/fig/01-01-01.png" alt=" Venn diagram of a) a closed pangenome and b) an open pangenome, comparing the sizes of their core and accessory genomes. c) Graphic depicting the differences between closed and open pangenomes regarding their size, total genes in pangenome, and the number of sequenced genomes." />
   </a>
 
+> ## Discussion: Open or closed?
+>  
+>  
+> > ## Solution
+> > 
+> > 
+> {: .solution}
+{: .discussion}
+
 ## How to select a group of genomes to construct a pangenome?
 
 Selecting proper data to construct a pangenome analysis is a crucial process task. A pangenome represents
@@ -53,29 +62,32 @@ together form a clade.
    <img src="{{ page.root }}/fig/01-01-02.png" alt=" Cladogram indicating in blue and red two clades or monophyletic groups and green a paraphyletic group" />
   </a>
 
-
-
 > ## Exercise 1: Select strains for a genus pangenome  
->  The following figure shows a simplification of the phylogenetic relationships in the genus _Streptococcus_ given in the article [Comparative Genomics of the Bacterial Genus Streptococcus Illuminates Evolutionary Implications of Species Groups](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0101229) by Gao et al. (2014). Observe the figure and discuss which strains you would select to construct a Pangenome that includes _S. agalactiae_ among several other species? 
+>  The following figure shows a simplification of a section of the phylogenetic relationships in the genus _Streptococcus_ given by [Gao et al. (2014)]https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0101229).  
+>  Observe the figure and discuss:
+>  Which strains would you select to construct a Pangenome that includes _S. agalactiae_ if you wanted to investigate a pangenome of a  
+>  broader taxonomic level than species? 
 >  
->  <a href="{{ page.root }}/fig/01-01-03.png"><img src="{{ page.root }}/fig/01-01-03.png" alt="Cladogram indicating _Streptococcus_ phylogeny" /></a>
->  A) Only _S. agalactiae_ can be chosen  
->  B) _S. urinalis_, _S. canis_, _S.poricuns_  
->  C)  _S. urinalis_ ,_S. agalactiae_ 
+>  <a href="{{ page.root }}/fig/01-01-03.png"><img src="{{ page.root }}/fig/01-01-03.png" alt="Cladogram indicating a section of the _Streptococcus_ phylogeny" /></a>
+>  A) Only _S. agalactiae_   
+>  B)  _S. urinalis_ and _S. agalactiae_   
+>  C) _S. porcinus_ and _S. pseudoporcinus_  
+>  D)  All the species in the figure
 >  
 > > ## Solution
 > > There are several ways to include _S. agalactiae_ in a more comprehensive pangenome. We will discuss some of these possibilities. 
-> > A) No. A genus pangenome is possible; it must include all genomes available for the species in the genera, not only _S. agalactie_   
-> > B) No. Chosing _S. urinalis_, _S. canis_, _S.poricuns_ will leave out many species that we should include to avoid parafileptic  
-> > C) Yes. This selection will be a small pangenome but does not contain a paraphyletic group.  
+> > A) A species pangenome is possible if we include only genome of *S. agalactiae*, but right now we want a bigger pangenome.
+> > B) No. Chosing _S. urinalis_, _S. agalactiae_ would make a paraphyletic group, because we are not including the rest of the species in the clade.  
+> > C) No.  _S. porcinus_ and _S. pseudoporcinus_ do form a monophyletic group, so it would be apropriate to make a pangenome of those species, but it
+> > does not include _S. agalactiae_ :(
+> > D) Yes. Including genomes of all the species in the clade is the only way to have a monophyletic group that includes *S. agalactiae*.
 > > 
 > {: .solution}
 {: .challenge}
 
 ## The *Streptococcus agalactiae* dataset
 
-For this lesson, we will work with the six *Streptococcus agalactiae* strains included in the first pangenome made by *Tettelin et al., 2005*. The genomes of strains 18RS21 and H36B are already in our `pan_workshop/data`, but the others will be downloaded and annotated in the following episodes.
-
+*Streptococcus agalactiae* is a human pathogenic bacteria that causes neonatal infections. For this lesson, we will work with the eight *Streptococcus agalactiae* strains included in the first pangenome made by *Tettelin et al., 2005*. The genomes of strains 18RS21 and H36B are already in our `pan_workshop/data`, but the others will be downloaded and annotated in the following episodes.
 
 **Metadata**
 
@@ -88,16 +100,18 @@ For this lesson, we will work with the six *Streptococcus agalactiae* strains in
 |*S. agalactiae*  CJB111  | Human   | V       	|
 |*S. agalactiae*  COH1	| Human   | III       	|
 |*S. agalactiae*  H36B	| Human   | Ib       	|
+|*S. agalactiae*  NEM316	| Human   | III     	|
+|*S. agalactiae*  2603V/R 	| Human   | V      	|
 
 
 
 > ## Prepare your genome database
-> Make sure you have the six genomes previously described. If you do not have them, you can download them with the following instructions.
+> Make sure you have the `pan_workshop/` directory. If you do not have it, you can download it with the following instructions.
 >
 > ~~~
-> $ cd ~
-> $ wget https://zenodo.org/record/7620704/files/pan_workshop.zip?download=1
-> $ unzip 'pan_workshop.zip?download=1'
+> $ cd ~ #Make sure you are in the home directory
+> $ wget https://zenodo.org/record/7620704/files/pan_workshop.zip?download=1 #Download the `zip` file.
+> $ unzip 'pan_workshop.zip?download=1' 
 > $ rm 'pan_workshop.zip?download=1'
 > ~~~
 > {: .language-bash}
