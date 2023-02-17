@@ -107,7 +107,7 @@ $ ls
 {: .language-bash}
 
 ~~~
-18RS21  antismash_db.csv  H36B
+18RS21  H36B
 ~~~
 {: .output}
 
@@ -117,7 +117,9 @@ Let's search the genome of _Streptoccocus agalactie 515_, one of the original st
 Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek
 is available in the database and its content. Include
 the `-n` flag within your command to do a "dry-run", which means to show the available accessions instead of downloading them.
-Use the flag `--formats` to specify the desired format, `--genera` to specify the genus (or species), and `-S` for the strain. The `ncbi-genome-download` command must always end with the name of the group of organisms where the search will be performed, which in our case is `bacteria`.
+Use the flag `--formats` to specify the desired format, `--genera` to specify the genus (or species), and `-S` for the strain. 
+The `ncbi-genome-download` command must always end with the name of the group of organisms where the search will be performed, 
+which in our case is `bacteria`.
 
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -n bacteria 
@@ -185,12 +187,12 @@ agalactiae_515/
 {: .output}
 
 `GCF_012593885.1_ASM1259388v1_genomic.fna` is now with `fna` extension
-which means is in a nucleotide `fasta` format. Let us move the file to the
-`agalactiae_515` directory and remove the extra content that we will not 
+which means is in a nucleotide `fasta` format. Let's move the file to the
+`agalactiae_515/` directory and remove the extra content that we will not 
 use again in this lesson.
 
-## MD5SUMS file
-> Apart from the fasta file that we wanted, a file called `MD5SUMS` was also downloaded. This file has a unique code that identifies the conent of the 
+> ## MD5SUMS file
+> Apart from the fasta file that we wanted, a file called `MD5SUMS` was also downloaded. This file has a unique code that identifies the contents of the 
 > files of interest, so you can use it to check the integrity of your downloaded copy. We will not cover that step in the lesson but you can check 
 > this [article](https://www.geeksforgeeks.org/md5sum-linux-command/) to see how you can use it.
 {: .callout}
@@ -206,13 +208,13 @@ GCF_012593885.1_ASM1259388v1_genomic.fna
 ~~~
 {: .output}
 
-Right now, you have the _Streptococcus agalactiae 505_ genomic `fasta` file in a directory.
+Right now, you have the _S. agalactiae 505_ genomic `fasta` file in a directory.
 However, five more strains were included in Tettelin's first pangenome. It is the moment
-to practice what you've learned about cycles in the shell lesson. Instead
-of downloading the genomes one by one, we will write a `while` cycle. 
-With the nano editor, create a file to add the other four strains that 
-Tettelin included in the first pangenome. The missing strains are A909, 
-COH1, CJB111, NEM316 and 2603V/R. Write one strain per line in the file and named it
+to practice what you've learned about loops in the shell lesson. Instead
+of downloading the genomes one by one, we will write a `while` loop.  
+
+With the `nano` editor, create a file to add the other four strains. The missing strains are A909, 
+COH1, CJB111, NEM316 and 2603V/R. Write one strain per line in the file and name it
 "TettelinList.txt".
 
 ~~~
@@ -235,7 +237,7 @@ NEM316
 ~~~
 {: .output}
 
-First, let us read the lines of Tettelin file, and print
+First, let's read the lines of the file file ina loop, and print
 them in the terminal with the `echo strain $line` command.  
 `strain` is just a word that we will print, and `$line` will 
 store the value of each of the lines of the `Tettelin.txt` file.
@@ -286,7 +288,7 @@ GCF_000007265.1 Streptococcus agalactiae 2603V/R        2603V/R
 ~~~
 {: .output}
 
-The tool has successfully found the three strain. Notice that
+The tool has successfully found the five strain. Notice that
 the strain CJB111 contains two versions.
 
 We can now proceed to download these strains to their corresponding
@@ -319,7 +321,7 @@ $ gunzip agalactiae_*/refseq/bacteria/*/*gz
  ~~~
 {: .language-bash}
 
-Let us visualize the structure of the results
+Let's visualize the structure of the results
 ~~~
 $ tree agalactiae_*
 ~~~
@@ -365,27 +367,27 @@ agalactiae_NEM316
 ~~~
 {: .output}
 
-We noticed that all fasta files but  GCF_000007265.1_ASM726v1_genomic.fna.gz has been decompressed.
-That decompression failure was because 2603V/R strain has a different directory structure. This structure
-is consequence of the name of the strain since  the characters "\R" is part of the name
-the directory `R` has been added to the output changing the directory structure.
-Differences like this are expected to occur in big data sets, and must be manually
+We noticed that all fasta files but  `GCF_000007265.1_ASM726v1_genomic.fna.gz` have been decompressed.
+That decompression failure was because the 2603V/R strain has a different directory structure. This structure
+is consequence of the name of the strain, because the characters "/R" are part of the name,
+a directory named `R` has been added to the output, changing the directory structure.
+Differences like this are expected to occur in big datasets, and must be manually
 curated after the general cases has been treated with scripts. In this case the `tree`
-command has helped us to identify that the error. Let us decompress the file 
-GCF_000007265.1_ASM726v1_genomic.fna.gz and move it to the agalactiae_2603V directory.
+command has helped us to identify that the error. Let's decompress the file 
+`GCF_000007265.1_ASM726v1_genomic.fna.gz` and move it to the `agalactiae_2603V/` directory, although it doesn't have the real strain name.
 
 ~~~
 $  gunzip agalactiae_2603V/R/refseq/bacteria/*/*gz
-$  mv agalactiae_2603V/R/refseq/bacteria/*/*.fna agalactiae_2603V/
+$  mv  agalactiae_2603V/R/refseq/bacteria/GCF_000007265.1/GCF_000007265.1_ASM726v1_genomic.fna agalactiae_2603V/
+$  rm -r agalactiae_2603V/R/
 $  ls agalactiae_2603V
 ~~~
 {: .language-bash}
 
 ~~~
-GCF_000007265.1_ASM726v1_genomic.fna  R 
+GCF_000007265.1_ASM726v1_genomic.fna
 ~~~
 {: .output}
-
 
 Finally, we need to move the other genome files to their corresponding locations and
 get rid of unnecessary directories. To do so, we'll use a `while` cycle as follows:
@@ -393,29 +395,47 @@ get rid of unnecessary directories. To do so, we'll use a `while` cycle as follo
 ~~~
  $ cat TettelinList.txt | while read line
  > do 
- > echo removing refseq directory of strain $line
+ > echo moving fasta file of strain $line
  > mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. 
- > rm -r agalactiae_$line/[rR]*
  > done
  ~~~
 {: .language-bash}
+~~~
+moving fasta file of strain A909
+moving fasta file of strain COH1
+moving fasta file of strain CJB111
+moving fasta file of strain NEM316
+moving fasta file of strain 2603V/R
+mv: cannot stat 'agalactiae_2603V/R/refseq/bacteria/*/*.fna': No such file or directory
+~~~
+{: .output}
+
+Thats ok, it is just telling us that the `agalactiae_2603V/R/` does not have an `fna` file, which is what we wanted.
+
+Now let's remove the `refseq/` directories completely:
+
+~~~
+ $ cat TettelinList.txt | while read line
+ > do 
+ > echo removing refseq directory of strain $line
+ > rm -r agalactiae_$line/refseq
+ > done
+ ~~~
+{: .language-bash}
+
 ~~~
 removing refseq directory of strain A909
 removing refseq directory of strain COH1
 removing refseq directory of strain CJB111
 removing refseq directory of strain NEM316
 removing refseq directory of strain 2603V/R
-mv: cannot stat 'agalactiae_2603V/R/refseq/bacteria/*/*.fna': No such file or directory
 ~~~
 {: .output}
 
-Thats ok, it is just telling us that 2603V/R does not have an fna file in that direction.
-
-At this point, you should have four directories starting with `agalactiae_` containing
+At this point, you should have six directories starting with `agalactiae_` containing
 the following:
 
 ~~~
-$ rm -r agalactiae_*/R  # Remove refseq directory
 $ tree agalactiae_*
 ~~~
 {: .language-bash}
@@ -454,14 +474,15 @@ to keep your raw data untouched, taking this into account you can remove the wri
 permission of the data directory.  
 
 ~~~
-$ cd ~/pan_workshop/data/
-$ chmod -w ~/pan_workshop/data/
-$ ls -lh ~/pan_workshop/
+$ cd ~/pan_workshop/
+$ chmod -w data/
+$ ls -lh
 ~~~
 {: .language-bash}
 
 ~~~
-dr-xr-xr-x 10 user inves 4.0K feb 17 09:11 data
+total 4.0K
+dr-xr-xr-x 10 user inves 4.0K feb 17 10:19 data
 ~~~
 {: .output}
 
@@ -491,7 +512,7 @@ dr-xr-xr-x 10 user inves 4.0K feb 17 09:11 data
 > > {: .output}
 > > **Bonus**: Redirect your command output to a file with the `>` command.
 > > ~~~
-> > $  ncbi-genome-download -F fasta --genera "Streptococcus" -n bacteria > streptococcus_available_genomes.txt
+> > $  ncbi-genome-download -F fasta --genera "Streptococcus" -n bacteria > ~/pan_workshop/data/streptococcus_available_genomes.txt
 > > ~~~
 > > {: .language-bash}
 > > 
