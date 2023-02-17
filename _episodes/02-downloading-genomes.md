@@ -397,7 +397,7 @@ GCF_000007265.1_ASM726v1_genomic.fna
 {: .output}
 
 Finally, we need to move the other genome files to their corresponding locations and
-get rid of unnecessary directories. To do so, we'll use a `while` cycle as follows:
+get rid of unnecessary directories. To do so, we'll use a `while` cycle as follows.  
 Beware of the typos! Take it slowly and make sure you are sending the files to the correct location. 
 
 ~~~
