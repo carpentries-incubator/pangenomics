@@ -46,12 +46,7 @@ with a small trustworthy database, it then moves to medium
 sized but domain specific databases and finally to curated
 models of protein families.
 
-> ## Notes
-> [Environment variables](https://opensource.com/article/19/8/what-are-environment-variables) are special variables that contain information about your login session. These can be useful when you want to [manage](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#updating-an-environment) default or new settings that your system usually ignores. For instance, you can download a specific package with a downgraded version of perl if needed.
-{: .callout}
-
 First, we need to create a new directory where our annotated genomes will be.
-
 ~~~
 $ mkdir -p ~/pan_workshop/results/annotated/
 $ cd ~/pan_workshop/results/annotated/
