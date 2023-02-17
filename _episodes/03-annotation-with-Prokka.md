@@ -205,7 +205,8 @@ sed -i 's/\/R//' TettelinList.txt
 cat TettelinList.txt
 ~~~
 {: .language-bash}
-~~
+
+~~~
 A909  
 COH1  
 CJB111 
@@ -228,6 +229,7 @@ $ cat TettelinList.txt | while read line
 {: .language-bash}
 
 Since we are only using the `.gbk` files, we will move them to the `results/annotated/` directory and remove the subdirectories.
+
 ~~~
 $ cd ~/pan_workshop/results/annotated/
 $ mv */*gbk .
@@ -235,6 +237,7 @@ $ rm -r *_prokka
 $ ls
 ~~~
 {: .language-bash}
+
 ~~~
 Streptococcus_agalactiae_18RS21_prokka.gbk  Streptococcus_agalactiae_CJB111_prokka.gbk
 Streptococcus_agalactiae_2603V_prokka.gbk   Streptococcus_agalactiae_COH1_prokka.gbk
