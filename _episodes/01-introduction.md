@@ -65,10 +65,11 @@ together form a clade.
 > ## Exercise 1: Select strains for a genus pangenome  
 >  The following figure shows a simplification of a section of the phylogenetic relationships in the genus _Streptococcus_ given by [Gao et al. (2014)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0101229).  
 >  Observe the figure and discuss:
->  Which strains would you select to construct a Pangenome that includes _S. agalactiae_ if you wanted to investigate a pangenome of a  
->  broader taxonomic level than species? 
+>  If you wanted to investigate a pangenome of a  
+>  broader taxonomic level than species:  
+>  Which strains would you select to construct a Pangenome that includes _S. agalactiae_ ? 
 >  
->  <a href="{{ page.root }}/fig/01-01-03.png"><img src="{{ page.root }}/fig/01-01-03.png" alt="Cladogram indicating a section of the _Streptococcus_ phylogeny" /></a>
+>  <a href="{{ page.root }}/fig/01-01-03.png"><img src="{{ page.root }}/fig/01-01-03.png" alt="Cladogram indicating a section of the _Streptococcus_ phylogeny" /></a>  
 >  A) Only _S. agalactiae_   
 >  B)  _S. urinalis_ and _S. agalactiae_   
 >  C) _S. porcinus_ and _S. pseudoporcinus_  
