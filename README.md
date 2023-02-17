@@ -1,4 +1,4 @@
-Zenodo link:  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6636296.svg)](https://doi.org/10.5281/zenodo.6636296)
+Zenodo link:  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7620503.svg)](https://doi.org/10.5281/zenodo.7620503)
 
 
 # Pangenome Analysis in Prokaryotes Lesson
