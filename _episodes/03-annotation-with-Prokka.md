@@ -74,7 +74,7 @@ In this example, we will use the following options:
 | --addgens |Add 'gene' features for each 'CDS' feature (default OFF) |
 
 ~~~
-$ prokka --prefix agalactiae_A909.prokka --outdir agalactiae_A909_prokka --kingdom Bacteria --genus Streptococcus --strain A909 --usegenus --addgenes ~/pan_workshop/data/agalactiae_A909/GCF_000012705.1_ASM1270v1_genomic.fna
+$ prokka --prefix agalactiae_A909.prokka --outdir agalactiae_A909_prokka --kingdom Bacteria --genus Streptococcus --species agalactiae --strain A909 --usegenus --addgenes ~/pan_workshop/data/agalactiae_A909/GCF_000012705.1_ASM1270v1_genomic.fna
 ~~~
 {: .language-bash}
 
@@ -118,6 +118,13 @@ We encourage you to explore each output. The following table describes the conte
 | .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product. |
 
 Parameters can be modified as much as needed regarding the organism, the gene and even the locus tag you are looking for.
+
+> ## Exercise 1: Inspecting the GBK
+> Open the `gbk` output file and explore the information that it has
+>> ## Solution
+>> FIXME
+>{: .solution}
+{: .challenge}
 
 > ## Exercise 1: Extracting tRNAs with Prokka
 >
