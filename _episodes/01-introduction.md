@@ -66,8 +66,7 @@ together form a clade.
 >  The following figure shows a simplification of a section of the phylogenetic relationships in the genus _Streptococcus_ given by [Gao et al. (2014)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0101229).  
 >  Observe the figure and discuss:
 >  If you wanted to investigate a pangenome of a  
->  broader taxonomic level than species:  
->  Which strains would you select to construct a Pangenome that includes _S. agalactiae_ ? 
+>  broader taxonomic level than species which strains would you select to construct a pangenome that includes _S. agalactiae_ ? 
 >  
 >  <a href="{{ page.root }}/fig/01-01-03.png"><img src="{{ page.root }}/fig/01-01-03.png" alt="Cladogram indicating a section of the _Streptococcus_ phylogeny" /></a>  
 >  A) Only _S. agalactiae_   
@@ -76,12 +75,12 @@ together form a clade.
 >  D)  All the species in the figure
 >  
 > > ## Solution
-> > There are several ways to include _S. agalactiae_ in a more comprehensive pangenome. We will discuss some of these possibilities.  
+> > 
 > > A) A species pangenome is possible if we include only genome of *S. agalactiae*, but right now we want a bigger pangenome.  
 > > B) No. Chosing _S. urinalis_, _S. agalactiae_ would make a paraphyletic group, because we are not including the rest of the species in the clade.   
 > > C) No.  _S. porcinus_ and _S. pseudoporcinus_ do form a monophyletic group, so it would be apropriate to make a pangenome of those species, but it
 > > does not include _S. agalactiae_ :(  
-> > D) Yes. Including genomes of all the species in the clade is the only way to have a monophyletic group that includes *S. agalactiae*.  
+> > D) Yes. Using genomes of all the species in the image is the only way to have a monophyletic group that includes *S. agalactiae*.  
 > > 
 > {: .solution}
 {: .challenge}
