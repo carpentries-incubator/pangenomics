@@ -126,16 +126,16 @@ Parameters can be modified as much as needed regarding the organism, the gene an
 > ## Exercise 1: Inspecting the GBK
 > Open the `gbk` output file and carefully explore the information it contains. Which of the following statements is TRUE?
 > 
-> a) Prokka translates every single gene to its corresponding protein, even if the gene isn't a coding one.
-> b) Prokka can find all kinds of protein coding sequences, not just the ones that have been identified or cataloged in a database.
-> c) Prokka identifies tRNA genes, but doesn't mention the anticodon located on the tRNAs.
+> a) Prokka translates every single gene to its corresponding protein, even if the gene isn't a coding one.  
+> b) Prokka can find all kinds of protein coding sequences, not just the ones that have been identified or cataloged in a database.  
+> c) Prokka identifies tRNA genes, but doesn't mention the anticodon located on the tRNAs.  
 > d) Prokka doesn't provide the positions in which a feature starts or ends.
 > 
 >> ## Solution
 >>  
->> a) FALSE. Prokka successfully identifies non-coding sequences, and doesn't translate them. Instead, it provides alternative information (e.g. if it's a rRNA gene, it tells if it's 5S, 16S or 23S).
->> b) TRUE. Some coding sequences produce proteins that are marked as "hypothetical", meaning that they haven't been yet identified but seem to show properties of a coding sequence.
->> c) FALSE. Every tRNA feature has a `/note` subsection mentioning between parentheses the anticodon located on the tRNA.
+>> a) FALSE. Prokka successfully identifies non-coding sequences, and doesn't translate them. Instead, it provides alternative information (e.g. if it's a rRNA gene, it tells if it's 5S, 16S or 23S).  
+>> b) TRUE. Some coding sequences produce proteins that are marked as "hypothetical", meaning that they haven't been yet identified but seem to show properties of a coding sequence.  
+>> c) FALSE. Every tRNA feature has a `/note` subsection mentioning between parentheses the anticodon located on the tRNA.  
 >> d) FALSE. Right next to each feature, there's a pair of numbers indicating the starting and ending position of the corresponding feature.
 >> 
 >{: .solution}
