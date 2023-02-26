@@ -241,7 +241,7 @@ $ cat TettelinList.txt | while read line
 > do 
 > prokka agalactiae_$line/*.fna --kingdom Bacteria --genus Streptococcus --species agalactiae \
 > --strain $line --usegenus --addgenes --prefix Streptococcus_agalactiae_${line}_prokka \
-> --outdir ~/pan_workshop/results/annotated/Streptococcus_agalactiae_${line}_prokka;
+> --outdir ~/pan_workshop/results/annotated/Streptococcus_agalactiae_${line}_prokka
 >  done
 ~~~
 {: .language-bash}
