@@ -246,7 +246,8 @@ store the value of each of the lines of the `Tettelin.txt` file.
 
 ~~~
 $ cat TettelinList.txt | while read line 
-> do echo strain $line
+> do 
+> echo strain $line
 > done
 ~~~
 {: .language-bash}
