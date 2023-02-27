@@ -341,6 +341,7 @@ $ ls *.gbk | while read file
 ~~~
 {: .language-bash}
 Finally, we review the result
+~~~
 $ head Streptococcus_agalactiae_18RS21_prokka.gbk
 ~~~
 {: .language-bash}
