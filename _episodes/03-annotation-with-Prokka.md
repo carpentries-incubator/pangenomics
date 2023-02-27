@@ -270,7 +270,10 @@ Streptococcus_agalactiae_A909_prokka.gbk    Streptococcus_agalactiae_NEM316_prok
 {: .callout}
 
 ## Curating Prokka output files
-The genome files annotated with Prokka do not have details of the corresponding genome in the ORGANISM row, the word UNCLASSIFIED appears in said row, as we can see with the following command:
+
+Now that we have our genome annotations, let's take a look at one of them. Fortunately, the `gbk` files are human readable and we can 
+look at a lot of the information in the first few lines:
+
 ~~~
 $ head Streptococcus_agalactiae_18RS21_prokka.gbk
 ~~~
@@ -291,7 +294,7 @@ COMMENT     Annotated using prokka 1.14.6 from
 ~~~
 {: .output}
 
-At the beginning of the lesson we downloaded `Streptococcus_agalactiae_18RS21.gbk`, which was already annotated, we can see its header
+We can see that in the `ORGANISM` field we have the word "Unclassified". If we compare it to the `gbk` file for the same strain, that came with the original data folder (which was obtained from the NCBI) we can see that the strain code should be there. 
 
 ~~~
 $ head ../../data/agalactiae_18RS21/Streptococcus_agalactiae_18RS21.gbk
@@ -314,25 +317,26 @@ FEATURES             Location/Qualifiers
 {: .output}
 
 
-This difference could be a problem, since some bioinformatics programs could classify two different strains within the same "Unclassified" group. For this reason, Prokka's output files need to be corrected before moving forward with additional analyses.
+This difference could be a problem, since some bioinformatics programs could classify two different strains within the same "Unclassified" group. 
+For this reason, Prokka's output files need to be corrected before moving forward with additional analyses.
 
-In this regard, we need to create the file `correct_gbk.sh`. We suggest the use of nano text editor to create your file, `nano correct_gbk.sh` and paste the following script. 
+To do this "manual" curation we will use the script `correct_gbk.sh`. Use of nano text editor to create your file, `nano correct_gbk.sh` and paste the following script. 
 ~~~
-#This script allows us to change the term Unclassified from the rows ORGANISM by that of the respective strain. 
+#This script will change the word Unclassified from the ORGANISM lines by that of the respective strain code.
+# Usage: sh correct_gbk.sh <gbk-file-to-edit>
 file=$1   # gbk file annotated with prokka
-strain=$(grep -m 1 "DEFINITION" $file |cut -d " " -f6,7) # separate the DEFINITION row by spaces and save columns 6 and 7 in the locus variable.
+strain=$(grep -m 1 "DEFINITION" $file |cut -d " " -f6,7) # create a variable with the columns 6 and 7 from the DEFINITION line.
 
-sed -i '/ORGANISM/{N;s/\n//;}' $file #Put the Organism rows on a single line.
+sed -i '/ORGANISM/{N;s/\n//;}' $file # Put the ORGANISM field on a single line.
 
-sed -i "s/\s*Unclassified./ $strain/" $file #Change Unclassfied to the value of the strain variable.
+sed -i "s/\s*Unclassified./ $strain/" $file # Substitute the word "Unclassfied" with the value of the strain variable.
 ~~~
 {: .language-bash}
 
-{: .language-bash}
+Press `Ctrl + X` to exit the text editor and save the changes. This script allows us to change the term "Unclassified." from the rows ORGANISM with 
+that of the respective strain. 
 
-Press Ctrl + X to exit the text editor and save the changes. This script allows us to change the term "Unclassified." from the rows ORGANISM by that of the respective strain. 
-
-Now, we need to run this script for all the gbk files, to do this
+Now, we need to run this script for all the `gbk` files:
 ~~~
 $ ls *.gbk | while read file
 > do 
@@ -340,7 +344,8 @@ $ ls *.gbk | while read file
 > done
 ~~~
 {: .language-bash}
-Finally, we review the result
+
+Finally, let's view the result:
 ~~~
 $ head Streptococcus_agalactiae_18RS21_prokka.gbk
 ~~~
