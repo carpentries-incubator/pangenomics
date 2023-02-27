@@ -6,8 +6,10 @@ questions:
 - "How can I identify the genes in a genome?"
 objectives:
 - "Annotate bacterial genomes using Prokka."
+- - "Use scripts to edit output files."
 keypoints:
 - "Prokka is a command line utility that provides rapid prokaryotic genome annotation."
+- "Sometimes we need manual curation of the output files of the software."
 ---
 
 ## Annotating Genomes
@@ -364,6 +366,8 @@ COMMENT     Annotated using prokka 1.14.6 from
 FEATURES             Location/Qualifiers
 ~~~
 {: .output}
+
+Voilà! Our `gbk` files now have the strain code in the `ORGANISM` line.
 
 > ## Annotating your assemblies
 >
