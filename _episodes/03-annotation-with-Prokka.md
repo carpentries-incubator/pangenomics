@@ -269,5 +269,119 @@ Streptococcus_agalactiae_A909_prokka.gbk    Streptococcus_agalactiae_NEM316_prok
 > To learn more about Prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provide a web-based user interface where you can store your private genomes and share them with your colleagues. If you want to use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast).
 {: .callout}
 
+## Curating Prokka output files
+The genome files annotated with Prokka do not have details of the corresponding genome in the ORGANISM row, the word UNCLASSIFIED appears in said row, as we can see with the following command:
+~~~
+$ head Streptococcus_agalactiae_18RS21_prokka.gbk
+~~~
+{: .language-bash}
+
+~~~
+LOCUS       AAJO01000553.1           259 bp    DNA     linear       22-FEB-2023
+DEFINITION  Streptococcus agalactiae strain 18RS21.
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Streptococcus agalactiae
+  ORGANISM  Streptococcus agalactiae
+            Unclassified.
+COMMENT     Annotated using prokka 1.14.6 from
+            https://github.com/tseemann/prokka.
+
+~~~
+{: .output}
+
+At the beginning of the lesson we downloaded `Streptococcus_agalactiae_18RS21.gbk`, which was already annotated, we can see its header
+
+~~~
+$ head ../../data/agalactiae_18RS21/Streptococcus_agalactiae_18RS21.gbk
+~~~
+{: .language-bash}
+
+~~~
+LOCUS       AAJO01000169.1          2501 bp    DNA     linear   UNK 
+DEFINITION  Streptococcus agalactiae 18RS21
+ACCESSION   AAJO01000169.1
+KEYWORDS    .
+SOURCE      Streptococcus agalactiae 18RS21.
+  ORGANISM  Streptococcus agalactiae 18RS21
+            Bacteria; Terrabacteria group; Firmicutes; Bacilli;
+            Lactobacillales; Streptococcaceae; Streptococcus; Streptococcus
+            agalactiae.
+FEATURES             Location/Qualifiers
+
+~~~
+{: .output}
+
+
+This difference could be a problem, since some bioinformatics programs could classify two different strains within the same "Unclassified" group. For this reason, Prokka's output files need to be corrected before moving forward with additional analyses.
+
+In this regard, we need to create the file `correct_gbk.sh`. We suggest the use of nano text editor to create your file, `nano correct_gbk.sh` and paste the following script. 
+~~~
+#This script allows us to change the term Unclassified from the rows ORGANISM by that of the respective strain. 
+file=$1   # gbk file annotated with prokka
+strain=$(grep -m 1 "DEFINITION" $file |cut -d " " -f6,7) # separate the DEFINITION row by spaces and save columns 6 and 7 in the locus variable.
+
+sed -i '/ORGANISM/{N;s/\n//;}' $file #Put the Organism rows on a single line.
+
+sed -i "s/\s*Unclassified./ $strain/" $file #Change Unclassfied to the value of the strain variable.
+~~~
+{: .language-bash}
+
+{: .language-bash}
+
+Press Ctrl + X to exit the text editor and save the changes. This script allows us to change the term "Unclassified." from the rows ORGANISM by that of the respective strain. 
+
+Now, we need to run this script for all the gbk files, to do this
+~~~
+$ ls *.gbk | while read file
+> do 
+> bash correct_gbk.sh $file
+> done
+~~~
+{: .language-bash}
+Finally, we review the result
+$ head Streptococcus_agalactiae_18RS21_prokka.gbk
+~~~
+{: .language-bash}
+
+~~~
+LOCUS       AAJO01000553.1           259 bp    DNA     linear       27-FEB-2023
+DEFINITION  Streptococcus agalactiae strain 18RS21.
+ACCESSION   
+VERSION
+KEYWORDS    .
+SOURCE      Streptococcus agalactiae
+  ORGANISM  Streptococcus agalactiae 18RS21.
+COMMENT     Annotated using prokka 1.14.6 from
+            https://github.com/tseemann/prokka.
+FEATURES             Location/Qualifiers
+~~~
+{: .output}
+
+> ## Annotating your assemblies
+>
+> If you work with your own assembled genomes, other problems may arise when annotating them. One likely problem is that the name of 
+> your contigs is very long, and since Prokka will use those names as the LOCUS names, the LOCUS names may turn out problematic.  
+> Example of contig name:
+> ~~~
+> NODE_1_length_44796_cov_57.856817
+> ~~~
+> Result of LOCUS name in `gbk` file:
+> ~~~
+> LOCUS       NODE_1_length_44796_cov_57.85681744796 bp   DNA linear
+> ~~~
+> Here the coverage and the length of the locus are fused, so this will give problems downstream in your analysis.  
+> 
+> The tool [anvi-script-reformat-fasta](https://anvio.org/help/main/programs/anvi-script-reformat-fasta/) can help you simplify the names 
+> of your assemblies and do other magic, such as remove the small contigs or sequences with too many gaps.  
+> ~~~
+> anvi-script-reformat-fasta my_new_assembly.fasta -o my_reformated_assembly.fasta --simplify-names
+> ~~~
+> {: .language-bash}
+> This will convert `>NODE_1_length_44796_cov_57.856817` into `>c_000000000001` and the LOCUS name into
+> `LOCUS       c_000000000001         44796 bp    DNA     linear`.  
+> Problem solved!
+{: .callout}
 
 
