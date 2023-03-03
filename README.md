@@ -3,7 +3,7 @@ Zenodo link:  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7620503.svg)](
 
 # Pangenome Analysis in Prokaryotes Lesson
 
-This lesson is part of the [Comparative Bacterial Genomics Workshop](https://czirion.github.io/comparative-genomics-workshop/).
+This lesson is part of the [Pangenome Analysis in Prokaryotes Workshop](https://czirion.github.io/pangenomics-workshop/).
 
 [Lesson Page](https://paumayell.github.io/pangenomics/index.html)
 
