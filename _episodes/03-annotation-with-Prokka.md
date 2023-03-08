@@ -139,7 +139,7 @@ Parameters can be modified as much as needed regarding the organism, the gene an
 >> a) FALSE. Prokka successfully identifies non-coding sequences, and doesn't translate them. Instead, it provides alternative information (e.g. if it's a rRNA gene, it tells if it's 5S, 16S or 23S).  
 >> b) TRUE. Some coding sequences produce proteins that are marked as "hypothetical", meaning that they haven't been yet identified but seem to show properties of a coding sequence.  
 >> c) FALSE. Every tRNA feature has a `/note` subsection mentioning between parentheses the anticodon located on the tRNA.  
->> d) FALSE. Right next to each feature, there's a pair of numbers indicating the starting and ending position of the corresponding feature.
+>> d) FALSE. Right next to each feature, there's a pair of numbers indicating the starting and ending position of the corresponding feature.  
 >> e) TRUE. Each coading sequence is identified by the CDS acronym in the left and information such as coordiantes, gene name, locus tag, 
 >> product description and translation in the right.
 >{: .solution}
