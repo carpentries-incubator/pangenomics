@@ -131,8 +131,8 @@ Parameters can be modified as much as needed regarding the organism, the gene an
 > a) Prokka translates every single gene to its corresponding protein, even if the gene isn't a coding one.  
 > b) Prokka can find all kinds of protein coding sequences, not just the ones that have been identified or cataloged in a database.  
 > c) Prokka identifies tRNA genes, but doesn't mention the anticodon located on the tRNAs.  
-> d) Prokka doesn't provide the positions in which a feature starts or ends.
-> e) The coding sequences are identified with the CDS acronym in the `FEATURES` section of each `LOCUS`.
+> d) Prokka doesn't provide the positions in which a feature starts or ends.  
+> e) The coding sequences are identified with the CDS acronym in the `FEATURES` section of each `LOCUS`.  
 > 
 >> ## Solution
 >>  
