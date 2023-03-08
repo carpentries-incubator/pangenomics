@@ -120,7 +120,7 @@ $ cd  ~/gm_workshop/results/pangenome/get_homologues/data_get # Change to the di
 {: .language-bash}
 We need to create a Symbolic link with the file *.gbk*
 ~~~
-$ find ~/gm_workshop/results/annotated/. -name "*Streptococcus_agalactiae_*[A-Z]*.prokka.gbk*" -exec ln -s {} . ';'
+$ ln -s ~/gm_workshop/results/annotated/*Streptococcus_agalactiae_*[A-Z]*.prokka.gbk .
 $ ls ~/gm_workshop/results/pangenome/get_homologues/data_get #List the symbolic link
 ~~~
 {: .language-bash}
