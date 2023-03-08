@@ -132,6 +132,7 @@ Parameters can be modified as much as needed regarding the organism, the gene an
 > b) Prokka can find all kinds of protein coding sequences, not just the ones that have been identified or cataloged in a database.  
 > c) Prokka identifies tRNA genes, but doesn't mention the anticodon located on the tRNAs.  
 > d) Prokka doesn't provide the positions in which a feature starts or ends.
+> e) The coding sequences are identified with the CDS acronym in the `FEATURES` section of each `LOCUS`.
 > 
 >> ## Solution
 >>  
@@ -139,66 +140,10 @@ Parameters can be modified as much as needed regarding the organism, the gene an
 >> b) TRUE. Some coding sequences produce proteins that are marked as "hypothetical", meaning that they haven't been yet identified but seem to show properties of a coding sequence.  
 >> c) FALSE. Every tRNA feature has a `/note` subsection mentioning between parentheses the anticodon located on the tRNA.  
 >> d) FALSE. Right next to each feature, there's a pair of numbers indicating the starting and ending position of the corresponding feature.
->> 
+>> e) TRUE. Each coading sequence is identified by the CDS acronym in the left and information such as coordiantes, gene name, locus tag, 
+>> product description and translation in the right.
 >{: .solution}
 {: .challenge}
-
-> ## Exercise 2: Extracting tRNAs with Prokka
->
-> Suppose you are asked to annotate the FASTA file you downloaded in the previous episode and
-> output the results to a subdirectory called `annotated` within the `thermophilusLMG18311_prokka`
-> directory. Then, a research team requests you a TSV file named `trnas.tsv` that contains only
-> *S. thermophilus'*s tRNAs. This file must contain the same headers as the original
-> TSV file, followed by the rows that correspond to tRNAs.
->
-> Complete the following sequence of commands to perform these actions:
->
-> ~~~
-> $ prokka --outdir thermophilusLMG18311_prokka --prefix thermophilusLMG18311_prokka ../../data/thermophilusLMG18311/__________ --kingdom Bacteria --genus Streptococcus --species thermophilus --usegenus --addgenes
-> ~~~
-> {: .language-bash}
->
-> ~~~
-> $ cd __________
-> ~~~
-> {: .language-bash}
->
-> ~~~
-> $ __________ -n 1 thermophilusLMG18311_prokka.tsv > trnas.tsv  # Get column headers
-> $ grep __________ thermophilusLMG18311_prokka.tsv >> trnas.tsv # Append all lines that contain tRNAs
-> ~~~
-> {: .language-bash}
->
-> > ## Solution
-> >
-> > Firstly, perform the annotation with Prokka and save all files as `thermophilusLMG18311_prokka`.
-> >
-> > ~~~
-> > $ prokka --prefix thermophilusLMG18311_prokka --outdir thermophilusLMG18311_prokka --kingdom Bacteria --genus Streptococcus --strain LMG18311 --usegenus --addgenes ../../data/thermophilusLMG18311/GCF_000011825.1_ASM1182v1_genomic.fna
-> > ~~~
-> > {: .language-bash}
-> >
-> > After switching to the `thermophilusLMG18311_prokka` directory, we should filter the data we need and save the outputs to a file named `trnas.tsv`. To do so, we use the `head` command with the `-n 1` argument to get the first line (the headers of the columns). Next, we add the lines that correspond to tRNAs, which is done with the code `$'\t'tRNA$'\t'` (this means that the program will search for lines that contain the word `tRNA` with tab spaces at the beginning and the end of the word).
-> >
-> > ~~~
-> > $ cd thermophilusLMG18311_prokka
-> > $ head -n 1 thermophilusLMG18311_prokka.tsv > trnas.tsv # Get column headers
-> > $ grep $'\t'tRNA$'\t' thermophilusLMG18311_prokka.tsv >> trnas.tsv # Append all lines that contain tRNA
-> > ~~~
-> > {: .language-bash}
-> >
-> {: .solution}
-{: .challenge}
-
-> ## Discussion 1: Number of tRNAs
->
-> Inside the `thermophilusLMG18311_prokka` directory you created in the Exercise 2, run the command `wc -l trnas.tsv` to get the number of lines in the file. You'll get the number 68 as output. Excluding the first line of the `TSV` file (which contains the header), observe that there are 67 tRNAs, whereas the [standard codon table](https://en.wikipedia.org/wiki/DNA_and_RNA_codon_tables#Translation_table_1) contains 61 coding codons (i.e. those that are non stop codons). This means that there are several genes that produce the same tRNA. How could you explain this fact?
->
-> > ## Solution
-> >
-> > The existence of many genes producing the same product (such as the same tRNA) can happen due to duplications of genes during the evolutionary history of a clade.
-> {: .solution}
-{: .discussion}
 
 ## Annotating Multiple Genomes
 
@@ -270,6 +215,7 @@ Streptococcus_agalactiae_A909_prokka.gbk    Streptococcus_agalactiae_NEM316_prok
 > ## Genome annotation services
 > To learn more about Prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provide a web-based user interface where you can store your private genomes and share them with your colleagues. If you want to use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast).
 {: .callout}
+
 
 ## Curating Prokka output files
 
@@ -368,6 +314,45 @@ FEATURES             Location/Qualifiers
 {: .output}
 
 Voilà! Our `gbk` files now have the strain code in the `ORGANISM` line.
+
+> ## Exercise 2: Counting coding sequences
+> 
+> Before we build our pangenome it can be useful to take a quick look at how many coding sequences each of our genomes have. This way we can 
+> know if they have a number close to the expected one (if we have previous knowlegde of our organism of study).
+> 
+> Use your `grep`, looping and piping abilities to count the number of coding sequences in the `gbk` files of each genome.
+>
+> > ## Solution
+> >
+> > ~~~
+> > > for genome in *.gbk
+> > > do 
+> > > echo $genome #print the name of the file
+> > > grep "CDS" $genome | wc -l #find the lines with the string "CDS" and pipe that to the command wc with the flag -l to count the lines
+> > > done
+> > ~~~
+> > {: .language-bash}
+> > ~~~
+> > Streptococcus_agalactiae_18RS21_prokka.gbk
+> > 1967
+> > Streptococcus_agalactiae_2603V_prokka.gbk
+> > 2117
+> > Streptococcus_agalactiae_515_prokka.gbk
+> > 1972
+> > Streptococcus_agalactiae_A909_prokka.gbk
+> > 2076
+> > Streptococcus_agalactiae_CJB111_prokka.gbk
+> > 2052
+> > Streptococcus_agalactiae_COH1_prokka.gbk
+> > 2001
+> > Streptococcus_agalactiae_H36B_prokka.gbk
+> > 2175
+> > Streptococcus_agalactiae_NEM316_prokka.gbk
+> > 2150
+> > ~~~
+> > {: .output}
+> {: .solution}
+{: .challenge}
 
 > ## Annotating your assemblies
 >
