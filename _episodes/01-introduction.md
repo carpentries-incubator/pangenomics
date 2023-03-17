@@ -21,19 +21,21 @@ keypoints:
 ---
 ## What is a pangenome?
 
-The term **pangenome** derives from the Greek *pan*, meaning 'whole' or 'everything', while *genome* describes
-an organism's complete genetic material. In 2005, [Tettelin *et al.*](https://www.pnas.org/doi/10.1073/pnas.0506758102]) used the name pangenome for the first time
-to explain the entire collection of genes from a group of pathogenic bacteria named *Streptococcus agalactiae*.
-The pangenome concept has been applied to other organisms, including plants, animals, fungi, viruses, etc.
-To summarize, a pangenome is the entire set of genes from all clade strains.
+Contrary to what was thought in the past, one genome is not enough to represent all of the genomic content of a species. This was observed 
+by [Tettelin *et al.*](https://www.pnas.org/doi/10.1073/pnas.0506758102]),  who were working on developing a vaccine against the bacteria 
+*Streptococcus agalactiae* and realized that they needed many genomes to choose an appropriate gene to be the target of the vaccine. 
+In 2005, these authors came up with the concept of **pangenome**, which derives from the Greek *pan*, meaning ‘whole’ or ‘everything’ and *genome* 
+that describes an organism’s complete genetic material, to refer to the collection of all the genes present in a species. 
+This concept can be applied to any clade (more on this below), not only to the taxonomic level of species. And although it started from the study 
+of bacteria, it has also been used in the research of eukaryotes, archaea, and viruses.
 
-The pangenome can be divided into three principal components: **core genome**, which contains genes present
-in all the strains compared, **shell genome** is a proportion of genes absent in one or more strains
-and **dispensable genome** comprised of genes unique to each strain.
+The pangenome can be divided into two principal components: the **core genome**, which contains genes present in all the genomes compared, and the 
+**dispensable** or **accessory genome**, with the genes not shared by all the genomes. The dispensable can be subdivided into the **shell genome**, the 
+proportion of genes present in the majority of the genomes, and **cloud genome**, comprised of genes in the minority of the genomes. This is a somewhat 
+ambiguous definition of the partitions, in practice, the percentage of genomes that define each partition can be set differently by each software of 
+pangenome analysis and by each researcher. 
 
-There are two classes of pangenomes: open and closed. An **open pangenome** occurs when the number of gene families increases considerably for every added genome (e.g., *Escherichia coli*). Whereas, a **closed pangenome**
-results when only a few gene families are incorporated into the pangenome when a new member is added.
-
+One of the most groundbreaking ideas that pangenomics brought to the study of microbiology is that a species can be unbounded. When each newly included genome increases considerably the number of total genes, the species has an open pangenome. Whereas a closed pangenome results when only a few gene families are incorporated into the pangenome when a new member is added.
 
 <a href="{{ page.root }}/fig/01-01-01.png">
    <img src="{{ page.root }}/fig/01-01-01.png" alt=" Venn diagram of a) a closed pangenome and b) an open pangenome, comparing the sizes of their core and accessory genomes. c) Graphic depicting the differences between closed and open pangenomes regarding their size, total genes in pangenome, and the number of sequenced genomes." />
@@ -86,7 +88,11 @@ together form a clade.
 
 ## The *Streptococcus agalactiae* dataset
 
-*Streptococcus agalactiae* is a human pathogenic bacteria that causes neonatal infections. For this lesson, we will work with the eight *Streptococcus agalactiae* strains included in the first pangenome made by *Tettelin et al., 2005*. The genomes of strains 18RS21 and H36B are already in our `pan_workshop/data`, but the others will be downloaded and annotated in the following episodes.
+In this lesson, we will perform a standard pangenomics pipeline, which consist of the genomic annotation, clustering of gene families by identification
+of orthologous sequences, and the description of the pangenome partitions and openness. For this we will work with the eight *Streptococcus agalactiae*
+(a human pathogenic bacteria that causes neonatal infections) strains included in the first pangenome made by *Tettelin et al., 2005*.
+
+The genomes of strains 18RS21 and H36B are already in our `pan_workshop/data`, but the others will be downloaded and annotated in the following episodes.
 
 **Metadata**
 
