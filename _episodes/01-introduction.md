@@ -97,6 +97,10 @@ together form a clade.
 > {: .solution}
 {: .challenge}
 
+> > ## Know more
+> > If you want to read more on pangenomics go to the book [The Pangenome](https://link.springer.com/book/10.1007/978-3-030-38281-0).
+{: .testimonial}
+
 ## The *Streptococcus agalactiae* dataset
 
 In this lesson, we will perform a standard pangenomics pipeline, which consist of the genomic annotation, clustering of gene families by identification
