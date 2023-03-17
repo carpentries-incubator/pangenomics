@@ -194,15 +194,14 @@ $ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 {: .language-bash}
 
 ~~~
-2022-06-09 23:09:00 main.py:l180 INFO   Command: /opt/anaconda3/envs/Pangenomics_Global/bin/ppanggolin annotate --anno organisms.gbk.list --output pangenome
-2022-06-09 23:09:00 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2022-06-09 23:09:00 annotate.py:l338 INFO   	Reading organisms.gbk.list the list of organism files ...
-100%|███████████████████████████████████████████| 6/6 [00:00<00:00,  8.28file/s]
-2022-06-09 23:09:01 writeBinaries.py:l481 INFO  Writing genome annotations...
-100%|████████████████████████████████████████| 6/6 [00:00<00:00, 319.70genome/s]
-2022-06-09 23:09:01 writeBinaries.py:l494 INFO  writing the protein coding gene dna sequences
-100%|███████████████████████████████| 12439/12439 [00:00<00:00, 163659.81gene/s]
-2022-06-09 23:09:01 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome/pangenome.h5
+2023-03-17 13:37:02 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
+2023-03-17 13:37:02 annotate.py:l338 INFO       Reading organisms.gbk.list the list of organism files ...
+100%|███████████████████████████████████████████| 8/8 [00:01<00:00,  7.31file/s]
+2023-03-17 13:37:03 writeBinaries.py:l481 INFO  Writing genome annotations...
+100%|████████████████████████████████████████| 8/8 [00:00<00:00, 279.31genome/s]
+2023-03-17 13:37:03 writeBinaries.py:l494 INFO  writing the protein coding gene dna sequences
+100%|███████████████████████████████| 16439/16439 [00:00<00:00, 142550.61gene/s]
+2023-03-17 13:37:03 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome/pangenome.h5
 
 ~~~
 {: .output}
@@ -226,8 +225,7 @@ $ ls -lah pangenome.h5
 {: .language-bash}
 
 ~~~
--rw-r--r-- 1 alumno4 rstudio 6.4M Jun  9 23:09 pangenome.h5
-
+-rw-r--r-- 1 user rstudio-users 8.9M pangenome.h5
 ~~~
 {: .output}
 
@@ -235,21 +233,28 @@ The `pangenome.h5` file will be used as input and output for all subsequent anal
 
 ### Step 5: Gene clustering
 
+Ppanggolin use by default MMseqs2 to run clustering algoritm in all proteins. You can provide your own gene families or cluster adding the flag `--clusters` and providing the tsv file with your families but previously in step 4 you need to provide the annotations. 
+
 ~~~
 $ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
 
 ~~~
-100%|██████████████████████████| 2671/2671 [00:00<00:00, 774649.84gene family/s]
-2022-06-09 23:11:46 writeBinaries.py:l501 INFO  Writing gene families information...
-100%|██████████████████████████| 2671/2671 [00:00<00:00, 551518.04gene family/s]
-2022-06-09 23:11:46 writeBinaries.py:l421 INFO  Updating annotations with fragment information
-100%|███████████████████████████████| 13319/13319 [00:00<00:00, 559002.70gene/s]
-2022-06-09 23:11:46 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
-
+2023-03-17 13:42:39 cluster.py:l130 INFO        Adding 16439 genes to the gene families
+100%|███████████████████████████████████████████████████████████████████████████████| 16439/16439 [00:00<00:00, 619888.19gene/s]
+2023-03-17 13:42:39 cluster.py:l286 INFO        Done with the clustering
+2023-03-17 13:42:39 writeBinaries.py:l499 INFO  Writing gene families and gene associations...
+100%|██████████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 645364.12gene family/s]
+2023-03-17 13:42:39 writeBinaries.py:l501 INFO  Writing gene families information...
+100%|██████████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 388519.58gene family/s]
+2023-03-17 13:42:39 writeBinaries.py:l421 INFO  Updating annotations with fragment information
+100%|███████████████████████████████████████████████████████████████████████████████| 17542/17542 [00:00<00:00, 473462.08gene/s]
+2023-03-17 13:42:39 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
+
+You can change the cluster parameters adding the flags `--coverage`(default 0.8) `--identity`(default 0.8) to the previous command. You can also provide your 
 
 The results are saved in the `pangenome.h5` file given as input. We can notice that the size of the file has increased.
 
@@ -259,12 +264,13 @@ $ ls -lah pangenome.h5
 {: .language-bash}
 
 ~~~
--rw-r--r-- 1 alumno4 rstudio 7.1M Jun  9 23:11 pangenome.h5
+-rw-r--r-- 1 user rstudio-users 9.6M pangenome.h5
 ~~~
 {: .output}
 
 ### Step 6: Build the pangenome graph
 
+In order to obtain the partitios of the pangenome, you need to construct the pangenome graph. 
 ~~~
 $ ppanggolin graph --pangenome pangenome.h5 --cpu 8
 ~~~
