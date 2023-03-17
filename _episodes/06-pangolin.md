@@ -120,7 +120,7 @@ $ conda activate Pangenomics_Global
 {: .language-bash}
 
 ~~~
-(Pangenomics) betterlab@betterlabub:~$
+(Pangenomics_Global) betterlab@betterlabub:~$
 ~~~
 {: .output}
 
@@ -128,26 +128,29 @@ $ conda activate Pangenomics_Global
 ### Step 1: Create a working directory
 
 ~~~
-$ mkdir -p  ~/gm_workshop/results/pangenome/ppanggolin
+$ mkdir -p  ~/pan_workshop/results/pangenome/ppanggolin
 ~~~
 {: .language-bash}
 
 ### Step 2: Identify and explore the genome files
 
 ~~~
-$ ls ~/gm_workshop/results/annotated/*.gbk
+$ ls ~/pan_workshop/results/annotated/*.gbk
 ~~~
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka.gbk  agalactiae_A909_prokka.gbk	agalactiae_COH1_prokka.gbk  equinus_strain_HJ50.gbk  thermophilus_LMD-9.gbk
-agalactiae_515_prokka.gbk 	agalactiae_CJB111_prokka.gbk  agalactiae_H36B_prokka.gbk  ratti_ATCC_JH145.gbk 	thermophilus_LMG_18311.gbk
+Streptococcus_agalactiae_18RS21_prokka.gbk  Streptococcus_agalactiae_CJB111_prokka.gbk
+Streptococcus_agalactiae_2603V_prokka.gbk   Streptococcus_agalactiae_COH1_prokka.gbk
+Streptococcus_agalactiae_515_prokka.gbk     Streptococcus_agalactiae_H36B_prokka.gbk
+Streptococcus_agalactiae_A909_prokka.gbk    Streptococcus_agalactiae_NEM316_prokka.gbk
 ~~~
 {: .output}
 
 Create a Symbolic link with the file *.gbk*  (remember the previous episode)
 ~~~
-$ find ~/gm_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {} . ';'
+$ cd ~/pan_workshop/results/pangenome/ppangolin
+$ find ~/pan_workshop/results/annotated/. -name "*.gbk*" -exec ln -s {} . ';'
 ~~~
 {: .language-bash}
 
@@ -156,27 +159,28 @@ $ find ~/gm_workshop/results/annotated/. -name "*aga*_prokka.gbk*" -exec ln -s {
 Each line of this file represents one organism, the first column contains a unique organism name and the second column contains the path to the associate `.gbk` file.
 
 ~~~
-$ ls agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\t'$line.gbk >> organisms.gbk.list; done
+$ ls Streptococcus_agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\t'$line.gbk >> organisms.gbk.list; done
 ~~~
 {: .language-bash}
 
 Move to the working directory.
 ~~~
 $ cd
-$ cd ~/gm_workshop/results/pangenome/ppanggolin/
+$ cd ~/pan_workshop/results/pangenome/ppangolin
 $ ls
 $ head organisms.gbk.list
 ~~~
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka    	agalactiae_18RS21_prokka.gbk
-agalactiae_515_prokka   agalactiae_515_prokka.gbk
-agalactiae_A909_prokka  agalactiae_A909_prokka.gbk
-agalactiae_CJB111_prokka    	agalactiae_CJB111_prokka.gbk
-agalactiae_COH1_prokka  agalactiae_COH1_prokka.gbk
-agalactiae_H36B_prokka  agalactiae_H36B_prokka.gbk
-
+Streptococcus_agalactiae_18RS21_prokka	Streptococcus_agalactiae_18RS21_prokka.gbk
+Streptococcus_agalactiae_2603V_prokka	Streptococcus_agalactiae_2603V_prokka.gbk
+Streptococcus_agalactiae_515_prokka	Streptococcus_agalactiae_515_prokka.gbk
+Streptococcus_agalactiae_A909_prokka	Streptococcus_agalactiae_A909_prokka.gbk
+Streptococcus_agalactiae_CJB111_prokka	Streptococcus_agalactiae_CJB111_prokka.gbk
+Streptococcus_agalactiae_COH1_prokka	Streptococcus_agalactiae_COH1_prokka.gbk
+Streptococcus_agalactiae_H36B_prokka	Streptococcus_agalactiae_H36B_prokka.gbk
+Streptococcus_agalactiae_NEM316_prokka	Streptococcus_agalactiae_NEM316_prokka.gbk
 ~~~
 {: .output}
 
