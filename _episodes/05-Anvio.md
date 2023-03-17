@@ -40,7 +40,7 @@ conda activate Pangenomics_Global
 
 Move into the directory named `results` and create a new directory called `anvi-o` for the Anvi'o analysis
 ~~~
-cd ~/gm_workshop/results/pangenome
+cd ~/pan_workshop/results/pangenome
 mkdir anvi-o
 cd anvi-o
 ~~~
@@ -56,7 +56,7 @@ mkdir genome-db
 > The bacterial genomes that will be used in this practice
 >  come from the Prokka annotation analysis.
 >  We will use the `.gbk` files as input for the Anvi'o workflow.
->  The `.gbk` files can be found in `~/gm_workshop/results/annotated`.
+>  The `.gbk` files can be found in `~/pan_workshop/results/annotated`.
 {: .callout}
 
 
@@ -67,7 +67,7 @@ mkdir genome-db
 Process the genome files (`.gbk`) with the `anvi-script-process-genbank` script
 
 ~~~
-ls ~/gm_workshop/results/annotated/agalactiae* | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/gm_workshop/results/annotated/$line.gbk -O genome-db/$line; done
+ls ~/pan_workshop/results/annotated/Streptococcus_agalactiae_* | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/pan_workshop/results/annotated/$line.gbk -O genome-db/$line; done
 ~~~
 {: .language-bash}
 
@@ -78,15 +78,18 @@ ls
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka-contigs.fa           	agalactiae_CJB111_prokka-contigs.fa
-agalactiae_18RS21_prokka-external-functions.txt   agalactiae_CJB111_prokka-external-functions.txt
-agalactiae_18RS21_prokka-external-gene-calls.txt  agalactiae_CJB111_prokka-external-gene-calls.txt
-agalactiae_515_prokka-contigs.fa              	agalactiae_COH1_prokka-contigs.fa
-agalactiae_515_prokka-external-functions.txt  	agalactiae_COH1_prokka-external-functions.txt
-agalactiae_515_prokka-external-gene-calls.txt 	agalactiae_COH1_prokka-external-gene-calls.txt
-agalactiae_A909_prokka-contigs.fa             	agalactiae_H36B_prokka-contigs.fa
-agalactiae_A909_prokka-external-functions.txt 	agalactiae_H36B_prokka-external-functions.txt
-agalactiae_A909_prokka-external-gene-calls.txt	agalactiae_H36B_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa               Streptococcus_agalactiae_CJB111_prokka-contigs.fa
+Streptococcus_agalactiae_18RS21_prokka-external-functions.txt   Streptococcus_agalactiae_CJB111_prokka-external-functions.txt
+Streptococcus_agalactiae_18RS21_prokka-external-gene-calls.txt  Streptococcus_agalactiae_CJB111_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_2603V_prokka-contigs.fa                Streptococcus_agalactiae_COH1_prokka-contigs.fa
+Streptococcus_agalactiae_2603V_prokka-external-functions.txt    Streptococcus_agalactiae_COH1_prokka-external-functions.txt
+Streptococcus_agalactiae_2603V_prokka-external-gene-calls.txt   Streptococcus_agalactiae_COH1_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_515_prokka-contigs.fa                  Streptococcus_agalactiae_H36B_prokka-contigs.fa
+Streptococcus_agalactiae_515_prokka-external-functions.txt      Streptococcus_agalactiae_H36B_prokka-external-functions.txt
+Streptococcus_agalactiae_515_prokka-external-gene-calls.txt     Streptococcus_agalactiae_H36B_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_A909_prokka-contigs.fa                 Streptococcus_agalactiae_NEM316_prokka-contigs.fa
+Streptococcus_agalactiae_A909_prokka-external-functions.txt     Streptococcus_agalactiae_NEM316_prokka-external-functions.txt
+Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt    Streptococcus_agalactiae_NEM316_prokka-external-gene-calls.txt
 
 ~~~
 {: .output}
@@ -102,18 +105,22 @@ ls
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka-contigs.fa           	agalactiae_CJB111_prokka-contigs.fa
-agalactiae_18RS21_prokka-contigs.fa.fasta     	agalactiae_CJB111_prokka-contigs.fa.fasta
-agalactiae_18RS21_prokka-external-functions.txt   agalactiae_CJB111_prokka-external-functions.txt
-agalactiae_18RS21_prokka-external-gene-calls.txt  agalactiae_CJB111_prokka-external-gene-calls.txt
-agalactiae_515_prokka-contigs.fa              	agalactiae_COH1_prokka-contigs.fa
-agalactiae_515_prokka-contigs.fa.fasta        	agalactiae_COH1_prokka-contigs.fa.fasta
-agalactiae_515_prokka-external-functions.txt  	agalactiae_COH1_prokka-external-functions.txt
-agalactiae_515_prokka-external-gene-calls.txt 	agalactiae_COH1_prokka-external-gene-calls.txt
-agalactiae_A909_prokka-contigs.fa             	agalactiae_H36B_prokka-contigs.fa
-agalactiae_A909_prokka-contigs.fa.fasta       	agalactiae_H36B_prokka-contigs.fa.fasta
-agalactiae_A909_prokka-external-functions.txt 	agalactiae_H36B_prokka-external-functions.txt
-agalactiae_A909_prokka-external-gene-calls.txt	agalactiae_H36B_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa               Streptococcus_agalactiae_CJB111_prokka-contigs.fa
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa.fasta         Streptococcus_agalactiae_CJB111_prokka-contigs.fa.fasta
+Streptococcus_agalactiae_18RS21_prokka-external-functions.txt   Streptococcus_agalactiae_CJB111_prokka-external-functions.txt
+Streptococcus_agalactiae_18RS21_prokka-external-gene-calls.txt  Streptococcus_agalactiae_CJB111_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_2603V_prokka-contigs.fa                Streptococcus_agalactiae_COH1_prokka-contigs.fa
+Streptococcus_agalactiae_2603V_prokka-contigs.fa.fasta          Streptococcus_agalactiae_COH1_prokka-contigs.fa.fasta
+Streptococcus_agalactiae_2603V_prokka-external-functions.txt    Streptococcus_agalactiae_COH1_prokka-external-functions.txt
+Streptococcus_agalactiae_2603V_prokka-external-gene-calls.txt   Streptococcus_agalactiae_COH1_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_515_prokka-contigs.fa                  Streptococcus_agalactiae_H36B_prokka-contigs.fa
+Streptococcus_agalactiae_515_prokka-contigs.fa.fasta            Streptococcus_agalactiae_H36B_prokka-contigs.fa.fasta
+Streptococcus_agalactiae_515_prokka-external-functions.txt      Streptococcus_agalactiae_H36B_prokka-external-functions.txt
+Streptococcus_agalactiae_515_prokka-external-gene-calls.txt     Streptococcus_agalactiae_H36B_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_A909_prokka-contigs.fa                 Streptococcus_agalactiae_NEM316_prokka-contigs.fa
+Streptococcus_agalactiae_A909_prokka-contigs.fa.fasta           Streptococcus_agalactiae_NEM316_prokka-contigs.fa.fasta
+Streptococcus_agalactiae_A909_prokka-external-functions.txt     Streptococcus_agalactiae_NEM316_prokka-external-functions.txt
+Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt    Streptococcus_agalactiae_NEM316_prokka-external-gene-calls.txt
 
 ~~~
 {: .output}
@@ -129,21 +136,26 @@ ls
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka-contigs.fa               	agalactiae_CJB111_prokka-contigs.fa
-agalactiae_18RS21_prokka-contigs.fa.fasta         	agalactiae_CJB111_prokka-contigs.fa.fasta
-agalactiae_18RS21_prokka-contigs.fa.fasta-contigs.db  agalactiae_CJB111_prokka-contigs.fa.fasta-contigs.db
-agalactiae_18RS21_prokka-external-functions.txt   	agalactiae_CJB111_prokka-external-functions.txt
-agalactiae_18RS21_prokka-external-gene-calls.txt  	agalactiae_CJB111_prokka-external-gene-calls.txt
-agalactiae_515_prokka-contigs.fa                  	agalactiae_COH1_prokka-contigs.fa
-agalactiae_515_prokka-contigs.fa.fasta            	agalactiae_COH1_prokka-contigs.fa.fasta
-agalactiae_515_prokka-contigs.fa.fasta-contigs.db 	agalactiae_COH1_prokka-contigs.fa.fasta-contigs.db
-agalactiae_515_prokka-external-functions.txt      	agalactiae_COH1_prokka-external-functions.txt
-agalactiae_515_prokka-external-gene-calls.txt     	agalactiae_COH1_prokka-external-gene-calls.txt
-agalactiae_A909_prokka-contigs.fa                 	agalactiae_H36B_prokka-contigs.fa
-agalactiae_A909_prokka-contigs.fa.fasta           	agalactiae_H36B_prokka-contigs.fa.fasta
-agalactiae_A909_prokka-contigs.fa.fasta-contigs.db	agalactiae_H36B_prokka-contigs.fa.fasta-contigs.db
-agalactiae_A909_prokka-external-functions.txt     	agalactiae_H36B_prokka-external-functions.txt
-agalactiae_A909_prokka-external-gene-calls.txt    	agalactiae_H36B_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa                   Streptococcus_agalactiae_CJB111_prokka-contigs.fa
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa.fasta             Streptococcus_agalactiae_CJB111_prokka-contigs.fa.fasta
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa.fasta-contigs.db  Streptococcus_agalactiae_CJB111_prokka-contigs.fa.fasta-contigs.db
+Streptococcus_agalactiae_18RS21_prokka-external-functions.txt       Streptococcus_agalactiae_CJB111_prokka-external-functions.txt
+Streptococcus_agalactiae_18RS21_prokka-external-gene-calls.txt      Streptococcus_agalactiae_CJB111_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_2603V_prokka-contigs.fa                    Streptococcus_agalactiae_COH1_prokka-contigs.fa
+Streptococcus_agalactiae_2603V_prokka-contigs.fa.fasta              Streptococcus_agalactiae_COH1_prokka-contigs.fa.fasta
+Streptococcus_agalactiae_2603V_prokka-contigs.fa.fasta-contigs.db   Streptococcus_agalactiae_COH1_prokka-contigs.fa.fasta-contigs.db
+Streptococcus_agalactiae_2603V_prokka-external-functions.txt        Streptococcus_agalactiae_COH1_prokka-external-functions.txt
+Streptococcus_agalactiae_2603V_prokka-external-gene-calls.txt       Streptococcus_agalactiae_COH1_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_515_prokka-contigs.fa                      Streptococcus_agalactiae_H36B_prokka-contigs.fa
+Streptococcus_agalactiae_515_prokka-contigs.fa.fasta                Streptococcus_agalactiae_H36B_prokka-contigs.fa.fasta
+Streptococcus_agalactiae_515_prokka-contigs.fa.fasta-contigs.db     Streptococcus_agalactiae_H36B_prokka-contigs.fa.fasta-contigs.db
+Streptococcus_agalactiae_515_prokka-external-functions.txt          Streptococcus_agalactiae_H36B_prokka-external-functions.txt
+Streptococcus_agalactiae_515_prokka-external-gene-calls.txt         Streptococcus_agalactiae_H36B_prokka-external-gene-calls.txt
+Streptococcus_agalactiae_A909_prokka-contigs.fa                     Streptococcus_agalactiae_NEM316_prokka-contigs.fa
+Streptococcus_agalactiae_A909_prokka-contigs.fa.fasta               Streptococcus_agalactiae_NEM316_prokka-contigs.fa.fasta
+Streptococcus_agalactiae_A909_prokka-contigs.fa.fasta-contigs.db    Streptococcus_agalactiae_NEM316_prokka-contigs.fa.fasta-contigs.db
+Streptococcus_agalactiae_A909_prokka-external-functions.txt         Streptococcus_agalactiae_NEM316_prokka-external-functions.txt
+Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt        Streptococcus_agalactiae_NEM316_prokka-external-gene-calls.txt
 
 ~~~
 {: .output}
@@ -158,12 +170,14 @@ head external-genomes.txt
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka    	agalactiae_18RS21_prokka-contigs.db
-agalactiae_515_prokka   agalactiae_515_prokka-contigs.db
-agalactiae_A909_prokka  agalactiae_A909_prokka-contigs.db
-agalactiae_CJB111_prokka    	agalactiae_CJB111_prokka-contigs.db
-agalactiae_COH1_prokka  agalactiae_COH1_prokka-contigs.db
-agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
+Streptococcus_agalactiae_18RS21_prokka  Streptococcus_agalactiae_18RS21_prokka-contigs.db
+Streptococcus_agalactiae_2603V_prokka   Streptococcus_agalactiae_2603V_prokka-contigs.db
+Streptococcus_agalactiae_515_prokka     Streptococcus_agalactiae_515_prokka-contigs.db
+Streptococcus_agalactiae_A909_prokka    Streptococcus_agalactiae_A909_prokka-contigs.db
+Streptococcus_agalactiae_CJB111_prokka  Streptococcus_agalactiae_CJB111_prokka-contigs.db
+Streptococcus_agalactiae_COH1_prokka    Streptococcus_agalactiae_COH1_prokka-contigs.db
+Streptococcus_agalactiae_H36B_prokka    Streptococcus_agalactiae_H36B_prokka-contigs.db
+Streptococcus_agalactiae_NEM316_prokka  Streptococcus_agalactiae_NEM316_prokka-contigs.db
 ~~~
 {: .output}
 
@@ -176,13 +190,15 @@ nano external-genomes.txt
 {: .language-bash}
 
 ~~~
-  GNU nano 4.8                                                         	external-genomes.txt                                                                  	 
-agalactiae_18RS21_prokka    	agalactiae_18RS21_prokka-contigs.db
-agalactiae_515_prokka   agalactiae_515_prokka-contigs.db
-agalactiae_A909_prokka  agalactiae_A909_prokka-contigs.db
-agalactiae_CJB111_prokka    	agalactiae_CJB111_prokka-contigs.db
-agalactiae_COH1_prokka  agalactiae_COH1_prokka-contigs.db
-agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
+  GNU nano 4.8                                                         	external-genomes.txt                                   name    contigs_db_path
+Streptococcus_agalactiae_18RS21_prokka  Streptococcus_agalactiae_18RS21_prokka-contigs.db
+Streptococcus_agalactiae_2603V_prokka   Streptococcus_agalactiae_2603V_prokka-contigs.db
+Streptococcus_agalactiae_515_prokka     Streptococcus_agalactiae_515_prokka-contigs.db
+Streptococcus_agalactiae_A909_prokka    Streptococcus_agalactiae_A909_prokka-contigs.db
+Streptococcus_agalactiae_CJB111_prokka  Streptococcus_agalactiae_CJB111_prokka-contigs.db
+Streptococcus_agalactiae_COH1_prokka    Streptococcus_agalactiae_COH1_prokka-contigs.db
+Streptococcus_agalactiae_H36B_prokka    Streptococcus_agalactiae_H36B_prokka-contigs.db
+Streptococcus_agalactiae_NEM316_prokka  Streptococcus_agalactiae_NEM316_prokka-contigs.db
 
 
 
@@ -197,13 +213,15 @@ head external-genomes.txt
 {: .language-bash}
 
 ~~~
-name	contigs_db_path
-agalactiae_18RS21_prokka    	agalactiae_18RS21_prokka-contigs.db
-agalactiae_515_prokka   agalactiae_515_prokka-contigs.db
-agalactiae_A909_prokka  agalactiae_A909_prokka-contigs.db
-agalactiae_CJB111_prokka    	agalactiae_CJB111_prokka-contigs.db
-agalactiae_COH1_prokka  agalactiae_COH1_prokka-contigs.db
-agalactiae_H36B_prokka  agalactiae_H36B_prokka-contigs.db
+name    contigs_db_path
+Streptococcus_agalactiae_18RS21_prokka  Streptococcus_agalactiae_18RS21_prokka-contigs.db
+Streptococcus_agalactiae_2603V_prokka   Streptococcus_agalactiae_2603V_prokka-contigs.db
+Streptococcus_agalactiae_515_prokka     Streptococcus_agalactiae_515_prokka-contigs.db
+Streptococcus_agalactiae_A909_prokka    Streptococcus_agalactiae_A909_prokka-contigs.db
+Streptococcus_agalactiae_CJB111_prokka  Streptococcus_agalactiae_CJB111_prokka-contigs.db
+Streptococcus_agalactiae_COH1_prokka    Streptococcus_agalactiae_COH1_prokka-contigs.db
+Streptococcus_agalactiae_H36B_prokka    Streptococcus_agalactiae_H36B_prokka-contigs.db
+Streptococcus_agalactiae_NEM316_prokka  Streptococcus_agalactiae_NEM316_prokka-contigs.db
 
 ~~~
 {: .output}
@@ -219,8 +237,10 @@ ls *.db
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka-contigs.db  agalactiae_A909_prokka-contigs.db	agalactiae_COH1_prokka-contigs.db
-agalactiae_515_prokka-contigs.db 	agalactiae_CJB111_prokka-contigs.db  agalactiae_H36B_prokka-contigs.db
+Streptococcus_agalactiae_18RS21_prokka-contigs.db  Streptococcus_agalactiae_CJB111_prokka-contigs.db
+Streptococcus_agalactiae_2603V_prokka-contigs.db   Streptococcus_agalactiae_COH1_prokka-contigs.db
+Streptococcus_agalactiae_515_prokka-contigs.db     Streptococcus_agalactiae_H36B_prokka-contigs.db
+Streptococcus_agalactiae_A909_prokka-contigs.db    Streptococcus_agalactiae_NEM316_prokka-contigs.db
 
 ~~~
 {: .output}
@@ -234,50 +254,51 @@ ls *contigs.db | while read line; do anvi-run-hmms -c $line; done
 {: .language-bash}
 
 ~~~
+Contigs DB ...................................: Streptococcus_agalactiae_18RS21_prokka-contigs.db
+HMM sources ..................................: Ribosomal_RNA_5S, Ribosomal_RNA_12S, Bacteria_71, Ribosomal_RNA_16S, Archaea_76,
+                                                Ribosomal_RNA_28S, Ribosomal_RNA_18S, Protista_83, Ribosomal_RNA_23S
+Alphabet/context target found ................: AA:GENE
+Alphabet/context target found ................: RNA:CONTIG
 
-HMM Profiling for Ribosomal_RNA_16S
+HMM Profiling for Ribosomal_RNA_5S
 ===============================================
 Reference ....................................: Seeman T, https://github.com/tseemann/barrnap
-Kind .........................................: Ribosomal_RNA_16S
+Kind .........................................: Ribosomal_RNA_5S
 Alphabet .....................................: RNA
 Context ......................................: CONTIG
 Domain .......................................: N/A
-HMM model path ...............................: /tmp/tmpjguiut54/Ribosomal_RNA_16S.hmm
-Number of genes in HMM model .................: 3
+HMM model path ...............................: /tmp/tmpigzysqa6/Ribosomal_RNA_5S.hmm
+Number of genes in HMM model .................: 5
 Noise cutoff term(s) .........................: --cut_ga
 Number of CPUs will be used for search .......: 1
 HMMer program used for search ................: nhmmscan
-Temporary work dir ...........................: /tmp/tmp9q6mevny
-Log file for thread 0 ........................: /tmp/tmp9q6mevny/RNA_contig_sequences.fa.0_log
+Temporary work dir ...........................: /tmp/tmplk81rft0
+Log file for thread 0 ........................: /tmp/tmplk81rft0/RNA_contig_sequences.fa.0_log
 Done 🎊
 
-Number of raw hits in table file .............: 7
-Number of weak hits removed by HMMER parser ..: 0
-Number of hits in annotation dict  ...........: 7
-Pruned .......................................: 3 out of 7 hits were removed due to redundancy
-Gene calls added to db .......................: 4 (from source "Ribosomal_RNA_16S")
+Number of raw hits in table file .............: 0
 
-HMM Profiling for Ribosomal_RNA_23S
+* The HMM source 'Ribosomal_RNA_5S' returned 0 hits. SAD (but it's stil OK).
+
+HMM Profiling for Ribosomal_RNA_12S
 ===============================================
 Reference ....................................: Seeman T, https://github.com/tseemann/barrnap
-Kind .........................................: Ribosomal_RNA_23S
+Kind .........................................: Ribosomal_RNA_12S
 Alphabet .....................................: RNA
 Context ......................................: CONTIG
 Domain .......................................: N/A
-HMM model path ...............................: /tmp/tmpjguiut54/Ribosomal_RNA_23S.hmm
-Number of genes in HMM model .................: 2
+HMM model path ...............................: /tmp/tmpigzysqa6/Ribosomal_RNA_12S.hmm
+Number of genes in HMM model .................: 1
 Noise cutoff term(s) .........................: --cut_ga
 Number of CPUs will be used for search .......: 1
 HMMer program used for search ................: nhmmscan
-Temporary work dir ...........................: /tmp/tmp9q6mevny
-Log file for thread 0 ........................: /tmp/tmp9q6mevny/RNA_contig_sequences.fa.0_log
+Temporary work dir ...........................: /tmp/tmplk81rft0
+Log file for thread 0 ........................: /tmp/tmplk81rft0/RNA_contig_sequences.fa.0_log
 Done 🎊
 
-Number of raw hits in table file .............: 7
-Number of weak hits removed by HMMER parser ..: 0
-Number of hits in annotation dict  ...........: 7
-Pruned .......................................: 3 out of 7 hits were removed due to redundancy
-Gene calls added to db .......................: 4 (from source "Ribosomal_RNA_23S")
+Number of raw hits in table file .............: 0
+
+* The HMM source 'Ribosomal_RNA_12S' returned 0 hits. SAD (but it's stil OK).
 
 ~~~
 {: .output}
@@ -285,27 +306,29 @@ Gene calls added to db .......................: 4 (from source "Ribosomal_RNA_23
 
 ### Step 8
 
-Create the genome database `genomes-storage-db` using the `anvi-gen-genomes-storage` script. In this case, we named this `genomes-storage-db` as **AGALACTIAE_GENOMES.db**, which will be used downstream as input in other processes.
+Create the genome database `genomes-storage-db` using the `anvi-gen-genomes-storage` script. In this case, we named this `genomes-storage-db` as **STREPTOCOCCUS_AGALACTIAE_GENOMES.db**, which will be used downstream as input in other processes.
 
 ~~~
-anvi-gen-genomes-storage -e external-genomes.txt -o AGALACTIAE_GENOMES.db
+anvi-gen-genomes-storage -e external-genomes.txt -o STREPTOCOCCUS_AGALACTIAE_GENOMES.db
 ls *.db
 ~~~
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21_prokka-contigs.db  agalactiae_CJB111_prokka-contigs.db  agalactiae_H36B_prokka-contigs.db
-agalactiae_515_prokka-contigs.db 	agalactiae_COH1_prokka-contigs.db
-agalactiae_A909_prokka-contigs.db	AGALACTIAE_GENOMES.db
+Streptococcus_agalactiae_18RS21_prokka-contigs.db  Streptococcus_agalactiae_COH1_prokka-contigs.db
+Streptococcus_agalactiae_2603V_prokka-contigs.db   STREPTOCOCCUS_AGALACTIAE_GENOMES.db
+Streptococcus_agalactiae_515_prokka-contigs.db     Streptococcus_agalactiae_H36B_prokka-contigs.db
+Streptococcus_agalactiae_A909_prokka-contigs.db    Streptococcus_agalactiae_NEM316_prokka-contigs.db
+Streptococcus_agalactiae_CJB111_prokka-contigs.db
 ~~~
 {: .output}
 
 ### Step 9
 
-Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named `AGALACTIAE_GENOMES.db` as input
+Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named `STREPTOCOCCUS_AGALACTIAE_GENOMES.db` as input
 
 ~~~
-anvi-pan-genome -g AGALACTIAE_GENOMES.db \
+anvi-pan-genome -g STREPTOCOCCUS_AGALACTIAE_GENOMES.db \
             	--project-name "PANGENOME-AGALACTIAE" \
             	--output-dir AGALACTIAE \
             	--num-threads 6 \
@@ -323,48 +346,48 @@ If you publish results from this workflow, please do not forget to cite DIAMOND
 (http://micans.org/mcl/ and doi:10.1007/978-1-61779-361-5_15)
 
 Functions found ..............................:
-Genomes storage ..............................: Initialized (storage hash: hash299bb5bf)
-Num genomes in storage .......................: 6
-Num genomes will be used .....................: 6
+Genomes storage ..............................: Initialized (storage hash: hash8a837d50)
+Num genomes in storage .......................: 8
+Num genomes will be used .....................: 8
 Pan database .................................: A new database,
-                                            	/home/betterlab/gm_workshop/results/anvi-o/genome-db/AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db,
-                                            	has been created.
+                                                /home/shaday/pan_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db,
+                                                has been created.
 Exclude partial gene calls ...................: False
 
-AA sequences FASTA ...........................: /home/betterlab/gm_workshop/results/anvi-o/genome-db/AGALACTIAE/combined-aas.fa
+AA sequences FASTA ...........................: /home/shaday/pan_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/combined-aas.fa
 
-Num AA sequences reported ....................: 13,548
+Num AA sequences reported ....................: 17,199
 Num excluded gene calls ......................: 0
-Unique AA sequences FASTA ....................: /home/betterlab/gm_workshop/results/anvi-o/genome-db/AGALACTIAE/combined-aas.fa.unique
+Unique AA sequences FASTA ....................: /home/shaday/pan_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/combined-aas.fa.unique
 
 WARNING
 ===============================================
 You elected to use NCBI's `blastp` for amino acid sequence search. Running
 blastp will be significantly slower than DIAMOND, but in some cases, slightly
 more sensitive. We are unsure about whether the slight increase in sensitivity
-may justify a significant increase in run time, but you are the boss.
+may justify significant increase in run time, but you are the boss.
 
 
 NCBI BLAST MAKEDB
 ===============================================
-BLAST search db ..............................: /home/betterlab/gm_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/combined-aas.fa.unique
+BLAST search db ..............................: /home/shaday/pan_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/combined-aas.fa.unique
 
 NCBI BLAST SEARCH
 ===============================================
-BLAST results ................................: /home/betterlab/gm_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/blast-search-results.txt
+BLAST results ................................: /home/shaday/pan_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/blast-search-results.txt
 
 MCL INPUT
 ===============================================
 Min percent identity .........................: 0.0
 Minbit .......................................: 0.5
-Filtered search results ......................: 92,757 edges stored
-MCL input ....................................: /home/betterlab/gm_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/mcl-input.txt
+Filtered search results ......................: 140,540 edges stored
+MCL input ....................................: /home/shaday/pan_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/mcl-input.txt
 
 MCL
 ===============================================
 MCL inflation ................................: 10.0
-MCL output ...................................: /home/betterlab/gm_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/mcl-clusters.txt
-Number of MCL clusters .......................: 2,711
+MCL output ...................................: /home/shaday/pan_workshop/results/pangenome/anvi-o/genome-db/AGALACTIAE/mcl-clusters.txt
+Number of MCL clusters .......................: 2,842
 
 CITATION
 ===============================================
@@ -372,7 +395,7 @@ The workflow you are using will likely use 'muscle' by Edgar,
 doi:10.1093/nar/gkh340 (http://www.drive5.com/muscle) to align your sequences.
 If you publish your findings, please do not forget to properly credit this tool.
 
-* Your pangenome is ready with a total of 2,711 gene clusters across 6 genomes 🎉
+* Your pangenome is ready with a total of 2,842 gene clusters across 8 genomes 🎉
 
 ~~~
 {: .output}
@@ -380,10 +403,10 @@ If you publish your findings, please do not forget to properly credit this tool.
 
 ### Step 10
 
-Create the interactive pangenome with the `anvi-display-pan` script using as input the `genomes-storage-db`  `AGALACTIAE_GENOMES.db` and the `pan-db`  `PANGENOME-AGALACTIAE-PAN.db` (located in `AGALACTIAE` directory)
+Create the interactive pangenome with the `anvi-display-pan` script using as input the `genomes-storage-db`  `STREPTOCOCCUS_AGALACTIAE_GENOMES.db` and the `pan-db`  `PANGENOME-AGALACTIAE-PAN.db` (located in `AGALACTIAE` directory)
 
 ~~~
-anvi-display-pan -g AGALACTIAE_GENOMES.db \
+anvi-display-pan -g STREPTOCOCCUS_AGALACTIAE_GENOMES.db \
 	-p AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db
 ~~~
 {: .language-bash}
@@ -411,7 +434,7 @@ command line.
 {: .output}
 
 
-Without disturbing the active terminal, open a new window in your preferred browser (recommended Chrome), copy-paste the following link `http://132.248.196.38:8080` and click on the bottom `Draw` to see your results and start interacting with your pangenome
+Without disturbing the active terminal, open a new window in your preferred browser (recommended Chrome), copy-paste the following link `http://bioinformatica.matmor.unam.mx:8080` and click on the bottom `Draw` to see your results and start interacting with your pangenome
 
 <a href="../fig/01-03-02.svg">
   <img src="../fig/01-03-02.svg" width="956.5" height="453.5" alt="Interactive Anvio pan genome analysis of six S. agalactiae genomes.
