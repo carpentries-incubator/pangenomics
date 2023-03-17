@@ -120,7 +120,7 @@ $ conda activate Pangenomics_Global
 {: .language-bash}
 
 ~~~
-(Pangenomics_Global) betterlab@betterlabub:~$
+(Pangenomics_Global) ~$
 ~~~
 {: .output}
 
