@@ -54,11 +54,11 @@ when only a few gene families are incorporated into the pangenome when a new mem
 >  
 > > ## Solution
 > > Specialized pathogens tend to have smaller genomes because they live in an environment with more or less the same challenges, 
-> > so they have less variability in their gene repertoire, hence a closed pangenome.
+> > so they have less variability in their gene repertoire, hence a closed pangenome.  
 > > On the other hand, free-living species face a changing environment, so they will be more adaptable if the population has a more diverse 
 > > set of tools to deal with the conditions. These tools are usually in the accessory genome, and the bigger the accessory genome is the more
-> >  open the pangenome will be.
-> {: .solution}
+> >  open the pangenome will be.  
+> {: .solution}  
 {: .discussion}
 
 ## How to select a group of genomes to construct a pangenome?
