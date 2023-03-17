@@ -31,7 +31,7 @@ refer to the collection of all the genes present in a species. This concept can 
 level of species. And although it started from the study of bacteria, it has also been used in the research of eukaryotes, archaea, and viruses.  
 
 The pangenome can be divided into two principal components: the **core genome**, which contains genes present in all the genomes compared, and the 
-**dispensable** or **accessory genome**, that comprises the genes that are not shared by all the genomes. The dispensable can be subdivided into the 
+**dispensable** or **accessory genome**, that comprises the genes that are not shared by all the genomes. The accesory can be subdivided into the 
 **shell genome**, the proportion of genes present in the majority of the genomes, and **cloud genome**, comprised of genes in the minority of the 
 genomes. This is a somewhat ambiguous definition of the partitions, in practice, the percentage of genomes that define each partition can be set 
 differently by each software of pangenome analysis and by each researcher. And other terms such as
@@ -47,11 +47,17 @@ when only a few gene families are incorporated into the pangenome when a new mem
   </a>
 
 > ## Discussion: Open or closed?
+>  The amount of gene transfer, the degree of interaction with other species in the environment, the number of niches inhabited and the lifestyle 
+>  of the species can play a role in the size of the pangenome. 
 >  
+>  Between a human lung pathogen and a soil bacterium, which one do you think has a closed pangenome and which one has an open one?
 >  
 > > ## Solution
-> > 
-> > 
+> > Specialized pathogens tend to have smaller genomes because they live in an environment with more or less the same challenges, 
+> > so they have less variability in their gene repertoire, hence a closed pangenome.
+> > On the other hand, free-living species face a changing environment, so they will be more adaptable if the population has a more diverse 
+> > set of tools to deal with the conditions. These tools are usually in the accessory genome, and the bigger the accessory genome is the more
+> >  open the pangenome will be.
 > {: .solution}
 {: .discussion}
 
