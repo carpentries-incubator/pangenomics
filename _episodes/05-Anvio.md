@@ -34,7 +34,7 @@ It brings together many aspects of today's cutting-edge strategies, including **
 To start using Anvi'o, activate the conda environment `Pangenomics_Global`
 
 ~~~
-conda activate Pangenomics_Global
+conda activate anvio-7.1
 ~~~
 {: .language-bash}
 
