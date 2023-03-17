@@ -3,18 +3,17 @@ title: "Introduction to Pangenomics"
 teaching: 10
 exercises: 10
 questions:
-- "What is a **pangenome**?" 
-- "What kind of biological data are analyzed in a pangenome?"
-- "Which factors affect the structure of a pangenome?"
+- "How can I represent all the gene content of a species?" 
 objectives:
-- "Understand the concept of pangenome."
-- "Define the different subsets of the pangenome."
-- "Learn which biological data are integrated into a pangenome analysis."
-- "Discuss applications and questions that could be solved with a pangenome analysis."
+- "Discuss the importance of the pangenome concept."
+- "Define the different parts of the pangenome."
+- "Define the types of pangenomes."
+- "Know the data that we will use to build a pangenome."
 
 keypoints:
 - "A pangenome is the entire set of genes from all strains of a clade."
-- "The principal subsets of the pangenome are core, shell, and dispensable genome."
+- "The pangenome is composed of a core genome and an accesory genome."
+- "The accessory genome is usually subdivided in shell genome and cloud genome."
 - "An *open pangenome* occurs when the size of the pangenome increases considerably with every added genome."
 - "A *closed pangenome* occurs when only a few gene families are incorporated to the pangenome when a new genome is added."
 - "A pangenome can be obtained by comparing the complete genome sequences of all clade members."
