@@ -97,9 +97,9 @@ together form a clade.
 > {: .solution}
 {: .challenge}
 
-> > ## Know more
-> > If you want to read more on pangenomics go to the book [The Pangenome](https://link.springer.com/book/10.1007/978-3-030-38281-0).
-{: .testimonial}
+> ## Know more
+> If you want to read more on pangenomics go to the book [The Pangenome](https://link.springer.com/book/10.1007/978-3-030-38281-0).
+{: .callout}
 
 ## The *Streptococcus agalactiae* dataset
 
