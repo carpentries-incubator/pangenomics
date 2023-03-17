@@ -34,9 +34,13 @@ The pangenome can be divided into two principal components: the **core genome**,
 **dispensable** or **accessory genome**, that comprises the genes that are not shared by all the genomes. The dispensable can be subdivided into the 
 **shell genome**, the proportion of genes present in the majority of the genomes, and **cloud genome**, comprised of genes in the minority of the 
 genomes. This is a somewhat ambiguous definition of the partitions, in practice, the percentage of genomes that define each partition can be set 
-differently by each software of pangenome analysis and by each researcher. 
+differently by each software of pangenome analysis and by each researcher. And other terms such as
+[persistent genome and soft-core genome](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) are also commonly 
+used in the field.
 
-One of the most groundbreaking ideas that pangenomics brought to the study of microbiology is that a species can be unbounded. When each newly included genome increases considerably the number of total genes, the species has an **open pangenome**. Whereas a **closed pangenome** results when only a few gene families are incorporated into the pangenome when a new member is added.
+One of the most groundbreaking ideas that pangenomics brought to the study of microbiology is that a species can be unbounded. When each newly 
+included genome increases considerably the number of total genes, the species has an **open pangenome**. Whereas a **closed pangenome** results 
+when only a few gene families are incorporated into the pangenome when a new member is added.
 
 <a href="{{ page.root }}/fig/01-01-01.png">
    <img src="{{ page.root }}/fig/01-01-01.png" alt=" Venn diagram of a) a closed pangenome and b) an open pangenome, comparing the sizes of their core and accessory genomes. c) Graphic depicting the differences between closed and open pangenomes regarding their size, total genes in pangenome, and the number of sequenced genomes." />
