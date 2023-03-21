@@ -9,7 +9,8 @@ Most importantly you will conduct pangenomic analysis with three specialized pro
 interactive pangenome graphs and visualize neighbournig gene families.
 
 The analyses presented here are intended to give you the necessary tools to carry out pangenomic analyses, as well as allow you to practice your 
-bioinformatician skills. This experience will let you to explore other resources and end up with your personalized workflow for your pangenomics research. 
+bioinformatician skills. This experience will let you to explore [other resources](https://paumayell.github.io/pangenomics/07-other-resources/index.html) 
+and end up with a personalized workflow for your pangenomics research. 
 
 <!-- this is an html comment -->
 
