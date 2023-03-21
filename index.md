@@ -4,13 +4,12 @@ root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
 
-In this lesson you will learn the basic theory of the study of Pangenomes, you will download and annotate public genomes using command-line software. 
+In this lesson you will learn the basic theory of the study of Pangenomes. You will download and annotate public genomes using command-line software. 
 Most importantly you will conduct pangenomic analysis with three specialized programs, which include clustering of gene families, construction of 
 interactive pangenome graphs and visualize neighbournig gene families.
 
-As you progress through this lesson, keep in mind that even if you aren’t going to be doing this same workflow in your research, you will be learning 
-some very important practices about using command-line bioinformatics tools. What you are going to learn here will enable you to use a variety of 
-bioinformatics tools with confidence and greatly enhance your research efficiency and productivity.
+The analyses presented here are intended to give you the necessary tools to carry out pangenomic analyses, as well as allow you to practice your 
+bioinformatician skills. This experience will let you to explore other resources and end up with your personalized workflow for your pangenomics research. 
 
 <!-- this is an html comment -->
 
