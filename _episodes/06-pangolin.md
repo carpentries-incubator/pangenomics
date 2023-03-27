@@ -270,36 +270,27 @@ $ ls -lah pangenome.h5
 
 ### Step 6: Build the pangenome graph
 
-In order to obtain the partitios of the pangenome, you need to construct the pangenome graph. 
+In order to obtain the partitios of the pangenome, you need to construct the pangenome graph. You can specify if you want to eliminate genes families that are too duplicated with the option `remove-high-copy-number`.
 ~~~
 $ ppanggolin graph --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
 
 ~~~
-100%|███████████████████████████████| 12439/12439 [00:00<00:00, 305768.35gene/s]
-100%|██████████████████████████| 2671/2671 [00:00<00:00, 243379.16gene family/s]
-2022-06-09 23:13:45 makeGraph.py:l56 INFO   	Computing the neighbors graph...
-Processing agalactiae_H36B_prokka: 100%|███| 6/6 [00:00<00:00, 352.82organism/s]
-2022-06-09 23:13:45 makeGraph.py:l74 INFO   	Done making the neighbors graph.
-2022-06-09 23:13:45 writeBinaries.py:l508 INFO  Writing the edges...
-100%|█████████████████████████████████| 2912/2912 [00:00<00:00, 724167.75edge/s]
-2022-06-09 23:13:45 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
-
+2023-03-27 12:50:01 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|████████████████████████████████████████████████████████████████████████████| 16439/16439 [00:00<00:00, 288907.82gene/s]
+100%|███████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 210364.56gene family/s]
+2023-03-27 12:50:01 makeGraph.py:l56 INFO       Computing the neighbors graph...
+Processing Streptococcus_agalactiae_NEM316_prokka: 100%|████████████████████████████████| 8/8 [00:00<00:00, 138.42organism/s]
+2023-03-27 12:50:01 makeGraph.py:l74 INFO       Done making the neighbors graph.
+2023-03-27 12:50:01 writeBinaries.py:l508 INFO  Writing the edges...
+100%|██████████████████████████████████████████████████████████████████████████████| 3222/3222 [00:00<00:00, 494730.10edge/s]
+2023-03-27 12:50:01 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
 
 The results are saved in the `pangenome.h5` file given as input.
 
-~~~
-$ ls -lah pangenome.h5
-~~~
-{: .language-bash}
-
-~~~
--rw-r--r-- 1 alumno4 rstudio 7.1M Jun  9 23:13 pangenome.h5
-~~~
-{: .output}
 
 ### Step 7: Pangenome partition
 
@@ -314,30 +305,29 @@ $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
-100%|███████████████| 19/19 [00:00<00:00, 59.43Number of number of partitions/s]
-2022-06-09 23:14:41 partition.py:l358 INFO  	The number of partitions has been evaluated at 3
-2022-06-09 23:14:41 partition.py:l376 INFO  	Partitioning...
-2022-06-09 23:14:41 partition.py:l436 INFO  	Partitioned 6 genomes in 0.06 seconds.
-2022-06-09 23:14:41 writeBinaries.py:l408 INFO  Updating gene families with partition information
-100%|██████████████████████████| 2671/2671 [00:00<00:00, 267011.13gene family/s]
-2022-06-09 23:14:41 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
-
+2023-03-27 12:54:01 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|████████████████████████████████████████████████████████████████████████████| 16439/16439 [00:00<00:00, 313436.90gene/s]
+100%|███████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 232032.22gene family/s]
+2023-03-27 12:54:01 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
+100%|████████████████████████████████████████████████████████████████| 15609/15609 [00:00<00:00, 179387.96contig adjacency/s]
+2023-03-27 12:54:01 partition.py:l343 WARNING   The number of selected organisms is too low (8 organisms used) to robustly partition the graph
+2023-03-27 12:54:01 partition.py:l356 INFO      Estimating the optimal number of partitions...
+100%|████████████████████████████████████████████████████████████| 19/19 [00:00<00:00, 40.75Number of number of partitions/s]
+2023-03-27 12:54:01 partition.py:l358 INFO      The number of partitions has been evaluated at 3
+2023-03-27 12:54:01 partition.py:l376 INFO      Partitioning...
+2023-03-27 12:54:01 partition.py:l436 INFO      Partitionned 8 genomes in 0.08 seconds.
+2023-03-27 12:54:01 writeBinaries.py:l408 INFO  Updating gene families with partition information
+100%|███████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 227639.75gene family/s]
+2023-03-27 12:54:01 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
 
 All the results will be added to the given `pangenome.h5` input file.
 
-~~~
-$ ls -lah pangenome.h5
-~~~
-{: .language-bash}
-
-~~~
--rw-r--r-- 1 alumno4 rstudio 7.2M Jun  9 23:14 pangenome.h5
-~~~
-{: .output}
 
 ### Step 8: Plasticity regions
+
+Region of Genome Plasticity (RGP) correspond to genomic islands, plasmid and regions that have been lost in multiples strains. You can do this analysis directly from your fasta files using the commando `ppanggolin panrgp`. To predict the RGP after we perfom the partition we use the following command.
 
 ~~~
 $ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
@@ -345,26 +335,18 @@ $ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
-100%|███████████████████████████████████████| 6/6 [00:00<00:00, 345.70genomes/s]
-2022-06-09 23:15:18 genomicIsland.py:l204 INFO  Predicted 85 RGP
-2022-06-09 23:15:18 writeBinaries.py:l517 INFO  Writing Regions of Genomic Plasticity...
-100%|███████████████████████████████████| 85/85 [00:00<00:00, 291033.34region/s]
-2022-06-09 23:15:18 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
-
+2023-03-27 12:59:42 genomicIsland.py:l197 INFO  Detecting multigenic families...
+2023-03-27 12:59:42 pangenome.py:l311 INFO      45 gene families are defined as being multigenic. (duplicated in more than 0.05 of the genomes)
+2023-03-27 12:59:42 genomicIsland.py:l199 INFO  Compute Regions of Genomic Plasticity ...
+100%|████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 292.24genomes/s]
+2023-03-27 12:59:42 genomicIsland.py:l204 INFO  Predicted 105 RGP
+2023-03-27 12:59:42 writeBinaries.py:l517 INFO  Writing Regions of Genomic Plasticity...
+100%|██████████████████████████████████████████████████████████████████████████████| 105/105 [00:00<00:00, 251514.52region/s]
+2023-03-27 12:59:42 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
 
-~~~
-$ ls -lah pangenome.h5
-~~~
-{: .language-bash}
-
-~~~
--rw-r--r-- 1 alumno4 rstudio 7.2M Jun  9 23:15 pangenome.h5
-~~~
-{: .output}
-
-You can also obtain a list of the plastic regions (RGPs) for each genome by using the module write.
+To obtain a list of the plastic regions (RGPs) for each genome you can use the write module.
 
 ~~~
 $ ppanggolin write -p pangenome.h5 --regions --output rgp
@@ -372,10 +354,13 @@ $ ppanggolin write -p pangenome.h5 --regions --output rgp
 {: .language-bash}
 
 ~~~
-100%|███████████████████████████████| 12439/12439 [00:00<00:00, 301748.66gene/s]
-100%|██████████████████████████| 2671/2671 [00:00<00:00, 247241.04gene family/s]
-2022-06-09 23:16:09 readBinaries.py:l320 INFO   Reading the RGP...
-100%|█████████████████████████████████| 1156/1156 [00:00<00:00, 476194.80gene/s]
+100%|████████████████████████████████████████████████████████████████████████████| 17542/17542 [00:00<00:00, 395866.18gene/s]
+100%|████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 49.21organism/s]
+2023-03-27 13:00:52 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|████████████████████████████████████████████████████████████████████████████| 16439/16439 [00:00<00:00, 309036.96gene/s]
+100%|███████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 230936.02gene family/s]
+2023-03-27 13:00:52 readBinaries.py:l320 INFO   Reading the RGP...
+100%|██████████████████████████████████████████████████████████████████████████████| 1848/1848 [00:00<00:00, 470532.01gene/s]
 (Pangenomics_Global) alumno4@betterlabub:~
 ~~~
 {: .output}
@@ -399,17 +384,16 @@ $ head plastic_regions.tsv
 {: .language-bash}
 
 ~~~
-region  organism    	contig  start   stop	genes   contigBorder	wholeContig
-AAJO01000011.1_RGP_0	agalactiae_18RS21_prokka    	AAJO01000011.1  6863   27451	20  	True	False
-AAJO01000013.1_RGP_0	agalactiae_18RS21_prokka    	AAJO01000013.1  564	25430	36  	True	True
-AAJO01000034.1_RGP_0	agalactiae_18RS21_prokka    	AAJO01000034.1  95 	5670 	6   	True	False
-AAJO01000044.1_RGP_0	agalactiae_18RS21_prokka    	AAJO01000044.1  14 	13435	16  	True	True
-AAJO01000046.1_RGP_0	agalactiae_18RS21_prokka    	AAJO01000046.1  156	13006	13  	True	True
-AAJO01000061.1_RGP_0	agalactiae_18RS21_prokka    	AAJO01000061.1  84 	10318	9   	True	True
-AAJO01000073.1_RGP_0	agalactiae_18RS21_prokka    	AAJO01000073.1  91 	7595 	8   	True	False
-AAJO01000077.1_RGP_0	agalactiae_18RS21_prokka    	AAJO01000077.1  1440   7746 	7   	True	False
-AAJO01000087.1_RGP_0	agalactiae_18RS21_prokka    	AAJO01000087.1  512	7469 	9   	True	True
-
+region                  organism                                contig          start   stop    genes   contigBorder    wholeContig
+AAJO01000011.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000011.1  6863    27451   20      True            False
+AAJO01000013.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000013.1  564     25430   36      True            True
+AAJO01000034.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000034.1  95      5670    6       True            False
+AAJO01000044.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000044.1  14      13435   16      True            True
+AAJO01000046.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000046.1  156     13006   13      True            True
+AAJO01000061.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000061.1  84      10318   9       True            True
+AAJO01000073.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000073.1  91      5837    6       True            False
+AAJO01000077.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000077.1  1440    7746    7       True            False
+AAJO01000081.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000081.1  4585    8617    6       True            False
 ~~~
 {: .output}
 
@@ -419,17 +403,9 @@ $ cd ..
 ~~~
 {: .language-bash}
 
-~~~
-$ ls -lah pangenome.h5
-~~~
-{: .language-bash}
-
-~~~
--rw-r--r-- 1 alumno4 rstudio 7.2M Jun  9 23:15 pangenome.h5
-~~~
-{: .output}
-
 ### Step 9: Spots of insertion
+
+The RGPs that was found in the same area in different genomes can be gather into spots of insertions. Those sports are groups of RGPs that have similar bordering persistent genes but not necessarialy the same gene content. This analysis allows us to study the dynamic of gene turnover of large regions in bacterial genomes. 
 
 ~~~
 $ ppanggolin spot --pangenome pangenome.h5 --cpu 8
@@ -437,13 +413,14 @@ $ ppanggolin spot --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
-2022-06-09 23:17:58 spot.py:l83 INFO	28 RGPs are being used to predict spots of insertion
-2022-06-09 23:17:58 spot.py:l85 INFO	21 number of different pairs of flanking gene families
-2022-06-09 23:17:58 spot.py:l140 INFO   18 spots were detected
-2022-06-09 23:17:58 writeBinaries.py:l522 INFO  Writing Spots of Insertion...
-100%|█████████████████████████████████████| 18/18 [00:00<00:00, 559240.53spot/s]
-2022-06-09 23:17:58 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
-
+2023-03-27 13:11:20 spot.py:l132 INFO   Detecting hotspots in the pangenome...
+2023-03-27 13:11:20 spot.py:l82 INFO    39 RGPs were not used as they are on a contig border (or have less than 3 persistent gene families until the contig border)
+2023-03-27 13:11:20 spot.py:l83 INFO    66 RGPs are being used to predict spots of insertion
+2023-03-27 13:11:20 spot.py:l85 INFO    40 number of different pairs of flanking gene families
+2023-03-27 13:11:20 spot.py:l140 INFO   35 spots were detected
+2023-03-27 13:11:20 writeBinaries.py:l522 INFO  Writing Spots of Insertion...
+100%|██████████████████████████████████████████████████████████████████████████████████| 35/35 [00:00<00:00, 719610.98spot/s]
+2023-03-27 13:11:20 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
 
@@ -454,11 +431,11 @@ $ ppanggolin write -p pangenome.h5 --spots --output spots
 ~~~
 {: .language-bash}
 ~~~
-100%|█████████████████████████████████| 1156/1156 [00:00<00:00, 482881.73gene/s]
-2022-06-09 23:19:17 readBinaries.py:l326 INFO   Reading the spots...
-100%|███████████████████████████████████| 28/28 [00:00<00:00, 188508.04region/s]
-2022-06-09 23:19:17 writeFlat.py:l504 INFO  	Done writing spots in : 'spots/summarize_spots.tsv'
-
+2023-03-27 13:11:53 readBinaries.py:l320 INFO   Reading the RGP...
+100%|██████████████████████████████████████████████████████████████████████████████| 1848/1848 [00:00<00:00, 496959.27gene/s]
+2023-03-27 13:11:53 readBinaries.py:l326 INFO   Reading the spots...
+100%|████████████████████████████████████████████████████████████████████████████████| 66/66 [00:00<00:00, 241135.94region/s]
+2023-03-27 13:11:53 writeFlat.py:l504 INFO      Done writing spots in : 'spots/summarize_spots.tsv'
 ~~~
 {: .output}
 
@@ -482,15 +459,15 @@ $ head spots.tsv
 
 ~~~
 spot_id rgp_id
-spot_3  CP000114.1_RGP_4
-spot_3  AAJQ01000021.1_RGP_0
-spot_15 AAJQ01000032.1_RGP_0
-spot_5  CP000114.1_RGP_0
-spot_6  CP000114.1_RGP_3
-spot_9  CP000114.1_RGP_2
-spot_14 CP000114.1_RGP_12
-spot_10 AAJQ01000005.1_RGP_0
-spot_10 CP000114.1_RGP_6
+spot_3  NC_004116.1_RGP_0
+spot_3  NZ_CP051004.1_RGP_0
+spot_28 NC_004368.1_RGP_3
+spot_6  NC_004116.1_RGP_6
+spot_15 NC_007432.1_RGP_11
+spot_8  NC_004116.1_RGP_7
+spot_8  NC_007432.1_RGP_3
+spot_8  NC_004368.1_RGP_6
+spot_8  NZ_HG939456.1_RGP_7
 ~~~
 {: .output}
 
@@ -500,17 +477,16 @@ $ head summarize_spots.tsv
 {: .language-bash}
 
 ~~~
-spot	nb_rgp  nb_families 	nb_unique_family_sets   mean_nb_genes   stdev_nb_genes  max_nb_genes	min_nb_genes
-spot_10 4   	27  	4   	11.25   0.957   12  	10
-spot_1  4   	41  	4   	14  	4.967   20  	9
-spot_2  3   	7   	2   	4.333   0.577   5   	4
-spot_3  2   	19  	2   	18  	0.0 	18  	18
-spot_7  2   	7   	1   	7.5 	0.707   8   	7
-spot_15 1   	16  	1   	16  	0   	16  	16
-spot_5  1   	58  	1   	58  	0   	58  	58
-spot_6  1   	27  	1   	27  	0   	27  	27
-spot_9  1   	39  	1   	39  	0   	39  	39
-
+spot    nb_rgp  nb_families     nb_unique_family_sets   mean_nb_genes   stdev_nb_genes  max_nb_genes    min_nb_genes
+spot_2  7       6       1       6       0.0     6       6
+spot_1  6       40      5       13.833  4.262   20      8
+spot_5  6       15      4       4.5     0.837   6       4
+spot_7  5       93      5       36.6    17.315  54      16
+spot_8  4       47      3       14.75   8.617   26      8
+spot_22 3       40      3       22.667  2.082   25      21
+spot_3  2       107     2       66      1.414   67      65
+spot_20 2       19      2       18      0.0     18      18
+spot_13 2       10      1       10.5    0.707   11      10
 ~~~
 {: .output}
 
@@ -519,17 +495,6 @@ Return to the `pangenome/` directory.
 $ cd ..
 ~~~
 {: .language-bash}
-
-~~~
-$ ls -lah pangenome.h5
-~~~
-{: .language-bash}
-
-~~~
--rw-r--r-- 1 alumno4 rstudio 7.2M Jun  9 23:17 pangenome.h5
-
-~~~
-{: .output}
 
 
 > ## Discussion
