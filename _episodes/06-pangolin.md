@@ -61,8 +61,8 @@ PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it w
 
 A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a `.html` file.
 
-<a href="../fig/01-04-02.png">
-  <img src="../fig/01-04-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot.
+<a href="../fig/01-06-02.png">
+  <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot.
                                                            	The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
 </a>
 
@@ -70,12 +70,12 @@ A U-shaped plot is a figure presenting the number of families (y axis) per numbe
 
 A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles in the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together in the figure). In addition, it is a `.html` file.
 
-<a href="../fig/01-04-03.png">
-  <img src="../fig/01-04-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
+<a href="../fig/01-06-03.png">
+  <img src="../fig/01-06-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
 </a>
 
-<a href="../fig/01-04-04.png">
-  <img src="../fig/01-04-04.png" width="956.5" height="434.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, in the absence of cloud gene families" />
+<a href="../fig/01-06-04.png">
+  <img src="../fig/01-06-04.png" width="956.5" height="434.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, in the absence of cloud gene families" />
 </a>
 
 > ## Discussion
