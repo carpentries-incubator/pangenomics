@@ -509,7 +509,7 @@ PPanGGOLiN provides multiple outputs to describe a pangenome. In this section th
 
 ### U-shaped plot
 
-A U-shaped plot is a figure presenting the number of gene families (y axis) per number of organisms (x axis). It is a `.html` file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a `.png` image file.
+The U-shaped plot represent the number of gene families (y axis) per number of organisms (x axis). It is a `.html` file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a `.png` image file.
 
 ~~~
 $ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
@@ -517,12 +517,12 @@ $ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 {: .language-bash}
 
 ~~~
-100%|███████████████████████████████| 12439/12439 [00:00<00:00, 306179.27gene/s]
-100%|██████████████████████████| 2671/2671 [00:00<00:00, 238518.72gene family/s]
-2022-06-09 23:21:04 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
-100%|███████████████████| 11146/11146 [00:00<00:00, 300498.23contig adjacency/s]
-2022-06-09 23:21:04 ucurve.py:l13 INFO  Drawing the U-shaped curve...
-2022-06-09 23:21:05 ucurve.py:l60 INFO  Done drawing the U-shaped curve : 'draw_ucurve/Ushaped_plot.html'
+100%|███████████████████████████████| 16439/16439 [00:00<00:00, 312666.54gene/s]
+100%|██████████████████████████| 2867/2867 [00:00<00:00, 235071.25gene family/s]
+2023-03-27 19:58:49 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
+100%|███████████████████| 15609/15609 [00:00<00:00, 182167.72contig adjacency/s]
+2023-03-27 19:58:49 ucurve.py:l13 INFO  Drawing the U-shaped curve...
+2023-03-27 19:58:49 ucurve.py:l60 INFO  Done drawing the U-shaped curve : 'draw_ucurve/Ushaped_plot.html'
 ~~~
 {: .output}
 
@@ -554,12 +554,12 @@ $ cd .\Desktop\Workshop\
 
 Copy the image to your directory using `scp` and write the password of the server.
 ~~~
-$ scp betterlab@132.248.196.38:~/gm_workshop/results/pangenome/ppanggolin/pangenome/draw_ucurve/Ushaped_plot.html .
+$ scp user@bioinformatica:~/pan_workshop/results/pangenome/ppangolin/pangenome/draw_ucurve/Ushaped_plot.html .
 ~~~
 {: .language-bash}
 
 ~~~
-Ushaped_plot.html                                                                 	100% 3405KB   3.2MB/s   00:01
+Ushaped_plot.html                             100% 3405KB   2.6MB/s   00:01
 ~~~
 {: .output}
 
@@ -579,11 +579,14 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 {: .language-bash}
 
 ~~~
-2022-06-09 23:22:00 tile_plot.py:l92 INFO   	Getting the gene name(s) and the number for each tile of the plot ...
-2022-06-09 23:22:00 tile_plot.py:l101 INFO  	Done extracting names and numbers. Making the heatmap ...
-2022-06-09 23:22:00 tile_plot.py:l157 INFO  	Drawing the figure itself...
-2022-06-09 23:22:01 tile_plot.py:l159 INFO  	Done with the tile plot : 'draw_tile/tile_plot.html'
-
+100%|█████████████████████████████████████████| 15609/15609 [00:00<00:00, 180972.77contig adjacency/s]
+2023-03-27 20:05:53 tile_plot.py:l26 INFO       Drawing the tile plot...
+2023-03-27 20:05:53 tile_plot.py:l42 INFO       start with matrice
+2023-03-27 20:05:54 tile_plot.py:l57 INFO       done with making the dendrogram to order the organisms on the plot
+2023-03-27 20:05:54 tile_plot.py:l92 INFO       Getting the gene name(s) and the number for each tile of the plot ...
+2023-03-27 20:05:54 tile_plot.py:l101 INFO      Done extracting names and numbers. Making the heatmap ...
+2023-03-27 20:05:54 tile_plot.py:l157 INFO      Drawing the figure itself...
+2023-03-27 20:05:54 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile/tile_plot.html'
 ~~~
 {: .output}
 
@@ -595,14 +598,11 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 {: .language-bash}
 
 ~~~
-100%|███████████████████| 11146/11146 [00:00<00:00, 288459.17contig adjacency/s]
-2022-06-09 23:22:27 tile_plot.py:l26 INFO   	Drawing the tile plot...
-2022-06-09 23:22:27 tile_plot.py:l42 INFO   	start with matrice
-2022-06-09 23:22:27 tile_plot.py:l57 INFO   	done with making the dendrogram to order the organisms on the plot
-2022-06-09 23:22:27 tile_plot.py:l92 INFO   	Getting the gene name(s) and the number for each tile of the plot ...
-2022-06-09 23:22:27 tile_plot.py:l101 INFO  	Done extracting names and numbers. Making the heatmap ...
-2022-06-09 23:22:27 tile_plot.py:l157 INFO  	Drawing the figure itself...
-2022-06-09 23:22:27 tile_plot.py:l159 INFO  	Done with the tile plot : 'draw_tile_nocloud/tile_plot.html'
+2023-03-27 20:06:23 tile_plot.py:l57 INFO       done with making the dendrogram to order the organisms on the plot
+2023-03-27 20:06:23 tile_plot.py:l92 INFO       Getting the gene name(s) and the number for each tile of the plot ...
+2023-03-27 20:06:23 tile_plot.py:l101 INFO      Done extracting names and numbers. Making the heatmap ...
+2023-03-27 20:06:23 tile_plot.py:l157 INFO      Drawing the figure itself...
+2023-03-27 20:06:24 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile_nocloud/tile_plot.html'
 ~~~
 {: .output}
 
@@ -678,6 +678,11 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 > {: .solution}
 {: .challenge}
 
+### Presence/absence files
+
+You can also export some tables with the summary of the genes and genes families that are in each partition of the pangenome. 
+
+With `ppanggolin write -p pangenome.h5 --stats` you can obtain all the statistics of the organisms. With the command `ppanggolin write -p pangenome.h5 --Rtab` you can obtain a presence/absence of the genes in each partition, if there is a 1 then the gene family is present in the genome and 0 otherwise. The command `ppanggolin write -p pangenome.h5 --csv` produce a `csv` file with the matrix associated to the presence/absence genes, it follows the same format that the roary `gene_presence_absence.csv` and it also works with scoary.
 
 > ## References:
 > For more details you can check this article:
