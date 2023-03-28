@@ -51,7 +51,7 @@ PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it w
 
 
 > ## Exercise 1: Partitions.
->  As we see before, some authors call *soft core* to persistent genome. What is *core*? What is the term that PPanGGOLiN authors used for core? Which are the other pangenome partitions made by PPanGGOLiN?
+>  As we see before, usually the pangenome is divided into core, dispensable and accesory genome. What is the term that PPanGGOLiN authors used for core? Which are the other pangenome partitions made by PPanGGOLiN?
 >   
 > a) Persistent, shell and cloud-gene.
 >
