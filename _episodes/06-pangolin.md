@@ -39,14 +39,6 @@ PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It par
 |	**Shell genome**  	 | For gene families present at intermediate frequencies in the genomes.     |
 |	**Cloud genome**  	 |   	For gene familes present at low frequency in the species.  		 |
 
-
-> ## Discussion
-> Some authors call *soft core* to persistent genome.
->
-> What is *core*? What is the term that PPanGGOLiN authors used for core?
->
-{: .discussion}
-
 ## Input files
 
 PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleFASTA.fasta)) or annotated genomes ([.gbk](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleGBK.gbk)) of whole genomes, Metagenomic Assembled Genomes (MAG), and Single-cell Amplified Genomes (SAG), useful for large-scale environmental studies, including the non-cultivable species pangenome.  It is designed to scale up to tens of thousands of genomes.
@@ -57,46 +49,9 @@ In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that pred
 
 PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it will provide with a HDF-5 file named `pangenome.h5`. This file stores all the information about your pangenome and the analyses that were run. You can extract information from this file to get a graphical representation of your data.
 
-### U-shaped plot
-
-A U-shaped plot is a figure presenting the number of families (y axis) per number of organisms (x axis). It is a `.html` file.
-
-<a href="../fig/01-06-02.png">
-  <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot.
-                                                           	The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
-</a>
-
-### Tile plot
-
-A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles in the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together in the figure). In addition, it is a `.html` file.
-
-<a href="../fig/01-06-03.png">
-  <img src="../fig/01-06-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
-</a>
-
-<a href="../fig/01-06-04.png">
-  <img src="../fig/01-06-04.png" width="956.5" height="434.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, in the absence of cloud gene families" />
-</a>
-
-> ## Discussion
-> If you use the flag `--nocloud`, you will not see the *cloud* gene families.
->
-> What do you think this might be useful?
->
-> In the graph, at the top of the color key, you can notice the legend `Multicopy`, what do you think it is?
-{: .discussion}
-
-### PangenomeGraph files
-
-You can get the .gexf files, which contain the gene families as nodes and the edges between gene families describing their relationship.
-They can be manipulated and visualized through a software called Gephi, with which we have made extensive testings, or potentially any other softwares or libraries that can read `.gexf` files such as networkx or gexf-js among others.
-
-<a href="../fig/01-06-05.png">
-  <img src="../fig/01-06-05.png" width="512" height="512" alt="Gephi visualization" />
-</a>
 
 > ## Exercise 1: Partitions.
->   Which are the pangenome partitions made by PPanGGOLiN?
+>  As we see before, some authors call *soft core* to persistent genome. What is *core*? What is the term that PPanGGOLiN authors used for core? Which are the other pangenome partitions made by PPanGGOLiN?
 >   
 > a) Persistent, shell and cloud-gene.
 >
@@ -501,6 +456,10 @@ $ cd ..
 > What is the difference between RGP regions and spots of insertion?
 >
 > How can you use this information?
+> > ## Solution
+> > The RGPs are genomic islands, plasmid and regions that have been lost in multiple strains and the spots of insertions are groups of RGPs. 
+> > Those analysis are usefult to study the dinamic of gene turnover of large regions in bacterial genomes. Then, spots of the same pangenome can be compared and if we compare the different metrics together we can stablished the dynamic.
+> {: .solution}
 {: .discussion}
 
 ### Step 10: Draw pangenome plots
@@ -565,6 +524,12 @@ Ushaped_plot.html                             100% 3405KB   2.6MB/s   00:01
 
 You can open the html file locally.
 
+<a href="../fig/01-06-02.png">
+  <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot.
+                                                           	The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
+</a>
+
+
 ### Tile plot
 
 A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together in the figure).
@@ -590,6 +555,12 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 ~~~
 {: .output}
 
+You can download the plot and explore it in you computer.
+
+<a href="../fig/01-06-03.png">
+  <img src="../fig/01-06-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
+</a>
+
 If you do not want the 'cloud' gene families to be displayed, as it is a lot of data and can be hard to open with a browser, you can use the following option:
 
 ~~~
@@ -605,6 +576,10 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 2023-03-27 20:06:24 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile_nocloud/tile_plot.html'
 ~~~
 {: .output}
+
+<a href="../fig/01-06-04.png">
+  <img src="../fig/01-06-04.png" width="956.5" height="434.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, in the absence of cloud gene families" />
+</a>
 
 > ## Exercise 2: Basic commands.
 >   Choose the indispensable commands to create a U-shaped plot.
@@ -643,6 +618,9 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 > 3. Open the file in the Gephi program.
 > 4. Go to the layout section and in the selection bar choose the ForceAtlas2.
 > 5. In Tunning section mark the stronger gravity box and set the scale in 4000.
+> <a href="../fig/01-06-05.png">
+  <img src="../fig/01-06-05.png" width="512" height="512" alt="Gephi visualization" />
+</a>
 > 6. Finally color the nodes according to:
 >
 > a) Partition.
