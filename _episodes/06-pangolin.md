@@ -91,8 +91,8 @@ A tile plot is a heatmap representing the gene families (y axis) in the organism
 You can get the .gexf files, which contain the gene families as nodes and the edges between gene families describing their relationship.
 They can be manipulated and visualized through a software called Gephi, with which we have made extensive testings, or potentially any other softwares or libraries that can read `.gexf` files such as networkx or gexf-js among others.
 
-<a href="../fig/01-04-05.png">
-  <img src="../fig/01-04-05.png" width="512" height="512" alt="Gephi visualization" />
+<a href="../fig/01-06-05.png">
+  <img src="../fig/01-06-05.png" width="512" height="512" alt="Gephi visualization" />
 </a>
 
 > ## Exercise 1: Partitions.
