@@ -19,10 +19,6 @@ keypoints:
 - "PPanGGOLiN is designed to scale up to tens of thousands of genomes, including whole genomes, metagenomes and single-cell annotated genomes."
 ---
 
-> ## Requirements:
-> Install [gephi](https://gephi.org/) in your local machine to visualize the graphs.
-{: .prereq}
-
 <a href="../fig/01-04-01.png">
   <img src="../fig/01-04-01.png" alt="PPanGGOLiN's logo." />
 </a>
@@ -493,6 +489,13 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 ~~~
 {: .output}
 
+### Step 11: Draw an interactive graph
+
+~~~
+$ ppanggolin write -p pangenome.h5 --gexf --output gexf
+~~~
+{: .language-bash}
+
 
 ### Visualize the results
 
@@ -511,6 +514,8 @@ $ tree
 │   └── tile_plot.html
 ├── draw_ucurve
 │   └── Ushaped_plot.html
+├── gexf
+│   └── pangenomeGraph.gexf
 ├── pangenome.h5
 ├── rgp
 │   └── plastic_regions.tsv
@@ -520,21 +525,22 @@ $ tree
 ~~~
 {: .output}
 
-Open a new terminal locally. Then move to the desired directory where the images will be downloaded.
+Open a new terminal locally. Then move to the desired directories where the images and graph file will be downloaded.
 ~~~
 $ cd /Desktop/Workshop/
 ~~~
 {: .language-bash}
 
-Copy the images to your directory using `scp` and write the password of the server.
+Copy the directories with the plots and graph with `scp`.
 ~~~
 $ scp -r user@server-address:~/pan_workshop/results/pangenome/ppanggolin/pangenome/draw* .
+$ scp -r user@server-address:~/pan_workshop/results/pangenome/ppanggolin/pangenome/gexf .
+
 ~~~
 {: .language-bash}
 
 
-You can open the html files locally.
-
+To view the plots you can open the `html` files locally in the browser of your choice.
 
 <a href="../fig/01-06-02.png">
   <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot.
@@ -549,47 +555,32 @@ You can open the html files locally.
   <img src="../fig/01-06-04.png" width="956.5" height="434.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, in the absence of cloud gene families" />
 </a>
 
-> ## Exercise 2: Basic commands.
->   Choose the indispensable commands to create a U-shaped plot.
->
-> Commands:
-> 1. cluster: Cluster proteins in protein families.
-> 2. partition: Partition the pangenome graph.
-> 3. rgp: Predicts Regions of Genomic Plasticity in the genomes of your pangenome.
-> 4. annotate: Annotate genomes.
-> 5. graph: Create the pangenome graph.
-> 6. spot: Predicts spots in your pangenome.
-> 7. draw: Draw figures representing the pangenome through different aspects.
->
-> a) 1, 2, 3, 4, 5.
->
-> b) 4, 1, 5, 7, 6.
->
-> c) 4, 1, 5, 2, 7.
->
-> d) 4, 2, 1, 6, 3.
-> > ## Solution
-> >c. The first step is always to annotate the genes, then cluster the proteins within its corresponding families, after that it is necessary to create the pangenome
-> >graph, partition it and finally with the draw command create the U-shaped plot.
-> {: .solution}
-{: .challenge}
+To view the interactive graph we will use the software **gephi**.
 
-> ## Exercise 3: Exploring the pangenome graph.
-> 1. In your terminal, execute the following command:
->
-> ~~~
-> $ ppanggolin write -p pangenome.h5 --gexf --output gexf
-> ~~~
-> {: .language-bash}
->  
-> 2. With `scp` copy the produced file in your local computer.
-> 3. Open the file in the Gephi program.
-> 4. Go to the layout section and in the selection bar choose the ForceAtlas2.
-> 5. In Tunning section mark the stronger gravity box and set the scale in 4000.
-> <a href="../fig/01-06-05.png">
+> ## Gephi setup
+> Install gephi from it [web page](https://gephi.org/). 
+> Open gephi: 
+> > ## Linux
+> > Go to the directory where you installed the program and type:
+> > ~~~
+> > ./gephi-0.10.1/bin/gephi
+> > ~~~
+> > {: .solution}
+> > ## Windows
+> > Windos way of oppening gephi
+> > {: .solution}
+> Change the language to english to make it easier to find the options to choose.
+{: .prereq}
+
+Open the file `pangenomeGraph.gexf`.
+Go to the layout section and in the selection bar choose the ForceAtlas2.
+In Tunning section mark the stronger gravity box and set the scale in 4000.
+<a href="../fig/01-06-05.png">
   <img src="../fig/01-06-05.png" width="512" height="512" alt="Gephi visualization" />
 </a>
-> 6. Finally color the nodes according to:
+
+> ## Exercise 3: Exploring the pangenome graph.
+> Explore the options of visualization for the pangenome graph, try yo color the nodes according to:
 >
 > a) Partition.
 >  
@@ -623,6 +614,33 @@ You can open the html files locally.
 > > </a>
 > {: .solution}
 {: .challenge}
+
+> ## Exercise 1: PPanGGolin pipeline.
+>   Choose the indispensable commands to create a U-shaped plot.
+>
+> Commands:
+> 1. cluster: Cluster proteins in protein families.
+> 2. partition: Partition the pangenome graph.
+> 3. rgp: Predicts Regions of Genomic Plasticity in the genomes of your pangenome.
+> 4. annotate: Annotate genomes.
+> 5. graph: Create the pangenome graph.
+> 6. spot: Predicts spots in your pangenome.
+> 7. draw: Draw figures representing the pangenome through different aspects.
+>
+> a) 1, 2, 3, 4, 5.
+>
+> b) 4, 1, 5, 7, 6.
+>
+> c) 4, 1, 5, 2, 7.
+>
+> d) 4, 2, 1, 6, 3.
+> > ## Solution
+> >c. The first step is always to annotate the genes, then cluster the proteins within its corresponding families, after that it is necessary to create the pangenome
+> >graph, partition it and finally with the draw command create the U-shaped plot.
+> {: .solution}
+{: .challenge}
+
+
 
 ### Presence/absence files
 
