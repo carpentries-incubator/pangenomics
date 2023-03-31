@@ -35,13 +35,12 @@ PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It par
 |	**Shell genome**  	 | For gene families present at intermediate frequencies in the genomes.     |
 |	**Cloud genome**  	 |   	For gene familes present at low frequency in the species.  		 |
 
-## Input files
+## Building a Pangenome
 
 PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleFASTA.fasta)) or annotated genomes ([.gbk](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleGBK.gbk)) of whole genomes, Metagenomic Assembled Genomes (MAG), and Single-cell Amplified Genomes (SAG), useful for large-scale environmental studies, including the non-cultivable species pangenome.  It is designed to scale up to tens of thousands of genomes.
 
 In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that predicts Regions of Genomic Plasticity (RGP) for each genome. RGPs are groups of genes made of shell and cloud genomes in the pangenome chart, most of which arise from horizontal gene transfer and correspond to genomic islands. RGPs from different genomes are then grouped into insertion sites based on their conserved persistent flanking genes.
 
-## Step by step pangenome analysis with PPanGGOLiN
 
 Before starting using PPanGGOLiN, activate the Pangenomics environment.
 
@@ -56,14 +55,13 @@ $ conda activate Pangenomics_Global
 {: .output}
 
 
-### Step 1: Create a working directory
+### Genome annotation
+
 
 ~~~
 $ mkdir -p  ~/pan_workshop/results/pangenome/ppanggolin
 ~~~
 {: .language-bash}
-
-### Step 2: Identify and explore the genome files
 
 ~~~
 $ ls ~/pan_workshop/results/annotated/*.gbk
@@ -84,8 +82,6 @@ $ cd ~/pan_workshop/results/pangenome/ppanggolin
 $ ln -s ~/pan_workshop/results/annotated/*.gbk .
 ~~~
 {: .language-bash}
-
-### Step 3: Obtain the genome list
 
 Each line of this file represents one organism, the first column contains a unique organism name and the second column contains the path to the associate `.gbk` file.
 
@@ -111,8 +107,6 @@ Streptococcus_agalactiae_H36B_prokka	Streptococcus_agalactiae_H36B_prokka.gbk
 Streptococcus_agalactiae_NEM316_prokka	Streptococcus_agalactiae_NEM316_prokka.gbk
 ~~~
 {: .output}
-
-### Step 4: Genome annotation
 
 Using the organisms list, the annotation of genomes is made with the `annotate` module of PPanGGOLiN.
 
@@ -149,7 +143,7 @@ total 8.9M
 ~~~
 {: .output}
 
-### Step 5: Gene clustering
+### Gene clustering
 
 PPanGGolin uses by default MMseqs2  algoritm to run the clustering in all the proteins. You can provide your own gene families or cluster 
 adding the flag `--clusters` and providing a `tsv` file with your families but previously in step 4 you need to provide the annotations. 
@@ -189,7 +183,7 @@ total 9.6M
 ~~~
 {: .output}
 
-### Step 6: Build the pangenome graph
+### Build a pangenome graph and partitions
 
 In order to obtain the partitios of the pangenome, you need to construct the pangenome graph. You can specify if you want to eliminate genes families that are too duplicated with the option `remove-high-copy-number`.
 ~~~
@@ -207,8 +201,6 @@ Processing Streptococcus_agalactiae_NEM316_prokka: 100%|████████
 2023-03-31 09:49:26 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
-
-### Step 7: Pangenome partition
 
 This is the step that will assign gene families to the 'persistent', 'shell', or 'cloud' partitions.
 The one parameter that might be of importance is the `-K`, or `--nb_of_partitions` parameter. This will define the number of classes used to partition the pangenome. This may be of use if you expect to have well-defined subpopulations in your pangenome and you know exactly how many. If not, that number is detected automatically through an Integrated Completed Likelihood (ICL) criterion. The idea is that the most present partition will be 'persistent', the least present will be 'cloud', and all the others will be 'shell'. The number of partitions corresponding to the shell will be the number of expected subpopulations in your pangenome. (So if you expect 5 subpopulations, you could use `-K 7`).
@@ -233,187 +225,15 @@ $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .output}
 
-### Step 8: Plasticity regions
+## Extracting results
 
-Region of Genome Plasticity (RGP) correspond to genomic islands, plasmid and regions that have been lost in multiples strains. You can do this analysis directly from your fasta files using the command `ppanggolin panrgp`. To predict the RGP after we perfom the partition we use the following command.
+### Print presence/absence files
 
-~~~
-$ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
-~~~
-{: .language-bash}
+You can also export some tables with the summary of the genes and genes families that are in each partition of the pangenome. 
 
-~~~
-...
-2023-03-27 12:59:42 genomicIsland.py:l197 INFO  Detecting multigenic families...
-2023-03-27 12:59:42 pangenome.py:l311 INFO      45 gene families are defined as being multigenic. (duplicated in more than 0.05 of the genomes)
-2023-03-27 12:59:42 genomicIsland.py:l199 INFO  Compute Regions of Genomic Plasticity ...
-100%|████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 292.24genomes/s]
-2023-03-27 12:59:42 genomicIsland.py:l204 INFO  Predicted 105 RGP
-2023-03-27 12:59:42 writeBinaries.py:l517 INFO  Writing Regions of Genomic Plasticity...
-100%|██████████████████████████████████████████████████████████████████████████████| 105/105 [00:00<00:00, 251514.52region/s]
-2023-03-27 12:59:42 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
-~~~
-{: .output}
+With `ppanggolin write -p pangenome.h5 --stats` you can obtain all the statistics of the organisms. With the command `ppanggolin write -p pangenome.h5 --Rtab` you can obtain a presence/absence of the genes in each partition, if there is a 1 then the gene family is present in the genome and 0 otherwise. The command `ppanggolin write -p pangenome.h5 --csv` produce a `csv` file with the matrix associated to the presence/absence genes, it follows the same format that the roary `gene_presence_absence.csv` and it also works with scoary.
 
-To obtain a file with the list of the plastic regions (RGPs) for each genome you can use the write module.
-
-~~~
-$ ppanggolin write -p pangenome.h5 --regions --output rgp
-~~~
-{: .language-bash}
-
-~~~
-...
-100%|████████████████████████████████████████████████████████████████████████████| 17542/17542 [00:00<00:00, 395866.18gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 49.21organism/s]
-2023-03-27 13:00:52 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|████████████████████████████████████████████████████████████████████████████| 16439/16439 [00:00<00:00, 309036.96gene/s]
-100%|███████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 230936.02gene family/s]
-2023-03-27 13:00:52 readBinaries.py:l320 INFO   Reading the RGP...
-100%|██████████████████████████████████████████████████████████████████████████████| 1848/1848 [00:00<00:00, 470532.01gene/s]
-~~~
-{: .output}
-
-Use the tree command to see everything that was created in our directory.
-~~~
-$ tree
-~~~
-{: .language-bash}
-
-~~~
-.
-├── pangenome.h5
-└── rgp
-    └── plastic_regions.tsv
-~~~
-{: .output}
-We now have a directory named `rgp` and the file inside, let's view its contents
-~~~
-$ head rgp/plastic_regions.tsv
-~~~
-{: .language-bash}
-
-~~~
-region                  organism                                contig          start   stop    genes   contigBorder    wholeContig
-AAJO01000011.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000011.1  6863    27451   20      True            False
-AAJO01000013.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000013.1  564     25430   36      True            True
-AAJO01000034.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000034.1  95      5670    6       True            False
-AAJO01000044.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000044.1  14      13435   16      True            True
-AAJO01000046.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000046.1  156     13006   13      True            True
-AAJO01000061.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000061.1  84      10318   9       True            True
-AAJO01000073.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000073.1  91      5837    6       True            False
-AAJO01000077.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000077.1  1440    7746    7       True            False
-AAJO01000081.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000081.1  4585    8617    6       True            False
-~~~
-{: .output}
-
-### Step 9: Spots of insertion
-
-The RGPs that was found in the same area in different genomes can be gather into spots of insertions. Those spots are groups of RGPs that 
-have similar bordering persistent genes but not necessarialy the same gene content. This analysis allows us to study the dynamic of gene 
-turnover of large regions in bacterial genomes. 
-
-~~~
-$ ppanggolin spot --pangenome pangenome.h5 --cpu 8
-~~~
-{: .language-bash}
-
-~~~
-...
-2023-03-27 13:11:20 spot.py:l132 INFO   Detecting hotspots in the pangenome...
-2023-03-27 13:11:20 spot.py:l82 INFO    39 RGPs were not used as they are on a contig border (or have less than 3 persistent gene families until the contig border)
-2023-03-27 13:11:20 spot.py:l83 INFO    66 RGPs are being used to predict spots of insertion
-2023-03-27 13:11:20 spot.py:l85 INFO    40 number of different pairs of flanking gene families
-2023-03-27 13:11:20 spot.py:l140 INFO   35 spots were detected
-2023-03-27 13:11:20 writeBinaries.py:l522 INFO  Writing Spots of Insertion...
-100%|██████████████████████████████████████████████████████████████████████████████████| 35/35 [00:00<00:00, 719610.98spot/s]
-2023-03-27 13:11:20 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
-~~~
-{: .output}
-
-You can obtain a file with the list of the spots for each genome by using the module write.
-
-~~~
-$ ppanggolin write -p pangenome.h5 --spots --output spots
-~~~
-{: .language-bash}
-~~~
-...
-2023-03-27 13:11:53 readBinaries.py:l320 INFO   Reading the RGP...
-100%|██████████████████████████████████████████████████████████████████████████████| 1848/1848 [00:00<00:00, 496959.27gene/s]
-2023-03-27 13:11:53 readBinaries.py:l326 INFO   Reading the spots...
-100%|████████████████████████████████████████████████████████████████████████████████| 66/66 [00:00<00:00, 241135.94region/s]
-2023-03-27 13:11:53 writeFlat.py:l504 INFO      Done writing spots in : 'spots/summarize_spots.tsv'
-~~~
-{: .output}
-
-Explore the spots results.
-~~~
-$ tree
-~~~
-{: .language-bash}
-
-~~~
-.
-├── pangenome.h5
-├── rgp
-│   └── plastic_regions.tsv
-└── spots
-    ├── spots.tsv
-    └── summarize_spots.tsv
-~~~
-{: .output}
-
-Let's explore the two files that were created in the `spots/` directory.
-~~~
-$ head spots/spots.tsv
-~~~
-{: .language-bash}
-
-~~~
-spot_id	rgp_id
-spot_26	NZ_HG939456.1_RGP_2
-spot_23	NZ_HG939456.1_RGP_4
-spot_15	NC_007432.1_RGP_1
-spot_31	NC_004368.1_RGP_1
-spot_34	NC_004368.1_RGP_12
-spot_25	NZ_HG939456.1_RGP_5
-spot_16	NC_007432.1_RGP_5
-spot_16	NZ_AAJQ01000021.1_RGP_0
-spot_33	NC_004368.1_RGP_4
-~~~
-{: .output}
-
-~~~
-$ head spots/summarize_spots.tsv
-~~~
-{: .language-bash}
-
-~~~
-spot	nb_rgp	nb_families	nb_unique_family_sets	mean_nb_genes	stdev_nb_genes	max_nb_genes	min_nb_genes
-spot_8	7	6	1	6	0.0	6	6
-spot_2	6	15	4	4.5	0.837	6	4
-spot_5	6	40	5	13.833	4.262	20	8
-spot_3	5	93	5	36.6	17.315	54	16
-spot_4	4	47	3	14.75	8.617	26	8
-spot_19	3	40	3	22.667	2.082	25	21
-spot_16	2	19	2	18	0.0	18	18
-spot_0	2	107	2	66	1.414	67	65
-spot_18	2	7	1	7.5	0.707	8	7
-~~~
-{: .output}
-
-> ## Discussion
-> What is the difference between RGP regions and spots of insertion?
->
-> How can you use this information?
-> > ## Solution
-> > The RGPs are genomic islands, plasmid and regions that have been lost in multiple strains and the spots of insertions are groups of RGPs. 
-> > Those analysis are useful to study the dynamic of gene turnover of large regions in bacterial genomes. Then, spots of the same pangenome can be compared and if we compare the different metrics together we can stablish the dynamic.
-> {: .solution}
-{: .discussion}
-
-### Step 10: Draw pangenome plots
+### Draw plots and interactive graph
 
 PPanGGOLiN provides multiple outputs to describe a pangenome. Let's create all of the plots and then we will move them to our 
 local machines to view them.
@@ -489,7 +309,7 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 ~~~
 {: .output}
 
-### Step 11: Draw an interactive graph
+Draw the interactive graph
 
 ~~~
 $ ppanggolin write -p pangenome.h5 --gexf --output gexf
@@ -644,12 +464,184 @@ In Tunning section mark the stronger gravity box and set the scale in 4000.
 {: .challenge}
 
 
+## Plasticity regions and spots of insertion
 
-### Presence/absence files
+Region of Genome Plasticity (RGP) correspond to genomic islands, plasmid and regions that have been lost in multiples strains. You can do this analysis directly from your fasta files using the command `ppanggolin panrgp`. To predict the RGP after we perfom the partition we use the following command.
 
-You can also export some tables with the summary of the genes and genes families that are in each partition of the pangenome. 
+~~~
+$ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
+~~~
+{: .language-bash}
 
-With `ppanggolin write -p pangenome.h5 --stats` you can obtain all the statistics of the organisms. With the command `ppanggolin write -p pangenome.h5 --Rtab` you can obtain a presence/absence of the genes in each partition, if there is a 1 then the gene family is present in the genome and 0 otherwise. The command `ppanggolin write -p pangenome.h5 --csv` produce a `csv` file with the matrix associated to the presence/absence genes, it follows the same format that the roary `gene_presence_absence.csv` and it also works with scoary.
+~~~
+...
+2023-03-27 12:59:42 genomicIsland.py:l197 INFO  Detecting multigenic families...
+2023-03-27 12:59:42 pangenome.py:l311 INFO      45 gene families are defined as being multigenic. (duplicated in more than 0.05 of the genomes)
+2023-03-27 12:59:42 genomicIsland.py:l199 INFO  Compute Regions of Genomic Plasticity ...
+100%|████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 292.24genomes/s]
+2023-03-27 12:59:42 genomicIsland.py:l204 INFO  Predicted 105 RGP
+2023-03-27 12:59:42 writeBinaries.py:l517 INFO  Writing Regions of Genomic Plasticity...
+100%|██████████████████████████████████████████████████████████████████████████████| 105/105 [00:00<00:00, 251514.52region/s]
+2023-03-27 12:59:42 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+~~~
+{: .output}
+
+To obtain a file with the list of the plastic regions (RGPs) for each genome you can use the write module.
+
+~~~
+$ ppanggolin write -p pangenome.h5 --regions --output rgp
+~~~
+{: .language-bash}
+
+~~~
+...
+100%|████████████████████████████████████████████████████████████████████████████| 17542/17542 [00:00<00:00, 395866.18gene/s]
+100%|████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 49.21organism/s]
+2023-03-27 13:00:52 readBinaries.py:l307 INFO   Reading pangenome gene families...
+100%|████████████████████████████████████████████████████████████████████████████| 16439/16439 [00:00<00:00, 309036.96gene/s]
+100%|███████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 230936.02gene family/s]
+2023-03-27 13:00:52 readBinaries.py:l320 INFO   Reading the RGP...
+100%|██████████████████████████████████████████████████████████████████████████████| 1848/1848 [00:00<00:00, 470532.01gene/s]
+~~~
+{: .output}
+
+Use the tree command to see everything that was created in our directory.
+~~~
+$ tree
+~~~
+{: .language-bash}
+
+~~~
+.
+├── pangenome.h5
+└── rgp
+    └── plastic_regions.tsv
+~~~
+{: .output}
+We now have a directory named `rgp` and the file inside, let's view its contents
+~~~
+$ head rgp/plastic_regions.tsv
+~~~
+{: .language-bash}
+
+~~~
+region                  organism                                contig          start   stop    genes   contigBorder    wholeContig
+AAJO01000011.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000011.1  6863    27451   20      True            False
+AAJO01000013.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000013.1  564     25430   36      True            True
+AAJO01000034.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000034.1  95      5670    6       True            False
+AAJO01000044.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000044.1  14      13435   16      True            True
+AAJO01000046.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000046.1  156     13006   13      True            True
+AAJO01000061.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000061.1  84      10318   9       True            True
+AAJO01000073.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000073.1  91      5837    6       True            False
+AAJO01000077.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000077.1  1440    7746    7       True            False
+AAJO01000081.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000081.1  4585    8617    6       True            False
+~~~
+{: .output}
+
+
+The RGPs that was found in the same area in different genomes can be gather into spots of insertions. Those spots are groups of RGPs that 
+have similar bordering persistent genes but not necessarialy the same gene content. This analysis allows us to study the dynamic of gene 
+turnover of large regions in bacterial genomes. 
+
+~~~
+$ ppanggolin spot --pangenome pangenome.h5 --cpu 8
+~~~
+{: .language-bash}
+
+~~~
+...
+2023-03-27 13:11:20 spot.py:l132 INFO   Detecting hotspots in the pangenome...
+2023-03-27 13:11:20 spot.py:l82 INFO    39 RGPs were not used as they are on a contig border (or have less than 3 persistent gene families until the contig border)
+2023-03-27 13:11:20 spot.py:l83 INFO    66 RGPs are being used to predict spots of insertion
+2023-03-27 13:11:20 spot.py:l85 INFO    40 number of different pairs of flanking gene families
+2023-03-27 13:11:20 spot.py:l140 INFO   35 spots were detected
+2023-03-27 13:11:20 writeBinaries.py:l522 INFO  Writing Spots of Insertion...
+100%|██████████████████████████████████████████████████████████████████████████████████| 35/35 [00:00<00:00, 719610.98spot/s]
+2023-03-27 13:11:20 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+~~~
+{: .output}
+
+You can obtain a file with the list of the spots for each genome by using the module write.
+
+~~~
+$ ppanggolin write -p pangenome.h5 --spots --output spots
+~~~
+{: .language-bash}
+~~~
+...
+2023-03-27 13:11:53 readBinaries.py:l320 INFO   Reading the RGP...
+100%|██████████████████████████████████████████████████████████████████████████████| 1848/1848 [00:00<00:00, 496959.27gene/s]
+2023-03-27 13:11:53 readBinaries.py:l326 INFO   Reading the spots...
+100%|████████████████████████████████████████████████████████████████████████████████| 66/66 [00:00<00:00, 241135.94region/s]
+2023-03-27 13:11:53 writeFlat.py:l504 INFO      Done writing spots in : 'spots/summarize_spots.tsv'
+~~~
+{: .output}
+
+Explore the spots results.
+~~~
+$ tree
+~~~
+{: .language-bash}
+
+~~~
+.
+├── pangenome.h5
+├── rgp
+│   └── plastic_regions.tsv
+└── spots
+    ├── spots.tsv
+    └── summarize_spots.tsv
+~~~
+{: .output}
+
+Let's explore the two files that were created in the `spots/` directory.
+~~~
+$ head spots/spots.tsv
+~~~
+{: .language-bash}
+
+~~~
+spot_id	rgp_id
+spot_26	NZ_HG939456.1_RGP_2
+spot_23	NZ_HG939456.1_RGP_4
+spot_15	NC_007432.1_RGP_1
+spot_31	NC_004368.1_RGP_1
+spot_34	NC_004368.1_RGP_12
+spot_25	NZ_HG939456.1_RGP_5
+spot_16	NC_007432.1_RGP_5
+spot_16	NZ_AAJQ01000021.1_RGP_0
+spot_33	NC_004368.1_RGP_4
+~~~
+{: .output}
+
+~~~
+$ head spots/summarize_spots.tsv
+~~~
+{: .language-bash}
+
+~~~
+spot	nb_rgp	nb_families	nb_unique_family_sets	mean_nb_genes	stdev_nb_genes	max_nb_genes	min_nb_genes
+spot_8	7	6	1	6	0.0	6	6
+spot_2	6	15	4	4.5	0.837	6	4
+spot_5	6	40	5	13.833	4.262	20	8
+spot_3	5	93	5	36.6	17.315	54	16
+spot_4	4	47	3	14.75	8.617	26	8
+spot_19	3	40	3	22.667	2.082	25	21
+spot_16	2	19	2	18	0.0	18	18
+spot_0	2	107	2	66	1.414	67	65
+spot_18	2	7	1	7.5	0.707	8	7
+~~~
+{: .output}
+
+> ## Discussion
+> What is the difference between RGP regions and spots of insertion?
+>
+> How can you use this information?
+> > ## Solution
+> > The RGPs are genomic islands, plasmid and regions that have been lost in multiple strains and the spots of insertions are groups of RGPs. 
+> > Those analysis are useful to study the dynamic of gene turnover of large regions in bacterial genomes. Then, spots of the same pangenome can be compared and if we compare the different metrics together we can stablish the dynamic.
+> {: .solution}
+{: .discussion}
 
 > ## References:
 > For more details you can check this article:
