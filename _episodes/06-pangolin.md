@@ -126,6 +126,7 @@ $ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 {: .language-bash}
 
 ~~~
+...
 2023-03-17 13:37:02 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
 2023-03-17 13:37:02 annotate.py:l338 INFO       Reading organisms.gbk.list the list of organism files ...
 100%|███████████████████████████████████████████| 8/8 [00:01<00:00,  7.31file/s]
@@ -163,6 +164,7 @@ $ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
+...
 2023-03-17 13:42:39 cluster.py:l130 INFO        Adding 16439 genes to the gene families
 100%|███████████████████████████████████████████████████████████████████████████████| 16439/16439 [00:00<00:00, 619888.19gene/s]
 2023-03-17 13:42:39 cluster.py:l286 INFO        Done with the clustering
@@ -200,6 +202,7 @@ $ ppanggolin graph --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
+...
 2023-03-31 09:49:26 makeGraph.py:l56 INFO	Computing the neighbors graph...
 Processing Streptococcus_agalactiae_NEM316_prokka: 100%|█████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 73.70organism/s]
 2023-03-31 09:49:26 makeGraph.py:l74 INFO	Done making the neighbors graph.
@@ -222,12 +225,7 @@ $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
-2023-03-27 12:54:01 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|████████████████████████████████████████████████████████████████████████████| 16439/16439 [00:00<00:00, 313436.90gene/s]
-100%|███████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 232032.22gene family/s]
-2023-03-27 12:54:01 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
-100%|████████████████████████████████████████████████████████████████| 15609/15609 [00:00<00:00, 179387.96contig adjacency/s]
-2023-03-27 12:54:01 partition.py:l343 WARNING   The number of selected organisms is too low (8 organisms used) to robustly partition the graph
+...
 2023-03-27 12:54:01 partition.py:l356 INFO      Estimating the optimal number of partitions...
 100%|████████████████████████████████████████████████████████████| 19/19 [00:00<00:00, 40.75Number of number of partitions/s]
 2023-03-27 12:54:01 partition.py:l358 INFO      The number of partitions has been evaluated at 3
