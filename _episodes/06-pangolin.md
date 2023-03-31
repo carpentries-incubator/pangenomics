@@ -419,11 +419,14 @@ spot_18	2	7	1	7.5	0.707	8	7
 
 ### Step 10: Draw pangenome plots
 
-PPanGGOLiN provides multiple outputs to describe a pangenome. In this section the different outputs will be described.
+PPanGGOLiN provides multiple outputs to describe a pangenome. Let's create all of the plots and then we will move them to our 
+local machines to view them.
 
-### U-shaped plot
+* **U-shaped plot**
 
-The U-shaped plot represents the number of gene families (y axis) per number of organisms (x axis). It is an `.html` file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a `.png` image file.
+The U-shaped plot represents the number of gene families (y axis) per number of organisms (x axis). It is an `.html` file that can be opened 
+with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are 
+seeing as a `.png` image file.
 
 ~~~
 $ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
@@ -431,6 +434,7 @@ $ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 {: .language-bash}
 
 ~~~
+...
 100%|███████████████████████████████| 16439/16439 [00:00<00:00, 312666.54gene/s]
 100%|██████████████████████████| 2867/2867 [00:00<00:00, 235071.25gene family/s]
 2023-03-27 19:58:49 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
@@ -440,58 +444,19 @@ $ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 ~~~
 {: .output}
 
-~~~
-$ cd draw_ucurve/
-$ ls
-~~~
-{: .language-bash}
+* **Tile plot**
 
-~~~
-Ushaped_plot.html
-~~~
-{: .output}
+A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph 
+will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the 
+genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in 
+terms of gene family composition will be close together in the figure).
 
-Return to the working directory.
-~~~
-$ cd ..
-~~~
-{: .language-bash}
+This plot is quite helpful to observe potential structures in your pangenome, and can also help you to identify eventual outliers. You 
+can interact with it, and mousing over a tile in the plot indicates which is the gene identifier(s), the gene family and the organism 
+that corresponds to the tile.
 
-
-#### Visualize the result
-
-Open a new terminal locally. Then move to the desired directory where the images will be downloaded.
-~~~
-$ cd .\Desktop\Workshop\
-~~~
-{: .language-bash}
-
-Copy the image to your directory using `scp` and write the password of the server.
-~~~
-$ scp user@bioinformatica:~/pan_workshop/results/pangenome/ppangolin/pangenome/draw_ucurve/Ushaped_plot.html .
-~~~
-{: .language-bash}
-
-~~~
-Ushaped_plot.html                             100% 3405KB   2.6MB/s   00:01
-~~~
-{: .output}
-
-You can open the html file locally.
-
-<a href="../fig/01-06-02.png">
-  <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot.
-                                                           	The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
-</a>
-
-
-### Tile plot
-
-A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in terms of gene family composition will be close together in the figure).
-
-This plot is quite helpful to observe potential structures in your pangenome, and can also help you to identify eventual outliers. You can interact with it, and mousing over a tile in the plot indicates which is the gene identifier(s), the gene family and the organism that corresponds to the tile.
-
-If you build your pangenome using the 'workflow' subcommand and you have more than 500 organisms, only the 'shell' and the 'persistent' partitions will be drawn, leaving out the 'cloud' as the figure tends to be too heavy for a browser to open it otherwise.
+If you build your pangenome using the 'workflow' subcommand and you have more than 500 organisms, only 
+the 'shell' and the 'persistent' partitions will be drawn, leaving out the 'cloud' as the figure tends to be too heavy for a browser to open it otherwise.
 
 ~~~
 $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
@@ -499,6 +464,7 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 {: .language-bash}
 
 ~~~
+...
 100%|█████████████████████████████████████████| 15609/15609 [00:00<00:00, 180972.77contig adjacency/s]
 2023-03-27 20:05:53 tile_plot.py:l26 INFO       Drawing the tile plot...
 2023-03-27 20:05:53 tile_plot.py:l42 INFO       start with matrice
@@ -510,12 +476,6 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 ~~~
 {: .output}
 
-You can download the plot and explore it in you computer.
-
-<a href="../fig/01-06-03.png">
-  <img src="../fig/01-06-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
-</a>
-
 If you do not want the 'cloud' gene families to be displayed, as it is a lot of data and can be hard to open with a browser, you can use the following option:
 
 ~~~
@@ -524,6 +484,7 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 {: .language-bash}
 
 ~~~
+...
 2023-03-27 20:06:23 tile_plot.py:l57 INFO       done with making the dendrogram to order the organisms on the plot
 2023-03-27 20:06:23 tile_plot.py:l92 INFO       Getting the gene name(s) and the number for each tile of the plot ...
 2023-03-27 20:06:23 tile_plot.py:l101 INFO      Done extracting names and numbers. Making the heatmap ...
@@ -531,6 +492,58 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 2023-03-27 20:06:24 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile_nocloud/tile_plot.html'
 ~~~
 {: .output}
+
+
+### Visualize the results
+
+Let's see what new files were created and move them to out local machine to view them.
+
+~~~
+$ tree
+~~~
+{: .language-bash}
+
+~~~
+.
+├── draw_tile
+│   └── tile_plot.html
+├── draw_tile_nocloud
+│   └── tile_plot.html
+├── draw_ucurve
+│   └── Ushaped_plot.html
+├── pangenome.h5
+├── rgp
+│   └── plastic_regions.tsv
+└── spots
+    ├── spots.tsv
+    └── summarize_spots.tsv
+~~~
+{: .output}
+
+Open a new terminal locally. Then move to the desired directory where the images will be downloaded.
+~~~
+$ cd /Desktop/Workshop/
+~~~
+{: .language-bash}
+
+Copy the images to your directory using `scp` and write the password of the server.
+~~~
+$ scp -r user@server-address:~/pan_workshop/results/pangenome/ppanggolin/pangenome/draw* .
+~~~
+{: .language-bash}
+
+
+You can open the html files locally.
+
+
+<a href="../fig/01-06-02.png">
+  <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot.
+                                                           	The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
+</a>
+
+<a href="../fig/01-06-03.png">
+  <img src="../fig/01-06-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
+</a>
 
 <a href="../fig/01-06-04.png">
   <img src="../fig/01-06-04.png" width="956.5" height="434.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, in the absence of cloud gene families" />
