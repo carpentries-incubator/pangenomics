@@ -207,7 +207,7 @@ $ ppanggolin graph --pangenome pangenome.h5 --cpu 8
 Processing Streptococcus_agalactiae_NEM316_prokka: 100%|█████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 73.70organism/s]
 2023-03-31 09:49:26 makeGraph.py:l74 INFO	Done making the neighbors graph.
 2023-03-31 09:49:26 writeBinaries.py:l508 INFO	Writing the edges...
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 3222/3222 [00:00<00:00, 199058.00edge/s]
+100%|██████████████████████████████████████████████████████████████████████████████████| 3222/3222 [00:00<00:00, 199058.00edge/s]
 2023-03-31 09:49:26 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
@@ -232,17 +232,14 @@ $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 2023-03-27 12:54:01 partition.py:l376 INFO      Partitioning...
 2023-03-27 12:54:01 partition.py:l436 INFO      Partitionned 8 genomes in 0.08 seconds.
 2023-03-27 12:54:01 writeBinaries.py:l408 INFO  Updating gene families with partition information
-100%|███████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 227639.75gene family/s]
+100%|████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 227639.75gene family/s]
 2023-03-27 12:54:01 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
 
-All the results will be added to the given `pangenome.h5` input file.
-
-
 ### Step 8: Plasticity regions
 
-Region of Genome Plasticity (RGP) correspond to genomic islands, plasmid and regions that have been lost in multiples strains. You can do this analysis directly from your fasta files using the commando `ppanggolin panrgp`. To predict the RGP after we perfom the partition we use the following command.
+Region of Genome Plasticity (RGP) correspond to genomic islands, plasmid and regions that have been lost in multiples strains. You can do this analysis directly from your fasta files using the command `ppanggolin panrgp`. To predict the RGP after we perfom the partition we use the following command.
 
 ~~~
 $ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
