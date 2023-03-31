@@ -385,7 +385,12 @@ To view the interactive graph we will use the software **gephi**.
 > > ~~~
 > > ./gephi-0.10.1/bin/gephi
 > > ~~~
-> > {: .language-bash}
+> > {: .language-bash}  
+> > If you do not see the graph properly you may have problems with the video driver. Open it this way instead:  
+> > ~~~
+> >  LIBGL_ALWAYS_SOFTWARE=1 ./gephi-0.10.1/bin/gephi
+> >  ~~~
+> >  {: .language-bash}  
 > {: .solution}
 > 
 > > ## Windows
