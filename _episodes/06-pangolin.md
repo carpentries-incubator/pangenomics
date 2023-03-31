@@ -413,7 +413,7 @@ spot_18	2	7	1	7.5	0.707	8	7
 > How can you use this information?
 > > ## Solution
 > > The RGPs are genomic islands, plasmid and regions that have been lost in multiple strains and the spots of insertions are groups of RGPs. 
-> > Those analysis are usefult to study the dinamic of gene turnover of large regions in bacterial genomes. Then, spots of the same pangenome can be compared and if we compare the different metrics together we can stablished the dynamic.
+> > Those analysis are useful to study the dynamic of gene turnover of large regions in bacterial genomes. Then, spots of the same pangenome can be compared and if we compare the different metrics together we can stablish the dynamic.
 > {: .solution}
 {: .discussion}
 
@@ -423,7 +423,7 @@ PPanGGOLiN provides multiple outputs to describe a pangenome. In this section th
 
 ### U-shaped plot
 
-The U-shaped plot represent the number of gene families (y axis) per number of organisms (x axis). It is a `.html` file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a `.png` image file.
+The U-shaped plot represents the number of gene families (y axis) per number of organisms (x axis). It is an `.html` file that can be opened with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are seeing as a `.png` image file.
 
 ~~~
 $ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
