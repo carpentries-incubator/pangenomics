@@ -100,7 +100,7 @@ $ ls Streptococcus_agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\
 
 ~~~
 $ ls
-$ head organisms.gbk.list
+$ cat organisms.gbk.list
 ~~~
 {: .language-bash}
 
