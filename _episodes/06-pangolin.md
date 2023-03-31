@@ -141,12 +141,12 @@ $ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 Now a new directory named `pangenome/`  was created, let's move into it and explore it.
 ~~~
 $ cd pangenome/
-$ ls -lah pangenome.h5
+$ ls
 ~~~
 {: .language-bash}
 
 ~~~
--rw-r--r-- 1 user rstudio-users 8.9M pangenome.h5
+pangenome.h5
 ~~~
 {: .output}
 
