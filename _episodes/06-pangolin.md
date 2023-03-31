@@ -200,20 +200,14 @@ $ ppanggolin graph --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
-2023-03-27 12:50:01 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|████████████████████████████████████████████████████████████████████████████| 16439/16439 [00:00<00:00, 288907.82gene/s]
-100%|███████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 210364.56gene family/s]
-2023-03-27 12:50:01 makeGraph.py:l56 INFO       Computing the neighbors graph...
-Processing Streptococcus_agalactiae_NEM316_prokka: 100%|████████████████████████████████| 8/8 [00:00<00:00, 138.42organism/s]
-2023-03-27 12:50:01 makeGraph.py:l74 INFO       Done making the neighbors graph.
-2023-03-27 12:50:01 writeBinaries.py:l508 INFO  Writing the edges...
-100%|██████████████████████████████████████████████████████████████████████████████| 3222/3222 [00:00<00:00, 494730.10edge/s]
-2023-03-27 12:50:01 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
+2023-03-31 09:49:26 makeGraph.py:l56 INFO	Computing the neighbors graph...
+Processing Streptococcus_agalactiae_NEM316_prokka: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 73.70organism/s]
+2023-03-31 09:49:26 makeGraph.py:l74 INFO	Done making the neighbors graph.
+2023-03-31 09:49:26 writeBinaries.py:l508 INFO	Writing the edges...
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3222/3222 [00:00<00:00, 199058.00edge/s]
+2023-03-31 09:49:26 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
 ~~~
 {: .output}
-
-The results are saved in the `pangenome.h5` file given as input.
-
 
 ### Step 7: Pangenome partition
 
