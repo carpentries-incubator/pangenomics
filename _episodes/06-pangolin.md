@@ -82,7 +82,7 @@ Streptococcus_agalactiae_A909_prokka.gbk    Streptococcus_agalactiae_NEM316_prok
 ~~~
 {: .output}
 
-Create a symbolic link with all the *.gbk* files in the directory of the PPanGGolin analysis to have easier access to them.
+Create a symbolic link with all the `.gbk` files in the directory of the PPanGGolin analysis to have easier access to them.
 ~~~
 $ cd ~/pan_workshop/results/pangenome/ppanggolin
 $ ln -s ~/pan_workshop/results/annotated/*.gbk .
