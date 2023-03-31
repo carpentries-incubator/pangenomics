@@ -313,7 +313,9 @@ AAJO01000081.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000081.1  
 
 ### Step 9: Spots of insertion
 
-The RGPs that was found in the same area in different genomes can be gather into spots of insertions. Those sports are groups of RGPs that have similar bordering persistent genes but not necessarialy the same gene content. This analysis allows us to study the dynamic of gene turnover of large regions in bacterial genomes. 
+The RGPs that was found in the same area in different genomes can be gather into spots of insertions. Those spots are groups of RGPs that 
+have similar bordering persistent genes but not necessarialy the same gene content. This analysis allows us to study the dynamic of gene 
+turnover of large regions in bacterial genomes. 
 
 ~~~
 $ ppanggolin spot --pangenome pangenome.h5 --cpu 8
@@ -321,6 +323,7 @@ $ ppanggolin spot --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
+...
 2023-03-27 13:11:20 spot.py:l132 INFO   Detecting hotspots in the pangenome...
 2023-03-27 13:11:20 spot.py:l82 INFO    39 RGPs were not used as they are on a contig border (or have less than 3 persistent gene families until the contig border)
 2023-03-27 13:11:20 spot.py:l83 INFO    66 RGPs are being used to predict spots of insertion
@@ -332,13 +335,14 @@ $ ppanggolin spot --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .output}
 
-You can obtain a list of the spots for each genome by using the module write.
+You can obtain a file with the list of the spots for each genome by using the module write.
 
 ~~~
 $ ppanggolin write -p pangenome.h5 --spots --output spots
 ~~~
 {: .language-bash}
 ~~~
+...
 2023-03-27 13:11:53 readBinaries.py:l320 INFO   Reading the RGP...
 100%|██████████████████████████████████████████████████████████████████████████████| 1848/1848 [00:00<00:00, 496959.27gene/s]
 2023-03-27 13:11:53 readBinaries.py:l326 INFO   Reading the spots...
@@ -348,62 +352,60 @@ $ ppanggolin write -p pangenome.h5 --spots --output spots
 {: .output}
 
 Explore the spots results.
-
 ~~~
-$ cd spots/
-$ ls
+$ tree
 ~~~
 {: .language-bash}
 
 ~~~
-spots.tsv  summarize_spots.tsv
+.
+├── pangenome.h5
+├── rgp
+│   └── plastic_regions.tsv
+└── spots
+    ├── spots.tsv
+    └── summarize_spots.tsv
+~~~
+{: .output}
+
+Let's explore the two files that were created in the `spots/` directory.
+~~~
+$ head spots/spots.tsv
+~~~
+{: .language-bash}
+
+~~~
+spot_id	rgp_id
+spot_26	NZ_HG939456.1_RGP_2
+spot_23	NZ_HG939456.1_RGP_4
+spot_15	NC_007432.1_RGP_1
+spot_31	NC_004368.1_RGP_1
+spot_34	NC_004368.1_RGP_12
+spot_25	NZ_HG939456.1_RGP_5
+spot_16	NC_007432.1_RGP_5
+spot_16	NZ_AAJQ01000021.1_RGP_0
+spot_33	NC_004368.1_RGP_4
 ~~~
 {: .output}
 
 ~~~
-$ head spots.tsv
+$ head spots/summarize_spots.tsv
 ~~~
 {: .language-bash}
 
 ~~~
-spot_id rgp_id
-spot_3  NC_004116.1_RGP_0
-spot_3  NZ_CP051004.1_RGP_0
-spot_28 NC_004368.1_RGP_3
-spot_6  NC_004116.1_RGP_6
-spot_15 NC_007432.1_RGP_11
-spot_8  NC_004116.1_RGP_7
-spot_8  NC_007432.1_RGP_3
-spot_8  NC_004368.1_RGP_6
-spot_8  NZ_HG939456.1_RGP_7
+spot	nb_rgp	nb_families	nb_unique_family_sets	mean_nb_genes	stdev_nb_genes	max_nb_genes	min_nb_genes
+spot_8	7	6	1	6	0.0	6	6
+spot_2	6	15	4	4.5	0.837	6	4
+spot_5	6	40	5	13.833	4.262	20	8
+spot_3	5	93	5	36.6	17.315	54	16
+spot_4	4	47	3	14.75	8.617	26	8
+spot_19	3	40	3	22.667	2.082	25	21
+spot_16	2	19	2	18	0.0	18	18
+spot_0	2	107	2	66	1.414	67	65
+spot_18	2	7	1	7.5	0.707	8	7
 ~~~
 {: .output}
-
-~~~
-$ head summarize_spots.tsv
-~~~
-{: .language-bash}
-
-~~~
-spot    nb_rgp  nb_families     nb_unique_family_sets   mean_nb_genes   stdev_nb_genes  max_nb_genes    min_nb_genes
-spot_2  7       6       1       6       0.0     6       6
-spot_1  6       40      5       13.833  4.262   20      8
-spot_5  6       15      4       4.5     0.837   6       4
-spot_7  5       93      5       36.6    17.315  54      16
-spot_8  4       47      3       14.75   8.617   26      8
-spot_22 3       40      3       22.667  2.082   25      21
-spot_3  2       107     2       66      1.414   67      65
-spot_20 2       19      2       18      0.0     18      18
-spot_13 2       10      1       10.5    0.707   11      10
-~~~
-{: .output}
-
-Return to the `pangenome/` directory.
-~~~
-$ cd ..
-~~~
-{: .language-bash}
-
 
 > ## Discussion
 > What is the difference between RGP regions and spots of insertion?
