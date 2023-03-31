@@ -98,10 +98,7 @@ $ ls Streptococcus_agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\
 ~~~
 {: .language-bash}
 
-Move to the working directory.
 ~~~
-$ cd
-$ cd ~/pan_workshop/results/pangenome/ppangolin
 $ ls
 $ head organisms.gbk.list
 ~~~
