@@ -45,26 +45,6 @@ PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://raw.g
 
 In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that predicts Regions of Genomic Plasticity (RGP) for each genome. RGPs are groups of genes made of shell and cloud genomes in the pangenome chart, most of which arise from horizontal gene transfer and correspond to genomic islands. RGPs from different genomes are then grouped into insertion sites based on their conserved persistent flanking genes.
 
-## Outputs
-
-PPanGGOLiN provides multiple outputs to describe a pangenome. In most cases it will provide with a HDF-5 file named `pangenome.h5`. This file stores all the information about your pangenome and the analyses that were run. You can extract information from this file to get a graphical representation of your data.
-
-
-> ## Exercise 1: Partitions.
->  As we see before, usually the pangenome is divided into core, dispensable and accesory genome. What is the term that PPanGGOLiN authors used for core? Which are the other pangenome partitions made by PPanGGOLiN?
->   
-> a) Persistent, shell and cloud-gene.
->
-> b) Softcore, shell and cloud-gene.
->
-> c) Extended core, soft core and shell.
->
-> d) Hard core, extended core and shell.
-> > ## Solution
-> >a. As it was said before, PPanGGOLiN partitions a pangenome into persistent-, shell- and cloud-gene families.
-> {: .solution}
-{: .challenge}
-
 ## Step by step pangenome analysis with PPanGGOLiN
 
 Before starting using PPanGGOLiN, activate the Pangenomics environment.
