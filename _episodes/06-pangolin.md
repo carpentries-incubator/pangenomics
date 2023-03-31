@@ -138,18 +138,7 @@ $ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 ~~~
 {: .output}
 
-Now a new directory was created.
-~~~
-$ ls
-~~~
-{: .language-bash}
-
-~~~
-organisms.gbk.list  pangenome
-~~~
-{: .output}
-
-Move into the `pangenome/` directory and explore it.
+Now a new directory named `pangenome/`  was created, let's move into it and explore it.
 ~~~
 $ cd pangenome/
 $ ls -lah pangenome.h5
