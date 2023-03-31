@@ -138,23 +138,24 @@ $ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 ~~~
 {: .output}
 
-Now a new directory named `pangenome/`  was created, let's move into it and explore it.
+Now a new directory named `pangenome/`  was created, let's move into it and explore it. PPanGGolin created a special file `pangenome.h5` that will be 
+used as input and output in all of the steps. Since it will be getting enriched we can monitor it's increase in size.
 ~~~
 $ cd pangenome/
-$ ls
+$ ls -lh
 ~~~
 {: .language-bash}
 
 ~~~
-pangenome.h5
+total 8.9M
+-rw-r--r-- 1 user user 8.9M mar 31 09:41 pangenome.h5
 ~~~
 {: .output}
 
-The `pangenome.h5` file will be used as input and output for all subsequent analysis.
-
 ### Step 5: Gene clustering
 
-Ppanggolin use by default MMseqs2 to run clustering algoritm in all proteins. You can provide your own gene families or cluster adding the flag `--clusters` and providing the tsv file with your families but previously in step 4 you need to provide the annotations. 
+PPanGGolin uses by default MMseqs2  algoritm to run the clustering in all the proteins. You can provide your own gene families or cluster 
+adding the flag `--clusters` and providing a `tsv` file with your families but previously in step 4 you need to provide the annotations. 
 
 ~~~
 $ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
@@ -177,15 +178,16 @@ $ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 
 You can change the cluster parameters adding the flags `--coverage`(default 0.8) `--identity`(default 0.8) to the previous command. You can also provide your 
 
-The results are saved in the `pangenome.h5` file given as input. We can notice that the size of the file has increased.
+We can now notice that the size of out file has increased.
 
 ~~~
-$ ls -lah pangenome.h5
+$ ls -lh
 ~~~
 {: .language-bash}
 
 ~~~
--rw-r--r-- 1 user rstudio-users 9.6M pangenome.h5
+total 9.6M
+-rw-r--r-- 1 user user 9.6M mar 31 09:47 pangenome.h5
 ~~~
 {: .output}
 
