@@ -558,20 +558,23 @@ To view the plots you can open the `html` files locally in the browser of your c
 To view the interactive graph we will use the software **gephi**.
 
 > ## Gephi setup
-> Install gephi from it [web page](https://gephi.org/). 
-> Open gephi: 
+> Install gephi from it [web page](https://gephi.org/).   
+> Open gephi:   
 > > ## Linux
 > > Go to the directory where you installed the program and type:
 > > ~~~
 > > ./gephi-0.10.1/bin/gephi
 > > ~~~
-> > {: .solution}
+> > {: .language-bash}
+> {: .solution}
+> 
 > > ## Windows
 > > Windos way of oppening gephi
-> > {: .solution}
-> Change the language to english to make it easier to find the options to choose.
+> {: .solution}
+> >   
+> Change the language to english to make it easier to find the options to choose.  
 {: .prereq}
-
+  
 Open the file `pangenomeGraph.gexf`.
 Go to the layout section and in the selection bar choose the ForceAtlas2.
 In Tunning section mark the stronger gravity box and set the scale in 4000.
