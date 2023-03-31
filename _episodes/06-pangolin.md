@@ -247,6 +247,7 @@ $ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 {: .language-bash}
 
 ~~~
+...
 2023-03-27 12:59:42 genomicIsland.py:l197 INFO  Detecting multigenic families...
 2023-03-27 12:59:42 pangenome.py:l311 INFO      45 gene families are defined as being multigenic. (duplicated in more than 0.05 of the genomes)
 2023-03-27 12:59:42 genomicIsland.py:l199 INFO  Compute Regions of Genomic Plasticity ...
@@ -258,7 +259,7 @@ $ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .output}
 
-To obtain a list of the plastic regions (RGPs) for each genome you can use the write module.
+To obtain a file with the list of the plastic regions (RGPs) for each genome you can use the write module.
 
 ~~~
 $ ppanggolin write -p pangenome.h5 --regions --output rgp
@@ -266,6 +267,7 @@ $ ppanggolin write -p pangenome.h5 --regions --output rgp
 {: .language-bash}
 
 ~~~
+...
 100%|████████████████████████████████████████████████████████████████████████████| 17542/17542 [00:00<00:00, 395866.18gene/s]
 100%|████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 49.21organism/s]
 2023-03-27 13:00:52 readBinaries.py:l307 INFO   Reading pangenome gene families...
@@ -273,25 +275,25 @@ $ ppanggolin write -p pangenome.h5 --regions --output rgp
 100%|███████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 230936.02gene family/s]
 2023-03-27 13:00:52 readBinaries.py:l320 INFO   Reading the RGP...
 100%|██████████████████████████████████████████████████████████████████████████████| 1848/1848 [00:00<00:00, 470532.01gene/s]
-(Pangenomics_Global) alumno4@betterlabub:~
 ~~~
 {: .output}
 
-Explore the rgp results.
-
+Use the tree command to see everything that was created in our directory.
 ~~~
-$ cd rgp/
-$ ls
+$ tree
 ~~~
 {: .language-bash}
 
 ~~~
-plastic_regions.tsv
+.
+├── pangenome.h5
+└── rgp
+    └── plastic_regions.tsv
 ~~~
 {: .output}
-
+We now have a directory named `rgp` and the file inside, let's view its contents
 ~~~
-$ head plastic_regions.tsv
+$ head rgp/plastic_regions.tsv
 ~~~
 {: .language-bash}
 
@@ -308,12 +310,6 @@ AAJO01000077.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000077.1  
 AAJO01000081.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000081.1  4585    8617    6       True            False
 ~~~
 {: .output}
-
-Return to the `pangenome/` directory.
-~~~
-$ cd ..
-~~~
-{: .language-bash}
 
 ### Step 9: Spots of insertion
 
