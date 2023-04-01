@@ -115,20 +115,6 @@ $ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 ~~~
 {: .language-bash}
 
-~~~
-...
-2023-03-17 13:37:02 main.py:l181 INFO   PPanGGOLiN version: 1.1.136
-2023-03-17 13:37:02 annotate.py:l338 INFO       Reading organisms.gbk.list the list of organism files ...
-100%|███████████████████████████████████████████| 8/8 [00:01<00:00,  7.31file/s]
-2023-03-17 13:37:03 writeBinaries.py:l481 INFO  Writing genome annotations...
-100%|████████████████████████████████████████| 8/8 [00:00<00:00, 279.31genome/s]
-2023-03-17 13:37:03 writeBinaries.py:l494 INFO  writing the protein coding gene dna sequences
-100%|███████████████████████████████| 16439/16439 [00:00<00:00, 142550.61gene/s]
-2023-03-17 13:37:03 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome/pangenome.h5
-
-~~~
-{: .output}
-
 Now a new directory named `pangenome/`  was created, let's move into it and explore it. PPanGGolin created a special file `pangenome.h5` that will be 
 used as input and output in all of the steps. Since it will be getting enriched we can monitor it's increase in size.
 ~~~
@@ -153,21 +139,6 @@ $ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
 
-~~~
-...
-2023-03-17 13:42:39 cluster.py:l130 INFO        Adding 16439 genes to the gene families
-100%|███████████████████████████████████████████████████████████████████████████████| 16439/16439 [00:00<00:00, 619888.19gene/s]
-2023-03-17 13:42:39 cluster.py:l286 INFO        Done with the clustering
-2023-03-17 13:42:39 writeBinaries.py:l499 INFO  Writing gene families and gene associations...
-100%|██████████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 645364.12gene family/s]
-2023-03-17 13:42:39 writeBinaries.py:l501 INFO  Writing gene families information...
-100%|██████████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 388519.58gene family/s]
-2023-03-17 13:42:39 writeBinaries.py:l421 INFO  Updating annotations with fragment information
-100%|███████████████████████████████████████████████████████████████████████████████| 17542/17542 [00:00<00:00, 473462.08gene/s]
-2023-03-17 13:42:39 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
-~~~
-{: .output}
-
 You can change the cluster parameters adding the flags `--coverage`(default 0.8) `--identity`(default 0.8) to the previous command. You can also provide your 
 
 We can now notice that the size of out file has increased.
@@ -191,17 +162,6 @@ $ ppanggolin graph --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
 
-~~~
-...
-2023-03-31 09:49:26 makeGraph.py:l56 INFO	Computing the neighbors graph...
-Processing Streptococcus_agalactiae_NEM316_prokka: 100%|█████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 73.70organism/s]
-2023-03-31 09:49:26 makeGraph.py:l74 INFO	Done making the neighbors graph.
-2023-03-31 09:49:26 writeBinaries.py:l508 INFO	Writing the edges...
-100%|██████████████████████████████████████████████████████████████████████████████████| 3222/3222 [00:00<00:00, 199058.00edge/s]
-2023-03-31 09:49:26 writeBinaries.py:l530 INFO	Done writing the pangenome. It is in file : pangenome.h5
-~~~
-{: .output}
-
 This is the step that will assign gene families to the 'persistent', 'shell', or 'cloud' partitions.
 The one parameter that might be of importance is the `-K`, or `--nb_of_partitions` parameter. This will define the number of classes used to partition the pangenome. This may be of use if you expect to have well-defined subpopulations in your pangenome and you know exactly how many. If not, that number is detected automatically through an Integrated Completed Likelihood (ICL) criterion. The idea is that the most present partition will be 'persistent', the least present will be 'cloud', and all the others will be 'shell'. The number of partitions corresponding to the shell will be the number of expected subpopulations in your pangenome. (So if you expect 5 subpopulations, you could use `-K 7`).
 
@@ -211,19 +171,6 @@ In most cases, you should let the statistical criterion used by PPanGGOLiN find 
 $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
-
-~~~
-...
-2023-03-27 12:54:01 partition.py:l356 INFO      Estimating the optimal number of partitions...
-100%|████████████████████████████████████████████████████████████| 19/19 [00:00<00:00, 40.75Number of number of partitions/s]
-2023-03-27 12:54:01 partition.py:l358 INFO      The number of partitions has been evaluated at 3
-2023-03-27 12:54:01 partition.py:l376 INFO      Partitioning...
-2023-03-27 12:54:01 partition.py:l436 INFO      Partitionned 8 genomes in 0.08 seconds.
-2023-03-27 12:54:01 writeBinaries.py:l408 INFO  Updating gene families with partition information
-100%|████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 227639.75gene family/s]
-2023-03-27 12:54:01 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
-~~~
-{: .output}
 
 ## Extracting results
 
@@ -249,17 +196,6 @@ $ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
 ~~~
 {: .language-bash}
 
-~~~
-...
-100%|███████████████████████████████| 16439/16439 [00:00<00:00, 312666.54gene/s]
-100%|██████████████████████████| 2867/2867 [00:00<00:00, 235071.25gene family/s]
-2023-03-27 19:58:49 readBinaries.py:l314 INFO   Reading the neighbors graph edges...
-100%|███████████████████| 15609/15609 [00:00<00:00, 182167.72contig adjacency/s]
-2023-03-27 19:58:49 ucurve.py:l13 INFO  Drawing the U-shaped curve...
-2023-03-27 19:58:49 ucurve.py:l60 INFO  Done drawing the U-shaped curve : 'draw_ucurve/Ushaped_plot.html'
-~~~
-{: .output}
-
 * **Tile plot**
 
 A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph 
@@ -278,19 +214,6 @@ the 'shell' and the 'persistent' partitions will be drawn, leaving out the 'clou
 $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
 ~~~
 {: .language-bash}
-
-~~~
-...
-100%|█████████████████████████████████████████| 15609/15609 [00:00<00:00, 180972.77contig adjacency/s]
-2023-03-27 20:05:53 tile_plot.py:l26 INFO       Drawing the tile plot...
-2023-03-27 20:05:53 tile_plot.py:l42 INFO       start with matrice
-2023-03-27 20:05:54 tile_plot.py:l57 INFO       done with making the dendrogram to order the organisms on the plot
-2023-03-27 20:05:54 tile_plot.py:l92 INFO       Getting the gene name(s) and the number for each tile of the plot ...
-2023-03-27 20:05:54 tile_plot.py:l101 INFO      Done extracting names and numbers. Making the heatmap ...
-2023-03-27 20:05:54 tile_plot.py:l157 INFO      Drawing the figure itself...
-2023-03-27 20:05:54 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile/tile_plot.html'
-~~~
-{: .output}
 
 If you do not want the 'cloud' gene families to be displayed, as it is a lot of data and can be hard to open with a browser, you can use the following option:
 
@@ -478,37 +401,12 @@ $ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
 
-~~~
-...
-2023-03-27 12:59:42 genomicIsland.py:l197 INFO  Detecting multigenic families...
-2023-03-27 12:59:42 pangenome.py:l311 INFO      45 gene families are defined as being multigenic. (duplicated in more than 0.05 of the genomes)
-2023-03-27 12:59:42 genomicIsland.py:l199 INFO  Compute Regions of Genomic Plasticity ...
-100%|████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 292.24genomes/s]
-2023-03-27 12:59:42 genomicIsland.py:l204 INFO  Predicted 105 RGP
-2023-03-27 12:59:42 writeBinaries.py:l517 INFO  Writing Regions of Genomic Plasticity...
-100%|██████████████████████████████████████████████████████████████████████████████| 105/105 [00:00<00:00, 251514.52region/s]
-2023-03-27 12:59:42 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
-~~~
-{: .output}
-
 To obtain a file with the list of the plastic regions (RGPs) for each genome you can use the write module.
 
 ~~~
 $ ppanggolin write -p pangenome.h5 --regions --output rgp
 ~~~
 {: .language-bash}
-
-~~~
-...
-100%|████████████████████████████████████████████████████████████████████████████| 17542/17542 [00:00<00:00, 395866.18gene/s]
-100%|████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 49.21organism/s]
-2023-03-27 13:00:52 readBinaries.py:l307 INFO   Reading pangenome gene families...
-100%|████████████████████████████████████████████████████████████████████████████| 16439/16439 [00:00<00:00, 309036.96gene/s]
-100%|███████████████████████████████████████████████████████████████████████| 2867/2867 [00:00<00:00, 230936.02gene family/s]
-2023-03-27 13:00:52 readBinaries.py:l320 INFO   Reading the RGP...
-100%|██████████████████████████████████████████████████████████████████████████████| 1848/1848 [00:00<00:00, 470532.01gene/s]
-~~~
-{: .output}
 
 Use the tree command to see everything that was created in our directory.
 ~~~
@@ -553,34 +451,12 @@ $ ppanggolin spot --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
 
-~~~
-...
-2023-03-27 13:11:20 spot.py:l132 INFO   Detecting hotspots in the pangenome...
-2023-03-27 13:11:20 spot.py:l82 INFO    39 RGPs were not used as they are on a contig border (or have less than 3 persistent gene families until the contig border)
-2023-03-27 13:11:20 spot.py:l83 INFO    66 RGPs are being used to predict spots of insertion
-2023-03-27 13:11:20 spot.py:l85 INFO    40 number of different pairs of flanking gene families
-2023-03-27 13:11:20 spot.py:l140 INFO   35 spots were detected
-2023-03-27 13:11:20 writeBinaries.py:l522 INFO  Writing Spots of Insertion...
-100%|██████████████████████████████████████████████████████████████████████████████████| 35/35 [00:00<00:00, 719610.98spot/s]
-2023-03-27 13:11:20 writeBinaries.py:l530 INFO  Done writing the pangenome. It is in file : pangenome.h5
-~~~
-{: .output}
-
 You can obtain a file with the list of the spots for each genome by using the module write.
 
 ~~~
 $ ppanggolin write -p pangenome.h5 --spots --output spots
 ~~~
 {: .language-bash}
-~~~
-...
-2023-03-27 13:11:53 readBinaries.py:l320 INFO   Reading the RGP...
-100%|██████████████████████████████████████████████████████████████████████████████| 1848/1848 [00:00<00:00, 496959.27gene/s]
-2023-03-27 13:11:53 readBinaries.py:l326 INFO   Reading the spots...
-100%|████████████████████████████████████████████████████████████████████████████████| 66/66 [00:00<00:00, 241135.94region/s]
-2023-03-27 13:11:53 writeFlat.py:l504 INFO      Done writing spots in : 'spots/summarize_spots.tsv'
-~~~
-{: .output}
 
 Explore the spots results.
 ~~~
