@@ -181,6 +181,7 @@ $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 You can also export some tables with the summary of the genes and genes families that are in each partition of the pangenome. 
 
 With `ppanggolin write -p pangenome.h5 --stats` you can obtain all the statistics of the organisms. With the command `ppanggolin write -p pangenome.h5 --Rtab` you can obtain a presence/absence of the genes in each partition, if there is a 1 then the gene family is present in the genome and 0 otherwise. The command `ppanggolin write -p pangenome.h5 --csv` produce a `csv` file with the matrix associated to the presence/absence genes, it follows the same format that the roary `gene_presence_absence.csv` and it also works with scoary.
+To make a file with the summary statistics: `ppanggolin info -p pangenome.h5 --content > stats/summary_statistics.txt`
 
 ### Draw plots and interactive graph
 
