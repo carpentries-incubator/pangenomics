@@ -35,6 +35,8 @@ PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It par
 |	**Shell genome**  	 | For gene families present at intermediate frequencies in the genomes.     |
 |	**Cloud genome**  	 |   	For gene familes present at low frequency in the species.  		 |
 
+PPanGGOLiN has a criterion to make the partitions that is more complex than the usual partitions. FIXME
+
 ## Building a Pangenome
 
 PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleFASTA.fasta)) or annotated genomes ([.gbk](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleGBK.gbk)) of whole genomes, Metagenomic Assembled Genomes (MAG), and Single-cell Amplified Genomes (SAG), useful for large-scale environmental studies, including the non-cultivable species pangenome.  It is designed to scale up to tens of thousands of genomes.
@@ -290,6 +292,14 @@ To view the plots you can open the `html` files locally in the browser of your c
                                                            	The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
 </a>
 
+> ## Discussion: Partitions
+>   Why do are two partitions in the same bar? FIXME
+> > ## Solution
+> > Because in PPanGGOLiN partitions not only depend on the number of genomes a gene ir present in, but also the conservation of the neighborhood of the gene.
+> {: .solution}
+{: .challenge}
+
+
 <a href="../fig/01-06-03.png">
   <img src="../fig/01-06-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
 </a>
@@ -297,6 +307,7 @@ To view the plots you can open the `html` files locally in the browser of your c
 <a href="../fig/01-06-04.png">
   <img src="../fig/01-06-04.png" width="956.5" height="434.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, in the absence of cloud gene families" />
 </a>
+
 
 To view the interactive graph we will use the software **gephi**.
 
