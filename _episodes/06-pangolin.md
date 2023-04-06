@@ -40,14 +40,19 @@ considers its neighbors. If two gene families are consistently linked across the
 |	**Shell genome**  	 | For gene families present at intermediate frequencies in the genomes. There can be multiple shells.    |
 |	**Cloud genome**  	 |   	For gene familes present at low frequency in the species.  		 |
 
+The PPanGGOLiN pipeline can be divided into **building the pangenome**, performing **special analysis** and **extracting results**.
+
 ## Building a Pangenome
 
-PPanGGOLiN analysis can start from genomic DNA sequences in FASTA format or annotated genomes in GBK or GFF formats. It will build the pangenome in a single HDF-5 file from wich we can then perform several analysis and extract different results.
-
 The required steps to build a pangenome can be achieved with a single command `ppanggolin workflow`,
-or it can be broken down into several steps if you need a more personalized pipeline.
+or it can be broken down if you want to make adjustments to each of the steps.
+
+It will build the pangenome in a single HDF-5 file that will be the input and output of all the commands and will get enriched with each of them.
 
 ### Genome annotation
+
+PPanGGOLiN analysis can start from genomic DNA sequences in FASTA format or annotated genomes in GBK or GFF formats. The first step is getting this 
+genomic information into the HDF-5 file and annotate it if it is not already. thi
 
 Before starting using PPanGGOLiN, activate the Pangenomics environment.
 ~~~
