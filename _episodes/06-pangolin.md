@@ -3,9 +3,8 @@ title: "Neighboring Analysis of Gene Families in a Pangenome"
 teaching: 20
 exercises: 30
 questions:
-- "How can you predict the regions of genome plasticity?"
-- "How can you identify the spots of insertions?"
-- "How can you visualize the relationship between gene families?"
+- "How can I build a pangenome of thousands of genomes?"
+- "How can I visualize the spacial relationship between gene families?"
 
 objectives:
 - "Understand the fundamentals of the PPanGGOLiN tool."
@@ -15,7 +14,6 @@ objectives:
 keypoints:
 - "PPanGGOLiN is a sotfware to create and manipulate prokaryotic pangenomes."
 - "PPanGGOLiN integrates protein-coding genes and their genomic neighborhood to build a graph."
-- "panRGP method predicts Regions of Genomic Plasticity which are grouped into insertion sites based on their conserved persistent flanking genes."
 - "PPanGGOLiN is designed to scale up to tens of thousands of genomes, including whole genomes, metagenomes and single-cell annotated genomes."
 ---
 
@@ -23,19 +21,26 @@ keypoints:
   <img src="../fig/01-04-01.png" alt="PPanGGOLiN's logo." />
 </a>
 
-# PPanGGOLiN
+## PPanGGOLiN: Partitioned PanGenome Graph Of Linked Neighbors
 
-**Partitioned PanGenome Graph Of Linked Neighbors**
+PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes in it's own special way. It gives a lot more information than just 
+the presence and absence of the gene families. This program **represents the pangenome in a graph** where each node is a gene family, and two gene 
+families are conected by an edge if they are neighbors (their sequences are next to each other) in at least one genome. The width of this edge 
+represents the number of genomes in which this two families are neighbors. And the size of the nodes represents the number of genes that are part of the
+gene family.
 
-PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes. It partitions a pangenome into persistent-, shell- and cloud-gene families through a graphical model and a statistical approach rather than using fixed thresholds. Unlike other methods, PPanGGOLiN integrates information about protein-coding genes and their genomic neighborhood to build a graph of gene families. Each node in the graph is a gene family and the edges represent a relation of genetic contiguity. Therefore, two gene families that are consistent neighbors in the graph are more likely to belong to the same partition, yielding a partitioned pangenome graph (PPG) made up of persistent, shell, and cloud nodes. The resulting plot looks like a subway map, where the rails represent the genomes. The following table shows how the classes are defined.
+To clasify a gene family into a partition, PPanGGOLiN not only takes in to account the percentage of genomes the family is present in, it also 
+considers its neighbors. If two gene families are consistently linked across the genomes they will more likely belong to the same partition. A
+statistical approach is used to decide how many partitions should be made and in which partition a gene familiy should be placed.
+
+PPanGOLiN [can be used with thousands of genomes](https://github.com/labgem/PPanGGOLiN/wiki/Basic-usage-and-practical-information). 
+
 
 |    	Classes   		 |                           	Definition                         		 |
 |:---------------------:    |:---------------------------------------------------------------------:    |
 | **Persistent genome**     |      	For gene families present in almost all genomes.    		 |
 |	**Shell genome**  	 | For gene families present at intermediate frequencies in the genomes.     |
 |	**Cloud genome**  	 |   	For gene familes present at low frequency in the species.  		 |
-
-PPanGGOLiN has a criterion to make the partitions that is more complex than the usual partitions. FIXME
 
 ## Building a Pangenome
 
