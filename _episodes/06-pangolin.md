@@ -45,9 +45,9 @@ The PPanGGOLiN pipeline can be divided into **building the pangenome**, performi
 ## Building a Pangenome
 
 The required steps to build a pangenome can be achieved with a single command `ppanggolin workflow`,
-or it can be broken down if you want to make adjustments to each of the steps.
+or can be run individually if you want to make adjustments to each of them.
 
-It will build the pangenome in a single HDF-5 file that will be the input and output of all the commands and will get enriched with each of them.
+The pangenome will be built in a single HDF-5 file that will be the input and output of all the commands and will get enriched with each of them.
 
 ### Genome annotation
 
