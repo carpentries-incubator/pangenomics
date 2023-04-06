@@ -42,21 +42,18 @@ considers its neighbors. If two gene families are consistently linked across the
 
 ## Building a Pangenome
 
-PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleFASTA.fasta)) or annotated genomes ([.gbk](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleGBK.gbk)) of whole genomes, Metagenomic Assembled Genomes (MAG), and Single-cell Amplified Genomes (SAG), useful for large-scale environmental studies, including the non-cultivable species pangenome.  It is designed to scale up to tens of thousands of genomes.
+PPanGGOLiN analysis can start from genomic DNA sequences in FASTA format or annotated genomes in GBK or GFF formats. It will build the pangenome in a single HDF-5 file from wich we can then perform several analysis and extract different results.
 
-In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that predicts Regions of Genomic Plasticity (RGP) for each genome. RGPs are groups of genes made of shell and cloud genomes in the pangenome chart, most of which arise from horizontal gene transfer and correspond to genomic islands. RGPs from different genomes are then grouped into insertion sites based on their conserved persistent flanking genes.
-
+The required steps to build a pangenome can be achieved with a single command `ppanggolin workflow`,
+or it can be broken down into several steps if you need a more personalized pipeline.
 
 ### Genome annotation
 
-
 Before starting using PPanGGOLiN, activate the Pangenomics environment.
-
 ~~~
 $ conda activate Pangenomics_Global
 ~~~
 {: .language-bash}
-
 ~~~
 (Pangenomics_Global) ~$
 ~~~
