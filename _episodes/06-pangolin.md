@@ -23,23 +23,21 @@ keypoints:
 
 ## PPanGGOLiN: Partitioned PanGenome Graph Of Linked Neighbors
 
-PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes in it's own special way. It gives a lot more information than just 
-the presence and absence of the gene families. This program **represents the pangenome in a graph** where each node is a gene family, and two gene 
-families are conected by an edge if they are neighbors (their sequences are next to each other) in at least one genome. The width of this edge 
-represents the number of genomes in which this two families are neighbors. And the size of the nodes represents the number of genes that are part of the
+[PPanGGOLiN](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) is a software designed to create and manipulate 
+prokaryotic pangenomes in its own special way. It gives a lot more information than just 
+the presence and absence of the gene families and it can be used with [thousands of genomes](https://github.com/labgem/PPanGGOLiN/wiki/Basic-usage-and-practical-information). This program **represents the pangenome in a graph** where each node is a gene family, and two gene 
+families are connected by an edge if they are neighbors (their sequences are next to each other) in at least one genome. The width of this edge 
+represents the number of genomes in which these two families are neighbors. And the size of the nodes represents the number of genes that are part of the
 gene family.
 
-To clasify a gene family into a partition, PPanGGOLiN not only takes in to account the percentage of genomes the family is present in, it also 
-considers its neighbors. If two gene families are consistently linked across the genomes they will more likely belong to the same partition. A
-statistical approach is used to decide how many partitions should be made and in which partition a gene familiy should be placed.
-
-PPanGOLiN [can be used with thousands of genomes](https://github.com/labgem/PPanGGOLiN/wiki/Basic-usage-and-practical-information). 
+To classify a gene family into a partition, PPanGGOLiN not only takes into account the percentage of genomes the family is present in, but it also 
+considers its neighbors. If two gene families are consistently linked across the genomes, they will more likely belong to the same partition. The software uses statistical approach to decide how many partitions should be made and in which partition a gene family should be placed. 
 
 
 |    	Classes   		 |                           	Definition                         		 |
 |:---------------------:    |:---------------------------------------------------------------------:    |
 | **Persistent genome**     |      	For gene families present in almost all genomes.    		 |
-|	**Shell genome**  	 | For gene families present at intermediate frequencies in the genomes.     |
+|	**Shell genome**  	 | For gene families present at intermediate frequencies in the genomes. There can be multiple shells.    |
 |	**Cloud genome**  	 |   	For gene familes present at low frequency in the species.  		 |
 
 ## Building a Pangenome
@@ -47,6 +45,9 @@ PPanGOLiN [can be used with thousands of genomes](https://github.com/labgem/PPan
 PPanGGOLiN analysis can start from genomic DNA sequences ([.fasta](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleFASTA.fasta)) or annotated genomes ([.gbk](https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/ExampleGBK.gbk)) of whole genomes, Metagenomic Assembled Genomes (MAG), and Single-cell Amplified Genomes (SAG), useful for large-scale environmental studies, including the non-cultivable species pangenome.  It is designed to scale up to tens of thousands of genomes.
 
 In addition, PPanGGOLiN includes the panRGP method (Bazin et al. 2020) that predicts Regions of Genomic Plasticity (RGP) for each genome. RGPs are groups of genes made of shell and cloud genomes in the pangenome chart, most of which arise from horizontal gene transfer and correspond to genomic islands. RGPs from different genomes are then grouped into insertion sites based on their conserved persistent flanking genes.
+
+
+### Genome annotation
 
 
 Before starting using PPanGGOLiN, activate the Pangenomics environment.
@@ -60,10 +61,6 @@ $ conda activate Pangenomics_Global
 (Pangenomics_Global) ~$
 ~~~
 {: .output}
-
-
-### Genome annotation
-
 
 ~~~
 $ mkdir -p  ~/pan_workshop/results/pangenome/ppanggolin
