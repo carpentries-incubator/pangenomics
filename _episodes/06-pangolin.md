@@ -168,7 +168,7 @@ $ ppanggolin graph --pangenome pangenome.h5 --cpu 8
 Finally we can assign the gene families to the persistent, shell, or cloud partitions. PPanGGOLiN can find the optimal number of partitions, if it is
 larger than three it will make more shell partitions. You can also specify how many partitions you want with the option `-K`.
 
-Besides this partitions, PPanGGOLiN will also calculate the exact core (families in 100% of genomes) and exact accessory 
+Besides these partitions, PPanGGOLiN will also calculate the exact core (families in 100% of genomes) and exact accessory 
 (families in less than 100% of genomes) and the soft core (families in more than 95% of genomes) and soft accessory (families in less than 95% of genomes).
 
 ~~~
@@ -200,7 +200,7 @@ Number of partitions : 3
 If we want to have this in a file we can redirect this output adding `> summary_statistics.txt` to the command.
 
 With the `ppanggolin write` command you can extract many text files and tables with a lot of information. For this you need to provide the 
-`pangenome.h5` file and the name of the directory to store the files. Each of the additional flags indicates wich file or files to write. Let's 
+`pangenome.h5` file and the name of the directory to store the files. Each of the additional flags indicates which file or files to write. Let's 
 use all of the flags that will give us basic information of our analysis. And then see what was generated.
 
 ~~~
@@ -242,10 +242,16 @@ tree
 ~~~
 {: .language-bash}
 
+> ## Exercise 1: PPanGGolin results.
+>
+> > ## Solution
+> >
+> {: .solution}
+{: .challenge}
 
 ### Draw interactive plots
 
-We can also extract two interactive plots with the command `ppanggolin draw`, follwing a similar syntax than with the command `ppanggolin write`.
+We can also extract two interactive plots with the command `ppanggolin draw`, following a similar syntax than with the command `ppanggolin write`.
 
 ~~~
 $ ppanggolin draw --pangenome pangenome.h5 --output plots --ucurve --tile_plot
@@ -318,10 +324,10 @@ $ scp -r user@server-address:~/pan_workshop/results/pangenome/ppanggolin/pangeno
 To view the interactive graph we will use the software **gephi**.
 
 > ## Gephi setup
-> Install gephi from it [web page](https://gephi.org/).   
+> Install gephi from its [web page](https://gephi.org/).   
 > Open gephi:   
 > > ## Linux
-> > Go to the directory where you installed the program and type:
+> > Go to the directory where you downloaded the program and type:
 > > ~~~
 > > ./gephi-0.10.1/bin/gephi
 > > ~~~
@@ -334,23 +340,38 @@ To view the interactive graph we will use the software **gephi**.
 > {: .solution}
 > 
 > > ## Windows
-> > Windos way of oppening gephi
+> > FIXME
 > {: .solution}
 > 
-> Change the language to English to make it easier to find the options to choose.  
+> > ## Mac
+> > FIXME
+> {: .solution}  
+> If your download is in a language that is not English, change the language to English to make it easier to find the options that we will mention. 
+> Find the equivalent to `Tools/Language/English` in the top left menu and restart gephi.
 {: .prereq}
   
-Open the file `pangenomeGraph.gexf`.
-Go to the layout section and in the selection bar choose the ForceAtlas2.
-In Tunning section mark the stronger gravity box and set the scale in 4000.
+Go to `File/Open/`and select the file `pangenomeGraph.gexf`.  
+Click OK in the window that appears.  
+Scroll out with your mouse.
+Go to the Layout section in the left and in the selection bar choose ForceAtlas2.
+In the Tuning section change the Scaling value to 4000 and check the Stronger Gravity box.
+Click on the Run button and then click it again to stop.
+  
 <a href="../fig/01-06-05.png">
   <img src="../fig/01-06-05.png" width="512" height="512" alt="Gephi visualization" />
 </a>
 
-Each node is a gene family, which are labled with the name of a representative gene of the family.
+Now we have a pangenome graph!
+ 
 
-> ## Exercise 3: Exploring the pangenome graph.
-> Explore the options of visualization for the pangenome graph, try yo color the nodes according to:
+> ## Exercise 2: Exploring the pangenome graph.
+> Finally we are looking at the pangenome graph. Here each node is a gene family, if you click on the black T at the bottom of the graph you will se that
+> thay are labeld, this is the name of the family given by the name of a representative gene of the family.  
+>   
+>  Explore the options of visualization for the pangenome graph, while trying to identify what does each element of the graph represent (ie. size of 
+>  nodes and edges, etc.) and what is in the Data Laboratory.
+>  
+>  Use the Appearance section to color the nodes and edges according to the attribultes that you find most useful, like:
 >
 > a) Partition.
 >  
@@ -358,7 +379,7 @@ Each node is a gene family, which are labled with the name of a representative g
 >
 > c) Number of genes.
 >  
-> d) Proteins function (product).
+> d) Product.
 >  
 > e) Gene neighborhood (edges).
 >  
@@ -385,7 +406,7 @@ Each node is a gene family, which are labled with the name of a representative g
 > {: .solution}
 {: .challenge}
 
-> ## Exercise 1: PPanGGolin pipeline.
+> ## Exercise 3: PPanGGolin pipeline.
 >   Choose the indispensable commands to create a U-shaped plot.
 >
 > Commands:
