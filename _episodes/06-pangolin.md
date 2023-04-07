@@ -178,9 +178,9 @@ $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 
 ## Extracting results
 
-### Print files with pangenome information
+### Print files with information of the pangenome
 
-For a first glimpse of our pangenome we can obtain the summary statistics.
+For a first glimpse of our pangenome we can obtain the summary statistics with the command `ppanggolin info`.
 ~~~
 ppanggolin info -p pangenome.h5 --content
 ~~~
@@ -191,17 +191,12 @@ ppanggolin info -p pangenome.h5 --content
 
 If we want to have this in a file we can redirect this output adding `> summary_statistics.txt` to the command.
 
-With the `ppanggolin write` command you can extract many text files and tables with a lot of information.
+With the `ppanggolin write` command you can extract many text files and tables with a lot of information. 
 
-To print a table with the number of genes and genes families that each organism has in each partition, its completeness and single copy markers we can use the flag `--stats` and specify an output directory.
+To print a table with the number of genes and genes families that each organism has in each partition, its completeness and single copy markers 
+ we can use the flag `--stats` and specify an output directory.
 ~~~
 ppanggolin write -p pangenome.h5 --stats --output stats
-~~~
-{: .language-bash}
-
-To obtain a binary presence/absence matrix of each gene family that you can easily import to R use the flab `Rtab`. (Same format as gene_presence_absence.Rtab for Roary)
-~~~
-ppanggolin write -p pangenome.h5 --Rtab --output Rtab
 ~~~
 {: .language-bash}
 
@@ -254,15 +249,6 @@ $ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_t
 ~~~
 {: .language-bash}
 
-~~~
-...
-2023-03-27 20:06:23 tile_plot.py:l57 INFO       done with making the dendrogram to order the organisms on the plot
-2023-03-27 20:06:23 tile_plot.py:l92 INFO       Getting the gene name(s) and the number for each tile of the plot ...
-2023-03-27 20:06:23 tile_plot.py:l101 INFO      Done extracting names and numbers. Making the heatmap ...
-2023-03-27 20:06:23 tile_plot.py:l157 INFO      Drawing the figure itself...
-2023-03-27 20:06:24 tile_plot.py:l159 INFO      Done with the tile plot : 'draw_tile_nocloud/tile_plot.html'
-~~~
-{: .output}
 
 Draw the interactive graph
 
