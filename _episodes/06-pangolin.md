@@ -186,127 +186,117 @@ ppanggolin info -p pangenome.h5 --content
 ~~~
 {: .language-bash}
 ~~~
+Genes : 16439
+Organisms : 8
+Families : 2867
+Edges : 3221
+Persistent ( min:0.62, max:1.0, sd:0.08, mean:0.96 ): 1785
+Shell ( min:0.38, max:0.62, sd:0.05, mean:0.51 ): 19
+Cloud ( min:0.12, max:0.62, sd:0.13, mean:0.22 ): 1063
+Number of partitions : 3
 ~~~
 {: .output}
 
 If we want to have this in a file we can redirect this output adding `> summary_statistics.txt` to the command.
 
-With the `ppanggolin write` command you can extract many text files and tables with a lot of information. 
+With the `ppanggolin write` command you can extract many text files and tables with a lot of information. For this you need to provide the 
+`pangenome.h5` file and the name of the directory to store the files. Each of the additional flags indicates wich file or files to write. Let's 
+use all of the flags that will give us basic information of our analysis. And then see what was generated.
 
-To print a table with the number of genes and genes families that each organism has in each partition, its completeness and single copy markers 
- we can use the flag `--stats` and specify an output directory.
 ~~~
-ppanggolin write -p pangenome.h5 --stats --output stats
+ppanggolin write -p pangenome.h5 --output files --stats --csv --Rtab --partitions --projection --families_tsv
+~~~
+{: .language-bash}
+~~~
+tree
+~~~
+{: .language-bash}
+~~~
+.
+├── files
+│   ├── gene_families.tsv
+│   ├── gene_presence_absence.Rtab
+│   ├── matrix.csv
+│   ├── mean_persistent_duplication.tsv
+│   ├── organisms_statistics.tsv
+│   ├── partitions
+│   │   ├── cloud.txt
+│   │   ├── exact_accessory.txt
+│   │   ├── exact_core.txt
+│   │   ├── persistent.txt
+│   │   ├── shell.txt
+│   │   ├── soft_accessory.txt
+│   │   ├── soft_core.txt
+│   │   ├── S.txt
+│   │   └── undefined.txt
+│   └── projection
+│       ├── Streptococcus_agalactiae_18RS21_prokka.tsv
+│       ├── Streptococcus_agalactiae_2603V_prokka.tsv
+│       ├── Streptococcus_agalactiae_515_prokka.tsv
+│       ├── Streptococcus_agalactiae_A909_prokka.tsv
+│       ├── Streptococcus_agalactiae_CJB111_prokka.tsv
+│       ├── Streptococcus_agalactiae_COH1_prokka.tsv
+│       ├── Streptococcus_agalactiae_H36B_prokka.tsv
+│       └── Streptococcus_agalactiae_NEM316_prokka.tsv
+└── pangenome.h5
 ~~~
 {: .language-bash}
 
-To obtain a `csv` table with presence/absence of each gene family use the `--csv` flag. (Same format as gene_presence_absence.csv for Roary)
+
+### Draw interactive plots
+
+We can also extract two interactive plots with the command `ppanggolin draw`, follwing a similar syntax than with the command `ppanggolin write`.
+
 ~~~
-ppanggolin write -p pangenome.h5 --csv --output csv
+$ ppanggolin draw --pangenome pangenome.h5 --output plots --ucurve --tile_plot
+~~~
+{: .language-bash}
+~~~
+tree plots
+~~~
+{: .language-bash}
+~~~
+plots/
+├── tile_plot.html
+└── Ushaped_plot.html
+~~~
+{: .output}
+
+Let's download them to our local machines to explore them. Open a new local terminal, navigate to the directory where you want the files 
+and use the `scp` command.
+~~~
+$ scp -r user@server-address:~/pan_workshop/results/pangenome/ppanggolin/pangenome/plots .
 ~~~
 {: .language-bash}
 
-
-### Draw interactive plots and graph
-
-PPanGGOLiN provides multiple outputs to describe a pangenome. Let's create all of the plots and then we will move them to our 
-local machines to view them.
+Open both `html` files in a browser and explore them. They are interactive so play with the plots for a while to see what information can be 
+obtained from them.
 
 * **U-shaped plot**
 
-The U-shaped plot represents the number of gene families (y axis) per number of organisms (x axis). It is an `.html` file that can be opened 
-with any browser and with which you can interact, zoom, move around, mouseover to see numbers in more detail, and you can save what you are 
-seeing as a `.png` image file.
+The U-shaped plot is a bar chart where you can see how many gene families (y-axis) are in how many genomes (x-axis). They are colored according to the 
+partition they belong to.
+<a href="../fig/01-06-02.png">
+  <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot.
+                                                           	The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
 
-~~~
-$ ppanggolin draw --pangenome pangenome.h5 --ucurve --output draw_ucurve
-~~~
-{: .language-bash}
 
 * **Tile plot**
 
-A tile plot is a heatmap representing the gene families (y axis) in the organisms (x axis) making up your pangenome. The tiles on the graph 
-will be colored if the gene family is present in an organism and uncolored if absent. The gene families are ordered by partition, and the 
-genomes are ordered by a hierarchical clustering based on their shared gene families (basically two genomes that are close together in 
-terms of gene family composition will be close together in the figure).
+ The tile plot is a presence/absence heatmap of the gene families (y-axis) in each genome (x-axis) ordered by a hierarchical clustering and showing the 
+  multycopy families.
+</a>
+<a href="../fig/01-06-03.png">
+  <img src="../fig/01-06-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
+</a>
 
-This plot is quite helpful to observe potential structures in your pangenome, and can also help you to identify eventual outliers. You 
-can interact with it, and mousing over a tile in the plot indicates which is the gene identifier(s), the gene family and the organism 
-that corresponds to the tile.
-
-If you build your pangenome using the 'workflow' subcommand and you have more than 500 organisms, only 
-the 'shell' and the 'persistent' partitions will be drawn, leaving out the 'cloud' as the figure tends to be too heavy for a browser to open it otherwise.
-
-~~~
-$ ppanggolin draw --pangenome pangenome.h5 --tile_plot --output draw_tile
-~~~
-{: .language-bash}
-
-If you do not want the 'cloud' gene families to be displayed, as it is a lot of data and can be hard to open with a browser, you can use the following option:
-
-~~~
-$ ppanggolin draw --pangenome pangenome.h5 --tile_plot --nocloud --output draw_tile_nocloud
-~~~
-{: .language-bash}
-
-
-Draw the interactive graph
+### Draw the pangenome graph
 
 ~~~
 $ ppanggolin write -p pangenome.h5 --gexf --output gexf
 ~~~
 {: .language-bash}
 
-
-### Visualize the results
-
-Let's see what new files were created and move them to out local machine to view them.
-
-~~~
-$ tree
-~~~
-{: .language-bash}
-
-~~~
-.
-├── draw_tile
-│   └── tile_plot.html
-├── draw_tile_nocloud
-│   └── tile_plot.html
-├── draw_ucurve
-│   └── Ushaped_plot.html
-├── gexf
-│   └── pangenomeGraph.gexf
-├── pangenome.h5
-├── rgp
-│   └── plastic_regions.tsv
-└── spots
-    ├── spots.tsv
-    └── summarize_spots.tsv
-~~~
-{: .output}
-
-Open a new terminal locally. Then move to the desired directories where the images and graph file will be downloaded.
-~~~
-$ cd /Desktop/Workshop/
-~~~
-{: .language-bash}
-
-Copy the directories with the plots and graph with `scp`.
-~~~
-$ scp -r user@server-address:~/pan_workshop/results/pangenome/ppanggolin/pangenome/draw* .
-$ scp -r user@server-address:~/pan_workshop/results/pangenome/ppanggolin/pangenome/gexf .
-
-~~~
-{: .language-bash}
-
-
-To view the plots you can open the `html` files locally in the browser of your choice.
-
-<a href="../fig/01-06-02.png">
-  <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot.
-                                                           	The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
-</a>
 
 > ## Discussion: Partitions
 >   Why do are two partitions in the same bar? FIXME
@@ -316,9 +306,7 @@ To view the plots you can open the `html` files locally in the browser of your c
 {: .challenge}
 
 
-<a href="../fig/01-06-03.png">
-  <img src="../fig/01-06-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
-</a>
+
 
 <a href="../fig/01-06-04.png">
   <img src="../fig/01-06-04.png" width="956.5" height="434.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, in the absence of cloud gene families" />
