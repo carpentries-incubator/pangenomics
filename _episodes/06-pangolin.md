@@ -287,7 +287,7 @@ partition they belong to.
   <img src="../fig/01-06-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
 
 > ## Difficulty showing the plots?
-> If your browser is taking too long to open your tile plot repeat the `pangolin draw` command with the option `--nocloud` this will remove the 
+> If your browser is taking too long to open your tile plot repeat the `pangolin draw` command with the option `--nocloud`, this will remove the 
 > families in the cloud partition from the plot to make it easier to handle.  
 {: .callout}
   
@@ -336,8 +336,8 @@ To view the interactive graph we will use the software **gephi**.
 > > ## Windows
 > > Windos way of oppening gephi
 > {: .solution}
-> >   
-> Change the language to english to make it easier to find the options to choose.  
+> 
+> Change the language to English to make it easier to find the options to choose.  
 {: .prereq}
   
 Open the file `pangenomeGraph.gexf`.
