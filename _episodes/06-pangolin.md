@@ -40,7 +40,8 @@ considers its neighbors. If two gene families are consistently linked across the
 |	**Shell genome**  	 | For gene families present at intermediate frequencies in the genomes. There can be multiple shells.    |
 |	**Cloud genome**  	 |   	For gene familes present at low frequency in the species.  		 |
 
-The PPanGGOLiN pipeline can be divided into **building the pangenome**, performing **special analysis** and **extracting results**.
+The PPanGGOLiN pipeline can be divided into **building the pangenome**, and **extracting results**. You can also perform some **special analyses** and
+extract the corresponding results.
 
 ## Building a Pangenome
 
@@ -128,15 +129,17 @@ total 8.9M
 
 ### Gene clustering
 
-PPanGGolin uses by default MMseqs2  algoritm to run the clustering in all the proteins. You can provide your own gene families or cluster 
-adding the flag `--clusters` and providing a `tsv` file with your families but previously in step 4 you need to provide the annotations. 
+PPanGGolin uses by default [MMseqs2](https://github.com/soedinglab/MMseqs2) to run the clustering in all the proteins. You can adjust 
+the clustering parameters adding the flags `--mode`, `--coverage`(default 0.8) `--identity`(default 0.8) to the command.
 
+If you provided your annotations in the preovious step you can also provide clusters made previously with a different program 
+with the `--clusters` option. 
+
+We will use the default parameters.
 ~~~
 $ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
-
-You can change the cluster parameters adding the flags `--coverage`(default 0.8) `--identity`(default 0.8) to the previous command. You can also provide your 
 
 We can now notice that the size of out file has increased.
 
@@ -151,18 +154,22 @@ total 9.6M
 ~~~
 {: .output}
 
-### Build a pangenome graph and partitions
+### Build a pangenome graph
 
-In order to obtain the partitios of the pangenome, you need to construct the pangenome graph. You can specify if you want to eliminate genes families that are too duplicated with the option `remove-high-copy-number`.
+Now that the clustering step identified all the gene families we can build the graph with them. 
+
 ~~~
 $ ppanggolin graph --pangenome pangenome.h5 --cpu 8
 ~~~
 {: .language-bash}
 
-This is the step that will assign gene families to the 'persistent', 'shell', or 'cloud' partitions.
-The one parameter that might be of importance is the `-K`, or `--nb_of_partitions` parameter. This will define the number of classes used to partition the pangenome. This may be of use if you expect to have well-defined subpopulations in your pangenome and you know exactly how many. If not, that number is detected automatically through an Integrated Completed Likelihood (ICL) criterion. The idea is that the most present partition will be 'persistent', the least present will be 'cloud', and all the others will be 'shell'. The number of partitions corresponding to the shell will be the number of expected subpopulations in your pangenome. (So if you expect 5 subpopulations, you could use `-K 7`).
+### Partition the graph
 
-In most cases, you should let the statistical criterion used by PPanGGOLiN find the optimal number of partitions for you.
+Finally we can assign the gene families to the persistent, shell, or cloud partitions. PPanGGOLiN can find the optimal number of partitions, if it is
+larger than three it will make more shell partitions. You can also specify how many partitions you want with the option `-K`.
+
+Besides this partitions, PPanGGOLiN will also calculate the exact core (families in 100% of genomes) and exact accessory 
+(families in less than 100% of genomes) and the soft core (families in more than 95% of genomes) and soft accessory (families in less than 95% of genomes).
 
 ~~~
 $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
@@ -171,14 +178,41 @@ $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 
 ## Extracting results
 
-### Print presence/absence files
+### Print files with pangenome information
 
-You can also export some tables with the summary of the genes and genes families that are in each partition of the pangenome. 
+For a first glimpse of our pangenome we can obtain the summary statistics.
+~~~
+ppanggolin info -p pangenome.h5 --content
+~~~
+{: .language-bash}
+~~~
+~~~
+{: .output}
 
-With `ppanggolin write -p pangenome.h5 --stats` you can obtain all the statistics of the organisms. With the command `ppanggolin write -p pangenome.h5 --Rtab` you can obtain a presence/absence of the genes in each partition, if there is a 1 then the gene family is present in the genome and 0 otherwise. The command `ppanggolin write -p pangenome.h5 --csv` produce a `csv` file with the matrix associated to the presence/absence genes, it follows the same format that the roary `gene_presence_absence.csv` and it also works with scoary.
-To make a file with the summary statistics: `ppanggolin info -p pangenome.h5 --content > stats/summary_statistics.txt`
+If we want to have this in a file we can redirect this output adding `> summary_statistics.txt` to the command.
 
-### Draw plots and interactive graph
+With the `ppanggolin write` command you can extract many text files and tables with a lot of information.
+
+To print a table with the number of genes and genes families that each organism has in each partition, its completeness and single copy markers we can use the flag `--stats` and specify an output directory.
+~~~
+ppanggolin write -p pangenome.h5 --stats --output stats
+~~~
+{: .language-bash}
+
+To obtain a binary presence/absence matrix of each gene family that you can easily import to R use the flab `Rtab`. (Same format as gene_presence_absence.Rtab for Roary)
+~~~
+ppanggolin write -p pangenome.h5 --Rtab --output Rtab
+~~~
+{: .language-bash}
+
+To obtain a `csv` table with presence/absence of each gene family use the `--csv` flag. (Same format as gene_presence_absence.csv for Roary)
+~~~
+ppanggolin write -p pangenome.h5 --csv --output csv
+~~~
+{: .language-bash}
+
+
+### Draw interactive plots and graph
 
 PPanGGOLiN provides multiple outputs to describe a pangenome. Let's create all of the plots and then we will move them to our 
 local machines to view them.
@@ -336,6 +370,8 @@ In Tunning section mark the stronger gravity box and set the scale in 4000.
 <a href="../fig/01-06-05.png">
   <img src="../fig/01-06-05.png" width="512" height="512" alt="Gephi visualization" />
 </a>
+
+Each node is a gene family, which are labled with the name of a representative gene of the family.
 
 > ## Exercise 3: Exploring the pangenome graph.
 > Explore the options of visualization for the pangenome graph, try yo color the nodes according to:
