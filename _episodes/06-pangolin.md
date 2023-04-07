@@ -13,8 +13,8 @@ objectives:
 - "Interpret the main results of PPanGGOLiN."
 keypoints:
 - "PPanGGOLiN is a sotfware to create and manipulate prokaryotic pangenomes."
-- "PPanGGOLiN integrates protein-coding genes and their genomic neighborhood to build a graph."
-- "PPanGGOLiN is designed to scale up to tens of thousands of genomes, including whole genomes, metagenomes and single-cell annotated genomes."
+- "PPanGGOLiN integrates gene families and their genomic neighborhood to build a graph and define the partitions."
+- "PPanGGOLiN is designed to scale up to tens of thousands of genomes."
 ---
 
 <a href="../fig/01-04-01.png">
@@ -545,7 +545,7 @@ spot_18	2	7	1	7.5	0.707	8	7
 {: .discussion}
 
 > ## References:
-> Go to the PPanGGOLiN [GitHub Wiki](https://github.com/labgem/PPanGGOLiN/wiki) for the complete collection of instructions and posibilities.
+> Go to the PPanGGOLiN [GitHub Wiki](https://github.com/labgem/PPanGGOLiN/wiki) for the complete collection of instructions and posibilities.  
 > And read the original PPanGGOLiN article to understand the details.
 >
 > Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partitioned pangenome graph. PLOS Computational Biology 16(3): e1007732. [https://doi.org/10.1371/journal.pcbi.1007732](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732).
