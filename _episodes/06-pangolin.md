@@ -277,42 +277,44 @@ obtained from them.
 The U-shaped plot is a bar chart where you can see how many gene families (y-axis) are in how many genomes (x-axis). They are colored according to the 
 partition they belong to.
 <a href="../fig/01-06-02.png">
-  <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot.
-                                                           	The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
-
+  <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot. The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
 
 * **Tile plot**
 
  The tile plot is a presence/absence heatmap of the gene families (y-axis) in each genome (x-axis) ordered by a hierarchical clustering and showing the 
   multycopy families.
-</a>
 <a href="../fig/01-06-03.png">
   <img src="../fig/01-06-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
-</a>
+
+> ## Difficulty showing the plots?
+> If your browser is taking too long to open your tile plot repeat the `pangolin draw` command with the option `--nocloud` this will remove the 
+> families in the cloud partition from the plot to make it easier to handle.  
+{: .callout}
+  
+> ## Discussion: Partitions
+>   Why are there bars with two partitions in the U plot?
+> > ## Solution
+> > Because in PPanGGOLiN the partitions not only depend on the number of genomes a gene family is present in, but also on the conservation of the 
+> > neighborhood of the gene. So a gene that is in only a few genomes but has the same shell neighbors in all or most of them, will more likely be placed 
+> > in the shell than in the cloud. 
+> {: .solution}
+{: .challenge}
 
 ### Draw the pangenome graph
 
+Now its time to see the actual partitioned graph. For that we can use the `ppangolin write` command.
 ~~~
 $ ppanggolin write -p pangenome.h5 --gexf --output gexf
 ~~~
 {: .language-bash}
 
-
-> ## Discussion: Partitions
->   Why do are two partitions in the same bar? FIXME
-> > ## Solution
-> > Because in PPanGGOLiN partitions not only depend on the number of genomes a gene ir present in, but also the conservation of the neighborhood of the gene.
-> {: .solution}
-{: .challenge}
-
-
-
-
-<a href="../fig/01-06-04.png">
-  <img src="../fig/01-06-04.png" width="956.5" height="434.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, in the absence of cloud gene families" />
-</a>
-
-
+Let's download the `gexf` file to our local machines to explore it. Open a new local terminal, navigate to the directory where you want the file 
+and use the `scp` command.
+~~~
+$ scp -r user@server-address:~/pan_workshop/results/pangenome/ppanggolin/pangenome/gexf .
+~~~
+{: .language-bash}
+  
 To view the interactive graph we will use the software **gephi**.
 
 > ## Gephi setup
@@ -408,8 +410,9 @@ Each node is a gene family, which are labled with the name of a representative g
 > {: .solution}
 {: .challenge}
 
-
-## Plasticity regions and spots of insertion
+## Special analyses
+  
+### Plasticity regions and spots of insertion
 
 Region of Genome Plasticity (RGP) correspond to genomic islands, plasmid and regions that have been lost in multiples strains. You can do this analysis directly from your fasta files using the command `ppanggolin panrgp`. To predict the RGP after we perfom the partition we use the following command.
 
