@@ -545,7 +545,8 @@ spot_18	2	7	1	7.5	0.707	8	7
 {: .discussion}
 
 > ## References:
-> For more details you can check this article:
+> Go to the PPanGGOLiN [GitHub Wiki](https://github.com/labgem/PPanGGOLiN/wiki) for the complete collection of instructions and posibilities.
+> And read the original PPanGGOLiN article to understand the details.
 >
 > Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partitioned pangenome graph. PLOS Computational Biology 16(3): e1007732. [https://doi.org/10.1371/journal.pcbi.1007732](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732).
 {: .callout}
