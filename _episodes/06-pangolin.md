@@ -45,16 +45,13 @@ The PPanGGOLiN pipeline can be divided into **building the pangenome**, performi
 ## Building a Pangenome
 
 The required steps to build a pangenome can be achieved with a single command `ppanggolin workflow`,
-or can be run individually if you want to make adjustments to each of them.
+or can be run individually if you want to make adjustments to each of them. We will run them separately to learn what the workflow consists of.
 
 The pangenome will be built in a single HDF-5 file that will be the input and output of all the commands and will get enriched with each of them.
 
 ### Genome annotation
 
-PPanGGOLiN analysis can start from genomic DNA sequences in FASTA format or annotated genomes in GBK or GFF formats. The first step is getting this 
-genomic information into the HDF-5 file and annotate it if it is not already. thi
-
-Before starting using PPanGGOLiN, activate the Pangenomics environment.
+Before starting using PPanGGOLiN, we need to activate the Pangenomics environment.
 ~~~
 $ conda activate Pangenomics_Global
 ~~~
@@ -64,40 +61,34 @@ $ conda activate Pangenomics_Global
 ~~~
 {: .output}
 
+Now we should make a special directory for this analysis.
 ~~~
 $ mkdir -p  ~/pan_workshop/results/pangenome/ppanggolin
 ~~~
 {: .language-bash}
 
-~~~
-$ ls ~/pan_workshop/results/annotated/*.gbk
-~~~
-{: .language-bash}
-
-~~~
-Streptococcus_agalactiae_18RS21_prokka.gbk  Streptococcus_agalactiae_CJB111_prokka.gbk
-Streptococcus_agalactiae_2603V_prokka.gbk   Streptococcus_agalactiae_COH1_prokka.gbk
-Streptococcus_agalactiae_515_prokka.gbk     Streptococcus_agalactiae_H36B_prokka.gbk
-Streptococcus_agalactiae_A909_prokka.gbk    Streptococcus_agalactiae_NEM316_prokka.gbk
-~~~
-{: .output}
-
-Create a symbolic link with all the `.gbk` files in the directory of the PPanGGolin analysis to have easier access to them.
+PPanGGOLiN analysis can start from genomic DNA sequences in FASTA format or annotated genomes in GBK or GFF formats. The first step is getting this 
+genomic information into the HDF-5 file and annotate it if it is not already.  
+We already have our Prokka annotations in `~/pan_workshop/results/annotated/`, so let's use them for our pangenome.
+Create symbolic links of the `.gbk` files in the directory of the PPanGGolin analysis to have easier access to them.
 ~~~
 $ cd ~/pan_workshop/results/pangenome/ppanggolin
 $ ln -s ~/pan_workshop/results/annotated/*.gbk .
 ~~~
 {: .language-bash}
 
-Each line of this file represents one organism, the first column contains a unique organism name and the second column contains the path to the associate `.gbk` file.
+To use the GBKs in the annotation step we need to create a text file with the unique name of each organism in one column and the path to the
+corresponding `.gbk` in another one.
 
 ~~~
-$ ls Streptococcus_agalactiae* | cut -d'.' -f1|while read line; do echo $line$'\t'$line.gbk >> organisms.gbk.list; done
+$ ls Streptococcus_agalactiae* | cut -d'.' -f1 | while read line # Obtain the name of the file without the file extension and open a loop
+> do 
+> echo $line$'\t'$line.gbk >> organisms.gbk.list # Print the name, a tab separator and the name with the extension and redirect it to a file
+> done
 ~~~
 {: .language-bash}
 
 ~~~
-$ ls
 $ cat organisms.gbk.list
 ~~~
 {: .language-bash}
