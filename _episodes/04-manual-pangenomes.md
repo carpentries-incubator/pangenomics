@@ -4,7 +4,7 @@ teaching: 30
 exercises: 15
 questions:
 - "What elements do I compare to calculate a Pangenome?"
-- "How are genome families conformed?
+- "How are genome families conformed?"
 objectives:
 - "Calculate an score between two sequences using blast"
 - "Cluster gene families according to a treshold"
