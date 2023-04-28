@@ -14,6 +14,13 @@ keypoints:
 - "Gene families must be clustered according to a distance-treshold "
 ---
 
+Curate the `.faa` files.
+
+~~~
+ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); sed -i "s/\s*>/>${name}|/" $line; done
+~~~
+{: .language-bash}
+
 Create one data set with all files `.faa`.
 ~~~
 cat ~/pan_workshop/results/annotated/*.faa > all-genomes.faa
