@@ -352,7 +352,7 @@ To view the interactive graph we will use the software **gephi**.
 > {: .solution}
 > 
 > > ## Windows
-> > FIXME
+> > Click the Gephi icon to open the App.
 > {: .solution}
 > 
 > > ## Mac
