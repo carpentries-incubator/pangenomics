@@ -74,7 +74,7 @@ We already have our Prokka annotations in `~/pan_workshop/results/annotated/`, s
 Create symbolic links of the `.gbk` files in the directory of the PPanGGolin analysis to have easier access to them.
 ~~~
 $ cd ~/pan_workshop/results/pangenome/ppanggolin
-$ ln -s ~/pan_workshop/results/annotated/*.gbk .
+$ ln -s ~/pan_workshop/results/annotated/*/*.gbk .
 ~~~
 {: .language-bash}
 
