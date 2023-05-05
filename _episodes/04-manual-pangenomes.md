@@ -44,15 +44,16 @@ makeblastdb -in ~/pan_workshop/results/blast/all-genomes.faa -dbtype prot -out ~
 {: .language-bash}
 
 ~~~
-Building a new DB, current time: 04/27/2023 18:58:55
-New DB name:   ~/pan_workshop/results/blast/database/all-genomes
-New DB title: ~/pan_workshop/results/blast/all-genomes.faa
+Building a new DB, current time: 05/05/2023 00:13:13
+New DB name:   /home/haydee/pan_workshop/results/subset/blast/database/all-genomes
+New DB title:  /home/haydee/pan_workshop/results/subset/blast/all-genomes.faa
 Sequence type: Protein
 Keep MBits: T
 Maximum file size: 1000000000B
-Adding sequences from FASTA; added 16439 sequences in 0.3211 seconds.
+Adding sequences from FASTA; added 16 sequences in 0.000644922 seconds.
 ~~~
 {: .output}
+
 
 Run blastp. This step takes about 20 minutes.
 
@@ -61,5 +62,22 @@ blastp -query ~/pan_workshop/results/blast/all-genomes.faa -db ~/pan_workshop/re
 ~~~
 {: .language-bash}
 
+Now we will explore the blast matrix in R.
 
+First we need to reed the database.
 
+`data_blast <- read.delim("~/pan_workshop/results/blast/output-blast/all-genomes.blast", header=FALSE)`
+
+The names of the columns.
+
+`names_data=c("qseqid", "sseqid", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")`
+`colnames(data_blast) <- names_data`
+  
+ We will fix the evalue that we will use to form the families.
+ 
+`evalue <-1e-5`
+
+The uniques genes are the following.
+
+`gen_qseqid <- unique(data_blast$qseqid)`
+`gen_sseqid <- unique(data_blast$sseqid)`
