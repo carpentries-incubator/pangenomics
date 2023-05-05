@@ -243,9 +243,21 @@ tree
 {: .language-bash}
 
 > ## Exercise 1: PPanGGolin results.
->
-> > ## Solution
-> >
+> Go to small groups (if you are learning at a Workshop) and explore one result file or set of result files to see what information they are giving you. 
+> Then explain to the rest of the group what you learned.
+> > ## Solution  
+> > `gene_families.tsv` is a table that shows you which individual genes (second column) correspond to which gene family (first column). 
+> > In the third column it has an F is the gene is potentialy fragmented.  
+> > `gene_presence_absence.Rtab` is a binary matrix that shows if a gene family is present (1) or absent (0) in each genome.  
+> > `matrix.csv` is a table with one row per gene family, many columns with metadata and one column per genome showing the name 
+> > of the gene in the corresponding gene family.  
+> >  `mean_persistent_duplication.tsv` has one row per persistent gene family and metrics about its duplication and if it is 
+> >  considered a single-copy marker.  
+> >  `organisms_statistics.tsv` has one row per genomes and columns for the number of gene families and genes in total and in each partition, 
+> >  the completeness and the number of single-copy markers.  
+> >  `partitions/` has one list per partition with the names of the gene families it contains.
+> >  `projection/` has one file per genome with the metadata of each gene (ie. contig, coordinates, strand, gene family, 
+> >  number of copies, partition, neighbours in each partition).  
 > {: .solution}
 {: .challenge}
 
@@ -416,6 +428,8 @@ Besides being able to work with thousands of genomes and having the approach of 
   
 You can also use PPanGGOLiN to identify **Conserved Modules**, groups of accessory genes that are usually together and may be functional 
   modules. And you can find the modules present in RGPs and Spots of Insertion.   
+  
+To see how your pangenome grows ass more genomes are added and know if it is open or closed you can do **Rarefaction** analysis.  
   
 If you are interested in the phylogeny of your genomes, you can retrieve the **Multiple Sequence Alignment** of each gene family and a 
   concatenation of all single-copy exact core genes.   
