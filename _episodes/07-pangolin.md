@@ -406,168 +406,24 @@ Now we have a pangenome graph!
 > {: .solution}
 {: .challenge}
 
-> ## Exercise 3: PPanGGolin pipeline.
->   Choose the indispensable commands to create a U-shaped plot.
->
-> Commands:
-> 1. cluster: Cluster proteins in protein families.
-> 2. partition: Partition the pangenome graph.
-> 3. rgp: Predicts Regions of Genomic Plasticity in the genomes of your pangenome.
-> 4. annotate: Annotate genomes.
-> 5. graph: Create the pangenome graph.
-> 6. spot: Predicts spots in your pangenome.
-> 7. draw: Draw figures representing the pangenome through different aspects.
->
-> a) 1, 2, 3, 4, 5.
->
-> b) 4, 1, 5, 7, 6.
->
-> c) 4, 1, 5, 2, 7.
->
-> d) 4, 2, 1, 6, 3.
-> > ## Solution
-> >c. The first step is always to annotate the genes, then cluster the proteins within its corresponding families, after that it is necessary to create the pangenome
-> >graph, partition it and finally with the draw command create the U-shaped plot.
-> {: .solution}
-{: .challenge}
 
 ## Special analyses
-  
-### Plasticity regions and spots of insertion
 
-Region of Genome Plasticity (RGP) correspond to genomic islands, plasmid and regions that have been lost in multiples strains. You can do this analysis directly from your fasta files using the command `ppanggolin panrgp`. To predict the RGP after we perfom the partition we use the following command.
-
-~~~
-$ ppanggolin rgp --pangenome pangenome.h5 --cpu 8
-~~~
-{: .language-bash}
-
-To obtain a file with the list of the plastic regions (RGPs) for each genome you can use the write module.
-
-~~~
-$ ppanggolin write -p pangenome.h5 --regions --output rgp
-~~~
-{: .language-bash}
-
-Use the tree command to see everything that was created in our directory.
-~~~
-$ tree
-~~~
-{: .language-bash}
-
-~~~
-.
-├── pangenome.h5
-└── rgp
-    └── plastic_regions.tsv
-~~~
-{: .output}
-We now have a directory named `rgp` and the file inside, let's view its contents
-~~~
-$ head rgp/plastic_regions.tsv
-~~~
-{: .language-bash}
-
-~~~
-region                  organism                                contig          start   stop    genes   contigBorder    wholeContig
-AAJO01000011.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000011.1  6863    27451   20      True            False
-AAJO01000013.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000013.1  564     25430   36      True            True
-AAJO01000034.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000034.1  95      5670    6       True            False
-AAJO01000044.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000044.1  14      13435   16      True            True
-AAJO01000046.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000046.1  156     13006   13      True            True
-AAJO01000061.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000061.1  84      10318   9       True            True
-AAJO01000073.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000073.1  91      5837    6       True            False
-AAJO01000077.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000077.1  1440    7746    7       True            False
-AAJO01000081.1_RGP_0    Streptococcus_agalactiae_18RS21_prokka  AAJO01000081.1  4585    8617    6       True            False
-~~~
-{: .output}
+Besides being able to work with thousands of genomes and having the approach of the partitioned graph, PPanGGOLiN is unique in 
+  that it allows you to analyze your pangenomes in different ways. You can obtain the **Regions of Genome Plasticity** (RGP) of your pangenomes, 
+  which are stretches of shell and cloud genes, and the location in the pangenome where many genomes have an RGP, 
+  which are called **Spots of Insertion**.   
+You can also use PPanGGOLiN to identify **Conserved Modules**, groups of accessory genes that are usually together and may be functional 
+  modules. And you can find the modules present in RGPs and Spots of Insertion.   
+If you are interested in the phylogeny of your genomes, you can retrieve the **Multiple Sequence Alignment** of each gene family and a 
+  concatenation of all single-copy exact core genes.   
+These analyses, **and more**, can be done by using commands that enrich your `pangenome.h5` file and extracting the appropriate outputs with the `ppanggolin write` command. Check the PPanGGOLiN [Wiki](https://github.com/labgem/PPanGGOLiN/wiki) to learn how to perform them.   
 
 
-The RGPs that was found in the same area in different genomes can be gather into spots of insertions. Those spots are groups of RGPs that 
-have similar bordering persistent genes but not necessarialy the same gene content. This analysis allows us to study the dynamic of gene 
-turnover of large regions in bacterial genomes. 
-
-~~~
-$ ppanggolin spot --pangenome pangenome.h5 --cpu 8
-~~~
-{: .language-bash}
-
-You can obtain a file with the list of the spots for each genome by using the module write.
-
-~~~
-$ ppanggolin write -p pangenome.h5 --spots --output spots
-~~~
-{: .language-bash}
-
-Explore the spots results.
-~~~
-$ tree
-~~~
-{: .language-bash}
-
-~~~
-.
-├── pangenome.h5
-├── rgp
-│   └── plastic_regions.tsv
-└── spots
-    ├── spots.tsv
-    └── summarize_spots.tsv
-~~~
-{: .output}
-
-Let's explore the two files that were created in the `spots/` directory.
-~~~
-$ head spots/spots.tsv
-~~~
-{: .language-bash}
-
-~~~
-spot_id	rgp_id
-spot_26	NZ_HG939456.1_RGP_2
-spot_23	NZ_HG939456.1_RGP_4
-spot_15	NC_007432.1_RGP_1
-spot_31	NC_004368.1_RGP_1
-spot_34	NC_004368.1_RGP_12
-spot_25	NZ_HG939456.1_RGP_5
-spot_16	NC_007432.1_RGP_5
-spot_16	NZ_AAJQ01000021.1_RGP_0
-spot_33	NC_004368.1_RGP_4
-~~~
-{: .output}
-
-~~~
-$ head spots/summarize_spots.tsv
-~~~
-{: .language-bash}
-
-~~~
-spot	nb_rgp	nb_families	nb_unique_family_sets	mean_nb_genes	stdev_nb_genes	max_nb_genes	min_nb_genes
-spot_8	7	6	1	6	0.0	6	6
-spot_2	6	15	4	4.5	0.837	6	4
-spot_5	6	40	5	13.833	4.262	20	8
-spot_3	5	93	5	36.6	17.315	54	16
-spot_4	4	47	3	14.75	8.617	26	8
-spot_19	3	40	3	22.667	2.082	25	21
-spot_16	2	19	2	18	0.0	18	18
-spot_0	2	107	2	66	1.414	67	65
-spot_18	2	7	1	7.5	0.707	8	7
-~~~
-{: .output}
-
-> ## Discussion
-> What is the difference between RGP regions and spots of insertion?
->
-> How can you use this information?
-> > ## Solution
-> > The RGPs are genomic islands, plasmid and regions that have been lost in multiple strains and the spots of insertions are groups of RGPs. 
-> > Those analysis are useful to study the dynamic of gene turnover of large regions in bacterial genomes. Then, spots of the same pangenome can be compared and if we compare the different metrics together we can stablish the dynamic.
-> {: .solution}
-{: .discussion}
 
 > ## References:
 > Go to the PPanGGOLiN [GitHub Wiki](https://github.com/labgem/PPanGGOLiN/wiki) for the complete collection of instructions and posibilities.  
-> And read the original PPanGGOLiN article to understand the details.
+> And read the original PPanGGOLiN article to understand the details:
 >
 > Gautreau G et al. (2020) PPanGGOLiN: Depicting microbial diversity via a partitioned pangenome graph. PLOS Computational Biology 16(3): e1007732. [https://doi.org/10.1371/journal.pcbi.1007732](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732).
 {: .callout}
