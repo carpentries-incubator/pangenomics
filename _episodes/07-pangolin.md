@@ -413,10 +413,13 @@ Besides being able to work with thousands of genomes and having the approach of 
   that it allows you to analyze your pangenomes in different ways. You can obtain the **Regions of Genome Plasticity** (RGP) of your pangenomes, 
   which are stretches of shell and cloud genes, and the location in the pangenome where many genomes have an RGP, 
   which are called **Spots of Insertion**.   
+  
 You can also use PPanGGOLiN to identify **Conserved Modules**, groups of accessory genes that are usually together and may be functional 
   modules. And you can find the modules present in RGPs and Spots of Insertion.   
+  
 If you are interested in the phylogeny of your genomes, you can retrieve the **Multiple Sequence Alignment** of each gene family and a 
   concatenation of all single-copy exact core genes.   
+  
 These analyses, **and more**, can be done by using commands that enrich your `pangenome.h5` file and extracting the appropriate outputs with the `ppanggolin write` command. Check the PPanGGOLiN [Wiki](https://github.com/labgem/PPanGGOLiN/wiki) to learn how to perform them.   
 
 
