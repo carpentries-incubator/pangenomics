@@ -336,7 +336,7 @@ $ scp -r user@server-address:~/pan_workshop/results/pangenome/ppanggolin/pangeno
 To view the interactive graph we will use the software **gephi**.
 
 > ## Gephi setup
-> Install from its [web page](https://gephi.org/) the gephi installer that suits your opperating system.  
+> Download from this [web page](https://gephi.org/) the gephi installer that suits your opperating system.  
 >     
 > Open gephi:   
 > > ## Linux
