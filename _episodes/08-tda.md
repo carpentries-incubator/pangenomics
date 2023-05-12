@@ -1,5 +1,5 @@
 ---
-title: "Topological data analysis"
+title: "Topological Data Analysis"
 teaching: 30
 exercises: 15
 questions:
