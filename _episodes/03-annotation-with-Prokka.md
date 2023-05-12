@@ -194,7 +194,7 @@ $ cat TettelinList.txt | while read line
 > --outdir ~/pan_workshop/results/annotated/Streptococcus_agalactiae_${line}_prokka
 >  done
 ~~~
-{: .language-bash}
+{: .language-bash}  
 Click `Ctrl`+ `a` + `d` to detach from the session and wait until it finishes the run.
 
 
