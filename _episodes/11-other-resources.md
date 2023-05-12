@@ -1,13 +1,16 @@
 ---
 title: "Other Resources"
-teaching: 5
-exercises: 0
+teaching: 10
+exercises: 10
 questions:
-- "What other resources can I use to study pangenomics?"
+- "What kind of questions can I ask to my pangenome?"
+- "What bioinformatic tools are available for downstream analysis of pangenomes?"
 objectives:
-- "Know more resources that can be used to study pangenomics."
+- "Learn about the downstream analysis to describe a pangenome"
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "Downstream analysis of pangenomes could be focused on describing the core genome of the organism studied."
+- "Examples using the information obtained in the CORE GENOME: Selection of a conserved gene to design a molecular test for a diagnostic tool or a vaccine; Reconstruction of a species phylogenetic tree by using all the core genes."
+- "Examples using the information obtained in the ACCESORY GENOME: Describe niche specific genes among the strains compared; Analysis of horizontal gene transfer or genetic recombination; Evolutionary studies of genes (duplication, gain-loss genes, etc.)."
 ---
 ## Other resources
 
