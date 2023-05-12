@@ -8,9 +8,14 @@ questions:
 objectives:
 - "Learn about the downstream analysis to describe a pangenome"
 keypoints:
-- "Downstream analysis of pangenomes could be focused on describing the core genome of the organism studied."
-- "Examples using the information obtained in the CORE GENOME: Selection of a conserved gene to design a molecular test for a diagnostic tool or a vaccine; Reconstruction of a species phylogenetic tree by using all the core genes."
-- "Examples using the information obtained in the ACCESORY GENOME: Describe niche specific genes among the strains compared; Analysis of horizontal gene transfer or genetic recombination; Evolutionary studies of genes (duplication, gain-loss genes, etc.)."
+- "Downstream analysis of pangenomes could be focused on describing the core or the accessory genome of the organism studied."
+- "Examples using the information obtained in the **CORE GENOME**:" 
+-   "a) Selection of a conserved gene to design a molecular test for a diagnostic tool or a vaccine."
+-   "b) Reconstruction of a species phylogenetic tree by using all the core genes."
+- "Examples using the information obtained in the **ACCESSORY GENOME**:"
+-   "a) Describe niche specific genes among the strains compared."
+-   "b) Analysis of horizontal gene transfer or genetic recombination."
+-   "c) Evolutionary studies of genes (duplication, gain-loss genes, etc.)."
 ---
 ## Other resources
 
