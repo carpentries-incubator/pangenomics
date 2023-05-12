@@ -1,5 +1,5 @@
 ---
-title: "Computational tools for TDA"
+title: "Computational Tools for TDA"
 teaching: 30
 exercises: 15
 questions:
