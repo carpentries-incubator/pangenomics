@@ -85,7 +85,24 @@ The uniques genes are the following.
 
 Count genes in genomes.
 We are going to practice with four fasta files with reduced genomes from A909, 2603V, NEM316 and 515.  
-Lets explore the small genomes content
+Lets explore the small genomes content:
+
+
+~~~~
+>A909|MGIDGNCP_01408 30S ribosomal protein S16
+>A909|MGIDGNCP_00096 50S ribosomal protein L16
+>A909|MGIDGNCP_01343 Replication protein RepB
+>A909|MGIDGNCP_01221 Glycine betaine transporter OpuD
+>A909|MGIDGNCP_01268 hypothetical protein
+>A909|MGIDGNCP_00580 UDPNacetylglucosamineNacetylmuramyl(pentapeptide) pyrophosphorylundecaprenol Nacetylglucosamine transferase
+>A909|MGIDGNCP_00352 Glutamate 5kinase 1
+>A909|MGIDGNCP_00064 Putative Nacetylmannosamine6phosphate 2epimerase
+>A909|MGIDGNCP_00627 hypothetical protein
+>A909|MGIDGNCP_01082 Periplasmic murein peptidebinding protein
+>A909|MGIDGNCP_00877 hypothetical protein
+>A909|MGIDGNCP_00405 Ribosome hibernation promotion factor
+~~~~
+{: .output}
 
 First we select the biggest genome, and in this case we wil chose the one with more genes, that happen to be the A909.  
 ~~~
