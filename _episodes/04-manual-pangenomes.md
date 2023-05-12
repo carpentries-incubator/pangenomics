@@ -84,7 +84,10 @@ The uniques genes are the following.
 
 
 Count genes in genomes.
+We are going to practice with four fasta files with reduced genomes from A909, 2603V, NEM316 and 515.  
+Lets explore the small genomes content
 
+First we select the biggest genome, and in this case we wil chose the one with more genes, that happen to be the A909.  
 ~~~
 ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); count=$(grep -c $name ~/pan_workshop/results/subset/blast2/all-genomes.faa); echo $count $name; done |sort -nr
 ~~~
