@@ -336,7 +336,8 @@ $ scp -r user@server-address:~/pan_workshop/results/pangenome/ppanggolin/pangeno
 To view the interactive graph we will use the software **gephi**.
 
 > ## Gephi setup
-> Install gephi from its [web page](https://gephi.org/).   
+> Install from its [web page](https://gephi.org/) the gephi installer that suits your opperating system.  
+>     
 > Open gephi:   
 > > ## Linux
 > > Go to the directory where you downloaded the program and type:
@@ -351,13 +352,10 @@ To view the interactive graph we will use the software **gephi**.
 > >  {: .language-bash}  
 > {: .solution}
 > 
-> > ## Windows
+> > ## Windows and Mac
 > > Click the Gephi icon to open the App.
 > {: .solution}
 > 
-> > ## Mac
-> > FIXME
-> {: .solution}  
 > If your download is in a language that is not English, change the language to English to make it easier to find the options that we will mention. 
 > Find the equivalent to `Tools/Language/English` in the top left menu and restart gephi.
 {: .prereq}
