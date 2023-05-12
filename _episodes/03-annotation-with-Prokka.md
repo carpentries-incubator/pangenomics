@@ -6,7 +6,7 @@ questions:
 - "How can I identify the genes in a genome?"
 objectives:
 - "Annotate bacterial genomes using Prokka."
-- - "Use scripts to edit output files."
+- "Use scripts to customize output files."
 keypoints:
 - "Prokka is a command line utility that provides rapid prokaryotic genome annotation."
 - "Sometimes we need manual curation of the output files of the software."
@@ -193,25 +193,6 @@ $ cat TettelinList.txt | while read line
 ~~~
 {: .language-bash}
 
-Since we are only using the `.gbk` files, we will move them to the `results/annotated/` directory and remove the subdirectories.
-
-~~~
-$ cd ~/pan_workshop/results/annotated/
-$ mv */*gbk .
-$ rm -r *_prokka
-$ ls
-~~~
-{: .language-bash}
-
-~~~
-Streptococcus_agalactiae_18RS21_prokka.gbk  Streptococcus_agalactiae_CJB111_prokka.gbk
-Streptococcus_agalactiae_2603V_prokka.gbk   Streptococcus_agalactiae_COH1_prokka.gbk
-Streptococcus_agalactiae_515_prokka.gbk     Streptococcus_agalactiae_H36B_prokka.gbk
-Streptococcus_agalactiae_A909_prokka.gbk    Streptococcus_agalactiae_NEM316_prokka.gbk
-~~~
-{: .output}
-
-
 > ## Genome annotation services
 > To learn more about Prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provide a web-based user interface where you can store your private genomes and share them with your colleagues. If you want to use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast).
 {: .callout}
@@ -223,7 +204,7 @@ Now that we have our genome annotations, let's take a look at one of them. Fortu
 look at a lot of the information in the first few lines:
 
 ~~~
-$ head Streptococcus_agalactiae_18RS21_prokka.gbk
+$ head Streptococcus_agalactiae_18RS21_prokka/Streptococcus_agalactiae_18RS21_prokka.gbk
 ~~~
 {: .language-bash}
 
@@ -286,7 +267,7 @@ that of the respective strain.
 
 Now, we need to run this script for all the `gbk` files:
 ~~~
-$ ls *.gbk | while read file
+$ ls */*.gbk | while read file
 > do 
 > bash correct_gbk.sh $file
 > done
@@ -320,12 +301,21 @@ Voilà! Our `gbk` files now have the strain code in the `ORGANISM` line.
 > Before we build our pangenome it can be useful to take a quick look at how many coding sequences each of our genomes have. This way we can 
 > know if they have a number close to the expected one (if we have previous knowlegde of our organism of study).
 > 
-> Use your `grep`, looping and piping abilities to count the number of coding sequences in the `gbk` files of each genome.
+> Use your `grep`, looping and piping abilities to count the number of coding sequences in the `gff` files of each genome.
+> Note: We will use the `gff` file because the `gbk` contain the aminoacid sequences, so it is possible that with the `grep` command 
+> we find the string `CDS` in these sequences, and not only in the description of the features. The `gff` files also have the description of the
+> features, but in a different format.
+> 
 >
 > > ## Solution
-> >
+> > First inspect a `gff` file to see what you are working with.
+> > Open it with `nano` and scroll through the file to see its contents. 
 > > ~~~
-> > > for genome in *.gbk
+> > nano Streptococcus_agalactiae_18RS21_prokka/Streptococcus_agalactiae_18RS21_prokka.gff
+> > ~~~
+> > Now make a loop that goes through every `gff` finding and counting each line with the string "CDS".
+> > ~~~ 
+> > > for genome in */*.gff
 > > > do 
 > > > echo $genome #print the name of the file
 > > > grep "CDS" $genome | wc -l #find the lines with the string "CDS" and pipe that to the command wc with the flag -l to count the lines
@@ -333,22 +323,22 @@ Voilà! Our `gbk` files now have the strain code in the `ORGANISM` line.
 > > ~~~
 > > {: .language-bash}
 > > ~~~
-> > Streptococcus_agalactiae_18RS21_prokka.gbk
-> > 1967
-> > Streptococcus_agalactiae_2603V_prokka.gbk
-> > 2117
-> > Streptococcus_agalactiae_515_prokka.gbk
-> > 1972
-> > Streptococcus_agalactiae_A909_prokka.gbk
-> > 2076
-> > Streptococcus_agalactiae_CJB111_prokka.gbk
-> > 2052
-> > Streptococcus_agalactiae_COH1_prokka.gbk
-> > 2001
-> > Streptococcus_agalactiae_H36B_prokka.gbk
-> > 2175
-> > Streptococcus_agalactiae_NEM316_prokka.gbk
-> > 2150
+> > Streptococcus_agalactiae_18RS21_prokka/Streptococcus_agalactiae_18RS21_prokka.gff
+> > 1960
+> > Streptococcus_agalactiae_2603V_prokka/Streptococcus_agalactiae_2603V_prokka.gff
+> > 2108
+> > Streptococcus_agalactiae_515_prokka/Streptococcus_agalactiae_515_prokka.gff
+> > 1963
+> > Streptococcus_agalactiae_A909_prokka/Streptococcus_agalactiae_A909_prokka.gff
+> > 2067
+> > Streptococcus_agalactiae_CJB111_prokka/Streptococcus_agalactiae_CJB111_prokka.gff
+> > 2044
+> > Streptococcus_agalactiae_COH1_prokka/Streptococcus_agalactiae_COH1_prokka.gff
+> > 1992
+> > Streptococcus_agalactiae_H36B_prokka/Streptococcus_agalactiae_H36B_prokka.gff
+> > 2166
+> > Streptococcus_agalactiae_NEM316_prokka/Streptococcus_agalactiae_NEM316_prokka.gff
+> > 2139
 > > ~~~
 > > {: .output}
 > {: .solution}
