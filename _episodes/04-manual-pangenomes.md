@@ -87,7 +87,7 @@ Count genes in genomes.
 We are going to practice with four fasta files with reduced genomes from A909, 2603V, NEM316 and 515.  
 Lets explore the small genomes content:
 
-
+Here we have the functional families provided by prokka for the A909 genome
 ~~~~
 >A909|MGIDGNCP_01408 30S ribosomal protein S16
 >A909|MGIDGNCP_00096 50S ribosomal protein L16
@@ -110,3 +110,20 @@ ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); count=$(grep
 ~~~
 {: .language-bash}
 
+
+### Core  
+Ribosomal proteins 30S (01408) and 50S (00096) stays in its own cluster (1 gene per genome)
+01268 hypothetical protein in an extended family (2 copies per genome) 
+
+### Shell
+01343 Replication protein RepB is only shared by another genome
+01221 Glycine betaine transporter OpuD is only shared by another genome
+
+### cloud
+00580 UDPNacetylglucosamineNacetylmuramyl(pentapeptide) pyrophosphorylundecaprenol Nacetylglucosamine transferase
+00352 Glutamate 5kinase 1
+00064 Putative Nacetylmannosamine6phosphate 2epimerase
+00627 hypothetical protein
+01082 Periplasmic murein peptidebinding protein
+00877 hypothetical protein
+00405 Ribosome hibernation promotion factor
