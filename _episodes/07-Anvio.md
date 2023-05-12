@@ -1,5 +1,5 @@
 ---
-title: "Interactive Pangenome Graphics"
+title: "Interactive Pangenome Plots"
 teaching: 15
 exercises: 40
 questions:
