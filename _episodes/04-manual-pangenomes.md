@@ -81,3 +81,12 @@ The uniques genes are the following.
 
 `gen_qseqid <- unique(data_blast$qseqid)`
 `gen_sseqid <- unique(data_blast$sseqid)`
+
+
+Count genes in genomes.
+
+~~~
+ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); count=$(grep -c $name ~/pan_workshop/results/subset/blast2/all-genomes.faa); echo $count $name; done |sort -nr
+~~~
+{: .language-bash}
+
