@@ -1,5 +1,5 @@
 ---
-title: "Neighboring Analysis of Gene Families in a Pangenome"
+title: "Exploring Pangenome Graphs"
 teaching: 20
 exercises: 30
 questions:
