@@ -301,15 +301,15 @@ Voilà! Our `gbk` files now have the strain code in the `ORGANISM` line.
 > Before we build our pangenome it can be useful to take a quick look at how many coding sequences each of our genomes have. This way we can 
 > know if they have a number close to the expected one (if we have previous knowlegde of our organism of study).
 > 
-> Use your `grep`, looping and piping abilities to count the number of coding sequences in the `gff` files of each genome.
-> Note: We will use the `gff` file because the `gbk` contain the aminoacid sequences, so it is possible that with the `grep` command 
+> Use your `grep`, looping and piping abilities to count the number of coding sequences in the `gff` files of each genome.  
+> 
+> Note: We will use the `gff` file because the `gbk` contains the aminoacid sequences, so it is possible that with the `grep` command 
 > we find the string `CDS` in these sequences, and not only in the description of the features. The `gff` files also have the description of the
 > features, but in a different format.
 > 
 >
 > > ## Solution
-> > First inspect a `gff` file to see what you are working with.
-> > Open it with `nano` and scroll through the file to see its contents. 
+> > First inspect a `gff` file to see what you are working with. Open it with `nano` and scroll through the file to see its contents. 
 > > ~~~
 > > nano Streptococcus_agalactiae_18RS21_prokka/Streptococcus_agalactiae_18RS21_prokka.gff
 > > ~~~
