@@ -1,16 +1,16 @@
 ---
-title: "Understanding Pangenomes with blast"
+title: "Understanding Pangenomes with BLAST"
 teaching: 30
 exercises: 15
 questions:
 - "What elements do I compare to calculate a Pangenome?"
 - "How are genome families conformed?"
 objectives:
-- "Calculate an score between two sequences using blast"
+- "Calculate an score between two sequences using BLAST"
 - "Cluster gene families according to a treshold"
 keypoints:
 - "Genes are the elements compared in pangenomes"
-- "BLAST gives an score between two sequences"
+- "BLAST gives a score between two sequences"
 - "Gene families must be clustered according to a distance-treshold "
 ---
 
@@ -36,7 +36,7 @@ mv ~/pan_workshop/results/annotated/all-genomes.faa ~/pan_workshop/results/blast
 ~~~
 {: .language-bash}
 
-Make the blast database.
+Make the BLAST database.
 
 ~~~
 makeblastdb -in ~/pan_workshop/results/blast/all-genomes.faa -dbtype prot -out ~/pan_workshop/results/blast/database/all-genomes 
