@@ -7,6 +7,12 @@ questions:
 - "What is Clustering?"
 - "Which are the clustering algorithms that use Get_Homologues?"
 
+new questions:
+
+- How do we predict protein clusters?
+- How does clustering works?
+- Which algortihm to chose and why?
+
 objectives:
 - "Clustering orthologous proteins from GenBank files"
 - "Create a Venn diagram using different clustering algorithms"
