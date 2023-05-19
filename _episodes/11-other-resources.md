@@ -34,11 +34,11 @@ Here we want to mention some of them:
 
 # Benchmarking for Orthologs Predictions
 
-In addition, you might be interested in evaluate the quality of your results regarding the methodology used to identify the ortholog genes. For that specific task, you can explore the website of **Orthology Benchmarking** which shows you a pre-processed benchmarking analysis of several methodologies ranked for their efficiency to identify real orthologs (recal) and also gives you the opportunity to evaluate your own methods and results. 
+In addition, you might be interested in evaluate the quality of your results regarding the methodology used to identify the ortholog genes. For that specific task, you can explore the website of [**Orthology Benchmarking**](https://orthology.benchmarkservice.org/), which shows you a pre-processed benchmarking analysis of several methodologies ranked for their efficiency to identify real orthologs (recal) and also gives you the opportunity to evaluate your own methods and results. 
 
-Find more in:
+Find more information about how to submit your own data in:
 
-https://orthology.benchmarkservice.org/ 
+[**How to submit predictions to Orthology Benchmarking**](https://orthology.benchmarkservice.org/proxy/doc#submit)
 
 
 # OrthoVenn3
