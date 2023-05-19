@@ -40,8 +40,7 @@ Find more information about how to submit your own data in:
 
 [**How to submit predictions to Orthology Benchmarking**](https://orthology.benchmarkservice.org/proxy/doc#submit)
 
-Original paper:
-
+**Original paper:**
 Brigitte Boeckmann and others, Conceptual framework and pilot study to benchmark phylogenomic databases based on reference gene trees, Briefings in Bioinformatics, Volume 12, Issue 5, September 2011, Pages 423–435, https://doi.org/10.1093/bib/bbr034
 
 
