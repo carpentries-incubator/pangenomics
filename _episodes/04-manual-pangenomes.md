@@ -14,20 +14,26 @@ keypoints:
 - "Gene families must be clustered according to a distance-treshold "
 ---
 
-Curate the `.faa` files.
+# Make blastp
+
+We are going to practice with four fasta files with reduced genomes from A909, 2603V, NEM316 and 515. 
+
+In the folder `anottated/subset` you have the 4 reduced genomes. Fist we need to put a label on each gene that tells us which genome it is from, this will be important later.  For that you need to run the following.
 
 ~~~
+cd ~/pan_workshop/results/annotated/subset/
 ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); sed -i "s/\s*>/>${name}|/" $line; done
 ~~~
 {: .language-bash}
 
-Create one data set with all files `.faa`.
+Now, we need to create one data set with all files `.faa`.
+
 ~~~
 cat ~/pan_workshop/results/annotated/*.faa > all-genomes.faa
 ~~~
 {: .language-bash}
 
-Create the folders for `blast`.
+We will create the folders to make the blast dataset and to run blastp. Also we move the file `all-genomes.faa` to this new directory.
 
 ~~~
 mkdir -p ~/pan_workshop/results/blast/output-blast/
@@ -37,7 +43,6 @@ mv ~/pan_workshop/results/annotated/all-genomes.faa ~/pan_workshop/results/blast
 {: .language-bash}
 
 Make the BLAST database.
-
 ~~~
 makeblastdb -in ~/pan_workshop/results/blast/all-genomes.faa -dbtype prot -out ~/pan_workshop/results/blast/database/all-genomes 
 ~~~
@@ -54,38 +59,61 @@ Adding sequences from FASTA; added 16 sequences in 0.000644922 seconds.
 ~~~
 {: .output}
 
-
-Run blastp. This step takes about 20 minutes.
-
+Run blastp.
 ~~~
 blastp -query ~/pan_workshop/results/blast/all-genomes.faa -db ~/pan_workshop/results/blast/database/all-genomes -outfmt "6" > ~/pan_workshop/results/blast/output-blast/all-genomes.blast
 ~~~
 {: .language-bash}
 
-Now we will explore the blast matrix in R.
+# Explore blast matrix
 
-First we need to reed the database.
+Now we will explore the blast matrix in Python. First we need to reed the database.
 
-`data_blast <- read.delim("~/pan_workshop/results/blast/output-blast/all-genomes.blast", header=FALSE)`
+~~~
+import os 
+os.getcwd()
+blast0 = pd.read_csv( '~/pan_workshop/results/blast/output_blast/all-genomes.blast', sep = '\t',names = ['qseqid','sseqid', 'pident', 'length', 'mismatch', 'gapopen', 'qstart', 'qend', 'sstart', 'send', 'evalue', 'bitscore'])  
+~~~
+{: .language-bash}
 
-The names of the columns.
+We want to work with the e-values, therefore we select that column.
 
-`names_data=c("qseqid", "sseqid", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")`
-`colnames(data_blast) <- names_data`
-  
- We will fix the evalue that we will use to form the families.
+~~~
+blastE = pd.DataFrame(blast0,columns=['qseqid','sseqid','evalue'])
+blastE
+~~~
+{: .language-python}
+
+
+We want a list of the unique genes in our dataset.
+
+~~~
+qseqid_unique=pd.unique(blastE['qseqid'])
+sseqid_unique=pd.unique(blastE['sseqid'])
+genes = pd.unique(np.append(qseqid_unique, sseqid_unique))
+~~~
+{: .language-python}
+
+We will fix the evalue that we will use to form the families.
+
+~~~
+evalue= 1e-5
+~~~
+{: .language-bash}
  
-`evalue <-1e-5`
 
-The uniques genes are the following.
+Now, we want to know what is the biggest genome to make the comparisions. In this case we wil chose the one with more genes, that happen to be the A909.  
 
-`gen_qseqid <- unique(data_blast$qseqid)`
-`gen_sseqid <- unique(data_blast$sseqid)`
+~~~
+ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); count=$(grep -c $name ~/pan_workshop/results/blast/all-genomes.faa); echo $count $name; done |sort -nr
+~~~
+{: .language-bash}
 
+ 
 
-Count genes in genomes.
-We are going to practice with four fasta files with reduced genomes from A909, 2603V, NEM316 and 515.  
-Lets explore the small genomes content:
+# Count genes in genomes.
+
+Lets explore the small genomes content. 
 
 Here we have the functional families provided by prokka for the A909 genome
 ~~~~
