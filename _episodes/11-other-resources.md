@@ -3,7 +3,7 @@ title: "Other Resources"
 teaching: 10
 exercises: 10
 questions:
-- "What kind of questions can I ask to my pangenome?"
+- "What can I do after I have built a pangenome?"
 - "What bioinformatic tools are available for downstream analysis of pangenomes?"
 objectives:
 - "Learn about the downstream analysis to describe a pangenome"
@@ -17,9 +17,33 @@ keypoints:
 -   "b) Analysis of horizontal gene transfer or genetic recombination."
 -   "c) Evolutionary studies of genes (duplication, gain-loss genes, etc.)."
 ---
-## Other resources
+## Downstream analysis of pangenomes
 
-FIXME
+At this point, we already have learnt about how to build a pangenome. We have a list of the organisms we included in the analysis and we obtained a matrix of presence-absence of genes, which roughly represents our pangenome. 
+
+Preferable, we can also have a metadata file that includes phenotypic features related to each one of our samples. For example, year of isolation, geographic origin of the sample, host, drug-resistance profile, serotype or lineage, etc. With all of this information, there exists a great number of downstream analysis we can conduct on a pangenome. In one hand, we can focus on the *core genome* which can be useful to reconstruct phylogenetic trees, design of molecular diagnostic tools or vaccines, among others. On the other hand, we can conduct comparative genomic analysis using the *accessory genome* to describe differences between subsets of samples in our dataset thath might be related with some specific traits   
+Here we want to mention some of them:
+
+# Genetic Variation Analysis
+
+# Functional Annotation
+
+# Pan-GWAS Analysis
+
+# Accesory Genome Clustering
+
+# Benchmarking for Orthologs Predictions
+
+In addition, you might be interested in evaluate the quality of your results regarding the methodology used to identify the ortholog genes. For that specific task, you can explore the website of **Orthology Benchmarking** which shows you a pre-processed benchmarking analysis of several methodologies ranked for their efficiency to identify real orthologs (recal) and also gives you the opportunity to evaluate your own methods and results. 
+
+Find more in:
+
+https://orthology.benchmarkservice.org/ 
+
+
+# OrthoVenn3
+
+
 
 ## Carpentries Philosophy
 A good lesson should be as complete and clear that becomes easy to teach by any instructor. 
