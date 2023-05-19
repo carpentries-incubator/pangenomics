@@ -3,26 +3,24 @@ title: "Clustering Protein Families"
 teaching: 20
 exercises: 5
 questions:
+- "How can we predict protein clusters?"
+- "How does clustering works?"
+- "Which algortihm to choose and why?"
 - "What is Get_Homologues?"
-- "What is Clustering?"
-- "Which are the clustering algorithms that use Get_Homologues?"
-
-new questions:
-
-- How do we predict protein clusters?
-- How does clustering works?
-- Which algortihm to chose and why?
 
 objectives:
-- "Clustering orthologous proteins from GenBank files"
-- "Create a Venn diagram using different clustering algorithms"
-- "Implement and interpret the evolutionary history using Clustering orthologous proteins"
+- "Cluster orthologous proteins from GenBank files"
+- "Explore and understand protein clusters from OMCL algorithm"
+- "Interpret basic pangenomics metrics"
 
 keypoints:
-- "Get_Homologues is a software package for pangenome analyses "
-- "Clustering refers to the task of grouping sequences in such a way that sequences in the same group are more similar to each other than to those in other groups "
+- "Clustering refers to the task of grouping sequences in which the same group are more similar to each other than to those in other groups "
+- "Get_Homologues is a software package for pangenomic analyses "
 - "Three sequence-clustering algorithms are supported by Get_Homologues; BDBH, OMCL and COGtriangles "
 ---
+## How can we predict protein clusters?
+## How does clustering works?
+## Which algortihm to choose and why?
 
 ## What is Get_Homologues?
 
@@ -51,9 +49,10 @@ The definition of pan- and core-genomes by Get_Homologues is done by calculation
 </a>
 
 ## Considerations
-Please ensure that you are in the Pangenomics environment. You can omit this step if you have already activated the environment.
+Please make sure that you are in the Pangenomics environment. You can omit this step if you have already activated the environment.
 
 ~~~
+$ conda deactivate
 $ conda activate Pangenomics_Global  
 ~~~
 {: .language-bash}
