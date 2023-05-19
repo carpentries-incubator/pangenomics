@@ -49,14 +49,14 @@ The definition of pan- and core-genomes by Get_Homologues is done by calculation
 </a>
 
 ## Considerations
-Please make sure that you are in the Pangenomics environment. You can omit this step if you have already activated the environment.
+Please make sure that you are in the Pangenomics environment.
 
 ~~~
 $ conda deactivate
 $ conda activate Pangenomics_Global  
 ~~~
 {: .language-bash}
-Make sure that get_homologues is install
+Make sure that get_homologues is installed
 
 ~~~
 $ get_homologues.pl -h #This command display the options
@@ -115,18 +115,18 @@ Options that control clustering:
 {: .callout}
 
 
-## Step 1. Generate a folder get_homologues
-It's necessary to create a new folder where all the results will be sent.
+## Create a directory for get_homologues output
+It's necessary to create a new folder to store all the results.
 
 ~~~
-$ mkdir -p ~/gm_workshop/results/pangenome/get_homologues/data_get #Create directory (-p create all parents)
-$ cd  ~/gm_workshop/results/pangenome/get_homologues/data_get # Change to the directory 'data_get'
+$ mkdir -p ~/pan_workshop/results/pangenome/get_homologues/data_gbks #Create directory (option -p create all parent directories)
+$ cd  ~/pan_workshop/results/pangenome/get_homologues/data_gbks #Locates you in the directory 'data_gbks'
 ~~~
 {: .language-bash}
-We need to create a Symbolic link with the file *.gbk*
+We need to create symbolic links with all the *.gbk* files created with prokka or downloaded with ncbi
 ~~~
-$ ln -s ~/gm_workshop/results/annotated/*Streptococcus_agalactiae_*[A-Z]*.prokka.gbk .
-$ ls ~/gm_workshop/results/pangenome/get_homologues/data_get #List the symbolic link
+$ ln -s ~/pan_workshop/results/annotated/Streptococcus_agalactiae_*_prokka.gbk .
+$ ls ~/pan_workshop/results/pangenome/get_homologues/data_gbks #List the symbolic links
 ~~~
 {: .language-bash}
 
