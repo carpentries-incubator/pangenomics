@@ -17,11 +17,12 @@ Topological data analysis is a technique that uses concepts from topology to ana
 ### **Simplex**
 Simple geometric object of any dimension (point, line segment, triangle, tetrahedron, etc.) that is used to construct simplicial complexes.
 
-> ### "For Mathematicians"
+> ### For Mathematicians
 >
 > > ## Simplex
->>Given a set $P=\{p_0,...,p_k\}\subset \mathbb{R}^d$ of $k+1$ affinely independent points, the **k-dimensional simplex** $\sigma$ (or **k-simplex** for short) spanned by $P$ is the set of convez combinatios
+>>Given a set $ P=\{p_0,...,p_k\}\subset \mathbb{R}^d $ of $ k+1 $ affinely independent points, the **k-dimensional simplex** $\sigma$ (or **k-simplex** for short) spanned by $P$ is the set of convez combinatios
 >>$$ \sum_{i=0}^k\lambda_ip_i, \quad with \quad  \sum_{i=0}^k\lambda_i = 1 \quad \lambda_i \geq 0. $$ 
+>> Inline equation: $$\sum_{i=0}^k\lambda_ip_i, \quad with \quad  \sum_{i=0}^k\lambda_i = 1 \quad \lambda_i \geq 0.$$
 >>The points $p_0, ..., p_k$ are called the vertices of $\sigma$.
 > > 
 > {: .solution}
@@ -41,9 +42,10 @@ Is a mathematical structure composed of a collection of simple geometric objects
   <img src="../fig/Simplicial_complex_example.svg" alt="Example Simplicial Complex" />
 </a>
 
-> ### "For Mathematicians"
+> ### For Mathematicians
 >
->>A simplicial complex $K$ in $\mathbb{R}^d$ is a collection of simplices s.t:
+> > ## Simplex complex
+>>A simplicial complex $K$ in $ \mathbb{R}^d $ is a collection of simplices s.t:
 >> 1. any face a simplex of $K$ is a simplex of K,
 >> 2. the intesection of any twho simplices of $K$ is ether empty or a common face of both.
 > > 
@@ -88,7 +90,7 @@ The Vietoris-Rips complex and the Čech complex are two types of simplicial comp
 
 The **Vietoris-Rips complex** is constructed from a set of points in a metric space. Given a set of points and a distance parameter called the "threshold," points that are within a distance less than or equal to the threshold are connected, forming the 1-simplices of the complex. Higher-dimensional simplices are then constructed by closing under combinations of 1-simplices that form a complete simplex, i.e., all fully connected subsets. The Vietoris-Rips complex captures the connectivity information between points and their topological structure at different scales.
 
-> ### "For Mathematicians"
+> ### For Mathematicians
 >
 > > ## Cech complex
 >>Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d$, its **Rips complex** of radius $r>0$ is the simplicial complex $R(P,r)$ s.t. $vert(R(P,r))=P$ and
@@ -99,7 +101,7 @@ The **Vietoris-Rips complex** is constructed from a set of points in a metric sp
 
 The **Čech complex**, on the other hand, is based on the idea of constructing simplicial cells rather than simply connecting points at specific distances. Given a set of points and a distance parameter, all sets of points whose balls of radius equal to the distance parameter have a non-empty intersection are considered. These sets of points become the simplices of the Čech complex. Similar to the Vietoris-Rips complex, higher-dimensional simplices can be constructed by closing under combinations of lower-dimensional simplices that form a complete simplex.
 
-> ### "For Mathematicians"
+> ### For Mathematicians
 >
 > > ## Cech complex
 >>Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d$, its **Cech complex** of radius $r>0$ is the simplicial complex $C(P,r)$ s.t. $vert(C(P,r))=P$ and
