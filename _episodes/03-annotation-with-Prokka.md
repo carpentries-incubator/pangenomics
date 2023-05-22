@@ -257,7 +257,13 @@ FEATURES             Location/Qualifiers
 This difference could be a problem, since some bioinformatics programs could classify two different strains within the same "Unclassified" group. 
 For this reason, Prokka's output files need to be corrected before moving forward with additional analyses.
 
-To do this "manual" curation we will use the script `correct_gbk.sh`. Use of nano text editor to create your file, `nano correct_gbk.sh` and paste the following script. 
+To do this "manual" curation we will use the script `correct_gbk.sh`. Let's first make a directory for the scripts, and then use of nano text editor to create your file.
+~~~
+$ mkdir ../../scripts
+$ nano ../../scripts/correct_gbk.sh
+~~~
+{: .language-bash}
+Paste the following content in your script:
 ~~~
 #This script will change the word Unclassified from the ORGANISM lines by that of the respective strain code.
 # Usage: sh correct_gbk.sh <gbk-file-to-edit>
@@ -277,14 +283,14 @@ Now, we need to run this script for all the `gbk` files:
 ~~~
 $ ls */*.gbk | while read file
 > do 
-> bash correct_gbk.sh $file
+> bash ../../scripts/correct_gbk.sh $file
 > done
 ~~~
 {: .language-bash}
 
 Finally, let's view the result:
 ~~~
-$ head Streptococcus_agalactiae_18RS21_prokka.gbk
+$ head Streptococcus_agalactiae_18RS21_prokka/Streptococcus_agalactiae_18RS21_prokka.gbk
 ~~~
 {: .language-bash}
 
