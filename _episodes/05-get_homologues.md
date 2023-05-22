@@ -3,22 +3,21 @@ title: "Clustering Protein Families"
 teaching: 20
 exercises: 5
 questions:
-- "How can we predict protein clusters?"
-- "Which algortihm to choose and why?"
+- "Which clustering algorithm to choose and why?"
 - "What is Get_Homologues?"
 
 objectives:
-- "Cluster orthologous proteins from GenBank files"
-- "Explore protein clusters from OMCL algorithm"
+- "Cluster orthologous proteins from GenBank (.gbk) files"
+- "Explore protein clusters from OrthoMCL algorithm"
 - "Understand basic pangenomics metrics"
 
 keypoints:
 - "Clustering refers to the task of grouping sequences in which the same group are more similar to each other than to those in other groups "
 - "Get_Homologues is a software package for pangenomic analysis"
-- "Three sequence-clustering algorithms are supported by Get_Homologues; BDBH, OMCL and COGtriangles "
+- "Three sequence-clustering algorithms are supported by Get_Homologues; BDBH, OrthoMCL and COGtriangles "
 ---
-## How can we predict protein clusters?
-## Which algortihm to choose and why?
+
+## Which clustering algorithm to choose and why?
 
 ## What is Get_Homologues?
 
@@ -91,7 +90,6 @@ Make sure that get_homologues is installed
 $ get_homologues.pl -h #This command display the options
 ~~~
 {: .language-bash}
-
 
 ~~~
 -v print version, credits and checks installation
