@@ -152,7 +152,8 @@ $ cd  ~/pan_workshop/results/pangenome/get_homologues/data_gbks #Locates you in 
 {: .language-bash}
 We need to create symbolic links with all the *.gbk* files created with prokka or downloaded with ncbi
 ~~~
-$ ln -s ~/pan_workshop/results/annotated/Streptococcus_agalactiae_*_prokka.gbk .
+
+$ ln -s ~/pan_workshop/results/annotated/agalactiae_gbk/Streptococcus_agalactiae_*_prokka.gbk .
 $ ls ~/pan_workshop/results/pangenome/get_homologues/data_gbks #List the symbolic links
 ~~~
 {: .language-bash}
@@ -178,6 +179,8 @@ $ nano get_homologues_omcl.sh
 {: .language-bash}
 
 ~~~
+#!/usr/bin/bash
+
 echo "Job started at:" && date
 get_homologues.pl -d data_gbks -M -t 0 -c -n 8
 echo "Job finished successfully at:" && date
@@ -187,6 +190,8 @@ echo "Job finished successfully at:" && date
 ~~~
 $ chmod +x get_homologues_omcl.sh
 $ ./get_homologues_omcl.sh #This script can take up to 10 minutes
+
+# OPTIONAL: ./get_homologues_omcl.sh 2>pan_err.log 1>pan_out.log
 ~~~
 {: .language-bash}
 
