@@ -476,7 +476,11 @@ agalactiae_NEM316
 0 directories, 1 file
 ~~~
 {: .output}
-
+We can see that the strain `CJB111` has two files, since we will only need one, let's remove the second one:
+~~~
+$ rm agalactiae_CJB111/GCF_015221735.2_ASM1522173v2_genomic.fna
+~~~
+{: .language-bash}
 
 > ## Downloading specific formats
 > In this example, we have downloaded the genome in `fasta` format. However, we can
