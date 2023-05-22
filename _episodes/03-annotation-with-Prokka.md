@@ -182,10 +182,12 @@ H36B
 {: .output}
 
 We can now run Prokka on each of these strains. Since the following command can take up to 8 minutes to run we will use a `screen` session to run it.
-
+The screen session will not have the conda environment activated, so let's activate it again.
 ~~~
 screen -R prokka
+conda activate Prokka_Global
 ~~~
+{: .language-bash}  
 ~~~
 $ cat TettelinList.txt | while read line
 > do 
