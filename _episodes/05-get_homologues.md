@@ -189,25 +189,19 @@ echo "Job finished successfully at:" && date
 
 ~~~
 $ chmod +x get_homologues_omcl.sh
-$ ./get_homologues_omcl.sh #This script can take up to 10 minutes
+$ ./get_homologues_omcl.sh #This script can take up to 08:00 minutes
 
 # OPTIONAL: ./get_homologues_omcl.sh 2>pan_err.log 1>pan_out.log
 ~~~
 {: .language-bash}
 
 ~~~
-# Job started at:
-# lun 22 may 2023 14:06:50 CST
-
 # number_of_clusters = 3464
 # cluster_list = data_gbks_homologues/Streptococcusagalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.cluster_list
 # cluster_directory = data_gbks_homologues/Streptococcusagalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
 
 # runtime: 479 wallclock secs (62.16 usr  1.81 sys + 1347.29 cusr 43.47 csys = 1454.73 CPU)
 # RAM use: 89.0 MB
-
-# Job finished successfully at:
-# lun 22 may 2023 14:14:50 CST
 ~~~
 {: .output}
 
