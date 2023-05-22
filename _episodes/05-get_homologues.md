@@ -4,22 +4,20 @@ teaching: 20
 exercises: 5
 questions:
 - "How can we predict protein clusters?"
-- "How does clustering works?"
 - "Which algortihm to choose and why?"
 - "What is Get_Homologues?"
 
 objectives:
 - "Cluster orthologous proteins from GenBank files"
-- "Explore and understand protein clusters from OMCL algorithm"
-- "Interpret basic pangenomics metrics"
+- "Explore protein clusters from OMCL algorithm"
+- "Understand basic pangenomics metrics"
 
 keypoints:
 - "Clustering refers to the task of grouping sequences in which the same group are more similar to each other than to those in other groups "
-- "Get_Homologues is a software package for pangenomic analyses "
+- "Get_Homologues is a software package for pangenomic analysis"
 - "Three sequence-clustering algorithms are supported by Get_Homologues; BDBH, OMCL and COGtriangles "
 ---
 ## How can we predict protein clusters?
-## How does clustering works?
 ## Which algortihm to choose and why?
 
 ## What is Get_Homologues?
@@ -47,6 +45,37 @@ The definition of pan- and core-genomes by Get_Homologues is done by calculation
                                                                        		 This clusters could be flanked intergene clusters,
                                                                        		 pan/core-genome size estimates, pangenome matrices and syntenic clusters." />
 </a>
+
+> ## Exercise 1: Clustering algorithms
+>
+> Complete the line blank with the correct clustering algorithms
+>
+> |------------------------------+------------------------------------------------------------------------------|  
+> | **Algorithms**                  		 |     **Information required**                            		 |  
+> |------------------------------+------------------------------------------------------------------------------|  
+> | ___________________ |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                         		 |  
+> |------------------------------+------------------------------------------------------------------------------|  
+> | ___________________ | Merges triangles of inter-genomic symmetrical best matches |   
+> |------------------------------+------------------------------------------------------------------------------|  
+> | ___________________ | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
+> |------------------------------+------------------------------------------------------------------------------|
+>
+>
+>> ## Solution
+>>
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | **algorithms**                  		 |     **Information required**                            		 |  
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | BDBH             		 |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                         		 |  
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | COGS  | Merges triangles of inter-genomic symmetrical best matches |   
+>> |------------------------------+------------------------------------------------------------------------------|  
+>> | OMCL    | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
+>> |------------------------------+------------------------------------------------------------------------------|
+>>
+>>
+> {: .solution}
+{: .challenge}
 
 ## Considerations
 Please make sure that you are in the Pangenomics environment.
@@ -146,7 +175,20 @@ $ cd  ~/pan_workshop/results/pangenome/get_homologues/
 Generate the clusters with OMCL (OMCL, PubMed=12952885)
 
 ~~~
-$ get_homologues.pl -d data_get -M
+$ nano get_homologues_omcl.sh
+~~~
+{: .language-bash}
+
+~~~
+echo "Job started at:" && date
+get_homologues.pl -d data_gbks -M -t 0 -c -n 8
+echo "Job finished successfully at:" && date
+~~~
+{: .language-bash}
+
+~~~
+$ chmod +x get_homologues_omcl.sh
+$ ./get_homologues_omcl.sh #This script can take up to 10 minutes
 ~~~
 {: .language-bash}
 
@@ -164,101 +206,4 @@ $ get_homologues.pl -d data_get -M
 If the option -e is added, the resulting clusters will contain only single-copy genes from each taxon, i.e. the orthologues. This flag forms singleton clusters, which are created when you exclude clusters within paralogues. This is useful to make genome-level phylogenetic analyses in only single copy-genes.
 {: .callout}
 
-> ## Exercise 1: Clustering algorithms
->
-> Complete the line blank with the correct clustering algorithms
->
-> |------------------------------+------------------------------------------------------------------------------|  
-> | **Algorithms**                  		 |     **Information required**                            		 |  
-> |------------------------------+------------------------------------------------------------------------------|  
-> | ___________________ |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                         		 |  
-> |------------------------------+------------------------------------------------------------------------------|  
-> | ___________________ | Merges triangles of inter-genomic symmetrical best matches |   
-> |------------------------------+------------------------------------------------------------------------------|  
-> | ___________________ | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
-> |------------------------------+------------------------------------------------------------------------------|
->
->
->> ## Solution
->>
->> |------------------------------+------------------------------------------------------------------------------|  
->> | **algorithms**                  		 |     **Information required**                            		 |  
->> |------------------------------+------------------------------------------------------------------------------|  
->> | BDBH             		 |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                         		 |  
->> |------------------------------+------------------------------------------------------------------------------|  
->> | COGS  | Merges triangles of inter-genomic symmetrical best matches |   
->> |------------------------------+------------------------------------------------------------------------------|  
->> | OMCL    | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
->> |------------------------------+------------------------------------------------------------------------------|
->>
->>
-> {: .solution}
-{: .challenge}
-
-## Plot core and pan-genome metrics from OMCL algorithm
-
-Use plot_pancore-matrix.pl to plot the core and pan-genome
-
 ~~~
-$ plot_pancore_matrix.pl -i data_get_homologues/pan_genome_algOMCL.tab
-~~~
-{: .language-bash}
-~~~
-# /opt/anaconda3/envs/Pangenomics_Global/bin/plot_pancore_matrix.pl -i data_get_homologues/pan_genome_algOMCL.tab -f core_Tettelin -F 0.80 -a
-# outfiles: data_get_homologues/pan_genome_algBDBH.tab_core_Tettelin.log , data_get_homologues/pan_genome_algBDBH.tab_core_Tettelin.png , data_get_homologues/pan_genome_algBDBH.tab_core_Tettelin.pdf , data_get_homologues/pan_genome_algBDBH.tab_core_Tettelin.svg
-~~~
-{: .output}
-
-Download the pan and core-genome plots to your local machine.
-~~~
-$ scp user@bioinformatica.matmor.unam.mx:~/gm_workshop/results/pangenome/get_homologues/data_get_homologues/*_genome_algOMCL.tab_core_Tettelin.png
-~~~
-{: .language-bash}
-
-<a href="../fig/core_genome_algBDBH.tab_core_Tettelin.png">
-  <img src="../fig/core_genome_algBDBH.tab_core_Tettelin.png" alt="Aquí va el texto que describe a la imagen." />
-</a>
-
-<a href="../fig/pan_genome_algBDBH.tab_core_Tettelin.png">
-  <img src="../fig/pan_genome_algBDBH.tab_core_Tettelin.png" alt="Aquí va el texto que describe a la imagen." />
-</a>
-
-> ## Exercise 2:
->
-> Add another genome of the Streptococcus family. Try with another S. agalactiae genomes which are in the annotated folder.
-> It is required to make a symbolic path in our data_get directory:
-> ~~~
-> $ find ~/gm_workshop/results/annotated/. -name "*Streptococcus_agalactiae_[1-9]*.prokka.gbk*" -exec ln -s {} . ';'
-> ~~~
-> {: .language-bash}
-> Now ask for clustering all gene sequences with the get_homologues.pl default algorithm
-> ~~~
-> $ get_homologues.pl -d data_get -c
-> ~~~
-> {: .language-bash}
-> What do you think happens to the number of gene clusters?
-> Does it increase or decrease?
->> ## Solution
->> As we can check in the output:
->> ~~~
->> # number_of_clusters = 1105
->> # runtime: 247 wallclock secs ( 9.44 usr  0.37 sys + 128.79 cusr  1.90 csys = 140.50 CPU)
->> # RAM use: 56.4 MB
->> ~~~
->> {: .output}
->>    
->> The number of clusters decreases from  1177 to 1105. This is because the number of genes shared by all the genomes, i.e. core genome, decreases as we add another
->> genome, while the pangenome increases. We can see this with the following command :
->> ~~~
->> $ less data_get_homologues/pan_genome_algBDBH.tab
->> ~~~
->> {: .language-bash}
->>
-> {: .solution}
-{: .challenge}  
-
-~~~
-
-## Claudia's Exercise 3
-
-
