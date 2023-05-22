@@ -196,12 +196,18 @@ $ ./get_homologues_omcl.sh #This script can take up to 10 minutes
 {: .language-bash}
 
 ~~~
-# number_of_clusters = 1181
-# cluster_list = data_get_homologues/Streptococcusagalactiae18RS21_f0_alltaxa_algOMCL_e0_.cluster_list
-# cluster_directory = data_get_homologues/Streptococcusagalactiae18RS21_f0_alltaxa_algOMCL_e0_
+# Job started at:
+# lun 22 may 2023 14:06:50 CST
 
-# runtime:  5 wallclock secs ( 2.02 usr  0.11 sys +  0.49 cusr  0.24 csys =  2.86 CPU)
-# RAM use: 55.4 MB
+# number_of_clusters = 3464
+# cluster_list = data_gbks_homologues/Streptococcusagalactiae18RS21prokka_f0_0taxa_algOMCL_e0_.cluster_list
+# cluster_directory = data_gbks_homologues/Streptococcusagalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
+
+# runtime: 479 wallclock secs (62.16 usr  1.81 sys + 1347.29 cusr 43.47 csys = 1454.73 CPU)
+# RAM use: 89.0 MB
+
+# Job finished successfully at:
+# lun 22 may 2023 14:14:50 CST
 ~~~
 {: .output}
 
