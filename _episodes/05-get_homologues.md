@@ -153,47 +153,39 @@ $ cd  ~/pan_workshop/results/pangenome/get_homologues/data_gbks #Locates you in 
 We need to create symbolic links with all the *.gbk* files created with prokka or downloaded with ncbi
 ~~~
 
-$ ln -s ~/pan_workshop/results/annotated/agalactiae_gbk/Streptococcus_agalactiae_*_prokka.gbk .
-$ ls ~/pan_workshop/results/pangenome/get_homologues/data_gbks #List the symbolic links
+$ ln -s ~/pan_workshop/results/annotated/Streptococcus_*/Streptococcus_agalactiae_*_prokka.gbk .
+$ ls #List the symbolic links
 ~~~
 {: .language-bash}
 
 ~~~
-Streptococcus_agalactiae_18RS21.prokka.gbk  Streptococcus_agalactiae_COH1.prokka.gbk
-Streptococcus_agalactiae_A909.prokka.gbk    Streptococcus_agalactiae_H36B.prokka.gbk
-Streptococcus_agalactiae_CJB111.prokka.gbk
+Streptococcus_agalactiae_18RS21_prokka.gbk  Streptococcus_agalactiae_CJB111_prokka.gbk
+Streptococcus_agalactiae_2603V_prokka.gbk   Streptococcus_agalactiae_COH1_prokka.gbk
+Streptococcus_agalactiae_515_prokka.gbk     Streptococcus_agalactiae_H36B_prokka.gbk
+Streptococcus_agalactiae_A909_prokka.gbk    Streptococcus_agalactiae_NEM316_prokka.gbk
 ~~~
 {: .output}
 
 ## Create the directory to run OMCL algorithm
 ~~~
-$ cd  ~/pan_workshop/results/pangenome/get_homologues/
+$ cd ..
 ~~~
 {: .language-bash}
 
 Generate the clusters with OMCL (OMCL, PubMed=12952885)
 
+Since the following command can take around 8 minutes to run we will use a screen session to run it. The screen session will not have the conda environment activated, so let’s activate it again.
 ~~~
-$ nano get_homologues_omcl.sh
+screen -R clustering
+conda activate Pangenomics_Global
 ~~~
 {: .language-bash}
-
+And now let's run our program.
 ~~~
-#!/usr/bin/bash
-
-echo "Job started at:" && date
 get_homologues.pl -d data_gbks -M -t 0 -c -n 8
-echo "Job finished successfully at:" && date
 ~~~
 {: .language-bash}
-
-~~~
-$ chmod +x get_homologues_omcl.sh
-$ ./get_homologues_omcl.sh #This script can take up to 08:00 minutes
-
-# OPTIONAL: ./get_homologues_omcl.sh 2>pan_err.log 1>pan_out.log
-~~~
-{: .language-bash}
+Click `Ctrl`+ `a` + `d` to detach from the session and wait 8 minutes to attach back the screen and check if it has finished.
 
 ~~~
 # number_of_clusters = 3464
