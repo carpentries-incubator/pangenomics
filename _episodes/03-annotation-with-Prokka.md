@@ -211,6 +211,7 @@ Now that we have our genome annotations, let's take a look at one of them. Fortu
 look at a lot of the information in the first few lines:
 
 ~~~
+$ cd ../results/annotated/
 $ head Streptococcus_agalactiae_18RS21_prokka/Streptococcus_agalactiae_18RS21_prokka.gbk
 ~~~
 {: .language-bash}
