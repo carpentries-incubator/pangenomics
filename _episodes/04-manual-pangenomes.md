@@ -18,7 +18,7 @@ keypoints:
 
 We are going to practice with four fasta files with reduced genomes from A909, 2603V, NEM316 and 515. 
 
-In the folder `anottated/subset` you have the 4 reduced genomes. Fist we need to put a label on each gene that tells us which genome it is from, this will be important later.  For that you need to run the following.
+In the folder `anottated/mini` you have the 4 reduced genomes. Fist we need to put a label on each gene that tells us which genome it is from, this will be important later.  For that you need to run the following.
 
 ~~~
 cd ~/pan_workshop/results/annotated/mini/
