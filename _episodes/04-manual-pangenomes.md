@@ -75,7 +75,7 @@ import os
 os.getcwd()
 blast0 = pd.read_csv( '~/pan_workshop/results/blast/output_blast/all-genomes.blast', sep = '\t',names = ['qseqid','sseqid', 'pident', 'length', 'mismatch', 'gapopen', 'qstart', 'qend', 'sstart', 'send', 'evalue', 'bitscore'])  
 ~~~
-{: .language-bash}
+{: .language-python}
 
 We want to work with the e-values, therefore we select that column.
 
@@ -100,7 +100,7 @@ We will fix the evalue that we will use to form the families.
 ~~~
 evalue= 1e-5
 ~~~
-{: .language-bash}
+{: .language-python}
  
 
 Now, we want to know what is the biggest genome to make the comparisions. In this case we wil chose the one with more genes, that happen to be the A909.  
