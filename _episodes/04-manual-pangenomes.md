@@ -73,7 +73,7 @@ Now we will explore the blast matrix in Python. First we need to reed the databa
 ~~~
 import os 
 os.getcwd()
-blast0 = pd.read_csv( '~/pan_workshop/results/blast/output_blast/all-genomes.blast', sep = '\t',names = ['qseqid','sseqid', 'pident', 'length', 'mismatch', 'gapopen', 'qstart', 'qend', 'sstart', 'send', 'evalue', 'bitscore'])  
+blast0 = pd.read_csv( '~/pan_workshop/results/blast/mini/output_blast/mini-genomes.blast', sep = '\t',names = ['qseqid','sseqid', 'pident', 'length', 'mismatch', 'gapopen', 'qstart', 'qend', 'sstart', 'send', 'evalue', 'bitscore'])  
 ~~~
 {: .language-python}
 
@@ -106,7 +106,7 @@ evalue= 1e-5
 Now, we want to know what is the biggest genome to make the comparisions. In this case we wil chose the one with more genes, that happen to be the A909.  
 
 ~~~
-ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); count=$(grep -c $name ~/pan_workshop/results/blast/all-genomes.faa); echo $count $name; done |sort -nr
+ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); count=$(grep -c $name ~/pan_workshop/results/blast/mini/mini-genomes.faa); echo $count $name; done |sort -nr
 ~~~
 {: .language-bash}
 
@@ -135,9 +135,18 @@ Here we have the functional families provided by prokka for the A909 genome
 
 First we select the biggest genome, and in this case we wil chose the one with more genes, that happen to be the A909.  
 ~~~
-ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); count=$(grep -c $name ~/pan_workshop/results/subset/blast2/all-genomes.faa); echo $count $name; done |sort -nr
+cd ~/pan_workshop/results/annotated/mini/
+ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); count=$(grep -c $name ~/pan_workshop/results/blast/mini/mini-genomes.faa); echo $count $name; done |sort -nr
 ~~~
 {: .language-bash}
+
+~~~
+12 A909
+11 2603V
+10 NEM316
+10 515
+~~~
+{: .output}
 
 
 ### Core  
