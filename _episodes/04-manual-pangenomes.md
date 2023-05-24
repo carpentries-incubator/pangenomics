@@ -21,7 +21,7 @@ We are going to practice with four fasta files with reduced genomes from A909, 2
 In the folder `anottated/subset` you have the 4 reduced genomes. Fist we need to put a label on each gene that tells us which genome it is from, this will be important later.  For that you need to run the following.
 
 ~~~
-cd ~/pan_workshop/results/annotated/subset/
+cd ~/pan_workshop/results/annotated/mini/
 ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); sed -i "s/\s*>/>${name}|/" $line; done
 ~~~
 {: .language-bash}
@@ -29,39 +29,40 @@ ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); sed -i "s/\s
 Now, we need to create one data set with all files `.faa`.
 
 ~~~
-cat ~/pan_workshop/results/annotated/*.faa > all-genomes.faa
+cat ~/pan_workshop/results/annotated/mini/*.faa > mini-genomes.faa
 ~~~
 {: .language-bash}
 
 We will create the folders to make the blast dataset and to run blastp. Also we move the file `all-genomes.faa` to this new directory.
 
 ~~~
-mkdir -p ~/pan_workshop/results/blast/output-blast/
-mkdir -p ~/pan_workshop/results/blast/database/
-mv ~/pan_workshop/results/annotated/all-genomes.faa ~/pan_workshop/results/blast/.
+mkdir -p ~/pan_workshop/results/blast/mini/output-blast/
+mkdir -p ~/pan_workshop/results/blast/mini/database/
+mv ~/pan_workshop/results/annotated/mini/mini-genomes.faa ~/pan_workshop/results/blast/mini/.
+cd ~/pan_workshop/results/blast/mini/
 ~~~
 {: .language-bash}
 
 Make the BLAST database.
 ~~~
-makeblastdb -in ~/pan_workshop/results/blast/all-genomes.faa -dbtype prot -out ~/pan_workshop/results/blast/database/all-genomes 
+makeblastdb -in ~/pan_workshop/results/blast/mini/mini-genomes.faa -dbtype prot -out ~/pan_workshop/results/blast/mini/database/mini-genomes 
 ~~~
 {: .language-bash}
 
 ~~~
-Building a new DB, current time: 05/05/2023 00:13:13
-New DB name:   /home/haydee/pan_workshop/results/subset/blast/database/all-genomes
-New DB title:  /home/haydee/pan_workshop/results/subset/blast/all-genomes.faa
+Building a new DB, current time: 05/23/2023 21:26:31
+New DB name:   /home/haydee/pan_workshop/results/blast/mini/database/mini-genomes
+New DB title:  /home/haydee/pan_workshop/results/blast/mini/mini-genomes.faa
 Sequence type: Protein
 Keep MBits: T
 Maximum file size: 1000000000B
-Adding sequences from FASTA; added 16 sequences in 0.000644922 seconds.
+Adding sequences from FASTA; added 43 sequences in 0.00112104 seconds.
 ~~~
 {: .output}
 
 Run blastp.
 ~~~
-blastp -query ~/pan_workshop/results/blast/all-genomes.faa -db ~/pan_workshop/results/blast/database/all-genomes -outfmt "6" > ~/pan_workshop/results/blast/output-blast/all-genomes.blast
+blastp -query ~/pan_workshop/results/blast/mini/mini-genomes.faa -db ~/pan_workshop/results/blast/mini/database/mini-genomes -outfmt "6" > ~/pan_workshop/results/blast/mini/output-blast/mini-genomes.blast
 ~~~
 {: .language-bash}
 
@@ -117,18 +118,18 @@ Lets explore the small genomes content.
 
 Here we have the functional families provided by prokka for the A909 genome
 ~~~~
->A909|MGIDGNCP_01408 30S ribosomal protein S16
->A909|MGIDGNCP_00096 50S ribosomal protein L16
->A909|MGIDGNCP_01343 Replication protein RepB
->A909|MGIDGNCP_01221 Glycine betaine transporter OpuD
->A909|MGIDGNCP_01268 hypothetical protein
->A909|MGIDGNCP_00580 UDPNacetylglucosamineNacetylmuramyl(pentapeptide) pyrophosphorylundecaprenol Nacetylglucosamine transferase
->A909|MGIDGNCP_00352 Glutamate 5kinase 1
->A909|MGIDGNCP_00064 Putative Nacetylmannosamine6phosphate 2epimerase
->A909|MGIDGNCP_00627 hypothetical protein
->A909|MGIDGNCP_01082 Periplasmic murein peptidebinding protein
->A909|MGIDGNCP_00877 hypothetical protein
->A909|MGIDGNCP_00405 Ribosome hibernation promotion factor
+>MGIDGNCP_01408 30S ribosomal protein S16
+>MGIDGNCP_00096 50S ribosomal protein L16
+>MGIDGNCP_01343 Replication protein RepB
+>MGIDGNCP_01221 Glycine betaine transporter OpuD
+>MGIDGNCP_01268 glycosyltransferase
+>MGIDGNCP_00580 UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) pyrophosphoryl-undecaprenol N-acetylglucosamine transferase
+>MGIDGNCP_00352 Glutamate 5-kinase 1
+>MGIDGNCP_00064 Putative N-acetylmannosamine-6-phosphate 2-epimerase
+>MGIDGNCP_00627 bifunctional DNA primase/polymerase
+>MGIDGNCP_01082 Periplasmic murein peptide-binding protein
+>MGIDGNCP_00877 peptidase U32 family protein
+>MGIDGNCP_00405 Ribosome hibernation promotion factor
 ~~~~
 {: .output}
 
@@ -141,7 +142,7 @@ ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); count=$(grep
 
 ### Core  
 Ribosomal proteins 30S (01408) and 50S (00096) stays in its own cluster (1 gene per genome)
-01268 hypothetical protein in an extended family (2 copies per genome) 
+01268 glycosyltransferase protein in an extended family (2 copies per genome) 
 
 ### Shell
 01343 Replication protein RepB is only shared by another genome
