@@ -359,16 +359,15 @@ Go to the Layout section in the left and in the selection bar choose ForceAtlas2
 In the Tuning section change the Scaling value to 4000 and check the Stronger Gravity box.
 Click on the Run button and then click it again to stop.
   
-<a href="../fig/01-06-05.png">
-  <img src="../fig/01-06-05.png" width="512" height="512" alt="Gephi visualization" />
+<a href="../fig/01-06-04.png">
+  <img src="../fig/01-06-04.png" width="512" height="512" alt="default Gephi visualization after layout specifications" />
 </a>
 
 Now we have a pangenome graph!
  
 
 > ## Exercise 2: Exploring the pangenome graph.
-> Finally we are looking at the pangenome graph. Here each node is a gene family, if you click on the black T at the bottom of the graph you will se that
-> thay are labeld, this is the name of the family given by the name of a representative gene of the family.  
+> Finally we are looking at the pangenome graph. Here each node is a gene family, if you click on the black **T** at the bottom of the graph you can lable them.  
 >   
 >  Explore the options of visualization for the pangenome graph, while trying to identify what does each element of the graph represent (ie. size of 
 >  nodes and edges, etc.) and what is in the Data Laboratory.
@@ -383,27 +382,26 @@ Now we have a pangenome graph!
 >  
 > d) Product.
 >  
-> e) Gene neighborhood (edges).
->  
 > > ## Solution
-> > a) <a href="../fig/01-04-06.png">
-> > <img src="../fig/01-04-06.png" alt="Gephi visualization with the nodes colored according to PPanGGOLiN partitions, displaying persistent genome in pink and cloud genome in green." />
+> > In the top left panel you can color the nodes or edges accoring to different data.
+> > You can choose discrete palettes in the partition section and gradients in the 
+> > Ranking section. You can choose the palette, generate a new one or choose 
+> > colors one by one.   
+> > a) Nodes colored according to the partition they belong to.  
+> > <a href="../fig/01-06-05.png">
+> > <img src="../fig/01-06-05.png" alt="Gephi visualization with orange nodes for the parsistent families, blue for cloud and green for shell." />
 > > </a>
-> >
-> > b) <a href="../fig/01-04-07.png">
-> > <img src="../fig/01-04-07.png" alt="Gephi visualization with the nodes colored according to the number of organisms in the analysis." />
+> > b) Nodes colored according to the number of organisms they are present in.
+> > <a href="../fig/01-06-06.png">
+> > <img src="../fig/01-06-06.png" alt="Gephi visualization with 8 different colors." />
 > > </a>
-> >
-> > c) <a href="../fig/01-04-08.png">
-> > <img src="../fig/01-04-08.png" alt="Gephi visualization with the nodes colored according to the number of genes in the analysis." />
+> > c) Nodes colored according to the number of genes that are part of the family.
+> > <a href="../fig/01-06-07.png">
+> > <img src="../fig/01-06-07.png" alt="Gephi visualization with the nodes colored according to the number of genes that are part of the family." />
 > > </a>
-> >
-> > d) <a href="../fig/01-04-09.png">
-> > <img src="../fig/01-04-09.png" alt="Gephi visualization with the nodes colored according to the proteins function." />
-> > </a>
-> >
-> > e) <a href="../fig/01-04-10.png">
-> > <img src="../fig/01-04-10.png" alt="Gephi visualization with the nodes colored according to the gene neighborhood." />
+> > d) nodes colored according to the protein function,
+> > <a href="../fig/01-06-08.png">
+> > <img src="../fig/01-06-08.png" alt="Gephi visualization with all hypothetical proteins are in pink and the rest in gray." />
 > > </a>
 > {: .solution}
 {: .challenge}
@@ -425,8 +423,6 @@ If you are interested in the phylogeny of your genomes, you can retrieve the **M
   concatenation of all single-copy exact core genes.   
   
 These analyses, **and more**, can be done by using commands that enrich your `pangenome.h5` file and extracting the appropriate outputs with the `ppanggolin write` command. Check the PPanGGOLiN [Wiki](https://github.com/labgem/PPanGGOLiN/wiki) to learn how to perform them.   
-
-TEST CHANGE
 
 > ## References:
 > Go to the PPanGGOLiN [GitHub Wiki](https://github.com/labgem/PPanGGOLiN/wiki) for the complete collection of instructions and posibilities.  
