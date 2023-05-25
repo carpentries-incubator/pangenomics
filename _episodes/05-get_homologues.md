@@ -201,4 +201,83 @@ Click `Ctrl`+ `a` + `d` to detach from the session and wait 8 minutes to attach 
 If the option -e is added, the resulting clusters will contain only single-copy genes from each taxon, i.e. the orthologues. This flag forms singleton clusters, which are created when you exclude clusters within paralogues. This is useful to make genome-level phylogenetic analyses in only single copy-genes.
 {: .callout}
 
+## Describe your gene families in one table
+
+Get_homologues gave us one FASTA file for each gene family, with the sequences of the genes included in the family. These files look like this:
 ~~~
+$ head data_gbks_homologues/Streptococcusagalactiae18RS21prokka_f0_0taxa_algOMCL_e0_/1_purF.faa
+~~~
+{: .language-bash}
+~~~
+>ID:GMBKAPON_00347 |[Streptococcus agalactiae]|18RS21|Streptococcus_agalactiae_18RS21_prokka.gbk|purF|555|AAJO01000247.1(1134):80-634:1 ^^ Streptococcus agalactiae strain 18RS21.|neighbours:start(),end()|neighbour_genes:start(),end()|
+MGFAEESGLPNEMGLVKNQYTQRTFIQPTQELREQGVRMKLSAVSGVVKGKRVVMIDDSIVRGTTSRRIVGLLREAGATEVHVAIASPELKYPCFYGIDIQTRRELISANHAVDEVCDIIGADSLTYLSIDGLIKSIGLETKAPNGGLCVAYFDGHYPTPLYDYEEEYLRSLEEKTSFYIQKVK
+~~~
+{: .output}
+
+We want to create a file that summarizes the information of the clustering by showing only which genes correspond to which family. 
+We will need that file in the next episode to explore our pangenome with another program.
+
+To obtain this file, that we will name `gene_families.tsv`, we will extract the IDs of the genes from the FASTA headers(in the FASTA header we see the ID of the gene at the beggining after `ID:`) and the name of the families from the file names. For this we will use the following short script.  
+
+Copy the contents and paste them in a file:
+~~~
+$ nano ~/pan_workshop/scripts/get_gene_families.sh
+~~~
+{: .language-bash}
+
+~~~
+# Location to use: ~/pan_workshop/results/pangenome/get_homologues/
+# Usage: bash ~/pan_workshop/scripts/get_gene_families.sh
+# Output: 	One text file per gene family with the IDs of the genes it contains in the directory: 
+# 				~/pan_workshop/results/pangenome/get_homologues/families/
+# 			A tsv file with the name of the gene family in the first column and the name of the gene in the second column in:
+# 				~/pan_workshop/results/pangenome/get_homologues/gene_families.tsv
+
+mkdir families
+
+# Obtain the gene IDs from the FASTA headers of the gene families FASTAs and put them in a text file:
+for i in data_gbks_homologues/Streptococcusagalactiae18RS21prokka_f0_0taxa_algOMCL_e0_/*.faa
+do 
+base=$(basename $i .faa)
+grep ">" $i | cut -d':' -f2 | cut -d' ' -f1 > families/${base}.txt
+done
+
+# Print the name of the family, a tab separator and the name of the gene in a tsv file:
+for i in families/*.txt
+do
+base=$(basename $i .txt)
+cat $i | while read line 
+do
+echo $base$'\t'$line >> gene_families.tsv
+done
+done
+~~~
+{: .output}
+
+Now let's run this script to obtain the file.
+~~~
+$ bash ~/pan_workshop/scripts/get_gene_families.sh
+~~~
+{: .language.bash}
+
+And let's see the file that was created.
+~~~
+$ head gene_families.tsv
+~~~
+{: .language-bash}
+
+~~~
+10003_Int-Tn_1	IGCLFMIO_00101
+10003_Int-Tn_1	MGPKLEAL_00603
+10004_hypothetical_protein	IGCLFMIO_00102
+10004_hypothetical_protein	MGPKLEAL_00604
+10005_hypothetical_protein	IGCLFMIO_00103
+10005_hypothetical_protein	MGPKLEAL_00605
+10006_hypothetical_protein	IGCLFMIO_00104
+10006_hypothetical_protein	MGPKLEAL_00606
+1000_zinT	GMBKAPON_01606
+10010_upp_2	IGCLFMIO_01195
+~~~
+{: .output}
+
+Now we have in only one file all the description of our clustering results!
