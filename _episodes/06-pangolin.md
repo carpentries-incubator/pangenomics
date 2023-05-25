@@ -180,11 +180,11 @@ ppanggolin info -p pangenome.h5 --content
 ~~~
 Genes : 16439
 Organisms : 8
-Families : 2867
-Edges : 3221
-Persistent ( min:0.62, max:1.0, sd:0.08, mean:0.96 ): 1785
-Shell ( min:0.38, max:0.62, sd:0.05, mean:0.51 ): 19
-Cloud ( min:0.12, max:0.62, sd:0.13, mean:0.22 ): 1063
+Families : 3464
+Edges : 3887
+Persistent ( min:0.5, max:1.0, sd:0.1, mean:0.94 ): 1793
+Shell ( min:0.5, max:0.5, sd:0.0, mean:0.5 ): 22
+Cloud ( min:0.12, max:0.75, sd:0.12, mean:0.19 ): 1649
 Number of partitions : 3
 ~~~
 {: .output}
