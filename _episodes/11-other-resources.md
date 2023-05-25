@@ -36,7 +36,7 @@ Simultaneously, we can harness the power of the **accessory genome** to conduct 
 
 ### Benchmarking for Orthologs Predictions
 
-You might be interested in evaluate the quality of your results concerning the methodology employed for indentifying orthologous genes. To facilitate this task, you can utilize the resources provided by the [**Orthology Benchmarking website**](https://orthology.benchmarkservice.org/). This platform offers a pre-processed benchmarking analysis of various methodologies, ranking them based on their efficacy in identifying authentic orthologs (recal). Additionally, it provides the opportunity to assess your own methods and results within this framework. 
+You might be interested in evaluate the quality of your results concerning the methodology employed for indentifying orthologous genes. To facilitate this task, you can utilize the resources provided by the [**Orthology Benchmarking**](https://orthology.benchmarkservice.org/) website. This platform offers a pre-processed benchmarking analysis of various methodologies, ranking them based on their efficacy in identifying authentic orthologs (recal). Additionally, it provides the opportunity to assess your own methods and results within this framework. 
 
 For detailed instruction on how to submit your own data for evaluation, please refer to the following information:
 
