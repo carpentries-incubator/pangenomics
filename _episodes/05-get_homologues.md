@@ -205,12 +205,12 @@ If the option -e is added, the resulting clusters will contain only single-copy 
 
 Get_homologues gave us one FASTA file for each gene family, with the sequences of the genes included in the family. These files look like this:
 ~~~
-$ head data_gbks_homologues/Streptococcusagalactiae18RS21prokka_f0_0taxa_algOMCL_e0_/1_purF.faa
+$ head data_gbks_homologues/Streptococcusagalactiae18RS21prokka_f0_0taxa_algOMCL_e0_/1_IS30_family_transpos...faa
 ~~~
 {: .language-bash}
 ~~~
->ID:GMBKAPON_00347 |[Streptococcus agalactiae]|18RS21|Streptococcus_agalactiae_18RS21_prokka.gbk|purF|555|AAJO01000247.1(1134):80-634:1 ^^ Streptococcus agalactiae strain 18RS21.|neighbours:start(),end()|neighbour_genes:start(),end()|
-MGFAEESGLPNEMGLVKNQYTQRTFIQPTQELREQGVRMKLSAVSGVVKGKRVVMIDDSIVRGTTSRRIVGLLREAGATEVHVAIASPELKYPCFYGIDIQTRRELISANHAVDEVCDIIGADSLTYLSIDGLIKSIGLETKAPNGGLCVAYFDGHYPTPLYDYEEEYLRSLEEKTSFYIQKVK
+>ID:GMBKAPON_00410 |[Streptococcus agalactiae]|18RS21|Streptococcus_agalactiae_18RS21_prokka.gbk|IS30 family transpos..|1167|AAJO01000202.1(1503):112-1278:1 ^COG:COG2826^ Streptococcus agalactiae strain 18RS21.|neighbours:start(),end()|neighbour_genes:start(),end()| | aligned:1-388 (388)
+MTKHKHLTLLDRNDIQSGLDRGETFKAIGLNLLKHPTTIAKEVKRNKQLRESTKDCLDCPLLRKAPYVCNGCPKRRINCGYKKTFYLAKQAQRNYEKLLVESREGIPLNKETFWKIDRVLSNGVKKGQRIYHILKTNDLEVSSSTVYRHIKKGYLSITPIDLPRAVKFKKRRKSTLPPIPKAIKEGRRYEDFIEHMNQSELNSWLEMDTVIGRIGGKVLLTFNVAFCNFIFAKLMDSKTAIETAKHIQVIKRTLYDNKRDFFELFPVILTDNGGEFARVDDIEIDVCGQSQLFFCDPNRSDQKARIEKNHTLVRDILPKGTSFDNLTQEDINLALSHINSVKRQALNGKTAYELFSFTYGKDIASILGIEEITAEDVCQSPKLLKDKI
 ~~~
 {: .output}
 
