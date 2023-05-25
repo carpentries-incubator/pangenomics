@@ -19,9 +19,11 @@ keypoints:
 ---
 ## Downstream analysis of pangenomes
 
-At this stage, we have acquired a comprehensive understanding of pangenome construction techniques. Our analysis has yielded a gene presence-absence matrix, which serves as a rudimentary representation of our pangenome. Ideally, we can complement this data by incorporating a metadata file encompassing various phenotypic features associated with each of our samples. These features may include the year of isolation, geographic origin, host information, drug-resistance profiles, levels of pathogenicity or virulence, serotypes, lineages, and more. Armed with this extensive metadata, a plethora of downstream analyses can be persued on the pangenome. 
+At this stage, we have acquired a comprehensive understanding of pangenome construction techniques. Our analysis has yielded a gene presence-absence matrix, which serves as a rudimentary representation of our pangenome. Ideally, we can complement this data by incorporating a metadata file encompassing various phenotypic features associated with each of our samples. These features may include the year of isolation, geographic origin, host information, drug-resistance profiles, levels of pathogenicity or virulence, serotypes, lineages, and more. Armed with this extensive metadata, numerous intriguing avenues for downstream analyses become available to us. By exploring the pangenome, we can uncover invaluable insights and elucidate various aspects of microbial genetics. 
 
-Firstly, by focusing on the **core genome**, we can employ it to reconstruct phylogenetic species trees, devise molecular diagnostic tools, design vaccines, and explore other relevant avenues by using the highly conserved regions of the species studied. Simultaneously, utilizing the **accessory genome** enables us to conduct comparative genomic analyses, unrevealing discrepancies among subsets of samples within our dataset that may correlate with distinct characteristics or traits. Now, let us delve into a selection of those potential downstream analyses: 
+Firstly, a focused investigation of the **core genome** offers us the opportunity to reconstruct robust phylogenetic trees. By examining the conserved genetic elements shared among organisms, we can establish evolutionary relationships, elucidate common ancestry, and gain a deeper understanding of the microbial diversity within our dataset. Furthermore, these phylogenetic trees serve as a foundation for designing effective molecular diagnostic tools and formulating targeted antimicrobial drugs or vaccines to combat a broad range of strains or lineages. 
+
+Simultaneously, we can harness the power of the **accessory genome** to conduct comparative genomic analyses. This allows us to discern dissimilarities between subsets of samples within our dataset, providing crucial insights into specific traits or characteristics. By identifying genes or genetic variations unique to certain groups of organisms, we can unreveal the genetic basis of their phenotypic diversity, such as drug-resistance profiles, pathogenicity, or virulence levels. 
 
 ### Genetic Variation Analysis
 
@@ -34,11 +36,11 @@ Firstly, by focusing on the **core genome**, we can employ it to reconstruct phy
 
 ### Benchmarking for Orthologs Predictions
 
-In addition, you might be interested in evaluate the quality of your results regarding the methodology used to identify the ortholog genes. For that specific task, you can explore the website of [**Orthology Benchmarking**](https://orthology.benchmarkservice.org/), which shows you a pre-processed benchmarking analysis of several methodologies ranked for their efficiency to identify real orthologs (recal) and also gives you the opportunity to evaluate your own methods and results. 
+You might be interested in evaluate the quality of your results concerning the methodology employed for indentifying orthologous genes. To facilitate this task, you can utilize the resources provided by the [**Orthology Benchmarking website**](https://orthology.benchmarkservice.org/). This platform offers a pre-processed benchmarking analysis of various methodologies, ranking them based on their efficacy in identifying authentic orthologs (recal). Additionally, it provides the opportunity to assess your own methods and results within this framework. 
 
-Find more information about how to submit your own data in:
+For detailed instruction on how to submit your own data for evaluation, please refer to the following information:
 
-[**How to submit predictions to Orthology Benchmarking**](https://orthology.benchmarkservice.org/proxy/doc#submit)
+[**How to submit my ortholog predictions to Orthology Benchmarking**](https://orthology.benchmarkservice.org/proxy/doc#submit)
 
 **Original paper:**
 Brigitte Boeckmann and others, Conceptual framework and pilot study to benchmark phylogenomic databases based on reference gene trees, Briefings in Bioinformatics, Volume 12, Issue 5, September 2011, Pages 423–435, https://doi.org/10.1093/bib/bbr034
@@ -46,6 +48,8 @@ Brigitte Boeckmann and others, Conceptual framework and pilot study to benchmark
 
 ### OrthoVenn3
 
+
+In conclusion, the vast array of downstream analyses made possible by our pangenome dataset and accompanying metadata file holds immense promise. By exploring the core and accessory genomes, along with phenotypic correlations, we can gain valuable insights into evolutionary relationships, understand the genetic basis of specific traits, and contribute to a better knowledge about the adaptive processes bacteria have achieved in their respective lifestyle. 
 
 
 ## Carpentries Philosophy
