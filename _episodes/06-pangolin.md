@@ -141,8 +141,8 @@ $ ls -lh
 {: .language-bash}
 
 ~~~
-total 9.6M
--rw-r--r-- 1 user user 9.6M mar 31 09:47 pangenome.h5
+total 9.0M
+-rw-r--r-- 1 user user 9.0M mar 31 09:47 pangenome.h5
 ~~~
 {: .output}
 
