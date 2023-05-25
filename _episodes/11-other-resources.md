@@ -19,12 +19,12 @@ keypoints:
 ---
 ## Downstream analysis of pangenomes
 
-At this point, we already have learnt about how to build a pangenome. We have a list of the organisms we included in the analysis and we obtained a matrix of presence-absence of genes, which roughly represents our pangenome. 
+At this stage, we have acquired a comprehensive understanding of pangenome construction techniques. Our analysis has yielded a gene presence-absence matrix, which serves as a rudimentary representation of our pangenome. Ideally, we can complement this data by incorporating a metadata file encompassing various phenotypic features associated with each of our samples. These features may include the year of isolation, geographic origin, host information, drug-resistance profiles, levels of pathogenicity or virulence, serotypes, lineages, and more. Armed with this extensive metadata, a plethora of downstream analyses can be persued on the pangenome. 
 
-Preferable, we can also have a metadata file that includes phenotypic features related to each one of our samples. For example, year of isolation, geographic origin of the sample, host, drug-resistance profile, serotype or lineage, etc. With all of this information, there exists a great number of downstream analysis we can conduct on a pangenome. In one hand, we can focus on the *core genome* which can be useful to reconstruct phylogenetic trees, design of molecular diagnostic tools or vaccines, among others. On the other hand, we can conduct comparative genomic analysis using the *accessory genome* to describe differences between subsets of samples in our dataset thath might be related with some specific traits   
-Here we want to mention some of them:
+Firstly, by focusing on the **core genome**, we can employ it to reconstruct phylogenetic species trees, devise molecular diagnostic tools, design vaccines, and explore other relevant avenues by using the highly conserved regions of the species studied. Simultaneously, utilizing the **accessory genome** enables us to conduct comparative genomic analyses, unrevealing discrepancies among subsets of samples within our dataset that may correlate with distinct characteristics or traits. Now, let us delve into a selection of those potential downstream analyses: 
 
 ### Genetic Variation Analysis
+
 
 ### Functional Annotation
 
