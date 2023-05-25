@@ -46,7 +46,7 @@ extract the corresponding results.
 ## Building a Pangenome
 
 The required steps to build a pangenome can be achieved with a single command `ppanggolin workflow`,
-or can be run individually if you want to make adjustments to each of them. We will run them separately to learn what the workflow consists of.
+or can be run individually if you want to make adjustments to each of them. The adjustment that we want to make is to use the clusters that Get_Homologues already found.
 
 The pangenome will be built in a single HDF-5 file that will be the input and output of all the commands and will get enriched with each of them.
 
@@ -65,26 +65,21 @@ $ conda activate Pangenomics_Global
 Now we should make a special directory for this analysis.
 ~~~
 $ mkdir -p  ~/pan_workshop/results/pangenome/ppanggolin
+$ cd ~/pan_workshop/results/pangenome/ppanggolin
 ~~~
 {: .language-bash}
 
 PPanGGOLiN analysis can start from genomic DNA sequences in FASTA format or annotated genomes in GBK or GFF formats. The first step is getting this 
 genomic information into the HDF-5 file and annotate it if it is not already.  
-We already have our Prokka annotations in `~/pan_workshop/results/annotated/`, so let's use them for our pangenome.
-Create symbolic links of the `.gbk` files in the directory of the PPanGGolin analysis to have easier access to them.
-~~~
-$ cd ~/pan_workshop/results/pangenome/ppanggolin
-$ ln -s ~/pan_workshop/results/annotated/*/*.gbk .
-~~~
-{: .language-bash}
-
 To use the GBKs in the annotation step we need to create a text file with the unique name of each organism in one column and the path to the
-corresponding `.gbk` in another one.
+corresponding `.gbk` in another one. 
+We already have links to our Prokka annotations in the `get_homologues/` directory, so we can tell PPanGGOLiN to use those.  
 
 ~~~
-$ ls Streptococcus_agalactiae* | cut -d'.' -f1 | while read line # Obtain the name of the file without the file extension and open a loop
+$ ls ~/pan_workshop/results/pangenome/get_homologues/data_gbks/* | while read line
 > do 
-> echo $line$'\t'$line.gbk >> organisms.gbk.list # Print the name, a tab separator and the name with the extension and redirect it to a file
+> name=$(echo $line | cut -d'/' -f9 | cut -d'.' -f1)
+> echo $name$'\t'$line >> organisms.gbk.list
 > done
 ~~~
 {: .language-bash}
@@ -95,26 +90,27 @@ $ cat organisms.gbk.list
 {: .language-bash}
 
 ~~~
-Streptococcus_agalactiae_18RS21_prokka	Streptococcus_agalactiae_18RS21_prokka.gbk
-Streptococcus_agalactiae_2603V_prokka	Streptococcus_agalactiae_2603V_prokka.gbk
-Streptococcus_agalactiae_515_prokka	Streptococcus_agalactiae_515_prokka.gbk
-Streptococcus_agalactiae_A909_prokka	Streptococcus_agalactiae_A909_prokka.gbk
-Streptococcus_agalactiae_CJB111_prokka	Streptococcus_agalactiae_CJB111_prokka.gbk
-Streptococcus_agalactiae_COH1_prokka	Streptococcus_agalactiae_COH1_prokka.gbk
-Streptococcus_agalactiae_H36B_prokka	Streptococcus_agalactiae_H36B_prokka.gbk
-Streptococcus_agalactiae_NEM316_prokka	Streptococcus_agalactiae_NEM316_prokka.gbk
+Streptococcus_agalactiae_18RS21_prokka	/home/dcuser/pan_workshop/results/pangenome/get_homologues/data_gbks/Streptococcus_agalactiae_18RS21_prokka.gbk
+Streptococcus_agalactiae_2603V_prokka	/home/dcuser/pan_workshop/results/pangenome/get_homologues/data_gbks/Streptococcus_agalactiae_2603V_prokka.gbk
+Streptococcus_agalactiae_515_prokka	/home/dcuser/pan_workshop/results/pangenome/get_homologues/data_gbks/Streptococcus_agalactiae_515_prokka.gbk
+Streptococcus_agalactiae_A909_prokka	/home/dcuser/pan_workshop/results/pangenome/get_homologues/data_gbks/Streptococcus_agalactiae_A909_prokka.gbk
+Streptococcus_agalactiae_CJB111_prokka	/home/dcuser/pan_workshop/results/pangenome/get_homologues/data_gbks/Streptococcus_agalactiae_CJB111_prokka.gbk
+Streptococcus_agalactiae_COH1_prokka	/home/dcuser/pan_workshop/results/pangenome/get_homologues/data_gbks/Streptococcus_agalactiae_COH1_prokka.gbk
+Streptococcus_agalactiae_H36B_prokka	/home/dcuser/pan_workshop/results/pangenome/get_homologues/data_gbks/Streptococcus_agalactiae_H36B_prokka.gbk
+Streptococcus_agalactiae_NEM316_prokka	/home/dcuser/pan_workshop/results/pangenome/get_homologues/data_gbks/Streptococcus_agalactiae_NEM316_prokka.gbk
+
 ~~~
 {: .output}
 
-Using the organisms list, the annotation of genomes is made with the `annotate` module of PPanGGOLiN.
+Using the organisms list, we can run the `annotate` module of PPanGGOLiN, which will not really annotate the genomes, because they are already annotated, but it will integrate them into it's special `.h5` file that will be 
+used as input and output in all of the steps.
 
 ~~~
 $ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 ~~~
 {: .language-bash}
 
-Now a new directory named `pangenome/`  was created, let's move into it and explore it. PPanGGolin created a special file `pangenome.h5` that will be 
-used as input and output in all of the steps. Since it will be getting enriched we can monitor it's increase in size.
+Now a new directory named `pangenome/`  was created, let's move into it and explore it. PPanGGolin created the `pangenome.h5` that will be getting enriched throughout the processing. Let's monitor it's increase in size.
 ~~~
 $ cd pangenome/
 $ ls -lh
@@ -129,15 +125,11 @@ total 8.9M
 
 ### Gene clustering
 
-PPanGGolin uses by default [MMseqs2](https://github.com/soedinglab/MMseqs2) to run the clustering in all the proteins. You can adjust 
-the clustering parameters adding the flags `--mode`, `--coverage`(default 0.8) `--identity`(default 0.8) to the command.
+PPanGGolin uses by default [MMseqs2](https://github.com/soedinglab/MMseqs2) but we will provide the clusters that Get_Homologues found. For this, it is mandatory that in the `annotate` step we provided GBK files, not FASTA files. 
 
-If you provided your annotations in the preovious step you can also provide clusters made previously with a different program 
-with the `--clusters` option. 
-
-We will use the default parameters.
+For this we only need the `gene_families.tsv` that we made in the previous episode. PPanGGOLiN will use this to know which genes belong to which families and build the pangenome from that. 
 ~~~
-$ ppanggolin cluster --pangenome pangenome.h5 --cpu 8
+$ ppanggolin cluster -p pangenome.h5 --clusters ../../get_homologues/gene_families.tsv --cpu 8
 ~~~
 {: .language-bash}
 
