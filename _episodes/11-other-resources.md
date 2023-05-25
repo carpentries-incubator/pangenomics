@@ -24,15 +24,15 @@ At this point, we already have learnt about how to build a pangenome. We have a 
 Preferable, we can also have a metadata file that includes phenotypic features related to each one of our samples. For example, year of isolation, geographic origin of the sample, host, drug-resistance profile, serotype or lineage, etc. With all of this information, there exists a great number of downstream analysis we can conduct on a pangenome. In one hand, we can focus on the *core genome* which can be useful to reconstruct phylogenetic trees, design of molecular diagnostic tools or vaccines, among others. On the other hand, we can conduct comparative genomic analysis using the *accessory genome* to describe differences between subsets of samples in our dataset thath might be related with some specific traits   
 Here we want to mention some of them:
 
-# Genetic Variation Analysis
+### Genetic Variation Analysis
 
-# Functional Annotation
+### Functional Annotation
 
-# Pan-GWAS Analysis
+### Pan-GWAS Analysis
 
-# Accesory Genome Clustering
+### Clustering analysis of the accesory genome
 
-# Benchmarking for Orthologs Predictions
+### Benchmarking for Orthologs Predictions
 
 In addition, you might be interested in evaluate the quality of your results regarding the methodology used to identify the ortholog genes. For that specific task, you can explore the website of [**Orthology Benchmarking**](https://orthology.benchmarkservice.org/), which shows you a pre-processed benchmarking analysis of several methodologies ranked for their efficiency to identify real orthologs (recal) and also gives you the opportunity to evaluate your own methods and results. 
 
@@ -44,7 +44,7 @@ Find more information about how to submit your own data in:
 Brigitte Boeckmann and others, Conceptual framework and pilot study to benchmark phylogenomic databases based on reference gene trees, Briefings in Bioinformatics, Volume 12, Issue 5, September 2011, Pages 423–435, https://doi.org/10.1093/bib/bbr034
 
 
-# OrthoVenn3
+### OrthoVenn3
 
 
 
