@@ -470,7 +470,7 @@ families_bdbh
 Finaly, we will export to a csv file.
 
 ~~~
-familias_bdbh.to_csv('~/pan_workshop/results/blast/mini/familias_minis.csv')
+families_bdbh.to_csv('~/pan_workshop/results/blast/mini/families_minis.csv')
 ~~~
 {: .language-python}
 
