@@ -81,8 +81,17 @@ Adding sequences from FASTA; added 43 sequences in 0.00112104 seconds.
 Finally, we need to run the blastp.
 ~~~
 blastp -query ~/pan_workshop/results/blast/mini/mini-genomes.faa -db ~/pan_workshop/results/blast/mini/database/mini-genomes -outfmt "6" > ~/pan_workshop/results/blast/mini/output-blast/mini-genomes.blast
+head mini-genomes.blast
 ~~~
 {: .language-bash}
+
+~~~
+2603V|GBPINHCM_01420    NEM316|AOGPFIKH_01528   100.000 90      0       0       1       90      1       90      4.11e-67        187
+2603V|GBPINHCM_01420    A909|MGIDGNCP_01408     100.000 90      0       0       1       90      1       90      4.11e-67        187
+2603V|GBPINHCM_01420    515|LHMFJANI_01310      100.000 90      0       0       1       90      1       90      4.11e-67        187
+2603V|GBPINHCM_01420    2603V|GBPINHCM_01420    100.000 90      0       0       1       90      1       90      4.11e-67        187
+~~~
+{: .output}
 
 ## Explore blast matrix
 
