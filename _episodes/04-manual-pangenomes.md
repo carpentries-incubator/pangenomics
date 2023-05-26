@@ -42,7 +42,7 @@ head Streptococcus_agalactiae_A909_mini.faa
 ~~~
 >A909|MGIDGNCP_01408 30S ribosomal protein S16
 ~~~
-{: .language-python}
+{: .output}
 
 Now, we need to create one data set with all files `.faa`.
 
