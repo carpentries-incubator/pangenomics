@@ -174,7 +174,7 @@ $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 
 For a first glimpse of our pangenome we can obtain the summary statistics with the command `ppanggolin info`.
 ~~~
-ppanggolin info -p pangenome.h5 --content
+$ ppanggolin info -p pangenome.h5 --content
 ~~~
 {: .language-bash}
 ~~~
@@ -196,11 +196,11 @@ With the `ppanggolin write` command you can extract many text files and tables w
 use all of the flags that will give us basic information of our analysis. And then see what was generated.
 
 ~~~
-ppanggolin write -p pangenome.h5 --output files --stats --csv --Rtab --partitions --projection --families_tsv
+$ ppanggolin write -p pangenome.h5 --output files --stats --csv --Rtab --partitions --projection --families_tsv
 ~~~
 {: .language-bash}
 ~~~
-tree
+$ tree
 ~~~
 {: .language-bash}
 ~~~
@@ -232,7 +232,7 @@ tree
 │       └── Streptococcus_agalactiae_NEM316_prokka.tsv
 └── pangenome.h5
 ~~~
-{: .language-bash}
+{: .output}
 
 > ## Exercise 1: PPanGGolin results.
 > Go to small groups (if you are learning at a Workshop) and explore one result file or set of result files to see what information they are giving you. 
@@ -262,7 +262,7 @@ $ ppanggolin draw --pangenome pangenome.h5 --output plots --ucurve --tile_plot
 ~~~
 {: .language-bash}
 ~~~
-tree plots
+$ tree plots/
 ~~~
 {: .language-bash}
 ~~~
@@ -334,14 +334,14 @@ To view the interactive graph we will use the software **gephi**.
 > > ## Linux
 > > Go to the directory where you downloaded the program and type:
 > > ~~~
-> > ./gephi-0.10.1/bin/gephi
+> > $ ./gephi-0.10.1/bin/gephi
 > > ~~~
 > > {: .language-bash}  
 > > If you do not see the graph properly you may have problems with the video driver. Open it this way instead:  
 > > ~~~
-> >  LIBGL_ALWAYS_SOFTWARE=1 ./gephi-0.10.1/bin/gephi
-> >  ~~~
-> >  {: .language-bash}  
+> > $ LIBGL_ALWAYS_SOFTWARE=1 ./gephi-0.10.1/bin/gephi
+> > ~~~
+> > {: .language-bash}  
 > {: .solution}
 > 
 > > ## Windows and Mac
