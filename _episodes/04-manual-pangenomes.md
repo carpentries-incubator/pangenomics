@@ -23,8 +23,23 @@ In the folder `anottated/mini` you have the 4 reduced genomes. Fist we need to p
 ~~~
 cd ~/pan_workshop/results/annotated/mini/
 ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); sed -i "s/\s*>/>${name}|/" $line; done
+head Streptococcus_agalactiae_A909_mini.faa
 ~~~
 {: .language-bash}
+
+~~~
+>A909|MGIDGNCP_01408 30S ribosomal protein S16
+MAVKIRLTRMGSKKKPFYRINVADSRAPRDGRFIETVGTYNPLVAENQVTIKEERVLEWL
+SKGAQPSDTVRNLLSKAGVMTKFHDQKFSK
+>A909|MGIDGNCP_00096 50S ribosomal protein L16
+MLVPKRVKHRREFRGKMRGEAKGGKEVSFGEYGLQATTSHWITNRQIEAARIAMTRYMKR
+GGKVWIKIFPHKSYTAKAIGVRMGSGKGAPEGWVAPVKRGKVMFEIAGVSEEVAREALRL
+ASHKLPVKCKFVKREAE
+>A909|MGIDGNCP_01343 Replication protein RepB
+MSKDKRSNKWAFLLYQESVPKNYLEVLEELHIPFVLSPWHDKDVNKETGEFKKAHKHGAL
+FFESLKSYSQVSELLTKHLNTPSHVEVIMSPKGMYDYFIHAENPDKTLYDINDIESGCGF
+~~~
+{: .language-python}
 
 Now, we need to create one data set with all files `.faa`.
 
