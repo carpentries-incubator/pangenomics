@@ -209,7 +209,7 @@ genomes_sizes = pd.DataFrame(genome_temp, columns=['Genome'])
 genomes_sizes['Size']=size_genome
 
 genome_sizes_df = genomes_sizes.sort_values('Size', ascending=False)
-genomes_sizes_df
+genome_sizes_df
 ~~~
 {: .language-python}
 
@@ -221,8 +221,7 @@ genomes_sizes_df
 | 3	| NEM316 |	10 |
 
 ~~~
-genomes_df=genomes_sizes_df['Genoma']
-genomes=genomes_sizes_df.tolist()
+genomes=genome_sizes_df['Genome'].tolist()
 genomes
 ~~~
 {: .language-python}
@@ -246,12 +245,11 @@ This algorithm identify homologous DNA sequences between pairs of genomes. We ne
 We will use two function, one to obtain the best hit for a fixed genome (the biggest) and other to otain the bidirectional best-hits.
 
 ~~~
-def besthit(gen,genome,data)
+def besthit(gen,genome,data):
     # gen: a fixed gen in the list of unique genes
     # genome: the genome in which we will look the best hit
     # df: the data frame with the evalues
-    
-    filtro=(data['qseqid']==gen) & (data['Genome2']==genome & (data['Genome1']!=genome
+    filtro=(data['qseqid']==gen) & (data['Genome2']==genome) & (data['Genome1']!=genome)
     if (len(data[filtro]) == 0 ):
         gen_besthit = "NA"
     else:
@@ -311,8 +309,19 @@ family_A909
 
 In this step, we have all the families that contain one gene from the biggest genome. The following step is repeat this for the second biggest genome but before we need to remove from the `genes` list the genes that appears in the families that we obtained.
 
+
+~~~
+lista=[]
+for elemt in g_A909_bdbh.keys():
+    lista.append(elemt)
+    for aaa in g_A909_bdbh[elemt]:
+        lista.append(aaa)
+~~~
+{: .language-python}
+
 ~~~
 genes2=genes
+genes2=genes2.tolist()
 genesremove=pd.unique(lista).tolist()
 genesremove.remove('NA')
 for a in genesremove:
@@ -331,7 +340,7 @@ For this 4 genes we will repeat the algorithm. First, we create the list with th
 
 ~~~
 genome_2603V=[]
-for i in range(len(genes)):
+for i in range(len(genes2)):
     if "2603V" in genes2[i]:
         gen = genes2[i]
         genome_2603V.append(gen)
@@ -351,7 +360,7 @@ g_2603V_bdbh
 We create the data frame.
 
 ~~~
-family_2603V=pd.DataFrame(g_2603V_bdhh).transpose()
+family_2603V=pd.DataFrame(g_2603V_bdbh).transpose()
 family_2603V.columns = ['g_A909','g_2603V','g_515','g_NEM316']
 family_2603V.g_2603V = family_2603V.index
 family_2603V
@@ -375,7 +384,7 @@ genes2
 
 ~~~
 genome_515=[]
-for i in range(len(genes)):
+for i in range(len(genes2)):
     if "515" in genes2[i]:
         gen = genes2[i]
         genome_515.append(gen)
@@ -385,7 +394,7 @@ genome_515
 {: .language-python}
 
 ~~~
-g_515_bdbh=besthit_bdh(genome_515,genomes,genomes[2],df)
+g_515_bdbh=besthit_bdbh(genome_515,genomes,genomes[2],df)
 g_515_bdbh
 ~~~
 {: .language-python}
