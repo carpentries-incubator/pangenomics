@@ -137,18 +137,6 @@ blastE.head()
 ~~~
 {: .output}
 
-
-|	 |qseqid	|sseqid	|evalue|
-|-----|------|------|------|
-|0	| `2603V|GBPINHCM_01420`	| `NEM316|AOGPFIKH_01528`	| 4.110000e-67 |
-|1	| `2603V|GBPINHCM_01420`	| `A909|MGIDGNCP_01408`	| 4.110000e-67 |
-|2 |	`2603V|GBPINHCM_01420` |	`515|LHMFJANI_01310` |	4.110000e-67 |
-|3 |	`2603V|GBPINHCM_01420` |	`2603V|GBPINHCM_01420` |	4.110000e-67 |
-|4 |	`2603V|GBPINHCM_01420` |	`A909|MGIDGNCP_01082`	| 1.600000e+00 |
-|...|	...	|...	|...|
-|389	| `NEM316|AOGPFIKH_00403`	| `A909|MGIDGNCP_01343`	 | 6.700000e+00 |
-
-
 We will modify this data frame to obtain two new columns, one for the genomes of the `qseqid` gene and one for the `sseqid` gene. First, we obtain the genome of each gene in the `qseqid`.
 
 ~~~
@@ -184,19 +172,21 @@ df = dfqseqid
 df['Genome2']=dfsseqid['Genome2']
 df['sseqid']=sseqid
 df['evalue']=evalue
-df
+df.head()
 ~~~
 {: .language-python}
 
-| 	| Genome1	| qseqid	| Genome2	| sseqid	| evalue |
-|-----|------|------|------|-------|-------|
-|0	|2603V	| `2603V|GBPINHCM_01420`	| NEM316	| `NEM316|AOGPFIKH_01528`	| 4.110000e-67 |
-|1	|2603V	| `2603V|GBPINHCM_01420`	| A909	| `A909|MGIDGNCP_01408`	| 4.110000e-67 |
-|2	|2603V	| `2603V|GBPINHCM_01420`	| 515	| `515|LHMFJANI_01310`	| 4.110000e-67 |
-|3	|2603V	| `2603V|GBPINHCM_01420`	| 2603V	| `2603V|GBPINHCM_01420`	| 4.110000e-67 |
-|4	|2603V	| `2603V|GBPINHCM_01420`	| A909	| `A909|MGIDGNCP_01082`	| 1.600000e+00 |
-|...	|...	| ...	|...	|...	|...|
-|389	|NEM316	| `NEM316|AOGPFIKH_00403`	| A909	| `A909|MGIDGNCP_01343`	| 6.700000e+00 |
+
+~~~
+
+  Genome1	qseqid	Genome2	sseqid	evalue
+0	2603V	2603V|GBPINHCM_01420	NEM316	NEM316|AOGPFIKH_01528	4.110000e-67
+1	2603V	2603V|GBPINHCM_01420	A909	A909|MGIDGNCP_01408	4.110000e-67
+2	2603V	2603V|GBPINHCM_01420	515	515|LHMFJANI_01310	4.110000e-67
+3	2603V	2603V|GBPINHCM_01420	2603V	2603V|GBPINHCM_01420	4.110000e-67
+4	2603V	2603V|GBPINHCM_01420	A909	A909|MGIDGNCP_01082	1.600000e+00
+~~~
+{: .output}
 
 We want a list of the unique genes in our dataset.
 ~~~
@@ -208,19 +198,12 @@ genes = pd.unique(np.append(qseqid_unique, sseqid_unique))
 
 We can check that we only have 43 genes with `len(genes)`.
 
-We will fix the evalue that we will use to form the families.
-~~~
-evalue= 1e-5
-~~~
-{: .language-python}
- 
 Now, we want to know what is the biggest genome to make the comparisions. In this case we wil chose the one with more genes, that happen to be the A909.  
 First, we compute the unique genomes.
 
 ~~~
 genomes=pd.unique(df['Genome1'])
 genomes=list(genomes)
-genomes
 ~~~
 {: .language-python}
 
@@ -256,12 +239,14 @@ genome_sizes_df
 ~~~
 {: .language-python}
 
-| 	| Genome	| Size |
-|------|--------|--------|
-| 2	| A909 |	12 |
-| 0	| 2603V |	11 |
-| 1	| 515 |	10 |
-| 3	| NEM316 |	10 |
+~~~
+Genome	Size
+2	A909	12
+0	2603V	11
+1	515	10
+3	NEM316	10
+~~~
+{: .output}
 
 ~~~
 genomes=genome_sizes_df['Genome'].tolist()
@@ -346,9 +331,19 @@ We can convert this dicctionary to a data frame.
 family_A909=pd.DataFrame(g_A909_bdbh).transpose()
 family_A909.columns = ['g_A909','g_2603V','g_515','g_NEM316']
 family_A909.g_A909 = family_A909.index
-family_A909
+family_A909.head()
 ~~~
 {: .language-python}
+
+~~~
+                      g_A909	g_2603V	g_515	g_NEM316
+A909|MGIDGNCP_01408	A909|MGIDGNCP_01408	2603V|GBPINHCM_01420	515|LHMFJANI_01310	NEM316|AOGPFIKH_01528
+A909|MGIDGNCP_00096	A909|MGIDGNCP_00096	2603V|GBPINHCM_00097	515|LHMFJANI_00097	NEM316|AOGPFIKH_00098
+A909|MGIDGNCP_01343	A909|MGIDGNCP_01343	NA	NA	NEM316|AOGPFIKH_01415
+A909|MGIDGNCP_01221	A909|MGIDGNCP_01221	NA	515|LHMFJANI_01130	NA
+A909|MGIDGNCP_01268	A909|MGIDGNCP_01268	2603V|GBPINHCM_01231	515|LHMFJANI_01178	NEM316|AOGPFIKH_01341
+~~~
+{: .output}
 
 In this step, we have all the families that contain one gene from the biggest genome. The following step is repeat this for the second biggest genome but before we need to remove from the `genes` list the genes that appears in the families that we obtained.
 
@@ -406,9 +401,16 @@ We create the data frame.
 family_2603V=pd.DataFrame(g_2603V_bdbh).transpose()
 family_2603V.columns = ['g_A909','g_2603V','g_515','g_NEM316']
 family_2603V.g_2603V = family_2603V.index
-family_2603V
+family_2603V.head()
 ~~~
 {: .language-python}
+
+~~~
+                      g_A909	g_2603V	g_515	g_NEM316
+2603V|GBPINHCM_00748	NA	2603V|GBPINHCM_00748	NA	NA
+2603V|GBPINHCM_01226	NA	2603V|GBPINHCM_01226	NA	NA
+~~~
+{: .output}
 
 Again, we eliminated the genes from the last list and repeat the algorithm.
 
@@ -446,9 +448,15 @@ g_515_bdbh
 family_515=pd.DataFrame(g_515_bdbh).transpose()
 family_515.columns = ['g_A909','g_2603V','g_515','g_NEM316']
 family_515.g_515 = family_515.index
-family_515
+family_515.head()
 ~~~
 {: .language-python}
+
+~~~
+                    g_A909	g_2603V	g_515	g_NEM316
+515|LHMFJANI_01625	NA	NA	515|LHMFJANI_01625	NEM316|AOGPFIKH_01842
+~~~
+{: .output}
 
 
 As in this last step we use all the genes, then we finish our algorithm. We will only create a final data frame.
@@ -456,27 +464,20 @@ As in this last step we use all the genes, then we finish our algorithm. We will
 ~~~
 families_bdbh=pd.concat([family_A909,family_2603V,family_515])
 families_bdbh.to_csv('families_bdbh.csv')
-families_bdbh
+families_bdbh.head()
 ~~~
 {: .language-python}
 
-| Family_id | g_A909	| g_2603V |	g_515	| g_NEM316 |
-|----|----|----|----|----|
-| `A909|MGIDGNCP_01408` |	`A909|MGIDGNCP_01408`	| `2603V|GBPINHCM_01420` |	`515|LHMFJANI_01310`	| `NEM316|AOGPFIKH_01528` |
-| `A909|MGIDGNCP_00096`	| `A909|MGIDGNCP_00096` |	`2603V|GBPINHCM_00097` | `515|LHMFJANI_00097` |	`NEM316|AOGPFIKH_00098` |
-| `A909|MGIDGNCP_01343`	| `A909|MGIDGNCP_01343`	| NA |	NA | `NEM316|AOGPFIKH_01415` |
-| `A909|MGIDGNCP_01221`	| `A909|MGIDGNCP_01221`	| NA	| `515|LHMFJANI_01130`	| NA |
-| `A909|MGIDGNCP_01268` |	`A909|MGIDGNCP_01268` |	`2603V|GBPINHCM_01231` | `515|LHMFJANI_01178`	| `NEM316|AOGPFIKH_01341` |
-| `A909|MGIDGNCP_00580` |	`A909|MGIDGNCP_00580` |	`2603V|GBPINHCM_00554`	| `515|LHMFJANI_00548` |	`NEM316|AOGPFIKH_00621` |
-| `A909|MGIDGNCP_00352` |	`A909|MGIDGNCP_00352` |	`2603V|GBPINHCM_00348` |	`515|LHMFJANI_00342` |	`NEM316|AOGPFIKH_00350` |
-| `A909|MGIDGNCP_00064` |	`A909|MGIDGNCP_00064` |	`2603V|GBPINHCM_00065` |	`515|LHMFJANI_00064` |	`NEM316|AOGPFIKH_00065` |
-| `A909|MGIDGNCP_00627` |	`A909|MGIDGNCP_00627` |	NA	| NA	| NA |
-| `A909|MGIDGNCP_01082` |	`A909|MGIDGNCP_01082` |	`2603V|GBPINHCM_01042` | NA | NA |
-| `A909|MGIDGNCP_00877` |	`A909|MGIDGNCP_00877`	| `2603V|GBPINHCM_00815` | `515|LHMFJANI_00781`	| `NEM316|AOGPFIKH_00855` |
-| `A909|MGIDGNCP_00405` |	`A909|MGIDGNCP_00405`	| `2603V|GBPINHCM_00401` | `515|LHMFJANI_00394` | `NEM316|AOGPFIKH_00403` |
-| `2603V|GBPINHCM_00748` |	NA |	`2603V|GBPINHCM_00748` |	NA | NA |
-| `2603V|GBPINHCM_01226` |	NA	| `2603V|GBPINHCM_01226` |	NA |NA |
-| `515|LHMFJANI_01625` |	NA |	NA | `515|LHMFJANI_01625`	| `NEM316|AOGPFIKH_01842` |
+~~~
+	                  g_A909	              g_2603V	              g_515	              g_NEM316
+A909|MGIDGNCP_01408	A909|MGIDGNCP_01408	2603V|GBPINHCM_01420	515|LHMFJANI_01310	NEM316|AOGPFIKH_01528
+A909|MGIDGNCP_00096	A909|MGIDGNCP_00096	2603V|GBPINHCM_00097	515|LHMFJANI_00097	NEM316|AOGPFIKH_00098
+A909|MGIDGNCP_01343	A909|MGIDGNCP_01343	NA	NA	NEM316|AOGPFIKH_01415
+A909|MGIDGNCP_01221	A909|MGIDGNCP_01221	NA	515|LHMFJANI_01130	NA
+A909|MGIDGNCP_01268	A909|MGIDGNCP_01268	2603V|GBPINHCM_01231	515|LHMFJANI_01178	NEM316|AOGPFIKH_01341
+~~~
+{: .output}
+
 
 Finaly, we will export to a csv file.
 
@@ -534,57 +535,14 @@ done
 30S     515|LHMFJANI_01310      A909|MGIDGNCP_01408
 30S     A909|MGIDGNCP_01408     A909|MGIDGNCP_01408
 30S     NEM316|AOGPFIKH_01528   A909|MGIDGNCP_01408
-
-50S     2603V|GBPINHCM_00097    A909|MGIDGNCP_00096
-50S     515|LHMFJANI_00097      A909|MGIDGNCP_00096
-50S     A909|MGIDGNCP_00096     A909|MGIDGNCP_00096
-50S     NEM316|AOGPFIKH_00098   A909|MGIDGNCP_00096
-
-bifunctional    A909|MGIDGNCP_00627     A909|MGIDGNCP_00627
-
-Glutamate       2603V|GBPINHCM_00348    A909|MGIDGNCP_00352
-Glutamate       515|LHMFJANI_00342      A909|MGIDGNCP_00352
-Glutamate       A909|MGIDGNCP_00352     A909|MGIDGNCP_00352
-Glutamate       NEM316|AOGPFIKH_00350   A909|MGIDGNCP_00352
-
-Glycine 515|LHMFJANI_01130      A909|MGIDGNCP_01221
-Glycine A909|MGIDGNCP_01221     A909|MGIDGNCP_01221
-
+...
 glycosyltransferase     2603V|GBPINHCM_01231    A909|MGIDGNCP_01268
 glycosyltransferase     515|LHMFJANI_01178      A909|MGIDGNCP_01268
 glycosyltransferase     A909|MGIDGNCP_01268     A909|MGIDGNCP_01268
 glycosyltransferase     NEM316|AOGPFIKH_01341   A909|MGIDGNCP_01268
 
 Glycosyltransferase     2603V|GBPINHCM_01226    2603V|GBPINHCM_01226
-
-peptidase       2603V|GBPINHCM_00815    A909|MGIDGNCP_00877
-peptidase       515|LHMFJANI_00781      A909|MGIDGNCP_00877
-peptidase       A909|MGIDGNCP_00877     A909|MGIDGNCP_00877
-peptidase       NEM316|AOGPFIKH_00855   A909|MGIDGNCP_00877
-
-Periplasmic     2603V|GBPINHCM_01042    A909|MGIDGNCP_01082
-Periplasmic     A909|MGIDGNCP_01082     A909|MGIDGNCP_01082
-
-PII-type        2603V|GBPINHCM_00748    2603V|GBPINHCM_00748
-
-Putative        2603V|GBPINHCM_00065    A909|MGIDGNCP_00064
-Putative        515|LHMFJANI_00064      A909|MGIDGNCP_00064
-Putative        A909|MGIDGNCP_00064     A909|MGIDGNCP_00064
-Putative        NEM316|AOGPFIKH_00065   A909|MGIDGNCP_00064
-
-Replication     A909|MGIDGNCP_01343     A909|MGIDGNCP_01343
-Replication     NEM316|AOGPFIKH_01415   A909|MGIDGNCP_01343
-
-Ribosome        2603V|GBPINHCM_00401    A909|MGIDGNCP_00405
-Ribosome        515|LHMFJANI_00394      A909|MGIDGNCP_00405
-Ribosome        A909|MGIDGNCP_00405     A909|MGIDGNCP_00405
-Ribosome        NEM316|AOGPFIKH_00403   A909|MGIDGNCP_00405
-
-UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) 2603V|GBPINHCM_00554    A909|MGIDGNCP_00580
-UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) 515|LHMFJANI_00548      A909|MGIDGNCP_00580
-UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) A909|MGIDGNCP_00580     A909|MGIDGNCP_00580
-UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) NEM316|AOGPFIKH_00621   A909|MGIDGNCP_00580
-
+...
 Vitamin 515|LHMFJANI_01625      515|LHMFJANI_01625
 Vitamin NEM316|AOGPFIKH_01842   515|LHMFJANI_01625
 ~~~
