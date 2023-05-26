@@ -21,8 +21,8 @@ We are going to practice with four fasta files with reduced genomes from A909, 2
 In the folder `anottated/mini` you have the 4 reduced genomes. Fist we need to put a label on each gene that tells us which genome it is from, this will be important later.  For that you need to run the following. If we explore our genomes, each gene do not say from which genome it belongs.
 
 ~~~
-cd ~/pan_workshop/results/annotated/mini/
-head -n1 Streptococcus_agalactiae_A909_mini.faa
+$ cd ~/pan_workshop/data/annotated_mini/
+$ head -n1 Streptococcus_agalactiae_A909_mini.faa
 ~~~
 {: .langauge-bash}
 
@@ -34,8 +34,13 @@ head -n1 Streptococcus_agalactiae_A909_mini.faa
 If we run the following, we will put a label in each gene that says from which genome it belongs.
 
 ~~~
-ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); sed -i "s/\s*>/>${name}|/" $line; done
-head Streptococcus_agalactiae_A909_mini.faa
+$ ls *.faa | while read line
+do 
+name=$(echo $line | cut -d'_' -f3) 
+sed -i "s/\s*>/>${name}|/" $line 
+done
+
+$ head Streptococcus_agalactiae_A909_mini.faa
 ~~~
 {: .language-bash}
 
@@ -47,30 +52,30 @@ head Streptococcus_agalactiae_A909_mini.faa
 Now, we need to create one data set with all files `.faa`.
 
 ~~~
-cat ~/pan_workshop/results/annotated/mini/*.faa > mini-genomes.faa
+$ cat *.faa > mini-genomes.faa
 ~~~
 {: .language-bash}
 
 We will create the folders to make the blast dataset and to run blastp. Also we move the file `mini-genomes.faa` to this new directory.
 
 ~~~
-mkdir -p ~/pan_workshop/results/blast/mini/output-blast/
-mkdir -p ~/pan_workshop/results/blast/mini/database/
-mv ~/pan_workshop/results/annotated/mini/mini-genomes.faa ~/pan_workshop/results/blast/mini/.
-cd ~/pan_workshop/results/blast/mini/
+$ mkdir -p ~/pan_workshop/results/blast/mini/output-blast/
+$ mkdir -p ~/pan_workshop/results/blast/mini/database/
+$ mv mini-genomes.faa ~/pan_workshop/results/blast/mini/.
+$ cd ~/pan_workshop/results/blast/mini/
 ~~~
 {: .language-bash}
 
 Make the BLAST database.
 ~~~
-makeblastdb -in ~/pan_workshop/results/blast/mini/mini-genomes.faa -dbtype prot -out ~/pan_workshop/results/blast/mini/database/mini-genomes 
+$ makeblastdb -in mini-genomes.faa -dbtype prot -out database/mini-genomes 
 ~~~
 {: .language-bash}
 
 ~~~
 Building a new DB, current time: 05/23/2023 21:26:31
-New DB name:   /home/haydee/pan_workshop/results/blast/mini/database/mini-genomes
-New DB title:  /home/haydee/pan_workshop/results/blast/mini/mini-genomes.faa
+New DB name:   /home/dcuser/pan_workshop/results/blast/mini/database/mini-genomes
+New DB title:  /home/dcuser/pan_workshop/results/blast/mini/mini-genomes.faa
 Sequence type: Protein
 Keep MBits: T
 Maximum file size: 1000000000B
@@ -80,8 +85,8 @@ Adding sequences from FASTA; added 43 sequences in 0.00112104 seconds.
 
 Finally, we need to run the blastp.
 ~~~
-blastp -query ~/pan_workshop/results/blast/mini/mini-genomes.faa -db ~/pan_workshop/results/blast/mini/database/mini-genomes -outfmt "6" > ~/pan_workshop/results/blast/mini/output-blast/mini-genomes.blast
-head mini-genomes.blast
+$ blastp -query mini-genomes.faa -db database/mini-genomes -outfmt "6" > output-blast/mini-genomes.blast
+$ head mini-genomes.blast
 ~~~
 {: .language-bash}
 
