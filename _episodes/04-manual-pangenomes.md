@@ -145,8 +145,8 @@ df
 ~~~
 {: .language-python}
 
-|	|Genome1	|qseqid	|Genome2	|sseqid	|evalue|
-|....|.....|.....|.....|.....|......|
+| 	| Genome1	| qseqid	| Genome2	| sseqid	| evalue |
+|......|......|......|......|......|.......|
 |0	|2603V	| 2603V|GBPINHCM_01420	| NEM316	| NEM316|AOGPFIKH_01528	| 4.110000e-67 |
 |1	|2603V	| 2603V|GBPINHCM_01420	| A909	| A909|MGIDGNCP_01408	| 4.110000e-67 |
 |2	|2603V	| 2603V|GBPINHCM_01420	| 515	| 515|LHMFJANI_01310	| 4.110000e-67 |
@@ -213,7 +213,7 @@ genomes_sizes_df
 ~~~
 {: .language-python}
 
-|	|Genome	| Size |
+| 	| Genome	| Size |
 | 2	| A909 |	12 |
 | 0	| 2603V |	11 |
 | 1	| 515 |	10 |
