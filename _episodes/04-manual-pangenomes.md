@@ -59,7 +59,7 @@ $ cat *.faa > mini-genomes.faa
 We will create the folders to make the blast dataset and to run blastp. Also we move the file `mini-genomes.faa` to this new directory.
 
 ~~~
-$ mkdir -p ~/pan_workshop/results/blast/mini/output-blast/
+$ mkdir -p ~/pan_workshop/results/blast/mini/output_blast/
 $ mkdir -p ~/pan_workshop/results/blast/mini/database/
 $ mv mini-genomes.faa ~/pan_workshop/results/blast/mini/.
 $ cd ~/pan_workshop/results/blast/mini/
@@ -85,8 +85,8 @@ Adding sequences from FASTA; added 43 sequences in 0.00112104 seconds.
 
 Finally, we need to run the blastp.
 ~~~
-$ blastp -query mini-genomes.faa -db database/mini-genomes -outfmt "6" > output-blast/mini-genomes.blast
-$ head -n4 output-blast/mini-genomes.blast
+$ blastp -query mini-genomes.faa -db database/mini-genomes -outfmt "6" > output_blast/mini-genomes.blast
+$ head -n4 output_blast/mini-genomes.blast
 ~~~
 {: .language-bash}
 
