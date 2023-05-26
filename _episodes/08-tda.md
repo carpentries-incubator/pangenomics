@@ -21,8 +21,9 @@ Simple geometric object of any dimension (point, line segment, triangle, tetrahe
 >
 > > ## Simplex
 >>Given a set \\( P=\{p_0,...,p_k\}\subset \mathbb{R}^d \\) of $ k+1 $ affinely independent points, the **k-dimensional simplex** $\sigma$ (or **k-simplex** for short) spanned by $P$ is the set of convez combinatios
+>>
 >> $$ \sum_{i=0}^k\lambda_ip_i, \quad with \quad  \sum_{i=0}^k\lambda_i = 1 \quad \lambda_i \geq 0. $$ 
-
+>>
 >> Inline equation: $$\sum_{i=0}^k\lambda_ip_i, \quad with \quad  \sum_{i=0}^k\lambda_i = 1 \quad \lambda_i \geq 0.$$
 >> 
 >>The points $p_0, ..., p_k$ are called the vertices of $\sigma$.
@@ -96,7 +97,8 @@ The **Vietoris-Rips complex** is constructed from a set of points in a metric sp
 >
 > > ## Cech complex
 >>Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d$, its **Rips complex** of radius $r>0$ is the simplicial complex $R(P,r)$ s.t. $vert(R(P,r))=P$ and
->> $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in R(P,r) \quad iff \quad  \lVert p_{i_j} -p_{i_l}  \rVert  \leq 2r, \forall \leq j,l\leq k $$
+>>
+>> Inline equation: $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in R(P,r) \quad iff \quad  \lVert p_{i_j} -p_{i_l}  \rVert  \leq 2r, \forall \leq j,l\leq k $$
 > > 
 > {: .solution}
 {: .challenge}
@@ -107,7 +109,8 @@ The **Čech complex**, on the other hand, is based on the idea of constructing s
 >
 > > ## Cech complex
 >>Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d$, its **Cech complex** of radius $r>0$ is the simplicial complex $C(P,r)$ s.t. $vert(C(P,r))=P$ and
->> $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in C(P,r) \quad iff \quad \cap_{j=0}^k B(p_{i_j} \neq \emptyset $$
+>>
+>>  Inline equation: $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in C(P,r) \quad iff \quad \cap_{j=0}^k B(p_{i_j} \neq \emptyset $$
 > > 
 > {: .solution}
 {: .challenge}
