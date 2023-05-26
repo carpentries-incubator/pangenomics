@@ -122,9 +122,20 @@ We want to work with the e-values, therefore we select that column.
 
 ~~~
 blastE = pd.DataFrame(blast0,columns=['qseqid','sseqid','evalue'])
-blastE
+blastE.head()
 ~~~
 {: .language-python}
+
+
+~~~
+  qseqid	               sseqid	               evalue
+0	2603V|GBPINHCM_01420	NEM316|AOGPFIKH_01528	4.110000e-67
+1	2603V|GBPINHCM_01420	A909|MGIDGNCP_01408	4.110000e-67
+2	2603V|GBPINHCM_01420	515|LHMFJANI_01310	4.110000e-67
+3	2603V|GBPINHCM_01420	2603V|GBPINHCM_01420	4.110000e-67
+4	2603V|GBPINHCM_01420	A909|MGIDGNCP_01082	1.600000e+00
+~~~
+{: .output}
 
 
 |	 |qseqid	|sseqid	|evalue|
