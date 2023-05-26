@@ -40,7 +40,7 @@ name=$(echo $line | cut -d'_' -f3)
 sed -i "s/\s*>/>${name}|/" $line 
 done
 
-$ head Streptococcus_agalactiae_A909_mini.faa
+$ head -n1 Streptococcus_agalactiae_A909_mini.faa
 ~~~
 {: .language-bash}
 
@@ -86,7 +86,7 @@ Adding sequences from FASTA; added 43 sequences in 0.00112104 seconds.
 Finally, we need to run the blastp.
 ~~~
 $ blastp -query mini-genomes.faa -db database/mini-genomes -outfmt "6" > output-blast/mini-genomes.blast
-$ head mini-genomes.blast
+$ head -n4 output-blast/mini-genomes.blast
 ~~~
 {: .language-bash}
 
