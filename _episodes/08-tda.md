@@ -20,7 +20,7 @@ Simple geometric object of any dimension (point, line segment, triangle, tetrahe
 > ### For Mathematicians
 >
 > > ## Simplex
->>Given a set $ P=\{p_0,...,p_k\}\subset \mathbb{R}^d $ of $ k+1 $ affinely independent points, the **k-dimensional simplex** $\sigma$ (or **k-simplex** for short) spanned by $P$ is the set of convez combinatios
+>>Given a set \\( P=\{p_0,...,p_k\}\subset \mathbb{R}^d \\) of $ k+1 $ affinely independent points, the **k-dimensional simplex** $\sigma$ (or **k-simplex** for short) spanned by $P$ is the set of convez combinatios
 >>$$ \sum_{i=0}^k\lambda_ip_i, \quad with \quad  \sum_{i=0}^k\lambda_i = 1 \quad \lambda_i \geq 0. $$ 
 >> Inline equation: $$\sum_{i=0}^k\lambda_ip_i, \quad with \quad  \sum_{i=0}^k\lambda_i = 1 \quad \lambda_i \geq 0.$$
 >>The points $p_0, ..., p_k$ are called the vertices of $\sigma$.
@@ -38,13 +38,13 @@ Simple geometric object of any dimension (point, line segment, triangle, tetrahe
 ### **Simplicial complex**
 Is a mathematical structure composed of a collection of simple geometric objects called simplices, which is constructed from a set of data. In other word, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements. In this sense, we can think of a simplicial complex as extending the notion of a graph, which is only formed by vertices and edges.
 
-  <a href="../fig/Simplicial_complex_example.svg">
-  <img src="../fig/Simplicial_complex_example.svg" alt="Example Simplicial Complex" />
+  <a href="../fig/Tda_Simplicial_complex_example.svg">
+  <img src="../fig/Tda_Simplicial_complex_example.svg" alt="Example Simplicial Complex" />
 </a>
 
 > ### For Mathematicians
 >
-> > ## Simplex complex
+> > ## Simplicial complex
 >>A simplicial complex $K$ in $ \mathbb{R}^d $ is a collection of simplices s.t:
 >> 1. any face a simplex of $K$ is a simplex of K,
 >> 2. the intesection of any twho simplices of $K$ is ether empty or a common face of both.
@@ -71,7 +71,7 @@ The elements of $K$ are the simplices.
 > Note: Simplicial complexes can be seen at the same time as geometric/topological
 spaces (good for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, good for computations)
 
-  ### **Filtration**
+### **Filtration**
   
 A filtration of a simplicial complex is an ordered sequence of subcomplexes of the original complex, where each subcomplex contains its predecessor in the sequence. In other words, it is a way to decompose the complex into successive stages, where each stage adds or removes simplices compared to the previous stage.
 
