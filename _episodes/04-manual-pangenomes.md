@@ -220,6 +220,18 @@ genomes_sizes_df
 | 1	| 515 |	10 |
 | 3	| NEM316 |	10 |
 
+~~~
+genomes_df=genomes_sizes_df['Genoma']
+genomes=genomes_sizes_df.tolist()
+genomes
+~~~
+{: .language-python}
+
+~~~
+['A909', '2603V', '515', 'NEM316']
+~~~
+{: .output}
+
 So, the biggest genome es `A909` and we will start our algorithm with this genome.
 
 The algorith that we will use is called bidirectional best-hit (BDBH).
@@ -227,6 +239,192 @@ The algorith that we will use is called bidirectional best-hit (BDBH).
 <a href="{{ page.root }}/fig/bdbh.png">
    <img src="{{ page.root }}/fig/bdbh.png" alt=" Bidirectional best-hit algorithm" />
   </a>
+
+
+This algorithm identify homologous DNA sequences between pairs of genomes. We need to find for each gene in the biggest genome the bidirectional best hit in each genome, i.e., the gene that has the smallest evalue with respect to the fixed gene in the biggest genome. 
+
+We will use two function, one to obtain the best hit for a fixed genome (the biggest) and other to otain the bidirectional best-hits.
+
+~~~
+def besthit(gen,genome,data)
+    # gen: a fixed gen in the list of unique genes
+    # genome: the genome in which we will look the best hit
+    # df: the data frame with the evalues
+    
+    filtro=(data['qseqid']==gen) & (data['Genome2']==genome & (data['Genome1']!=genome
+    if (len(data[filtro]) == 0 ):
+        gen_besthit = "NA"
+    else:
+        gen_besthit = data.loc[filtro,'sseqid'].at[data.loc[filtro,'evalue'].idxmin()]
+   
+    return(gen_besthit)
+~~~
+{: .languge-python}
+
+
+~~~
+def besthit_bdbh(gengenome,listgenomes,genome,data):
+    # gengenome: a list with all the genes of the biggest genome.
+    # listgenomes: the list with all the genomes in order.
+    # genome: the genome to which the genes in `gengenome` belongs.
+    # data: the data frame with the evalues.
+    
+    dic_besthits = {}
+    for a in gengenome:
+        temp=[]
+        for b in listgenomes:
+            temp2=besthit(a,b,data)
+            temp3=besthit(temp2,genome,data)
+            if temp3 == a:
+                temp.append(temp2)
+            else:
+                temp.append('NA')
+        dic_besthits[a]=temp
+        
+    return(dic_besthits)
+~~~
+{: .language-python}
+
+In one of the previuos step we create a dicctionary with all the genes associated to each genome, as we know that the biggest genome is `A909` we will obtain the genes that belongs to `A909` and we will almacenated in a list.
+
+~~~
+genome_A909 = dic_gen_genomes['A909']
+~~~
+{: .language-python}
+
+Now, we will apply the function `besthit_bdbh` to the previous list, `genomes` and  the genome `A909` that is `genomes[0]`.
+
+~~~
+g_A909_bdbh=besthit_bdbh(genome_A909,genomes,genomes[0],df)
+~~~
+{: .language-python}
+
+We can convert this dicctionary to a data frame.
+
+~~~
+family_A909=pd.DataFrame(g_A909_bdbh).transpose()
+family_A909.columns = ['g_A909','g_2603V','g_515','g_NEM316']
+family_A909.g_A909 = family_A909.index
+family_A909
+~~~
+{: .language-python}
+
+In this step, we have all the families that contain one gene from the biggest genome. The following step is repeat this for the second biggest genome but before we need to remove from the `genes` list the genes that appears in the families that we obtained.
+
+~~~
+genes2=genes
+genesremove=pd.unique(lista).tolist()
+genesremove.remove('NA')
+for a in genesremove:
+    genes2.remove(a)
+
+genes2
+~~~
+{: .language-python}
+
+~~~
+['2603V|GBPINHCM_00748', '2603V|GBPINHCM_01226', '515|LHMFJANI_01625', 'NEM316|AOGPFIKH_01842']
+~~~
+{: .output}
+
+For this 4 genes we will repeat the algorithm. First, we create the list with the genes that belongs to the second biggest genome `2603V`.
+
+~~~
+genome_2603V=[]
+for i in range(len(genes)):
+    if "2603V" in genes2[i]:
+        gen = genes2[i]
+        genome_2603V.append(gen)
+        
+genome_2603V
+~~~
+{: .language-python}
+
+We apply the function `besthit_bdbh` to this list.
+
+~~~
+g_2603V_bdbh=besthit_bdbh(genome_2603V,genomes,genomes[1],df)
+g_2603V_bdbh
+~~~
+{: .language-python}
+
+We create the data frame.
+
+~~~
+family_2603V=pd.DataFrame(g_2603V_bdhh).transpose()
+family_2603V.columns = ['g_A909','g_2603V','g_515','g_NEM316']
+family_2603V.g_2603V = family_2603V.index
+family_2603V
+~~~
+{: .language-python}
+
+Again, we eliminated the genes from the last list and repeat the algorithm.
+
+~~~
+for a in genome_2603V:
+    genes2.remove(a)
+
+genes2
+~~~
+{: .language-python}
+
+~~~
+['515|LHMFJANI_01625', 'NEM316|AOGPFIKH_01842']
+~~~
+{: .output}
+
+~~~
+genome_515=[]
+for i in range(len(genes)):
+    if "515" in genes2[i]:
+        gen = genes2[i]
+        genome_515.append(gen)
+        
+genome_515
+~~~
+{: .language-python}
+
+~~~
+g_515_bdbh=besthit_bdh(genome_515,genomes,genomes[2],df)
+g_515_bdbh
+~~~
+{: .language-python}
+
+~~~
+family_515=pd.DataFrame(g_515_bdbh).transpose()
+family_515.columns = ['g_A909','g_2603V','g_515','g_NEM316']
+family_515.g_515 = family_515.index
+family_515
+~~~
+{: .language-python}
+
+
+As in this last step we use all the genes, then we finish our algorithm. We will only create a final data frame.
+
+~~~
+families_bdbh=pd.concat([family_A909,family_2603V,family_515])
+families_bdbh.to_csv('families_bdbh.csv')
+families_bdbh
+~~~
+{: .language-python}
+
+| Family_id | g_A909	| g_2603V |	g_515	| g_NEM316 |
+|----|----|----|----|----|
+| `A909|MGIDGNCP_01408` |	`A909|MGIDGNCP_01408`	| `2603V|GBPINHCM_01420` |	`515|LHMFJANI_01310`	| `NEM316|AOGPFIKH_01528` |
+| `A909|MGIDGNCP_00096`	| `A909|MGIDGNCP_00096` |	`2603V|GBPINHCM_00097` | `515|LHMFJANI_00097` |	`NEM316|AOGPFIKH_00098` |
+| `A909|MGIDGNCP_01343`	| `A909|MGIDGNCP_01343`	| NA |	NA | `NEM316|AOGPFIKH_01415` |
+| `A909|MGIDGNCP_01221`	| `A909|MGIDGNCP_01221`	| NA	| `515|LHMFJANI_01130`	| NA |
+| `A909|MGIDGNCP_01268` |	`A909|MGIDGNCP_01268` |	`2603V|GBPINHCM_01231` | `515|LHMFJANI_01178`	| `NEM316|AOGPFIKH_01341` |
+| `A909|MGIDGNCP_00580` |	`A909|MGIDGNCP_00580` |	`2603V|GBPINHCM_00554`	| `515|LHMFJANI_00548` |	`NEM316|AOGPFIKH_00621` |
+| `A909|MGIDGNCP_00352` |	`A909|MGIDGNCP_00352` |	`2603V|GBPINHCM_00348` |	`515|LHMFJANI_00342` |	`NEM316|AOGPFIKH_00350` |
+| `A909|MGIDGNCP_00064` |	`A909|MGIDGNCP_00064` |	`2603V|GBPINHCM_00065` |	`515|LHMFJANI_00064` |	`NEM316|AOGPFIKH_00065` |
+| `A909|MGIDGNCP_00627` |	`A909|MGIDGNCP_00627` |	NA	| NA	| NA |
+| `A909|MGIDGNCP_01082` |	`A909|MGIDGNCP_01082` |	`2603V|GBPINHCM_01042` | NA | NA |
+| `A909|MGIDGNCP_00877` |	`A909|MGIDGNCP_00877`	| `2603V|GBPINHCM_00815` | `515|LHMFJANI_00781`	| `NEM316|AOGPFIKH_00855` |
+| `A909|MGIDGNCP_00405` |	`A909|MGIDGNCP_00405`	| `2603V|GBPINHCM_00401` | `515|LHMFJANI_00394` | `NEM316|AOGPFIKH_00403` |
+| `2603V|GBPINHCM_00748` |	NA |	`2603V|GBPINHCM_00748` |	NA | NA |
+| `2603V|GBPINHCM_01226` |	NA	| `2603V|GBPINHCM_01226` |	NA |NA |
+| `515|LHMFJANI_01625` |	NA |	NA | `515|LHMFJANI_01625`	| `NEM316|AOGPFIKH_01842` |
 
 
 # Count genes in genomes.
@@ -248,21 +446,6 @@ Here we have the functional families provided by prokka for the A909 genome
 >MGIDGNCP_00877 peptidase U32 family protein
 >MGIDGNCP_00405 Ribosome hibernation promotion factor
 ~~~~
-{: .output}
-
-First we select the biggest genome, and in this case we wil chose the one with more genes, that happen to be the A909.  
-~~~
-cd ~/pan_workshop/results/annotated/mini/
-ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); count=$(grep -c $name ~/pan_workshop/results/blast/mini/mini-genomes.faa); echo $count $name; done |sort -nr
-~~~
-{: .language-bash}
-
-~~~
-12 A909
-11 2603V
-10 NEM316
-10 515
-~~~
 {: .output}
 
 
