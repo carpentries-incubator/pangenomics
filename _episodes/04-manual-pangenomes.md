@@ -33,7 +33,7 @@ cat ~/pan_workshop/results/annotated/mini/*.faa > mini-genomes.faa
 ~~~
 {: .language-bash}
 
-We will create the folders to make the blast dataset and to run blastp. Also we move the file `all-genomes.faa` to this new directory.
+We will create the folders to make the blast dataset and to run blastp. Also we move the file `mini-genomes.faa` to this new directory.
 
 ~~~
 mkdir -p ~/pan_workshop/results/blast/mini/output-blast/
