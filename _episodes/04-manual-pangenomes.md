@@ -94,7 +94,7 @@ blastE
 ~~~
 {: .language-python}
 
-~~~
+
 |	 |qseqid	|sseqid	|evalue|
 |-----|------|------|------|
 |0	|2603V|GBPINHCM_01420	| NEM316|AOGPFIKH_01528	| 4.110000e-67 |
@@ -104,8 +104,7 @@ blastE
 |4 |	2603V|GBPINHCM_01420 |	A909|MGIDGNCP_01082	| 1.600000e+00 |
 |...|	...	|...	|...|
 |389	| NEM316|AOGPFIKH_00403	| A909|MGIDGNCP_01343	 | 6.700000e+00 |
-~~~
-{: .output}
+
 
 We will modify this data frame to obtain two new columns, one for the genomes of the `qseqid` gene and one for the `sseqid` gene. First, we obtain the genome of each gene in the `qseqid`.
 
@@ -146,7 +145,6 @@ df
 ~~~
 {: .language-python}
 
-~~~
 |	|Genome1	|qseqid	|Genome2	|sseqid	|evalue|
 |....|.....|.....|.....|.....|......|
 |0	|2603V	| 2603V|GBPINHCM_01420	| NEM316	| NEM316|AOGPFIKH_01528	| 4.110000e-67 |
@@ -156,8 +154,6 @@ df
 |4	|2603V	| 2603V|GBPINHCM_01420	| A909	| A909|MGIDGNCP_01082	| 1.600000e+00 |
 |...	|...	| ...	|...	|...	|...|
 |389	|NEM316	| NEM316|AOGPFIKH_00403	| A909	| A909|MGIDGNCP_01343	| 6.700000e+00 |
-~~~
-{: .output}
 
 We want a list of the unique genes in our dataset.
 ~~~
@@ -217,14 +213,11 @@ genomes_sizes_df
 ~~~
 {: .language-python}
 
-~~~
 |	|Genome	| Size |
 | 2	| A909 |	12 |
 | 0	| 2603V |	11 |
 | 1	| 515 |	10 |
 | 3	| NEM316 |	10 |
-~~~
-{: .output}
 
 So, the biggest genome es `A909` and we will start our algorithm with this genome.
 
