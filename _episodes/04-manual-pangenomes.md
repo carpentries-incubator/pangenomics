@@ -224,7 +224,9 @@ So, the biggest genome es `A909` and we will start our algorithm with this genom
 
 The algorith that we will use is called bidirectional best-hit (BDBH).
 
-
+<a href="{{ page.root }}/fig/bdbh.png">
+   <img src="{{ page.root }}/fig/bdbh.png" alt=" Bidirectional best-hit algorithm" />
+  </a>
 
 
 # Count genes in genomes.
