@@ -18,10 +18,22 @@ keypoints:
 
 We are going to practice with four fasta files with reduced genomes from A909, 2603V, NEM316 and 515. 
 
-In the folder `anottated/mini` you have the 4 reduced genomes. Fist we need to put a label on each gene that tells us which genome it is from, this will be important later.  For that you need to run the following.
+In the folder `anottated/mini` you have the 4 reduced genomes. Fist we need to put a label on each gene that tells us which genome it is from, this will be important later.  For that you need to run the following. If we explore our genomes, each gene do not say from which genome it belongs.
 
 ~~~
 cd ~/pan_workshop/results/annotated/mini/
+head -n1 Streptococcus_agalactiae_A909_mini.faa
+~~~
+{: .langauge-bash}
+
+~~~
+>MGIDGNCP_01408 30S ribosomal protein S16
+~~~
+{: .output}
+
+If we run the following, we will put a label in each gene that says from which genome it belongs.
+
+~~~
 ls *.faa | while read line ; do name=$(echo $line | cut -d'_' -f3); sed -i "s/\s*>/>${name}|/" $line; done
 head Streptococcus_agalactiae_A909_mini.faa
 ~~~
@@ -29,15 +41,6 @@ head Streptococcus_agalactiae_A909_mini.faa
 
 ~~~
 >A909|MGIDGNCP_01408 30S ribosomal protein S16
-MAVKIRLTRMGSKKKPFYRINVADSRAPRDGRFIETVGTYNPLVAENQVTIKEERVLEWL
-SKGAQPSDTVRNLLSKAGVMTKFHDQKFSK
->A909|MGIDGNCP_00096 50S ribosomal protein L16
-MLVPKRVKHRREFRGKMRGEAKGGKEVSFGEYGLQATTSHWITNRQIEAARIAMTRYMKR
-GGKVWIKIFPHKSYTAKAIGVRMGSGKGAPEGWVAPVKRGKVMFEIAGVSEEVAREALRL
-ASHKLPVKCKFVKREAE
->A909|MGIDGNCP_01343 Replication protein RepB
-MSKDKRSNKWAFLLYQESVPKNYLEVLEELHIPFVLSPWHDKDVNKETGEFKKAHKHGAL
-FFESLKSYSQVSELLTKHLNTPSHVEVIMSPKGMYDYFIHAENPDKTLYDINDIESGCGF
 ~~~
 {: .language-python}
 
