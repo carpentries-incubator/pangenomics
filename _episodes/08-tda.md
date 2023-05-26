@@ -156,3 +156,17 @@ Simplicial homology is a technique used to quantify the topological structure of
 
 ## App to play
 <iframe src="https://www.geogebra.org/classic/s7W7zbG4?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+
+
+<script>
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+    }
+  });
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+</script>
