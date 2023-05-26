@@ -25,12 +25,14 @@ Firstly, a focused investigation of the **core genome** offers us the opportunit
 
 Simultaneously, we can harness the power of the **accessory genome** to conduct comparative genomic analyses. This allows us to discern dissimilarities between subsets of samples within our dataset, providing crucial insights into specific traits or characteristics. By identifying genes or genetic variations unique to certain groups of organisms, we can unreveal the genetic basis of their phenotypic diversity, such as drug-resistance profiles, pathogenicity, or virulence levels. 
 
-### Genetic Variation Analysis
-
-
-### Functional Annotation
-
 ### Pan-GWAS Analysis
+
+The Genome-Wide Association Studies (GWAS) represent a strategy to investigate the relationship between genetic variations and phenotypic traits in large populations. Typically, the GWAS process involves i) scanning the entire genomes to look for variations, such as single nucleotide polymorphisms (SNPs) and insertions/deletions (indels); and ii) identifying these variable regions within the genome that are statistically linked to a trait (*p.e.* hearth disease, fruit shape,  and more). Thus, GWAS is a fundamental technique for human and agricultural investigations. However, for prokaryote organisms this strategy is just recently began to be used. 
+
+In Pangenomics, the GWAS strategy could also be applied 
+
+
+
 
 ### Clustering analysis of the accesory genome
 
