@@ -18,7 +18,7 @@ keypoints:
 
 We are going to practice with four fasta files with reduced genomes from A909, 2603V, NEM316 and 515. 
 
-In the folder `anottated/mini` you have the 4 reduced genomes. Fist we need to put a label on each gene that tells us which genome it is from, this will be important later.  For that you need to run the following. If we explore our genomes, each gene do not say from which genome it belongs.
+In the folder `data/annotated_mini` you have the 4 reduced genomes. Fist we need to put a label on each gene that tells us which genome it is from, this will be important later.  For that you need to run the following. If we explore our genomes, each gene do not say from which genome it belongs.
 
 ~~~
 $ cd ~/pan_workshop/data/annotated_mini/
@@ -467,26 +467,109 @@ families_bdbh
 | `2603V|GBPINHCM_01226` |	NA	| `2603V|GBPINHCM_01226` |	NA |NA |
 | `515|LHMFJANI_01625` |	NA |	NA | `515|LHMFJANI_01625`	| `NEM316|AOGPFIKH_01842` |
 
+Finaly, we will export to a csv file.
 
-# Count genes in genomes.
+~~~
+familias_bdbh.to_csv('~/pan_workshop/results/blast/mini/familias_minis.csv')
+~~~
+{: .language-python}
 
-Lets explore the small genomes content. 
+## Explore functional annotation families
 
-Here we have the functional families provided by prokka for the A909 genome
-~~~~
->MGIDGNCP_01408 30S ribosomal protein S16
->MGIDGNCP_00096 50S ribosomal protein L16
->MGIDGNCP_01343 Replication protein RepB
->MGIDGNCP_01221 Glycine betaine transporter OpuD
->MGIDGNCP_01268 glycosyltransferase
->MGIDGNCP_00580 UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) pyrophosphoryl-undecaprenol N-acetylglucosamine transferase
->MGIDGNCP_00352 Glutamate 5-kinase 1
->MGIDGNCP_00064 Putative N-acetylmannosamine-6-phosphate 2-epimerase
->MGIDGNCP_00627 bifunctional DNA primase/polymerase
->MGIDGNCP_01082 Periplasmic murein peptide-binding protein
->MGIDGNCP_00877 peptidase U32 family protein
->MGIDGNCP_00405 Ribosome hibernation promotion factor
-~~~~
+The unique functional families that our mini genomes have are the following.
+
+~~~
+ cat mini-genomes.faa | grep '>' | cut -d' ' -f2,3 | sort | uniq
+~~~
+{: .language-bash}
+
+~~~
+30S ribosomal
+50S ribosomal
+bifunctional DNA
+Glutamate 5-kinase
+Glycine betaine
+glycosyltransferase
+Glycosyltransferase GlyG
+peptidase U32
+Periplasmic murein
+PII-type proteinase
+Putative N-acetylmannosamine-6-phosphate
+Replication protein
+Ribosome hibernation
+UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) pyrophosphoryl-undecaprenol
+Vitamin B12
+~~~
+{: .output}
+
+Now we will look for this functional families in the families that we obtain with the BDBH algorith to see if we recover this functional families.
+
+
+~~~
+$ cat mini-genomes.faa | grep '>' | cut -d' ' -f2 | sort | uniq |while read function;  do grep $function mini-genomes.faa | cut -d' ' -f1 | cut -d'>' -f2 | while read line; do familia=$(grep $line familias_minis.csv| cut -d',' -f1); echo $function$'\t'$line$'\t'$familia; done; done
+~~~
+{: .language-bash}
+
+
+~~~
+30S     2603V|GBPINHCM_01420    A909|MGIDGNCP_01408
+30S     515|LHMFJANI_01310      A909|MGIDGNCP_01408
+30S     A909|MGIDGNCP_01408     A909|MGIDGNCP_01408
+30S     NEM316|AOGPFIKH_01528   A909|MGIDGNCP_01408
+
+50S     2603V|GBPINHCM_00097    A909|MGIDGNCP_00096
+50S     515|LHMFJANI_00097      A909|MGIDGNCP_00096
+50S     A909|MGIDGNCP_00096     A909|MGIDGNCP_00096
+50S     NEM316|AOGPFIKH_00098   A909|MGIDGNCP_00096
+
+bifunctional    A909|MGIDGNCP_00627     A909|MGIDGNCP_00627
+
+Glutamate       2603V|GBPINHCM_00348    A909|MGIDGNCP_00352
+Glutamate       515|LHMFJANI_00342      A909|MGIDGNCP_00352
+Glutamate       A909|MGIDGNCP_00352     A909|MGIDGNCP_00352
+Glutamate       NEM316|AOGPFIKH_00350   A909|MGIDGNCP_00352
+
+Glycine 515|LHMFJANI_01130      A909|MGIDGNCP_01221
+Glycine A909|MGIDGNCP_01221     A909|MGIDGNCP_01221
+
+glycosyltransferase     2603V|GBPINHCM_01231    A909|MGIDGNCP_01268
+glycosyltransferase     515|LHMFJANI_01178      A909|MGIDGNCP_01268
+glycosyltransferase     A909|MGIDGNCP_01268     A909|MGIDGNCP_01268
+glycosyltransferase     NEM316|AOGPFIKH_01341   A909|MGIDGNCP_01268
+
+Glycosyltransferase     2603V|GBPINHCM_01226    2603V|GBPINHCM_01226
+
+peptidase       2603V|GBPINHCM_00815    A909|MGIDGNCP_00877
+peptidase       515|LHMFJANI_00781      A909|MGIDGNCP_00877
+peptidase       A909|MGIDGNCP_00877     A909|MGIDGNCP_00877
+peptidase       NEM316|AOGPFIKH_00855   A909|MGIDGNCP_00877
+
+Periplasmic     2603V|GBPINHCM_01042    A909|MGIDGNCP_01082
+Periplasmic     A909|MGIDGNCP_01082     A909|MGIDGNCP_01082
+
+PII-type        2603V|GBPINHCM_00748    2603V|GBPINHCM_00748
+
+Putative        2603V|GBPINHCM_00065    A909|MGIDGNCP_00064
+Putative        515|LHMFJANI_00064      A909|MGIDGNCP_00064
+Putative        A909|MGIDGNCP_00064     A909|MGIDGNCP_00064
+Putative        NEM316|AOGPFIKH_00065   A909|MGIDGNCP_00064
+
+Replication     A909|MGIDGNCP_01343     A909|MGIDGNCP_01343
+Replication     NEM316|AOGPFIKH_01415   A909|MGIDGNCP_01343
+
+Ribosome        2603V|GBPINHCM_00401    A909|MGIDGNCP_00405
+Ribosome        515|LHMFJANI_00394      A909|MGIDGNCP_00405
+Ribosome        A909|MGIDGNCP_00405     A909|MGIDGNCP_00405
+Ribosome        NEM316|AOGPFIKH_00403   A909|MGIDGNCP_00405
+
+UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) 2603V|GBPINHCM_00554    A909|MGIDGNCP_00580
+UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) 515|LHMFJANI_00548      A909|MGIDGNCP_00580
+UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) A909|MGIDGNCP_00580     A909|MGIDGNCP_00580
+UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) NEM316|AOGPFIKH_00621   A909|MGIDGNCP_00580
+
+Vitamin 515|LHMFJANI_01625      515|LHMFJANI_01625
+Vitamin NEM316|AOGPFIKH_01842   515|LHMFJANI_01625
+~~~
 {: .output}
 
 
