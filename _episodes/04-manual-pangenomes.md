@@ -259,7 +259,7 @@ def besthit(gen,genome,data)
    
     return(gen_besthit)
 ~~~
-{: .languge-python}
+{: .language-python}
 
 
 ~~~
