@@ -506,7 +506,7 @@ Now we will look for this functional families in the families that we obtain wit
 
 
 ~~~
-$ cat mini-genomes.faa | grep '>' | cut -d' ' -f2 | sort | uniq |while read function;  do grep $function mini-genomes.faa | cut -d' ' -f1 | cut -d'>' -f2 | while read line; do familia=$(grep $line familias_minis.csv| cut -d',' -f1); echo $function$'\t'$line$'\t'$familia; done; done
+$ cat mini-genomes.faa | grep '>' | cut -d' ' -f2 | sort | uniq |while read function;  do grep $function mini-genomes.faa | cut -d' ' -f1 | cut -d'>' -f2 | while read line; do family=$(grep $line families_minis.csv| cut -d',' -f1); echo $function$'\t'$line$'\t'$family; done; done
 ~~~
 {: .language-bash}
 
