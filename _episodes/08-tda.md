@@ -130,16 +130,26 @@ Regenerate response
 
 Simplicial homology is a technique used to quantify the topological structure of a simplicial complex. This technique is based on the identification of cycles and voids in the complex, which can be quantified by assigning integer values called "homology degrees". Simplicial homology is often used in topological data analysis to find patterns and structures in the data.
 
+
+**Holes:** Holes are empty regions or connected spaces in a simplicial complex. Simplicial homology allows for the detection and quantification of the presence of holes in the complex.
+
+**Connected Components:** Connected components are sets of simplices in a simplicial complex that are connected to each other through shared simplices. Simplicial homology can identify and count the connected components in the complex.
+
 **Homology degree:** Integer assigned to a cycle or cavity in a simplicial complex using the technique of simplicial homology. The homology degree is used to quantify the "amount" of topological structure present in the complex.
 
-**Cycle:** Topological object that closes in on itself and has no holes. A cycle in a simplicial complex can be represented as a linear combination of simplices.
-
-**Cavity:** Topological object that represents a hole in the simplicial complex. A cavity in a simplicial complex is represented as a linear combination of simplices.
+**Betti Numbers:** Betti numbers are numerical invariants that measure the number of connected components and holes in a simplicial complex. Betti-0 counts the number of connected components, while Betti-1 counts the number of one-dimensional holes.
 
 
  <a href="../fig/Tda_cavida.png">
   <img src="../fig/Tda_cavida.png" alt="Example Cavity" />
 </a>
+
+
+### **Persistence Diagram:**
+ The persistence diagram is a visual representation of the evolution of cycles and cavities in different dimensions as the simplicial complex is modified. It helps understand the persistence and relevance of topological structures in the complex.
+
+### **Barcode Diagram:**
+ The barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars that represent the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
 
 ## App to play
 <iframe src="https://www.geogebra.org/classic/s7W7zbG4?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
