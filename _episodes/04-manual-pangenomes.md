@@ -102,17 +102,20 @@ $ blastp -query mini-genomes.faa -db database/mini-genomes -outfmt "6" > output_
 ~~~
 {: .language-bash}
 Here we asked `blastp` to align the queries to the database and give the result in the format "6", which is a tab separated file with the following fields: 
-|qseqid | Query Seq-id     |
-|sseqid | Subject Seq-id |
-|pident | Percentage of identical matches |
-|length | Alignment length |
-|mismatch | Number of mismatches |
-|gapopen| Start of alignment in query |
-|qend | End of alignment in query |
-|sstart | Start of alignment in subject |
-|send | End of alignment in subject |
-|evalue | Expect value |
-|bitscore |Bit score |
+
+| Field | Meaning |  
+| ----- | ------- |  
+|qseqid | Query Seq-id     |  
+|sseqid | Subject Seq-id |  
+|pident | Percentage of identical matches |  
+|length | Alignment length |  
+|mismatch | Number of mismatches |  
+|gapopen| Start of alignment in query |  
+|qend | End of alignment in query |  
+|sstart | Start of alignment in subject |  
+|send | End of alignment in subject |  
+|evalue | Expect value |  
+|bitscore |Bit score |  
 
 ~~~
 $ head -n4 output_blast/mini-genomes.blast
