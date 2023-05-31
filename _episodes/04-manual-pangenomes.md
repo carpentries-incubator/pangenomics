@@ -14,14 +14,27 @@ keypoints:
 - "Gene families must be clustered according to a distance-treshold "
 ---
 
-## Make blastp
+## Aling the protein sequences to each other with BLASTp
 
-We are going to practice with four fasta files with reduced genomes from A909, 2603V, NEM316 and 515. 
+In the previous episode we annotated all of our genomes and obtained the annotations in different formats, like GFF, GBK and FASTA. 
+Now we want to understand how to go from annotations to a pangenome, so we will use a reduced version of 
+the annotations to make a pangenome step by step, and later on in the lesson we will do this in an automated way with pangneomics software.
 
-In the folder `data/annotated_mini` you have the 4 reduced genomes. Fist we need to put a label on each gene that tells us which genome it is from, this will be important later.  For that you need to run the following. If we explore our genomes, each gene do not say from which genome it belongs.
-
+To be able to do a pangenome "by hand" we will use only some of the protein sequences for these four genomes A909, 2603V, NEM316 and 515. 
+In the folder `data/annotated_mini` you have the 4 reduced genomes in amino acid FASTA format. 
 ~~~
 $ cd ~/pan_workshop/data/annotated_mini/
+$ ls
+~~~
+{: .language-bash}
+~~~
+Streptococcus_agalactiae_2603V_mini.faa  Streptococcus_agalactiae_515_mini.faa  Streptococcus_agalactiae_A909_mini.faa  Streptococcus_agalactiae_NEM316_mini.faa
+~~~
+{: .output}
+
+First we need to put a label on each protein to know to which genome it belongs to, this will be important later. If we explore our annotated genomes, we have amino acid sequences with a header that has the sequence ID and the functional annotation.
+
+~~~
 $ head -n1 Streptococcus_agalactiae_A909_mini.faa
 ~~~
 {: .langauge-bash}
@@ -31,13 +44,13 @@ $ head -n1 Streptococcus_agalactiae_A909_mini.faa
 ~~~
 {: .output}
 
-If we run the following, we will put a label in each gene that says from which genome it belongs.
+If we run the following, we will put a label in each gene that says to which genome it belongs.
 
 ~~~
 $ ls *.faa | while read line
 do 
-name=$(echo $line | cut -d'_' -f3) 
-sed -i "s/\s*>/>${name}|/" $line 
+name=$(echo $line | cut -d'_' -f3) # Take the name of the genome from the file name and remove the file extension.
+sed -i "s/\s*>/>${name}|/" $line # Substitute the symbol > for > followed by the name of the genome and a | symbol.
 done
 
 $ head -n1 Streptococcus_agalactiae_A909_mini.faa
@@ -49,14 +62,14 @@ $ head -n1 Streptococcus_agalactiae_A909_mini.faa
 ~~~
 {: .output}
 
-Now, we need to create one data set with all files `.faa`.
+Now, we need to create one dataset with the sequences from all of our genomes. We will use it to generate a database, which is a set of files that have the information of our FASTA file but in a format that BLAST can use to align the query sequences to sequences in the database.
 
 ~~~
 $ cat *.faa > mini-genomes.faa
 ~~~
 {: .language-bash}
 
-We will create the folders to make the blast dataset and to run blastp. Also we move the file `mini-genomes.faa` to this new directory.
+Now let's create the folders for the BLAST database and for the `blastp` run, and move the new file `mini-genomes.faa` to this new directory.
 
 ~~~
 $ mkdir -p ~/pan_workshop/results/blast/mini/output_blast/
@@ -66,7 +79,7 @@ $ cd ~/pan_workshop/results/blast/mini/
 ~~~
 {: .language-bash}
 
-Make the BLAST database.
+Now we will make the protein database from our FASTA.
 ~~~
 $ makeblastdb -in mini-genomes.faa -dbtype prot -out database/mini-genomes 
 ~~~
@@ -83,13 +96,29 @@ Adding sequences from FASTA; added 43 sequences in 0.00112104 seconds.
 ~~~
 {: .output}
 
-Finally, we need to run the blastp.
+Now that we have all the sequences of all of our genomes in a BLAST database we can align each of the sequences (queries) to the aal of other ones  (subjects) using `blastp`.
 ~~~
 $ blastp -query mini-genomes.faa -db database/mini-genomes -outfmt "6" > output_blast/mini-genomes.blast
-$ head -n4 output_blast/mini-genomes.blast
 ~~~
 {: .language-bash}
+Here we asked `blastp` to align the queries to the database and give the result in the format "6", which is a tab separated file with the following fields: 
+|qseqid | Query Seq-id     |
+|sseqid | Subject Seq-id |
+|pident | Percentage of identical matches |
+|length | Alignment length |
+|mismatch | Number of mismatches |
+|gapopen| Start of alignment in query |
+|qend | End of alignment in query |
+|sstart | Start of alignment in subject |
+|send | End of alignment in subject |
+|evalue | Expect value |
+|bitscore |Bit score |
 
+~~~
+$ head -n4 output_blast/mini-genomes.blast
+~~~
+ {: .language.bash}
+ 
 ~~~
 2603V|GBPINHCM_01420    NEM316|AOGPFIKH_01528   100.000 90      0       0       1       90      1       90      4.11e-67        187
 2603V|GBPINHCM_01420    A909|MGIDGNCP_01408     100.000 90      0       0       1       90      1       90      4.11e-67        187
