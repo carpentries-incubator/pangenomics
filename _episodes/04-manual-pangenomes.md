@@ -18,7 +18,14 @@ keypoints:
 
 In the previous episode we annotated all of our genomes and obtained the annotations in different formats, like GFF, GBK and FASTA. 
 Now we want to understand how to go from annotations to a pangenome, so we will use a reduced version of 
-the annotations to make a pangenome step by step, and later on in the lesson we will do this in an automated way with pangneomics software.
+the annotations to make a pangenome step by step.
+
+To make a pangenome, first we need to know how similar are our sequences from each other, we will do this by aligning each of 
+our sequences to all the rest with Protein [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi).
+Then we need to use these results to cluster the sequences into gene families. 
+
+Later on in the lesson 
+we will repeat these steps but in an automated way with pangenomics software and with the complete genomes.
 
 To be able to do a pangenome "by hand" we will use only some of the protein sequences for these four genomes A909, 2603V, NEM316 and 515. 
 In the folder `data/annotated_mini` you have the 4 reduced genomes in amino acid FASTA format. 
@@ -44,7 +51,7 @@ $ head -n1 Streptococcus_agalactiae_A909_mini.faa
 ~~~
 {: .output}
 
-If we run the following, we will put a label in each gene that says to which genome it belongs.
+Let's run the following to put the name of the genome in the header of each sequence.
 
 ~~~
 $ ls *.faa | while read line
@@ -96,12 +103,12 @@ Adding sequences from FASTA; added 43 sequences in 0.00112104 seconds.
 ~~~
 {: .output}
 
-Now that we have all the sequences of all of our genomes in a BLAST database we can align each of the sequences (queries) to the aal of other ones  (subjects) using `blastp`.
+Now that we have all the sequences of all of our genomes in a BLAST database we can align each of the sequences (queries) to all of other ones  (subjects) using `blastp`.
 ~~~
 $ blastp -query mini-genomes.faa -db database/mini-genomes -outfmt "6" > output_blast/mini-genomes.blast
 ~~~
 {: .language-bash}
-Here we asked `blastp` to align the queries to the database and give the result in the format "6", which is a tab separated file with the following fields: 
+Here we asked `blastp` to align the queries to the database and give the result in the format "6", which is a tab separated file with the following fields in order: 
 
 | Field | Meaning |  
 | ----- | ------- |  
