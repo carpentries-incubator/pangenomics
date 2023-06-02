@@ -29,7 +29,8 @@ When it comes to pangenome analysis, which involves analyzing the complete set o
 4. [PPanGGOLiN](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732): It uses the CD-HIT algorithm to cluster proteins based on sequence similarity. It allows users to define the similarity threshold for clustering, enabling customization according to the specific requirements of the analysis. Also provides features for visualizing and exploring pangenome data. 
 
 > ## Considerations when choosing
-> It's important to acknowledge the specific requirements of your analysis, such as scalability, speed, and the desired output, and evaluate different tools to determine which one best suits your needs. 
+> It's important to acknowledge the specific requirements of your analysis, such as scalability, speed, and the desired output, and evaluate different 
+> tools to determine which one best suits your needs. 
 {: .callout}
 
 ## What is GET_HOMOLOGUES?
