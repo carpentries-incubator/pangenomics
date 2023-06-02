@@ -6,7 +6,7 @@ questions:
 - "What software is recommended for clustering protein families?"
 - "What is GET_HOMOLOGUES?"
 objectives:
-- "Cluster orthologous proteins from GenBank (gbk) files"
+- "Cluster orthologous proteins from GenBank (.gbk) files"
 - "Explore clusters using GET_HOMOLOGUES suit of tools"
 - "Understand basic pangenomics metrics"
 keypoints:
@@ -28,7 +28,7 @@ When it comes to pangenome analysis, which involves analyzing the complete set o
 
 4. [PPanGGOLiN](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732): It uses the CD-HIT algorithm to cluster proteins based on sequence similarity. It allows users to define the similarity threshold for clustering, enabling customization according to the specific requirements of the analysis. Also provides features for visualizing and exploring pangenome data. 
 
-> ## Considerations when choosing
+> ## Considerations when choosing a software for clustering protein families
 > It's important to acknowledge the specific requirements of your analysis, such as scalability, speed, and the desired output, and evaluate different 
 > tools to determine which one best suits your needs. 
 {: .callout}
@@ -39,7 +39,7 @@ In this episode we will use get [GET_HOMOLOGUES](https://journals.asm.org/doi/10
 
 Its main task is clustering protein and nucleotide sequences in homologous (possibly orthologous) groups. This software identifies orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes. The definition of pan- and core-genomes by Get_Homologues is done by calculation of overlapping sets of proteins. It is maintained by Bruno Contreras-Moreira and Pablo Vinuesa.
 
-GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hit (BDBH), OrthoMCL (OMCL) or COGtriangles clustering algorithms (COG).
+GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hit (BDBH), OrthoMCL (OMCL) or COGtriangles clustering algorithms.
 
 |    	Method   		 |                           	Definition                         		 |
 |:---------------------:    |:---------------------------------------------------------------------:    |
@@ -82,15 +82,15 @@ GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hi
 > {: .solution}
 {: .challenge}
 
-## Considerations
-Please make sure that you are in the Pangenomics environment.
+## Clustering protein families with GET_HOMOLOGUES
+
+Before starting using GET_HOMOLOGUES, we need to activate the Pangenomics_Global environment.
 
 ~~~
 $ conda deactivate
 $ conda activate Pangenomics_Global  
 ~~~
 {: .language-bash}
-Make sure that get_homologues is installed
 
 ~~~
 $ get_homologues.pl -h #This command display the options
@@ -143,8 +143,8 @@ Options that control clustering:
 ~~~
 {: .output}
 
-> ## Notes
-> Get_homologues suggests that you run your data with a directory because you could add a new file *.gbk* in the future, if necessary.
+> ## Best practices
+> Get_homologues suggests that the user run their data inside a directory as in the future they might want to add a new *.gbk* file to the analysis.
 {: .callout}
 
 
