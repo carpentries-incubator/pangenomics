@@ -1,16 +1,14 @@
 ---
 title: "Clustering Protein Families"
-teaching: 20
-exercises: 3
+teaching: 15
+exercises: 10
 questions:
 - "What software is recommended for clustering protein families?"
 - "What is GET_HOMOLOGUES?"
-
 objectives:
 - "Cluster orthologous proteins from GenBank (gbk) files"
 - "Explore clusters using GET_HOMOLOGUES suit of tools"
 - "Understand basic pangenomics metrics"
-
 keypoints:
 - "Clustering protein families refers to the process of grouping proteins that share similar characteristics or functions into distinct clusters or families."
 - "GET_HOMOLOGUES is a software package for microbial pangenome analysis"
@@ -20,33 +18,33 @@ keypoints:
 
 ## What software is recommended for clustering protein families?
 
-The choice of software depends on diferent factors such as the specific clustering algorithm you want to use, the input data format, the desired level of customization, and the availability of additional analysis functionalities.
-
 When it comes to pangenome analysis, which involves analyzing the complete set of genes in a given species or a group of related organisms, there are several software tools that can be used for clustering protein families:
 
-1. OrthoFinder: It clusters proteins based on orthology relationships, identifying orthologous protein families across multiple genomes. OrthoFinder uses a combination of sequence similarity and phylogenetic tree-based approaches to infer orthology relationships.
+1. [OrthoFinder](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1832-y): It clusters proteins based on orthology relationships, identifying orthologous protein families across multiple genomes. OrthoFinder uses a combination of sequence similarity and phylogenetic tree-based approaches to infer orthology relationships.
 
-2. Roary: It clusters proteins based on pairwise protein similarity. It utilizes a fast algorithm to construct clusters and determines core and accessory genes in the pangenome. Roary is known for its speed and scalability, making it suitable for large-scale pangenome analyses.
+2. [Roary](https://academic.oup.com/bioinformatics/article/31/22/3691/240757): It clusters proteins based on pairwise protein similarity. It utilizes a fast algorithm to construct clusters and determines core and accessory genes in the pangenome. Roary is known for its speed and scalability, making it suitable for large-scale pangenome analyses.
 
-3. GET_HOMOLOGUES: It offers various algorithms for clustering proteins, including bidirectional best hit, Markov clustering, and COGtriangles. Also provides additional functionalities, such as identification of strain-specific genes and visualization of pangenome data.
+3. [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13): It offers various algorithms for clustering proteins, including bidirectional best hit, Markov clustering, and COGtriangles. Also provides additional functionalities, such as identification of strain-specific genes and visualization of pangenome data.
 
-4. PPanGGOLiN: It uses the CD-HIT algorithm to cluster proteins based on sequence similarity. It allows users to define the similarity threshold for clustering, enabling customization according to the specific requirements of the analysis. Also provides features for visualizing and exploring pangenome data. 
+4. [PPanGGOLiN](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732): It uses the CD-HIT algorithm to cluster proteins based on sequence similarity. It allows users to define the similarity threshold for clustering, enabling customization according to the specific requirements of the analysis. Also provides features for visualizing and exploring pangenome data. 
 
-It's important to consider the specific requirements of your analysis, such as scalability, speed, and the desired output, and evaluate different tools to determine which one best suits your needs.
+> ## Considerations when choosing
+> It's important to acknowledge the specific requirements of your analysis, such as scalability, speed, and the desired output, and evaluate different tools to determine which one best suits your needs. 
+{: .callout}
 
 ## What is GET_HOMOLOGUES?
 
-In this episode we will use get GET_HOMOLOGUES suite of tools for pangenome analysis.
+In this episode we will use get [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13) suite of tools for pangenome analysis.
 
 Its main task is clustering protein and nucleotide sequences in homologous (possibly orthologous) groups. This software identifies orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes. The definition of pan- and core-genomes by Get_Homologues is done by calculation of overlapping sets of proteins. It is maintained by Bruno Contreras-Moreira and Pablo Vinuesa.
 
 GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hit (BDBH), OrthoMCL (OMCL) or COGtriangles clustering algorithms (COG).
 
-1. Bidirectional Best-Hit (BDBH): Clusters proteins by identifying reciprocal best hits between genomes.
-
-2. OrthoMCL (OMCL): Uses graph theory to cluster proteins based on sequence similarity, handling paralogous genes and gene duplications.
-
-3. COGtriangles: Assigns proteins to predefined functional categories (COGs) based on best matches to the COG database using a triangle inequality-based algorithm.
+|    	Method   		 |                           	Definition                         		 |
+|:---------------------:    |:---------------------------------------------------------------------:    |
+| **Bidirectional Best-Hit (BDBH)**     |      	Clusters proteins by identifying reciprocal best hits between genomes.    		 |
+|	**OrthoMCL (OMCL)**  	 | Uses graph theory to cluster proteins based on sequence similarity, handling paralogous genes and gene duplications.    |
+|	**COGtriangles:**  	 |   	Assigns proteins to predefined functional categories (COGs) based on best matches to the COG database using a triangle inequality-based algorithm.  		 |
 
 <a href="../fig/GET_HOMOLOGUES_flow_char.jpeg">
   <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" width="435" height="631" alt="GET_HOMOLOGUES flow chart." />
