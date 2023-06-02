@@ -25,7 +25,7 @@ our sequences to all the rest with Protein [BLAST](https://blast.ncbi.nlm.nih.go
 Then we need to use these results to cluster the sequences into gene families. 
 
 Later on in the lesson 
-we will repeat these steps but in an automated way with pangenomics software and with the complete genomes.
+we will repeat these steps but in an automated way with pangenomics software using the complete genomes.
 
 To be able to do a pangenome "by hand" we will use only some of the protein sequences for these four genomes A909, 2603V, NEM316 and 515. 
 In the folder `data/annotated_mini` you have the 4 reduced genomes in amino acid FASTA format. 
@@ -105,24 +105,10 @@ Adding sequences from FASTA; added 43 sequences in 0.00112104 seconds.
 
 Now that we have all the sequences of all of our genomes in a BLAST database we can align each of the sequences (queries) to all of other ones  (subjects) using `blastp`.
 ~~~
-$ blastp -query mini-genomes.faa -db database/mini-genomes -outfmt "6" > output_blast/mini-genomes.blast
+$ blastp -query mini-genomes.faa -db database/mini-genomes -outfmt "6 qseqid sseqid evalue" > output_blast/mini-genomes.blast
 ~~~
 {: .language-bash}
-Here we asked `blastp` to align the queries to the database and give the result in the format "6", which is a tab separated file with the following fields in order: 
-
-| Field | Meaning |  
-| ----- | ------- |  
-|qseqid | Query Seq-id     |  
-|sseqid | Subject Seq-id |  
-|pident | Percentage of identical matches |  
-|length | Alignment length |  
-|mismatch | Number of mismatches |  
-|gapopen| Start of alignment in query |  
-|qend | End of alignment in query |  
-|sstart | Start of alignment in subject |  
-|send | End of alignment in subject |  
-|evalue | Expect value |  
-|bitscore |Bit score |  
+Here we asked `blastp` to align the queries to the database and give the result in the format "6", which is a tab separated file, with the fields Query Sequence-ID, Subject Sequence-ID and E-value, which is the measure of similarity between sequences that we need. 
 
 ~~~
 $ head -n4 output_blast/mini-genomes.blast
@@ -130,14 +116,14 @@ $ head -n4 output_blast/mini-genomes.blast
  {: .language.bash}
  
 ~~~
-2603V|GBPINHCM_01420    NEM316|AOGPFIKH_01528   100.000 90      0       0       1       90      1       90      4.11e-67        187
-2603V|GBPINHCM_01420    A909|MGIDGNCP_01408     100.000 90      0       0       1       90      1       90      4.11e-67        187
-2603V|GBPINHCM_01420    515|LHMFJANI_01310      100.000 90      0       0       1       90      1       90      4.11e-67        187
-2603V|GBPINHCM_01420    2603V|GBPINHCM_01420    100.000 90      0       0       1       90      1       90      4.11e-67        187
+2603V|GBPINHCM_01420	NEM316|AOGPFIKH_01528	4.11e-67
+2603V|GBPINHCM_01420	A909|MGIDGNCP_01408	4.11e-67
+2603V|GBPINHCM_01420	515|LHMFJANI_01310	4.11e-67
+2603V|GBPINHCM_01420	2603V|GBPINHCM_01420	4.11e-67
 ~~~
 {: .output}
 
-## Explore blast matrix
+## Processing the BLAST results
 
 For this section, we will use Python. First we need to read the blast file that we produced.  The libraries that we will use are the following.
 
@@ -149,22 +135,14 @@ import numpy as np
 ~~~
 {: .language-python}
 
-The columns of the blast file are 'qseqid','sseqid', 'pident', 'length', 'mismatch', 'gapopen', 'qstart', 'qend', 'sstart', 'send', 'evalue', 'bitscore'.
+Let's import the BLAST results to Python using the column names: 'qseqid','sseqid', 'evalue'.
 
 ~~~
 os.getcwd()
-blast0 = pd.read_csv( '~/pan_workshop/results/blast/mini/output_blast/mini-genomes.blast', sep = '\t',names = ['qseqid','sseqid', 'pident', 'length', 'mismatch', 'gapopen', 'qstart', 'qend', 'sstart', 'send', 'evalue', 'bitscore'])  
-~~~
-{: .language-python}
-
-We want to work with the e-values, therefore we select that column.
-
-~~~
-blastE = pd.DataFrame(blast0,columns=['qseqid','sseqid','evalue'])
+blastE = pd.read_csv( '~/pan_workshop/results/blast/mini/output_blast/mini-genomes.blast', sep = '\t',names = ['qseqid','sseqid','evalue'])
 blastE.head()
 ~~~
 {: .language-python}
-
 
 ~~~
   qseqid	               sseqid	               evalue
@@ -179,8 +157,8 @@ blastE.head()
 We will modify this data frame to obtain two new columns, one for the genomes of the `qseqid` gene and one for the `sseqid` gene. First, we obtain the genome of each gene in the `qseqid`.
 
 ~~~
-qseqid = pd.DataFrame(blast0,columns=['qseqid'])
-sseqid = pd.DataFrame(blast0,columns=['sseqid'])
+qseqid = pd.DataFrame(blastE,columns=['qseqid'])
+sseqid = pd.DataFrame(blastE,columns=['sseqid'])
 
 newqseqid = qseqid["qseqid"].str.split("|", n = 1, expand = True)
 newqseqid.columns= ["Genome1", "Gen"]
@@ -203,10 +181,10 @@ dfsseqid
 ~~~
 {: .language-python}
 
-We combine these two data frames and the `evalue` of the `blast0` data frame.
+We combine these two data frames and the `evalue` of the `blastE` data frame.
 
 ~~~
-evalue = pd.DataFrame(blast0, columns=['evalue'])
+evalue = pd.DataFrame(blastE, columns=['evalue'])
 df = dfqseqid
 df['Genome2']=dfsseqid['Genome2']
 df['sseqid']=sseqid
