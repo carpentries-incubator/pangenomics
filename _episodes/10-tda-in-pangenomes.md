@@ -10,6 +10,8 @@ keypoints:
 - "Pangenomes can be described using TDA"
 ---
 
+
+This code attempts to generate a pangenome with an specified percentage of core/shell/cloud gene families. Neverthelles caiution is recommended because in a real pangenome, data should have more hierarchical structure. This is temporary data to exemplify TDA concepts.
 ~~~
 import pandas as pd
 import numpy as np
