@@ -14,7 +14,7 @@ keypoints:
 - "Gene families must be clustered according to a distance-treshold "
 ---
 
-## Aling the protein sequences to each other with BLASTp
+## Aligning the protein sequences to each other with BLASTp
 
 In the previous episode we annotated all of our genomes and obtained the annotations in different formats, like GFF, GBK and FASTA. 
 Now we want to understand how to go from annotations to a pangenome, so we will use a reduced version of 
@@ -125,8 +125,7 @@ $ head -n4 output_blast/mini-genomes.blast
 
 ## Processing the BLAST results
 
-For this section, we will use Python. First we need to read the blast file that we produced.  The libraries that we will use are the following.
-
+For this section we will use Python. Let's open the notebook and start by importing the libraries that we will need.
 ~~~
 import os 
 import pandas as pd
@@ -134,7 +133,7 @@ from matplotlib import cm
 import numpy as np
 ~~~
 {: .language-python}
-
+First we need to read the `mini-genomes.blast` file that we produced.
 Let's import the BLAST results to Python using the column names: 'qseqid','sseqid', 'evalue'.
 
 ~~~
@@ -154,34 +153,43 @@ blastE.head()
 ~~~
 {: .output}
 
-We will modify this data frame to obtain two new columns, one for the genomes of the `qseqid` gene and one for the `sseqid` gene. First, we obtain the genome of each gene in the `qseqid`.
+Now we want to make two columns that have the name of the genomes of the queries, and the name of the genomes of the subjects. We will take this information from the query and subject IDs (the label that we added at the beggining of the episode).
 
+First, let's obtain the genome of each query gene.
 ~~~
 qseqid = pd.DataFrame(blastE,columns=['qseqid'])
-sseqid = pd.DataFrame(blastE,columns=['sseqid'])
 
 newqseqid = qseqid["qseqid"].str.split("|", n = 1, expand = True)
 newqseqid.columns= ["Genome1", "Gen"]
 newqseqid["qseqid"]= qseqid
 dfqseqid =newqseqid[['Genome1','qseqid']]
 
-dfqseqid
+dfqseqid.head()
 ~~~
 {: .language-python}
 
-The data frame `dfqseqid` have all the genomes associated to the genes in the column `qseqid`. Now we repeat the same for the `sseqid` column.
-
 ~~~
+  Genome1	qseqid
+0	2603V	2603V|GBPINHCM_01420
+1	2603V	2603V|GBPINHCM_01420
+2	2603V	2603V|GBPINHCM_01420
+3	2603V	2603V|GBPINHCM_01420
+4	2603V	2603V|GBPINHCM_01420
+~~~
+{: .output}
+
+Now let's repeat the same for the `sseqid` column.
+~~~
+sseqid = pd.DataFrame(blastE,columns=['sseqid'])
+
 newsseqid = sseqid["sseqid"].str.split("|", n = 1, expand = True)
 newsseqid.columns= ["Genome2", "Gen"]
 newsseqid["sseqid"]= sseqid 
 dfsseqid = newsseqid[['Genome2','sseqid']]
-
-dfsseqid
 ~~~
 {: .language-python}
 
-We combine these two data frames and the `evalue` of the `blastE` data frame.
+Now that we have two dataframes with the new columns that we wanted, let's combine them with the `evalue` of the `blastE` dataframe into a new one called `df`.
 
 ~~~
 evalue = pd.DataFrame(blastE, columns=['evalue'])
@@ -193,9 +201,7 @@ df.head()
 ~~~
 {: .language-python}
 
-
 ~~~
-
   Genome1	qseqid	Genome2	sseqid	evalue
 0	2603V	2603V|GBPINHCM_01420	NEM316	NEM316|AOGPFIKH_01528	4.110000e-67
 1	2603V	2603V|GBPINHCM_01420	A909	A909|MGIDGNCP_01408	4.110000e-67
@@ -205,7 +211,7 @@ df.head()
 ~~~
 {: .output}
 
-We want a list of the unique genes in our dataset.
+Now we want a list of the unique genes in our dataset.
 ~~~
 qseqid_unique=pd.unique(df['qseqid'])
 sseqid_unique=pd.unique(df['sseqid'])
@@ -213,18 +219,23 @@ genes = pd.unique(np.append(qseqid_unique, sseqid_unique))
 ~~~
 {: .language-python}
 
-We can check that we only have 43 genes with `len(genes)`.
+We can check that we have 43 genes in total with `len(genes)`.
 
-Now, we want to know what is the biggest genome to make the comparisions. In this case we wil chose the one with more genes, that happen to be the A909.  
+Now, we want to know which one is the biggest genome to make the comparisions. In this case we wil choose the one with more genes.  
 First, we compute the unique genomes.
 
 ~~~
 genomes=pd.unique(df['Genome1'])
 genomes=list(genomes)
+genomes
 ~~~
 {: .language-python}
+~~~
+['2603V', '515', 'A909', 'NEM316']
+~~~
+{: .output}
 
-Now, we will create a dictionary with the genes associated to each genome.
+Now, we will create a dictionary that shows which genes are in each genome.
 
 ~~~
 dic_gen_genomes={}
@@ -238,8 +249,7 @@ for a in genomes:
 ~~~
 {: .language-python}
 
-To compute the genome size, we do the following.
- 
+We can now use this dictionary to know how many genes does each genome has, and therefore identify the biggest genome.
 ~~~
 genome_temp=[]
 size_genome=[]
@@ -265,6 +275,7 @@ Genome	Size
 ~~~
 {: .output}
 
+Now we can sort our genomes by their size.
 ~~~
 genomes=genome_sizes_df['Genome'].tolist()
 genomes
@@ -276,7 +287,9 @@ genomes
 ~~~
 {: .output}
 
-So, the biggest genome es `A909` and we will start our algorithm with this genome.
+So the biggest genome es `A909` and we will start our clustering algorithm with this genome.
+
+## Finding gene families with BDBH algorithm
 
 The algorith that we will use is called bidirectional best-hit (BDBH).
 
