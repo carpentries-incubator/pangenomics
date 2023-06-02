@@ -1,48 +1,55 @@
 ---
 title: "Clustering Protein Families"
 teaching: 20
-exercises: 5
+exercises: 3
 questions:
-- "Which clustering algorithm to choose and why?"
-- "What is Get_Homologues?"
+- "What software is recommended for clustering protein families?"
+- "What is GET_HOMOLOGUES?"
 
 objectives:
-- "Cluster orthologous proteins from GenBank (.gbk) files"
-- "Explore protein clusters from OrthoMCL algorithm"
+- "Cluster orthologous proteins from GenBank (gbk) files"
+- "Explore clusters using GET_HOMOLOGUES suit of tools"
 - "Understand basic pangenomics metrics"
 
 keypoints:
-- "Clustering refers to the task of grouping sequences in which the same group are more similar to each other than to those in other groups "
-- "Get_Homologues is a software package for pangenomic analysis"
-- "Three sequence-clustering algorithms are supported by Get_Homologues; BDBH, OrthoMCL and COGtriangles "
+- "Clustering protein families refers to the process of grouping proteins that share similar characteristics or functions into distinct clusters or families."
+- "GET_HOMOLOGUES is a software package for microbial pangenome analysis"
+- "Three sequence clustering algorithms are supported by Get_Homologues; BDBH, COGtriangles and OrthoMCL"
+
 ---
 
-## Which clustering algorithm to choose and why?
+## What software is recommended for clustering protein families?
 
-## What is Get_Homologues?
+The choice of software depends on diferent factors such as the specific clustering algorithm you want to use, the input data format, the desired level of customization, and the availability of additional analysis functionalities.
 
-Get_Homologues is a versatile software package for pan-genome analysis, maintained by Bruno Contreras-Moreira and Pablo Vinuesa.
-Its main task is grouping or clustering protein and nucleotide sequences in homologous (possibly orthologous) groups,
-on the grounds of sequence similarity.
-This software identifies orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs),
-conserved across related genomes.
+When it comes to pangenome analysis, which involves analyzing the complete set of genes in a given species or a group of related organisms, there are several software tools that can be used for clustering protein families:
 
-Get_Homologues supports three sequence-clustering algorithms; bidirectional best-hit (BDBH), OrthoMCL (OMCL) or COGtriangles clustering algorithms.
-BDBH algorithm uses one sequence from the reference genome and maintains the clusters growing.
-OMCL algorithm groups nodes in a BLAST graph to build clusters.
-And the COG algorithm requires a triangle of reciprocal hits and merges them.
+1. OrthoFinder: It clusters proteins based on orthology relationships, identifying orthologous protein families across multiple genomes. OrthoFinder uses a combination of sequence similarity and phylogenetic tree-based approaches to infer orthology relationships.
 
-The definition of pan- and core-genomes by Get_Homologues is done by calculation of overlapping sets of proteins.
+2. Roary: It clusters proteins based on pairwise protein similarity. It utilizes a fast algorithm to construct clusters and determines core and accessory genes in the pangenome. Roary is known for its speed and scalability, making it suitable for large-scale pangenome analyses.
 
+3. GET_HOMOLOGUES: It offers various algorithms for clustering proteins, including bidirectional best hit, Markov clustering, and COGtriangles. Also provides additional functionalities, such as identification of strain-specific genes and visualization of pangenome data.
+
+4. PPanGGOLiN: It uses the CD-HIT algorithm to cluster proteins based on sequence similarity. It allows users to define the similarity threshold for clustering, enabling customization according to the specific requirements of the analysis. Also provides features for visualizing and exploring pangenome data. 
+
+It's important to consider the specific requirements of your analysis, such as scalability, speed, and the desired output, and evaluate different tools to determine which one best suits your needs.
+
+## What is GET_HOMOLOGUES?
+
+In this episode we will use get GET_HOMOLOGUES suite of tools for pangenome analysis.
+
+Its main task is clustering protein and nucleotide sequences in homologous (possibly orthologous) groups. This software identifies orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes. The definition of pan- and core-genomes by Get_Homologues is done by calculation of overlapping sets of proteins. It is maintained by Bruno Contreras-Moreira and Pablo Vinuesa.
+
+GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hit (BDBH), OrthoMCL (OMCL) or COGtriangles clustering algorithms (COG).
+
+1. Bidirectional Best-Hit (BDBH): Clusters proteins by identifying reciprocal best hits between genomes.
+
+2. OrthoMCL (OMCL): Uses graph theory to cluster proteins based on sequence similarity, handling paralogous genes and gene duplications.
+
+3. COGtriangles: Assigns proteins to predefined functional categories (COGs) based on best matches to the COG database using a triangle inequality-based algorithm.
 
 <a href="../fig/GET_HOMOLOGUES_flow_char.jpeg">
-  <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" width="435" height="631" alt="GET_HOMOLOGUES flow chart.
-                                                                       		 Input files are either GenBank or FASTA and can produce different outputs.
-                                                                       		 BLAST and Pfam searches are optimized for local and cluster computer environments.
-                                                                       		 Once this sequences are sorted and indexed, one of the three clustering algorithms
-                                                                       		 (BDBH, OMCL and COGtriangles) yields FASTA files of sequence clusters.
-                                                                       		 This clusters could be flanked intergene clusters,
-                                                                       		 pan/core-genome size estimates, pangenome matrices and syntenic clusters." />
+  <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" width="435" height="631" alt="GET_HOMOLOGUES flow chart." />
 </a>
 
 > ## Exercise 1: Clustering algorithms
@@ -198,7 +205,10 @@ Click `Ctrl`+ `a` + `d` to detach from the session and wait 8 minutes to attach 
 {: .output}
 
 > ## Notes
-If the option -e is added, the resulting clusters will contain only single-copy genes from each taxon, i.e. the orthologues. This flag forms singleton clusters, which are created when you exclude clusters within paralogues. This is useful to make genome-level phylogenetic analyses in only single copy-genes.
+If the option -e is added, the resulting clusters will contain only single-copy genes from each taxon, i.e. orthologues. This flag exclude clusters within paralogues. This is useful to make genome-level phylogenetic analyses in only single copy-genes.
+
+However, it's important to note that using only orthologues may overlook genes that have undergone significant divergence or genes with species-specific functions. Including paralogues, which are duplicated genes within a genome, or genes with no clear orthologues can also be informative in certain pangenomic analyses, such as studying gene family expansions or specific adaptations within a species.
+
 {: .callout}
 
 ## Describe your gene families in one table
