@@ -134,7 +134,7 @@ import numpy as np
 ~~~
 {: .language-python}
 First we need to read the `mini-genomes.blast` file that we produced.
-Let's import the BLAST results to Python using the column names: 'qseqid','sseqid', 'evalue'.
+Let's import the BLAST results to Python using the column names: `qseqid`,`sseqid`, `evalue`.
 
 ~~~
 os.getcwd()
@@ -221,7 +221,8 @@ genes = pd.unique(np.append(qseqid_unique, sseqid_unique))
 
 We can check that we have 43 genes in total with `len(genes)`.
 
-Now, we want to know which one is the biggest genome to make the comparisions. In this case we wil choose the one with more genes.  
+Now, we want to know which one is the biggest genome (the one with more genes) to make the comparisions.  
+
 First, we compute the unique genomes.
 
 ~~~
