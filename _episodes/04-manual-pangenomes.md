@@ -501,12 +501,14 @@ family_515
 {: .language-python}
 
 ~~~
-  g_A909  g_2603V g_515 g_NEM316
-515|LHMFJANI_01625  NA  NA  515|LHMFJANI_01625  NEM316|AOGPFIKH_01842
+                    g_A909  g_2603V g_515               g_NEM316
+515|LHMFJANI_01625  NA      NA      515|LHMFJANI_01625  NEM316|AOGPFIKH_01842
 ~~~
 {: .output}
 
-Since in this last step we used all the genes, we have finished our algorithm. We will only create a final dataframe to integrate all of the obtained families.
+Since in this last step we used all the genes, we have finished our algorithm.  
+
+Now we will only create a final dataframe to integrate all of the obtained families.
 
 ~~~
 families_bdbh=pd.concat([family_A909,family_2603V,family_515])
