@@ -371,7 +371,7 @@ family_A909
 {: .language-python}
 
 ~~~
-	                g_A909	                g_2603V	                g_515	               g_NEM316
+	                g_A909	                g_2603V	                g_515	                g_NEM316
 A909|MGIDGNCP_01408	A909|MGIDGNCP_01408	2603V|GBPINHCM_01420	515|LHMFJANI_01310	NEM316|AOGPFIKH_01528
 A909|MGIDGNCP_00096	A909|MGIDGNCP_00096	2603V|GBPINHCM_00097	515|LHMFJANI_00097	NEM316|AOGPFIKH_00098
 A909|MGIDGNCP_01343	A909|MGIDGNCP_01343	NA                  	NA	                NEM316|AOGPFIKH_01415
@@ -387,8 +387,9 @@ A909|MGIDGNCP_00405	A909|MGIDGNCP_00405	2603V|GBPINHCM_00401	515|LHMFJANI_00394	
 ~~~
 {: .output}
 
-In this step, we have all the families that contain one gene from the biggest genome. The following step is repeat this for the second biggest genome but before we need to remove from the `genes` list the genes that appears in the families that we obtained.
-
+Here, we have all the families that contain one gene from the biggest genome. The following step is to repeat
+this for the second-biggest genome. To do this, we need to remove from the list `genes` the genes that are already 
+placed in the current families.
 
 ~~~
 lista=[]
@@ -428,16 +429,19 @@ for i in range(len(genes2)):
 genome_2603V
 ~~~
 {: .language-python}
+~~~
+['2603V|GBPINHCM_00748', '2603V|GBPINHCM_01226']
+~~~
+{: .output}
 
 We apply the function `besthit_bdbh` to this list.
 
 ~~~
 g_2603V_bdbh=besthit_bdbh(genome_2603V,genomes,genomes[1],df)
-g_2603V_bdbh
 ~~~
 {: .language-python}
 
-We create the data frame.
+We convert the dictionary into a dataframe.
 
 ~~~
 family_2603V=pd.DataFrame(g_2603V_bdbh).transpose()
@@ -448,9 +452,9 @@ family_2603V.head()
 {: .language-python}
 
 ~~~
-                      g_A909	g_2603V	g_515	g_NEM316
-2603V|GBPINHCM_00748	NA	2603V|GBPINHCM_00748	NA	NA
-2603V|GBPINHCM_01226	NA	2603V|GBPINHCM_01226	NA	NA
+                      g_A909	g_2603V	          g_515	g_NEM316
+2603V|GBPINHCM_00748	NA	2603V|GBPINHCM_00748	NA	    NA
+2603V|GBPINHCM_01226	NA	2603V|GBPINHCM_01226	NA	    NA
 ~~~
 {: .output}
 
