@@ -452,13 +452,13 @@ family_2603V.head()
 {: .language-python}
 
 ~~~
-                        g_A909	g_2603V	              g_515	   g_NEM316
-2603V|GBPINHCM_00748	NA	 2603V|GBPINHCM_00748	NA	   NA
-2603V|GBPINHCM_01226	NA	 2603V|GBPINHCM_01226	NA	   NA
+                        g_A909	g_2603V	               g_515	  g_NEM316
+2603V|GBPINHCM_00748	NA	2603V|GBPINHCM_00748	NA	   NA
+2603V|GBPINHCM_01226	NA	2603V|GBPINHCM_01226	NA	   NA
 ~~~
 {: .output}
 
-Again, we eliminated the genes from the last list and repeat the algorithm.
+Again, let's eliminate the genes that are already placed in families to repeat the algorithm.
 
 ~~~
 for a in genome_2603V:
@@ -483,10 +483,12 @@ for i in range(len(genes2)):
 genome_515
 ~~~
 {: .language-python}
-
+~~~
+['515|LHMFJANI_01625']
+~~~
+{: .output}
 ~~~
 g_515_bdbh=besthit_bdbh(genome_515,genomes,genomes[2],df)
-g_515_bdbh
 ~~~
 {: .language-python}
 
@@ -494,23 +496,22 @@ g_515_bdbh
 family_515=pd.DataFrame(g_515_bdbh).transpose()
 family_515.columns = ['g_A909','g_2603V','g_515','g_NEM316']
 family_515.g_515 = family_515.index
-family_515.head()
+family_515
 ~~~
 {: .language-python}
 
 ~~~
-                    g_A909	g_2603V	g_515	g_NEM316
-515|LHMFJANI_01625	NA	NA	515|LHMFJANI_01625	NEM316|AOGPFIKH_01842
+  g_A909  g_2603V g_515 g_NEM316
+515|LHMFJANI_01625  NA  NA  515|LHMFJANI_01625  NEM316|AOGPFIKH_01842
 ~~~
 {: .output}
 
-
-As in this last step we use all the genes, then we finish our algorithm. We will only create a final data frame.
+Since in this last step we used all the genes, we have finished our algorithm. We will only create a final dataframe to integrate all of the obtained families.
 
 ~~~
 families_bdbh=pd.concat([family_A909,family_2603V,family_515])
 families_bdbh.to_csv('families_bdbh.csv')
-families_bdbh.head()
+families_bdbh
 ~~~
 {: .language-python}
 
