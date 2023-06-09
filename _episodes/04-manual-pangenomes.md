@@ -452,9 +452,9 @@ family_2603V.head()
 {: .language-python}
 
 ~~~
-                      g_A909	g_2603V	          g_515	g_NEM316
-2603V|GBPINHCM_00748	NA	2603V|GBPINHCM_00748	NA	    NA
-2603V|GBPINHCM_01226	NA	2603V|GBPINHCM_01226	NA	    NA
+                        g_A909	g_2603V	              g_515	    g_NEM316
+2603V|GBPINHCM_00748	NA	  2603V|GBPINHCM_00748	NA	    NA
+2603V|GBPINHCM_01226	NA	  2603V|GBPINHCM_01226	NA	    NA
 ~~~
 {: .output}
 
