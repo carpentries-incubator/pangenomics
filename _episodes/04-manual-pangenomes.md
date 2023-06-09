@@ -292,16 +292,16 @@ So the biggest genome es `A909` and we will start our clustering algorithm with 
 
 ## Finding gene families with BDBH algorithm
 
-The algorith that we will use is called bidirectional best-hit (BDBH).
+To make a gene family, we first need to identify the most similar genes between genomes. The 
+Bidirectional Best Hit algorithm will allow us to find the pairs of genes that are the most similar 
+(lowest e-value) to each other in each pair of genomes.  
 
 <a href="{{ page.root }}/fig/bdbh.png">
    <img src="{{ page.root }}/fig/bdbh.png" alt=" Bidirectional best-hit algorithm" />
   </a>
 
-
-This algorithm identify homologous DNA sequences between pairs of genomes. We need to find for each gene in the biggest genome the bidirectional best hit in each genome, i.e., the gene that has the smallest evalue with respect to the fixed gene in the biggest genome. 
-
-We will use two function, one to obtain the best hit for a fixed genome (the biggest) and other to otain the bidirectional best-hits.
+For this we will define a function to find in each genome the gene that is most similar to each
+gene in our biggest genome A909. 
 
 ~~~
 def besthit(gen,genome,data):
@@ -318,6 +318,8 @@ def besthit(gen,genome,data):
 ~~~
 {: .language-python}
 
+Now we will define a second function, that uses the previous one, to obtain the bidirectional
+best hits.  
 
 ~~~
 def besthit_bdbh(gengenome,listgenomes,genome,data):
@@ -342,7 +344,9 @@ def besthit_bdbh(gengenome,listgenomes,genome,data):
 ~~~
 {: .language-python}
 
-In one of the previuos step we create a dicctionary with all the genes associated to each genome, as we know that the biggest genome is `A909` we will obtain the genes that belongs to `A909` and we will almacenated in a list.
+In one of the previous steps, we created a dictionary with all the genes present in each genome.
+Since we know that the biggest genome is `A909`, we will obtain the genes belonging to `A909` and 
+almacenate them in a list.  
 
 ~~~
 genome_A909 = dic_gen_genomes['A909']
