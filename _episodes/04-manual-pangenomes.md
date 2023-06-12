@@ -546,68 +546,81 @@ families_bdbh.to_csv('~/pan_workshop/results/blast/mini/families_minis.csv')
 ~~~
 {: .language-python}
 
-## Explore functional annotation families
+## Explore functional annotation of gene families
 
-The unique functional families that our mini genomes have are the following.
+Now that we have our genes grouped together in gene families and that we have the functional annotation of each gene, let's check if the
+obtained families coincide with the functional annotations.
+
+The unique functional annotation that our mini genomes have are the following.
 
 ~~~
-$ cat mini-genomes.faa | grep '>' | cut -d' ' -f2,3 | sort | uniq
+$ cat mini-genomes.faa | grep '>' | cut -d' ' -f2- | sort | uniq
 ~~~
 {: .language-bash}
 
 ~~~
-30S ribosomal
-50S ribosomal
-bifunctional DNA
-Glutamate 5-kinase
-Glycine betaine
+30S ribosomal protein S16
+50S ribosomal protein L16
+bifunctional DNA primase/polymerase
+Glutamate 5-kinase 1
+Glycine betaine transporter OpuD
 glycosyltransferase
 Glycosyltransferase GlyG
-peptidase U32
-Periplasmic murein
+peptidase U32 family protein
+Periplasmic murein peptide-binding protein
 PII-type proteinase
-Putative N-acetylmannosamine-6-phosphate
-Replication protein
-Ribosome hibernation
-UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) pyrophosphoryl-undecaprenol
-Vitamin B12
+Putative N-acetylmannosamine-6-phosphate 2-epimerase
+Replication protein RepB
+Ribosome hibernation promotion factor
+UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) pyrophosphoryl-undecaprenol N-acetylglucosamine transferase
+Vitamin B12 import ATP-binding protein BtuD
 ~~~
 {: .output}
 
-Now we will look for this functional families in the families that we obtain with the BDBH algorith to see if we recover this functional families.
-
+Let's use these functional annotation names to obtain the gene names in the `mini-genomes.faa` file and the gene family names
+from the `families_minis.csv` table. With all the information together let's create a new table that describes our pangenome.
 
 ~~~
-$ cat mini-genomes.faa | grep '>' | cut -d' ' -f2 | sort | uniq | while read function
+$ echo Function$'\t'Gene$'\t'Family > mini_pangenome.tsv
+$ cat mini-genomes.faa | grep '>' | cut -d' ' -f2- | sort | uniq | while read function
 do 
-grep $function mini-genomes.faa | cut -d' ' -f1 | cut -d'>' -f2 | while read line
+grep "$function" mini-genomes.faa | cut -d' ' -f1 | cut -d'>' -f2 | while read line
 do 
 family=$(grep $line families_minis.csv| cut -d',' -f1)
 echo $function$'\t'$line$'\t'$family
 done
-done
+done >> mini_pangenome.tsv
+$ head mini_pangneome.tsv
 ~~~
 {: .language-bash}
 
-
 ~~~
-30S     2603V|GBPINHCM_01420    A909|MGIDGNCP_01408
-30S     515|LHMFJANI_01310      A909|MGIDGNCP_01408
-30S     A909|MGIDGNCP_01408     A909|MGIDGNCP_01408
-30S     NEM316|AOGPFIKH_01528   A909|MGIDGNCP_01408
-...
-glycosyltransferase     2603V|GBPINHCM_01231    A909|MGIDGNCP_01268
-glycosyltransferase     515|LHMFJANI_01178      A909|MGIDGNCP_01268
-glycosyltransferase     A909|MGIDGNCP_01268     A909|MGIDGNCP_01268
-glycosyltransferase     NEM316|AOGPFIKH_01341   A909|MGIDGNCP_01268
-
-Glycosyltransferase     2603V|GBPINHCM_01226    2603V|GBPINHCM_01226
-...
-Vitamin 515|LHMFJANI_01625      515|LHMFJANI_01625
-Vitamin NEM316|AOGPFIKH_01842   515|LHMFJANI_01625
+Function                  Gene                  Family
+30S ribosomal protein S16 2603V|GBPINHCM_01420  A909|MGIDGNCP_01408
+30S ribosomal protein S16 515|LHMFJANI_01310    A909|MGIDGNCP_01408
+30S ribosomal protein S16 A909|MGIDGNCP_01408   A909|MGIDGNCP_01408
+30S ribosomal protein S16 NEM316|AOGPFIKH_01528 A909|MGIDGNCP_01408
+50S ribosomal protein L16 2603V|GBPINHCM_00097  A909|MGIDGNCP_00096
+50S ribosomal protein L16 515|LHMFJANI_00097    A909|MGIDGNCP_00096
+50S ribosomal protein L16 A909|MGIDGNCP_00096   A909|MGIDGNCP_00096
+50S ribosomal protein L16 NEM316|AOGPFIKH_00098 A909|MGIDGNCP_00096
 ~~~
 {: .output}
 
+> ## Exercise 1: Partitioning the pangenome
+> Since we have a very small pangenome we can know the partitions of our pangenome just by looking at a small table.
+> Look at the `mini_pangenom.tsv` table and decide which families correspond to the **Core**, **Shell** and **Cloud** genomes.
+> 
+> Note: You might want to download the file to your computer and open it in a spreadsheet program to read it easily.
+> > ## Solution
+> > 
+> > ~~~
+> > |Functional annotation of family | No. Genomes | Partition |
+> > ||||
+> > ~~~
+> > {: .language-bash}
+> {: .solution}
+{: .challenge}
 
 ### Core  
 Ribosomal proteins 30S (01408) and 50S (00096) stays in its own cluster (1 gene per genome)
