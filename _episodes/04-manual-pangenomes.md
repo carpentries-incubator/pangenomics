@@ -617,22 +617,20 @@ Function                  Gene                  Family
 > > |Functional annotation of family | No. Genomes | Partition |
 > > |---|---|---|
 > > |30S ribosomal protein S16|4|Core|
+> > |50S ribosomal protein L16|4|Core|
+> > |Glutamate 5-kinase 1|4|Core|
+> > |glycosyltransferase|4|Core|
+> > |peptidase U32 family protein|4|Core|
+> > |Putative N-acetylmannosamine-6-phosphate 2-epimerase|4|Core|
+> > |Ribosome hibernation promotion factor|4|Core|
+> > |UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) pyrophosphoryl-undecaprenol N-acetylglucosamine transferase|4|Core|
+> > |Glycine betaine transporter OpuD|2|Shell|
+> > |Periplasmic murein peptide-binding protein|2|Shell|
+> > |Replication protein RepB|2|Shell|
+> > |Vitamin B12 import ATP-binding protein BtuD|2|Shell|
+> > |bifunctional DNA primase/polymerase|1|Cloud|
+> > |Glycosyltransferase GlyG|1|Cloud|
+> > |PII-type proteinase|1|Cloud|
+> > 
 > {: .solution}
 {: .challenge}
-
-### Core  
-Ribosomal proteins 30S (01408) and 50S (00096) stays in its own cluster (1 gene per genome)
-01268 glycosyltransferase protein in an extended family (2 copies per genome) 
-
-### Shell
-01343 Replication protein RepB is only shared by another genome
-01221 Glycine betaine transporter OpuD is only shared by another genome
-
-### cloud
-00580 UDPNacetylglucosamineNacetylmuramyl(pentapeptide) pyrophosphorylundecaprenol Nacetylglucosamine transferase
-00352 Glutamate 5kinase 1
-00064 Putative Nacetylmannosamine6phosphate 2epimerase
-00627 hypothetical protein
-01082 Periplasmic murein peptidebinding protein
-00877 hypothetical protein
-00405 Ribosome hibernation promotion factor
