@@ -615,8 +615,8 @@ Function                  Gene                  Family
 > > ## Solution
 > > 
 > > |Functional annotation of family | No. Genomes | Partition |
-> > ------------------------------------------------------------
-> > ||||
+> > |---|---|---|
+> > |30S ribosomal protein S16|4|Core|
 > {: .solution}
 {: .challenge}
 
