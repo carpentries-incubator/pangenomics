@@ -614,11 +614,9 @@ Function                  Gene                  Family
 > Note: You might want to download the file to your computer and open it in a spreadsheet program to read it easily.
 > > ## Solution
 > > 
-> > ~~~
 > > |Functional annotation of family | No. Genomes | Partition |
+> > ------------------------------------------------------------
 > > ||||
-> > ~~~
-> > {: .language-bash}
 > {: .solution}
 {: .challenge}
 
