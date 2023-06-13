@@ -4,32 +4,27 @@ root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
 
-In this lesson you will learn the basic theory of the study of Pangenomes. You will download and annotate public genomes using command-line software. 
-Most importantly you will conduct pangenomic analysis with three specialized programs, which include clustering of gene families, construction of 
-interactive pangenome graphs and visualize neighbournig gene families.
+Welcome to this comprehensive lesson on the fundamental principles of Pangenomics, a rapidly advancing field in bioinformatics. Throughout this course, you will delve into the basic theories that underpin the study of Pangenomes. By utilizing command-line software, you will gain hands-on experience in downloading and annotating public bacterial genomes, thereby acquiring essential skills for genomic analysis. 
 
-The analyses presented here are intended to give you the necessary tools to carry out pangenomic analyses, as well as allow you to practice your 
-bioinformatician skills. This experience will let you to explore [other resources](https://paumayell.github.io/pangenomics/07-other-resources/index.html) 
-and end up with a personalized workflow for your pangenomics research. 
+One of the key highlights on this course is the opportunity to engage with three specialized programs designed specifically for pangenomic analysis. You will master the art of gene family clustering, enabling you to identify commonalities and variations across genomes. Additionally, you will become adept at constructing interactive pangenome graphs, a powerful visualization tool for comprehending the general structure of a pangenome. Furthermore, you will explore the neighborhood of gene families, allowing you to decipher how conserved or variable is the genomic loci where they are encoded. 
+
+The analyses presented here were meticulously curated to equip you with the necessary tools for conducting pangenomic research. By refining your bioinfomatician skills through practical application, you will not only gain confidence in your abilities but also be well-prepared to explore diverse resources (See [other resources](https://paumayell.github.io/pangenomics/07-other-resources/index.html)). Ultimately, you will be able to develop a personalized workflow tailored to your specific pangenomics research objectives. 
+
+
+Get ready to embark on this exciting journey into the world of Pangenomics, where you will unlock new insights and unravel the complexities of genomic variation!
+
 
 <!-- this is an html comment -->
 
 {% comment %} This is a comment in Liquid {% endcomment %}
 
-> ## Prerequisites
+> ## Pre-requisites
 >
-> This lesson assumes a working understanding of the bash shell. If you haven’t already 
-> completed the lesson [Introduction to the Command Line for Pangenomics](https://czirion.github.io/shell-pangenomics/), and you aren’t 
-> familiar with the bash shell; please review those materials before starting this lesson.
->
-> This lesson also assumes some familiarity with biological concepts, 
-> such as prokaryote genome, gene and orthology.
+> Before diving into this lesson on Pangenomics, it is essential to have a working understanding of the bash shell. If you are not already familiar with the bash shell, we recommend completing the [Introduction to the Command Line for Pangenomics](https://czirion.github.io/shell-pangenomics/) lesson prior to starting this one. 
 > 
-> This lesson uses data hosted on an Amazon Machine Instance (AMI). Workshop participants
-> will be given information on how to log in to the AMI during the workshop. Learners using 
-> these materials for the self-directed study will need to set up their own AMI or install programs in their personal computers. Information 
-> on setting up an AMI and accessing the required data is provided on the 
-> [Pangenomics Workshop Setup page](https://czirion.github.io/pangenomics-workshop/setup.html).
+> Additionally, some familiriaty with biological concepts is assumed for this lesson. It is benefitial to have a basic understanding of prokaryote genomes, genes, and orthology. If you are new to these concepts, we encourage you to review relevant materials to ensure a solid foundation for this course. 
+> 
+> Throughout this lesson, we will be utilizing data hosted on an Amazon Machine Instance (AMI). Workshop participants will receive information on how to log in to the AMI during the workshop. If you are studying independently, you will need to set up your own AMI or install the necessary programs on you personal computer. Detailed instructions on setting up an AMI and accessing the required data can be found on the [Pangenomics Workshop Setup page](https://czirion.github.io/pangenomics-workshop/setup.html).
 >
 {: .prereq}
 
