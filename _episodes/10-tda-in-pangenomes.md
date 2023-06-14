@@ -110,7 +110,7 @@ qseqid
 
 Finaly, we need the distance matrix as a `numpy` array.
 
-~~~~
+~~~
 DistanceMatrix = matrixE2.to_numpy()
 DistanceMatrix
 ~~~
