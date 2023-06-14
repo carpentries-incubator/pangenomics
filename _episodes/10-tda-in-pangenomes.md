@@ -12,33 +12,28 @@ keypoints:
 
 ## Persistent approach to pangenomics
 
-Import libraries
+We will work with the four mini genomes of episode 4. First we need to import all the libraries that we will use.
+
 ~~~
 import pandas as pd
 from matplotlib import cm
 import numpy as np
 import gudhi
-import time 
+import time
+import os  
 ~~~
 {: .language-python}
 
+Now, we need to read the `mini-genomes.blast` file that we produce in episode 4. 
 Read blastp matrices from episode 4.
+
 ~~~
-import os 
 os.getcwd()
-blast0 = pd.read_csv( '~/pan_workshop/results/blast/mini/output-blast/mini-genomes.blast', sep = '\t',names = ['qseqid','sseqid', 'pident', 'length', 'mismatch', 'gapopen', 'qstart', 'qend', 'sstart', 'send', 'evalue', 'bitscore'])  
+blastE = pd.read_csv( '~/pan_workshop/results/blast/mini/output-blast/mini-genomes.blast', sep = '\t',names = ['qseqid','sseqid', 'evalue'])  
 ~~~
 {: .language-python}
 
-Obtain evalues.
-
-~~~
-blastE = pd.DataFrame(blast0,columns=['qseqid','sseqid','evalue'])
-blastE.head()
-~~~
-{: .language-python}
-
-Obtain a list with genomes and genes unique.
+Obtain a list with the unique genes.
 ~~~
 qseqid_unique=pd.unique(blastE['qseqid'])
 sseqid_unique=pd.unique(blastE['sseqid'])
@@ -46,8 +41,15 @@ genes = pd.unique(np.append(qseqid_unique, sseqid_unique))
 ~~~
 {: .language-python}
 
+We have 43 unique genes, we can check it as follows.
 
-Obtain distance matrix.
+~~~
+len(genes)
+~~~
+{: .language-python}
+
+
+To use the `gudhi` packages, we need a distance matrix. In this case we will use the `evalue` as the mesure of how similar the genes are. First, we will process the `blastE` data frame to a list and then we will convert in a matrix object.
 
 ~~~
 distance_list = blastE[ blastE['qseqid'].isin(genes) & blastE['sseqid'].isin(genes)]
@@ -55,24 +57,81 @@ distance_list.head()
 ~~~
 {: .language-python}
 
-Process the matrix.
 
 ~~~
-# Define maximun biological distance between genes.
+  qseqid	              sseqid	              evalue
+0	2603V|GBPINHCM_01420	NEM316|AOGPFIKH_01528	4.110000e-67
+1	2603V|GBPINHCM_01420	A909|MGIDGNCP_01408	4.110000e-67
+2	2603V|GBPINHCM_01420	515|LHMFJANI_01310	4.110000e-67
+3	2603V|GBPINHCM_01420	2603V|GBPINHCM_01420	4.110000e-67
+4	2603V|GBPINHCM_01420	A909|MGIDGNCP_01082	1.600000e+00
+~~~
+{: .output}
+
+
+To convert the `distance_list` to a matrix object we will use the convention that the maximum biological distance between genes are `5`, so if we do not have the `evalue` between two genes, that imply that the evalua was too big, so we will fill that spots with the maximum biological distance.
+
+~~~
 MaxDistance = 5.0000000
 
 # reshape long to wide
-#matrixE = pd.pivot_table(distance_list,index = "qseqid",values = "evalue",columns = 'sseqid', #fill_value= MaxDistance )
-
-matrixE2 = pd.pivot_table(distance_list,index = "qseqid",values = "evalue",columns = 'sseqid')
-matrixE=matrixE2.fillna(5)
-
-
-# convert to a data frame
-DistanceMatrix = matrixE.to_numpy()
-DistanceMatrix.head()
+matrixE = pd.pivot_table(distance_list,index = "qseqid",values = "evalue",columns = 'sseqid')
+matrixE.iloc[1:5,1:5]
 ~~~
 {: .language-python}
+
+~~~
+sseqid	2603V|GBPINHCM_00065	2603V|GBPINHCM_00097	2603V|GBPINHCM_00348	2603V|GBPINHCM_00401
+qseqid				
+2603V|GBPINHCM_00065	1.240000e-174	NaN	NaN	NaN
+2603V|GBPINHCM_00097	NaN	9.580000e-100	NaN	NaN
+2603V|GBPINHCM_00348	NaN	NaN	0.0	NaN
+2603V|GBPINHCM_00401	NaN	NaN	NaN	2.560000e-135
+~~~
+{: .output}
+
+
+~~~~
+matrixE2=matrixE.fillna(MaxDistance)
+matrixE2.iloc[0:4,0:4]
+~~~~
+{: .language-python}
+
+~~~
+sseqid	2603V|GBPINHCM_00065	2603V|GBPINHCM_00097	2603V|GBPINHCM_00348	2603V|GBPINHCM_00401
+qseqid				
+2603V|GBPINHCM_00065	1.240000e-174	5.000000e+00	5.0	5.000000e+00
+2603V|GBPINHCM_00097	5.000000e+00	9.580000e-100	5.0	5.000000e+00
+2603V|GBPINHCM_00348	5.000000e+00	5.000000e+00	0.0	5.000000e+00
+2603V|GBPINHCM_00401	5.000000e+00	5.000000e+00	5.0	2.560000e-135
+~~~
+{: .output}
+
+
+Finaly, we need the distance matrix as a `numpy` array.
+
+~~~~
+DistanceMatrix = matrixE2.to_numpy()
+DistanceMatrix
+~~~
+{: .language-python}
+
+~~~
+array([[1.24e-174, 5.00e+000, 5.00e+000, ..., 5.00e+000, 5.00e+000,
+        5.00e+000],
+       [5.00e+000, 9.58e-100, 5.00e+000, ..., 5.00e+000, 5.00e+000,
+        5.00e+000],
+       [5.00e+000, 5.00e+000, 0.00e+000, ..., 5.00e+000, 5.00e+000,
+        5.00e+000],
+       ...,
+       [5.00e+000, 5.00e+000, 5.00e+000, ..., 1.64e-143, 5.00e+000,
+        5.00e+000],
+       [5.00e+000, 5.00e+000, 5.00e+000, ..., 5.00e+000, 4.11e-067,
+        5.00e+000],
+       [5.00e+000, 5.00e+000, 5.00e+000, ..., 5.00e+000, 5.00e+000,
+        0.00e+000]])
+~~~
+{: .output}
 
 
 Construct the Rips complex.
