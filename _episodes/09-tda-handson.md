@@ -26,14 +26,14 @@ import argparse
 
 ## **Example 1:** SimplexTree and Manual Filtration
 The SimplexTree data structure in GUDHI allows efficient manipulation of simplicial complexes. You can demonstrate its usage by creating a SimplexTree object, adding simplices manually, and then filtering the complex based on a filtration value.
-
+### **Create SimplexTree**
 With the following command, you can create a SimplexTree object named ´st´, which we will use to add the information of your filtered simplicial complex:
 
 ~~~
 st = gd.SimplexTree()  ## 
 ~~~
 {: .language-python}
-
+### **Insert simplex**
 In GUDHI, you can use the 'st.insert()' function to add simplices to a SimplexTree data structure. Additionally, you have the flexibility to specify the filtration level of each simplex. If no filtration level is specified, it is assumed to be added at filtration time 0.
 
 ~~~
@@ -59,14 +59,13 @@ st.insert([0, 2], filtration=1.2)
 
 In the code snippet above, we create a SimplexTree object named st. We then insert three 1-simplices into the SimplexTree at filtration levels of 0.5, 0.8, and 1.2, respectively. The 1-simplices are defined by specifying their vertices as lists [v1, v2], where v1 and v2 are the indices of the vertices.
 
-If any lower-dimensional simplices are missing, GUDHI's SimplexTree will automatically complete them. For example, when inserting the 1-simplex [1, 2] at filtration level 0.8, if the 0-simplex [1] or [2] was not already present, GUDHI will add it to the SimplexTree.
+> Note: If any lower-dimensional simplices are missing, GUDHI's SimplexTree will automatically complete them. For example, when inserting the 1-simplex [1, 2] at filtration level 0.8, if the 0-simplex [1] or [2] was not already present, GUDHI will add it to the SimplexTree.
 
 This approach allows you to gradually build the simplicial complex by inserting simplices at different filtration levels, and GUDHI takes care of maintaining the necessary lower-dimensional simplices.
-
 Remember to provide clear instructions and explanations for each step and encourage learners to experiment with different filtration levels and simplex insertions to gain a better understanding of how GUDHI's SimplexTree handles complex construction and completion.
 
 
-You can use the st.num_vertices() and st.num_simplices() commands to see the number of vertices and simplices, respectively, in your simplicial complex stored in the st SimplexTree object.
+Now, you can use the ´st.num_vertices()´ and ´st.num_simplices()´ commands to see the number of vertices and simplices, respectively, in your simplicial complex stored in the st SimplexTree object.
 
 ~~~
 num_vertices = st.num_vertices()
@@ -76,3 +75,8 @@ print("Number of vertices:", num_vertices)
 print("Number of simplices:", num_simplices)
 ~~~
 {: .language-python}
+
+
+The st.persistence() function in GUDHI's SimplexTree is used to compute the persistence diagram of the simplicial complex. The persistence diagram provides a compact representation of the birth and death of topological features as the filtration parameter varies.
+
+Here's an example of how to use st.persistence():
