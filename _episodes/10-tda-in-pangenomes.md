@@ -230,12 +230,12 @@ print("Bar code diagram was created in %s" % (time.time() - start_time))
 
 ~~~
 Bar code diagram was created in 0.05829215049743652
+~~~
+{: .output}
 
 <a href="../fig/barcode_mini.png">
   <img src="../fig/barcode_mini.png" alt="Persistence barcode for mini genomes" />
 </a>
-~~~
-{: .output}
 
 
 Function for the dimension of the simplices.
