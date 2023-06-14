@@ -107,6 +107,25 @@ qseqid
 ~~~
 {: .output}
 
+We need to have an object with the names of the columns of the matrix that we will use later.
+
+~~~
+name_columns = matrixE2.columns
+name_columns
+~~~
+{: .language-python}
+
+~~~
+Index(['2603V|GBPINHCM_00065', '2603V|GBPINHCM_00097', '2603V|GBPINHCM_00348',
+       '2603V|GBPINHCM_00401', '2603V|GBPINHCM_00554', '2603V|GBPINHCM_00748',
+       '2603V|GBPINHCM_00815', '2603V|GBPINHCM_01042', '2603V|GBPINHCM_01226',
+       '2603V|GBPINHCM_01231', '2603V|GBPINHCM_01420', '515|LHMFJANI_00064',
+ ...,
+       'NEM316|AOGPFIKH_01341', 'NEM316|AOGPFIKH_01415',
+       'NEM316|AOGPFIKH_01528', 'NEM316|AOGPFIKH_01842'],
+      dtype='object', name='sseqid')
+~~~
+{: .output}
 
 Finaly, we need the distance matrix as a `numpy` array.
 
@@ -236,9 +255,10 @@ Bar code diagram was created in 0.05829215049743652
 <a href="../fig/barcode_mini.png">
   <img src="../fig/barcode_mini.png" alt="Persistence barcode for mini genomes" />
 </a>
+<em> Figure 1. Barcode plot for the filtration with bars only in dimension 0. <em/>
 
 
-Function for the dimension of the simplices.
+The following function allows us to obtain the dimension of the simplices.
 
 ~~~
 def dimension(list):
@@ -247,13 +267,30 @@ def dimension(list):
 {: .language-python}
 
 
-We filter according to the dimension function: it orders us from largest dimension to smallest and then from longest birth time to smallest.
+We filter according to the dimension function: it orders the simplices from largest dimension to smallest and then from longest birth time to smallest.
 
 ~~~
 all_simplex_sorted_dim_1 = sorted(simplexTree.get_filtration(), key = dimension, reverse = True)
 all_simplex_sorted_dim_1 
 ~~~
 {: .language-python}
+
+~~~
+[([4, 9, 15, 18, 25, 30, 37, 39], 0.014),
+ ([4, 9, 15, 18, 25, 30, 37], 0.014),
+ ([4, 9, 15, 18, 25, 30, 39], 0.014),
+ ([4, 9, 15, 18, 25, 37, 39], 0.014),
+...
+ ([35], 0.0),
+ ([36], 0.0),
+ ([37], 0.0),
+ ([38], 0.0),
+ ([39], 0.0),
+ ([40], 0.0),
+ ([41], 0.0),
+ ([42], 0.0)]
+~~~
+{: .output}
 
 Obtain the persistence of each simplex.
 
