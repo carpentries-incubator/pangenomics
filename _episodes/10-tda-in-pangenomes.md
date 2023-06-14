@@ -25,7 +25,6 @@ import os
 {: .language-python}
 
 Now, we need to read the `mini-genomes.blast` file that we produce in episode 4. 
-Read blastp matrices from episode 4.
 
 ~~~
 os.getcwd()
@@ -34,6 +33,7 @@ blastE = pd.read_csv( '~/pan_workshop/results/blast/mini/output-blast/mini-genom
 {: .language-python}
 
 Obtain a list with the unique genes.
+
 ~~~
 qseqid_unique=pd.unique(blastE['qseqid'])
 sseqid_unique=pd.unique(blastE['sseqid'])
@@ -49,7 +49,7 @@ len(genes)
 {: .language-python}
 
 
-To use the `gudhi` packages, we need a distance matrix. In this case we will use the `evalue` as the mesure of how similar the genes are. First, we will process the `blastE` data frame to a list and then we will convert in a matrix object.
+To use the `gudhi` packages, we need a distance matrix. In this case we will use the `evalue` as the measure of how similar the genes are. First, we will process the `blastE` data frame to a list and then we will convert it into a matrix object.
 
 ~~~
 distance_list = blastE[ blastE['qseqid'].isin(genes) & blastE['sseqid'].isin(genes)]
@@ -127,7 +127,7 @@ array([[1.24e-174, 5.00e+000, 5.00e+000, ..., 5.00e+000, 5.00e+000,
 {: .output}
 
 
-Construct the Rips complex.
+Now, we want to construct the Rips complex associated with the genes with respect to the distance matrix that we obtained. To do this, we will impose the condition that the maximal distance between genes will be 2.
 
 ~~~
 max_edge_length = 2
@@ -141,25 +141,45 @@ print("The Rips complex was created in %s" % (time.time() - start_time) )
 ~~~
 {: .language-python}
 
-Create the filtration.
+~~~
+The Rips complex was created in 0.00029540061950683594
+~~~
+{: .output}
+
+As we see in the previous episodes, we now need a filtration. We will use the gudhi function `create_simplex_tree` to obtain the filtration associated with the Rips complex. We need to specify the argument `max_dimension`, this argument is the maximum dimension of the simplicial complex that we will obtain. If it is for example 4, this means that we will obtain gene families with at most 4 genes. In this example, we will use `8` as the maximum dimension so we can have families with at most 2 genes for each genomes or 8 different genes.
+
+**Note**:  For complete genomes, the maximum dimension of the simplicial complex needs to be carefully chosen because  the computation in Python is demanding in terms of system resources. For example, with 4 complete genomes the maximum dimension that we can compute is 5.  
 
 ~~~
 start_time = time.time()
 simplexTree = ripsComplex.create_simplex_tree(
-    max_dimension = 6)
+    max_dimension = 8)
 print("The filtration of the Rips complex was created in %s" % (time.time() - start_time))
 ~~~
 {: .language-python}
 
-Create the persistence of simplices.
+~~~
+The filtration of the Rips complex was created in 0.001073598861694336
+~~~
+{: .output}
+
+
+With the `persistence()` function, we will obtain the persistence of each simplicial complex.
+
 ~~~
 start_time = time.time()
-persistence = simplexTree.persistence()         #Parametros : homology_coeff_field = 11 default, min_persistence , persistence_dim_max
+persistence = simplexTree.persistence()  
 print("The persistente diagram of the Rips complex was created in %s" % (time.time() - start_time))
 ~~~
 {: .language-python}
 
-Print the birth time of the simplices.
+
+~~~
+The persistente diagram of the Rips complex was created in 0.006387233734130859
+~~~
+{: .output}
+
+We can print the birth time of the simplices. If we check the output of the following, we can see the simplices with how many vertices they have and with the birth time of each.
 
 ~~~
 result_str = 'Rips complex of dimension ' + repr(simplexTree.dimension())
@@ -171,9 +191,31 @@ for filtered_value in simplexTree.get_filtration():
 {: .language-python}
 
 ~~~
+Rips complex of dimension 7
+([0], 0.0)
+([1], 0.0)
+([2], 0.0)
+([3], 0.0)
+([4], 0.0)
+([5], 0.0)
+([6], 0.0)
+([7], 0.0)
+...
+~~~
+{: .output}
+
+
+~~~
 simplexTree.dimension(), simplexTree.num_vertices(), simplexTree.num_simplices()
 ~~~
 {: .language-python}
+
+~~~
+(7, 43, 467)
+~~~
+{: .output}
+
+The following is the barcode of the filtration that we created. We observe in this case that we only have objects in dimension 0.
 
 ~~~
 start_time = time.time()
@@ -185,6 +227,14 @@ gudhi.plot_persistence_barcode(
 print("Bar code diagram was created in %s" % (time.time() - start_time))
 ~~~
 {: .language-python}
+
+~~~
+Bar code diagram was created in 0.05829215049743652
+
+**Include barcode**
+~~~
+{: .output}
+
 
 Function for the dimension of the simplices.
 
