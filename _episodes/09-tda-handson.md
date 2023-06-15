@@ -80,3 +80,19 @@ print("Number of simplices:", num_simplices)
 The st.persistence() function in GUDHI's SimplexTree is used to compute the persistence diagram of the simplicial complex. The persistence diagram provides a compact representation of the birth and death of topological features as the filtration parameter varies.
 
 Here's an example of how to use st.persistence():
+
+~~~
+# Compute the persistence diagram
+persistence_diagram = st.persistence()
+
+# Print the persistence diagram
+for point in persistence_diagram:
+    birth = point[0]
+    death = point[1]
+    print("Birth:", birth)
+    print("Death:", death)
+    print()
+~~~
+{: .language-python}
+
+
