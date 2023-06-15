@@ -18,7 +18,10 @@ keypoints:
 - "A *closed pangenome* occurs when only a few gene families are incorporated to the pangenome when a new genome is added."
 - "A pangenome can be obtained by comparing the complete genome sequences of all clade members."
 ---
-## What is a pangenome?
+
+## Unveiling the Genomic Complexity: The Pangenome Paradigm
+
+The concept of **Pangenomics** originated from [Tettelin *et al.*](https://www.pnas.org/doi/10.1073/pnas.0506758102]), whose goal was to develop a vaccine against Group B *Streptococcus* (GBS, or *Streptococcus agalactiae*), a human pathogen causing neonatal infections. Previous to this, reverse vaccinology had been successfully applied to *Neisseria meningitidis* using a single genome. However, in the case of GBS, two complete gap-free sequences were available when the project started. These initial genomic studies revealed significant variability in gene content among closely related GBS isolates, challenging the notion that a single genome could represent the entire species. Consequently, the collaborative team decided to sequence six additional GBS genomes, representing the major disease-causing serotypes.   
 
 Contrary to what was thought in the past, one genome is not enough to represent all of the genomic content of a species. This was observed 
 by [Tettelin *et al.*](https://www.pnas.org/doi/10.1073/pnas.0506758102]),  who were working on developing a vaccine against the bacteria 
