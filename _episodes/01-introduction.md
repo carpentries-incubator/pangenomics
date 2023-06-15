@@ -21,25 +21,18 @@ keypoints:
 
 ## Unveiling the Genomic Complexity: The Pangenome Paradigm
 
+
 The concept of **Pangenomics** originated from [Tettelin *et al.*](https://www.pnas.org/doi/10.1073/pnas.0506758102]), whose goal was to develop a vaccine against Group B *Streptococcus* (GBS, or *Streptococcus agalactiae*), a human pathogen causing neonatal infections. Previous to this, reverse vaccinology had been successfully applied to *Neisseria meningitidis* using a single genome. However, in the case of GBS, two complete gap-free sequences were available when the project started. These initial genomic studies revealed significant variability in gene content among closely related GBS isolates, challenging the assumption that a single genome could represent an entire species. Consequently, the collaborative team decided to sequence six additional GBS genomes, representing the major disease-causing serotypes. The comparison of these genomes confirmed the presence of diverse regions, including differential pathogenicity islands, and revealed that the shared core set of genes accounted for only about 80% of an individual genome. The existence of broad genomic diversity prompted the question of how many genomes needed to be sequenced to identify all possible genes harbored by GBS as a whole. Motivated by the goal of identifying vaccine candidates, the collaborators engaged in active discussions, scientific drafts, and the development of a mathematical model to determine the optimal number of sequenced strains. And, this is how these pioneering authors introduced the revolutionary concept of the pangenome in 2005. 
 
-The term "pangenome" is a fusion of the Greek words *pan*, which means 'whole' or 'everything,' and *genome*, referring to the complete set of genes in an organism. So, by definition, a **pangenome** represents the entirety of genes present in a group of organisms belonging to the same species. Notably, this concept extends beyond the bacteria taxonomic group and can be applied to various groups of interes, such as humans, animals, plants, fungi, archea, and viruses. 
 
-The term **pangenome** derives from the Greek *pan*, meaning ‘whole’ or ‘everything’ and *genome*, to 
-refer to the collection of all the genes present in a species. This concept can be applied to any group of interest, not only to the taxonomic 
-level of species. And although it started from the study of bacteria, it has also been used in the research of eukaryotes, archaea, and viruses.  
+The term "pangenome" is a fusion of the Greek words *pan*, which means 'whole' or 'everything,' and *genome*, referring to the complete set of genes in an organism. So, by definition, a **pangenome** represents the entirety of genes present in a group of organisms belonging to the same species. Notably, this concept extends beyond bacteria and can be applied to any taxa of interest, including humans, animals, plants, fungi, archea, or viruses. 
 
-The pangenome can be divided into two principal components: the **core genome**, which contains genes present in all the genomes compared, and the 
-**dispensable** or **accessory genome**, that comprises the genes that are not shared by all the genomes. The accesory can be subdivided into the 
-**shell genome**, the proportion of genes present in the majority of the genomes, and **cloud genome**, comprised of genes in the minority of the 
-genomes. This is a somewhat ambiguous definition of the partitions, in the practice, the percentage of genomes that define each partition can be set 
-differently by each software of pangenome analysis and by each researcher. And other terms such as
-[persistent genome and soft-core genome](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) are also commonly 
-used in the field.
+The pangenome consists of two primary components: **core genome** and **accessory genome**. The core genome comprises genes that are present in all the genomes being compared, while the accessory genome consists of genes that are not shared by all genomes. Within the accessory genome, we can further distinguish two partitions, the *shell genome*, which encompasses the genes found in the majority of genomes, and the *cloud genome*, which comprises genes present in only a minority of genomes. It is worth mentioning that, the specific definition and percentages of these partitions may vary across different pangenome analysis software and among researchers. Additional terms such as [*persistent genome* and *soft-core genome*](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) are also commonly used in the field.
 
-One of the most groundbreaking ideas that pangenomics brought to the study of microbiology is that a species can be unbounded. When each newly 
-included genome increases considerably the number of total genes, the species has an **open pangenome**. Whereas a **closed pangenome** results 
-when only a few gene families are incorporated into the pangenome when a new member is added.
+There are two types of pangenomes. An **open pangenome** refers to a scenario in which the addition of new genomes to a species significantly increases the overall number of genes observed. In an open pangenome, the gene pool of the species continues to expand with each new genome agregated, indicating a high level of genomic diversity and the potential for acquiring new genetic traits. Conversely a **closed pangenome** occurs when the incorporation of new genomes into a species does not contribute significantly to the total number of genes. In a closed pangenome, the gene pool remains relatively stable and limited, suggesting a lower degree of genomic diversity within the species. From other perspective, Thus, the terms "open pangenome" and "closed pangenome" help us to describe the dynamic nature of gene content in a species.  
+
+
+
 
 <a href="{{ page.root }}/fig/01-01-01.png">
    <img src="{{ page.root }}/fig/01-01-01.png" alt=" Venn diagram of a) a closed pangenome and b) an open pangenome, comparing the sizes of their core and accessory genomes. c) Graphic depicting the differences between closed and open pangenomes regarding their size, total genes in pangenome, and the number of sequenced genomes." />
