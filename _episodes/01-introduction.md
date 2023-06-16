@@ -71,15 +71,15 @@ In summary, the terms "open pangenome" and "closed pangenome" describe the dynam
 > If you want to read more on pangenomics go to the book [The Pangenome](https://link.springer.com/book/10.1007/978-3-030-38281-0).
 {: .callout}
 
-## The *Streptococcus agalactiae* dataset
+## Genome database for this workshop 
 
-In this lesson, we will perform a standard pangenomics pipeline, which consist of the genomic annotation, clustering of gene families by identification
-of orthologous sequences, and the description of the pangenome partitions and openness. For this we will work with the eight *Streptococcus agalactiae*
- strains included in the first pangenome made by *Tettelin et al., 2005*.
+### Description of the Dataset 
 
-The genomes of strains 18RS21 and H36B are already in our `pan_workshop/data`, but the others will be downloaded and annotated in the following episodes.
+In this lesson, we will follow a standard pangenomics pipeline that involves genomic annotation, clustering of gene families to identify othologous sequences, and analyzing the pangenome partitions and openness. To illustrate these concepts, we will work with a dataser consisting of eight strains of *Streptococcus agalactiae* (GBS) as included in the pioneering pangenome study by *Tettelin et al., 2005* (See the **Table** below).
 
-**Metadata**
+We already have the genomes of strains 18RS21 and H36B available in our `pan_workshop/data` directory. However, the remaining strains will be downloaded and annotated in the upcoming episodes, allowing us to explore the complete dataset.
+
+**General description of the GBS genomes**
 
 
 |Strain	| Host	| Serotype   |
@@ -95,7 +95,7 @@ The genomes of strains 18RS21 and H36B are already in our `pan_workshop/data`, b
 
 
 
-> ## Prepare your genome database
+> ### Prepare your Genome Database
 > Make sure you have the `pan_workshop/` directory. If you do not have it, you can download it with the following instructions.
 >
 > ~~~
