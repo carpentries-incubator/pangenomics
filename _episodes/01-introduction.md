@@ -30,8 +30,10 @@ The term "pangenome" is a fusion of the Greek words *pan*, which means 'whole', 
 > Do you feel confused about what is a pangenome? Look at this analogy!
 >  
 > > ## Solution
-> > Imagine you're on a mission to open the finest pizza restaurant in New York City, aiming to offer your customers a wide variety of pizzas from around the world. To achieve this, you set out to gather all the pizza recipes ever created, including pepperoni, Hawaiian, vegetarian, and more. As you examine these recipes, you begin to notice that certain ingredients appear in multiple pizzas, while others are unique to specific recipes. 
+> > Imagine you're on a mission to open the finest pizza restaurant in New York City, aiming to offer your customers a wide variety of pizzas from around the world. To achieve this, you set out to gather all the pizza recipes ever created, including pepperoni, Hawaiian, vegetarian, and more. As you examine these recipes, you begin to notice that certain ingredients appear in multiple pizzas, while others are unique to specific recipes.
+> > 
 > > In this analogy, the pizza is your **species** of interest. Your collection of pizza recipes represents the **pangenome**, which encompasses the entire diversity of pizzas. Each pizza recipe corresponds to a **genome**, while each ingredient in the recipes represents a **gene**. The common ingredients shared among the recipes, such as flour, tomato sauce, and mozzarella cheese, can be thought of as **gene families**. Within these common ingredients, there may be variations in brands or preparation styles, reflecting the **gene variation** within the gene families.
+> > 
 > > As you continue to add more recipes to your collection, you gain a better understanding of the vast diversity in pizza-making techniques. This enables you to fulfill your objective of offering your customers the most comprehensive and diverse pizza menu.
 > {: .solution}  
 {: .discussion}
@@ -55,17 +57,13 @@ In summary, the terms "open pangenome" and "closed pangenome" describe the dynam
 
 
 > ## Discussion: Open or closed?
->  The amount of gene transfer, the degree of interaction with other species in the environment, the number of niches inhabited and the lifestyle 
->  of the species can play a role in the size of the pangenome. 
+>
+>  The size of a pangenome can be influenced by factors such as the extent of gene transfer, interactions with other species in the environment they co-habit, the diversity of niches inhabited, the lifestyle of the species, among others. 
 >  
->  Between a human lung pathogen and a soil bacterium, which one do you think has a closed pangenome and which one has an open one?
+>  Considering a human lung pathogen and a soil bacterium, which organism do you believe is more likely to have a closed pangenome, characterized by a relatively stable gene pool, and why?
 >  
 > > ## Solution
-> > Specialized pathogens tend to have smaller genomes because they live in an environment with more or less the same challenges, 
-> > so they have less variability in their gene repertoire, hence a closed pangenome.  
-> > On the other hand, free-living species face a changing environment, so they will be more adaptable if the population has a more diverse 
-> > set of tools to deal with the conditions. These tools are usually in the accessory genome, and the bigger the accessory genome is the more
-> >  open the pangenome will be.  
+> > Based on the assumption that a human lung pathogen may have a more specialized lifestyle and limited exposure to diverse environments, it is likely to possess a closed pangenome. In contrast, a soil bacterium, which encounters a wide range of ecological niches and interacts with various organisms, is more likely to have an open pangenome. However, these assumptions not always are true. Thus, further investigation and analysis are required to confirm these assumptions for the different species of interest. 
 > {: .solution}  
 {: .discussion}
 
