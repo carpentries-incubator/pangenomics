@@ -3,20 +3,20 @@ title: "Introduction to Pangenomics"
 teaching: 10
 exercises: 10
 questions:
-- "How can I represent all the gene content of a species?" 
+- "What is a pangenome?"
+- "What are the components of a pangenome?
 objectives:
-- "Discuss the importance of the pangenome concept."
-- "Define the different parts of the pangenome."
-- "Define the types of pangenomes."
-- "Know the data that we will use to build a pangenome."
+- "Gain insights into the origin and significance of pangenomics, and comprehend its fundamental principles."
+- "Acquire a comprehensive understanding of pangenome structure, including the classification of pangenomes based on their element composition."
 
 keypoints:
-- "A pangenome is the entire set of genes from all genomes in a group of interest (typically a species)."
-- "The pangenome is composed of a core genome and an accesory genome."
-- "The accessory genome is usually subdivided in shell genome and cloud genome."
-- "An *open pangenome* occurs when the size of the pangenome increases considerably with every added genome."
-- "A *closed pangenome* occurs when only a few gene families are incorporated to the pangenome when a new genome is added."
-- "A pangenome can be obtained by comparing the complete genome sequences of all clade members."
+- "A **pangenome** encompasses the complete collection of genes found in all genomes within a specific group, typically a species."
+- " Comparing the complete genome sequences of all members within a clade allows for the construction of a pangenome."
+- "The pangenome consists of two main components: the **core genome** and the **accessory genome**."
+- "The accessory genome can be further divided into the **shell genome** and the **cloud genome**."
+- "In an **open pangenome**, the size of the pangenome significantly increases with the addition of each new genome."
+- "In a **closed pangenome**, only a few gene families are added to the pangenome when a new genome is introduced."
+
 ---
 
 ## Unveiling the Genomic Complexity: The Pangenome Paradigm
