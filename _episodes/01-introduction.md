@@ -11,7 +11,7 @@ objectives:
 
 keypoints:
 - "A **pangenome** encompasses the complete collection of genes found in all genomes within a specific group, typically a species."
-- " Comparing the complete genome sequences of all members within a clade allows for the construction of a pangenome."
+- "Comparing the complete genome sequences of all members within a clade allows for the construction of a pangenome."
 - "The pangenome consists of two main components: the **core genome** and the **accessory genome**."
 - "The accessory genome can be further divided into the **shell genome** and the **cloud genome**."
 - "In an **open pangenome**, the size of the pangenome significantly increases with the addition of each new genome."
