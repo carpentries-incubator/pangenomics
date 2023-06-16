@@ -4,11 +4,10 @@ teaching: 10
 exercises: 10
 questions:
 - "What is a pangenome?"
-- "What are the components of a pangenome?
+- "What are the components of a pangenome?"
 objectives:
 - "Gain insights into the origin and significance of pangenomics, and comprehend its fundamental principles."
 - "Acquire a comprehensive understanding of pangenome structure, including the classification of pangenomes based on their element composition."
-
 keypoints:
 - "A **pangenome** encompasses the complete collection of genes found in all genomes within a specific group, typically a species."
 - "Comparing the complete genome sequences of all members within a clade allows for the construction of a pangenome."
@@ -16,7 +15,6 @@ keypoints:
 - "The accessory genome can be further divided into the **shell genome** and the **cloud genome**."
 - "In an **open pangenome**, the size of the pangenome significantly increases with the addition of each new genome."
 - "In a **closed pangenome**, only a few gene families are added to the pangenome when a new genome is introduced."
-
 ---
 
 ## Unveiling the Genomic Complexity: The Pangenome Paradigm
