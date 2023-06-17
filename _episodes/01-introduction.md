@@ -95,7 +95,7 @@ We already have the genomes of strains 18RS21 and H36B available in our `pan_wor
 
 
 
-> ### Prepare your Genome Database
+### Prepare your Genome Database
 > Make sure you have the `pan_workshop/` directory. If you do not have it, you can download it with the following instructions.
 >
 > ~~~
