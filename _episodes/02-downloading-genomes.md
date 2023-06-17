@@ -12,11 +12,9 @@ keypoints:
 
 ## Getting Genomic Data from the NCBI
 
-To obtain the missing genomes *S. agalactiae*, we well rely on the National Center for Biotechnology Information (NCBI) as the primary source of publicly available genomes. To automate the downloading process, we will utilize the NCBI Genome Downloading script, a convenient shell command that allows users to download genomes directly from the NCBI. 
+We already have the genomes of strains 18RS21 and H36B in our pan_workshop/data directory. However, the remaining six GBS strains will be downloaded in this episode. We will obtain these genomic sequences from the National Center for Biotechnology Information (NCBI) database, the primary source of publicly available genomes. To automate the downloading process, we are going to utilize the specialized `ncbi-genome-download` [package](https://github.com/kblin/ncbi-genome-download), which includes convenient shell commands that allows users to download genomes directly from the NCBI. This package offers great flexibility by enabling users to specify their desired queries. It simplifies the process of retrieving the data and ensures that is conveniently saved into the working directory. 
 
-This [package](https://github.com/kblin/ncbi-genome-download) offers great flexibility by enabling users to specify their desired queries. It simplifies the process of retrieving the data and ensures that is conveniently saved into the working directory. 
-
-To use the `ncbi-genome-download` package, we will need to activate the conda environment where it was installed. This will enable us to seamlessly utilize its functionalities in our workflow.
+The `ncbi-genome-download` package can be installed with conda. In our case, we have already installed it into the environment under the same name of the package *ncbi-genome-download*. Thus, in order to use the package, we just have to activate the *ncbi-genome-download* conda environment. 
 
 > ## Know more
 > If you want to know more about what is *conda* and its *environments* visit this [link](https://docs.conda.io/en/latest/).
@@ -36,7 +34,7 @@ $ conda activate ncbi-genome-download
 
 For practicality, the prompt will be written only as `$` instead of `(ncbi-genome-download) $`.
 
-Now, your are able to run the package `ncbi-genome-download`. 
+Now, you are able to run the package `ncbi-genome-download`. 
 Exploring the range of options available in the package is highly reccomended in order to choose well and get what you really need. To access the complete list of parameters to incorporate in your downloads, simply type the following commmand: 
 
 ~~~
@@ -88,9 +86,10 @@ usage:
 {: .output}
 
 If you type `ncbi-genome-download` and you get the error `command-not-found`,
-it could be because you are in the `base` and not inside the `ncbi-genome-download`
-conda environment. Once inside the environment we are ready to use the package.
-We'll now change to our data directory created in the previous section.
+it could be because you are in the `base` and not inside the *ncbi-genome-download*
+conda environment. Come back to the previous instruction and let's move on. 
+
+Now, we have to move into our `data/` directory
 
 ~~~
 $ cd ~/pan_workshop/data
@@ -113,18 +112,12 @@ agalactiae_18RS21  agalactiae_H36B
 ~~~
 {: .output}
 
-To construct the first pangenome, several _Streptococcus_ strains were considered.
-Let's search the genome of _Streptoccocus agalactie 515_, one of the original strains.
+Prior to downloading anything from the NCBI, we recommend to verify if the genome or genomes you are interested are available in the database. The package `ncbi-genome-download` includes the `--dry-run` or `-n` flag, which means that the algorithm only will check the genomes you specify to download, but without downloading the files. Other useful flags are `--formats`, which serve to specify the desired format; `--genera` to specify the genus (or species), and `-S` for the strains. Importantly, the `ncbi-genome-download` command must always end with the name of the group of organisms where the search will be performed, which in our case will be `bacteria`. 
 
-Prior to downloading anything from the NCBI, it is advisable to verify if the information we seek
-is available in the database and its content. Include
-the `-n` flag within your command to do a "dry-run", which means to show the available accessions instead of downloading them.
-Use the flag `--formats` to specify the desired format, `--genera` to specify the genus (or species), and `-S` for the strain. 
-The `ncbi-genome-download` command must always end with the name of the group of organisms where the search will be performed, 
-which in our case is `bacteria`.
+So, first, let's check if one of the genomes we are interested to download, "*Streptococcus agalactiae* 515" is available in NCBI. We will use the flags mentioned above.
 
 ~~~
-$ ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -n bacteria 
+$ ncbi-genome-download -n --formats fasta --genera "Streptococcus agalactiae" -S 515 bacteria 
 ~~~
 {: .language-bash}
 ~~~
@@ -133,12 +126,9 @@ GCF_012593885.1 Streptococcus agalactiae 515    515
 ~~~
 {: .output}
 
-Once we know that the genome is available in NCBI,
-let us download its corresponding fasta file. The flag 
-`-o agalactie_515` specifies `agalactie_515` as the output directory. 
-Notice that the `-n` flag is not included in this command. This is because
-now we will downloading the genome instead of finding if it is available
-in NCBI.
+Great! The genome is available! 
+
+Now, we can proceed to download it. To better organize our data, we can save this file into an specific directory for this strain. We can indicate this instruction with the `--output-folder` or `-o` flag followed by the name we choose. In this case, will be `-o agalactie_515`. Notice that now we no longer need the flag the `-n`.  
 
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactiae_515 bacteria 
@@ -146,8 +136,7 @@ $ ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 51
 {: .language-bash}
 
 
-Once the prompt `$` is available again, use the command `tree` 
-to show the contents of the recently downloaded directory `agalactiae_515`.
+Once the prompt `$` appears again, use the command `tree` to show the contents of the recently downloaded directory `agalactiae_515`.
 
 ~~~
 $ tree agalactiae_515
