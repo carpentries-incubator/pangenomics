@@ -3,26 +3,27 @@ title: "Downloading Genomic Data"
 teaching: 30
 exercises: 15
 questions:
-- "How to download public genomic data from the command line?"
+- "How to download public genomes by using the command line?"
 objectives:
-- "Explore `ncbi-genome-download` as a tool for genomic data fetching from the NCBI."
+- "Explore `ncbi-genome-download` as a tool for fetching genomic data from the NCBI."
 keypoints:
-- "The `ncbi-genome-download` package is a set of scripts to download genomes from the NCBI."
+- "The `ncbi-genome-download` package is a set of scripts designed to download genomes from the NCBI."
 ---
 
 ## Getting Genomic Data from the NCBI
 
-The main source of publicly available genomes is NCBI, so to be able to obtain the genomes of *S. agalactiae* that we are missing, we are 
-going to download them from the NCBI using the command-line.
-The NCBI Genome Downloading Scripts provide a shell command that
-allows users to download genomes from the NCBI. This [package](https://github.com/kblin/ncbi-genome-download)
-is highly useful, it enables to specify queries as much as it is desired. It simplifies
-the process of getting the data directly into the working directory. 
+To obtain the missing genomes *S. agalactiae*, we well rely on the National Center for Biotechnology Information (NCBI) as the primary source of publicly available genomes. To automate the downloading process, we will utilize the NCBI Genome Downloading script, a convenient shell command that allows users to download genomes directly from the NCBI. 
 
-To use the `ncbi-genome-download` package we need to activate the Conda environment where it is installed. 
-If you want to know more about Conda and environments visit this [link](https://docs.conda.io/en/latest/).
+This [package](https://github.com/kblin/ncbi-genome-download) offers great flexibility by enabling users to specify their desired queries. It simplifies the process of retrieving the data and ensures that is conveniently saved into the working directory. 
 
-Let's activate the `ncbi-genome-download` Conda environment to beggin.  
+To use the `ncbi-genome-download` package, we will need to activate the conda environment where it was installed. This will enable us to seamlessly utilize its functionalities in our workflow.
+
+> ## Know more
+> If you want to know more about what is *conda* and its *environments* visit this [link](https://docs.conda.io/en/latest/).
+{: .callout}
+
+
+Let's activate the *ncbi-genome-download* conda environment to begin.  
 ~~~
 $ conda activate ncbi-genome-download
 ~~~
@@ -32,15 +33,16 @@ $ conda activate ncbi-genome-download
 (ncbi-genome-download) $
 ~~~
 {: .output}
-For practicality, the prompt is written only as `$` instead of `(ncbi-genome-download) $`.
 
-The full list of parameters to incorporate in your downloads can be obtained by typing:
+For practicality, the prompt will be written only as `$` instead of `(ncbi-genome-download) $`.
+
+Now, your are able to run the package `ncbi-genome-download`. 
+Exploring the range of options available in the package is highly reccomended in order to choose well and get what you really need. To access the complete list of parameters to incorporate in your downloads, simply type the following commmand: 
+
 ~~~
 $ ncbi-genome-download --help
 ~~~
 {: .language-bash}
-
-This command outputs a long user manual; some of the most important parameters are:
 
 ~~~
 usage:  
@@ -87,7 +89,7 @@ usage:
 
 If you type `ncbi-genome-download` and you get the error `command-not-found`,
 it could be because you are in the `base` and not inside the `ncbi-genome-download`
-Conda environment. Once inside the environment we are ready to use the package.
+conda environment. Once inside the environment we are ready to use the package.
 We'll now change to our data directory created in the previous section.
 
 ~~~
