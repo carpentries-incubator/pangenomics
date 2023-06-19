@@ -9,4 +9,4 @@ objectives:
 keypoints:
 - "Downstream analysis of pangenomes could be focused on describing the core or the accessory genome of the organism studied."
 ---
-$ x_n $ 
+$$ x_n $$ 
