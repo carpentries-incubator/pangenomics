@@ -41,8 +41,8 @@ A simple geometric object of any dimension (point, line segment, triangle, tetra
 ### **Simplicial complex**
 It is a mathematical structure composed of a collection of simple geometric objects called simplices, constructed from a data set. In other words, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements. In this sense, we can think of a simplicial complex as extending the notion of a graph only formed by vertices and edges.
 
-  <a href="../fig/Tda_Simplicial_complex_example.svg.png">
-  <img src="../fig/Tda_Simplicial_complex_example.svg.png" alt="Example Simplicial Complex" />
+  <a href="../fig/Tda_Simplicial_complex_example.png">
+  <img src="../fig/Tda_Simplicial_complex_example.png" alt="Example Simplicial Complex" />
 </a>
 
 > ### For Mathematicians
@@ -103,12 +103,12 @@ The **Vietoris-Rips complex** is constructed from a set of points in a metric sp
 > {: .solution}
 {: .challenge}
 
-On the other hand, the **Čech complex**is based on constructing simplicial cells rather than simply connecting points at specific distances. Given a set of points and a distance parameter, all sets of points whose balls of radius equal to the distance parameter have a non-empty intersection are considered. These sets of points become the simplices of the Čech complex. Similar to the Vietoris-Rips complex, higher-dimensional simplices can be constructed by closing under combinations of lower-dimensional simplices that form a complete simplex.
+On the other hand, the **Čech complex** is based on constructing simplicial cells rather than simply connecting points at specific distances. Given a set of points and a distance parameter, all sets of points whose balls of radius equal to the distance parameter have a non-empty intersection are considered. These sets of points become the simplices of the Čech complex. Similar to the Vietoris-Rips complex, higher-dimensional simplices can be constructed by closing under combinations of lower-dimensional simplices that form a complete simplex.
 
 > ### For Mathematicians
 >
 >> ## Cech complex
->> Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d$, its **Cech complex** of radius $r>0$ is the simplicial complex $C(P,r)$ s.t. $vert(C(P,r))=P$ and
+>> Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d$, its **Cech complex** of radius $r>0$ is the simplicial complex $C(P,r)$ s.t. $vert(C(P,r))=P$  and
 >>
 >>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in C(P,r) \quad iff \quad \cap_{j=0}^k B(p_{i_j} \neq \emptyset $$
 >> 
@@ -138,6 +138,11 @@ Simplicial homology is a technique used to quantify the topological structure of
 **Holes:** Holes are empty regions or connected spaces in a simplicial complex. Simplicial homology allows for the detection and quantification of the presence of holes in the complex.
 
 **Connected Components:** Connected components are sets of simplices in a simplicial complex that are connected to each other through shared simplices. Simplicial homology can identify and count the connected components in the complex.
+
+ <a href="../fig/tda_08_exercise_1.png">
+  <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" />
+</a>
+
 
 **Homology degree:** Integer assigned to a cycle or cavity in a simplicial complex using the technique of simplicial homology. The homology degree is used to quantify the "amount" of topological structure present in the complex.
 
