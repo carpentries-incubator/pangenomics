@@ -355,7 +355,6 @@ for simplex in simplices:
         for genoma in genomes:
             if genoma in simplex[i]:
                 genes_contains[genoma] = genes_contains[genoma] +1
-                #genes_contains[genoma] = j
     for gen in genomes:
         if gen not in genes_contains.keys():
             genes_contains[gen] = 0
