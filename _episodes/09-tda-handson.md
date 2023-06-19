@@ -9,10 +9,10 @@ objectives:
 keypoints:
 - "Ghudi is a TDA tool"
 ---
-# **Introduction to GUDHI and Simplicial Homology**
+## **Introduction to GUDHI and Simplicial Homology**
 
 Welcome to this lesson on using GUDHI and exploring simplicial homology. GUDHI (Geometry Understanding in Higher Dimensions) is an open-source C++ library that provides algorithms and data structures for the analysis of geometric data. It offers a wide range of tools for topological data analysis, including simplicial complexes and computations of their homology.
-## **1. Library**
+### **1. Library**
 ~~~
 from IPython.display import Image
 from os import chdir
@@ -24,16 +24,16 @@ import argparse
 {: .language-python}
 
 
-## **Example 1:** SimplexTree and Manual Filtration
+### **Example 1:** SimplexTree and Manual Filtration
 The SimplexTree data structure in GUDHI allows efficient manipulation of simplicial complexes. You can demonstrate its usage by creating a SimplexTree object, adding simplices manually, and then filtering the complex based on a filtration value.
-### **Create SimplexTree**
+#### **Create SimplexTree**
 With the following command, you can create a SimplexTree object named ´st´, which we will use to add the information of your filtered simplicial complex:
 
 ~~~
 st = gd.SimplexTree()  ## 
 ~~~
 {: .language-python}
-### **Insert simplex**
+#### **Insert simplex**
 In GUDHI, you can use the 'st.insert()' function to add simplices to a SimplexTree data structure. Additionally, you have the flexibility to specify the filtration level of each simplex. If no filtration level is specified, it is assumed to be added at filtration time 0.
 
 ~~~
@@ -96,7 +96,7 @@ for point in persistence_diagram:
 {: .language-python}
 
 
-## **Example 2:** Rips complex from datasets 
+### **Example 2:** Rips complex from datasets 
 Download and make dataset
 
 ~~~
@@ -193,7 +193,7 @@ plt.yticks(size=15)
 
 
 
-## **Example 3:** Rips complex from datasets 
+### **Example 3:** Rips complex from datasets 
 
 ~~~
 from gudhi.datasets.generators import _points
