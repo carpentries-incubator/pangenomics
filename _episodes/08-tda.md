@@ -150,9 +150,12 @@ Simplicial homology is a technique used to quantify the topological structure of
 
 ### **Persistence Diagram:**
  The persistence diagram is a visual representation of the evolution of cycles and cavities in different dimensions as the simplicial complex is modified. It helps understand the persistence and relevance of topological structures in the complex.
+[FIX ME add EXAMPLE]
 
 ### **Barcode Diagram:**
  The barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars that represent the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
+[FIX ME add EXAMPLE]
+
 
 ## App to play
 <iframe src="https://www.geogebra.org/classic/s7W7zbG4?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
@@ -170,3 +173,13 @@ Simplicial homology is a technique used to quantify the topological structure of
   });
   MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
 </script>
+
+> ## `.challenge` Chllenge 1 Persistence Diagrama
+>
+> An exercise.
+{: .challenge}
+
+> ## `.challenge` Challenge 2 Barcode Diagrama
+>
+> An exercise.
+{: .challenge}
