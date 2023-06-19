@@ -308,11 +308,11 @@ def besthit(gen,genome,data):
     # gen: a fixed gen in the list of unique genes
     # genome: the genome in which we will look the best hit
     # df: the data frame with the evalues
-    filtro=(data['qseqid']==gen) & (data['Genome2']==genome) & (data['Genome1']!=genome)
-    if (len(data[filtro]) == 0 ):
+    filter_cd=(data['qseqid']==gen) & (data['Genome2']==genome) & (data['Genome1']!=genome)
+    if (len(data[filter_cd]) == 0 ):
         gen_besthit = "NA"
     else:
-        gen_besthit = data.loc[filtro,'sseqid'].at[data.loc[filtro,'evalue'].idxmin()]
+        gen_besthit = data.loc[filter_cd,'sseqid'].at[data.loc[filter_cd,'evalue'].idxmin()]
    
     return(gen_besthit)
 ~~~
@@ -392,21 +392,21 @@ this for the second-biggest genome. To do this, we need to remove from the list 
 placed in the current families.
 
 ~~~
-lista=[]
+list_g=[]
 for elemt in g_A909_bdbh.keys():
-    lista.append(elemt)
-    for aaa in g_A909_bdbh[elemt]:
-        lista.append(aaa)
+    list_g.append(elemt)
+    for g_hit in g_A909_bdbh[elemt]:
+        list_g.append(g_hit)
 ~~~
 {: .language-python}
 
 ~~~
 genes2=genes
 genes2=genes2.tolist()
-genesremove=pd.unique(lista).tolist()
+genesremove=pd.unique(list_g).tolist()
 genesremove.remove('NA')
-for a in genesremove:
-    genes2.remove(a)
+for b_hits in genesremove:
+    genes2.remove(b_hits)
 
 genes2
 ~~~
