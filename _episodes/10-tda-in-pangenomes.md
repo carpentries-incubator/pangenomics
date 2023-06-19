@@ -234,6 +234,7 @@ simplexTree.dimension(), simplexTree.num_vertices(), simplexTree.num_simplices()
 ~~~
 {: .output}
 
+
 The following is the barcode of the filtration that we created. We observe in this case that we only have objects in dimension 0.
 
 ~~~
@@ -252,10 +253,12 @@ Bar code diagram was created in 0.05829215049743652
 ~~~
 {: .output}
 
+
 <a href="../fig/barcode_mini.png">
   <img src="../fig/barcode_mini.png" alt="Persistence barcode for mini genomes" />
 </a>
 <em> Figure 1. Barcode plot for the filtration with bars only in dimension 0. <em/>
+
 
 
 The following function allows us to obtain the dimension of the simplices.
@@ -334,6 +337,7 @@ genes_numbers=genomas
 ~~~
 {: .language-python}
 
+Now, we want an object with the information of if one genome has genes in each family.
 
 ~~~
 bool_gen = dict()
