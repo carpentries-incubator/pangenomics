@@ -8,6 +8,7 @@ objectives:
 - "Learn about the downstream analysis to describe a pangenome"
 keypoints:
 - "Downstream analysis of pangenomes could be focused on describing the core or the accessory genome of the organism studied."
+math: true
 ---
 Probemos el latex
 $ x_n $
