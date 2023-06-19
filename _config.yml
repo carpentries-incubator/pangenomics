@@ -6,7 +6,7 @@
 # swc: Software Carpentry
 # dc: Data Carpentry
 # lc: Library Carpentry
-# cp: Carpentries (to use for instructor traning for instance)
+# cp: Carpentries (to use for instructor training for instance)
 carpentry: "incubator"
 
 # Overall title for pages.
@@ -15,7 +15,7 @@ title: "Pangenome Analysis in Prokaryotes" # FIXME
 # Life cycle stage of the lesson
 # See this page for more details: https://cdh.carpentries.org/the-lesson-life-cycle.html
 # Possible values: "pre-alpha", "alpha", "beta", "stable"
-life_cycle: "pre-alpha"
+life_cycle: "beta"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
@@ -98,7 +98,10 @@ exclude:
 
 # Turn on built-in syntax highlighting.
 highlighter: rouge
+math: yes
 
+plugins:
+  - jekyll-redirect-from
+  - jekyll-paginate
 
-# Remote theme
-remote_theme: Alanocallaghan/carpentries-theme
+remote_theme: carpentries/carpentries-theme
