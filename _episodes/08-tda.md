@@ -40,8 +40,8 @@ A simple geometric object of any dimension (point, line segment, triangle, tetra
 ### **Simplicial complex**
 It is a mathematical structure composed of a collection of simple geometric objects called simplices, constructed from a data set. In other words, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements. In this sense, we can think of a simplicial complex as extending the notion of a graph only formed by vertices and edges.
 
-  <a href="../fig/Tda_Simplicial_complex_example.svg">
-  <img src="../fig/Tda_Simplicial_complex_example.svg" alt="Example Simplicial Complex" />
+  <a href="../fig/Tda_Simplicial_complex_example.svg.png">
+  <img src="../fig/Tda_Simplicial_complex_example.svg.png" alt="Example Simplicial Complex" />
 </a>
 
 > ### For Mathematicians
