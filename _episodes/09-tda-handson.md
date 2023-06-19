@@ -96,3 +96,167 @@ for point in persistence_diagram:
 {: .language-python}
 
 
+## **Example 2:** Rips complex from datasets 
+Download and make dataset
+
+~~~
+from sklearn import datasets
+circles, labels = datasets.make_circles(n_samples=100, noise=0.06, factor=0.5)
+print('Data dimension:{}'.format(circles.shape))
+~~~
+{: .language-python}
+
+
+plot dataset
+
+~~~
+import matplotlib.pyplot as plt; 
+import seaborn as sns
+sns.set()
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax = sns.scatterplot(x=circles[:,0], y=circles[:,1],   s=15)
+plt.title('Dataset with N=%s points'%(circles.shape[0]))
+plt.grid(color = 'black', linestyle = '-', linewidth = 1)
+plt.savefig('circles2.png' , dpi=600, transparent=True)
+plt.xticks(size=15)
+plt.yticks(size=15)
+plt.show()
+~~~
+{: .language-python}
+
+ <a href="../fig/tda_circles.png">
+  <img src="../fig/tda_circles.png" alt="Plot Circles" />
+</a>
+
+Construct the Rips complex
+~~~
+%%time
+# The RipsComplex() function creates a one skeleton graph from the point cloud.
+Rips_complex = gd.RipsComplex(circles, max_edge_length=0.6) 
+~~~
+{: .language-python}
+
+
+Construct the Rips complex
+~~~
+%%time
+# The create_simplex_tree() method creates the filtered complex.
+Rips_simplex_tree = Rips_complex.create_simplex_tree(max_dimension=3) 
+~~~
+{: .language-python}
+
+Construct the Rips complex
+~~~
+%%time
+# The get_filtration() method computes the simplices of the filtration
+filt_Rips = list(Rips_simplex_tree.get_filtration())
+~~~
+{: .language-python}
+
+
+
+~~~
+%%time
+# We can compute persistence on the simplex tree structure using the persistence() method
+diag_Rips = Rips_simplex_tree.persistence()
+~~~
+{: .language-python}
+
+~~~
+%%time
+gd.plot_persistence_diagram(diag_Rips,legend=True)
+plt.grid(color = 'black', linestyle = '-', linewidth = 1)
+plt.savefig('persitencediagramCircles.png' , dpi=600, transparent=True)
+plt.xticks(size=15)
+plt.yticks(size=15)
+~~~
+{: .language-python}
+
+
+ <a href="../fig/tda_09_persistence_example2.png">
+  <img src="../fig/tda_09_persistence_example2.png" alt="Persistence diagram" />
+</a>
+
+~~~
+%%time
+gd.plot_persistence_barcode(v,legend=True)
+plt.grid(color = 'black', linestyle = '-', linewidth = 1)
+plt.savefig('persistencebarcodeCircles' , dpi=600, transparent=True)
+plt.xticks(size=15)
+plt.yticks(size=15)
+~~~
+{: .language-python}
+
+ <a href="../fig/tda_09_bardcode_example2.png">
+  <img src="../fig/tda_09_bardcode_example2.png" alt="Bard Code" />
+</a>
+
+
+
+## **Example 3:** Rips complex from datasets 
+
+~~~
+from gudhi.datasets.generators import _points
+from gudhi import AlphaComplex
+~~~
+{: .language-python}
+
+
+~~~
+f = open('/home/shaday/GIT/gudhi-data/points/spiral_2d/spiral_2d.csv', 'r')
+import numpy as np
+data = np.loadtxt(f)
+import matplotlib.pyplot as plt
+plt.scatter(data[:,0],data[:,1],marker='.',s=1)
+#plt.savefig('espiral.svg' , dpi=1200)
+plt.show()
+~~~
+{: .language-python}
+
+<a href="../fig/tda_09_sperial.png">
+  <img src="../fig/tda_09_sperial.png" alt="Plot Spiral" />
+</a>
+
+Define simplicial complex
+~~~
+alpha_complex = AlphaComplex(points = data)
+simplex_tree = alpha_complex.create_simplex_tree()
+~~~
+{: .language-python}
+
+~~~
+diag = simplex_tree.persistence()
+diag = simplex_tree.persistence(homology_coeff_field=2, min_persistence=0)
+print("diag=", diag)
+
+gd.plot_persistence_diagram(diag)
+~~~
+{: .language-python}
+
+<a href="../fig/tda_09_persistence_example3.png">
+  <img src="../fig/tda_09_persistence_example3.png" alt="Persistence diagram" />
+</a>
+
+
+~~~
+gd.plot_persistence_barcode(diag)
+plt.savefig('persistence_barcodeSpiral.svg' , dpi=1200)
+plt.show()
+~~~
+{: .language-python}
+
+ <a href="../fig/tda_09_bardcode_example3.png">
+  <img src="../fig/tda_09_bardcode_example3.png" alt="Bard Code" />
+</a>
+
+~~~
+%%time
+gd.plot_persistence_barcode(v,legend=True)
+plt.grid(color = 'black', linestyle = '-', linewidth = 1)
+plt.savefig('persistencebarcodeCircles' , dpi=600, transparent=True)
+plt.xticks(size=15)
+plt.yticks(size=15)
+~~~
+{: .language-python}
