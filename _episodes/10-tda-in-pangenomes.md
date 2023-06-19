@@ -318,6 +318,7 @@ for tuple_simple in all_simplex_sorted_dim_1:
 ~~~
 {: .language-python}
 
+We can save the name of the simplices, i.e. the keys in the object `d_simplex_const`, in a list called `simplices`.
 
 ~~~
 simplices = list()
@@ -325,32 +326,10 @@ simplices = list(d_simplex_const.keys())
 ~~~
 {: .language-python}
 
+We will save the list of the genomes in a list called `genes_numbers`.
 
 ~~~
-pre_genes_numbers = []
-        
-for simplex in simplices:
-    for i in range(len(simplex)):
-        j = 0
-        genString = ''
-        while simplex[i][j] != '.':
-            j = j+1
-        if simplex[i][j] == '.':
-            j = j+1
-            while simplex[i][j] != '.':
-                genString = genString + simplex[i][j]
-                j = j+1
-            pre_genes_numbers.append(genString)
-pre_genes_numbers
-genes_numbers = []
-for gen in pre_genes_numbers:
-    if gen not in genes_numbers:
-        genes_numbers.append(gen)
-genes_numbers
-~~~
-{: .language-python}
-
-~~~
+genomas = ['2603V', '515', 'A909', 'NEM316']
 genes_numbers=genomas
 ~~~
 {: .language-python}
