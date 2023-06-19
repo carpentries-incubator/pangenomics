@@ -60,6 +60,10 @@ genomes
 ~~~
 {: .language-python}
 
+~~~
+['2603V', '515', 'A909', 'NEM316']
+~~~
+{: .output}
 
 To use the `gudhi` packages, we need a distance matrix. In this case we will use the `evalue` as the measure of how similar the genes are. First, we will process the `blastE` data frame to a list and then we will convert it into a matrix object.
 
@@ -455,12 +459,14 @@ for gen in genes_numbers:
 ~~~
 {: .output}
 
+We can save the data frame as follows.
+
 ~~~
 aux_simplex_list.to_csv('~/pan_workshop/results/blast/mini/persistent_simplices.csv')
-
 ~~~
 {: .language-python}
 
+In this data frame, we can see how many families are at the end if we filter by `t_death=2`. Also, we can see how the families are formed and the families that are formed since the first time.
 
 ## Method 2
 
