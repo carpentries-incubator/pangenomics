@@ -48,6 +48,18 @@ len(genes)
 ~~~
 {: .language-python}
 
+Also, we will need a list with the unique genomes in our database. First, we convert to a data frame object the list of genes, then we split each gene in the genome and gen part, finally we obtain a list of the unique genomes and we save it in the object `genomes`.
+
+~~~
+df_genes=pd.DataFrame(genes, columns=['Genes'])
+df_genome_genes=df_genes["Genes"].str.split("|", n = 1, expand = True)
+df_genome_genes.columns= ["Genome", "Gen"]
+genomes=pd.unique(df_genome_genes['Genome'])
+genomes=list(genomes)
+genomes
+~~~
+{: .language-python}
+
 
 To use the `gudhi` packages, we need a distance matrix. In this case we will use the `evalue` as the measure of how similar the genes are. First, we will process the `blastE` data frame to a list and then we will convert it into a matrix object.
 
@@ -329,33 +341,61 @@ simplices = list(d_simplex_const.keys())
 ~~~
 {: .language-python}
 
-We will save the list of the genomes in a list called `genes_numbers`.
 
-~~~
-genomas = ['2603V', '515', 'A909', 'NEM316']
-genes_numbers=genomas
-~~~
-{: .language-python}
-
-Now, we want an object with the information of if one genome has genes in each family.
+Now, we want an object with the information of how many genes of each genome are in each family.
 
 ~~~
 bool_gen = dict()
 genes_contains = dict()
-num_new_columns = len(genes_numbers)
+num_new_columns = len(genomes)
 for simplex in simplices:
     genes_contains = dict()
+    genes_contains = {'2603V': 0, '515': 0, 'A909': 0, 'NEM316': 0}
     for i in range(len(simplex)):
-        for gen in genes_numbers:
-            if gen in simplex[i]:
-                genes_contains[gen] = 1
-    for gen in genes_numbers:
+        for genoma in genomes:
+            if genoma in simplex[i]:
+                genes_contains[genoma] = genes_contains[genoma] +1
+                #genes_contains[genoma] = j
+    for gen in genomes:
         if gen not in genes_contains.keys():
             genes_contains[gen] = 0
     bool_gen[simplex] = genes_contains
 ~~~
 {: .language-python}
 
+
+The bool_gen numbers looks like:
+
+~~~
+{('2603V|GBPINHCM_00554',
+  '2603V|GBPINHCM_01231',
+  '515|LHMFJANI_00548',
+  '515|LHMFJANI_01178',
+  'A909|MGIDGNCP_00580',
+  'A909|MGIDGNCP_01268',
+  'NEM316|AOGPFIKH_00621',
+  'NEM316|AOGPFIKH_01341'): {'2603V': 2, '515': 2, 'A909': 2, 'NEM316': 2},
+ ('2603V|GBPINHCM_00554',
+  '2603V|GBPINHCM_01231',
+  '515|LHMFJANI_00548',
+  '515|LHMFJANI_01178',
+  'A909|MGIDGNCP_00580',
+  'A909|MGIDGNCP_01268',
+  'NEM316|AOGPFIKH_00621'): {'2603V': 2, '515': 2, 'A909': 2, 'NEM316': 1},
+...
+('NEM316|AOGPFIKH_00855',): {'2603V': 0, '515': 0, 'A909': 0, 'NEM316': 1},
+ ('NEM316|AOGPFIKH_01341',): {'2603V': 0, '515': 0, 'A909': 0, 'NEM316': 1},
+ ('NEM316|AOGPFIKH_01415',): {'2603V': 0, '515': 0, 'A909': 0, 'NEM316': 1},
+ ('NEM316|AOGPFIKH_01528',): {'2603V': 0, '515': 0, 'A909': 0, 'NEM316': 1},
+ ('NEM316|AOGPFIKH_01842',): {'2603V': 0, '515': 0, 'A909': 0, 'NEM316': 1}}
+~~~
+{: .output}
+
+How can we read the object `bool_gen`?
+
+We have a dictionary of dictionaries. Every key in the dictionary is a family and in the values we have how many genes are from each genome in each family.
+
+Now, we want to obtain a dataFrame with the information of the time of births, death and persistence of every simplice (i.e. every family). First we will obtain this information from our object `d_simplex_time` and we will save in tree lists.
 
 ~~~
 births = []
@@ -368,7 +408,7 @@ for values in d_simplex_time.values():
 ~~~
 {: .language-python}
 
-
+Now that we have the information we will save it in the dataFrame `simplex_list`
 ~~~
 data = {
     't_birth': births,
@@ -376,26 +416,54 @@ data = {
     'persistence': persistent_times
 }
 simplex_list = pd.DataFrame(index = simplices, data = data)
-#simplex_list.head(10)
-simplex_list.to_csv('~/pan_workshop/results/blast/mini/persistent_simplices.csv')
+simplex_list.head(4)
 ~~~
 {: .language-python}
 
+~~~
+	t_birth	t_death	persistence
+(2603V|GBPINHCM_00554, 2603V|GBPINHCM_01231, 515|LHMFJANI_00548, 515|LHMFJANI_01178, A909|MGIDGNCP_00580, A909|MGIDGNCP_01268, NEM316|AOGPFIKH_00621, NEM316|AOGPFIKH_01341)	0.014	2.000	1.986
+(2603V|GBPINHCM_00554, 2603V|GBPINHCM_01231, 515|LHMFJANI_00548, 515|LHMFJANI_01178, A909|MGIDGNCP_00580, A909|MGIDGNCP_01268, NEM316|AOGPFIKH_00621)	0.014	0.014	0.000
+(2603V|GBPINHCM_00554, 2603V|GBPINHCM_01231, 515|LHMFJANI_00548, 515|LHMFJANI_01178, A909|MGIDGNCP_00580, A909|MGIDGNCP_01268, NEM316|AOGPFIKH_01341)	0.014	0.014	0.000
+(2603V|GBPINHCM_00554, 2603V|GBPINHCM_01231, 515|LHMFJANI_00548, 515|LHMFJANI_01178, A909|MGIDGNCP_00580, NEM316|AOGPFIKH_00621, NEM316|AOGPFIKH_01341)	0.014	0.014	0.000
+~~~
+{: .output}
+
+Finally, we want the data frame with the complete information, so we will concatenate the objects `simplex_list` and `bool_gen` in a convenient way.
+
 
 ~~~
+aux_simplex_list = simplex_list
 for gen in genes_numbers:
     data = dict()
     dataFrame_aux = []
     for simplex in simplices:
         data[simplex] = bool_gen[simplex][gen]
     dataFrame_aux = pd.DataFrame.from_dict(data, orient='index', columns = [str(gen)])
-    pd.concat([simplex_list, dataFrame_aux], axis = 1)
-    dataFrame_aux.to_csv('~/pan_workshop/results/blast/mini/persistent_simplices_'+str(gen)+'.csv')
+    aux_simplex_list=pd.concat([aux_simplex_list, dataFrame_aux], axis = 1)
 ~~~
 {: .language-python}
 
-Joint the 5 data frames.
+~~~
+	t_birth	t_death	persistence	2603V	515	A909	NEM316
+(2603V|GBPINHCM_00554, 2603V|GBPINHCM_01231, 515|LHMFJANI_00548, 515|LHMFJANI_01178, A909|MGIDGNCP_00580, A909|MGIDGNCP_01268, NEM316|AOGPFIKH_00621, NEM316|AOGPFIKH_01341)	0.014	2.000000e+00	1.986000e+00	2	2	2	2
+(2603V|GBPINHCM_00554, 2603V|GBPINHCM_01231, 515|LHMFJANI_00548, 515|LHMFJANI_01178, A909|MGIDGNCP_00580, A909|MGIDGNCP_01268, NEM316|AOGPFIKH_00621)	0.014	1.400000e-02	0.000000e+00	2	2	2	1
+(2603V|GBPINHCM_00554, 2603V|GBPINHCM_01231, 515|LHMFJANI_00548, 515|LHMFJANI_01178, A909|MGIDGNCP_00580, A909|MGIDGNCP_01268, NEM316|AOGPFIKH_01341)	0.014	1.400000e-02	0.000000e+00	2	2	2	1
+(2603V|GBPINHCM_00554, 2603V|GBPINHCM_01231, 515|LHMFJANI_00548, 515|LHMFJANI_01178, A909|MGIDGNCP_00580, NEM316|AOGPFIKH_00621, NEM316|AOGPFIKH_01341)	0.014	1.400000e-02	0.000000e+00	2	2	1	2
+(2603V|GBPINHCM_00554, 2603V|GBPINHCM_01231, 515|LHMFJANI_00548, 515|LHMFJANI_01178, A909|MGIDGNCP_01268, NEM316|AOGPFIKH_00621, NEM316|AOGPFIKH_01341)	0.014	1.400000e-02	0.000000e+00	2	2	1	2
+...	...	...	...	...	...	...	...
+(NEM316|AOGPFIKH_00855,)	0.000	0.000000e+00	0.000000e+00	0	0	0	1
+~~~
+{: .output}
 
+~~~
+aux_simplex_list.to_csv('~/pan_workshop/results/blast/mini/persistent_simplices.csv')
+
+~~~
+{: .language-python}
+
+
+## Method 2
 
 This code attempts to generate a pangenome with an specified percentage of core/shell/cloud gene families. Neverthelles caiution is recommended because in a real pangenome, data should have more hierarchical structure. This is temporary data to exemplify TDA concepts.
 ~~~
