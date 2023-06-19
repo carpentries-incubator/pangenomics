@@ -12,10 +12,10 @@ keypoints:
 
 ## **Topological data analysis**
 
-Topological data analysis is a technique that uses concepts from topology to analyze complex data and find patterns and structures that are not apparent at first glance. This technique is based on the construction of a structure called a simplicial complex, which is composed of a collection of simple geometric objects called simplices. The topology of this complex is used to analyze and visualize the relationships between the data.
+Topological data analysis is a technique that uses concepts from topology to analyze complex data and find patterns and structures that are not apparent at first glance. This technique is based on constructing a structure called a simplicial complex, composed of a collection of simple geometric objects called simplices. The topology of this complex is used to analyze and visualize the relationships between the data.
 
 ### **Simplex**
-Simple geometric object of any dimension (point, line segment, triangle, tetrahedron, etc.) that is used to construct simplicial complexes.
+A simple geometric object of any dimension (point, line segment, triangle, tetrahedron, etc.) is used to construct simplicial complexes.
 
 > ### For Mathematicians
 >
@@ -38,7 +38,7 @@ Simple geometric object of any dimension (point, line segment, triangle, tetrahe
 </a>
 
 ### **Simplicial complex**
-Is a mathematical structure composed of a collection of simple geometric objects called simplices, which is constructed from a set of data. In other word, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements. In this sense, we can think of a simplicial complex as extending the notion of a graph, which is only formed by vertices and edges.
+It is a mathematical structure composed of a collection of simple geometric objects called simplices, constructed from a data set. In other words, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements. In this sense, we can think of a simplicial complex as extending the notion of a graph only formed by vertices and edges.
 
   <a href="../fig/Tda_Simplicial_complex_example.svg">
   <img src="../fig/Tda_Simplicial_complex_example.svg" alt="Example Simplicial Complex" />
@@ -62,8 +62,8 @@ Is a mathematical structure composed of a collection of simple geometric objects
 
 
 
-### **Abstract simplex and simplical complex**
-Let $P= \{p_1,...,p_n\}$ be a (finite) set. An **abstract simlicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:
+### **Abstract simplex and simplicial complex**
+Let $P= \{p_1,...,p_n\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:
 1. the elements of $P$ belong to $K$,
 2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$.
 
