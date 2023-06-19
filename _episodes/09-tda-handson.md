@@ -203,12 +203,16 @@ from gudhi import AlphaComplex
 
 
 ~~~
-f = open('/home/shaday/GIT/gudhi-data/points/spiral_2d/spiral_2d.csv', 'r')
-import numpy as np
-data = np.loadtxt(f)
-import matplotlib.pyplot as plt
-plt.scatter(data[:,0],data[:,1],marker='.',s=1)
-#plt.savefig('espiral.svg' , dpi=1200)
+import requests
+#load the file spiral_2d.csv
+url = 'https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/spiral_2d.csv'
+# Obtener el contenido del archivo
+response = requests.get(url)
+content = response.text
+# Cargar los datos en un arreglo de NumPy
+data = np.loadtxt(content.splitlines(), delimiter=' ')
+# Graficar los puntos
+plt.scatter(data[:, 0], data[:, 1], marker='.', s=1)
 plt.show()
 ~~~
 {: .language-python}
