@@ -5,9 +5,10 @@ exercises: 15
 questions:
 - "What is topological data analysis?"
 objectives:
-- "Understand a simplex"
+- "Understand a simplex."
 keypoints:
-- "TDA describes data forms"
+- "TDA describes data forms."
+math: true
 ---
 
 ## **Topological data analysis**
