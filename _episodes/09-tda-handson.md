@@ -130,39 +130,37 @@ plt.show()
   <img src="../fig/tda_circles.png" alt="Plot Circles" />
 </a>
 
-Construct the Rips complex
+ The `RipsComplex()` function creates a one skeleton graph from the point cloud.
 ~~~
 %%time
-# The RipsComplex() function creates a one skeleton graph from the point cloud.
 Rips_complex = gd.RipsComplex(circles, max_edge_length=0.6) 
 ~~~
 {: .language-python}
 
-
-Construct the Rips complex
+The `create_simplex_tree()` method creates the filtered complex.
 ~~~
 %%time
-# The create_simplex_tree() method creates the filtered complex.
+
 Rips_simplex_tree = Rips_complex.create_simplex_tree(max_dimension=3) 
 ~~~
 {: .language-python}
 
-Construct the Rips complex
+The `get_filtration()` method computes the simplices of the filtration
 ~~~
 %%time
-# The get_filtration() method computes the simplices of the filtration
+
 filt_Rips = list(Rips_simplex_tree.get_filtration())
 ~~~
 {: .language-python}
 
-
-
+We can compute persistence on the simplex tree structure using the `persistence()` method
 ~~~
 %%time
-# We can compute persistence on the simplex tree structure using the persistence() method
+
 diag_Rips = Rips_simplex_tree.persistence()
 ~~~
 {: .language-python}
+
 
 ~~~
 %%time
@@ -260,3 +258,5 @@ plt.xticks(size=15)
 plt.yticks(size=15)
 ~~~
 {: .language-python}
+
+> Exercice 
