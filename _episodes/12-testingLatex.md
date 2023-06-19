@@ -11,3 +11,9 @@ keypoints:
 ---
 Probemos el latex
 $ x_n $
+
+| Variable             |  Definition |   
+:-------------------------:|:-------------------------:  
+$ S_{chao1} = S_{Obs} + \frac{F_{1} \times (F_{1} - 1)}{2 \times (F_{2} + 1)} $ | Count of singletons and doubletons respectively
+$ F_{1}, F_{2} $ | Count of singletons and doubletons respectively
+$ S_{chao1}=S_{Obs} $ | The number of observed species
