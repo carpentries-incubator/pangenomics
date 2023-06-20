@@ -1,5 +1,5 @@
 ---
-title: "TDA in Pangenomes"
+title: "Examples TDA in genomics "
 teaching: 30
 exercises: 15
 questions:
@@ -212,3 +212,18 @@ A909|MGIDGNCP_00405	1	1	1	1
 ~~~
 {: .output}
 
+
+~~~
+# Leer el archivo de secuencias en formato FASTA
+sequences = list(SeqIO.parse("/home/shaday/GIT/temp/all_allig.fasta", "fasta"))
+sequences
+alignment = MultipleSeqAlignment(sequences)
+# Calcular la matriz de distancias
+calculator = DistanceCalculator('identity')
+distance_matrix = calculator.get_distance(alignment)
+
+# Construir el árbol UPGMA
+constructor = DistanceTreeConstructor()
+upgma_tree = constructor.upgma(distance_matrix)
+~~~
+{: .language-python}
