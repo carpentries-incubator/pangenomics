@@ -83,11 +83,11 @@ spaces (good for topological/geometrical inference) and as combinatorial objects
 > 
 > How many simplices (0-simplices, 1-simplices, 2-simplices) do the simplicial complexes in the figure have?
 > > ## Solution  
-> > |           | **Figure A** | **Figure B** |  
-> > |-----------|--------------|--------------|
-> > | $0-simplex$ | 9          | 11           |  
-> > | $1-simplex$ | 11         | 12           |  
-> > | $2-simplex$ | 2          | 2            |  
+> > |             | **Figure A** | **Figure B** |  
+> > |:-----------:|:------------:|:------------:|  
+> > | $0-simplex$ |       9      |      11      |  
+> > | $1-simplex$ |      11      |      12      |  
+> > | $2-simplex$ |       2      |       2      |  
 > > 
 > {: .solution}
 {: .challenge}
@@ -148,9 +148,10 @@ Simplicial homology is a technique used to quantify the topological structure of
 > 
 > How many 1-holes and connected components ($\beta_0 $  and $\beta_1$) are these figure?
 > > ## Solution  
-> > |   | Figure A  | Figure B  |  
-> > | $ \beta_0 $ | 1 | 2 |
-> > | $\beta_1 $  |  2  |  2  |   
+> > |           | **Figure A** | **Figure B** |  
+> > |:---------:|:------------:|:------------:|  
+> > | $\beta_0$ |       1      |       2      |  
+> > | $\beta_1$ |       2      |       2      |   
 > > 
 > {: .solution}
 {: .challenge}
