@@ -183,7 +183,9 @@ gd.plot_persistence_diagram(persistence_libro,legend=True)
 
 
 ### Example 2: Genes
+In this example, we want to use Topological Data Analysis to detect if there is Horizontal Gene Transfer within this group of genomes.
 
+First, let's import the file `familias_mini.csv` which contains a table of gene presence and absence in 4 _Streptococcus_ genomes.
 ~~~
 df = pd.read_csv("/home/shaday/GIT/pangenomics/files/familias_minis.csv", index_col=0)
 df_filled = df.fillna(0)
@@ -191,7 +193,6 @@ df=df_filled.replace(to_replace=r'.+', value=1, regex=True)
 df
 ~~~
 {: .language-python}
-
 ~~~
 	g_A909	g_2603V	g_515	g_NEM316
 A909|MGIDGNCP_01408	1	1	1	1
@@ -212,32 +213,35 @@ A909|MGIDGNCP_00405	1	1	1	1
 ~~~
 {: .output}
 
-
+Now we will use the file 'minigenomes_allig.fasta,' which contains the sequence of the previously aligned genomes, to build a phylogenetic tree among them.
 ~~~
 url = "https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/minigenomes_allig.fasta"
 response = requests.get(url)
-response.raise_for_status()  # Verificar si ocurrió algún error durante la descarga
-# Guardar el contenido descargado en un archivo local
+response.raise_for_status()  # Check if any errors occurred during the download
+# Save the downloaded content to a local file
 with open("minigenomes_allig.fasta", "wb") as file:
     file.write(response.content)
 sequences = list(SeqIO.parse("minigenomes_allig.fasta", "fasta"))
-# Resto de tu código que utiliza las secuencias
+# Rest of your code that uses the sequences
 alignment = MultipleSeqAlignment(sequences)
-# Calcular la matriz de distancias
+# Calculate the distance matrix
 calculator = DistanceCalculator('identity')
 distance_matrix = calculator.get_distance(alignment)
 
-# Construir el árbol UPGMA
+# Build the UPGMA tree
 constructor = DistanceTreeConstructor()
 upgma_tree = constructor.upgma(distance_matrix)
 
-# Dibujar el árbol UPGMA
+# Draw the UPGMA tree
 draw(upgma_tree)
+
 ~~~
 {: .language-python}
  <a href="../fig/tda_11_philo_tree.png">
   <img src="../fig/tda_11_philo_tree.png" alt="Phylogenetic tree" width="50%" height="auto" />
 </a>
+
+The phylogenetic tree groups the genomes into pairs, which does not help infer whether horizontal gene transfer occurred at some point during evolution among these species. Next, we will use persistent homology to try to detect this by identifying 1-hole structures.
 
 
 ~~~
@@ -246,13 +250,54 @@ persistence_genes=complejo(matrix_dintancia_genes)
 gd.plot_persistence_barcode(persistence_genes)
 ~~~
 {: .language-python}
- <a href="../fig/tda_11_barcode_2.png">
-  <img src="../fig/tda_11_barcode_2.png" alt="Persistence Barcode" width="50%" height="auto" />
+ <a href="../fig/tda_11_barcode_5.png">
+  <img src="../fig/tda_11_barcode_5.png" alt="Persistence Barcode" width="50%" height="auto" />
 </a>
 
+In the persistence barcode code, we did not detect any 1-hole structures. We can explore various strategies to try to detect this.
 
-Where are the HT?
+### Select by triplets.
+We start select the first four genes and repeat the previous calculations.
+~~~
+df_primera=df.iloc[:4,:]
+matrix_dintancia_genes_primera=distancia(df_primera)
+persistence_genes_primera=complejo(matrix_dintancia_genes_primera)
+gd.plot_persistence_barcode(persistence_genes_primera)
+~~~
+{: .language-python}
+ <a href="../fig/tda_11_barcode_4.png">
+  <img src="../fig/tda_11_barcode_4.png" alt="Persistence Barcode" width="50%" height="auto" />
+</a>
+We can observe that we have a 1-hole, indicating the presence of horizontal gene transfer among our four genomes.
 
+Now, if we make another selection by taking the last four genes, we can observe the following:
+
+~~~
+df_segunda=df.iloc[-4:,:]
+df_segunda
+~~~
+{: .language-python}
+~~~
+	g_A909	g_2603V	g_515	g_NEM316
+A909|MGIDGNCP_00405	1	1	1	1
+2603V|GBPINHCM_00748	0	1	0	0
+2603V|GBPINHCM_01226	0	1	0	0
+515|LHMFJANI_01625	0	0	1	1
+~~~
+{: .output}
+~~~
+matrix_dintancia_genes_segunda=distancia(df_segunda)
+persistence_genes_segunda=complejo(matrix_dintancia_genes_segunda)
+gd.plot_persistence_barcode(persistence_genes_segunda)
+~~~
+{: .language-python}
+ <a href="../fig/tda_11_barcode_5.png">
+  <img src="../fig/tda_11_barcode_5.png" alt="Persistence Barcode" width="50%" height="auto" />
+</a>
+
+In this selection, we do not detect this 1-hole.
+
+### The mediam complex
 ~~~
 #crear un diccionario de cada genoma convertivo a "0" y "1" de presencia y auscnia de genes
 genomas = {}
