@@ -85,24 +85,28 @@ $ prokka --prefix agalactiae_A909_prokka --outdir agalactiae_A909_prokka --kingd
 {: .language-bash}
 
 This command takes about a minute to run, printing a lot of information on screen while doing so. After finishing, Prokka will create a new folder, inside of which, if you run the `tree` command, you will find the following files:
+~~~
+tree
+~~~
+{: .language-bash}
 
 ~~~
 .
-agalactiae_A909_prokka/
-├── agalactiae_A909_prokka.err
-├── agalactiae_A909_prokka.faa
-├── agalactiae_A909_prokka.ffn
-├── agalactiae_A909_prokka.fna
-├── agalactiae_A909_prokka.fsa
-├── agalactiae_A909_prokka.gbk
-├── agalactiae_A909_prokka.gff
-├── agalactiae_A909_prokka.log
-├── agalactiae_A909_prokka.sqn
-├── agalactiae_A909_prokka.tbl
-├── agalactiae_A909_prokka.tsv
-└── agalactiae_A909_prokka.txt
+└── agalactiae_A909_prokka
+    ├── agalactiae_A909_prokka.err
+    ├── agalactiae_A909_prokka.faa
+    ├── agalactiae_A909_prokka.ffn
+    ├── agalactiae_A909_prokka.fna
+    ├── agalactiae_A909_prokka.fsa
+    ├── agalactiae_A909_prokka.gbk
+    ├── agalactiae_A909_prokka.gff
+    ├── agalactiae_A909_prokka.log
+    ├── agalactiae_A909_prokka.sqn
+    ├── agalactiae_A909_prokka.tbl
+    ├── agalactiae_A909_prokka.tsv
+    └── agalactiae_A909_prokka.txt
 
-0 directories, 12 files
+1 directory, 12 files
 ~~~
 {: .output}
 
