@@ -21,6 +21,7 @@ import numpy as np
 import gudhi as gd
 import matplotlib.pyplot as plt
 import argparse
+import seaborn as sns
 ~~~
 {: .language-python}
 
@@ -119,9 +120,67 @@ Death: (0.0, 0.5)
 ~~~
 {: .output}
 
+Plot the persitence diagram
+
+~~~
+gd.plot_persistence_diagram(diag_Rips,legend=True)
+plt.grid(color = 'black', linestyle = '-', linewidth = 1)
+plt.savefig('persitencediagramCircles.png' , dpi=600, transparent=True)
+plt.xticks(size=15)
+plt.yticks(size=15)
+~~~
+{: .language-python}
+
+~~~
+(array([-0.1 ,  0.  ,  0.1 ,  0.2 ,  0.3 ,  0.4 ,  0.5 ,  0.55]),
+ [Text(0, -0.1, '-0.100'),
+  Text(0, 0.0, '0.000'),
+  Text(0, 0.1, '0.100'),
+  Text(0, 0.20000000000000004, '0.200'),
+  Text(0, 0.30000000000000004, '0.300'),
+  Text(0, 0.4, '0.400'),
+  Text(0, 0.5000000000000001, '0.500'),
+  Text(0, 0.55, '$+\\infty$')])
+~~~
+{: .output}
+ <a href="../fig/tda_09_diagram_1.png">
+  <img src="../fig/tda_09_diagram_1.png" alt="Persistence Diagram" width="50%" height="auto" />
+</a>
+
+
+Plot the barcode
+
+~~~
+gd.plot_persistence_barcode(persistence_diagram,legend=True)
+plt.grid(color = 'black', linestyle = '-', linewidth = 1)
+plt.savefig('persistencebarcodeCircles' , dpi=600, transparent=True)
+plt.xticks(size=15)
+plt.yticks(size=15)
+~~~
+{: .language-python}
+
+~~~
+(array([0.  , 0.25, 0.5 , 0.75, 1.  , 1.25, 1.5 , 1.75, 2.  ]),
+ [Text(0, 0.0, '0.00'),
+  Text(0, 0.25, '0.25'),
+  Text(0, 0.5, '0.50'),
+  Text(0, 0.75, '0.75'),
+  Text(0, 1.0, '1.00'),
+  Text(0, 1.25, '1.25'),
+  Text(0, 1.5, '1.50'),
+  Text(0, 1.75, '1.75'),
+  Text(0, 2.0, '2.00')])
+~~~
+{: .output}
+ <a href="../fig/tda_09_barcode_1.png">
+  <img src="../fig/tda_09_barcode_1.png" alt="Persistence Diagram" width="50%" height="auto" />
+</a>
+
+
+
 
 ### **Example 2:** Rips complex from datasets 
-Download and make dataset
+Import new package and make two circles 
 
 ~~~
 from sklearn import datasets
@@ -130,12 +189,14 @@ print('Data dimension:{}'.format(circles.shape))
 ~~~
 {: .language-python}
 
+~~~
+Data dimension:(100, 2)
+~~~
+{: .output}
 
 plot dataset
 
 ~~~
-import matplotlib.pyplot as plt; 
-import seaborn as sns
 sns.set()
 
 fig = plt.figure()
@@ -160,6 +221,11 @@ plt.show()
 Rips_complex = gd.RipsComplex(circles, max_edge_length=0.6) 
 ~~~
 {: .language-python}
+~~~
+CPU times: user 0 ns, sys: 214 µs, total: 214 µs
+Wall time: 217 µs
+~~~
+{: .output}
 
 The `create_simplex_tree()` method creates the filtered complex.
 ~~~
@@ -169,6 +235,12 @@ Rips_simplex_tree = Rips_complex.create_simplex_tree(max_dimension=3)
 ~~~
 {: .language-python}
 
+~~~
+CPU times: user 712 µs, sys: 612 µs, total: 1.32 ms
+Wall time: 645 µs
+~~~
+{: .output}
+
 The `get_filtration()` method computes the simplices of the filtration
 ~~~
 %%time
@@ -176,6 +248,11 @@ The `get_filtration()` method computes the simplices of the filtration
 filt_Rips = list(Rips_simplex_tree.get_filtration())
 ~~~
 {: .language-python}
+~~~
+CPU times: user 2.72 ms, sys: 2.91 ms, total: 5.64 ms
+Wall time: 5.63 ms
+~~~
+{: .output}
 
 We can compute persistence on the simplex tree structure using the `persistence()` method
 ~~~
@@ -184,6 +261,11 @@ We can compute persistence on the simplex tree structure using the `persistence(
 diag_Rips = Rips_simplex_tree.persistence()
 ~~~
 {: .language-python}
+~~~
+CPU times: user 4.13 ms, sys: 126 µs, total: 4.26 ms
+Wall time: 3.58 ms
+~~~
+{: .output}
 
 
 ~~~
@@ -195,21 +277,47 @@ plt.xticks(size=15)
 plt.yticks(size=15)
 ~~~
 {: .language-python}
+~~~
+(array([-0.1       ,  0.        ,  0.1       ,  0.2       ,  0.3       ,
+         0.4       ,  0.5       ,  0.62569893]),
+ [Text(0, -0.1, '-0.100'),
+  Text(0, 0.0, '0.000'),
+  Text(0, 0.1, '0.100'),
+  Text(0, 0.20000000000000004, '0.200'),
+  Text(0, 0.30000000000000004, '0.300'),
+  Text(0, 0.4, '0.400'),
+  Text(0, 0.5000000000000001, '0.500'),
+  Text(0, 0.6256989291775961, '$+\\infty$')])
+~~~
+{: .output}
 
 
  <a href="../fig/tda_09_persistence_example2.png">
   <img src="../fig/tda_09_persistence_example2.png" alt="Persistence diagram" />
 </a>
 
+
+
 ~~~
 %%time
-gd.plot_persistence_barcode(v,legend=True)
+gd.plot_persistence_barcode(diag_Rips,legend=True)
 plt.grid(color = 'black', linestyle = '-', linewidth = 1)
 plt.savefig('persistencebarcodeCircles' , dpi=600, transparent=True)
 plt.xticks(size=15)
 plt.yticks(size=15)
 ~~~
 {: .language-python}
+~~~
+(array([  0.,  20.,  40.,  60.,  80., 100., 120.]),
+ [Text(0, 0.0, '0'),
+  Text(0, 20.0, '20'),
+  Text(0, 40.0, '40'),
+  Text(0, 60.0, '60'),
+  Text(0, 80.0, '80'),
+  Text(0, 100.0, '100'),
+  Text(0, 120.0, '120')])
+~~~
+{: .output}
 
  <a href="../fig/tda_09_bardcode_example2.png">
   <img src="../fig/tda_09_bardcode_example2.png" alt="Bard Code" />
