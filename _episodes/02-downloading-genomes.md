@@ -108,7 +108,7 @@ $ ls
 {: .language-bash}
 
 ~~~
-agalactiae_18RS21  agalactiae_H36B
+agalactiae_18RS21  agalactiae_H36B annotated_mini
 ~~~
 {: .output}
 
