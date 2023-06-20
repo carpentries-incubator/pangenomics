@@ -35,14 +35,14 @@ A simple geometric object of any dimension (point, line segment, triangle, tetra
 
 
   <a href="../fig/tda_Vertices.png">
-  <img src="../fig/tda_Vertices.png" alt="Example" />
+  <img src="../fig/tda_Vertices.png" alt="Example" width="70%" height="auto"/>
 </a>
 
 ### **Simplicial complex**
 It is a mathematical structure composed of a collection of simple geometric objects called simplices, constructed from a data set. In other words, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements. In this sense, we can think of a simplicial complex as extending the notion of a graph only formed by vertices and edges.
 
   <a href="../fig/Tda_Simplicial_complex_example.png">
-  <img src="../fig/Tda_Simplicial_complex_example.png" alt="Example Simplicial Complex" />
+  <img src="../fig/Tda_Simplicial_complex_example.png" alt="Example Simplicial Complex" width="70%" height="auto"/>
 </a>
 
 > ### For Mathematicians
@@ -58,7 +58,7 @@ It is a mathematical structure composed of a collection of simple geometric obje
 
 
   <a href="../fig/tda_paste.png">
-  <img src="../fig/tda_paste.png" alt="Example" />
+  <img src="../fig/tda_paste.png" alt="Example" width="70%" height="auto"/>
 </a>
 
 
@@ -78,7 +78,7 @@ spaces (good for topological/geometrical inference) and as combinatorial objects
 > ## Exercise 1: 
 >  In the following graph, we have 2 representations of simplicial complexes.
 >  <a href="../fig/tda_08_exercise_1.png">
-  <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" />
+  <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" width="70%" height="auto"/>
 </a>
 > 
 > How many simplices (0-simplices, 1-simplices, 2-simplices) do the simplicial complexes in the figure have?
@@ -124,7 +124,7 @@ On the other hand, the **Čech complex** is based on constructing simplicial cel
 
 
  <a href="../fig/Tda_rips_cech.png">
-  <img src="../fig/Tda_rips_cech.png" alt="Example Filtration" />
+  <img src="../fig/Tda_rips_cech.png" alt="Example Filtration" width="70%" height="auto" />
 </a>
 
 > Note: Cech complexes can be quite hard to compute.
@@ -151,7 +151,7 @@ Simplicial homology is a technique used to quantify the topological structure of
 > ## Exercise 2: 
 >  In the following graph, we have 2 representations of simplicial complexes.
 >  <a href="../fig/tda_08_exercise_1.png">
-  <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" />
+  <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" width="70%" height="auto" />
 </a>
 > 
 > How many 1-holes and connected components ($\beta_0 $  and $\beta_1$) are these figure?
@@ -175,7 +175,7 @@ A filtration of a simplicial complex is an ordered sequence of subcomplexes of t
   2. $K_i$ is a subcomplex of $K_{i+1}$, for $i=0,1,...,N-1$.
 
   <a href="../fig/Tda-Filtacion1.png">
-  <img src="../fig/Tda-Filtacion1.png" alt="Example Filtration" />
+  <img src="../fig/Tda-Filtacion1.png" alt="Example Filtration" width="70%" height="auto"/>
 </a>
 
 ### **Persistence Diagram:**
