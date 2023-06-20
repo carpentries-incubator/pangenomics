@@ -214,9 +214,14 @@ A909|MGIDGNCP_00405	1	1	1	1
 
 
 ~~~
-# Leer el archivo de secuencias en formato FASTA
-sequences = list(SeqIO.parse("/home/shaday/GIT/temp/all_allig.fasta", "fasta"))
-sequences
+url = "https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/minigenomes_allig.fasta"
+response = requests.get(url)
+response.raise_for_status()  # Verificar si ocurrió algún error durante la descarga
+# Guardar el contenido descargado en un archivo local
+with open("minigenomes_allig.fasta", "wb") as file:
+    file.write(response.content)
+sequences = list(SeqIO.parse("minigenomes_allig.fasta", "fasta"))
+# Resto de tu código que utiliza las secuencias
 alignment = MultipleSeqAlignment(sequences)
 # Calcular la matriz de distancias
 calculator = DistanceCalculator('identity')
@@ -225,5 +230,115 @@ distance_matrix = calculator.get_distance(alignment)
 # Construir el árbol UPGMA
 constructor = DistanceTreeConstructor()
 upgma_tree = constructor.upgma(distance_matrix)
+
+# Dibujar el árbol UPGMA
+draw(upgma_tree)
 ~~~
 {: .language-python}
+ <a href="../fig/tda_11_philo_tree.png">
+  <img src="../fig/tda_11_philo_tree.png" alt="Phylogenetic tree" width="50%" height="auto" />
+</a>
+
+
+~~~
+matrix_dintancia_genes=distancia(df)
+persistence_genes=complejo(matrix_dintancia_genes)
+gd.plot_persistence_barcode(persistence_genes)
+~~~
+{: .language-python}
+ <a href="../fig/tda_11_barcode_2.png">
+  <img src="../fig/tda_11_barcode_2.png" alt="Persistence Barcode" width="50%" height="auto" />
+</a>
+
+
+Where are the HT?
+
+~~~
+#crear un diccionario de cada genoma convertivo a "0" y "1" de presencia y auscnia de genes
+genomas = {}
+for columna in df.columns:
+    genomas[columna] = list(np.array(df[columna]))
+genomas
+~~~
+{: .language-python}
+~~~
+{'g_A909': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+ 'g_2603V': [1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0],
+ 'g_515': [1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1],
+ 'g_NEM316': [1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1]}
+~~~
+{: .output}
+
+~~~
+genomas_mediam=process_dict_elements(genomas)
+genomas_mediam
+~~~
+{: .language-python}
+~~~
+{'g_A909': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+ 'g_2603V': [1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0],
+ 'g_515': [1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1],
+ 'g_NEM316': [1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1],
+ 'g_A909_g_2603V_g_515': [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0],
+ 'g_A909_g_2603V_g_NEM316': [1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0],
+ 'g_A909_g_515_g_NEM316': [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1],
+ 'g_2603V_g_515_g_NEM316': [1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1]}
+~~~
+{: .output}
+
+
+~~~
+df_mediam = pd.DataFrame.from_dict(genomas_mediam)
+df_mediam
+~~~
+{: .language-python}
+~~~
+	g_A909_g_2603V_g_NEM316	g_A909_g_515_g_NEM316	g_2603V_g_515_g_NEM316
+0	1	1	1
+1	1	1	1
+2	1	1	0
+3	0	1	0
+~~~
+{: .output}
+
+~~~
+matrix_dintancia_extendida=distancia(df_mediam)
+persistence_extendida=complejo(matrix_dintancia_extendida)
+matrix_dintancia_extendida
+~~~
+{: .language-python}
+~~~
+array([[0.        , 0.33333333, 0.26666667, 0.26666667, 0.13333333,
+        0.13333333, 0.2       , 0.33333333],
+       [0.33333333, 0.        , 0.33333333, 0.33333333, 0.2       ,
+        0.2       , 0.4       , 0.26666667],
+       [0.26666667, 0.33333333, 0.        , 0.13333333, 0.13333333,
+        0.26666667, 0.06666667, 0.06666667],
+       [0.26666667, 0.33333333, 0.13333333, 0.        , 0.26666667,
+        0.13333333, 0.06666667, 0.06666667],
+       [0.13333333, 0.2       , 0.13333333, 0.26666667, 0.        ,
+        0.13333333, 0.2       , 0.2       ],
+       [0.13333333, 0.2       , 0.26666667, 0.13333333, 0.13333333,
+        0.        , 0.2       , 0.2       ],
+       [0.2       , 0.4       , 0.06666667, 0.06666667, 0.2       ,
+        0.2       , 0.        , 0.13333333],
+       [0.33333333, 0.26666667, 0.06666667, 0.06666667, 0.2       ,
+        0.2       , 0.13333333, 0.        ]])
+~~~
+{: .output}
+
+~~~
+gd.plot_persistence_barcode(persistence_extendida)
+~~~
+{: .language-python}
+ <a href="../fig/tda_11_barcode_3.png">
+  <img src="../fig/tda_11_barcode_3.png" alt="Persistence Barcode" width="50%" height="auto" />
+</a>
+
+~~~
+gd.plot_persistence_diagram(persistence_extendida,legend=True)
+~~~
+{: .language-python}
+ <a href="../fig/tda_11_diagram_3.png">
+  <img src="../fig/tda_11_diagram_3.png" alt="Persistence Diagram" width="50%" height="auto" />
+</a>
