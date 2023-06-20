@@ -83,11 +83,11 @@ spaces (good for topological/geometrical inference) and as combinatorial objects
 > 
 > How many simplices (0-simplices, 1-simplices, 2-simplices) do the simplicial complexes in the figure have?
 > > ## Solution  
-> > |             | **Figure A** | **Figure B** |  
-> > |:-----------:|:------------:|:------------:|  
-> > | $0-simplex$ |       9      |      11      |  
-> > | $1-simplex$ |      11      |      12      |  
-> > | $2-simplex$ |       2      |       2      |  
+> > |             | **Figure A** | **Figure B** |
+> > |:-----------:|:------------:|:------------:|
+> > | $0-simplex$ |       9      |      11      |
+> > | $1-simplex$ |      11      |      12      |
+> > | $2-simplex$ |       2      |       2      |
 > > 
 > {: .solution}
 {: .challenge}

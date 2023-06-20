@@ -13,6 +13,7 @@ keypoints:
 
 Welcome to this lesson on using GUDHI and exploring simplicial homology. GUDHI (Geometry Understanding in Higher Dimensions) is an open-source C++ library that provides algorithms and data structures for the analysis of geometric data. It offers a wide range of tools for topological data analysis, including simplicial complexes and computations of their homology.
 ### **1. Library**
+To begin, we will import the necessary packages.
 ~~~
 from IPython.display import Image
 from os import chdir
