@@ -37,7 +37,21 @@ Brynildsrud, O., Bohlin, J., Scheffer, L. et al. Rapid scoring of genes in micro
 
 ### Clustering analysis of the accesory genome
 
+The Graphical Processing for Pangenome-Linked Exploration [**GraPPLE**](https://github.com/JDHarlingLee/GraPPLE) repository contains scripts to help users visualize their bacterial pangenome datasets in 3D by using [**Graphia**](https://graphia.app) network analysis suite. These graphs allow exploration of bacterial population structures, gene distributions across populations, and the syntenic order of genes. The analysis and visualization are scalable to large datasets comprising thousands of genome sequences. While GraPPLE was initially developed to work with [**PIRATE**](https://github.com/SionBayliss/PIRATE) output, it can also accept gene presence/absence matrices from other compatible tools like [**Roary**](https://github.com/sanger-pathogens/), [**Panaroo**](https://github.com/gtonkinhill/panaroo), [**PPanGGOLiN**](https://github.com/labgem/PPanGGOLiN/tree/master/testingDataset), and others. 
 
+GraPPLE was developed in order to investigate around several key questions:
+
+1. How similar are a group of isolates to each other based on the accessory genome? To what extent do these groups align with the core genome phylogeny or other relevant categorizations such as geographical location, habitat, clinical presentation, or sampling date?
+
+2. How are accessory genes interconnected based on their presence/absence across a collection of isolates? Are there significant associations between co-occurring gene clusters and isolate characteristics, such as population clusters, core phylogenetic groupings, or other known attributes?
+
+3. What structural and syntenic relationships exist between core and accessory genes within the complete pangenome? Can the position of a gene provide useful information, such as its function? Can these relationships shed light on the forces driving genome evolution, including the presence of mobile genetic elements and associated functions like virulence or antimicrobial resistance?
+
+
+Note: Please note that they are currently in beta, so it is important to review the outputs for coherence and report any issues or bugs. 
+
+**Original paper**
+Harling-Lee, J.D., Gorzynski, J., Yebra, G. et al. A graph-based approach for the visualisation and analysis of bacterial pangenomes. BMC Bioinformatics 23, 416 (2022). https://doi.org/10.1186/s12859-022-04898-2
 
 ### Benchmarking for Orthologs Predictions
 
