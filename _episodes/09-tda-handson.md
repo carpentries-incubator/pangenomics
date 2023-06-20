@@ -212,7 +212,7 @@ plt.show()
 {: .language-python}
 
  <a href="../fig/tda_circles.png">
-  <img src="../fig/tda_circles.png" alt="Plot Circles" />
+  <img src="../fig/tda_circles.png" alt="Plot Circles" width="50%" height="auto" />
 </a>
 
  The `RipsComplex()` function creates a one skeleton graph from the point cloud.
@@ -293,7 +293,7 @@ plt.yticks(size=15)
 
 
  <a href="../fig/tda_09_persistence_example2.png">
-  <img src="../fig/tda_09_persistence_example2.png" alt="Persistence diagram" />
+  <img src="../fig/tda_09_persistence_example2.png" alt="Persistence diagram" width="50%" height="auto" />
 </a>
 
 
@@ -320,7 +320,7 @@ plt.yticks(size=15)
 {: .output}
 
  <a href="../fig/tda_09_bardcode_example2.png">
-  <img src="../fig/tda_09_bardcode_example2.png" alt="Bard Code" />
+  <img src="../fig/tda_09_bardcode_example2.png" alt="Bard Code" width="50%" height="auto" />
 </a>
 
 
@@ -350,7 +350,7 @@ plt.show()
 {: .language-python}
 
 <a href="../fig/tda_09_sperial.png">
-  <img src="../fig/tda_09_sperial.png" alt="Plot Spiral" />
+  <img src="../fig/tda_09_sperial.png" alt="Plot Spiral" width="50%" height="auto" />
 </a>
 
 Define simplicial complex
@@ -370,26 +370,26 @@ gd.plot_persistence_diagram(diag)
 {: .language-python}
 
 <a href="../fig/tda_09_persistence_example3.png">
-  <img src="../fig/tda_09_persistence_example3.png" alt="Persistence diagram" />
+  <img src="../fig/tda_09_persistence_example3.png" alt="Persistence diagram" width="50%" height="auto" />
 </a>
 
 
 ~~~
 gd.plot_persistence_barcode(diag)
-plt.savefig('persistence_barcodeSpiral.svg' , dpi=1200)
+#plt.savefig('persistence_barcodeSpiral.svg' , dpi=1200)
 plt.show()
 ~~~
 {: .language-python}
 
  <a href="../fig/tda_09_bardcode_example3.png">
-  <img src="../fig/tda_09_bardcode_example3.png" alt="Bard Code" />
+  <img src="../fig/tda_09_bardcode_example3.png" alt="Bard Code" width="50%" height="auto" />
 </a>
 
 ~~~
 %%time
 gd.plot_persistence_barcode(v,legend=True)
 plt.grid(color = 'black', linestyle = '-', linewidth = 1)
-plt.savefig('persistencebarcodeCircles' , dpi=600, transparent=True)
+#plt.savefig('persistencebarcodeCircles' , dpi=600, transparent=True)
 plt.xticks(size=15)
 plt.yticks(size=15)
 ~~~
