@@ -75,7 +75,7 @@ The elements of $K$ are the simplices.
 spaces (good for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, good for computations)
 
 
-> ## Exercise 1: Indentify the simplices
+> ## Exercise 1: Identify the simplices
 >  In the following graph, we have 2 representations of simplicial complexes.
 >  <a href="../fig/tda_08_exercise_1.png">
   <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" width="70%" height="auto"/>
@@ -140,7 +140,7 @@ Simplicial homology is a technique used to quantify the topological structure of
 **Connected Components:** Connected components are sets of simplices in a simplicial complex that are connected to each other through shared simplices. Simplicial homology can identify and count the connected components in the complex.
 
 
-> ## Exercise 2:  Indetify Betti number
+> ## Exercise 2:  Idetify Betti number
 >  In the following graph, we have 2 representations of simplicial complexes.
 >  <a href="../fig/tda_08_exercise_1.png">
   <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" width="70%" height="auto" />
@@ -148,10 +148,9 @@ Simplicial homology is a technique used to quantify the topological structure of
 > 
 > How many 1-holes and connected components ($\beta_0 $  and $\beta_1$) are these figure?
 > > ## Solution  
-> > |           | **Figure A** | **Figure B** |  
-> > |-----------|--------------|--------------|  
-> > | $\beta_0$ | 1            | 2            |  
-> > | $\beta_1$ | 2            | 2            |  
+> > |   | Figure A  | Figure B  |  
+> > | $ \beta_0 $ | 1 | 2 |
+> > | $\beta_1 $  |  2  |  2  |   
 > > 
 > {: .solution}
 {: .challenge}
