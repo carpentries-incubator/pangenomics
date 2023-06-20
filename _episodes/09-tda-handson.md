@@ -44,6 +44,10 @@ st.insert([1])
 
 ~~~
 {: .language-python}
+~~~
+True
+~~~
+{: .output}
 
 Now let's insert 1-simplices at different filtration levels. If adding a simplex requires a lower-dimensional simplex to be present, the missing simplices will be automatically completed.
 
@@ -57,6 +61,11 @@ st.insert([0, 2], filtration=1.2)
 
 ~~~
 {: .language-python}
+
+~~~
+True
+~~~
+{: .output}
 
 In the code snippet above, we create a SimplexTree object named st. We then insert three 1-simplices into the SimplexTree at filtration levels of 0.5, 0.8, and 1.2, respectively. The 1-simplices are defined by specifying their vertices as lists [v1, v2], where v1 and v2 are the indices of the vertices.
 
@@ -77,6 +86,11 @@ print("Number of simplices:", num_simplices)
 ~~~
 {: .language-python}
 
+~~~
+Number of vertices: 3
+Number of simplices: 6
+~~~
+{: .output}
 
 The st.persistence() function in GUDHI's SimplexTree is used to compute the persistence diagram of the simplicial complex. The persistence diagram provides a compact representation of the birth and death of topological features as the filtration parameter varies.
 
@@ -95,6 +109,15 @@ for point in persistence_diagram:
     print()
 ~~~
 {: .language-python}
+
+~~~
+Birth: 0
+Death: (0.0, inf)
+
+Birth: 0
+Death: (0.0, 0.5)
+~~~
+{: .output}
 
 
 ### **Example 2:** Rips complex from datasets 
