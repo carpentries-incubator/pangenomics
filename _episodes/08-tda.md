@@ -50,7 +50,7 @@ It is a mathematical structure composed of a collection of simple geometric obje
 > > ## Simplicial complex
 >>A simplicial complex $K$ in $ \mathbb{R}^d $ is a collection of simplices s.t:
 >> 1. any face a simplex of $K$ is a simplex of K,
->> 2. the intesection of any twho simplices of $K$ is ether empty or a common face of both.
+>> 2. the intesection of any two simplices of $K$ is ether empty or a common face of both.
 > > 
 > {: .solution}
 {: .challenge}
@@ -83,11 +83,11 @@ spaces (good for topological/geometrical inference) and as combinatorial objects
 > 
 > How many simplices (0-simplices, 1-simplices, 2-simplices) do the simplicial complexes in the figure have?
 > > ## Solution  
-> > |             | **Figure A** | **Figure B** |
-> > |:-----------:|:------------:|:------------:|
-> > | $0-simplex$ |       9      |      11      |
-> > | $1-simplex$ |      11      |      12      |
-> > | $2-simplex$ |       2      |       2      |
+> > |             | **Figure A** | **Figure B** |  
+> > |:-----------:|:------------:|:------------:|  
+> > | $0-simplex$ |       9      |      11      |  
+> > | $1-simplex$ |      11      |      12      |  
+> > | $2-simplex$ |       2      |       2      |  
 > > 
 > {: .solution}
 {: .challenge}
