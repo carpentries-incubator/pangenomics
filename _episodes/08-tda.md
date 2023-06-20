@@ -74,17 +74,24 @@ The elements of $K$ are the simplices.
 > Note: Simplicial complexes can be seen at the same time as geometric/topological
 spaces (good for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, good for computations)
 
-### **Filtration**
-  
-A filtration of a simplicial complex is an ordered sequence of subcomplexes of the original complex, where each subcomplex contains its predecessor in the sequence. In other words, it is a way to decompose the complex into successive stages, where each stage adds or removes simplices compared to the previous stage.
 
-  A filtration of a simplicial complex $K$ is a collection $K_0 \subset K_1 \subset ... \subset K_N$ of complexes such that:
-  1. $K_N=K$.
-  2. $K_i$ is a subcomplex of $K_{i+1}$, for $i=0,1,...,N-1$.
-
-  <a href="../fig/Tda-Filtacion1.png">
-  <img src="../fig/Tda-Filtacion1.png" alt="Example Filtration" />
+> ## Exercise 1: 
+>  In the following graph, we have 2 representations of simplicial complexes.
+>  <a href="../fig/tda_08_exercise_1.png">
+  <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" />
 </a>
+> 
+> How many simplices (0-simplices, 1-simplices, 2-simplices) do the simplicial complexes in the figure have?
+> > ## Solution
+> > |           | **Figure A** | **Figure B** |
+> > |-----------|--------------|--------------|
+> > | $0-simplex$ | 9           | 11           |
+> > | $1-simplex$ | 11            | 12            |
+> > | $2-simplex$ | 2            | 2            |
+> > 
+> {: .solution}
+{: .challenge}
+
 
 ### **Cech and (Vietoris)-Rips complexes**
 
@@ -110,7 +117,7 @@ On the other hand, the **Čech complex** is based on constructing simplicial cel
 >> ## Cech complex
 >> Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d$, its **Cech complex** of radius $r>0$ is the simplicial complex $C(P,r)$ s.t. $vert(C(P,r))=P$  and
 >>
->>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in C(P,r) \quad iff \quad \cap_{j=0}^k B(p_{i_j} \neq \emptyset $$
+>>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in C(P,r) \quad iff \quad \cap_{j=0}^k Bp_{i_j} \neq \emptyset $$
 >> 
 > {: .solution}
 {: .challenge}
@@ -134,25 +141,42 @@ Both the Vietoris-Rips complex and the Čech complex are tools used in topologic
 
 Simplicial homology is a technique used to quantify the topological structure of a simplicial complex. This technique is based on the identification of cycles and voids in the complex, which can be quantified by assigning integer values called "homology degrees". Simplicial homology is often used in topological data analysis to find patterns and structures in the data.
 
+**Betti Numbers:** Betti numbers are numerical invariants that measure the number of connected components and holes in a simplicial complex. Betti-0 counts the number of connected components, while Betti-1 counts the number of one-dimensional holes.
 
 **Holes:** Holes are empty regions or connected spaces in a simplicial complex. Simplicial homology allows for the detection and quantification of the presence of holes in the complex.
 
 **Connected Components:** Connected components are sets of simplices in a simplicial complex that are connected to each other through shared simplices. Simplicial homology can identify and count the connected components in the complex.
 
- <a href="../fig/tda_08_exercise_1.png">
+
+> ## Exercise 2: 
+>  In the following graph, we have 2 representations of simplicial complexes.
+>  <a href="../fig/tda_08_exercise_1.png">
   <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" />
 </a>
+> 
+> How many 1-holes and connected components ($\beta_0 $  and $\beta_1$) are these figure?
+> > ## Solution
+> > |           | **Figure A** | **Figure B** |
+> > |-----------|--------------|--------------|
+> > | $\beta_0$ | 1            | 2            |
+> > | $\beta_1$ | 2            | 2            |
+> > 
+> {: .solution}
+{: .challenge}
 
 
-**Homology degree:** Integer assigned to a cycle or cavity in a simplicial complex using the technique of simplicial homology. The homology degree is used to quantify the "amount" of topological structure present in the complex.
 
-**Betti Numbers:** Betti numbers are numerical invariants that measure the number of connected components and holes in a simplicial complex. Betti-0 counts the number of connected components, while Betti-1 counts the number of one-dimensional holes.
+### **Filtration**
+  
+A filtration of a simplicial complex is an ordered sequence of subcomplexes of the original complex, where each subcomplex contains its predecessor in the sequence. In other words, it is a way to decompose the complex into successive stages, where each stage adds or removes simplices compared to the previous stage.
 
+  A filtration of a simplicial complex $K$ is a collection $K_0 \subset K_1 \subset ... \subset K_N$ of complexes such that:
+  1. $K_N=K$.
+  2. $K_i$ is a subcomplex of $K_{i+1}$, for $i=0,1,...,N-1$.
 
- <a href="../fig/Tda_cavida.png">
-  <img src="../fig/Tda_cavida.png" alt="Example Cavity" />
+  <a href="../fig/Tda-Filtacion1.png">
+  <img src="../fig/Tda-Filtacion1.png" alt="Example Filtration" />
 </a>
-
 
 ### **Persistence Diagram:**
  The persistence diagram is a visual representation of the evolution of cycles and cavities in different dimensions as the simplicial complex is modified. It helps understand the persistence and relevance of topological structures in the complex.
@@ -179,6 +203,8 @@ Simplicial homology is a technique used to quantify the topological structure of
   });
   MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
 </script>
+
+
 
 > ## `.challenge` Chllenge 1 Persistence Diagrama
 >
