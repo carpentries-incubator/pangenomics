@@ -75,7 +75,7 @@ The elements of $K$ are the simplices.
 spaces (good for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, good for computations)
 
 
-> ## Exercise 1: 
+> ## Exercise 1: Indentify the simplices
 >  In the following graph, we have 2 representations of simplicial complexes.
 >  <a href="../fig/tda_08_exercise_1.png">
   <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" width="70%" height="auto"/>
@@ -83,11 +83,11 @@ spaces (good for topological/geometrical inference) and as combinatorial objects
 > 
 > How many simplices (0-simplices, 1-simplices, 2-simplices) do the simplicial complexes in the figure have?
 > > ## Solution
-> > |           | **Figure A** | **Figure B** |
+> > |           | **Figure A** | **Figure B** |  
 > > |-----------|--------------|--------------|
-> > | $0-simplex$ | 9           | 11           |
-> > | $1-simplex$ | 11            | 12            |
-> > | $2-simplex$ | 2            | 2            |
+> > | $0-simplex$ | 9          | 11           |  
+> > | $1-simplex$ | 11         | 12           |  
+> > | $2-simplex$ | 2          | 2            |  
 > > 
 > {: .solution}
 {: .challenge}
@@ -100,11 +100,10 @@ The Vietoris-Rips complex and the Čech complex are two types of simplicial comp
 
 The **Vietoris-Rips complex** is constructed from a set of points in a metric space. Given a set of points and a distance parameter called the "threshold," points within a distance less than or equal to the threshold are connected, forming the 1-simplices of the complex. Higher-dimensional simplices are then constructed by closing under combinations of 1-simplices that form a complete simplex, i.e., all fully connected subsets. The Vietoris-Rips complex captures the connectivity information between points and their topological structure at different scales.
 
-> ### For Mathematicians
+> ### Cech complex
 >
->> ## Cech complex
+>> ## Definition
 >> Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d $, its **Rips complex** of radius $r>0$ is the simplicial complex $R(P,r)$ s.t. $vert(R(P,r))=P$  and
->>
 >>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in R(P,r) \quad iff \quad  \lVert p_{i_j} -p_{i_l}  \rVert  \leq 2r, \forall \leq j,l\leq k $$
 >> 
 > {: .solution}
@@ -112,17 +111,14 @@ The **Vietoris-Rips complex** is constructed from a set of points in a metric sp
 
 On the other hand, the **Čech complex** is based on constructing simplicial cells rather than simply connecting points at specific distances. Given a set of points and a distance parameter, all sets of points whose balls of radius equal to the distance parameter have a non-empty intersection are considered. These sets of points become the simplices of the Čech complex. Similar to the Vietoris-Rips complex, higher-dimensional simplices can be constructed by closing under combinations of lower-dimensional simplices that form a complete simplex.
 
-> ### For Mathematicians
+> ### Cech complex
 >
->> ## Cech complex
+>> ## Definition
 >> Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d$, its **Cech complex** of radius $r>0$ is the simplicial complex $C(P,r)$ s.t. $vert(C(P,r))=P$  and
->>
 >>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in C(P,r) \quad iff \quad \cap_{j=0}^k Bp_{i_j} \neq \emptyset $$
 >> 
 > {: .solution}
 {: .challenge}
-
-
  <a href="../fig/Tda_rips_cech.png">
   <img src="../fig/Tda_rips_cech.png" alt="Example Filtration" width="70%" height="auto" />
 </a>
@@ -131,10 +127,6 @@ On the other hand, the **Čech complex** is based on constructing simplicial cel
 
 
 Both the Vietoris-Rips complex and the Čech complex are tools used in topological analysis and computational geometry to study the structure and properties of sets of points in space. These complexes provide a discrete representation of the proximity and connectivity information of the points, enabling the analysis of their topology and geometric characteristics.
-
-
-
-
 
 
 ## **Simplicial homology**
@@ -148,7 +140,7 @@ Simplicial homology is a technique used to quantify the topological structure of
 **Connected Components:** Connected components are sets of simplices in a simplicial complex that are connected to each other through shared simplices. Simplicial homology can identify and count the connected components in the complex.
 
 
-> ## Exercise 2: 
+> ## Exercise 2:  Indetify Betti number
 >  In the following graph, we have 2 representations of simplicial complexes.
 >  <a href="../fig/tda_08_exercise_1.png">
   <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" width="70%" height="auto" />
@@ -156,10 +148,10 @@ Simplicial homology is a technique used to quantify the topological structure of
 > 
 > How many 1-holes and connected components ($\beta_0 $  and $\beta_1$) are these figure?
 > > ## Solution
-> > |           | **Figure A** | **Figure B** |
-> > |-----------|--------------|--------------|
-> > | $\beta_0$ | 1            | 2            |
-> > | $\beta_1$ | 2            | 2            |
+> > |           | **Figure A** | **Figure B** |  
+> > |-----------|--------------|--------------|  
+> > | $\beta_0$ | 1            | 2            |  
+> > | $\beta_1$ | 2            | 2            |  
 > > 
 > {: .solution}
 {: .challenge}
@@ -181,13 +173,12 @@ A filtration of a simplicial complex is an ordered sequence of subcomplexes of t
 ### **Persistence Diagram:**
  The persistence diagram is a visual representation of the evolution of cycles and cavities in different dimensions as the simplicial complex is modified. It helps understand the persistence and relevance of topological structures in the complex.
   <a href="../fig/tda_08_diagrama.png">
-  <img src="../fig/tda_08_diagrama.png" alt="Example Persistence Diagram" width="70%" height="auto"/>
+  <img src="../fig/tda_08_diagrama.png" alt="Example Persistence Diagram" width="50%" height="auto"/>
 </a>
 ### **Barcode Diagram:**
  The barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars that represent the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
-
   <a href="../fig/tda_08_barcode.png">
-  <img src="../fig/tda_08_barcode.png" alt="Example Persistence Diagram" width="70%" height="auto"/>
+  <img src="../fig/tda_08_barcode.png" alt="Example Persistence Diagram" width="50%" height="auto"/>
 </a>
 
 
