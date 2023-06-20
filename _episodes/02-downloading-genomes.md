@@ -482,7 +482,7 @@ $ rm agalactiae_CJB111/GCF_015221735.2_ASM1522173v2_genomic.fna
 >  can be downloaded by specifying our queries with `--format genbank`.
 {: .callout}
 
-> ## Exercise 1: Unknown strains
+> ## Exercise 1: Searching for desired strains
 >  Until now we have downloaded only specific strains that we were looking for. Write a command that would tell you which genomes are 
 >  available for all the *Streptococcus* genus.
 >
