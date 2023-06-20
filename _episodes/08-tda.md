@@ -82,7 +82,7 @@ spaces (good for topological/geometrical inference) and as combinatorial objects
 </a>
 > 
 > How many simplices (0-simplices, 1-simplices, 2-simplices) do the simplicial complexes in the figure have?
-> > ## Solution
+> > ## Solution  
 > > |           | **Figure A** | **Figure B** |  
 > > |-----------|--------------|--------------|
 > > | $0-simplex$ | 9          | 11           |  
@@ -147,7 +147,7 @@ Simplicial homology is a technique used to quantify the topological structure of
 </a>
 > 
 > How many 1-holes and connected components ($\beta_0 $  and $\beta_1$) are these figure?
-> > ## Solution
+> > ## Solution  
 > > |           | **Figure A** | **Figure B** |  
 > > |-----------|--------------|--------------|  
 > > | $\beta_0$ | 1            | 2            |  
