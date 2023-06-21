@@ -203,7 +203,7 @@ Click `Ctrl`+ `a` + `d` to detach from the session and wait 8 minutes to attach 
 ~~~
 {: .output}
 
-> ## Makin single-copy clusters
+> ## Making single-copy clusters
 > If the option `-e` is added, the resulting clusters will contain only single-copy genes from each taxon, i.e. orthologues. This flag excludes
 > clusters within paralogues. This is useful for making genome-level phylogenetic analyses in only single-copy genes.
 > However, it's important to note that using only orthologues may overlook genes that have undergone significant divergence or genes
