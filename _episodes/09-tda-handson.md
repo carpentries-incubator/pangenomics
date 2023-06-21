@@ -177,6 +177,22 @@ plt.yticks(size=15)
 </a>
 
 
+> ## Exercise 1: Creating a Manually Filtered Simplicial Complex.
+>  In the following graph, we have $K$ a simplicial complex filtered representations of simplicial complexes.
+>  <a href="../fig/tda_09_filtracion_ex.png">
+  <img src="../fig/tda_09_filtracion_ex.png" alt="Exercise 1 Filtration" width="70%" height="auto"/>
+</a>
+> 
+> Perform persistent homology and plot the persistence diagram and barcode.
+> > ## Solution  
+> > 1. Create a SimplexTree with gd.SimplexTree().
+>> 2. Insert vertices at time 0 using 'st.insert()'.
+>> 3. Insert the remaining simplices by setting the filtration time using 'st.insert([0, 1], filtration=0.5)'.
+>> 4. Perform persistent homology using 'st.persistence()'.
+>> 5. Plot the barcode and persistence diagram.
+> {: .solution}
+{: .challenge}
+
 
 
 ### **Example 2:** Rips complex from datasets 

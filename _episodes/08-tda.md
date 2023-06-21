@@ -85,9 +85,9 @@ spaces (good for topological/geometrical inference) and as combinatorial objects
 > > ## Solution  
 > > |             | **Figure A** | **Figure B** |  
 > > |:-----------:|:------------:|:------------:|  
-> > | $0-simplex$ |       9      |      11      |  
-> > | $1-simplex$ |      11      |      12      |  
-> > | $2-simplex$ |       2      |       2      |  
+> > | 0-simplex |       9      |      11      |  
+> > | 1-simplex |      11      |      12      |  
+> > | 2-simplex |       2      |       2      |  
 > > 
 > {: .solution}
 {: .challenge}
