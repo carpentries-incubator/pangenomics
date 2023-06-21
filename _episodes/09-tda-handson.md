@@ -180,15 +180,15 @@ plt.yticks(size=15)
 > ## Exercise 1: Creating a Manually Filtered Simplicial Complex.
 >  In the following graph, we have $K$ a simplicial complex filtered representations of simplicial complexes.
 >  <a href="../fig/tda_09_filtracion_ex.png">
-  <img src="../fig/tda_09_filtracion_ex.png" alt="Exercise 1 Filtration" width="70%" height="auto"/>
+  <img src="../fig/tda_09_filtracion_ex.png" alt="Exercise 1 Filtration" width="100%" height="auto"/>
 </a>
 > 
 > Perform persistent homology and plot the persistence diagram and barcode.
 > > ## Solution  
-> > 1. Create a SimplexTree with gd.SimplexTree().
->> 2. Insert vertices at time 0 using 'st.insert()'.
->> 3. Insert the remaining simplices by setting the filtration time using 'st.insert([0, 1], filtration=0.5)'.
->> 4. Perform persistent homology using 'st.persistence()'.
+> > 1. Create a SimplexTree with `gd.SimplexTree()`.
+>> 2. Insert vertices at time 0 using `st.insert()`
+>> 3. Insert the remaining simplices by setting the filtration time using `st.insert([0, 1], filtration=0.5)`.
+>> 4. Perform persistent homology using `st.persistence()`.
 >> 5. Plot the barcode and persistence diagram.
 > {: .solution}
 {: .challenge}
@@ -226,7 +226,6 @@ plt.yticks(size=15)
 plt.show()
 ~~~
 {: .language-python}
-
  <a href="../fig/tda_circles.png">
   <img src="../fig/tda_circles.png" alt="Plot Circles" width="50%" height="auto" />
 </a>
@@ -306,8 +305,6 @@ plt.yticks(size=15)
   Text(0, 0.6256989291775961, '$+\\infty$')])
 ~~~
 {: .output}
-
-
  <a href="../fig/tda_09_persistence_example2.png">
   <img src="../fig/tda_09_persistence_example2.png" alt="Persistence diagram" width="50%" height="auto" />
 </a>
@@ -334,7 +331,6 @@ plt.yticks(size=15)
   Text(0, 120.0, '120')])
 ~~~
 {: .output}
-
  <a href="../fig/tda_09_bardcode_example2.png">
   <img src="../fig/tda_09_bardcode_example2.png" alt="Bard Code" width="50%" height="auto" />
 </a>
@@ -364,7 +360,6 @@ plt.scatter(data[:, 0], data[:, 1], marker='.', s=1)
 plt.show()
 ~~~
 {: .language-python}
-
 <a href="../fig/tda_09_sperial.png">
   <img src="../fig/tda_09_sperial.png" alt="Plot Spiral" width="50%" height="auto" />
 </a>
@@ -384,11 +379,9 @@ print("diag=", diag)
 gd.plot_persistence_diagram(diag)
 ~~~
 {: .language-python}
-
 <a href="../fig/tda_09_persistence_example3.png">
   <img src="../fig/tda_09_persistence_example3.png" alt="Persistence diagram" width="50%" height="auto" />
 </a>
-
 
 ~~~
 gd.plot_persistence_barcode(diag)
@@ -396,7 +389,6 @@ gd.plot_persistence_barcode(diag)
 plt.show()
 ~~~
 {: .language-python}
-
  <a href="../fig/tda_09_bardcode_example3.png">
   <img src="../fig/tda_09_bardcode_example3.png" alt="Bard Code" width="50%" height="auto" />
 </a>
@@ -411,4 +403,17 @@ plt.yticks(size=15)
 ~~~
 {: .language-python}
 
-> Exercice 
+> ## Exercise 2: Torus.
+>  To build a torus using the tadasets function and apply persistent homology.
+> <a href="../fig/tda_09_torus.png">
+  <img src="../fig/tda_09_torus.png" alt="Exercise 2 Torus" width="50%" height="auto"/>
+</a>
+> > ## Solution  
+> > 1. `import tadasets`.
+>> 2. `torus = tadasets.torus(n=100)`
+>> 3. Create a Rips complex from the torus points `gd.RipsComplex(points=torus)`
+>> 4. Obtain the simplicial complex `rips_complex.create_simplex_tree(max_dimension=2)`
+>> 5. Compute the persistent homology of the simplicial complex `simplicial_complex.persistence()`
+>> 6. Plots diagrams
+> {: .solution}
+{: .challenge}
