@@ -35,7 +35,7 @@ The term "pangenome" is a fusion of the Greek words *pan*, which means 'whole', 
 > > 
 > > As you continue to add more recipes to your collection, you gain a better understanding of the vast diversity in pizza-making techniques. This enables you to fulfill your objective of offering your customers the most comprehensive and diverse pizza menu.
 > {: .solution}  
-{: .discussion}
+{: .callout}
  
 
 ### The components and classification of pangenomes
@@ -55,7 +55,7 @@ To understand these concepts better, we can visualize the pangenome as a matrix 
 In summary, the terms "open pangenome" and "closed pangenome" describe the dynamic nature of gene content in a species, with the former signifying an expanding gene pool and the latter representing a more stable gene repertoire  
 
 
-> ## Discussion: Open or closed?
+> ## Open or closed?
 >
 >  The size of a pangenome can be influenced by factors such as the extent of gene transfer, interactions with other species in the environment they co-habit, the diversity of niches inhabited, and the lifestyle of the species, among others. 
 >  
@@ -94,7 +94,7 @@ We already have the genomes of strains 18RS21 and H36B available in our `pan_wor
 
 
 
-> ### Prepare your Genome Database
+> ## Prepare your Genome Database
 > Make sure you have the `pan_workshop/` directory in your home directory. If you do not have it, you can download it with the following instructions.
 >
 > ~~~
