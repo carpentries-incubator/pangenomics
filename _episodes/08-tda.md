@@ -93,14 +93,14 @@ spaces (good for topological/geometrical inference) and as combinatorial objects
 {: .challenge}
 
 
-### **Cech and (Vietoris)-Rips complexes**
+### **Čech and (Vietoris)-Rips complexes**
 
 The Vietoris-Rips complex and the Čech complex are two types of simplicial complexes used to construct discrete structures from sets of points in space.
 
 
 The **Vietoris-Rips complex** is constructed from a set of points in a metric space. Given a set of points and a distance parameter called the "threshold," points within a distance less than or equal to the threshold are connected, forming the 1-simplices of the complex. Higher-dimensional simplices are then constructed by closing under combinations of 1-simplices that form a complete simplex, i.e., all fully connected subsets. The Vietoris-Rips complex captures the connectivity information between points and their topological structure at different scales.
 
-> ### Cech complex
+> ### Vietoris complex
 >
 >> ## Definition
 >> Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d $, its **Rips complex** of radius $r>0$ is the simplicial complex $R(P,r)$ s.t. $vert(R(P,r))=P$  and
@@ -111,7 +111,7 @@ The **Vietoris-Rips complex** is constructed from a set of points in a metric sp
 
 On the other hand, the **Čech complex** is based on constructing simplicial cells rather than simply connecting points at specific distances. Given a set of points and a distance parameter, all sets of points whose balls of radius equal to the distance parameter have a non-empty intersection are considered. These sets of points become the simplices of the Čech complex. Similar to the Vietoris-Rips complex, higher-dimensional simplices can be constructed by closing under combinations of lower-dimensional simplices that form a complete simplex.
 
-> ### Cech complex
+> ### Čech complex
 >
 >> ## Definition
 >> Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d$, its **Cech complex** of radius $r>0$ is the simplicial complex $C(P,r)$ s.t. $vert(C(P,r))=P$  and
@@ -123,7 +123,7 @@ On the other hand, the **Čech complex** is based on constructing simplicial cel
   <img src="../fig/Tda_rips_cech.png" alt="Example Filtration" width="70%" height="auto" />
 </a>
 
-> Note: Cech complexes can be quite hard to compute.
+> Note: Čech complexes can be quite hard to compute.
 
 
 Both the Vietoris-Rips complex and the Čech complex are tools used in topological analysis and computational geometry to study the structure and properties of sets of points in space. These complexes provide a discrete representation of the proximity and connectivity information of the points, enabling the analysis of their topology and geometric characteristics.
