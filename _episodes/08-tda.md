@@ -165,11 +165,12 @@ A filtration of a simplicial complex is an ordered sequence of subcomplexes of t
   A filtration of a simplicial complex $K$ is a collection $K_0 \subset K_1 \subset ... \subset K_N$ of complexes such that:
   1. $K_N=K$.
   2. $K_i$ is a subcomplex of $K_{i+1}$, for $i=0,1,...,N-1$.
-
   <a href="../fig/Tda-Filtacion1.png">
   <img src="../fig/Tda-Filtacion1.png" alt="Example Filtration" width="70%" height="auto"/>
 </a>
 
+
+Now, to apply persistent homology, we need to vary our parameter associated with the filtration. In the filtration graph, we have 5 distinct steps for the filtered simplicial complex. In each of these steps, we can have a different number of connected components and 1-holes. To visualize these changes, we will use a representation with the following persistence diagrams and barcode.
 ### **Persistence Diagram:**
  The persistence diagram is a visual representation of the evolution of cycles and cavities in different dimensions as the simplicial complex is modified. It helps understand the persistence and relevance of topological structures in the complex.
   <a href="../fig/tda_08_diagrama.png">
