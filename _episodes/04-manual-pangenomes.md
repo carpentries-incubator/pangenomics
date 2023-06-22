@@ -590,7 +590,7 @@ family=$(grep $line families_minis.csv| cut -d',' -f1)
 echo $function$'\t'$line$'\t'$family
 done
 done >> mini_pangenome.tsv
-$ head mini_pangneome.tsv
+$ head mini_pangenome.tsv
 ~~~
 {: .language-bash}
 
