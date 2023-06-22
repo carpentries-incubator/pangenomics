@@ -290,7 +290,7 @@ genomes
 
 So the biggest genome es `A909` and we will start our clustering algorithm with this genome.
 
-## Finding gene families with BDBH algorithm
+## Finding gene families with BBH algorithm
 
 To make a gene family, we first need to identify the most similar genes between genomes. The 
 Bidirectional Best Hit algorithm will allow us to find the pairs of genes that are the most similar 
@@ -322,7 +322,7 @@ Now we will define a second function, that uses the previous one, to obtain the 
 best hits.  
 
 ~~~
-def besthit_bdbh(gengenome,listgenomes,genome,data):
+def besthit_bbh(gengenome,listgenomes,genome,data):
     # gengenome: a list with all the genes of the biggest genome.
     # listgenomes: the list with all the genomes in order.
     # genome: the genome to which the genes in `gengenome` belongs.
@@ -353,17 +353,17 @@ genome_A909 = dic_gen_genomes['A909']
 ~~~
 {: .language-python}
 
-Now, we will apply the function `besthit_bdbh` to the previous list, `genomes` and  the genome `A909` that is `genomes[0]`.
+Now, we will apply the function `besthit_bbh` to the previous list, `genomes` and  the genome `A909` that is `genomes[0]`.
 
 ~~~
-g_A909_bdbh=besthit_bdbh(genome_A909,genomes,genomes[0],df)
+g_A909_bbh=besthit_bbh(genome_A909,genomes,genomes[0],df)
 ~~~
 {: .language-python}
 
-In `g_A909_bdbh` we have a dictionary that has one gene family for each gene in A909. Let's convert it to a dataframe and have a better look at it.
+In `g_A909_bbh` we have a dictionary that has one gene family for each gene in A909. Let's convert it to a dataframe and have a better look at it.
 
 ~~~
-family_A909=pd.DataFrame(g_A909_bdbh).transpose()
+family_A909=pd.DataFrame(g_A909_bbh).transpose()
 family_A909.columns = ['g_A909','g_2603V','g_515','g_NEM316']
 family_A909.g_A909 = family_A909.index
 family_A909
@@ -393,9 +393,9 @@ placed in the current families.
 
 ~~~
 list_g=[]
-for elemt in g_A909_bdbh.keys():
+for elemt in g_A909_bbh.keys():
     list_g.append(elemt)
-    for g_hit in g_A909_bdbh[elemt]:
+    for g_hit in g_A909_bbh[elemt]:
         list_g.append(g_hit)
 ~~~
 {: .language-python}
@@ -434,17 +434,17 @@ genome_2603V
 ~~~
 {: .output}
 
-We apply the function `besthit_bdbh` to this list.
+We apply the function `besthit_bbh` to this list.
 
 ~~~
-g_2603V_bdbh=besthit_bdbh(genome_2603V,genomes,genomes[1],df)
+g_2603V_bbh=besthit_bbh(genome_2603V,genomes,genomes[1],df)
 ~~~
 {: .language-python}
 
 We convert the dictionary into a dataframe.
 
 ~~~
-family_2603V=pd.DataFrame(g_2603V_bdbh).transpose()
+family_2603V=pd.DataFrame(g_2603V_bbh).transpose()
 family_2603V.columns = ['g_A909','g_2603V','g_515','g_NEM316']
 family_2603V.g_2603V = family_2603V.index
 family_2603V.head()
@@ -488,12 +488,12 @@ genome_515
 ~~~
 {: .output}
 ~~~
-g_515_bdbh=besthit_bdbh(genome_515,genomes,genomes[2],df)
+g_515_bbh=besthit_bbh(genome_515,genomes,genomes[2],df)
 ~~~
 {: .language-python}
 
 ~~~
-family_515=pd.DataFrame(g_515_bdbh).transpose()
+family_515=pd.DataFrame(g_515_bbh).transpose()
 family_515.columns = ['g_A909','g_2603V','g_515','g_NEM316']
 family_515.g_515 = family_515.index
 family_515
@@ -511,9 +511,9 @@ Since in this last step we used all the genes, we have finished our algorithm.
 Now we will only create a final dataframe to integrate all of the obtained families.
 
 ~~~
-families_bdbh=pd.concat([family_A909,family_2603V,family_515])
-families_bdbh.to_csv('families_bdbh.csv')
-families_bdbh
+families_bbh=pd.concat([family_A909,family_2603V,family_515])
+families_bbh.to_csv('families_bbh.csv')
+families_bbh
 ~~~
 {: .language-python}
 
@@ -542,7 +542,7 @@ with the genes that belong to each family.
 Finaly, we will export to a csv file.
 
 ~~~
-families_bdbh.to_csv('~/pan_workshop/results/blast/mini/families_minis.csv')
+families_bbh.to_csv('~/pan_workshop/results/blast/mini/families_minis.csv')
 ~~~
 {: .language-python}
 
