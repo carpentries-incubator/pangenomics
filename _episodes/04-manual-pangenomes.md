@@ -3,15 +3,15 @@ title: "Understanding Pangenomes with BLAST"
 teaching: 30
 exercises: 15
 questions:
-- "What elements do I compare to calculate a Pangenome?"
+- "What elements are compared to calculate a Pangenome?"
 - "How are genome families conformed?"
 objectives:
-- "Calculate an score between two sequences using BLAST"
-- "Cluster gene families according to a treshold"
+- "Calculate a score between two sequences using BLAST."
+- "Cluster gene families according to a threshold."
 keypoints:
-- "Genes are the elements compared in pangenomes"
-- "BLAST gives a score between two sequences"
-- "Gene families must be clustered according to a distance-treshold "
+- "Genes are the elements compared in pangenomes."
+- "BLAST gives a score between two sequences."
+- "Gene families must be clustered according to a distance threshold."
 ---
 
 ## Aligning the protein sequences to each other with BLASTp
