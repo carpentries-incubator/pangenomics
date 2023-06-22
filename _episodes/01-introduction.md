@@ -40,13 +40,13 @@ The term "pangenome" is a fusion of the Greek words *pan*, which means 'whole', 
 
 ### The components and classification of pangenomes
 
-The pangenome consists of two primary components or partitions: core genome and accessory genome. The **core genome** comprises genes that are present in all the genomes being compared, while the **accessory genome** consists of genes that are not shared by all genomes. Within the accessory genome, we can further distinguish two partitions, the **shell genome**, which encompasses the genes found in the majority of genomes, and the **cloud genome**, which comprises genes present in only a minority of genomes. It is worth mentioning that, the specific percentages used to define these partitions may vary across different pangenome analysis software and among researchers. Additional terms such as [*persistent genome* and *soft-core genome*](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) are also commonly used in the field for the groups of genes that are in almost all of the genomes considered.
+The pangenome consists of two primary components or partitions: core genome and accessory genome. The **core genome** comprises gene families that are present in all the genomes being compared, while the **accessory genome** consists of gene families that are not shared by all genomes. Within the accessory genome, we can further distinguish two partitions, the **shell genome**, which encompasses the gene families found in the majority of genomes, and the **cloud genome**, which comprises gene families present in only a minority of genomes. It is worth mentioning that, the specific percentages used to define these partitions may vary across different pangenome analysis software and among researchers. Additional terms such as [*persistent genome* and *soft-core genome*](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) are also commonly used in the field for the groups of genes that are in almost all of the genomes considered.
 
 > ## Pizza pangenomics
 > What are the partitions in your pizza pangenome?
 >  
 > > ## Solution
-> > During your expedition of gathering pizza recipes you find that only flour, water, salt, and yeast are in all the recipes, this is your pizza **core genome**. Since the vast majority of pizzas have tomato sauce and cheese, you put the tomato and the cheese in the **soft-core genome**. Other ingredients like basil and olive oil are very common so they go to the **shell genome**, and finally the weirdos like pineapple go to the **cloud genome**.
+> > During your expedition of gathering pizza recipes you find that only flour, water, salt, and yeast are in all the recipes, this is your pizza **core genome**. Since the vast majority of pizzas have tomato sauce and cheese (believe it or not, there are white pizzas without tomato sauce and pizzas like the marinara that does not have cheese), you put the tomato and the cheese in the **soft-core genome**. Other ingredients like basil and olive oil are very common so they go to the **shell genome**, and finally the weirdos like pineapple go to the **cloud genome**.
 > {: .solution}  
 {: .discussion}
 
@@ -60,7 +60,7 @@ The concept of pangenome encompasses two types: the open pangenome and the close
 
 To understand these concepts better, we can visualize the pangenome as a matrix representing the presence (1) or absence (0) of orthologous gene families. The columns represent the gene families, while the rows represent the genomes added to the pangenome. In an open pangenome, the number of columns increases significantly as new genomes are added. Conversely, in a closed pangenome, the number of columns remains relatively unchanged as the number of genomes increases. This suggests that the species maintains a consistent set of orthologous gene families. Consequently, the size of the core genome in a closed pangenome closely matches that of a single complete genome of the species. In contrast, the core size of an open pangenome is relatively smaller compared to the size of an individual genome.
 
-In summary, the terms "open pangenome" and "closed pangenome" describe the dynamic nature of gene content in a species, with the former signifying an expanding gene pool and the latter representing a more stable gene repertoire  
+In summary, the terms "open pangenome" and "closed pangenome" describe the dynamic nature of gene content in a species, with the former signifying an expanding gene family pool and the latter representing a more stable gene family repertoire.
 
 
 > ## Open or closed?
