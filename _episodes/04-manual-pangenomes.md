@@ -3,15 +3,15 @@ title: "Understanding Pangenomes with BLAST"
 teaching: 30
 exercises: 15
 questions:
-- "What elements are compared to calculate a Pangenome?"
-- "How are genome families conformed?"
+- "What elements are compared to create a pangenome?"
+- "How are gene families conformed?"
 objectives:
 - "Calculate a score between two sequences using BLAST."
-- "Cluster gene families according to a threshold."
+- "Cluster gene families according to a similarity measurement."
 keypoints:
-- "Genes are the elements compared in pangenomes."
-- "BLAST gives a score between two sequences."
-- "Gene families must be clustered according to a distance threshold."
+- "Genes are the elements compared to create gene families and build pangenomes."
+- "BLAST gives a score of similarity between two sequences."
+- "Genes are clustered into gene families according to a similarity score."
 ---
 
 ## Aligning the protein sequences to each other with BLASTp
@@ -302,6 +302,17 @@ Bidirectional Best Hit algorithm will allow us to find the pairs of genes that a
 
 For this we will define a function to find in each genome the gene that is most similar to each
 gene in our biggest genome A909. 
+
+> ## Clustering algorithms
+> Can the BBH algorithm make gene families that have more than one gene from the same genome?
+> > ## Solution
+> > No. Since BBH finds the best hit of a query in each of the other genomes it will only give one hit per genome. This will force to
+> > have a different gene family for each duplicate of a gene (paralog).
+> > This also means that you are getting the **best** hit, which is not necessarily a **"good"** hit. To define what a good hit is we would
+> > need to use an algorithm that considers a similarity threshold.
+> > 
+> {: .solution}
+{: .discussion}
 
 ~~~
 def besthit(gen,genome,data):
