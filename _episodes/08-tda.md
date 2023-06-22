@@ -133,7 +133,7 @@ Both the Vietoris-Rips complex and the Čech complex are tools used in topologic
 
 Simplicial homology is a technique used to quantify the topological structure of a simplicial complex. This technique is based on the identification of cycles and voids in the complex, which can be quantified by assigning integer values called "homology degrees". Simplicial homology is often used in topological data analysis to find patterns and structures in the data.
 
-**Betti Numbers:** Betti numbers are numerical invariants that measure the number of connected components and holes in a simplicial complex. Betti-0 counts the number of connected components, while Betti-1 counts the number of one-dimensional holes (for more ditails about Betti numbers see https://en.wikipedia.org/wiki/Betti_number ,Geometric interpretation section has a second way to interpret Betti numbers and an example in 3-dimension).
+**Betti Numbers:** Betti numbers are numerical invariants that measure the number of connected components and holes in a simplicial complex. Betti-0 counts the number of connected components, while Betti-1 counts the number of one-dimensional holes.
 
 **Holes:** Holes are empty regions or connected spaces in a simplicial complex. Simplicial homology allows for the detection and quantification of the presence of holes in the complex.
 
@@ -150,8 +150,8 @@ Simplicial homology is a technique used to quantify the topological structure of
 > > ## Solution  
 > > |           | **Figure A** | **Figure B** |  
 > > |:---------:|:------------:|:------------:|  
-> > | $\beta_0$ |       1      |       2      |  
-> > | $\beta_1$ |       2      |       2      |   
+> > | $\beta_0$ |       1      |       3      |  
+> > | $\beta_1$ |       1      |       2      |   
 > > 
 > {: .solution}
 {: .challenge}
