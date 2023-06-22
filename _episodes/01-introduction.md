@@ -31,16 +31,24 @@ The term "pangenome" is a fusion of the Greek words *pan*, which means 'whole', 
 > > ## Solution
 > > Imagine you're on a mission to open the finest pizza restaurant, aiming to offer your customers a wide variety of pizzas from around the world. To achieve this, you set out to gather all the pizza recipes ever created, including margherita, quattro formaggi, pepperoni, Hawaiian, and more. As you examine these recipes, you begin to notice that certain ingredients appear in multiple pizzas, while others are unique to specific recipes.
 > > 
-> > In this analogy, the pizza is your **species** of interest. Your collection of pizza recipes represents the **pangenome**, which encompasses the entire diversity of pizzas. Each pizza recipe corresponds to a **genome**, while each ingredient in the recipes represents a **gene**. The ingredients shared among the recipes, such as flour, tomato sauce, and mozzarella cheese, can be thought of as **gene families**. Within these common ingredients, there may be variations in brands or preparation styles, reflecting the **gene variation** within the gene families.
+> > In this analogy, the pizza is your **species** of interest. Your collection of pizza recipes represents the **pangenome**, which encompasses the entire diversity of pizzas. Each pizza recipe corresponds to a **genome**, while each ingredient in the recipes represents a **gene**. The ingredients shared among the recipes, such as flour, tomato, and mozzarella cheese, can be thought of as **gene families**. Within these common ingredients, there may be variations in brands or preparation styles, reflecting the **gene variation** within the gene families.
 > > 
 > > As you continue to add more recipes to your collection, you gain a better understanding of the vast diversity in pizza-making techniques. This enables you to fulfill your objective of offering your customers the most comprehensive and diverse pizza menu.
 > {: .solution}  
-{: .callout}
+{: .discussion}
  
 
 ### The components and classification of pangenomes
 
-The pangenome consists of two primary components: **core genome** and **accessory genome**. The core genome comprises genes that are present in all the genomes being compared, while the accessory genome consists of genes that are not shared by all genomes. Within the accessory genome, we can further distinguish two partitions, the *shell genome*, which encompasses the genes found in the majority of genomes, and the *cloud genome*, which comprises genes present in only a minority of genomes. It is worth mentioning that, the specific percentages used to define these partitions may vary across different pangenome analysis software and among researchers. Additional terms such as [*persistent genome* and *soft-core genome*](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) are also commonly used in the field.
+The pangenome consists of two primary components or partitions: core genome and accessory genome. The **core genome** comprises genes that are present in all the genomes being compared, while the **accessory genome** consists of genes that are not shared by all genomes. Within the accessory genome, we can further distinguish two partitions, the **shell genome**, which encompasses the genes found in the majority of genomes, and the **cloud genome**, which comprises genes present in only a minority of genomes. It is worth mentioning that, the specific percentages used to define these partitions may vary across different pangenome analysis software and among researchers. Additional terms such as [*persistent genome* and *soft-core genome*](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) are also commonly used in the field for the groups of genes that are in almost all of the genomes considered.
+
+> ## Pizza pangenomics
+> What are the partitions in your pizza pangenome?
+>  
+> > ## Solution
+> > During your expedition of gathering pizza recipes you find that only flour, water, salt, and yeast are in all the recipes, this is your pizza **core genome**. Since the vast majority of pizzas have tomato sauce and cheese, you put the tomato and the cheese in the **soft-core genome**. Other ingredients like basil and olive oil are very common so they go to the **shell genome**, and finally the weirdos like pineapple go to the **cloud genome**.
+> {: .solution}  
+{: .discussion}
 
 The concept of pangenome encompasses two types: the open pangenome and the closed pangenome. An **open pangenome** refers to a scenario where the addition of new genomes to a species leads to a significant increase in the total number of gene families. This indicates a high level of genomic diversity and the potential acquisition of new traits with each newly included genome. In contrast, a **closed pangenome** occurs when the incorporation of new genomes does not contribute significantly to the overall gene family count. In a closed pangenome, the gene family pool remains relatively stable and limited, indicating a lower degree of genomic diversity within the species.
 
