@@ -61,14 +61,14 @@ A simplicial complex is a mathematical structure composed of a collection of sim
 > hablar de ellas en el texto.
 > Y explicar por qué el inciso b) no es un simplicial complex.
 > Y en los alt text hay que mencionar qué se ve en la imagen, no sólo qué es la imagen.
-{: .warning}
+{: .caution}
 
 ### Abstract simplex and simplicial complex
 
 > ## FIXME Shaday!
 > Aquí la explicación que sigue parece lo que va dentro de una caja de Mathematical definition. Falta el texto de explicación normal.
 > Y la caja de Note creo que es algo que podría ir en el texto normal.
-{: .warning}
+{: .caution}
 
 Let $P= \{p_1,...,p_n\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:  
 1. the elements of $P$ belong to $K$,  
@@ -181,6 +181,11 @@ A filtration of a simplicial complex is an ordered sequence of subcomplexes of t
 </a>
   <figcaption> **Figure:** Example Filtration</figcaption>
 </figure>
+
+> ## FIXME Shaday!
+> Hay que quitar los pies de figura y los números de figura porque no estamos usando ese formato en las lecciones.
+> También cambiar en el texto que habla de las figuras por su número de figura.
+{: .caution}
 
 Now, to apply persistent homology, we need to vary our parameter associated with the filtration. In the filtration graph, we have 5 distinct steps for the filtered simplicial complex. In each of these steps, we can have a different number of connected components and 1-holes. 
 
