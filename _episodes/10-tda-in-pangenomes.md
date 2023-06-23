@@ -181,6 +181,19 @@ The Rips complex was created in 0.00029540061950683594
 ~~~
 {: .output}
 
+
+> ## Discussion: Changing the maximum dimension of the edges
+> To create the Rips Complex, we fixed that the maximum edge length was 2. What happend if we use a different parameter?  
+> For example, if we use `max_edge_lenght=1`. Do you expect to have more simplices? Why?
+>  
+> > ## Solution
+> > 
+> > 
+> > 
+> {: .solution}
+{: .challenge}
+
+
 As we see in the previous episodes, we now need a filtration. We will use the gudhi function `create_simplex_tree` to obtain the filtration associated with the Rips complex. We need to specify the argument `max_dimension`, this argument is the maximum dimension of the simplicial complex that we will obtain. If it is for example 4, this means that we will obtain gene families with at most 4 genes. In this example, we will use `8` as the maximum dimension so we can have families with at most 2 genes for each genomes or 8 different genes.
 
 **Note**:  For complete genomes, the maximum dimension of the simplicial complex needs to be carefully chosen because  the computation in Python is demanding in terms of system resources. For example, with 4 complete genomes the maximum dimension that we can compute is 5.  
@@ -468,4 +481,27 @@ aux_simplex_list.to_csv('~/pan_workshop/results/blast/mini/persistent_simplices.
 
 In this data frame, we can see how many families are at the end if we filter by `t_death=2`. Also, we can see how the families are formed and the families that are formed since the first time.
 
+> ## Exercise 1: Partitioning the pangenome
+> Filter the table by `t_death=2`. Which genes and families are in each partition **Core**, **Shell** and **Cloud**? 
+>  
+> Note: You might want to download the file to your computer and open it in a spreadsheet program to read it easily.
+> > ## Solution
+> > 
+> > |Genes families | No. Genomes | Partition |
+> > |---|---|---|
+> > |    |   |    |
+> > 
+> {: .solution}
+{: .challenge}
 
+
+> ## Exercise 2: Changing the dimension of the simplices
+> When we create the object `simplexTree` we define that the maximum dimension of the simplices were 8. Change this parameter.  
+> With the new parameter, how many simplices do you obtain? An edges?
+> If you run all the code with this new parameter, how many families do you obtain in the core?
+> > ## Solution
+> > 
+> > 
+> > 
+> {: .solution}
+{: .challenge}
