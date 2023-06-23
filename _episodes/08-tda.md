@@ -56,7 +56,20 @@ A simplicial complex is a mathematical structure composed of a collection of sim
   <img src="../fig/tda_paste.png" alt="Example" width="70%" height="auto"/>
 </a>
 
+> ## FIXME Shaday!
+> Aquí las dos imagenes están separadas por la caja de Mathematical definicion. Hay que ponerlas donde más convenga y
+> hablar de ellas en el texto.
+> Y explicar por qué el inciso b) no es un simplicial complex.
+> Y en los alt text hay que mencionar qué se ve en la imagen, no sólo qué es la imagen.
+{: .warning}
+
 ### Abstract simplex and simplicial complex
+
+> ## FIXME Shaday!
+> Aquí la explicación que sigue parece lo que va dentro de una caja de Mathematical definition. Falta el texto de explicación normal.
+> Y la caja de Note creo que es algo que podría ir en el texto normal.
+{: .warning}
+
 Let $P= \{p_1,...,p_n\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:  
 1. the elements of $P$ belong to $K$,  
 2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$.  
