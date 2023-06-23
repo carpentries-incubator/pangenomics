@@ -399,7 +399,7 @@ plt.show()
 
 ~~~
 %%time
-gd.plot_persistence_barcode(v,legend=True)
+gd.plot_persistence_barcode(diag,legend=True)
 plt.grid(color = 'black', linestyle = '-', linewidth = 1)
 #plt.savefig('persistencebarcodeCircles' , dpi=600, transparent=True)
 plt.xticks(size=15)
