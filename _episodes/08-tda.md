@@ -11,14 +11,14 @@ keypoints:
 math: true
 ---
 
-## **Topological data analysis**
+## Topological data analysis
 
 Topological data analysis is a technique that uses concepts from topology to analyze complex data and find patterns and structures that are not apparent at first glance. This technique is based on constructing a structure called a simplicial complex, composed of a collection of simple geometric objects called simplices. The topology of this complex is used to analyze and visualize the relationships between the data.
 
-### **Simplex**
+### Simplex
 A simple geometric object of any dimension (point, line segment, triangle, tetrahedron, etc.) is used to construct simplicial complexes.
 
-> ### For Mathematicians
+> ## For Mathematicians
 >
 > > ## Simplex
 >> Given a set $ P=\{p_0,...,p_k\}\subset \mathbb{R}^d $ of $ k+1 $ affinely independent points, the **k-dimensional simplex** $\sigma$ (or **k-simplex** for short) spanned by $P$ is the set of convex combinatios
@@ -29,7 +29,7 @@ A simple geometric object of any dimension (point, line segment, triangle, tetra
 >> The points $p_0, ..., p_k$ are called the vertices of $\sigma$.
 >> 
 > {: .solution}
-{: .challenge}
+{: .discussion}
 
 
 
