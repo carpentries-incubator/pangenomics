@@ -82,12 +82,13 @@ spaces (good for topological/geometrical inference) and as combinatorial objects
 </a>
 > 
 > How many simplices (0-simplices, 1-simplices, 2-simplices) do the simplicial complexes in the figure have?
-> > ## Solution  
-> > |             | **Figure A** | **Figure B** |  
-> > |:-----------:|:------------:|:------------:|  
-> > | 0-simplex |       9      |      11      |  
-> > | 1-simplex |      11      |      12      |  
-> > | 2-simplex |       2      |       2      |  
+> > ## Solution
+> >   
+> > |             | **Figure A** | **Figure B** |    
+> > |:-----------:|:------------:|:------------:|   
+> > | 0-simplex |       9      |      11      |    
+> > | 1-simplex |      11      |      12      |    
+> > | 2-simplex |       2      |       2      |    
 > > 
 > {: .solution}
 {: .challenge}
@@ -140,7 +141,7 @@ Simplicial homology is a technique used to quantify the topological structure of
 **Connected Components:** Connected components are sets of simplices in a simplicial complex that are connected to each other through shared simplices. Simplicial homology can identify and count the connected components in the complex.
 
 
-> ## Exercise 2:  Idetify Betti number
+> ## Exercise 2:  Identify Betti number
 >  In the following graph, we have 2 representations of simplicial complexes.
 >  <a href="../fig/tda_08_exercise_1.png">
   <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" width="70%" height="auto" />
@@ -148,11 +149,12 @@ Simplicial homology is a technique used to quantify the topological structure of
 > 
 > How many 1-holes and connected components ($\beta_0 $  and $\beta_1$) are these figure?
 > > ## Solution  
-> > |           | **Figure A** | **Figure B** |  
-> > |:---------:|:------------:|:------------:|  
-> > | $\beta_0$ |       1      |       3      |  
-> > | $\beta_1$ |       1      |       2      |   
-> > 
+> >   
+> >  |           | **Figure A** | **Figure B** |   
+> >  |:---------:|:------------:|:------------:|   
+> >  | $\beta_0$ |       1      |       3      |   
+> >  | $\beta_1$ |       1      |       2      |    
+> >   
 > {: .solution}
 {: .challenge}
 
