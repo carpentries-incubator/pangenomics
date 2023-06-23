@@ -14,9 +14,21 @@ keypoints:
 - "Genes are clustered into gene families according to a similarity score."
 ---
 
-## Aligning the protein sequences to each other with BLASTp
+## Finding gene families
 
-In the previous episode we annotated all of our genomes and obtained the annotations in different formats, like GFF, GBK and FASTA. 
+In the previous episode, we annotated all of our genomes, so now we know the genes that each individual genome has. To build a pangenome we 
+need to figure out which genes to compare between genomes. For this, we need to build **gene families**, which are groups of homologous genes. 
+To decide which genes are homologous we need to measure the sequence similarity between them.
+
+> ## Pizza pangenomics
+> Do mozzarella cheese and parmesan cheese go in the same family? 
+>  
+> > ## Solution
+> > 
+> {: .solution}  
+{: .discussion}
+
+and obtained the annotations in different formats, like GFF, GBK and FASTA. 
 Now we want to understand how to go from annotations to a pangenome, so we will use a reduced version of 
 the annotations to make a pangenome step by step.
 
@@ -26,6 +38,8 @@ Then we need to use these results to cluster the sequences into gene families.
 
 Later on in the lesson 
 we will repeat these steps but in an automated way with pangenomics software using the complete genomes.
+
+## Aligning the protein sequences to each other with BLASTp
 
 To be able to do a pangenome "by hand" we will use only some of the protein sequences for these four genomes A909, 2603V, NEM316 and 515. 
 In the folder `data/annotated_mini` you have the 4 reduced genomes in amino acid FASTA format. 
