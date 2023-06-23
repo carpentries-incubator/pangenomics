@@ -190,6 +190,10 @@ plt.yticks(size=15)
 >> 3. Insert the remaining simplices by setting the filtration time using `st.insert([0, 1], filtration=0.5)`.
 >> 4. Perform persistent homology using `st.persistence()`.
 >> 5. Plot the barcode and persistence diagram.
+> >6. Get this output
+> <a href="../fig/tda_09_diagram_F.png">
+  <img src="../fig/tda_09_diagram_F.png" alt="Persistence Diagram" width="50%" height="auto" />
+</a>
 > {: .solution}
 {: .challenge}
 
