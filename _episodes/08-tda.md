@@ -195,6 +195,10 @@ A filtration of a simplicial complex is an ordered sequence of subcomplexes of t
 </a>
   <figcaption> **Figure:** Example Filtration</figcaption>
 </figure>
+> ## FIXME Shaday!
+> Hay que explicar la figura en el texto.  
+> Lo que está antes de la figura creo que debería ir en caja de Mathematical deffinition.
+{: .caution}
 
 > ## FIXME Shaday!
 > Hay que quitar los pies de figura y los números de figura porque no estamos usando ese formato en las lecciones.
