@@ -174,7 +174,7 @@ A filtration of a simplicial complex is an ordered sequence of subcomplexes of t
   <figcaption> **Figure:** Example Filtration</figcaption>
 </figure>
 
-Now, to apply persistent homology, we need to vary our parameter associated with the filtration. In the filtration graph, we have 5 distinct steps for the filtered simplicial complex. In each of these steps, we can have a different number of connected components and 1-holes. To visualize these changes, we will use a representation with the following persistence diagrams and barcode.
+Now, to apply persistent homology, we need to vary our parameter associated with the filtration. In the filtration graph, we have 5 distinct steps for the filtered simplicial complex. In each of these steps, we can have a different number of connected components and 1-holes. 
 
 
 > ## Exercise 3:  Calculate the Betti numbers.
@@ -193,18 +193,20 @@ Now, to apply persistent homology, we need to vary our parameter associated with
 > {: .solution}
 {: .challenge}
 
-
+To visualize these changes, we will use a representation with the following persistence diagrams and barcode.
 
 ### **Persistence Diagram:**
  The persistence diagram is a visual representation of the evolution of cycles and cavities in different dimensions as the simplicial complex is modified. It helps understand the persistence and relevance of topological structures in the complex.
+
+Continuing with the example of the filtration in Figure 1, to construct the persistence diagram, we need to empty the information we obtained in the previous exercise.
+ 
 <figure id="fig2">
   <a href="../fig/tda_08_diagrama.png">
     <img src="../fig/tda_08_diagrama.png" alt="Example Persistence Diagram" width="50%" height="auto"/>
   </a>
   <figcaption>Figure 2: Example Persistence Diagram</figcaption>
 </figure>
-<p> In Figure 2, we present the persistence diagram for the filtration shown in <a href="#fig_filtration"> Figure 1." </p>
-
+In Figure 2, we present the persistence diagram for the filtration shown in<p> <a href="#fig_filtration"> Figure 1."</p>
 
 ### **Barcode Diagram:**
  The barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars that represent the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
