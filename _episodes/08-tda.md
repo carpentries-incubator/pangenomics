@@ -107,6 +107,11 @@ The Vietoris-Rips complex and the Čech complex are two types of simplicial comp
 
 The **Vietoris-Rips complex** is constructed from a set of points in a metric space. Given a set of points and a distance parameter called the "threshold," points within a distance less than or equal to the threshold are connected, forming the 1-simplices of the complex. Higher-dimensional simplices are then constructed by closing under combinations of 1-simplices that form a complete simplex, i.e., all fully connected subsets. The Vietoris-Rips complex captures the connectivity information between points and their topological structure at different scales.
 
+> ## FIXME Shaday!
+> Aquí creo que sí se entiendo cómo se conectan los puntos, pero según yo falta explicar con qué información se pusieron
+> los puntos en el espacio. Y creo que también falta decir cómo se escoge el umbral.
+{: .caution}
+
 > ## Vietoris complex
 >
 >> ## Mathematical definition
@@ -130,6 +135,10 @@ On the other hand, the **Čech complex** is based on constructing simplicial cel
  <a href="../fig/Tda_rips_cech.png">
   <img src="../fig/Tda_rips_cech.png" alt="Example Filtration" width="70%" height="auto" />
 </a>
+
+> ## FIXME Shaday!
+> Aquí hay que mencionar/explicar la imagen en el texto.
+{: .caution}
 
 > ## Note
 > Čech complexes can be quite hard to compute.
@@ -166,7 +175,12 @@ Simplicial homology is a technique used to quantify the topological structure of
 > {: .solution}
 {: .challenge}
 
-
+> ## FIXME Shaday!
+> Creo que lo de **Connetcet Components** y **Holes** deberían estar explicados antes de **Betti Numbers** porque Betti numbers hace referencia a esas otras dos cosas.
+> Según entiendo Beta0 y Beta1 son Betti-0 y Betti-1, respectivamente, pero hay que decirlo en el texto. Y creo que la pregunta debería decir algo así cómo ¿Cuál es el Beta-0 y Beta-1 de estos simplicial complexes de la imagen?
+> No entiendo por qué hay triángulos que sí son hoyos y otros que no (coloreados de rosa).
+> 
+{: .caution}
 
 ### Filtration
   
