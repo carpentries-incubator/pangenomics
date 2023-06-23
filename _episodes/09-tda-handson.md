@@ -123,7 +123,7 @@ Death: (0.0, 0.5)
 Plot the persitence diagram
 
 ~~~
-gd.plot_persistence_diagram(diag_Rips,legend=True)
+gd.plot_persistence_diagram(persistence_diagram,legend=True)
 plt.grid(color = 'black', linestyle = '-', linewidth = 1)
 plt.savefig('persitencediagramCircles.png' , dpi=600, transparent=True)
 plt.xticks(size=15)
