@@ -487,7 +487,7 @@ In this data frame, we can see how many families are at the end if we filter by 
 > Note: You might want to download the file to your computer and open it in a spreadsheet program to read it easily.
 > > ## Solution
 > > 
-> > |Genes families | No. Genomes | Partition |
+> > |Genes families | No. Genes | Partition |
 > > |---|---|---|
 > > |    |   |    |
 > > 
