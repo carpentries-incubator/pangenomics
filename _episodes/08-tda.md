@@ -31,14 +31,11 @@ A simple geometric object of any dimension (point, line segment, triangle, tetra
 > {: .solution}
 {: .discussion}
 
-
-
-
   <a href="../fig/tda_Vertices.png">
   <img src="../fig/tda_Vertices.png" alt="Example" width="70%" height="auto"/>
 </a>
 
-### **Simplicial complex**
+### Simplicial complex
 It is a mathematical structure composed of a collection of simple geometric objects called simplices, constructed from a data set. In other words, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements. In this sense, we can think of a simplicial complex as extending the notion of a graph only formed by vertices and edges.
 
   <a href="../fig/Tda_Simplicial_complex_example.png">
@@ -55,25 +52,21 @@ It is a mathematical structure composed of a collection of simple geometric obje
 > {: .solution}
 {: .discussion}
 
-
-
   <a href="../fig/tda_paste.png">
   <img src="../fig/tda_paste.png" alt="Example" width="70%" height="auto"/>
 </a>
 
-
-
 ### Abstract simplex and simplicial complex
-Let $P= \{p_1,...,p_n\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:
-1. the elements of $P$ belong to $K$,
-2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$.
+Let $P= \{p_1,...,p_n\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:  
+1. the elements of $P$ belong to $K$,  
+2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$.  
 
-The elements of $K$ are the simplices.
+The elements of $K$ are the simplices.  
 
-
-> Note: Simplicial complexes can be seen at the same time as geometric/topological
-spaces (good for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, good for computations)
-
+> ## Note
+> Simplicial complexes can be seen at the same time as geometric/topological
+> spaces (good for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, good for computations)
+{: .callout}
 
 > ## Exercise 1: Identify the simplices
 >  In the following graph, we have 2 representations of simplicial complexes.
@@ -120,6 +113,7 @@ On the other hand, the **Čech complex** is based on constructing simplicial cel
 >> 
 > {: .solution}
 {: .discussion}
+
  <a href="../fig/Tda_rips_cech.png">
   <img src="../fig/Tda_rips_cech.png" alt="Example Filtration" width="70%" height="auto" />
 </a>
@@ -131,7 +125,7 @@ On the other hand, the **Čech complex** is based on constructing simplicial cel
 Both the Vietoris-Rips complex and the Čech complex are tools used in topological analysis and computational geometry to study the structure and properties of sets of points in space. These complexes provide a discrete representation of the proximity and connectivity information of the points, enabling the analysis of their topology and geometric characteristics.
 
 
-## **Simplicial homology**
+## Simplicial homology
 
 Simplicial homology is a technique used to quantify the topological structure of a simplicial complex. This technique is based on the identification of cycles and voids in the complex, which can be quantified by assigning integer values called "homology degrees". Simplicial homology is often used in topological data analysis to find patterns and structures in the data.
 
@@ -161,7 +155,7 @@ Simplicial homology is a technique used to quantify the topological structure of
 
 
 
-### **Filtration**
+### Filtration
   
 A filtration of a simplicial complex is an ordered sequence of subcomplexes of the original complex, where each subcomplex contains its predecessor in the sequence. In other words, it is a way to decompose the complex into successive stages, where each stage adds or removes simplices compared to the previous stage.
 
@@ -196,8 +190,8 @@ Now, to apply persistent homology, we need to vary our parameter associated with
 
 To visualize these changes, we will use a representation with the following persistence diagrams and barcode.
 
-### **Persistence Diagram:**
- >The persistence diagram is a visual representation of the evolution of cycles and cavities in different dimensions as the simplicial complex is modified. It helps understand the persistence and relevance of topological structures in the complex.
+### Persistence Diagram
+The persistence diagram is a visual representation of the evolution of cycles and cavities in different dimensions as the simplicial complex is modified. It helps understand the persistence and relevance of topological structures in the complex.
 
 Continuing with the example of the filtration in Figure 1, to construct the persistence diagram, we need to empty the information we obtained in the previous exercise.
  <figure id="fig2">
@@ -209,8 +203,8 @@ Continuing with the example of the filtration in Figure 1, to construct the pers
 In Figure 2, we present the persistence diagram for the filtration shown in Figure 1. In red, we see the connected components represented, and in blue, the 1-holes. For "time" 0, we can observe that we have 3 connected components with different "death times". As new simplices appear as we increase the filtration level (time), some connected components merge with each other.
 
 
-### **Barcode Diagram:**
- >The barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars that represent the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
+### Barcode Diagram
+The barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars that represent the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
 
   <a href="../fig/tda_08_barcode.png">
   <img src="../fig/tda_08_barcode.png" alt="Example Persistence Diagram" width="50%" height="auto"/>
