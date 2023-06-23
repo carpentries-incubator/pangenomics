@@ -195,6 +195,7 @@ A filtration of a simplicial complex is an ordered sequence of subcomplexes of t
 </a>
   <figcaption> **Figure:** Example Filtration</figcaption>
 </figure>
+
 > ## FIXME Shaday!
 > Hay que explicar la figura en el texto.  
 > Lo que está antes de la figura creo que debería ir en caja de Mathematical deffinition.
@@ -238,6 +239,10 @@ Continuing with the example of the filtration in Figure 1, to construct the pers
 </figure>
 In Figure 2, we present the persistence diagram for the filtration shown in Figure 1. In red, we see the connected components represented, and in blue, the 1-holes. For "time" 0, we can observe that we have 3 connected components with different "death times". As new simplices appear as we increase the filtration level (time), some connected components merge with each other.
 
+> ## FIXME Shaday!
+> Creo que la explicación debería de ir antes de la imagen, como diciendo "En la siguiente imagen vamos a ver tal cosa". ¿Por qué una parte de la gráfica está en gris? ¿Por qué hay una muerte en el tiempo infinito, (según yo sólo hay dos eventos de muerte, uno en el tiempo 1 y otro en el tiempo 2)?
+> ¿Por qué las unidades en el eje de muerte tienen decimales y en el eje de nacimiento no?
+{: .caution}
 
 ### Barcode Diagram
 The barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars that represent the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
@@ -246,8 +251,19 @@ The barcode diagram is a graphical tool used to visualize the persistence diagra
   <img src="../fig/tda_08_barcode.png" alt="Example Persistence Diagram" width="50%" height="auto"/>
 </a>
 
+> ## FIXME Shaday!
+> Creo que falta un poco de explicación de la gráfica.
+> ¿Qué significa cada eje y sus unidades?
+> 
+{: .caution}
 
 ## App to play
+
+> ## FIXME Shaday!
+> Poner un título más explicativo y texto que diga qué estás viendo y cómo se usa esa app.
+> 
+{: .caution}
+
 <iframe src="https://www.geogebra.org/classic/s7W7zbG4?embed" width="600" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
 
 
