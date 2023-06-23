@@ -191,10 +191,10 @@ plt.yticks(size=15)
 >> 4. Perform persistent homology using `st.persistence()`.
 >> 5. Plot the barcode and persistence diagram.
 > >6. Get this output
-> <a href="../fig/tda_09_diagram_F.png">
+> {: .solution}
+<a href="../fig/tda_09_diagram_F.png">
   <img src="../fig/tda_09_diagram_F.png" alt="Persistence Diagram" width="50%" height="auto" />
 </a>
-> {: .solution}
 {: .challenge}
 
 
