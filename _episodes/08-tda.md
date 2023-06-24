@@ -49,7 +49,7 @@ A simplicial complex is a mathematical structure comprising a collection of simp
 >> 1. Any face of a simplex from $K$ is also a simplex of $K$,
 >> 2. The intersection of any two simplices of $K$ is either empty or a common face of both<<.
 > >
->> More generally we can define a simplicial complex as:  
+>> More generally, we can define a simplicial complex as:  
 >>Let $P= \\{p_1,...,p_n\\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:   
 >> 1. the elements of $P$ belong to $K$,   
 >> 2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$.   
@@ -68,12 +68,12 @@ In the following figure, the left panel "a)" is an example of a simplicial compl
 Simplicial complexes can be seen simultaneously as geometric/topological spaces (suitable for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, suitable for computations).
 
 > ## Exercise 1: Identify the simplices
->  In the following graph, we have 2 representations of simplicial complexes.
+>  In the following graph, we have two representations of simplicial complexes.
 >  <a href="../fig/tda_08_exercise_1.png">
   <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" width="70%" height="auto"/>
 </a>
 > 
-> How many simplices (0-simplices, 1-simplices, 2-simplices) do the simplicial complexes in the figure have?
+> In this figure, How many 0-simplices(vertices), 1-simplices(edges), and 2-simplices(triangles) does each one of the simplicial complexes have?
 > > ## Solution
 > >   
 > > |             | **Figure A** | **Figure B** |    
