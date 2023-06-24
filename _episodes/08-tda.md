@@ -98,7 +98,8 @@ In a practical example, the set of points represents your dataset, such as a gro
 > ## Vietoris complex
 >
 >> ## Mathematical definition
->> Given a point cloud $P=\\{p_1,...,p_n\\}\subset \mathbb{R}^d $, its **Rips complex** of radius $r>0$ is the simplicial complex $R(P,r)$ s.t. $vert(R(P,r))=P$  and
+>> Given a point cloud $P=\\{p_1,...,p_n\\}\subset \mathbb{R}^d $, its **Rips complex** of radius $r>0$ is the simplicial complex $R(P,r)$ such that:  
+>>  $vert(R(P,r))=P$, and  
 >>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in R(P,r) \quad iff \quad  \lVert p_{i_j} -p_{i_l}  \rVert  \leq 2r, \forall \leq j,l\leq k $$
 >> 
 > {: .solution}
@@ -109,8 +110,9 @@ On the other hand, the **Čech complex** is based on constructing simplicial cel
 > ## Čech complex
 >
 >> ## Mathematical definition
->> Given a point cloud $P=\\{p_1,...,p_n\\}\subset \mathbb{R}^d$, its **Cech complex** of radius $r>0$ is the simplicial complex $C(P,r)$ s.t. $vert(C(P,r))=P$  and
->>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in C(P,r) \quad iff \quad \cap_{j=0}^k Bp_{i_j} \neq \emptyset $$
+>> Given a point cloud $P=\\{p_1,...,p_n\\}\subset \mathbb{R}^d$, its **Cech complex** of radius $r>0$ is the simplicial complex $C(P,r)$ such that:
+>>  $vert(C(P,r))=P$, and  
+>>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in C(P,r) \quad iff \quad \cap_{j=0}^k Bp_{i_j} \neq \emptyset $$  
 >> 
 > {: .solution}
 {: .discussion}
