@@ -76,7 +76,7 @@ Simplicial complexes can be seen simultaneously as geometric/topological spaces 
 > In this figure, How many 0-simplices(vertices), 1-simplices(edges), and 2-simplices(triangles) does each one of the simplicial complexes have?
 > > ## Solution
 > >   
-> > |             | **Figure A** | **Figure B** |    
+> > |             | **Figure a** | **Figure b** |    
 > > |:-----------:|:------------:|:------------:|   
 > > | $0-simplex$ |       9      |      11      |    
 > > | $1-simplex$ |      11      |      12      |    
