@@ -88,12 +88,12 @@ Simplicial complexes can be seen simultaneously as geometric/topological spaces 
 
 ### Čech and (Vietoris)-Rips complexes
 
-The Vietoris-Rips complex and the Čech complex are two types of simplicial complexes used to construct discrete structures from sets of points in space.
+Vietoris-Rips complex and Čech complex are two types of simplicial complexes constructing discrete structures from sets of points in space.
 
 
 The **Vietoris-Rips complex** is constructed from a set of points in a metric space. Given a set of points and a distance parameter called the "threshold," points within a distance less than or equal to the threshold are connected, forming the 1-simplices of the complex. Higher-dimensional simplices are then constructed by closing under combinations of 1-simplices that form a complete simplex, i.e., all fully connected subsets. The Vietoris-Rips complex captures the connectivity information between points and their topological structure at different scales.
 
-Where the set of points represents your dataset, such as a group of genomes to study, and the distance could be a Hamming distance. 'Threshold' represents the selected distance for two genomes to be considered related."
+In a practical example, the set of points represents your dataset, such as a group of genomes, and the distance could be a Hamming distance. 'Threshold' represents the selected distance at which two genomes are considered to be related.
 
 > ## Vietoris complex
 >
