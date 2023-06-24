@@ -150,7 +150,7 @@ Simplicial homology is a technique used to quantify the topological structure of
 **Betti Numbers:** Betti numbers are numerical invariants that measure the number of connected components and holes in a simplicial complex. Betti-0 ($\beta_0$) counts the number of connected components, while Betti-1 ($\beta_1$) counts the number of one-dimensional holes.
 
 
-> ## Exercise 2:  Identify Betti number
+> ## Exercise 2:  Identify Betti numbers
 >  In the following graph, we have 2 representations of simplicial complexes.
 >  <a href="../fig/tda_08_exercise_1.png">
   <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" width="70%" height="auto" />
@@ -158,7 +158,7 @@ Simplicial homology is a technique used to quantify the topological structure of
 > 
 > What are the $\beta_0$ and $\beta_1$ of these simplicial complexes in the image?.
 >
-> Hint: Remember that a painted triangle (color rose in this case) represents a 2-simplex, while a missing triangle forms a 1-hole.
+> Hint: Remember that a painted triangle (color rose in this case) represents a 2-simplex, while an uncolored triangle represents a missing triangle that forms a 1-hole.
 > > ## Solution  
 > >   
 > >  |           | **Figure A** | **Figure B** |   
