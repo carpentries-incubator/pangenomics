@@ -56,30 +56,22 @@ A simplicial complex is a mathematical structure composed of a collection of sim
   <img src="../fig/tda_paste.png" alt="Example" width="70%" height="auto"/>
 </a>
 
-> ## FIXME Shaday!
-> Aquí las dos imagenes están separadas por la caja de Mathematical definicion. Hay que ponerlas donde más convenga y
-> hablar de ellas en el texto.
-> Y explicar por qué el inciso b) no es un simplicial complex.
-> Y en los alt text hay que mencionar qué se ve en la imagen, no sólo qué es la imagen.
-{: .caution}
+"In the figure, in a) we have an example of a simplicial complex, while b) does not satisfy the condition that the intersection of any pair of simplices is either empty or a face, in other words, it must fit together properly."
+
 
 ### Abstract simplex and simplicial complex
 
-> ## FIXME Shaday!
-> Aquí la explicación que sigue parece lo que va dentro de una caja de Mathematical definition. Falta el texto de explicación normal.
-> Y la caja de Note creo que es algo que podría ir en el texto normal.
-{: .caution}
-
-Let $P= \{p_1,...,p_n\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:  
-1. the elements of $P$ belong to $K$,  
-2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$.  
-
-The elements of $K$ are the simplices.  
-
-> ## Note
-> Simplicial complexes can be seen at the same time as geometric/topological
-> spaces (good for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, good for computations)
-{: .callout}
+> ## Abstract Simplicial Complex
+>
+> > ## Mathematical definition
+>>Let $P= \{p_1,...,p_n\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions: 
+>> 1. the elements of $P$ belong to $K$, 
+>> 2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$. 
+>>
+> > The elements of $K$ are the simplices.  
+> {: .solution} {: .discussion}
+ 
+ Simplicial complexes can be seen at the same time as geometric/topological spaces (good for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, good for computations)
 
 > ## Exercise 1: Identify the simplices
 >  In the following graph, we have 2 representations of simplicial complexes.
@@ -92,9 +84,9 @@ The elements of $K$ are the simplices.
 > >   
 > > |             | **Figure A** | **Figure B** |    
 > > |:-----------:|:------------:|:------------:|   
-> > | 0-simplex |       9      |      11      |    
-> > | 1-simplex |      11      |      12      |    
-> > | 2-simplex |       2      |       2      |    
+> > | $0-simplex$ |       9      |      11      |    
+> > | $1-simplex$ |      11      |      12      |    
+> > | $2-simplex$ |       2      |       2      |    
 > > 
 > {: .solution}
 {: .challenge}
@@ -107,10 +99,7 @@ The Vietoris-Rips complex and the Čech complex are two types of simplicial comp
 
 The **Vietoris-Rips complex** is constructed from a set of points in a metric space. Given a set of points and a distance parameter called the "threshold," points within a distance less than or equal to the threshold are connected, forming the 1-simplices of the complex. Higher-dimensional simplices are then constructed by closing under combinations of 1-simplices that form a complete simplex, i.e., all fully connected subsets. The Vietoris-Rips complex captures the connectivity information between points and their topological structure at different scales.
 
-> ## FIXME Shaday!
-> Aquí creo que sí se entiendo cómo se conectan los puntos, pero según yo falta explicar con qué información se pusieron
-> los puntos en el espacio. Y creo que también falta decir cómo se escoge el umbral.
-{: .caution}
+Where the set of points represents your dataset, such as a group of genomes to study, and the distance could be a Hamming distance. 'Threshold' represents the selected distance for two genomes to be considered related."
 
 > ## Vietoris complex
 >
@@ -131,14 +120,22 @@ On the other hand, the **Čech complex** is based on constructing simplicial cel
 >> 
 > {: .solution}
 {: .discussion}
+In the following figure, we have the representation of the Rips simplicial complex (left) and the Cech simplicial complex (right), for the same set of points $P={p_1,...,p_9}$.
 
  <a href="../fig/Tda_rips_cech.png">
   <img src="../fig/Tda_rips_cech.png" alt="Example Filtration" width="70%" height="auto" />
 </a>
 
-> ## FIXME Shaday!
-> Aquí hay que mencionar/explicar la imagen en el texto.
-{: .caution}
+The following table shows the number of simplices for each simplicial complex.
+
+ |             | $R(P,r)$ | $C(P,r)$ |    
+ |:-----------:|:------------:|:------------:|   
+ | $0-simplex$ |       9      |      9      |    
+ | $1-simplex$ |      9      |      9      |    
+ | $2-simplex$ |       2      |       1      |    
+
+
+The difference lies in the $2-simplices$. Given 3 points, to construct a 2-simplex (triangle) in the Cech complex, the 3 balls of radius $r$ must intersect each other, while in the Rips complex, the balls must intersect pairwise."
 
 > ## Note
 > Čech complexes can be quite hard to compute.
@@ -149,13 +146,13 @@ Both the Vietoris-Rips complex and the Čech complex are tools used in topologic
 
 ## Simplicial homology
 
-Simplicial homology is a technique used to quantify the topological structure of a simplicial complex. This technique is based on the identification of cycles and voids in the complex, which can be quantified by assigning integer values called "homology degrees". Simplicial homology is often used in topological data analysis to find patterns and structures in the data.
-
-**Betti Numbers:** Betti numbers are numerical invariants that measure the number of connected components and holes in a simplicial complex. Betti-0 counts the number of connected components, while Betti-1 counts the number of one-dimensional holes.
+Simplicial homology is a technique used to quantify the topological structure of a simplicial complex. This technique is based on the identification of cycles and voids in the complex, which can be quantified by assigning integer values called "homology degrees". Simplicial homology is often used in topological data analysis to find patterns and structures in the data. Some definitions that we must keep in mind are the following.
 
 **Holes:** Holes are empty regions or connected spaces in a simplicial complex. Simplicial homology allows for the detection and quantification of the presence of holes in the complex.
 
 **Connected Components:** Connected components are sets of simplices in a simplicial complex that are connected to each other through shared simplices. Simplicial homology can identify and count the connected components in the complex.
+
+**Betti Numbers:** Betti numbers are numerical invariants that measure the number of connected components and holes in a simplicial complex. Betti-0 ($\beta_0$) counts the number of connected components, while Betti-1 ($\beta_1$) counts the number of one-dimensional holes.
 
 
 > ## Exercise 2:  Identify Betti number
@@ -164,7 +161,9 @@ Simplicial homology is a technique used to quantify the topological structure of
   <img src="../fig/tda_08_exercise_1.png" alt="Exercise 1" width="70%" height="auto" />
 </a>
 > 
-> How many 1-holes and connected components ($\beta_0 $  and $\beta_1$) are these figure?
+> What are the $\beta_0$ and $\beta_1$ of these simplicial complexes in the image?.
+>
+> Hint: Remember that a painted triangle (with rose in this case) represents a 2-simplex, while a missing triangle forms a 1-hole.
 > > ## Solution  
 > >   
 > >  |           | **Figure A** | **Figure B** |   
@@ -175,36 +174,28 @@ Simplicial homology is a technique used to quantify the topological structure of
 > {: .solution}
 {: .challenge}
 
-> ## FIXME Shaday!
-> Creo que lo de **Connetcet Components** y **Holes** deberían estar explicados antes de **Betti Numbers** porque Betti numbers hace referencia a esas otras dos cosas.
-> Según entiendo Beta0 y Beta1 son Betti-0 y Betti-1, respectivamente, pero hay que decirlo en el texto. Y creo que la pregunta debería decir algo así cómo ¿Cuál es el Beta-0 y Beta-1 de estos simplicial complexes de la imagen?
-> No entiendo por qué hay triángulos que sí son hoyos y otros que no (coloreados de rosa).
-> 
-{: .caution}
+
 
 ### Filtration
   
 A filtration of a simplicial complex is an ordered sequence of subcomplexes of the original complex, where each subcomplex contains its predecessor in the sequence. In other words, it is a way to decompose the complex into successive stages, where each stage adds or removes simplices compared to the previous stage.
 
-  A filtration of a simplicial complex $K$ is a collection $K_0 \subset K_1 \subset ... \subset K_N$ of complexes such that:
-  1. $K_N=K$.
-  2. $K_i$ is a subcomplex of $K_{i+1}$, for $i=0,1,...,N-1$.
- </figure id="fig_filtration"> 
+> ## Filtration
+>
+> > ## Mathematical definition
+>>A filtration of a simplicial complex $K$ is a collection $K_0 satisfying the two conditions: 
+>>  1. $K_N=K$.
+>> 2.  $K_i$ is a subcomplex of $K_{i+1}$, for $i=0,1,...,N-1$.
+> {: .solution} {: .discussion}
+
+An example of a filtration for $K=\langle a, b , c \rangle $ is the following:
+
   <a href="../fig/Tda-Filtacion1.png">
   <img src="../fig/Tda-Filtacion1.png" alt="Example Filtration" width="70%" height="auto"/>
 </a>
-  <figcaption> **Figure:** Example Filtration</figcaption>
-</figure>
 
-> ## FIXME Shaday!
-> Hay que explicar la figura en el texto.  
-> Lo que está antes de la figura creo que debería ir en caja de Mathematical deffinition.
-{: .caution}
+In this case, we have 5 levels of filtration. The red color represents the simplices that are being added at each level of filtration, starting from $K_0$ with the vertices ${a,b,c}$ and ending at $K_4=\langle a, b , c \rangle $, the triangle (including the face) with vertices $a,b,c$.
 
-> ## FIXME Shaday!
-> Hay que quitar los pies de figura y los números de figura porque no estamos usando ese formato en las lecciones.
-> También cambiar en el texto que habla de las figuras por su número de figura.
-{: .caution}
 
 Now, to apply persistent homology, we need to vary our parameter associated with the filtration. In the filtration graph, we have 5 distinct steps for the filtered simplicial complex. In each of these steps, we can have a different number of connected components and 1-holes. 
 
@@ -225,37 +216,28 @@ Now, to apply persistent homology, we need to vary our parameter associated with
 > {: .solution}
 {: .challenge}
 
+We can observe that at the beginning (filtration level 0), we have 3 connected components. At filtration level 1, we have 2 connected components, meaning that 2 connected components merged to form a single one, or we can also say that one connected component died. The same thing happens at filtration level 2, leaving us with only one connected component. At filtration level 3, we still have one connected component, but a 1-hole appears. Finally, at filtration level 4, we still have one connected component, and the 1-hole disappears.
+
 To visualize these changes, we will use a representation with the following persistence diagrams and barcode.
 
 ### Persistence Diagram
 The persistence diagram is a visual representation of the evolution of cycles and cavities in different dimensions as the simplicial complex is modified. It helps understand the persistence and relevance of topological structures in the complex.
 
-Continuing with the example of the filtration in Figure 1, to construct the persistence diagram, we need to empty the information we obtained in the previous exercise.
- <figure id="fig2">
+Continuing with the example of the filtration of $K$, to construct the persistence diagram, we need to empty the information we obtained in the previous exercise.
   <a href="../fig/tda_08_diagrama.png">
-    <img src="../fig/tda_08_diagrama.png" alt="Example Persistence Diagram" width="50%" height="auto"/>
-  </a>
-  <figcaption>Figure 2: Example Persistence Diagram</figcaption>
-</figure>
-In Figure 2, we present the persistence diagram for the filtration shown in Figure 1. In red, we see the connected components represented, and in blue, the 1-holes. For "time" 0, we can observe that we have 3 connected components with different "death times". As new simplices appear as we increase the filtration level (time), some connected components merge with each other.
+  <img src="../fig/tda_08_diagrama.png" alt="Example Barcode Diagram" width="50%" height="auto"/>
+</a>
 
-> ## FIXME Shaday!
-> Creo que la explicación debería de ir antes de la imagen, como diciendo "En la siguiente imagen vamos a ver tal cosa". ¿Por qué una parte de la gráfica está en gris? ¿Por qué hay una muerte en el tiempo infinito, (según yo sólo hay dos eventos de muerte, uno en el tiempo 1 y otro en el tiempo 2)?
-> ¿Por qué las unidades en el eje de muerte tienen decimales y en el eje de nacimiento no?
-{: .caution}
+In the persistence diagram, connected components are represented in red, and 1-holes are shown in blue. The $x$ and $y$ axes represent the filtration levels and are labeled as "birth" and "death" respectively. The coordinates of the points indicate when each connected component or 1-hole was born and died. Additionally, there is a connected component that has infinite death time, meaning it never dies during the filtration. This is referred to as "infinite persistence".
+
 
 ### Barcode Diagram
 The barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars that represent the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
-
   <a href="../fig/tda_08_barcode.png">
   <img src="../fig/tda_08_barcode.png" alt="Example Persistence Diagram" width="50%" height="auto"/>
 </a>
 
-> ## FIXME Shaday!
-> Creo que falta un poco de explicación de la gráfica.
-> ¿Qué significa cada eje y sus unidades?
-> 
-{: .caution}
+In the barcode diagram, the $X$ axis represents the filtration levels, and the beginning of a red bar indicates the birth of a connected component, while the end of that bar represents its death (i.e., when it merged with another component). For the blue bars, the idea is analogous, but they represent 1-holes instead.
 
 ## App to play
 
