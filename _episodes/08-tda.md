@@ -47,7 +47,14 @@ A simplicial complex is a mathematical structure comprising a collection of simp
 > > ## Mathematical definition
 >> A simplicial complex $K$ in $ \mathbb{R}^d $ is a collection of simplices s.t:
 >> 1. Any face of a simplex from $K$ is also a simplex of $K$,
->> 2. The intersection of any two simplices of $K$ is either empty or a common face of both.
+>> 2. The intersection of any two simplices of $K$ is either empty or a common face of both<<.
+> >
+>> More generally we can define a simplicial complex as:  
+>>Let $P= \\{p_1,...,p_n\\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:   
+>> 1. the elements of $P$ belong to $K$,   
+>> 2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$.   
+>>  
+> > The elements of $K$ are the simplices.  
 > > 
 > {: .solution}
 {: .discussion}
@@ -59,20 +66,6 @@ In the following figure, the left panel "a)" is an example of a simplicial compl
 </a>
 
 
-
-
-### Abstract simplex and simplicial complex
-
-> ## Abstract Simplicial Complex
->
-> > ## Mathematical definition  
->>Let $P= \\{p_1,...,p_n\\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:   
->> 1. the elements of $P$ belong to $K$,   
->> 2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$.   
->>  
-> > The elements of $K$ are the simplices.  
-> {: .solution}
-{: .discussion}
  
  Simplicial complexes can be seen at the same time as geometric/topological spaces (good for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, good for computations)
 
