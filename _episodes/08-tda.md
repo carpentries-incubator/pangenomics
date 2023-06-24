@@ -241,7 +241,7 @@ In the barcode diagram, the $X$ axis represents the filtration levels, and the b
 
 ## App to play
 
-This app, created in GeoGebra by José María Ibarra Rodríguez (jose.ibarra@c3consensus.com), allows us to manipulate the parameter $\r$ to construct a Rips simplicial complex for a set of 16 points in $\mathbb{R}^2$. Additionally, it enables us to view the barcode of the filtration and visualize the simplices as they are formed.
+This app, created in GeoGebra by José María Ibarra Rodríguez (jose.ibarra@c3consensus.com), allows us to manipulate the parameter $r$  to construct a Rips simplicial complex for a set of 16 points in $\mathbb{R}^2$. Additionally, it enables us to view the barcode of the filtration and visualize the simplices as they are formed.
 
 Steps to use:
 
@@ -269,10 +269,21 @@ Steps to use:
 
 > ## Exercise 4: Persistence Diagrama
 >
-> An exercise.
+> Using the application, could you please answer the following questions:
+>  
+> a. For what value of $r$ does the 1-simplex (edge) appear?  
+> b. For what value of $r$ do we have only one connected component ($\beta_0 = 1$)?  
+> c. How many 1-holes appear, and for what values of $r$ do they appear?  
+> d. What is the persistence of the 1-holes?.  
+> e. What can that persistence tell us about the shape of the data?  
+>  
+> > ## Solution
+> > a.  $r=0.5$  
+> > b.  $r=0.83$  
+> > c. Two. The firts one $r=0.76$ and the second one $r=0.86$.  
+> > d. The persistence are $0.12$ and $1.65$.  
+> > e.  The second hole has a significant persistence of $1.6$, which suggests that the data is indeed arranged in a circular manner.  
+> {: .solution}
 {: .challenge}
 
-> ## Exercise 5: Barcode Diagrama
->
-> An exercise.
-{: .challenge}
+
