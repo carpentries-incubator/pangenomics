@@ -5,7 +5,7 @@ exercises: 15
 questions:
 - "What is topological data analysis?"
 objectives:
-- "Understand a simplex."
+- "Understand that simplices comprise vertices, edges, triangles, and higher dimensions structures."
 keypoints:
 - "TDA describes data forms."
 math: true
