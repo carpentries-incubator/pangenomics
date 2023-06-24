@@ -13,7 +13,7 @@ math: true
 
 ## Topological data analysis
 
-Topological data analysis is a technique that uses concepts from topology to analyze complex data and find patterns and structures that are not apparent at first glance. This technique is based on constructing a structure called a simplicial complex, composed of a collection of simple geometric objects called simplices. The topology of this complex is used to analyze and visualize the relationships between the data.
+Topological data analysis is a technique that uses concepts from topology to analyze complex data and find patterns and structures that are not apparent at first glance. This technique is based on constructing a simplicial complex, composed of a collection of simple geometric objects called simplices. The topology of this complex is used to analyze and visualize the relationships between the data.
 
 ### Simplex
 A simplex (plural simplices) is a simple geometric object of any dimension (point, line segment, triangle, tetrahedron, etc.). Simplices are used to construct simplicial complexes.
@@ -36,7 +36,7 @@ A simplex (plural simplices) is a simple geometric object of any dimension (poin
 </a>
 
 ### Simplicial complex
-A simplicial complex is a mathematical structure composed of a collection of simplices, constructed from a data set. In other words, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements. In this sense, we can think of a simplicial complex as extending the notion of a graph only formed by vertices and edges.
+A simplicial complex is a mathematical structure composed of a collection of simplices constructed from a data set. In other words, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements. In this sense, we can think of a simplicial complex as extending the notion of a graph only formed by vertices and edges.
 
   <a href="../fig/Tda_Simplicial_complex_example.png">
   <img src="../fig/Tda_Simplicial_complex_example.png" alt="Example Simplicial Complex" width="70%" height="auto"/>
@@ -163,7 +163,7 @@ Simplicial homology is a technique used to quantify the topological structure of
 > 
 > What are the $\beta_0$ and $\beta_1$ of these simplicial complexes in the image?.
 >
-> Hint: Remember that a painted triangle (with rose in this case) represents a 2-simplex, while a missing triangle forms a 1-hole.
+> Hint: Remember that a painted triangle (color rose in this case) represents a 2-simplex, while a missing triangle forms a 1-hole.
 > > ## Solution  
 > >   
 > >  |           | **Figure A** | **Figure B** |   
@@ -195,10 +195,10 @@ An example of a filtration for $K=\langle a, b , c \rangle $ is the following:
   <img src="../fig/Tda-Filtacion1.png" alt="Example Filtration" width="70%" height="auto"/>
 </a>
 
-In this case, we have 5 levels of filtration. The red color represents the simplices that are being added at each level of filtration, starting from $K_0$ with the vertices ${a,b,c}$ and ending at $K_4=\langle a, b , c \rangle $, the triangle (including the face) with vertices $a,b,c$.
+In this case, we have 5 levels of filtration. The red color represents the simplices that are being added at each level of filtration, starting from $K_0$ with the vertices ${a,b,c}$ and ending at $K_4=\langle a, b, c \rangle $, the triangle (including the face) with vertices $a,b,c$.
 
 
-Now, to apply persistent homology, we need to vary our parameter associated with the filtration. In the filtration graph, we have 5 distinct steps for the filtered simplicial complex. In each of these steps, we can have a different number of connected components and 1-holes. 
+Now, to apply persistent homology, we need to vary our parameters associated with the filtration. In the filtration graph, we have 5 distinct steps for the filtered simplicial complex. In each of these steps, we can have a different number of connected components and 1-holes. 
 
 
 > ## Exercise 3:  Calculate the Betti numbers.
@@ -233,7 +233,7 @@ In the persistence diagram, connected components are represented in red, and 1-h
 
 
 ### Barcode Diagram
-The barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars that represent the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
+A barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars that represent the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
   <a href="../fig/tda_08_barcode.png">
   <img src="../fig/tda_08_barcode.png" alt="Example Persistence Diagram" width="50%" height="auto"/>
 </a>
@@ -275,14 +275,14 @@ Steps to use:
 > a. For what value of $r$ does the 1-simplex (edge) appear?  
 > b. For what value of $r$ do we have only one connected component ($\beta_0 = 1$)?  
 > c. How many 1-holes appear, and for what values of $r$ do they appear?  
-> d. What is the persistence of the 1-holes?.  
+> d. What is the persistence of the 1-holes?  
 > e. What can that persistence tell us about the shape of the data?  
 >  
 > > ## Solution
 > > a.  $r=0.5$  
 > > b.  $r=0.83$  
-> > c. Two. The firts one $r=0.76$ and the second one $r=0.86$.  
-> > d. The persistence are $0.12$ and $1.65$.  
+> > c. Two. The first one $r=0.76$ and the second one $r=0.86$.  
+> > d. The persistences are $0.12$ and $1.65$.  
 > > e.  The second hole has a significant persistence of $1.6$, which suggests that the data is indeed arranged in a circular manner.  
 > {: .solution}
 {: .challenge}
