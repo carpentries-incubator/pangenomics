@@ -21,7 +21,7 @@ A simplex (plural simplices) is a simple geometric object of any dimension (poin
 > ## Simplex
 >
 > > ## Mathematical definition
->> Given a set $ P=\\{p_0,...,p_k\\}\subset \mathbb{R}^d $ of $ k+1 $ affinely independent points, the **k-dimensional simplex** $\sigma$ (or **k-simplex** for short) spanned by $P$ is the set of convex combinatios TEST
+>> Given a set $ P=\\{p_0,...,p_k\\}\subset \mathbb{R}^d $ of $ k+1 $ affinely independent points, the **k-dimensional simplex** $\sigma$ (or **k-simplex** for short) spanned by $P$ is the set of convex combinatios 
 >>
 >> $ \sum_{i=0}^k\lambda_ip_i, \quad with \quad  \sum_{i=0}^k\lambda_i = 1 \quad \lambda_i \geq 0. $ 
 >>
@@ -64,7 +64,7 @@ A simplicial complex is a mathematical structure composed of a collection of sim
 > ## Abstract Simplicial Complex
 >
 > > ## Mathematical definition  
->>Let $P= \{p_1,...,p_n\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:   
+>>Let $P= \\{p_1,...,p_n\\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:   
 >> 1. the elements of $P$ belong to $K$,   
 >> 2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$.   
 >>  
@@ -105,7 +105,7 @@ Where the set of points represents your dataset, such as a group of genomes to s
 > ## Vietoris complex
 >
 >> ## Mathematical definition
->> Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d $, its **Rips complex** of radius $r>0$ is the simplicial complex $R(P,r)$ s.t. $vert(R(P,r))=P$  and
+>> Given a point cloud $P=\\{p_1,...,p_n\\}\subset \mathbb{R}^d $, its **Rips complex** of radius $r>0$ is the simplicial complex $R(P,r)$ s.t. $vert(R(P,r))=P$  and
 >>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in R(P,r) \quad iff \quad  \lVert p_{i_j} -p_{i_l}  \rVert  \leq 2r, \forall \leq j,l\leq k $$
 >> 
 > {: .solution}
@@ -116,7 +116,7 @@ On the other hand, the **Čech complex** is based on constructing simplicial cel
 > ## Čech complex
 >
 >> ## Mathematical definition
->> Given a point cloud $P=\{p_1,...,p_n\}\subset \mathbb{R}^d$, its **Cech complex** of radius $r>0$ is the simplicial complex $C(P,r)$ s.t. $vert(C(P,r))=P$  and
+>> Given a point cloud $P=\\{p_1,...,p_n\\}\subset \mathbb{R}^d$, its **Cech complex** of radius $r>0$ is the simplicial complex $C(P,r)$ s.t. $vert(C(P,r))=P$  and
 >>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in C(P,r) \quad iff \quad \cap_{j=0}^k Bp_{i_j} \neq \emptyset $$
 >> 
 > {: .solution}
@@ -198,7 +198,7 @@ An example of a filtration for $K=\langle a, b , c \rangle $ is the following:
 In this case, we have 5 levels of filtration. The red color represents the simplices that are being added at each level of filtration, starting from $K_0$ with the vertices ${a,b,c}$ and ending at $K_4=\langle a, b, c \rangle $, the triangle (including the face) with vertices $a,b,c$.
 
 
-Now, to apply persistent homology, we need to vary our parameters associated with the filtration. In the filtration graph, we have 5 distinct steps for the filtered simplicial complex. In each of these steps, we can have a different number of connected components and 1-holes. 
+Now, to apply persistent homology, we need to vary the parameters associated with the filtration. In the filtration graph, we have 5 distinct steps for the filtered simplicial complex. In each of these steps, we can have a different number of connected components and 1-holes. 
 
 
 > ## Exercise 3:  Calculate the Betti numbers.
