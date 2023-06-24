@@ -1,7 +1,7 @@
 ---
 title: "Topological Data Analysis"
-teaching: 30
-exercises: 15
+teaching: 60
+exercises: 30  
 questions:
 - "What is topological data analysis?"
 objectives:
@@ -224,11 +224,11 @@ Continuing with the example of the filtration of $K$, to construct the persisten
   <img src="../fig/tda_08_diagrama.png" alt="Example Barcode Diagram" width="50%" height="auto"/>
 </a>
 
-In the persistence diagram, connected components are represented in red, and 1-holes are shown in blue. The $x$ and $y$ axes represent the filtration levels and are labeled as "birth" and "death" respectively. The coordinates of the points indicate when each connected component or 1-hole was born and died. Additionally, there is a connected component that has infinite death time, meaning it never dies during the filtration. This is referred to as "infinite persistence".
+In the persistence diagram, connected components are represented in red, and 1-holes are shown in blue. The $x$ and $y$ axes represent the filtration levels and are labeled as "birth" and "death" respectively. The coordinates of the points indicate when each connected component or 1-hole was born and died. Additionally, there is a connected component that has infinite death time, meaning it never dies during filtration. This is referred to as "infinite persistence".
 
 
 ### Barcode Diagram
-A barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars that represent the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
+A barcode diagram is a graphical tool used to visualize the persistence diagram. It consists of bars representing the persistence intervals of cycles and cavities, indicating their duration and relevance in the simplicial complex.
   <a href="../fig/tda_08_barcode.png">
   <img src="../fig/tda_08_barcode.png" alt="Example Persistence Diagram" width="50%" height="auto"/>
 </a>
@@ -270,14 +270,14 @@ Steps to use:
 > a. For what value of $r$ does the 1-simplex (edge) appear?  
 > b. For what value of $r$ do we have only one connected component ($\beta_0 = 1$)?  
 > c. How many 1-holes appear, and for what values of $r$ do they appear?  
-> d. What is the persistence of the 1-holes?  
+> d. Persistence is defined as the difference between birth and death. What is the persistence of the 1-holes?  
 > e. What can that persistence tell us about the shape of the data?  
 >  
 > > ## Solution
 > > a.  $r=0.5$  
 > > b.  $r=0.83$  
 > > c. Two. The first one $r=0.76$ and the second one $r=0.86$.  
-> > d. The persistences are $0.12$ and $1.65$.  
+> > d. The persistence is $0.12$ and $1.65$.  
 > > e.  The second hole has a significant persistence of $1.6$, which suggests that the data is indeed arranged in a circular manner.  
 > {: .solution}
 {: .challenge}
