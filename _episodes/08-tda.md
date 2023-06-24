@@ -45,9 +45,9 @@ A simplicial complex is a mathematical structure comprising a collection of simp
 > ## Simplicial complex
 >
 > > ## Mathematical definition
->>A simplicial complex $K$ in $ \mathbb{R}^d $ is a collection of simplices s.t:
->> 1. any face a simplex of $K$ is a simplex of K,
->> 2. the intesection of any two simplices of $K$ is ether empty or a common face of both.
+>> A simplicial complex $K$ in $ \mathbb{R}^d $ is a collection of simplices s.t:
+>> 1. Any face of a simplex from $K$ is a simplex of $K$,
+>> 2. The intersection of any two simplices of $K$ is either empty or a common face of both.
 > > 
 > {: .solution}
 {: .discussion}
