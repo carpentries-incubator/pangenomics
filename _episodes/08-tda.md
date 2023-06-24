@@ -46,17 +46,19 @@ A simplicial complex is a mathematical structure comprising a collection of simp
 >
 > > ## Mathematical definition
 >> A simplicial complex $K$ in $ \mathbb{R}^d $ is a collection of simplices s.t:
->> 1. Any face of a simplex from $K$ is a simplex of $K$,
+>> 1. Any face of a simplex from $K$ is also a simplex of $K$,
 >> 2. The intersection of any two simplices of $K$ is either empty or a common face of both.
 > > 
 > {: .solution}
 {: .discussion}
 
+In the following figure, the left panel "a)" is an example of a simplicial complex, while the right panel "b)" is not because it does not satisfy the second mathematical condition. In the figure, a triangle is part of the simplicial complex but one vertex is not. Colloquially speaking it fails that if one simplex is part of the simplicial complex, then all its simplices of the lower dimensions must also be part of the complex. Mathematically speaking, it is not true that the face of a simplex from $K$ is also a simplex of $K$ or that the intersection of any pair of simplices is either empty or a face. 
+
   <a href="../fig/tda_paste.png">
   <img src="../fig/tda_paste.png" alt="Example" width="70%" height="auto"/>
 </a>
 
-"In the figure, in a) we have an example of a simplicial complex, while b) does not satisfy the condition that the intersection of any pair of simplices is either empty or a face, in other words, it must fit together properly."
+
 
 
 ### Abstract simplex and simplicial complex
