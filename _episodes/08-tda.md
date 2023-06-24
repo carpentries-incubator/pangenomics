@@ -141,7 +141,7 @@ Both the Vietoris-Rips complex and the Čech complex are tools used in topologic
 
 ## Simplicial homology
 
-Simplicial homology is a technique used to quantify the topological structure of a simplicial complex. This technique is based on the identification of cycles and voids in the complex, which can be quantified by assigning integer values called "homology degrees". Simplicial homology is often used in topological data analysis to find patterns and structures in the data. Some definitions that we must keep in mind are the following.
+Simplicial homology is a technique used to quantify the topological structure of a simplicial complex. This technique is based on identifying cycles and voids in the complex, which can be quantified by assigning integer values called "homology degrees". Simplicial homology is often used in topological data analysis to find patterns and structures in the data. Some definitions that we must keep in mind are the following.
 
 **Holes:** Holes are empty regions or connected spaces in a simplicial complex. Simplicial homology allows for the detection and quantification of the presence of holes in the complex.
 
@@ -241,7 +241,7 @@ This app, created in GeoGebra by José María Ibarra Rodríguez (jose.ibarra@c3c
 
 Steps to use:
 
-1. Click on the square button in the bottom left corner to maximize the app.
+1. Click on the square button in the bottom right corner to maximize the app.
 2. In the top right corner, there is a slider for the values of $r$ that you can adjust according to your preferences.
 3. At the bottom, you can select what you want to display, such as simplices, balls, and the barcode.
 
