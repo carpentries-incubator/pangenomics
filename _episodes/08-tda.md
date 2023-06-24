@@ -63,13 +63,14 @@ A simplicial complex is a mathematical structure composed of a collection of sim
 
 > ## Abstract Simplicial Complex
 >
-> > ## Mathematical definition
->>Let $P= \{p_1,...,p_n\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions: 
->> 1. the elements of $P$ belong to $K$, 
->> 2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$. 
->>
+> > ## Mathematical definition  
+>>Let $P= \{p_1,...,p_n\}$ be a (finite) set. An **abstract simplicial complex** $K$ with vertex set $P$ is a set of subsets of $P$ satisfying the two conditions:   
+>> 1. the elements of $P$ belong to $K$,   
+>> 2. if $\tau \in K$ and $\sigma \subset \tau$, then $\sigma \in K$.   
+>>  
 > > The elements of $K$ are the simplices.  
-> {: .solution} {: .discussion}
+> {: .solution}
+{: .discussion}
  
  Simplicial complexes can be seen at the same time as geometric/topological spaces (good for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, good for computations)
 
@@ -267,7 +268,7 @@ Steps to use:
 
 
 
-> ## Exercise 4: Persistence Diagrama
+> ## Exercise 4: Using the app example
 >
 > Using the application, could you please answer the following questions:
 >  
