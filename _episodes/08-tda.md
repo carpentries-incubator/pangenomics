@@ -178,7 +178,7 @@ A filtration of a simplicial complex is an ordered sequence of subcomplexes of t
 > ## Filtration
 >
 > > ## Mathematical definition
->>A filtration of a simplicial complex $K$ is a collection $K_0 satisfying the two conditions: 
+>>A filtration of a simplicial complex $K$ is a collection $K_0\subset K_1 \subset ...\subset K_N $ of complexes satisfying the two conditions: 
 >>  1. $K_N=K$.
 >> 2.  $K_i$ is a subcomplex of $K_{i+1}$, for $i=0,1,...,N-1$.
 > {: .solution} 
