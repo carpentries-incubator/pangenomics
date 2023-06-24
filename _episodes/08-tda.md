@@ -137,12 +137,11 @@ The following table shows the number of simplices for each simplicial complex.
 
 The difference lies in the $2-simplices$. Given 3 points, to construct a 2-simplex (triangle) in the Cech complex, the 3 balls of radius $r$ must intersect each other, while in the Rips complex, the balls must intersect pairwise."
 
+Both the Vietoris-Rips complex and the Čech complex are tools used in topological analysis and computational geometry to study the structure and properties of sets of points in space. These complexes provide a discrete representation of the proximity and connectivity information of the points, enabling the analysis of their topology and geometric characteristics.
+
 > ## Note
 > Čech complexes can be quite hard to compute.
 {: .callout}
-
-Both the Vietoris-Rips complex and the Čech complex are tools used in topological analysis and computational geometry to study the structure and properties of sets of points in space. These complexes provide a discrete representation of the proximity and connectivity information of the points, enabling the analysis of their topology and geometric characteristics.
-
 
 ## Simplicial homology
 
@@ -186,7 +185,8 @@ A filtration of a simplicial complex is an ordered sequence of subcomplexes of t
 >>A filtration of a simplicial complex $K$ is a collection $K_0 satisfying the two conditions: 
 >>  1. $K_N=K$.
 >> 2.  $K_i$ is a subcomplex of $K_{i+1}$, for $i=0,1,...,N-1$.
-> {: .solution} {: .discussion}
+> {: .solution} 
+{: .discussion}
 
 An example of a filtration for $K=\langle a, b , c \rangle $ is the following:
 
@@ -241,10 +241,13 @@ In the barcode diagram, the $X$ axis represents the filtration levels, and the b
 
 ## App to play
 
-> ## FIXME Shaday!
-> Poner un título más explicativo y texto que diga qué estás viendo y cómo se usa esa app.
-> 
-{: .caution}
+This app, created in GeoGebra by José María Ibarra Rodríguez (jose.ibarra@c3consensus.com), allows us to manipulate the parameter $\r$ to construct a Rips simplicial complex for a set of 16 points in $\mathbb{R}^2$. Additionally, it enables us to view the barcode of the filtration and visualize the simplices as they are formed.
+
+Steps to use:
+
+1. Click on the square button in the bottom left corner to maximize the app.
+2. In the top right corner, there is a slider for the values of $r$ that you can adjust according to your preferences.
+3. At the bottom, you can select what you want to display, such as simplices, balls, and the barcode.
 
 <iframe src="https://www.geogebra.org/classic/s7W7zbG4?embed" width="600" height="400" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
 
