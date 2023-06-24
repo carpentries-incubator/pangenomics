@@ -64,10 +64,8 @@ In the following figure, the left panel "a)" is an example of a simplicial compl
   <a href="../fig/tda_paste.png">
   <img src="../fig/tda_paste.png" alt="Example" width="70%" height="auto"/>
 </a>
-
-
  
- Simplicial complexes can be seen at the same time as geometric/topological spaces (good for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, good for computations)
+Simplicial complexes can be seen simultaneously as geometric/topological spaces (suitable for topological/geometrical inference) and as combinatorial objects (abstract simplicial complexes, suitable for computations).
 
 > ## Exercise 1: Identify the simplices
 >  In the following graph, we have 2 representations of simplicial complexes.
