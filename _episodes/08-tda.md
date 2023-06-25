@@ -18,6 +18,10 @@ Topological data analysis is a technique that uses concepts from topology to ana
 ### Simplex
 A simplex (plural simplices) is a simple geometric object of any dimension (point, line segment, triangle, tetrahedron, etc.). Simplices are used to construct simplicial complexes. In the following figure, some examples of simplices are shown.  
 
+  <a href="../fig/tda_Vertices.png">
+  <img src="../fig/tda_Vertices.png" alt="Example" width="70%" height="auto"/>
+</a>
+
 > ## Simplex
 >
 > > ## Mathematical definition
@@ -30,10 +34,6 @@ A simplex (plural simplices) is a simple geometric object of any dimension (poin
 >> 
 > {: .solution}
 {: .discussion}
-
-  <a href="../fig/tda_Vertices.png">
-  <img src="../fig/tda_Vertices.png" alt="Example" width="70%" height="auto"/>
-</a>
 
 ### Simplicial complex
 A simplicial complex is a mathematical structure comprising a collection of simplices constructed from a data set. In other words, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements that follows specific rules. As a starting point, we can think of a simplicial complex as extending the notion of a graph only formed by vertices and edges. The following figure shows an example of a simplicial complex.  
@@ -88,8 +88,7 @@ Simplicial complexes can be seen simultaneously as geometric/topological spaces 
 
 ### Čech and (Vietoris)-Rips complexes
 
-Vietoris-Rips complex and Čech complex are two types of simplicial complexes constructing discrete structures from sets of points in space.
-
+Vietoris-Rips complex and Čech complex are two types of simplicial complexes constructing discrete structures from sets of points in space.  
 
 The **Vietoris-Rips complex** is constructed from a set of points in a metric space. Given a set of points and a distance parameter called the "threshold," points within a distance less than or equal to the threshold are connected, forming the 1-simplices of the complex. Higher-dimensional simplices are then constructed by closing under combinations of 1-simplices that form a complete simplex, i.e., all fully connected subsets. The Vietoris-Rips complex captures the connectivity information between points and their topological structure at different scales.
 
@@ -265,7 +264,7 @@ Steps to use:
 
 > ## Exercise 4: Using the app example
 >
-> Using the application, could you please answer the following questions:
+> Using the application, answer the following questions:
 >  
 > a. For what value of $r$ does the 1-simplex (edge) appear?  
 > b. For what value of $r$ do we have only one connected component ($\beta_0 = 1$)?  
