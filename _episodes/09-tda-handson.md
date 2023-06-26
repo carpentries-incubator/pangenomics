@@ -3,7 +3,7 @@ title: "Computational Tools for TDA"
 teaching: 30
 exercises: 15
 questions:
-- "How can I computationaly manipulate simplex"
+- "How can I computationally manipulate simplex"
 objectives:
 - "Operate simplex in a computational environment"
 keypoints:
@@ -149,6 +149,11 @@ plt.yticks(size=15)
   Text(0, 0.55, '$+\\infty$')])
 ~~~
 {: .output}
+
+> ## FIXME
+> Aquí me sale un plot diferente con menos rayas horizontelaes y sin las unidades en el eje Y:
+{: .caution}
+> 
  <a href="../fig/tda_09_diagram_1.png">
   <img src="../fig/tda_09_diagram_1.png" alt="Persistence Diagram" width="50%" height="auto" />
 </a>
@@ -182,7 +187,11 @@ plt.yticks(size=15)
   <img src="../fig/tda_09_barcode_1.png" alt="Persistence Diagram" width="50%" height="auto" />
 </a>
 
-
+> ## FIXME
+> En el ejercicio 1 el la K se ve con los signos y no como Latex. Hay que poner el código completo en la solución del ejercicio, en lugar del texto
+> que dice qué funciones usar. Con el código que yo pude hacer no me salió la misma gráfica.
+> {: .caution}
+> 
 > ## Exercise 1: Creating a Manually Filtered Simplicial Complex.
 >  In the following graph, we have $K$ a simplicial complex filtered representation of simplicial complexes.
 >  <a href="../fig/tda_09_filtracion_ex.png">
@@ -207,7 +216,9 @@ plt.yticks(size=15)
 
 ### **Example 2:** Rips complex from datasets 
 Import a new package and make two circles 
-
+> ## FIXME
+> Aquí falta más texto para decir que vas a generar una nube de puntos y qué es make_circles n_samples, noise y factor. Y en general en los siguientes pasos falta un poco de texto y decir qué hacen las funciones nuevas.
+> {: .caution}
 ~~~
 from sklearn import datasets
 circles, labels = datasets.make_circles(n_samples=100, noise=0.06, factor=0.5)
@@ -221,7 +232,9 @@ Data dimension:(100, 2)
 {: .output}
 
 Plot dataset
-
+> ## FIXME
+> Aquí falta saber qué hace sns.set() y decir que vas a hacer un scatterplot que represente la nube de puntos
+> {: .caution}
 ~~~
 sns.set()
 
@@ -241,6 +254,10 @@ plt.show()
 </a>
 
  The `RipsComplex()` function creates a one-skeleton graph from the point cloud.
+
+> ## FIXME
+> A partir de aquí el código no me funciona
+> {: .caution}
 ~~~
 %%time
 Rips_complex = gd.RipsComplex(circles, max_edge_length=0.6) 
@@ -348,7 +365,10 @@ plt.yticks(size=15)
 
 
 ### **Example 3:** Rips complex from datasets 
-
+> ## FIXME
+> Aquí falta texto para describir la próxima actividad y luego texto en los pasos.
+> Quitar o traducir los comentarios que están en el código en español
+{: .caution}
 ~~~
 from gudhi.datasets.generators import _points
 from gudhi import AlphaComplex
@@ -381,6 +401,10 @@ simplex_tree = alpha_complex.create_simplex_tree()
 ~~~
 {: .language-python}
 
+> ## FIXME
+> Aquí me sale un mensaje de warning grande, pero sí me sale la misma gráfica
+{: .caution}
+
 ~~~
 diag = simplex_tree.persistence()
 diag = simplex_tree.persistence(homology_coeff_field=2, min_persistence=0)
@@ -393,6 +417,9 @@ gd.plot_persistence_diagram(diag)
   <img src="../fig/tda_09_persistence_example3.png" alt="Persistence diagram" width="50%" height="auto" />
 </a>
 
+> ## FIXME
+> Aquí hay que decir algo del código que está comentado o quitarlo
+{: .caution}
 ~~~
 gd.plot_persistence_barcode(diag)
 #plt.savefig('persistence_barcodeSpiral.svg' , dpi=1200)
@@ -403,6 +430,9 @@ plt.show()
   <img src="../fig/tda_09_bardcode_example3.png" alt="Bard Code" width="50%" height="auto" />
 </a>
 
+> ## FIXME
+> Aquí también decir algo o quitar el código en el que se guarda la imagen. Aquí no está la imagen que se genera, que es igual a la anterior pero con > el formato un poquito diferente. Decir por qué se está haciendo.
+{: .caution}
 ~~~
 %%time
 gd.plot_persistence_barcode(diag,legend=True)
@@ -412,6 +442,10 @@ plt.xticks(size=15)
 plt.yticks(size=15)
 ~~~
 {: .language-python}
+
+> ## FIXME
+> En el ejercicio poner el código completo para llegar a la solución
+{: .caution}
 
 > ## Exercise 2: Torus.
 >  To build a torus using the tadasets function and apply persistent homology.
@@ -426,4 +460,8 @@ plt.yticks(size=15)
 >> 5. Compute the persistent homology of the simplicial complex `simplicial_complex.persistence()`
 >> 6. Plots diagrams
 > {: .solution}
+
+> ## FIXME
+> Poner algo más en los keypoints
+{: .caution}
 {: .challenge}
