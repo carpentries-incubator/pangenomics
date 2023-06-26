@@ -12,7 +12,11 @@ keypoints:
 
 ## Persistent approach to pangenomics
 
-We will work with the four mini genomes of episode 4. First we need to import all the libraries that we will use.
+> ## FIXME
+> Falta explicar más a qué se quiere llegar con el episodio. Un poco más explícito que "apply TDA to describe Pangenomes" y ahorita eso sólo está en Questions, hay que ponerlo aquí en el texto.
+{: .caution}
+
+We will work with the four mini-genomes of episode 4. First, we need to import all the libraries that we will use.
 
 ~~~
 import pandas as pd
@@ -24,7 +28,7 @@ import os
 ~~~
 {: .language-python}
 
-Now, we need to read the `mini-genomes.blast` file that we produce in episode 4. 
+Now, we need to read the `mini-genomes.blast` file that we produced in the episode of [Understanding Pangenomes with BLAST](https://paumayell.github.io/pangenomics/04-manual-pangenomes/index.html). 
 
 ~~~
 os.getcwd()
@@ -32,7 +36,7 @@ blastE = pd.read_csv( '~/pan_workshop/results/blast/mini/output_blast/mini-genom
 ~~~
 {: .language-python}
 
-Obtain a list with the unique genes.
+Obtain a list of the unique genes.
 
 ~~~
 qseqid_unique=pd.unique(blastE['qseqid'])
@@ -52,7 +56,7 @@ len(genes)
 ~~~
 {: .output}
 
-Also, we will need a list with the unique genomes in our database. First, we convert to a data frame object the list of genes, then we split each gene in the genome and gen part, finally we obtain a list of the unique genomes and we save it in the object `genomes`.
+Also, we will need a list of the unique genomes in our database. First, we convert to a data frame object the list of genes, then we split each gene in the genome and gen part, and finally we obtain a list of the unique genomes and save it in the object `genomes`.
 
 ~~~
 df_genes=pd.DataFrame(genes, columns=['Genes'])
@@ -69,7 +73,7 @@ genomes
 ~~~
 {: .output}
 
-To use the `gudhi` packages, we need a distance matrix. In this case we will use the `evalue` as the measure of how similar the genes are. First, we will process the `blastE` data frame to a list and then we will convert it into a matrix object.
+To use the `gudhi` packages, we need a distance matrix. In this case, we will use the `evalue` as the measure of how similar the genes are. First, we will process the `blastE` data frame to a list and then we will convert it into a matrix object.
 
 ~~~
 distance_list = blastE[ blastE['qseqid'].isin(genes) & blastE['sseqid'].isin(genes)]
@@ -88,8 +92,11 @@ distance_list.head()
 ~~~
 {: .output}
 
+> ## FIXME
+> Explicar qué significa la distancia biológica máxima. No entendí a qué se refiere y por qué es 5.
+{: .caution}
 
-To convert the `distance_list` to a matrix object we will use the convention that the maximum biological distance between genes are `5`, so if we do not have the `evalue` between two genes, that imply that the evalua was too big, so we will fill that spots with the maximum biological distance.
+To convert the `distance_list` to a matrix object we will use the convention that the maximum biological distance between genes is `5`, so if we do not have the `evalue` between two genes, that implies that the E value was too big, so we will fill that spots with the maximum biological distance.
 
 ~~~
 MaxDistance = 5.0000000
@@ -147,7 +154,7 @@ Index(['2603V|GBPINHCM_00065', '2603V|GBPINHCM_00097', '2603V|GBPINHCM_00348',
 ~~~
 {: .output}
 
-Finaly, we need the distance matrix as a `numpy` array.
+Finally, we need the distance matrix as a `numpy` array.
 
 ~~~
 DistanceMatrix = matrixE2.to_numpy()
@@ -187,7 +194,7 @@ The Rips complex was created in 0.00029540061950683594
 
 
 > ## Discussion: Changing the maximum dimension of the edges
-> To create the Rips Complex, we fixed that the maximum edge length was 2. What happend if we use a different parameter?  
+> To create the Rips Complex, we fixed that the maximum edge length was 2. What happens if we use a different parameter?  
 > For example, if we use `max_edge_lenght=1`. Do you expect to have more simplices? Why?
 >  
 > > ## Solution
@@ -198,9 +205,12 @@ The Rips complex was created in 0.00029540061950683594
 {: .challenge}
 
 
-As we see in the previous episodes, we now need a filtration. We will use the gudhi function `create_simplex_tree` to obtain the filtration associated with the Rips complex. We need to specify the argument `max_dimension`, this argument is the maximum dimension of the simplicial complex that we will obtain. If it is for example 4, this means that we will obtain gene families with at most 4 genes. In this example, we will use `8` as the maximum dimension so we can have families with at most 2 genes for each genomes or 8 different genes.
+As we see in the previous episodes, we now need a filtration. We will use the gudhi function `create_simplex_tree` to obtain the filtration associated with the Rips complex. We need to specify the argument `max_dimension`, this argument is the maximum dimension of the simplicial complex that we will obtain. If it is for example 4, this means that we will obtain gene families with at most 4 genes. In this example, we will use `8` as the maximum dimension so we can have families with at most 2 genes for each genome or 8 different genes.
 
-**Note**:  For complete genomes, the maximum dimension of the simplicial complex needs to be carefully chosen because  the computation in Python is demanding in terms of system resources. For example, with 4 complete genomes the maximum dimension that we can compute is 5.  
+*> ## Note
+> For complete genomes, the maximum dimension of the simplicial complex needs to be carefully chosen because the computation in Python is demanding >
+> in terms of system resources. For example, with 4 complete genomes the maximum dimension that we can compute is 5.  
+{: .callout}
 
 ~~~
 start_time = time.time()
@@ -290,8 +300,6 @@ Bar code diagram was created in 0.05829215049743652
 <a href="../fig/barcode_mini.png">
   <img src="../fig/barcode_mini.png" alt="Persistence barcode for mini genomes" />
 </a>
-<em> Figure 1. Barcode plot for the filtration with bars only in dimension 0. <em/>
-
 
 
 The following function allows us to obtain the dimension of the simplices.
@@ -363,7 +371,7 @@ simplices = list(d_simplex_const.keys())
 {: .language-python}
 
 
-Now, we want an object with the information of how many genes of each genome are in each family.
+Now, we want an object with the information on how many genes of each genome are in each family.
 
 ~~~
 bool_gen = dict()
@@ -385,7 +393,7 @@ bool_gen
 {: .language-python}
 
 
-The bool_gen numbers looks like:
+The `bool_gen` numbers looks like:
 
 ~~~
 {('2603V|GBPINHCM_00554',
@@ -414,7 +422,7 @@ The bool_gen numbers looks like:
 
 How can we read the object `bool_gen`?
 
-We have a dictionary of dictionaries. Every key in the dictionary is a family and in the values we have how many genes are from each genome in each family.
+We have a dictionary of dictionaries. Every key in the dictionary is a family and in the values, we have how many genes are from each genome in each family.
 
 Now, we want to obtain a dataframe with information on the time of births, death, and persistence of every simplex (i.e. every family). First, we will obtain this information from our object `d_simplex_time` and we will save it in tree lists.
 
@@ -429,7 +437,7 @@ for values in d_simplex_time.values():
 ~~~
 {: .language-python}
 
-Now that we have the information we will save it in the dataFrame `simplex_list`
+Now that we have the information we will save it in the dataframe `simplex_list`
 ~~~
 data = {
     't_birth': births,
@@ -504,8 +512,8 @@ In this data frame, we can see how many families are at the end if we filter by 
 
 
 > ## Exercise 2: Changing the dimension of the simplices
-> When we create the object `simplexTree` we define that the maximum dimension of the simplices were 8. Change this parameter.  
-> With the new parameter, how many simplices do you obtain? An edges?
+> When we create the object `simplexTree` we define that the maximum dimension of the simplices was 8. Change this parameter.  
+> With the new parameter, how many simplices do you obtain? And edges?
 > If you run all the code with this new parameter, how many families do you obtain in the core?
 > > ## Solution
 > > 
@@ -513,3 +521,7 @@ In this data frame, we can see how many families are at the end if we filter by 
 > > 
 > {: .solution}
 {: .challenge}
+
+> ## FIXME
+> Agregar soluciones en las discusiones y ejercicios
+{: .caution}
