@@ -153,7 +153,7 @@ plt.yticks(size=15)
 > ## FIXME
 > Aquí me sale un plot diferente con menos rayas horizontelaes y sin las unidades en el eje Y:
 {: .caution}
-> 
+
  <a href="../fig/tda_09_diagram_1.png">
   <img src="../fig/tda_09_diagram_1.png" alt="Persistence Diagram" width="50%" height="auto" />
 </a>
@@ -190,8 +190,8 @@ plt.yticks(size=15)
 > ## FIXME
 > En el ejercicio 1 el la K se ve con los signos y no como Latex. Hay que poner el código completo en la solución del ejercicio, en lugar del texto
 > que dice qué funciones usar. Con el código que yo pude hacer no me salió la misma gráfica.
-> {: .caution}
-> 
+{: .caution}
+
 > ## Exercise 1: Creating a Manually Filtered Simplicial Complex.
 >  In the following graph, we have $K$ a simplicial complex filtered representation of simplicial complexes.
 >  <a href="../fig/tda_09_filtracion_ex.png">
@@ -218,7 +218,8 @@ plt.yticks(size=15)
 Import a new package and make two circles 
 > ## FIXME
 > Aquí falta más texto para decir que vas a generar una nube de puntos y qué es make_circles n_samples, noise y factor. Y en general en los siguientes pasos falta un poco de texto y decir qué hacen las funciones nuevas.
-> {: .caution}
+{: .caution}
+
 ~~~
 from sklearn import datasets
 circles, labels = datasets.make_circles(n_samples=100, noise=0.06, factor=0.5)
@@ -234,7 +235,8 @@ Data dimension:(100, 2)
 Plot dataset
 > ## FIXME
 > Aquí falta saber qué hace sns.set() y decir que vas a hacer un scatterplot que represente la nube de puntos
-> {: .caution}
+{: .caution}
+
 ~~~
 sns.set()
 
@@ -257,7 +259,8 @@ plt.show()
 
 > ## FIXME
 > A partir de aquí el código no me funciona
-> {: .caution}
+{: .caution}
+
 ~~~
 %%time
 Rips_complex = gd.RipsComplex(circles, max_edge_length=0.6) 
@@ -365,10 +368,12 @@ plt.yticks(size=15)
 
 
 ### **Example 3:** Rips complex from datasets 
+
 > ## FIXME
 > Aquí falta texto para describir la próxima actividad y luego texto en los pasos.
 > Quitar o traducir los comentarios que están en el código en español
 {: .caution}
+
 ~~~
 from gudhi.datasets.generators import _points
 from gudhi import AlphaComplex
@@ -433,6 +438,7 @@ plt.show()
 > ## FIXME
 > Aquí también decir algo o quitar el código en el que se guarda la imagen. Aquí no está la imagen que se genera, que es igual a la anterior pero con > el formato un poquito diferente. Decir por qué se está haciendo.
 {: .caution}
+
 ~~~
 %%time
 gd.plot_persistence_barcode(diag,legend=True)
@@ -460,8 +466,9 @@ plt.yticks(size=15)
 >> 5. Compute the persistent homology of the simplicial complex `simplicial_complex.persistence()`
 >> 6. Plots diagrams
 > {: .solution}
+{: .challenge}
 
 > ## FIXME
 > Poner algo más en los keypoints
 {: .caution}
-{: .challenge}
+
