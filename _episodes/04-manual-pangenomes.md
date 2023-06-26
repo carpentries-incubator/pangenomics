@@ -122,12 +122,19 @@ Adding sequences from FASTA; added 43 sequences in 0.00112104 seconds.
 ~~~
 {: .output}
 
-Now that we have all the sequences of all of our genomes in a BLAST database we can align each of the sequences (queries) to all of other ones  (subjects) using `blastp`.
+Now that we have all the sequences of all of our genomes in a BLAST database we can align each of the sequences (queries) to all of the other ones  (subjects) using `blastp`.
+
+We will ask `blastp` to align the queries to the database and give the result in the format "6", which is a tab-separated file, with the fields Query 
+Sequence-ID, Subject Sequence-ID, and E-value. 
+BLAST aligns the query sequence to all of the sequences in the database, it measures the percentage of identity, the percentage of the query sequence that is covered by the subject sequence, and uses these measures to give a score of how good the match is between your query and each 
+subject sequence. The [E-value](https://blast.ncbi.nlm.nih.gov/doc/blast-help/FAQ.html) represents the possibility of finding a match with a similar 
+score in a database of a certain size by chance. So the lower the E-value, the more significant the match between our query and the subject sequences 
+is.
+
 ~~~
 $ blastp -query mini-genomes.faa -db database/mini-genomes -outfmt "6 qseqid sseqid evalue" > output_blast/mini-genomes.blast
 ~~~
 {: .language-bash}
-Here we asked `blastp` to align the queries to the database and give the result in the format "6", which is a tab separated file, with the fields Query Sequence-ID, Subject Sequence-ID and E-value, which is the measure of similarity between sequences that we need. 
 
 ~~~
 $ head -n4 output_blast/mini-genomes.blast
@@ -144,7 +151,7 @@ $ head -n4 output_blast/mini-genomes.blast
 
 ## Processing the BLAST results
 
-For this section we will use Python. Let's open the notebook and start by importing the libraries that we will need.
+For this section, we will use Python. Let's open the notebook and start by importing the libraries that we will need.
 ~~~
 import os 
 import pandas as pd
@@ -172,7 +179,7 @@ blastE.head()
 ~~~
 {: .output}
 
-Now we want to make two columns that have the name of the genomes of the queries, and the name of the genomes of the subjects. We will take this information from the query and subject IDs (the label that we added at the beggining of the episode).
+Now we want to make two columns that have the name of the genomes of the queries, and the name of the genomes of the subjects. We will take this information from the query and subject IDs (the label that we added at the beginning of the episode).
 
 First, let's obtain the genome of each query gene.
 ~~~
@@ -240,7 +247,7 @@ genes = pd.unique(np.append(qseqid_unique, sseqid_unique))
 
 We can check that we have 43 genes in total with `len(genes)`.
 
-Now, we want to know which one is the biggest genome (the one with more genes) to make the comparisions.  
+Now, we want to know which one is the biggest genome (the one with more genes) to make the comparisons.  
 
 First, we compute the unique genomes.
 
@@ -269,7 +276,7 @@ for a in genomes:
 ~~~
 {: .language-python}
 
-We can now use this dictionary to know how many genes does each genome has, and therefore identify the biggest genome.
+We can now use this dictionary to know how many genes does each genome has and therefore identify the biggest genome.
 ~~~
 genome_temp=[]
 size_genome=[]
