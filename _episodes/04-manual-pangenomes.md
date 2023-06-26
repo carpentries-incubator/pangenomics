@@ -9,7 +9,7 @@ objectives:
 - "Calculate a score between two sequences using BLAST."
 - "Cluster gene families according to a similarity measurement."
 keypoints:
-- "Genes are the elements compared to create gene families and build pangenomes."
+- "To build a pangenome you need to compare the genes and build gene families."
 - "BLAST gives a score of similarity between two sequences."
 - "Genes are clustered into gene families according to a similarity score."
 ---
@@ -17,31 +17,33 @@ keypoints:
 ## Finding gene families
 
 In the previous episode, we annotated all of our genomes, so now we know the genes that each individual genome has. To build a pangenome we 
-need to figure out which genes to compare between genomes. For this, we need to build **gene families**, which are groups of homologous genes. 
-To decide which genes are homologous we need to measure the sequence similarity between them.
+need to figure out which genes to compare between genomes. For this, we need to build **gene families**, which are groups of homologous genes (i.e. 
+genes with a common ancestor). Homology between genes is found through sequence similarity, and sequence similarity is measured by aligning the
+sequences and measuring the percentage of identity.
 
 > ## Pizza pangenomics
 > Do mozzarella cheese and parmesan cheese go in the same family? 
 >  
-> > ## Solution
-> > 
-> {: .solution}  
+> If two genes of different species come from a gene in an ancestral species, they are **orthologs**. And if a gene
+> duplicates within a species, the two resulting genes are **paralogs**. Depending on your research questions you may want to have the
+> paralogs separated into different families or in the same family with duplications.
+> Paralogs tend to have a higher percentage of identity than orthologs, so if you want to separate the paralogs you can use an algorithm
+> that makes the families using an identity threshold and set a high threshold.
+>
+> Since you want to offer the most variety of ingredients in your pizza restaurant it may be a better idea to separate the mozzarella
+> cheese and the parmesan cheese into different families, instead of having only one family of just _cheese_. 
 {: .discussion}
 
-and obtained the annotations in different formats, like GFF, GBK and FASTA. 
-Now we want to understand how to go from annotations to a pangenome, so we will use a reduced version of 
-the annotations to make a pangenome step by step.
-
-To make a pangenome, first we need to know how similar are our sequences from each other, we will do this by aligning each of 
-our sequences to all the rest with Protein [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi).
-Then we need to use these results to cluster the sequences into gene families. 
-
-Later on in the lesson 
+In this episode, we will demonstrate how we measure the similarity of genes using [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
+and use an algorithm to group the genes into 
+gene families. This is usually done by software that automates these steps, but we will do it step by step with a reduced version of 
+four of our genomes to understand how this process works. Later on in the lesson, 
 we will repeat these steps but in an automated way with pangenomics software using the complete genomes.
+
 
 ## Aligning the protein sequences to each other with BLASTp
 
-To be able to do a pangenome "by hand" we will use only some of the protein sequences for these four genomes A909, 2603V, NEM316 and 515. 
+To do our small pangenome "by hand" we will use only some of the protein sequences for these four genomes A909, 2603V, NEM316, and 515. 
 In the folder `data/annotated_mini` you have the 4 reduced genomes in amino acid FASTA format. 
 ~~~
 $ cd ~/pan_workshop/data/annotated_mini/
