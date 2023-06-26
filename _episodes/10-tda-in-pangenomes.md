@@ -28,7 +28,7 @@ Now, we need to read the `mini-genomes.blast` file that we produce in episode 4.
 
 ~~~
 os.getcwd()
-blastE = pd.read_csv( '~/pan_workshop/results/blast/mini/output-blast/mini-genomes.blast', sep = '\t',names = ['qseqid','sseqid', 'evalue'])  
+blastE = pd.read_csv( '~/pan_workshop/results/blast/mini/output_blast/mini-genomes.blast', sep = '\t',names = ['qseqid','sseqid', 'evalue'])  
 ~~~
 {: .language-python}
 
@@ -47,6 +47,10 @@ We have 43 unique genes, we can check it as follows.
 len(genes)
 ~~~
 {: .language-python}
+~~~
+43
+~~~
+{: .output}
 
 Also, we will need a list with the unique genomes in our database. First, we convert to a data frame object the list of genes, then we split each gene in the genome and gen part, finally we obtain a list of the unique genomes and we save it in the object `genomes`.
 
