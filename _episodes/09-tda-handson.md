@@ -130,23 +130,11 @@ Plot the persistence diagram
 
 ~~~
 gd.plot_persistence_diagram(persistence_diagram,legend=True)
-plt.grid(color = 'black', linestyle = '-', linewidth = 1)
-plt.savefig('persitencediagramCircles.png' , dpi=600, transparent=True)
-plt.xticks(size=15)
-plt.yticks(size=15)
 ~~~
 {: .language-python}
 
 ~~~
-(array([-0.1 ,  0.  ,  0.1 ,  0.2 ,  0.3 ,  0.4 ,  0.5 ,  0.55]),
- [Text(0, -0.1, '-0.100'),
-  Text(0, 0.0, '0.000'),
-  Text(0, 0.1, '0.100'),
-  Text(0, 0.20000000000000004, '0.200'),
-  Text(0, 0.30000000000000004, '0.300'),
-  Text(0, 0.4, '0.400'),
-  Text(0, 0.5000000000000001, '0.500'),
-  Text(0, 0.55, '$+\\infty$')])
+<AxesSubplot:title={'center':'Persistence diagram'}, xlabel='Birth', ylabel='Death'>
 ~~~
 {: .output}
  <a href="../fig/tda_09_diagram_1.png">
@@ -158,24 +146,11 @@ Plot the barcode
 
 ~~~
 gd.plot_persistence_barcode(persistence_diagram,legend=True)
-plt.grid(color = 'black', linestyle = '-', linewidth = 1)
-plt.savefig('persistencebarcodeCircles' , dpi=600, transparent=True)
-plt.xticks(size=15)
-plt.yticks(size=15)
 ~~~
 {: .language-python}
 
 ~~~
-(array([0.  , 0.25, 0.5 , 0.75, 1.  , 1.25, 1.5 , 1.75, 2.  ]),
- [Text(0, 0.0, '0.00'),
-  Text(0, 0.25, '0.25'),
-  Text(0, 0.5, '0.50'),
-  Text(0, 0.75, '0.75'),
-  Text(0, 1.0, '1.00'),
-  Text(0, 1.25, '1.25'),
-  Text(0, 1.5, '1.50'),
-  Text(0, 1.75, '1.75'),
-  Text(0, 2.0, '2.00')])
+<AxesSubplot:title={'center':'Persistence barcode'}>
 ~~~
 {: .output}
  <a href="../fig/tda_09_barcode_1.png">
@@ -192,15 +167,56 @@ plt.yticks(size=15)
 > Perform persistent homology and plot the persistence diagram and barcode.
 > > ## Solution  
 > > 1. Create a SimplexTree with `gd.SimplexTree()`.
+> >  ~~~
+>> st = gd.SimplexTree()  
+>> ~~~
+>> {: .language-python}  
 >> 2. Insert vertices at time 0 using `st.insert()`
->> 3. Insert the remaining simplices by setting the filtration time using `st.insert([0, 1], filtration=0.5)`.
+> >  ~~~
+>> #insert 0-simplex (the vertex), 
+>> st.insert([0])
+>>  st.insert([1])
+>> st.insert([2])
+>>  st.insert([3])
+>>  st.insert([4])
+>> ~~~
+>> {: .language-python}   
+>> 3. Insert the remaining simplices by setting the filtration time using `st.insert([0, 1], filtration=)`.
+> >  ~~~
+>> #insert 1-simplex level filtration 1 
+>> st.insert([0, 2], filtration=1)
+>> st.insert([3, 4], filtration=1)
+>> #insert 1-simplex level filtration 2 
+>> st.insert([0, 1], filtration=2)
+>> #insert 1-simplex level filtration 3 
+>>  st.insert([2, 1], filtration=3)
+>> #insert 1-simplex level filtration 4 
+>> st.insert([2, 1,0], filtration=4)
+>> ~~~
+>> {: .language-python}   
 >> 4. Perform persistent homology using `st.persistence()`.
->> 5. Plot the barcode and persistence diagram.
-> >6. Get this output
+> >  ~~~
+>># Compute the persistence diagram
+>> persistence_diagram = st.persistence() 
+>> ~~~
+>> {: .language-python}  
+>> 5. Plot the persistence diagram.
+> >  ~~~
+>># plot the persistence diagram
+>> gd.plot_persistence_diagram(persistence_diagram,legend=True)
+>> ~~~
+>> {: .language-python}  
+>> 6. Plot the barcode.
+> >  ~~~
+>> gd.plot_persistence_barcode(persistence_diagram,legend=True)
+>> ~~~
+>> {: .language-python}  
+> >6. Get this output  
+>> <a href="../fig/tda_09_diagram_F.png">
+>>   <img src="../fig/tda_09_diagram_F.png" alt="Persistence Diagram" width="50%" height="auto" />
+>> </a>  
 > {: .solution}
-<a href="../fig/tda_09_diagram_F.png">
-  <img src="../fig/tda_09_diagram_F.png" alt="Persistence Diagram" width="50%" height="auto" />
-</a>
+
 {: .challenge}
 
 
