@@ -20,7 +20,7 @@ In the previous episode, we annotated all of our genomes, so now we know the gen
 To build a pangenome we 
 need to figure out which genes to compare between genomes. For this, we need to build **gene families**, which are groups of homologous genes (i.e. 
 genes with a common ancestor). Homology between genes is found through sequence similarity, and sequence similarity is measured by aligning the
-sequences and measuring the percentage of identity.
+sequences and measuring the percentage of identity. The process of building gene families is called clustering.
 
 > ## Pizza pangenomics
 > Do Roma Tomatoes and Cherry Tomatoes go in the same family? 
