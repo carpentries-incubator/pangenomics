@@ -99,7 +99,7 @@ In a practical example, the set of points represents your dataset, such as a gro
 >> ## Mathematical definition
 >> Given a point cloud $P=\\{p_1,...,p_n\\}\subset \mathbb{R}^d $, its **Rips complex** of radius $r>0$ is the simplicial complex $R(P,r)$ such that:  
 >>  $vert(R(P,r))=P$, and  
->>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in R(P,r) \quad iff \quad  \lVert p_{i_j} -p_{i_l}  \rVert  \leq 2r, \forall \leq j,l\leq k $$
+>>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in R(P,r) \quad iff \quad  \lVert p_{i_j} -p_{i_l}  \rVert  \leq 2r, \forall j,l\leq k $$ with $$ j \neq k$$
 >> 
 > {: .solution}
 {: .discussion}
