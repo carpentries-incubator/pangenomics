@@ -208,7 +208,7 @@ The Rips complex was created in 0.00029540061950683594
 As we see in the previous episodes, we now need a filtration. We will use the gudhi function `create_simplex_tree` to obtain the filtration associated with the Rips complex. We need to specify the argument `max_dimension`, this argument is the maximum dimension of the simplicial complex that we will obtain. If it is for example 4, this means that we will obtain gene families with at most 4 genes. In this example, we will use `8` as the maximum dimension so we can have families with at most 2 genes for each genome or 8 different genes.
 
 > ## Note
-> For complete genomes, the maximum dimension of the simplicial complex needs to be carefully chosen because the computation in Python is demanding >
+> For complete genomes, the maximum dimension of the simplicial complex needs to be carefully chosen because the computation in Python is demanding
 > in terms of system resources. For example, with 4 complete genomes the maximum dimension that we can compute is 5.  
 {: .callout}
 
