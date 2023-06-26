@@ -380,6 +380,7 @@ for simplex in simplices:
         if gen not in genes_contains.keys():
             genes_contains[gen] = 0
     bool_gen[simplex] = genes_contains
+bool_gen
 ~~~
 {: .language-python}
 
@@ -415,7 +416,7 @@ How can we read the object `bool_gen`?
 
 We have a dictionary of dictionaries. Every key in the dictionary is a family and in the values we have how many genes are from each genome in each family.
 
-Now, we want to obtain a dataFrame with the information of the time of births, death and persistence of every simplice (i.e. every family). First we will obtain this information from our object `d_simplex_time` and we will save in tree lists.
+Now, we want to obtain a dataframe with information on the time of births, death, and persistence of every simplex (i.e. every family). First, we will obtain this information from our object `d_simplex_time` and we will save it in tree lists.
 
 ~~~
 births = []
