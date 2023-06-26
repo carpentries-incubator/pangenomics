@@ -16,13 +16,14 @@ keypoints:
 
 ## Finding gene families
 
-In the previous episode, we annotated all of our genomes, so now we know the genes that each individual genome has. To build a pangenome we 
+In the previous episode, we annotated all of our genomes, so now we know the genes that each individual genome has (and their protein sequences). 
+To build a pangenome we 
 need to figure out which genes to compare between genomes. For this, we need to build **gene families**, which are groups of homologous genes (i.e. 
 genes with a common ancestor). Homology between genes is found through sequence similarity, and sequence similarity is measured by aligning the
 sequences and measuring the percentage of identity.
 
 > ## Pizza pangenomics
-> Do mozzarella cheese and parmesan cheese go in the same family? 
+> Do Roma Tomatoes and Cherry Tomatoes go in the same family? 
 >  
 > If two genes of different species come from a gene in an ancestral species, they are **orthologs**. And if a gene
 > duplicates within a species, the two resulting genes are **paralogs**. Depending on your research questions you may want to have the
@@ -30,8 +31,10 @@ sequences and measuring the percentage of identity.
 > Paralogs tend to have a higher percentage of identity than orthologs, so if you want to separate the paralogs you can use an algorithm
 > that makes the families using an identity threshold and set a high threshold.
 >
-> Since you want to offer the most variety of ingredients in your pizza restaurant it may be a better idea to separate the mozzarella
-> cheese and the parmesan cheese into different families, instead of having only one family of just _cheese_. 
+> Since you want to offer the most variety of ingredients in your pizza restaurant it may be a better idea to use a higher identity threshold
+> (however you are measuring the similarity between ingredients)
+> that separates the Roma Tomatoes and the
+> Cherry Tomatoes into different families, instead of having only one family of just _tomatoes_. 
 {: .discussion}
 
 In this episode, we will demonstrate how we measure the similarity of genes using [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
