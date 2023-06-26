@@ -450,8 +450,11 @@ simplex_list.head(4)
 ~~~
 {: .output}
 
-Finally, we want the data frame with the complete information, so we will concatenate the objects `simplex_list` and `bool_gen` in a convenient way.
+Finally, we want the data frame with complete information, so we will concatenate the objects `simplex_list` and `bool_gen` in a convenient way.
 
+> ## FIXME
+> Aquí me sale un error de que no existe genes_numbers
+{: .caution}
 
 ~~~
 aux_simplex_list = simplex_list
