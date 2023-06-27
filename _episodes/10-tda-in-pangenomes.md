@@ -92,11 +92,12 @@ distance_list.head()
 ~~~
 {: .output}
 
-> ## FIXME
+> ## FIXME 
 > Explicar qué significa la distancia biológica máxima. No entendí a qué se refiere y por qué es 5.
+> Revisar
 {: .caution}
 
-To convert the `distance_list` to a matrix object we will use the convention that the maximum biological distance between genes is `5`, so if we do not have the `evalue` between two genes, that implies that the E value was too big, so we will fill that spots with the maximum biological distance.
+A we see in episode [Understanding Pangenomes with BLAST](https://paumayell.github.io/pangenomics/04-manual-pangenomes/index.html), the BLAST E-value represents the possibility of finding a match with a similar score in a database. By default, BLAST consider a maximum score for the E-value 10, but in this case there are hits of low quality. If two sequences are not similar or if the E-value is bigger thatn 10, then BLAST do not save this score. In order to have something like a distance matrix we will fill the E-value of the sequence that we do not have an score. To do this, we will use the convection that an E-value equal to 5 is too big and that the sequence are not similar at all. 
 
 ~~~
 MaxDistance = 5.0000000
@@ -198,8 +199,8 @@ The Rips complex was created in 0.00029540061950683594
 > For example, if we use `max_edge_lenght=1`. Do you expect to have more simplices? Why?
 >  
 > > ## Solution
-> > 
-> > 
+> > If we use a different `max_edge_length` we will obtain a differente filtration with less or more simplices. In the case of `max_edge_lenght=1` we will have
+> > less simplices because we stop the creation of simplices when the radius of the balls around the simplices are 1.
 > > 
 > {: .solution}
 {: .challenge}
@@ -460,13 +461,9 @@ simplex_list.head(4)
 
 Finally, we want the data frame with complete information, so we will concatenate the objects `simplex_list` and `bool_gen` in a convenient way.
 
-> ## FIXME
-> Aquí me sale un error de que no existe genes_numbers
-{: .caution}
-
 ~~~
 aux_simplex_list = simplex_list
-for gen in genes_numbers:
+for gen in genomes:
     data = dict()
     dataFrame_aux = []
     for simplex in simplices:
