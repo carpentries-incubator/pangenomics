@@ -338,7 +338,7 @@ Wall time: 8.82 ms
 
 The `plot_persistence_diagram()` function takes the persistence diagram (`diag_Rips`) as input and creates a scatter plot of the points. The birth and death values are used to determine the positions of the points in the diagram.
 
-Additionally, the `legend`parameter is set to `True`, which displays a legend in the plot. The legend provides information about the colors or markers used to differentiate different topological dimensions or features.
+Additionally, the `legend` parameter is set to `True`, which displays a legend in the plot. The legend provides information about the colors or markers used to differentiate different topological dimensions or features.
 ~~~
 %%time
 # Plot the persistence diagram
@@ -392,7 +392,7 @@ from gudhi import AlphaComplex
 
 We use the `requests.get()` function to send a GET request to the specified URL and retrieve the content of the file. The content is stored in the response object, and we extract the text content using `response.text`.
 
-The text content is then loaded into a NumPy array using `np.loadtxt()`. The `content.splitlines()} splits the text content into lines, and `delimiter=' '` specifies that the values in each line are separated by a space.
+The text content is then loaded into a NumPy array using `np.loadtxt()`. The `content.splitlines()` splits the text content into lines, and `delimiter=' '` specifies that the values in each line are separated by a space.
 
 Finally, we visualize the loaded data by plotting the points using `plt.scatter()`. The `data[:, 0]` and `data[:, 1]` select the first and second columns of the data array, representing the x and y coordinates respectively. The `marker='.'` specifies the marker style as a dot, and `s=1` sets the marker size. The points are then displayed using `plt.show()`.
 ~~~
@@ -485,10 +485,6 @@ plt.show()
 ~~~
 %%time
 gd.plot_persistence_barcode(diag,legend=True)
-plt.grid(color = 'black', linestyle = '-', linewidth = 1)
-#plt.savefig('persistencebarcodeCircles' , dpi=600, transparent=True)
-plt.xticks(size=15)
-plt.yticks(size=15)
 ~~~
 {: .language-python}
 
@@ -519,6 +515,9 @@ plt.yticks(size=15)
 >>gudhi.plot_persistence_diagram(persistence, legend=True)
 >>plt.show()
 >>~~~
+>> <a href="../fig/tda_09_persistence_exc2.png">
+>>  <img src="../fig/tda_09_persistence_exc2.png" alt="Bard Code" width="50%" height="auto" />
+>> </a>
 > {: .solution}
 {: .challenge}
 
