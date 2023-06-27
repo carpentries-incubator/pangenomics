@@ -8,10 +8,11 @@ objectives:
 - "Operate simplex in a computational environment"
 keypoints:
 - "Ghudi is a TDA tool"
+math: true
 ---
 ## Introduction to GUDHI and Simplicial Homology
 
-Welcome to this lesson on using GUDHI and exploring simplicial homology. GUDHI (Geometry Understanding in Higher Dimensions) is an open-source that provides algorithms and data structures for the analysis of geometric data. It offers a wide range of tools for topological data analysis, including simplicial complexes and computations of their homology.  
+Welcome to this lesson on using GUDHI and exploring simplicial homology. [GUDHI](https://gudhi.inria.fr/python/latest/)  (Geometry Understanding in Higher Dimensions) is an open-source that provides algorithms and data structures for the analysis of geometric data. It offers a wide range of tools for topological data analysis, including simplicial complexes and computations of their homology.  
 
 To begin, we will import the necessary packages.
 ~~~
@@ -496,17 +497,28 @@ plt.yticks(size=15)
 {: .caution}
 
 > ## Exercise 2: Torus.
->  To build a torus using the tadasets function and apply persistent homology.
+>  To build a torus using the `tadasets.torus(n=num_points)` function and apply persistent homology.
 > <a href="../fig/tda_09_torus.png">
   <img src="../fig/tda_09_torus.png" alt="Exercise 2 Torus" width="50%" height="auto"/>
 </a>
 > > ## Solution  
-> > 1. `import tadasets`.
->> 2. `torus = tadasets.torus(n=100)`
->> 3. Create a Rips complex from the torus points `gd.RipsComplex(points=torus)`
->> 4. Obtain the simplicial complex `rips_complex.create_simplex_tree(max_dimension=2)`
->> 5. Compute the persistent homology of the simplicial complex `simplicial_complex.persistence()`
->> 6. Plots diagrams
+>> ~~~
+>> #pip install tadasets
+>> import tadasets
+>> import gudhi
+>> import matplotlib.pyplot as plt
+>># Generate torus points
+>>torus = tadasets.torus(n=100)
+>># Create a Rips complex from the torus points
+>>rips_complex = gudhi.RipsComplex(points=torus)
+>># Obtain the simplicial complex
+>>simplicial_complex = rips_complex.create_simplex_tree(max_dimension=2)
+>># Compute the persistent homology of the simplicial complex
+>>persistence = simplicial_complex.persistence()
+>># Plot diagrams
+>>gudhi.plot_persistence_diagram(persistence, legend=True)
+>>plt.show()
+>>~~~
 > {: .solution}
 {: .challenge}
 
