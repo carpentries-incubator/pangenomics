@@ -22,6 +22,7 @@ import gudhi as gd
 import matplotlib.pyplot as plt
 import argparse
 import seaborn as sns
+import requests
 ~~~
 {: .language-python}
 
@@ -277,7 +278,7 @@ plt.show()  # Display the plot
   <img src="../fig/tda_circles.png" alt="Plot Circles" width="50%" height="auto" />
 </a>
 
- The `RipsComplex()` function creates a one-skeleton graph from the point cloud.
+First, we create a Rips complex using the `RipsComplex` class from `gudhi`. The Rips complex is a simplicial complex constructed from the given data points by connecting them with edges if their pairwise distances are below a specified threshold. In this case, we set the `max_edge_length` parameter to 0.6, which determines the maximum length allowed for an edge to be included in the complex.
 
 > ## FIXME
 > A partir de aquí el código no me funciona
@@ -285,33 +286,33 @@ plt.show()  # Display the plot
 
 ~~~
 %%time
-Rips_complex = gd.RipsComplex(circles, max_edge_length=0.6) 
-~~~
+# Create a Rips complex with a maximum edge length of 0.6
+Rips_complex = gd.RipsComplex(circles, max_edge_length=0.6)
 {: .language-python}
+~~~
 ~~~
 CPU times: user 461 µs, sys: 88 µs, total: 549 µs
 Wall time: 557 µs
 ~~~
 {: .output}
 
-The `create_simplex_tree()` method creates the filtered complex.
+Next, we create a simplex tree using the `create_simplex_tree()` method of the `Rips_complex` object. The simplex tree is a data structure that stores the information about the simplices in the complex. We specify `max_dimension=3` to include simplices up to dimension 3 in the complex.
 ~~~
 %%time
-
+#Create a simplex tree from the Rips complex with a maximum dimension of 3
 Rips_simplex_tree = Rips_complex.create_simplex_tree(max_dimension=3) 
 ~~~
 {: .language-python}
-
 ~~~
 CPU times: user 2.25 ms, sys: 0 ns, total: 2.25 ms
 Wall time: 1.95 ms
 ~~~
 {: .output}
 
-The `get_filtration()` method computes the simplices of the filtration
+Then, we retrieve the filtration order of simplices from the `Rips_simplex_tree` using the `get_filtration()` method. Filtration is a sequence of simplices ordered by their inclusion in the complex. We convert the filtration to a list using `list()`.
 ~~~
 %%time
-
+# Get the filtration order of simplices
 filt_Rips = list(Rips_simplex_tree.get_filtration())
 ~~~
 {: .language-python}
@@ -321,10 +322,10 @@ Wall time: 121 ms
 ~~~
 {: .output}
 
-We can compute persistence on the simplex tree structure using the `persistence()` method
+Finally, we compute the persistence of the Rips complex using the `persistence()` method of the `Rips_simplex_tree`. Persistence computes the birth and death values for each topological feature (connected components, loops, voids, etc.) in the complex. The result is assigned to the variable `diag_Rips`.
 ~~~
 %%time
-
+# Compute the persistence of the Rips complex
 diag_Rips = Rips_simplex_tree.persistence()
 ~~~
 {: .language-python}
@@ -334,49 +335,36 @@ Wall time: 8.82 ms
 ~~~
 {: .output}
 
+The `plot_persistence_diagram()` function takes the persistence diagram (`diag_Rips`) as input and creates a scatter plot of the points. The birth and death values are used to determine the positions of the points in the diagram.
 
+Additionally, the `legend`parameter is set to `True`, which displays a legend in the plot. The legend provides information about the colors or markers used to differentiate different topological dimensions or features.
 ~~~
 %%time
-gd.plot_persistence_diagram(diag_Rips,legend=True)
+# Plot the persistence diagram
+gd.plot_persistence_diagram(diag_Rips, legend=True)
 ~~~
 {: .language-python}
 ~~~
-(array([-0.1       ,  0.        ,  0.1       ,  0.2       ,  0.3       ,
-         0.4       ,  0.5       ,  0.62569893]),
- [Text(0, -0.1, '-0.100'),
-  Text(0, 0.0, '0.000'),
-  Text(0, 0.1, '0.100'),
-  Text(0, 0.20000000000000004, '0.200'),
-  Text(0, 0.30000000000000004, '0.300'),
-  Text(0, 0.4, '0.400'),
-  Text(0, 0.5000000000000001, '0.500'),
-  Text(0, 0.6256989291775961, '$+\\infty$')])
+<AxesSubplot:title={'center':'Persistence diagram'}, xlabel='Birth', ylabel='Death'>
 ~~~
 {: .output}
  <a href="../fig/tda_09_persistence_example2.png">
   <img src="../fig/tda_09_persistence_example2.png" alt="Persistence diagram" width="50%" height="auto" />
 </a>
 
+The persistence barcode is another graphical representation of the persistence pairs obtained from the computation of persistent homology. It visualizes the birth and death values of topological features as intervals on a barcode-like plot.
 
+The `plot_persistence_barcode()` function takes the persistence diagram (d`iag_Rips`) as input and creates a barcode plot. Each bar in the plot represents a topological feature, and its length corresponds to the persistence or lifetime of the feature. The x-axis represents the range of values for the birth and death of the features.
+
+The `legend` parameter is set to `True` in order to display a legend in the plot. The legend provides information about the colors or markers used to differentiate different topological dimensions or features.
 
 ~~~
-%%time
 gd.plot_persistence_barcode(diag_Rips,legend=True)
-plt.grid(color = 'black', linestyle = '-', linewidth = 1)
-plt.savefig('persistencebarcodeCircles' , dpi=600, transparent=True)
-plt.xticks(size=15)
-plt.yticks(size=15)
+
 ~~~
 {: .language-python}
 ~~~
-(array([  0.,  20.,  40.,  60.,  80., 100., 120.]),
- [Text(0, 0.0, '0'),
-  Text(0, 20.0, '20'),
-  Text(0, 40.0, '40'),
-  Text(0, 60.0, '60'),
-  Text(0, 80.0, '80'),
-  Text(0, 100.0, '100'),
-  Text(0, 120.0, '120')])
+<AxesSubplot:title={'center':'Persistence barcode'}>
 ~~~
 {: .output}
  <a href="../fig/tda_09_bardcode_example2.png">
@@ -392,23 +380,32 @@ plt.yticks(size=15)
 > Quitar o traducir los comentarios que están en el código en español
 {: .caution}
 
+We are using the gudhi library to load a 2D point cloud data from a CSV file and visualize it using matplotlib.
+
+First, we import the necessary modules from gudhi to work with datasets and construct the Alpha complex. We import _points from gudhi.datasets.generators to generate points and AlphaComplex to construct the Alpha complex.
 ~~~
 from gudhi.datasets.generators import _points
 from gudhi import AlphaComplex
 ~~~
 {: .language-python}
 
+We use the `requests.get()` function to send a GET request to the specified URL and retrieve the content of the file. The content is stored in the response object, and we extract the text content using `response.text`.
 
+The text content is then loaded into a NumPy array using `np.loadtxt()`. The `content.splitlines()} splits the text content into lines, and `delimiter=' '` specifies that the values in each line are separated by a space.
+
+Finally, we visualize the loaded data by plotting the points using `plt.scatter()`. The `data[:, 0]` and `data[:, 1]` select the first and second columns of the data array, representing the x and y coordinates respectively. The `marker='.'` specifies the marker style as a dot, and `s=1` sets the marker size. The points are then displayed using `plt.show()`.
 ~~~
-import requests
-#load the file spiral_2d.csv
+# Load the file spiral_2d.csv from the specified URL
 url = 'https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/spiral_2d.csv'
-# Obtener el contenido del archivo
+
+# Get the content of the file
 response = requests.get(url)
 content = response.text
-# Cargar los datos en un arreglo de NumPy
+
+# Load the data into a NumPy array
 data = np.loadtxt(content.splitlines(), delimiter=' ')
-# Graficar los puntos
+
+# Plot the points
 plt.scatter(data[:, 0], data[:, 1], marker='.', s=1)
 plt.show()
 ~~~
@@ -417,12 +414,31 @@ plt.show()
   <img src="../fig/tda_09_sperial.png" alt="Plot Spiral" width="50%" height="auto" />
 </a>
 
-Define simplicial complex
+we are using the `AlphaComplex` class from the `gudhi` library to construct an Alpha complex from the loaded 2D point cloud data.
+
+First, we create an instance of the `AlphaComplex` class, `alpha_complex`, by passing the `data` array to the points parameter. This initializes the Alpha complex object and prepares it to construct the complex based on the given points.
+
+Next, we create a simplex tree using the `create_simplex_tree()` method of the `alpha_complex` object. The simplex tree is a data structure that stores the information about the simplices in the Alpha complex. It represents the hierarchy of simplices in the complex, from the lowest-dimensional simplices (vertices) to higher-dimensional simplices (e.g., edges, triangles).
+
+By calling `create_simplex_tree()`, we construct the simplex tree based on the Alpha complex. The simplex tree contains information about the simplices, such as their filtration values and filtration order.
+
+The `simplex_tree` object can be further utilized to analyze and extract topological features and their persistence from the constructed Alpha complex. It provides various methods for computing persistence, extracting persistence diagrams, and performing other topological computations.
+
+Overall, the code segment constructs the Alpha complex from the 2D point cloud data and creates a simplex tree to store the resulting complex's information. This allows for subsequent topological analysis and computations on the constructed complex using the `simplex_tree` object.
+
 ~~~
-alpha_complex = AlphaComplex(points = data)
+# Construct an Alpha complex from the data points
+alpha_complex = AlphaComplex(points=data)
+
+# Create a simplex tree based on the Alpha complex
 simplex_tree = alpha_complex.create_simplex_tree()
 ~~~
 {: .language-python}
+~~~
+CPU times: user 5.04 s, sys: 0 ns, total: 5.04 s
+Wall time: 5.06 s
+~~~
+{: .output}
 
 > ## FIXME
 > Aquí me sale un mensaje de warning grande, pero sí me sale la misma gráfica
@@ -435,6 +451,10 @@ print("diag=", diag)
 
 gd.plot_persistence_diagram(diag)
 ~~~
+~~~
+<AxesSubplot:title={'center':'Persistence diagram'}, xlabel='Birth', ylabel='Death'>
+~~~
+{: .output}
 {: .language-python}
 <a href="../fig/tda_09_persistence_example3.png">
   <img src="../fig/tda_09_persistence_example3.png" alt="Persistence diagram" width="50%" height="auto" />
@@ -445,10 +465,14 @@ gd.plot_persistence_diagram(diag)
 {: .caution}
 ~~~
 gd.plot_persistence_barcode(diag)
-#plt.savefig('persistence_barcodeSpiral.svg' , dpi=1200)
 plt.show()
 ~~~
 {: .language-python}
+~~~
+/opt/tljh/user/envs/TDA2/lib/python3.7/site-packages/gudhi/persistence_graphical_tools.py:83: UserWarning: There are 229062 intervals given as input, whereas max_intervals is set to 20000.
+  % (len(persistence), max_intervals)
+~~~
+{: .output}
  <a href="../fig/tda_09_bardcode_example3.png">
   <img src="../fig/tda_09_bardcode_example3.png" alt="Bard Code" width="50%" height="auto" />
 </a>
