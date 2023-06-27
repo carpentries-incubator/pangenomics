@@ -19,7 +19,7 @@ keypoints:
 
 ## Unveiling the Genomic Complexity: The Pangenome Paradigm
 
-### A brief history of the term Pangenome
+### A brief history of the concept "Pangenome"
 
 The concept of **Pangenomics** was created by [Tettelin *et al.*](https://www.pnas.org/doi/10.1073/pnas.0506758102), whose goal was to develop a vaccine against Group B *Streptococcus* (GBS, or *Streptococcus agalactiae*), a human pathogen causing neonatal infections. Previous to this, reverse vaccinology had been successfully applied to *Neisseria meningitidis* using a single genome. However, in the case of *S. agalactiae*, two complete  sequences were available when the project started. These initial genomic studies revealed significant variability in gene content among closely related *S. agalactiae* isolates, challenging the assumption that a single genome could represent an entire species. Consequently, the collaborative team decided to sequence six additional genomes, representing the major disease-causing serotypes. The comparison of these genomes confirmed the presence of diverse regions, including differential pathogenicity islands, and revealed that the shared set of genes accounted for only about 80% of an individual genome. The existence of broad genomic diversity prompted the question of **how many sequenced genomes are needed to identify all possible genes harbored by *S. agalactiae***. Motivated by the goal of identifying vaccine candidates, the collaborators engaged in active discussions, scientific drafts, and the development of a mathematical model to determine the optimal number of sequenced strains. And, this is how these pioneering authors introduced the revolutionary concept of the **pangenome** in 2005.  
 
