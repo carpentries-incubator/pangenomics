@@ -7,12 +7,12 @@ questions:
 objectives:
 - "Explore `ncbi-genome-download` as a tool for fetching genomic data from the NCBI."
 keypoints:
-- "The `ncbi-genome-download` package is a set of scripts designed to download genomes from the NCBI."
+- "The `ncbi-genome-download` package is a set of scripts designed to download genomes from the NCBI database."
 ---
 
 ## Getting Genomic Data from the NCBI
 
-We already have the genomes of strains 18RS21 and H36B in our pan_workshop/data directory. However, the remaining six GBS strains will be downloaded in this episode. We will obtain these genomic sequences from the National Center for Biotechnology Information (NCBI) database, the primary source of publicly available genomes. To automate the downloading process, we are going to utilize the specialized `ncbi-genome-download` [package](https://github.com/kblin/ncbi-genome-download), which includes convenient shell commands that allows users to download genomes directly from the NCBI. This package offers great flexibility by enabling users to specify their desired queries. It simplifies the process of retrieving the data and ensures that is conveniently saved into the working directory. 
+In the previous [section](https://paumayell.github.io/pangenomics/01-introduction/index.html), we downloaded the working directory for this workshop that already contains the genomes of strains **18RS21** and **H36B** within our pan_workshop/data directory. However, the remaining six GBS strains will be downloaded in this episode. We will obtain these genomic sequences from the National Center for Biotechnology Information (NCBI) database, the primary source of publicly available genomes. To automate the downloading process, we are going to utilize the specialized `ncbi-genome-download` [package](https://github.com/kblin/ncbi-genome-download), which includes convenient shell commands that allows users to download genomes directly from the NCBI. This package offers great flexibility by enabling users to specify their desired queries. It simplifies the process of retrieving the data and ensures that is conveniently saved into the working directory. 
 
 The `ncbi-genome-download` package can be installed with conda. In our case, we have already installed it into the environment under the same name of the package *ncbi-genome-download*. Thus, in order to use the package, we just have to activate the *ncbi-genome-download* conda environment. 
 
