@@ -89,7 +89,7 @@ distance_list.head()
 ~~~
 {: .output}
 
-A we see in episode [Understanding Pangenomes with BLAST](https://paumayell.github.io/pangenomics/04-manual-pangenomes/index.html), the BLAST E-value represents the possibility of finding a match with a similar score in a database. By default, BLAST consider a maximum score for the E-value 10, but in this case there are hits of low quality. If two sequences are not similar or if the E-value is bigger thatn 10, then BLAST do not save this score. In order to have something like a distance matrix we will fill the E-value of the sequence that we do not have an score. To do this, we will use the convection that an E-value equal to 5 is too big and that the sequence are not similar at all. 
+As we saw in episode [Understanding Pangenomes with BLAST](https://paumayell.github.io/pangenomics/04-manual-pangenomes/index.html), the BLAST E-value represents the possibility of finding a match with a similar score in a database. By default, BLAST considers a maximum score for the E-value 10, but in this case, there are hits of low quality. If two sequences are not similar or if the E-value is bigger than 10, then BLAST does not save this score. In order to have something like a distance matrix we will fill the E-value of the sequence for which we do not have a score. To do this, we will use the convention that an E-value equal to 5 is too big and that the sequences are not similar at all. 
 
 ~~~
 MaxDistance = 5.0000000
