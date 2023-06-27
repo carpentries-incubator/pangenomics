@@ -16,10 +16,8 @@ To begin, we will import the necessary packages.
 import pandas as pd
 import numpy as np
 import umap
-import umap.plot
 import gudhi as gd
 import matplotlib.pyplot as plt
-#from umap import UMAPTransformer
 from scipy.spatial.distance import pdist, squareform
 from itertools import combinations
 import scipy.cluster.hierarchy as sch
@@ -141,9 +139,23 @@ Gen1	0	1	0	1
 Gen2	0	0	1	1
 ~~~
 {: .output}
+
+The distancia function takes a DataFrame df and an optional parameter metrica (defaulting to 'hamming').
+
+The resulting distance_matrix can be used for further analysis, such as clustering or dimensionality reduction, to explore the relationships and similarities between the variables/columns of the DataFrame. 
+~~~
+def distancia(df, metrica='hamming'):
+    # Compute pairwise distances between columns of the DataFrame
+    distances = pdist(df.values.T, metric=metrica)
+    
+    # Convert the condensed distance matrix to a squareform distance matrix
+    distance_matrix = squareform(distances)
+
+~~~
+{: .language-python}
 Calculate 
 ~~~
-distancia(df_libro)
+matrix_dintancia_libro=distancia(df_libro)
 ~~~
 {: .language-python}
 
@@ -155,22 +167,29 @@ array([[0. , 0.5, 0.5, 1. ],
 ~~~
 {: .output}
 
+Define the function complejo to compute the persistence of a Rips simplicial complex from a distance matrix.
 ~~~
-matrix_dintancia_libro=distancia(df_libro)
-persistence_libro=complejo(matrix_dintancia_libro)
+def complejo(distance_matrix):
+    # Create the Rips simplicial complex from the distance matrix
+    rips_complex = gd.RipsComplex(distance_matrix)
+    # Create the simplex tree from the Rips complex with a maximum dimension of 3
+    simplex_tree = rips_complex.create_simplex_tree(max_dimension=3)
+    # Compute the persistence of the simplicial complex
+    persistence = simplex_tree.persistence()
+    # Return the persistence diagram or barcode
+    return persistence
 ~~~
 {: .language-python}
 
-
+we used the previosuly function and calcultate de persitence and plot
 ~~~
+persistence_libro=complejo(matrix_dintancia_libro)
 gd.plot_persistence_barcode(persistence_libro)
 ~~~
 {: .language-python}
 <a href="../fig/tda_11_barcode_1.png">
   <img src="../fig/tda_11_barcode_1.png" alt="Persistence Barcode" width="50%" height="auto" />
   </a>
-
-
 ~~~
 gd.plot_persistence_diagram(persistence_libro,legend=True)
 ~~~

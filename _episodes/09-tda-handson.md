@@ -260,7 +260,7 @@ plt.show()  # Display the plot
   <img src="../fig/tda_circles.png" alt="Plot Circles" width="50%" height="auto" />
 </a>
 
-### **Create Rips complex###
+### **Create Rips complex**
 First, we create a Rips complex using the `RipsComplex` class from `gudhi`. The Rips complex is a simplicial complex constructed from the given data points by connecting them with edges if their pairwise distances are below a specified threshold. In this case, we set the `max_edge_length` parameter to 0.6, which determines the maximum length allowed for an edge to be included in the complex.
 
 ~~~
