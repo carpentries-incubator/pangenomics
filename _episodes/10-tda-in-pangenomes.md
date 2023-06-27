@@ -526,12 +526,28 @@ In this data frame, we can see how many families are at the end if we filter by 
 
 
 > ## Exercise 2: Changing the dimension of the simplices
-> When we create the object `simplexTree` we define that the maximum dimension of the simplices was 8. Change this parameter.  
+> When we create the object `simplexTree` we define that the maximum dimension of the simplices was 8. Change this parameter to 3.  
 > With the new parameter, how many simplices do you obtain? And edges?
-> If you run all the code with this new parameter, how many families do you obtain in the core?
+> If you run all the code with this new parameter and filter again by `t_death = 2`, what hapend with the partitions? How many families do yoy have?
 > > ## Solution
 > > 
-> > 
+> > ~~~
+> > start_time = time.time()
+> > simplexTree = ripsComplex.create_simplex_tree(
+> >    max_dimension = 3)
+> > persistence = simplexTree.persistence()
+> > simplexTree.dimension(), simplexTree.num_vertices(), simplexTree.num_simplices()
+> > ~~~
+> > {: .language-python}
+> >
+> > ~~~
+> > (3, 43, 364)
+> > ~~~
+> > {: .output}
+> >
+> > Now we have less simplices, we have 364 simplices.
+> >
+> > When we filter by `t_death = 2`, we obtain 111 families because some families share genes.  
 > > 
 > {: .solution}
 {: .challenge}
