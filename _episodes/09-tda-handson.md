@@ -161,10 +161,9 @@ This visualization allows for the identification of significant topological feat
 
 > ## Exercise 1: Creating a Manually Filtered Simplicial Complex.
 >  In the following graph, we have $K$ a simplicial complex filtered representation of simplicial complexes.
->  <a href="../fig/tda_09_filtracion_ex.png">
->  <img src="../fig/tda_09_filtracion_ex.png" alt="Exercise 1 Filtration" width="100%" height="auto"/>
-></a>
-> 
+> <a href="../fig/tda_09_filtracion_ex.png"> 
+ <img src="../fig/tda_09_filtracion_ex.png" alt="Exercise 1 Filtration" width="100%" height="auto"/>
+ </a>
 > Perform persistent homology and plot the persistence diagram and barcode.
 > > ## Solution  
 > > 1. Create a SimplexTree with `gd.SimplexTree()`.
@@ -217,7 +216,6 @@ This visualization allows for the identification of significant topological feat
 >>   <img src="../fig/tda_09_diagram_F.png" alt="Persistence Diagram" width="50%" height="auto" />
 >> </a>  
 > {: .solution}
-
 {: .challenge}
 
 
@@ -456,10 +454,6 @@ plt.show()
 gd.plot_persistence_barcode(diag,legend=True)
 ~~~
 {: .language-python}
-
-> ## FIXME
-> En el ejercicio poner el código completo para llegar a la solución
-{: .caution}
 
 > ## Exercise 2: Torus.
 >  To build a torus using the `tadasets.torus(n=num_points)` function and apply persistent homology.
