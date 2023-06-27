@@ -12,9 +12,6 @@ keypoints:
 
 ## Persistent approach to pangenomics
 
-> ## FIXME
-> Falta explicar más a qué se quiere llegar con el episodio. Un poco más explícito que "apply TDA to describe Pangenomes" y ahorita eso sólo está en Questions, hay que ponerlo aquí en el texto.
-{: .caution}
 
 We will work with the four mini-genomes of episode 4. First, we need to import all the libraries that we will use.
 
@@ -91,11 +88,6 @@ distance_list.head()
 4	2603V|GBPINHCM_01420	A909|MGIDGNCP_01082	1.600000e+00
 ~~~
 {: .output}
-
-> ## FIXME 
-> Explicar qué significa la distancia biológica máxima. No entendí a qué se refiere y por qué es 5.
-> Revisar
-{: .caution}
 
 A we see in episode [Understanding Pangenomes with BLAST](https://paumayell.github.io/pangenomics/04-manual-pangenomes/index.html), the BLAST E-value represents the possibility of finding a match with a similar score in a database. By default, BLAST consider a maximum score for the E-value 10, but in this case there are hits of low quality. If two sequences are not similar or if the E-value is bigger thatn 10, then BLAST do not save this score. In order to have something like a distance matrix we will fill the E-value of the sequence that we do not have an score. To do this, we will use the convection that an E-value equal to 5 is too big and that the sequence are not similar at all. 
 
@@ -552,6 +544,3 @@ In this data frame, we can see how many families are at the end if we filter by 
 > {: .solution}
 {: .challenge}
 
-> ## FIXME
-> Agregar soluciones en las discusiones y ejercicios
-{: .caution}
