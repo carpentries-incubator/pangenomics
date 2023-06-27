@@ -42,10 +42,9 @@ st = gd.SimplexTree()  ##
 In GUDHI, you can use the `st.insert()` function to add simplices to a SimplexTree data structure. Additionally, you have the flexibility to specify the filtration level of each simplex. If no filtration level is specified, it is assumed to be added at filtration time 0.
 
 ~~~
-#insert 0-simplex (the vertex), 
+#insert 0-simplex (the vertex) 
 st.insert([0])
 st.insert([1])
-
 ~~~
 {: .language-python}
 ~~~
@@ -62,7 +61,6 @@ Here's an example of inserting 1-simplices into the SimplexTree at various filtr
 st.insert([0, 1], filtration=0.5)
 st.insert([1, 2], filtration=0.8)
 st.insert([0, 2], filtration=1.2)
-
 ~~~
 {: .language-python}
 
@@ -71,18 +69,11 @@ True
 ~~~
 {: .output}
 
-In the code snippet above, we created a SimplexTree object named `st`. We then inserted three 1-simplices into the SimplexTree at filtration levels of 0.5, 0.8, and 1.2, respectively. The 1-simplices are defined by specifying their vertices as lists [v1, v2], where v1 and v2 are the indices of the vertices.
-
 > ## Note
 > If any lower-dimensional simplices are missing, GUDHI's SimplexTree will automatically complete them. For example, when inserting
 > the 1-simplex [1, 2] at filtration level 0.8, if the 0-simplex [1] or [2] was not already present, GUDHI will add it to the SimplexTree.
 {: .callout}
 
-This approach allows you to gradually build the simplicial complex by inserting simplices at different filtration levels, and GUDHI takes care of maintaining the necessary lower-dimensional simplices.
-Remember to provide clear instructions and explanations for each step and encourage learners to experiment with different filtration levels and simplex insertions to gain a better understanding of how GUDHI's SimplexTree handles complex construction and completion.
-> ## FIXME
-> Esta última indicación creo que más bien iría en Instructor Notes, no en el episodio.
-{: .caution}
 
 Now, you can use the `st.num_vertices()` and `st.num_simplices()` commands to see the number of vertices and simplices, respectively, in your simplicial complex stored in the st SimplexTree object.
 
@@ -100,7 +91,7 @@ Number of vertices: 3
 Number of simplices: 6
 ~~~
 {: .output}
-
+#### **Persistence**
 The `st.persistence()` function in GUDHI's SimplexTree is used to compute the persistence diagram of the simplicial complex. The persistence diagram provides a compact representation of the birth and death of topological features as the filtration parameter varies.
 
 Here's an example of how to use `st.persistence()`:
@@ -128,28 +119,28 @@ Death: (0.0, 0.5)
 ~~~
 {: .output}
 
-Plot the persistence diagram
+#### **Plot the persistence diagram** 
+ The `gd.plot_persistence_diagram(persistence_diagram, legend=True)` is used to plot a persistence diagram using the Gudhi library in Python. A persistence diagram is a visual representation of the topological features captured by the simplicial homology computation.
 
+The `plot_persistence_diagram()` function takes the persistence diagram as input and generates a plot to visualize this information. The `legend=True` argument enables the display of a legend, which provides additional information about the different types of topological features represented in the diagram.
 ~~~
 gd.plot_persistence_diagram(persistence_diagram,legend=True)
 ~~~
 {: .language-python}
-
 ~~~
 <AxesSubplot:title={'center':'Persistence diagram'}, xlabel='Birth', ylabel='Death'>
 ~~~
 {: .output}
-
-> ## FIXME
-> Aquí me sale un plot diferente con menos rayas horizontelaes y sin las unidades en el eje Y:
-{: .caution}
-
  <a href="../fig/tda_09_diagram_1.png">
   <img src="../fig/tda_09_diagram_1.png" alt="Persistence Diagram" width="50%" height="auto" />
 </a>
 
+#### **Plot the barcode** 
+The code snippet `gd.plot_persistence_barcode(persistence_diagram, legend=True)` is used to generate a persistence barcode plot using the Gudhi library in Python. A persistence barcode provides a different way to visualize the evolution of topological features captured by the persistence diagram.
 
-Plot the barcode
+In topological data analysis, a persistence barcode represents the lifespan of topological features as intervals on a real number line. Each interval corresponds to a topological feature, and its length represents the duration of the feature's existence.
+
+The `plot_persistence_barcode()` function takes the persistence diagram as input and generates a plot that visualizes these intervals. The bars in the barcode plot represent the topological features, and their lengths indicate the duration of their existence.
 
 ~~~
 gd.plot_persistence_barcode(persistence_diagram,legend=True)
@@ -164,16 +155,15 @@ gd.plot_persistence_barcode(persistence_diagram,legend=True)
   <img src="../fig/tda_09_barcode_1.png" alt="Persistence Diagram" width="50%" height="auto" />
 </a>
 
-> ## FIXME
-> En el ejercicio 1 el la K se ve con los signos y no como Latex. Hay que poner el código completo en la solución del ejercicio, en lugar del texto
-> que dice qué funciones usar. Con el código que yo pude hacer no me salió la misma gráfica.
-{: .caution}
+By examining the persistence barcode plot, one can observe the distribution and lengths of the bars. Longer bars indicate more persistent topological features, while shorter bars represent features that appear and disappear quickly. The legend displayed with legend=True provides additional information about the types of topological features represented in the barcode.
+
+This visualization allows for the identification of significant topological features and their persistence across different scales. It provides insights into the robustness and stability of these features in the dataset, helping to reveal important structural patterns and understand the underlying topology of the data.
 
 > ## Exercise 1: Creating a Manually Filtered Simplicial Complex.
 >  In the following graph, we have $K$ a simplicial complex filtered representation of simplicial complexes.
 >  <a href="../fig/tda_09_filtracion_ex.png">
-  <img src="../fig/tda_09_filtracion_ex.png" alt="Exercise 1 Filtration" width="100%" height="auto"/>
-</a>
+>  <img src="../fig/tda_09_filtracion_ex.png" alt="Exercise 1 Filtration" width="100%" height="auto"/>
+></a>
 > 
 > Perform persistent homology and plot the persistence diagram and barcode.
 > > ## Solution  
@@ -234,14 +224,10 @@ gd.plot_persistence_barcode(persistence_diagram,legend=True)
 
 ### **Example 2:** Rips complex from datasets 
 In this example, we will demonstrate an application of persistent homology using a dataset generated by us. Persistent homology is a technique used in topological data analysis to study the shape and structure of datasets.
-
+### **Genaerate dataset**
 The `make_circles()` function from scikit-learn's datasets module is used to generate synthetic circular data. We specify the number of points to generate (n_samples), the amount of noise to add to the data points (noise), and the scale factor between the inner and outer circle (factor).
 
 The generated dataset consists of two arrays: circles and labels. The circles array contains the coordinates of the generated data points, while the labels array assigns a label to each data point (in this case, it will be 0 or 1 representing the two circles).
-
-> ## FIXME
-> Aquí falta más texto para decir que vas a generar una nube de puntos y qué es make_circles n_samples, noise y factor. Y en general en los siguientes pasos falta un poco de texto y decir qué hacen las funciones nuevas.
-{: .caution}
 
 ~~~
 from sklearn import datasets  # Import the datasets module from scikit-learn
@@ -262,10 +248,7 @@ Data dimension:(100, 2)
 ~~~
 {: .output}
 
-Plot dataset
-> ## FIXME
-> Aquí falta saber qué hace sns.set() y decir que vas a hacer un scatterplot que represente la nube de puntos
-{: .caution}
+### **Plot dataset**
 
 ~~~
 fig = plt.figure()  # Create a new figure
@@ -279,11 +262,8 @@ plt.show()  # Display the plot
   <img src="../fig/tda_circles.png" alt="Plot Circles" width="50%" height="auto" />
 </a>
 
+### **Create Rips complex###
 First, we create a Rips complex using the `RipsComplex` class from `gudhi`. The Rips complex is a simplicial complex constructed from the given data points by connecting them with edges if their pairwise distances are below a specified threshold. In this case, we set the `max_edge_length` parameter to 0.6, which determines the maximum length allowed for an edge to be included in the complex.
-
-> ## FIXME
-> A partir de aquí el código no me funciona
-{: .caution}
 
 ~~~
 %%time
@@ -322,7 +302,7 @@ CPU times: user 108 ms, sys: 0 ns, total: 108 ms
 Wall time: 121 ms
 ~~~
 {: .output}
-
+### **Simplicial homology###
 Finally, we compute the persistence of the Rips complex using the `persistence()` method of the `Rips_simplex_tree`. Persistence computes the birth and death values for each topological feature (connected components, loops, voids, etc.) in the complex. The result is assigned to the variable `diag_Rips`.
 ~~~
 %%time
@@ -335,6 +315,7 @@ CPU times: user 9.13 ms, sys: 41 µs, total: 9.17 ms
 Wall time: 8.82 ms
 ~~~
 {: .output}
+### **Plots the persistence diagram and barcode**
 
 The `plot_persistence_diagram()` function takes the persistence diagram (`diag_Rips`) as input and creates a scatter plot of the points. The birth and death values are used to determine the positions of the points in the diagram.
 
@@ -375,11 +356,6 @@ gd.plot_persistence_barcode(diag_Rips,legend=True)
 
 
 ### **Example 3:** Rips complex from datasets 
-
-> ## FIXME
-> Aquí falta texto para describir la próxima actividad y luego texto en los pasos.
-> Quitar o traducir los comentarios que están en el código en español
-{: .caution}
 
 We are using the gudhi library to load a 2D point cloud data from a CSV file and visualize it using matplotlib.
 
@@ -441,10 +417,6 @@ Wall time: 5.06 s
 ~~~
 {: .output}
 
-> ## FIXME
-> Aquí me sale un mensaje de warning grande, pero sí me sale la misma gráfica
-{: .caution}
-
 ~~~
 diag = simplex_tree.persistence()
 diag = simplex_tree.persistence(homology_coeff_field=2, min_persistence=0)
@@ -461,9 +433,6 @@ gd.plot_persistence_diagram(diag)
   <img src="../fig/tda_09_persistence_example3.png" alt="Persistence diagram" width="50%" height="auto" />
 </a>
 
-> ## FIXME
-> Aquí hay que decir algo del código que está comentado o quitarlo
-{: .caution}
 ~~~
 gd.plot_persistence_barcode(diag)
 plt.show()
