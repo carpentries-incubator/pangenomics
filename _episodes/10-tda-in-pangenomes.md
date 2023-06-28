@@ -475,19 +475,12 @@ aux_simplex_list.head(4)
 ~~~
 {: .output}
 
-We can save the data frame as follows.
-
-~~~
-aux_simplex_list.to_csv('~/pan_workshop/results/blast/mini/persistent_simplices.csv')
-~~~
-{: .language-python}
-
-In this data frame, we can see how many families are at the end if we filter by `t_death=2`. Also, we can see how the families are formed and the families that are formed since the first time.
+In this data frame, we can see the history of the formation of families (simplices) at the different birth and death times. 
+If we filter at `t_death=2`we can see only the families that we remain with in the end.
 
 > ## Exercise 1: Partitioning the pangenome
-> Filter the table by `t_death=2`. Which genes and families are in each partition **Core**, **Shell** and **Cloud**? 
->  
-> Note: You might want to download the file to your computer and open it in a spreadsheet program to read it easily.
+> Filter the table by `t_death=2`, at this point in the filtration, which families are in each partition **Core**, **Shell** and **Cloud**? 
+> How many of these are single-copy core families?
 > > ## Solution
 > >
 > > We can filter as follows:
@@ -495,14 +488,35 @@ In this data frame, we can see how many families are at the end if we filter by 
 > > aux_simplex_list[aux_simplex_list['t_death']==2]
 > > ~~~~
 > > {: .language-python}
-> >
-> >
+> > ~~~
+> > 	t_birth	t_death	persistence	2603V	515	A909	NEM316
+(2603V|GBPINHCM_00554, 2603V|GBPINHCM_01231, 515|LHMFJANI_00548, 515|LHMFJANI_01178, A909|MGIDGNCP_00580, A909|MGIDGNCP_01268, NEM316|AOGPFIKH_00621, NEM316|AOGPFIKH_01341)	1.400000e-02	2.0	1.986	2	2	2	2
+(2603V|GBPINHCM_00401, 515|LHMFJANI_00394, 515|LHMFJANI_01625, A909|MGIDGNCP_00405, NEM316|AOGPFIKH_00403, NEM316|AOGPFIKH_01842)	1.300000e+00	2.0	0.700	1	2	1	2
+(2603V|GBPINHCM_01042, 2603V|GBPINHCM_01420, 515|LHMFJANI_01310, A909|MGIDGNCP_01408, NEM316|AOGPFIKH_01528)	1.600000e+00	2.0	0.400	2	1	1	1
+(2603V|GBPINHCM_00065, 515|LHMFJANI_00064, A909|MGIDGNCP_00064, A909|MGIDGNCP_00627, NEM316|AOGPFIKH_00065)	8.600000e-02	2.0	1.914	1	1	2	1
+(2603V|GBPINHCM_00348, 515|LHMFJANI_00342, A909|MGIDGNCP_00352, NEM316|AOGPFIKH_00350, NEM316|AOGPFIKH_01341)	3.000000e-03	2.0	1.997	1	1	1	2
+(2603V|GBPINHCM_01042, A909|MGIDGNCP_01082, A909|MGIDGNCP_01408, NEM316|AOGPFIKH_01528)	1.600000e+00	2.0	0.400	1	0	2	1
+(2603V|GBPINHCM_00748, 515|LHMFJANI_00064, A909|MGIDGNCP_00064, NEM316|AOGPFIKH_00065)	8.300000e-01	2.0	1.170	1	1	1	1
+(2603V|GBPINHCM_00097, 515|LHMFJANI_00097, A909|MGIDGNCP_00096, NEM316|AOGPFIKH_00098)	9.580000e-100	2.0	2.000	1	1	1	1
+(2603V|GBPINHCM_00815, 515|LHMFJANI_00781, A909|MGIDGNCP_00877, NEM316|AOGPFIKH_00855)	0.000000e+00	2.0	2.000	1	1	1	1
+(2603V|GBPINHCM_00748, 2603V|GBPINHCM_01042, A909|MGIDGNCP_01082)	2.000000e+00	2.0	0.000	2	0	1	0
+(2603V|GBPINHCM_00748, 2603V|GBPINHCM_01042)	2.000000e+00	2.0	0.000	2	0	0	0
+(2603V|GBPINHCM_00748, A909|MGIDGNCP_01082)	2.000000e+00	2.0	0.000	1	0	1	0
+(515|LHMFJANI_01625, A909|MGIDGNCP_01221)	1.100000e+00	2.0	0.900	0	1	1	0
+(515|LHMFJANI_01130, A909|MGIDGNCP_01221)	1.310000e-85	2.0	2.000	0	1	1	0
+(A909|MGIDGNCP_01343, NEM316|AOGPFIKH_01415)	7.890000e-143	2.0	2.000	0	0	1	1
+(2603V|GBPINHCM_01226,)	0.000000e+00	2.0	2.000	1	0	0	0
+> > ~~~
+> > {: .output}
 > >
 > > | Partition | Num. of Families |
 > > |---- |----|
 > > |Core | 8 |
-> > | Persistent | 6 |
-> > | Shell | 2 |
+> > | Shell| 6 |
+> > | Cloud | 2 |
+> >
+> > Single-copy core families: 3
+> > 
 > > 
 > {: .solution}
 {: .challenge}
