@@ -166,7 +166,7 @@ array([[1.24e-174, 5.00e+000, 5.00e+000, ..., 5.00e+000, 5.00e+000,
 {: .output}
 
 
-Now, we want to construct the Rips complex associated with the genes with respect to the distance matrix that we obtained. In episode [Topological Data Analysis](https://paumayell.github.io/pangenomics/08-tda/index.html) we explain that to construct the Vietord Rips Complex we need to define a distance parameter called threshol and points within a distance less than or equal to the threshold are connected. The maximum thresholl(`max_edge_length`) that we will use here is 2.
+Now, we want to construct the Vietoris-Rips complex associated with the genes with respect to the distance matrix that we obtained. In the episode [Topological Data Analysis](https://paumayell.github.io/pangenomics/08-tda/index.html) we saw that to construct the Vietoris-Rips complex we need to define a distance parameter or threshold, so the points within a distance less than or equal to the threshold get connected in the complex. The  threshold is defined by the argument `max_edge_length`, and we will use here the value 2.
 
 ~~~
 max_edge_length = 2
