@@ -166,7 +166,7 @@ array([[1.24e-174, 5.00e+000, 5.00e+000, ..., 5.00e+000, 5.00e+000,
 {: .output}
 
 
-Now, we want to construct the Rips complex associated with the genes with respect to the distance matrix that we obtained. To do this, we will impose the condition that the maximal distance between genes will be 2.
+Now, we want to construct the Rips complex associated with the genes with respect to the distance matrix that we obtained. In episode [Topological Data Analysis](https://paumayell.github.io/pangenomics/08-tda/index.html) we explain that to construct the Vietord Rips Complex we need to define a distance parameter called threshol and points within a distance less than or equal to the threshold are connected. The maximum thresholl(`max_edge_length`) that we will use here is 2.
 
 ~~~
 max_edge_length = 2
@@ -491,31 +491,34 @@ In this data frame, we can see how many families are at the end if we filter by 
 > > ## Solution
 > >
 > > We can filter as follows:
-> > `aux_simplex_list[aux_simplex_list['t_death']==2]`
+> > ~~~~
+> > aux_simplex_list[aux_simplex_list['t_death']==2]
+> > ~~~~
+> > {: .language-python}
+> >
+> >
+> >
+> > | Partition | Num. of Families |
+> > |---- |----|
+> > |Core | 8 |
+> > | Persistent | 6 |
+> > | Shell | 2 |
 > > 
-> > |Genes families | No. Genes | Partition |
-> > |---|---|---|
-> > | (2603V|GBPINHCM_00554, 2603V|GBPINHCM_01231, 515|LHMFJANI_00548, 515|LHMFJANI_01178, A909|MGIDGNCP_00580, A909|MGIDGNCP_01268, NEM316|AOGPFIKH_00621, NEM316|AOGPFIKH_01341)   |  8 | Core    |
-> > | (2603V|GBPINHCM_00401, 515|LHMFJANI_00394, 515|LHMFJANI_01625, A909|MGIDGNCP_00405, NEM316|AOGPFIKH_00403, NEM316|AOGPFIKH_01842) | 6 | Core |
-> > |(2603V|GBPINHCM_01042, 2603V|GBPINHCM_01420, 515|LHMFJANI_01310, A909|MGIDGNCP_01408, NEM316|AOGPFIKH_01528) | 5 | Core |
-> > |(2603V|GBPINHCM_00065, 515|LHMFJANI_00064, A909|MGIDGNCP_00064, A909|MGIDGNCP_00627, NEM316|AOGPFIKH_00065)| 5 | Core |
-> > |(2603V|GBPINHCM_00348, 515|LHMFJANI_00342, A909|MGIDGNCP_00352, NEM316|AOGPFIKH_00350, NEM316|AOGPFIKH_01341)| 5 | Core | 
-> > | (2603V|GBPINHCM_00748, 515|LHMFJANI_00064, A909|MGIDGNCP_00064, NEM316|AOGPFIKH_00065)| 4 | Core |
-> > | (2603V|GBPINHCM_00097, 515|LHMFJANI_00097, A909|MGIDGNCP_00096, NEM316|AOGPFIKH_00098) | 4| Core |
-> > | (2603V|GBPINHCM_00815, 515|LHMFJANI_00781, A909|MGIDGNCP_00877, NEM316|AOGPFIKH_00855) | 4 | Core |
-> > | (2603V|GBPINHCM_01042, A909|MGIDGNCP_01082, A909|MGIDGNCP_01408, NEM316|AOGPFIKH_01528) | 4 | Shell |
-> > | (2603V|GBPINHCM_00748, 2603V|GBPINHCM_01042, A909|MGIDGNCP_01082) | 3 | Shell |
-> > | (515|LHMFJANI_01625, A909|MGIDGNCP_01221) | 2 | Shell |
-> > | (2603V|GBPINHCM_00748, A909|MGIDGNCP_01082) | 2 | Shell | 
-> > | (515|LHMFJANI_01130, A909|MGIDGNCP_01221) | 2 | Shell |
-> > | (A909|MGIDGNCP_01343, NEM316|AOGPFIKH_01415) | 2 | Shell |
-> > | (2603V|GBPINHCM_00748, 2603V|GBPINHCM_01042) | 2 | Cloud|
-> > | (2603V|GBPINHCM_01226,) | 1 | Cloud |
+> {: .solution}
+{: .challenge}
+
+> ## Excercise 2: Looking for functional families
+> In episode [Understandig Pangenomes with BLAST]() we see that genes 2603V|GBPINHCM_01420, 515|LHMFJANI_01310, A909|MGIDGNCP_01408, NEM316|AOGPFIKH_01528 are the
+> functional family 30S ribosomal protein. Look for this genes in the `aux_simplex_list`. Are they in the same family? Are another genes in this family?
+>
+> > ## Solution
+> > Yes, they are in the same family, but there is one more gene in this family, the gene 2603V|GBPINHCM_01042.
+> > 
 > {: .solution}
 {: .challenge}
 
 
-> ## Exercise 2: Changing the dimension of the simplices
+> ## Exercise 3: Changing the dimension of the simplices
 > When we create the object `simplexTree` we define that the maximum dimension of the simplices was 8. Change this parameter to 3.  
 > With the new parameter, how many simplices do you obtain? And edges?
 > If you run all the code with this new parameter and filter again by `t_death = 2`, what hapend with the partitions? How many families do yoy have?
