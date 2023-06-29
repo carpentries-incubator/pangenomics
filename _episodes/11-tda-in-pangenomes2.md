@@ -48,11 +48,11 @@ Gen2	0	0	1	1
 ~~~
 {: .output}
 
-The distancia function takes a DataFrame df and an optional parameter metrica (defaulting to 'hamming').
+The distance function takes a DataFrame df and an optional parameter metrica (defaulting to 'hamming').
 
 The resulting distance_matrix can be used for further analysis, such as clustering or dimensionality reduction, to explore the relationships and similarities between the variables/columns of the DataFrame. 
 ~~~
-def distancia(df, metrica='hamming'):
+def distance(df, metrica='hamming'):
     # Compute pairwise distances between columns of the DataFrame
     distances = pdist(df.values.T, metric=metrica)
     
@@ -64,8 +64,8 @@ def distancia(df, metrica='hamming'):
 {: .language-python}
 Calculate 
 ~~~
-matrix_distancia_1=distancia(df_1)
-matrix_distancia_1
+matrix_distance_1=distance(df_1)
+matrix_distance_1
 ~~~
 {: .language-python}
 
@@ -93,7 +93,7 @@ def complejo(distance_matrix):
 
 we used the previous function and calculate de persistence and plot
 ~~~
-persistence_1=complejo(matrix_distancia_1)
+persistence_1=complejo(matrix_distance_1)
 gd.plot_persistence_barcode(persistence_1)
 ~~~
 {: .language-python}
@@ -173,8 +173,8 @@ draw(upgma_tree)
 The phylogenetic tree groups the genomes into pairs, which does help infer whether horizontal gene transfer occurred at some point during evolution among these species. Next, we will use persistent homology to try to detect this by identifying 1-hole structures.
 
 ~~~
-matrix_distancia_genes=distancia(df)
-persistence_genes=complejo(matrix_distancia_genes)
+matrix_distance_genes=distance(df)
+persistence_genes=complejo(matrix_distance_genes)
 gd.plot_persistence_barcode(persistence_genes)
 ~~~
 {: .language-python}
@@ -192,11 +192,11 @@ The first 4 rows of the DataFrame df are selected, and their pairwise distances 
 # Select the first 4 rows of the DataFrame 'df' and assign it to 'df_primera'
 df_primera = df.iloc[:4, :]
 
-# Compute the distance matrix using the 'distancia' function on 'df_primera'
-matrix_distancia_genes_primera = distancia(df_primera)
+# Compute the distance matrix using the 'distance' function on 'df_primera'
+matrix_distance_genes_primera = distance(df_primera)
 
-# Compute the persistence of the simplicial complex created from 'matrix_distancia_genes_primera'
-persistence_genes_primera = complejo(matrix_distancia_genes_primera)
+# Compute the persistence of the simplicial complex created from 'matrix_distance_genes_primera'
+persistence_genes_primera = complejo(matrix_distance_genes_primera)
 
 # Plot the persistence barcode using the 'plot_persistence_barcode' function from the Gudhi library
 gd.plot_persistence_barcode(persistence_genes_primera)
@@ -224,7 +224,7 @@ A909|MGIDGNCP_00405	1	1	1	1
 ~~~
 {: .output}
 ~~~
-matrix_dintancia_genes_segunda=distancia(df_segunda)
+matrix_dintancia_genes_segunda=distance(df_segunda)
 persistence_genes_segunda=complejo(matrix_dintancia_genes_segunda)
 gd.plot_persistence_barcode(persistence_genes_segunda)
 ~~~
@@ -361,14 +361,14 @@ df_mediam
 
 
 ~~~
-# Calculate the extended distance matrix using the function 'distancia' with 'df_mediam' as input
-matrix_distancia_extendida = distancia(df_mediam)
+# Calculate the extended distance matrix using the function 'distance' with 'df_mediam' as input
+matrix_distance_extendida = distance(df_mediam)
 
-# Create the extended persistence complex using the function 'complejo' with 'matrix_distancia_extendida' as input
-persistence_extendida = complejo(matrix_distancia_extendida)
+# Create the extended persistence complex using the function 'complejo' with 'matrix_distance_extendida' as input
+persistence_extendida = complejo(matrix_distance_extendida)
 
-# Print the extended distance matrix 'matrix_distancia_extendida'
-matrix_distancia_extendida
+# Print the extended distance matrix 'matrix_distance_extendida'
+matrix_distance_extendida
 
 ~~~
 {: .language-python}
