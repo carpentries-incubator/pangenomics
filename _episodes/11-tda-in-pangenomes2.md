@@ -184,7 +184,7 @@ gd.plot_persistence_barcode(persistence_genes)
 
 In the persistence barcode code, we did not detect any 1-hole structures. We can explore various strategies to try to detect this.
 
-### Select by triplets.
+### Select by groups.
 We start select the first four genes and repeat the previous calculations.
 The first 4 rows of the DataFrame df are selected, and their pairwise distances are used to create a simplicial complex. The persistence of this complex is then computed, and a persistence barcode plot is generated to visualize the topological features and their lifespans.
 
@@ -235,12 +235,17 @@ gd.plot_persistence_barcode(persistence_genes_segunda)
 
 In this selection, we did not detect any holes today, but we need to find a more accurate way than selecting groups of genomes. In this sense, explore the following method for me.
 
-### The mediam complex
+### **The mediam complex**
 
-The median complex is an alternative construction on se-
-quence data aimed at recovering signal of phylogenetic in-
-compatibility using homology. First, we define the median
-of a set of aligned sequences.
+The median complex is an alternative construction on sequence data aimed at recovering signal of phylogenetic incompatibility using homology. First, we define the median of a set of aligned sequences.
+
+Definition:  For any three aligned sequences $a$, $b$, and $c$,
+the median sequence $m(a, b, c)$ is defined such that each position of the median is the majority consensus of the three
+sequences.
+Next, we define the median closure. Given an alignment S, the median closure, $S̄$, is defined as the vertex set generated from the original set S that is closed under the median operation
+
+We obtain the median closure by repeatedly applying the
+median operation to all sequence triplets until no new sequences are added. The median closure consists of the original vertex set augmented by the computed medians. We informally refer to topological complexes formed from the median closure as median complexes. We can then compute persistent homology on the new vertex set.
 ~~~
 # Create a dictionary for each genome converted to "0" and "1" representing the presence and absence of genes
 genomes = {}
