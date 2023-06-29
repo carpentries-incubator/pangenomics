@@ -128,8 +128,8 @@ data = {'Genoma1': [0, 0],
         'Genoma2': [1, 0],
         'Genoma3': [0, 1],
         'Genoma4': [1, 1]}
-df_libro = pd.DataFrame(data, index=['Gen1', 'Gen2'])
-df_libro
+df_1 = pd.DataFrame(data, index=['Gen1', 'Gen2'])
+df_1
 ~~~
 {: .language-python}
 
@@ -150,12 +150,14 @@ def distancia(df, metrica='hamming'):
     
     # Convert the condensed distance matrix to a squareform distance matrix
     distance_matrix = squareform(distances)
+    return(distance_matrix)
 
 ~~~
 {: .language-python}
 Calculate 
 ~~~
-matrix_dintancia_libro=distancia(df_libro)
+matrix_distancia_1=distancia(df_1)
+matrix_distancia_1
 ~~~
 {: .language-python}
 
@@ -167,7 +169,7 @@ array([[0. , 0.5, 0.5, 1. ],
 ~~~
 {: .output}
 
-Define the function complejo to compute the persistence of a Rips simplicial complex from a distance matrix.
+Define the function `complejo` to compute the persistence of a Rips simplicial complex from a distance matrix.
 ~~~
 def complejo(distance_matrix):
     # Create the Rips simplicial complex from the distance matrix
@@ -183,8 +185,8 @@ def complejo(distance_matrix):
 
 we used the previosuly function and calcultate de persitence and plot
 ~~~
-persistence_libro=complejo(matrix_dintancia_libro)
-gd.plot_persistence_barcode(persistence_libro)
+persistence_1=complejo(matrix_dintancia_1)
+gd.plot_persistence_barcode(persistence_1)
 ~~~
 {: .language-python}
 <a href="../fig/tda_11_barcode_1.png">
@@ -206,7 +208,8 @@ In this example, we want to use Topological Data Analysis to detect if there is 
 
 First, let's import the file `familias_mini.csv` which contains a table of gene presence and absence in 4 _Streptococcus_ genomes.
 ~~~
-df = pd.read_csv("/home/shaday/GIT/pangenomics/files/familias_minis.csv", index_col=0)
+df = pd.read_csv("https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/familias_minis.csv", index_col=0)
+
 df_filled = df.fillna(0)
 df=df_filled.replace(to_replace=r'.+', value=1, regex=True)
 df
@@ -253,19 +256,17 @@ upgma_tree = constructor.upgma(distance_matrix)
 
 # Draw the UPGMA tree
 draw(upgma_tree)
-
 ~~~
 {: .language-python}
  <a href="../fig/tda_11_philo_tree.png">
   <img src="../fig/tda_11_philo_tree.png" alt="Phylogenetic tree" width="50%" height="auto" />
 </a>
 
-The phylogenetic tree groups the genomes into pairs, which does not help infer whether horizontal gene transfer occurred at some point during evolution among these species. Next, we will use persistent homology to try to detect this by identifying 1-hole structures.
-
+The phylogenetic tree groups the genomes into pairs, which does help infer whether horizontal gene transfer occurred at some point during evolution among these species. Next, we will use persistent homology to try to detect this by identifying 1-hole structures.
 
 ~~~
-matrix_dintancia_genes=distancia(df)
-persistence_genes=complejo(matrix_dintancia_genes)
+matrix_distancia_genes=distancia(df)
+persistence_genes=complejo(matrix_distancia_genes)
 gd.plot_persistence_barcode(persistence_genes)
 ~~~
 {: .language-python}
@@ -277,11 +278,21 @@ In the persistence barcode code, we did not detect any 1-hole structures. We can
 
 ### Select by triplets.
 We start select the first four genes and repeat the previous calculations.
+The first 4 rows of the DataFrame df are selected, and their pairwise distances are used to create a simplicial complex. The persistence of this complex is then computed, and a persistence barcode plot is generated to visualize the topological features and their lifespans.
+
 ~~~
-df_primera=df.iloc[:4,:]
-matrix_dintancia_genes_primera=distancia(df_primera)
-persistence_genes_primera=complejo(matrix_dintancia_genes_primera)
+# Select the first 4 rows of the DataFrame 'df' and assign it to 'df_primera'
+df_primera = df.iloc[:4, :]
+
+# Compute the distance matrix using the 'distancia' function on 'df_primera'
+matrix_distancia_genes_primera = distancia(df_primera)
+
+# Compute the persistence of the simplicial complex created from 'matrix_distancia_genes_primera'
+persistence_genes_primera = complejo(matrix_distancia_genes_primera)
+
+# Plot the persistence barcode using the 'plot_persistence_barcode' function from the Gudhi library
 gd.plot_persistence_barcode(persistence_genes_primera)
+
 ~~~
 {: .language-python}
  <a href="../fig/tda_11_barcode_4.png">
