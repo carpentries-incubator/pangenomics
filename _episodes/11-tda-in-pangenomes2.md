@@ -320,7 +320,7 @@ genomes_mediam
 
 
 ~~~
-# Create a DataFrame from the dictionary 'genomas_mediam' and assign it to 'df_mediam'
+# Create a DataFrame from the dictionary 'genomes_mediam' and assign it to 'df_mediam'
 df_mediam = pd.DataFrame.from_dict(genomes_mediam)
 
 # Print the DataFrame 'df_mediam'
@@ -340,10 +340,10 @@ df_mediam
 ~~~
 {: .output}
 
-This next code creates a `DataFrame` called df_mediam using the `pd.DataFrame.from_dict()` function. The genomas_mediam dictionary is used as the input, and the function converts it into a DataFrame format. The resulting DataFrame is then assigned to the variable `df_mediam`. Finally, the code prints the contents of the DataFrame `df_mediam`.
+This following code creates a `DataFrame` called df_mediam using the `pd.DataFrame.from_dict()` function. The genomes_mediam dictionary is used as the input, and the function converts it into a DataFrame format. The resulting DataFrame is then assigned to the variable `df_mediam`. Finally, the code prints the contents of the DataFrame `df_mediam`.
 ~~~
-# Create a DataFrame from the dictionary 'genomas_mediam' and assign it to 'df_mediam'
-df_mediam = pd.DataFrame.from_dict(genomas_mediam)
+# Create a DataFrame from the dictionary 'genomes_mediam' and assign it to 'df_mediam'
+df_mediam = pd.DataFrame.from_dict(genomes_mediam)
 
 # Print the DataFrame 'df_mediam'
 df_mediam
@@ -410,7 +410,7 @@ gd.plot_persistence_diagram(persistence_extendida,legend=True)
 
 ## Explore this code
 
-This code attempts to generate a pangenome with an specified percentage of core/shell/cloud gene families. Neverthelles caiution is recommended because in a real pangenome, data should have more hierarchical structure. This is temporary data to exemplify TDA concepts.
+This code attempts to generate a pangenome with a specified percentage of core/shell/cloud gene families. Nevertheless, caution is recommended because, in a real pangenome, data should have a more hierarchical structure. This is temporary data to exemplify TDA concepts.
 ~~~
 import pandas as pd
 import numpy as np
