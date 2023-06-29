@@ -311,6 +311,13 @@ def process_dict_elements(dictionary):
 ~~~
 {: .language-python}
 
+Now lets run the function on genomes 
+~~~
+def process_dict_elements(genomes)
+~~~
+{: .language-python}
+
+
 ~~~
 # Create a DataFrame from the dictionary 'genomas_mediam' and assign it to 'df_mediam'
 df_mediam = pd.DataFrame.from_dict(genomas_mediam)
