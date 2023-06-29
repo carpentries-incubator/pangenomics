@@ -522,7 +522,7 @@ If we filter at `t_death=2`we can see only the families that we remain with in t
 {: .challenge}
 
 > ## Excercise 2: Looking for functional families
-> In the episode [Understandig Pangenomes with BLAST](https://paumayell.github.io/pangenomics/04-manual-pangenomes/index.html) we saw that the genes 2603V|GBPINHCM_01420, 515|LHMFJANI_01310, A909|MGIDGNCP_01408, and  NEM316|AOGPFIKH_01528 make the
+> In the episode [Understandig Pangenomes with BLAST](https://paumayell.github.io/pangenomics/05-manual_pangenome/index.html) we saw that the genes 2603V|GBPINHCM_01420, 515|LHMFJANI_01310, A909|MGIDGNCP_01408, and  NEM316|AOGPFIKH_01528 make the
 > functional family 30S ribosomal protein. Look for these genes in the `aux_simplex_list`. Are they in the same family? Are there other genes in this family?
 >
 > > ## Solution
@@ -535,7 +535,7 @@ If we filter at `t_death=2`we can see only the families that we remain with in t
 > ## Exercise 3: Changing the dimension of the simplices
 > When we create the object `simplexTree` we define that the maximum dimension of the simplices was 8. Change this parameter to 3.  
 > With the new parameter, how many simplices do you obtain? And edges?
-> If you run all the code with this new parameter and filter again by `t_death = 2`, what hapend with the partitions? How many families do yoy have?
+> If you run all the code with this new parameter and filter again by `t_death = 2`, what happens with the partitions? How many families do you have?
 > > ## Solution
 > > 
 > > ~~~
