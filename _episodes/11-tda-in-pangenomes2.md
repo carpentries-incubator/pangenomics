@@ -91,9 +91,9 @@ def complejo(distance_matrix):
 ~~~
 {: .language-python}
 
-we used the previosuly function and calcultate de persitence and plot
+we used the previous function and calculate de persistence and plot
 ~~~
-persistence_1=complejo(matrix_dintancia_1)
+persistence_1=complejo(matrix_distancia_1)
 gd.plot_persistence_barcode(persistence_1)
 ~~~
 {: .language-python}
@@ -101,7 +101,7 @@ gd.plot_persistence_barcode(persistence_1)
   <img src="../fig/tda_11_barcode_1.png" alt="Persistence Barcode" width="50%" height="auto" />
   </a>
 ~~~
-gd.plot_persistence_diagram(persistence_libro,legend=True)
+gd.plot_persistence_diagram(persistence_1,legend=True)
 ~~~
 {: .language-python}
 <a href="../fig/tda_11_diagram_1.png">
