@@ -47,6 +47,9 @@ GraPPLE was developed in order to investigate several key questions:
 
 3. What structural and syntenic relationships exist between core and accessory genes within the complete pangenome? Can the position of a gene provide useful information, such as its function? Can these relationships shed light on the forces driving genome evolution, including the presence of mobile genetic elements and associated functions like virulence or antimicrobial resistance?
 
+<a href="{{ page.root }}/fig/01-03-01.png">
+   <img src="{{ page.root }}/fig/01-13-01.png" alt="Example of network made with Graphia. " />
+  </a>
 
 Note: Please note that they are currently in beta, so it is important to review the outputs for coherence and report any issues or bugs. 
 
