@@ -13,7 +13,7 @@ keypoints:
 -   "a) Selection of a conserved gene to design a molecular test for a diagnostic tool or a vaccine."
 -   "b) Reconstruction of a species phylogenetic tree by using all the core genes."
 - "Examples using the information obtained in the **ACCESSORY GENOME**:"
--   "a) Describe niche specific genes among the strains compared."
+-   "a) Describe niche-specific genes among the strains compared."
 -   "b) Analysis of horizontal gene transfer or genetic recombination."
 -   "c) Evolutionary studies of genes (duplication, gain-loss genes, etc.)."
 ---
@@ -23,7 +23,7 @@ At this stage, we have acquired a comprehensive understanding of pangenome const
 
 Firstly, a focused investigation of the **core genome** offers us the opportunity to reconstruct robust phylogenetic trees. By examining the conserved genetic elements shared among organisms, we can establish evolutionary relationships, elucidate common ancestry, and gain a deeper understanding of the microbial diversity within our dataset. Furthermore, these phylogenetic trees serve as a foundation for designing effective molecular diagnostic tools and formulating targeted antimicrobial drugs or vaccines to combat a broad range of strains or lineages. 
 
-Simultaneously, we can harness the power of the **accessory genome** to conduct comparative genomic analyses. This allows us to discern dissimilarities between subsets of samples within our dataset, providing crucial insights into specific traits or characteristics. By identifying genes or genetic variations unique to certain groups of organisms, we can unreveal the genetic basis of their phenotypic diversity, such as drug-resistance profiles, pathogenicity, or virulence levels. 
+Simultaneously, we can harness the power of the **accessory genome** to conduct comparative genomic analyses. This allows us to discern dissimilarities between subsets of samples within our dataset, providing crucial insights into specific traits or characteristics. By identifying genes or genetic variations unique to certain groups of organisms, we can unravel the genetic basis of their phenotypic diversity, such as drug-resistance profiles, pathogenicity, or virulence levels. 
 
 ### Pan-GWAS Analysis
 
@@ -35,11 +35,11 @@ The Genome-Wide Association Studies (GWAS) represent a strategy to investigate t
 Brynildsrud, O., Bohlin, J., Scheffer, L. et al. Rapid scoring of genes in microbial pan-genome-wide association studies with Scoary. Genome Biol 17, 238 (2016). https://doi.org/10.1186/s13059-016-1108-8
 
 
-### Clustering analysis of the accesory genome
+### Clustering analysis of the accessory genome
 
 The Graphical Processing for Pangenome-Linked Exploration [GraPPLE](https://github.com/JDHarlingLee/GraPPLE) repository contains scripts to help users visualize their bacterial pangenome datasets in 3D by using [Graphia](https://graphia.app) network analysis suite. These graphs allow exploration of bacterial population structures, gene distributions across populations, and the syntenic order of genes. The analysis and visualization are scalable to large datasets comprising thousands of genome sequences. While GraPPLE was initially developed to work with [PIRATE](https://github.com/SionBayliss/PIRATE) output, it can also accept gene presence/absence matrices from other compatible tools like [Roary](https://github.com/sanger-pathogens/), [Panaroo](https://github.com/gtonkinhill/panaroo), [PPanGGOLiN](https://github.com/labgem/PPanGGOLiN/tree/master/testingDataset), and others. 
 
-GraPPLE was developed in order to investigate around several key questions:
+GraPPLE was developed in order to investigate several key questions:
 
 1. How similar are a group of isolates to each other based on the accessory genome? To what extent do these groups align with the core genome phylogeny or other relevant categorizations such as geographical location, habitat, clinical presentation, or sampling date?
 
@@ -51,13 +51,23 @@ GraPPLE was developed in order to investigate around several key questions:
 Note: Please note that they are currently in beta, so it is important to review the outputs for coherence and report any issues or bugs. 
 
 **Original paper**
-Harling-Lee, J.D., Gorzynski, J., Yebra, G. et al. A graph-based approach for the visualisation and analysis of bacterial pangenomes. BMC Bioinformatics 23, 416 (2022). https://doi.org/10.1186/s12859-022-04898-2
+Harling-Lee, J.D., Gorzynski, J., Yebra, G. et al. A graph-based approach for the visualization and analysis of bacterial pangenomes. BMC Bioinformatics 23, 416 (2022). https://doi.org/10.1186/s12859-022-04898-2
+
+## Other tools
+
+### OrthoVenn3
+
+[OrthoVenn3](https://orthovenn3.bioinfotoolkits.net/home) is a web visualization tool for comparative genomics. It can make a complete pipeline from clustering to evolutionary analyses. Which can be applied to your own samples or to the ones in the built-in database. It offers a wide variety of visualizations.
+
+**Original paper:**
+Jiahe Sun and others, OrthoVenn3: an integrated platform for exploring and visualizing orthologous data across genomes, Nucleic Acids Research, Volume 51, Issue W1, 5 July 2023, Pages W397–W403, https://doi.org/10.1093/nar/gkad313
+
 
 ### Benchmarking for Orthologs Predictions
 
-You might be interested in evaluate the quality of your results concerning the methodology employed for indentifying orthologous genes. To facilitate this task, you can utilize the resources provided by the [Orthology Benchmarking](https://orthology.benchmarkservice.org/) website. This platform offers a pre-processed benchmarking analysis of various methodologies, ranking them based on their efficacy in identifying authentic orthologs (recal). Additionally, it provides the opportunity to assess your own methods and results within this framework. 
+The clustering step is decisive in the results that you will obtain, so choosing a clustering algorithm is a crucial part of working on pangenomics. To facilitate this task, you can utilize the resources the [Orthology Benchmarking](https://orthology.benchmarkservice.org/) website provides. This platform offers a pre-processed benchmarking analysis of various methodologies, ranking them based on their efficacy in identifying authentic orthologs (recall). Additionally, it provides the opportunity to assess your own methods and results within this framework. 
 
-For detailed instruction on how to submit your own data for evaluation, please refer to the following information:
+For detailed instructions on how to submit your own data for evaluation, please refer to the following information:
 
 [How to submit my ortholog predictions to Orthology Benchmarking](https://orthology.benchmarkservice.org/proxy/doc#submit)
 
@@ -65,14 +75,13 @@ For detailed instruction on how to submit your own data for evaluation, please r
 Brigitte Boeckmann and others, Conceptual framework and pilot study to benchmark phylogenomic databases based on reference gene trees, Briefings in Bioinformatics, Volume 12, Issue 5, September 2011, Pages 423–435, https://doi.org/10.1093/bib/bbr034
 
 
-### OrthoVenn3
+## Wrap up
 
-
-In conclusion, the vast array of downstream analyses made possible by our pangenome dataset and accompanying metadata file holds immense promise. By exploring the core and accessory genomes, along with phenotypic correlations, we can gain valuable insights into evolutionary relationships, understand the genetic basis of specific traits, and contribute to a better knowledge about the adaptive processes bacteria have achieved in their respective lifestyle. 
+In conclusion, the vast array of downstream analyses made possible by our pangenome dataset and accompanying metadata file holds immense promise. By exploring the core and accessory genomes, along with phenotypic correlations, we can gain valuable insights into evolutionary relationships, understand the genetic basis of specific traits, and contribute to better knowledge about the adaptive processes bacteria have achieved in their respective lifestyle. 
 
 
 ## Carpentries Philosophy
 A good lesson should be as complete and clear that becomes easy to teach by any instructor. 
 Carpentries lessons are developed for the community, and now you are part of us. 
-This lesson is being developed and we are sure that you can colaborate and help us improve it.
+This lesson is being developed and we are sure that you can collaborate and help us improve it.
 {% include links.md %}
