@@ -26,16 +26,14 @@ complex problem in bioinformatics, and it can be tackled in different ways. This
 
 4. [PPanGGOLiN](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) uses the CD-HIT algorithm to cluster proteins based on sequence similarity. It allows users to define the similarity threshold for clustering, enabling customization according to the specific requirements of the analysis. Also provides features for visualizing and exploring pangenome data. 
 
-
 It's important to acknowledge the specific requirements of your analysis, such as scalability, speed, and the desired output, and evaluate different 
 tools to determine which program best suits your needs. 
 
-
 ## What is GET_HOMOLOGUES?
 
-In this episode, we will use [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13) suite of tools for pangenome analysis. Its main task is clustering protein and nucleotide sequences in homologous (possibly orthologous) groups. This software identifies orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes. The definition of pan- and core-genomes by Get_Homologues is done by calculation of overlapping sets of proteins.
+In this episode, we will use [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13) suite of tools for pangenome analysis. Its main task is clustering protein and nucleotide sequences in homologous (possibly orthologous) groups. This software identifies orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes. The definition of pan- and core-genomes by GET_HOLOGUES is done by calculation of overlapping sets of proteins.
 
-GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hit (BDBH), OrthoMCL (OMCL) or COGtriangles clustering algorithms.
+GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hit (BDBH), OrthoMCL (OMCL), and COGtriangles clustering algorithms.
 
 |    	Method   		 |                           	Definition                         		 |
 |:---------------------:    |:---------------------------------------------------------------------:    |
@@ -43,13 +41,12 @@ GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hi
 |	**OrthoMCL (OMCL)**  	 | Uses graph theory to cluster proteins based on sequence similarity, handling paralogous genes and gene duplications.    |
 |	**COGtriangles:**  	 |   	Assigns proteins to predefined functional categories (COGs) based on best matches to the COG database using a triangle inequality-based algorithm.  		 |
 
-<a href="../fig/GET_HOMOLOGUES_flow_char.jpeg">
-  <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" width="435" height="631" alt="GET_HOMOLOGUES flow chart." />
-</a>
 
 ## Clustering protein families with GET_HOMOLOGUES
 
-Before starting using GET_HOMOLOGUES, we need to activate the Pangenomics_Global environment.
+For this lesson, we will cluster all of our genomes with one of the algorithms of GET_HOMOLOGUES, but the we will use PPanGGOLiN to analyze the pangenome, instead of the GET_HOMOLOGUES 
+tools designed for pangenomics.
+Before starting to use GET_HOMOLOGUES, we need to activate the `Pangenomics_Global` environment.
 
 ~~~
 $ conda deactivate
@@ -112,8 +109,8 @@ Options that control clustering:
 > Get_homologues suggests that the user run their data inside a directory as in the future they might want to add a new *.gbk* file to the analysis.
 {: .callout}
 
+### Create a directory for the output
 
-## Create a directory for get_homologues output
 It's necessary to create a new folder to store all the results.
 
 ~~~
@@ -121,7 +118,7 @@ $ mkdir -p ~/pan_workshop/results/pangenome/get_homologues/data_gbks #Create dir
 $ cd  ~/pan_workshop/results/pangenome/get_homologues/data_gbks #Locates you in the directory 'data_gbks'
 ~~~
 {: .language-bash}
-We need to create symbolic links with all the *.gbk* files created with prokka or downloaded with ncbi
+We need to create symbolic links to have easy access to all the *.gbk* files of our genomes.
 ~~~
 
 $ ln -s ~/pan_workshop/results/annotated/Streptococcus_*/Streptococcus_agalactiae_*_prokka.gbk .
@@ -137,23 +134,20 @@ Streptococcus_agalactiae_A909_prokka.gbk    Streptococcus_agalactiae_NEM316_prok
 ~~~
 {: .output}
 
-## Create the directory to run OMCL algorithm
-~~~
-$ cd ..
-~~~
-{: .language-bash}
+### Run the OMCL algorithm
 
-Generate the clusters with OMCL (OMCL, PubMed=12952885)
+To do the clustering we will use only the OMCL algorithm implemented in GET_HOMOLOGUES. 
 
 Since the following command can take around 8 minutes to run we will use a screen session to run it. The screen session will not have the conda environment activated, so let’s activate it again.
 ~~~
-screen -R clustering
-conda activate /miniconda3/envs/Pangenomics_Global
+$ cd ..
+$ screen -R clustering
+$ conda activate /miniconda3/envs/Pangenomics_Global
 ~~~
 {: .language-bash}
 And now let's run our program.
 ~~~
-get_homologues.pl -d data_gbks -M -t 0 -c -n 8
+$ get_homologues.pl -d data_gbks -M -t 0 -c -n 8
 ~~~
 {: .language-bash}
 Click `Ctrl`+ `a` + `d` to detach from the session and wait 8 minutes to attach back the screen and check if it has finished.
@@ -178,7 +172,7 @@ Click `Ctrl`+ `a` + `d` to detach from the session and wait 8 minutes to attach 
 
 ## Describe your gene families in one table
 
-Get_homologues gave us one FASTA file for each gene family, with the sequences of the genes included in the family. These files look like this:
+GET_HOMOLOGUES gave us one FASTA file for each gene family, with the sequences of the genes included in the family. These files look like this:
 ~~~
 $ head data_gbks_homologues/Streptococcusagalactiae18RS21prokka_f0_0taxa_algOMCL_e0_/3491_IS30_family_transpos...faa
 ~~~
@@ -192,9 +186,9 @@ MGVKKGQRIYHILKTNDLEVSSSTVYRHIKKGYLSITPIDLPRAVKFKKRRKSTLPPIPKAIKEGRRYEDFIEHMNQSEL
 We want to create a file that summarizes the information of the clustering by showing only which genes correspond to which family. 
 We will need that file in the next episode to explore our pangenome with another program.
 
-To obtain this file, that we will name `gene_families.tsv`, we will extract the IDs of the genes from the FASTA headers(in the FASTA header we see the ID of the gene at the beggining after `ID:`) and the name of the families from the file names. For this we will use the following short script.  
+To obtain this file, which we will name `gene_families.tsv`, we will extract the IDs of the genes from the FASTA headers (in the FASTA header we see the ID of the gene at the beginning after `ID:`) and the name of the families from the file names. For this, we will use the following short script.  
 
-Copy the contents and paste them in a file:
+Copy the contents and paste them into a file:
 ~~~
 $ nano ~/pan_workshop/scripts/get_gene_families.sh
 ~~~
