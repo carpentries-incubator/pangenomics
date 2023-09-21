@@ -12,14 +12,14 @@ keypoints:
 - "Sometimes we need manual curation of the output files of the software."
 ---
 
-## Annotating Genomes
+## Annotating genomes
 
 [Annotation](https://en.wikipedia.org/wiki/DNA_annotation) is the process of
 identifying the coordinates of genes and all the coding regions
 in a genome and determining what proteins are produced from them. In order to do this, an unknown
-sequence is enriched with information relating genomic position, regulatory
-sequences, repeats, gene name and protein products. This information
-is stored in genomic databases to help future analysis processing new data.
+sequence is enriched with information relating to genomic position, regulatory
+sequences, repeats, gene names, and protein products. This information
+is stored in genomic databases to help future analysis processing of new data.
 
 [Prokka](https://github.com/tseemann/prokka)
 is a command-line software tool created in Perl to annotate bacterial,
@@ -43,9 +43,9 @@ gene product. Usually, in order to predict what a gene encodes
 for, it is compared with a large
 database of known sequences, usually at the protein level,
 and transferred the annotation of the best significant match.
-Prokka uses this method, but in a hierarchical manner. It starts
+Prokka uses this method but in a hierarchical manner. It starts
 with a small trustworthy database, it then moves to medium
-sized but domain specific databases and finally to curated
+sized but domain-specific databases and finally curated
 models of protein families.
 
 In this lesson, we'll annotate the `FASTA` files we have downloaded in the
@@ -84,7 +84,7 @@ $ prokka --prefix agalactiae_A909_prokka --outdir agalactiae_A909_prokka --kingd
 ~~~
 {: .language-bash}
 
-This command takes about a minute to run, printing a lot of information on screen while doing so. After finishing, Prokka will create a new folder, inside of which, if you run the `tree` command, you will find the following files:
+This command takes about a minute to run, printing a lot of information on the screen while doing so. After finishing, Prokka will create a new folder, inside of which, if you run the `tree` command, you will find the following files:
 ~~~
 tree
 ~~~
@@ -119,41 +119,41 @@ We encourage you to explore each output. The following table describes the conte
 | .fna | Nucleotide FASTA file of the input contig sequences. |
 | .faa | Protein FASTA file of the translated CDS sequences. |
 | .ffn | Nucleotide FASTA file of all the prediction transcripts (CDS, rRNA, tRNA, tmRNA, misc_RNA). |
-| .sqn | An ASN1 format "Sequin" file for submission to GenBank. It needs to be edited to set the correct taxonomy, authors, related publication etc. |
-| .fsa | Nucleotide FASTA file of the input contig sequences, used by "tbl2asn" to create the `.sqn` file. It is almost the same as the `.fna` file, but with extra Sequin tags in the sequence description lines. |
+| .sqn | An ASN1 format "Sequin" file for submission to GenBank. It needs to be edited to set the correct taxonomy, authors, related publications etc. |
+| .fsa | Nucleotide FASTA file of the input contig sequences, used by "tbl2asn" to create the `.sqn` file. It is almost the same as the `.fna` file but with extra Sequin tags in the sequence description lines. |
 | .tbl | Feature Table file, used by "tbl2asn" to create the `.sqn` file. |
 | .err | Unacceptable annotations - the NCBI discrepancy report. |
 | .log | Contains all the output that Prokka produced during its run. This is the record of the used settings, even if the `--quiet` option was enabled. |
 | .txt | Statistics related to the found annotated features. |
 | .tsv | Tab-separated file of all features: locus_tag, ftype, len_bp, gene, EC_number, COG, product. |
 
-Parameters can be modified as much as needed regarding the organism, the gene and even the locus tag you are looking for.
+Parameters can be modified as much as needed regarding the organism, the gene, and even the locus tag you are looking for.
 
 > ## Exercise 1: Inspecting the GBK
 > Open the `gbk` output file and carefully explore the information it contains. Which of the following statements is TRUE?
 > 
 > a) Prokka translates every single gene to its corresponding protein, even if the gene isn't a coding one.  
-> b) Prokka can find all kinds of protein coding sequences, not just the ones that have been identified or cataloged in a database.  
-> c) Prokka identifies tRNA genes, but doesn't mention the anticodon located on the tRNAs.  
+> b) Prokka can find all kinds of protein-coding sequences, not just the ones that have been identified or cataloged in a database.  
+> c) Prokka identifies tRNA genes but doesn't mention the anticodon located on the tRNAs.  
 > d) Prokka doesn't provide the positions in which a feature starts or ends.  
 > e) The coding sequences are identified with the CDS acronym in the `FEATURES` section of each `LOCUS`.  
 > 
 >> ## Solution
 >>  
->> a) FALSE. Prokka successfully identifies non-coding sequences, and doesn't translate them. Instead, it provides alternative information (e.g. if it's a rRNA gene, it tells if it's 5S, 16S or 23S).  
+>> a) FALSE. Prokka successfully identifies non-coding sequences and doesn't translate them. Instead, it provides alternative information (e.g. if it's a rRNA gene, it tells if it's 5S, 16S, or 23S).  
 >> b) TRUE. Some coding sequences produce proteins that are marked as "hypothetical", meaning that they haven't been yet identified but seem to show properties of a coding sequence.  
 >> c) FALSE. Every tRNA feature has a `/note` subsection mentioning between parentheses the anticodon located on the tRNA.  
 >> d) FALSE. Right next to each feature, there's a pair of numbers indicating the starting and ending position of the corresponding feature.  
->> e) TRUE. Each coading sequence is identified by the CDS acronym in the left and information such as coordiantes, gene name, locus tag, 
->> product description and translation in the right.
+>> e) TRUE. Each coding sequence is identified by the CDS acronym on the left and information such as coordinates, gene name, locus tag, 
+>> product description and translation on the right.
 >{: .solution}
 {: .challenge}
 
-## Annotating Multiple Genomes
+## Annotating multiple genomes
 
 Now that we know how to annotate genomes with Prokka we can annotate all of
 the *S. agalactiae* in one run.
-For this purpose we will use a complex `while` loop that, for each of the *S. agalactiae* genomes,
+For this purpose, we will use a complex `while` loop that, for each of the *S. agalactiae* genomes,
 first extracts the strain name and saves it in a variable, and then uses it inside the
 Prokka command.
 
@@ -194,24 +194,26 @@ conda activate /miniconda3/envs/Prokka_Global
 {: .language-bash}  
 ~~~
 $ cat TettelinList.txt | while read line
-> do 
-> prokka agalactiae_$line/*.fna --kingdom Bacteria --genus Streptococcus --species agalactiae \
-> --strain $line --usegenus --addgenes --prefix Streptococcus_agalactiae_${line}_prokka \
-> --outdir ~/pan_workshop/results/annotated/Streptococcus_agalactiae_${line}_prokka
->  done
+do 
+prokka agalactiae_$line/*.fna --kingdom Bacteria --genus Streptococcus --species agalactiae \
+--strain $line --usegenus --addgenes --prefix Streptococcus_agalactiae_${line}_prokka \
+--outdir ~/pan_workshop/results/annotated/Streptococcus_agalactiae_${line}_prokka
+done
 ~~~
 {: .language-bash}  
 Click `Ctrl`+ `a` + `d` to detach from the session and wait until it finishes the run.
 
 
 > ## Genome annotation services
-> To learn more about Prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provide a web-based user interface where you can store your private genomes and share them with your colleagues. If you want to use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast).
+> To learn more about Prokka you can read [Seemann T. 2014](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). Other valuable web-based genome annotation services
+> are [RAST](https://rast.nmpdr.org/) and [PATRIC](https://www.patricbrc.org/). Both provide a web-based user interface where you can store your private genomes and share them 4
+> with your colleagues. If you want to use RAST as a command-line tool you can try the docker container [myRAST](https://github.com/nselem/myrast).
 {: .callout}
 
 
 ## Curating Prokka output files
 
-Now that we have our genome annotations, let's take a look at one of them. Fortunately, the `gbk` files are human readable and we can 
+Now that we have our genome annotations, let's take a look at one of them. Fortunately, the `gbk` files are human-readable and we can 
 look at a lot of the information in the first few lines:
 
 ~~~
@@ -258,7 +260,7 @@ FEATURES             Location/Qualifiers
 {: .output}
 
 
-This difference could be a problem, since some bioinformatics programs could classify two different strains within the same "Unclassified" group. 
+This difference could be a problem since some bioinformatics programs could classify two different strains within the same "Unclassified" group. 
 For this reason, Prokka's output files need to be corrected before moving forward with additional analyses.
 
 To do this "manual" curation we will use the script `correct_gbk.sh`. Let's first make a directory for the scripts, and then use of nano text editor to create your file.
@@ -272,11 +274,11 @@ Paste the following content in your script:
 #This script will change the word Unclassified from the ORGANISM lines by that of the respective strain code.
 # Usage: sh correct_gbk.sh <gbk-file-to-edit>
 file=$1   # gbk file annotated with prokka
-strain=$(grep -m 1 "DEFINITION" $file |cut -d " " -f6,7) # create a variable with the columns 6 and 7 from the DEFINITION line.
+strain=$(grep -m 1 "DEFINITION" $file |cut -d " " -f6,7) # Create a variable with the columns 6 and 7 from the DEFINITION line.
 
 sed -i '/ORGANISM/{N;s/\n//;}' $file # Put the ORGANISM field on a single line.
 
-sed -i "s/\s*Unclassified./ $strain/" $file # Substitute the word "Unclassfied" with the value of the strain variable.
+sed -i "s/\s*Unclassified./ $strain/" $file # Substitute the word "Unclassified" with the value of the strain variable.
 ~~~
 {: .language-bash}
 
@@ -286,9 +288,9 @@ that of the respective strain.
 Now, we need to run this script for all the `gbk` files:
 ~~~
 $ ls */*.gbk | while read file
-> do 
-> bash ../../scripts/correct_gbk.sh $file
-> done
+do 
+bash ../../scripts/correct_gbk.sh $file
+done
 ~~~
 {: .language-bash}
 
@@ -317,13 +319,13 @@ Voilà! Our `gbk` files now have the strain code in the `ORGANISM` line.
 > ## Exercise 2: Counting coding sequences
 > 
 > Before we build our pangenome it can be useful to take a quick look at how many coding sequences each of our genomes have. This way we can 
-> know if they have a number close to the expected one (if we have previous knowlegde of our organism of study).
+> know if they have a number close to the expected one (if we have some previous knowledge of our organism of study).
 > 
-> Use your `grep`, looping and piping abilities to count the number of coding sequences in the `gff` files of each genome.  
+> Use your `grep`, looping, and piping abilities to count the number of coding sequences in the `gff` files of each genome.  
 > 
 > Note: We will use the `gff` file because the `gbk` contains the aminoacid sequences, so it is possible that with the `grep` command 
 > we find the string `CDS` in these sequences, and not only in the description of the features. The `gff` files also have the description of the
-> features, but in a different format.
+> features but in a different format.
 > 
 >
 > > ## Solution
@@ -335,8 +337,8 @@ Voilà! Our `gbk` files now have the strain code in the `ORGANISM` line.
 > > ~~~ 
 > > > for genome in */*.gff
 > > > do 
-> > > echo $genome #print the name of the file
-> > > grep "CDS" $genome | wc -l #find the lines with the string "CDS" and pipe that to the command wc with the flag -l to count the lines
+> > > echo $genome # Print the name of the file
+> > > grep "CDS" $genome | wc -l # Find the lines with the string "CDS" and pipe that to the command wc with the flag -l to count the lines
 > > > done
 > > ~~~
 > > {: .language-bash}
@@ -377,7 +379,7 @@ Voilà! Our `gbk` files now have the strain code in the `ORGANISM` line.
 > Here the coverage and the length of the locus are fused, so this will give problems downstream in your analysis.  
 > 
 > The tool [anvi-script-reformat-fasta](https://anvio.org/help/main/programs/anvi-script-reformat-fasta/) can help you simplify the names 
-> of your assemblies and do other magic, such as remove the small contigs or sequences with too many gaps.  
+> of your assemblies and do other magic, such as removing the small contigs or sequences with too many gaps.  
 > ~~~
 > anvi-script-reformat-fasta my_new_assembly.fasta -o my_reformated_assembly.fasta --simplify-names
 > ~~~
@@ -386,5 +388,3 @@ Voilà! Our `gbk` files now have the strain code in the `ORGANISM` line.
 > `LOCUS       c_000000000001         44796 bp    DNA     linear`.  
 > Problem solved!
 {: .callout}
-
-
