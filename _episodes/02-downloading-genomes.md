@@ -12,14 +12,13 @@ keypoints:
 
 ## Getting Genomic Data from the NCBI
 
-In the [previous episode](https://paumayell.github.io/pangenomics/01-introduction/index.html), we downloaded the working directory for this workshop that already contains the genomes of strains **18RS21** and **H36B** within our pan_workshop/data directory. However, the remaining six GBS strains will be downloaded in this episode. We will obtain these genomic sequences from the National Center for Biotechnology Information (NCBI) database, the primary source of publicly available genomes. To automate the downloading process, we are going to utilize the specialized `ncbi-genome-download` [package](https://github.com/kblin/ncbi-genome-download), which includes convenient shell commands that allows users to download genomes directly from the NCBI. This package offers great flexibility by enabling users to specify their desired queries. It simplifies the process of retrieving the data and ensures that is conveniently saved into the working directory. 
+In the [previous episode](https://paumayell.github.io/pangenomics/01-introduction/index.html), we downloaded the working directory for this workshop that already contains the genomes of strains `18RS21` and `H36B` within our `pan_workshop/data` directory. However, the remaining six GBS strains will be downloaded in this episode. We will obtain these genomic sequences from the National Center for Biotechnology Information (NCBI) database, the primary source of publicly available genomes. To automate the downloading process, we are going to utilize the specialized `ncbi-genome-download` [program](https://github.com/kblin/ncbi-genome-download), which includes convenient shell commands that allow users to download genomes directly from the NCBI. This package offers great flexibility by enabling users to specify their desired queries. It simplifies the process of retrieving the data and ensures that is conveniently saved into the working directory. 
 
-The `ncbi-genome-download` package can be installed with conda. In our case, we have already installed it into the environment under the same name of the package *ncbi-genome-download*. Thus, in order to use the package, we just have to activate the *ncbi-genome-download* conda environment. 
+The `ncbi-genome-download` package can be installed with Conda (the package and environment manager we will be using). In our case, we have already installed it into the environment under the same name. To use the package, we just have to activate the *ncbi-genome-download* conda environment. 
 
 > ## Know more
 > If you want to know more about what is *conda* and its *environments* visit this [link](https://docs.conda.io/en/latest/).
 {: .callout}
-
 
 Let's activate the *ncbi-genome-download* conda environment to begin.  
 ~~~
@@ -35,7 +34,7 @@ $ conda activate /miniconda3/envs/ncbi-genome-download
 For practicality, the prompt will be written only as `$` instead of `(ncbi-genome-download) $`.
 
 Now, you are able to run the package `ncbi-genome-download`. 
-Exploring the range of options available in the package is highly reccomended in order to choose well and get what you really need. To access the complete list of parameters to incorporate in your downloads, simply type the following commmand: 
+Exploring the range of options available in the package is highly recommended in order to choose well and get what you really need. To access the complete list of parameters to incorporate in your downloads, simply type the following command: 
 
 ~~~
 $ ncbi-genome-download --help
@@ -112,9 +111,9 @@ agalactiae_18RS21  agalactiae_H36B annotated_mini
 ~~~
 {: .output}
 
-Prior to downloading anything from the NCBI, we recommend to verify if the genome or genomes you are interested are available in the database. The package `ncbi-genome-download` includes the `--dry-run` or `-n` flag, which means that the algorithm only will check the genomes you specify to download, but without downloading the files. Other useful flags are `--formats`, which serve to specify the desired format; `--genera` to specify the genus (or species), and `-S` for the strains. Importantly, the `ncbi-genome-download` command must always end with the name of the group of organisms where the search will be performed, which in our case will be `bacteria`. 
+Prior to downloading anything from the NCBI, we recommend verifying if the genome or genomes you are interested in are available in the database. The package `ncbi-genome-download` includes the `--dry-run` or `-n` flag, which means that the algorithm only will check the genomes you specify to download, but without downloading the files. Other useful flags are `--formats`, which serve to specify the desired format; `--genera` to specify the genus (or species), and `-S` for the strains. Importantly, the `ncbi-genome-download` command must always end with the name of the group of organisms where the search will be performed, which in our case will be `bacteria`. 
 
-So, first, let's check if one of the genomes we are interested to download, "*Streptococcus agalactiae* 515" is available in NCBI. We will use the flags mentioned above.
+So, first, let's check if one of the genomes we are interested in downloading, "*Streptococcus agalactiae* 515", is available in NCBI. We will use the flags mentioned above.
 
 ~~~
 $ ncbi-genome-download -n --formats fasta --genera "Streptococcus agalactiae" -S 515 bacteria 
@@ -128,7 +127,7 @@ GCF_012593885.1 Streptococcus agalactiae 515    515
 
 Great! The genome is available! 
 
-Now, we can proceed to download it. To better organize our data, we can save this file into an specific directory for this strain. We can indicate this instruction with the `--output-folder` or `-o` flag followed by the name we choose. In this case, will be `-o agalactie_515`. Notice that now we no longer need the flag the `-n`.  
+Now, we can proceed to download it. To better organize our data, we can save this file into a specific directory for this strain. We can indicate this instruction with the `--output-folder` or `-o` flag followed by the name we choose. In this case, will be `-o agalactie_515`. Notice that now we no longer need the flag the `-n`.  
 
 ~~~
 $ ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S 515 -o agalactiae_515 bacteria 
@@ -230,16 +229,16 @@ NEM316
 ~~~
 {: .output}
 
-First, let's read the lines of the file file ina loop, and print
+First, let's read the lines of the file in a loop, and print
 them in the terminal with the `echo strain $line` command.  
 `strain` is just a word that we will print, and `$line` will 
 store the value of each of the lines of the `Tettelin.txt` file.
 
 ~~~
 $ cat TettelinList.txt | while read line 
-> do 
-> echo strain $line
-> done
+do 
+echo strain $line
+done
 ~~~
 {: .language-bash}
 ~~~
@@ -255,11 +254,11 @@ We can now check if these strains are available in NCBI (remember to use
 the `-n` flag so genome files aren't downloaded).
 
 ~~~
-$ cat TettelinList.txt | while read line; 
-> do
-> echo strain $line
-> ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -n bacteria
-> done
+$ cat TettelinList.txt | while read line
+do
+echo strain $line
+ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -n bacteria
+done
 ~~~
 {: .language-bash}
 ~~~ 
@@ -282,7 +281,7 @@ GCF_000007265.1 Streptococcus agalactiae 2603V/R        2603V/R
 ~~~
 {: .output}
 
-The tool has successfully found the five strain. Notice that
+The tool has successfully found the five strains. Notice that
 the strain CJB111 contains two versions.
 
 We can now proceed to download these strains to their corresponding
@@ -291,10 +290,10 @@ name and removing the `-n` flag).
 
 ~~~
 $ cat TettelinList.txt | while read line 
-> do
-> echo downloading strain $line
-> ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -o agalactiae_$line bacteria
-> done
+do
+echo downloading strain $line
+ncbi-genome-download --formats fasta --genera "Streptococcus agalactiae" -S $line -o agalactiae_$line bacteria
+done
 ~~~
 {: .language-bash}
 ~~~
@@ -368,12 +367,12 @@ agalactiae_NEM316
 
 We noticed that all fasta files but  `GCF_000007265.1_ASM726v1_genomic.fna.gz` have been decompressed.
 That decompression failure was because the 2603V/R strain has a different directory structure. This structure
-is consequence of the name of the strain, because the characters "/R" are part of the name,
+is a consequence of the name of the strain because the characters "/R" are part of the name,
 a directory named `R` has been added to the output, changing the directory structure.
-Differences like this are expected to occur in big datasets, and must be manually
-curated after the general cases has been treated with scripts. In this case the `tree`
-command has helped us to identify that the error. Let's decompress the file 
-`GCF_000007265.1_ASM726v1_genomic.fna.gz` and move it to the `agalactiae_2603V/` directory, although it doesn't have the real strain name.
+Differences like this are expected to occur in big datasets and must be manually
+curated after the general cases have been treated with scripts. In this case the `tree`
+command has helped us to identify the error. Let's decompress the file 
+`GCF_000007265.1_ASM726v1_genomic.fna.gz` and move it to the `agalactiae_2603V/` directory. We will use it like this although it doesn't have the real strain name.
 
 ~~~
 $  gunzip agalactiae_2603V/R/refseq/bacteria/*/*gz
@@ -393,12 +392,12 @@ get rid of unnecessary directories. To do so, we'll use a `while` cycle as follo
 Beware of the typos! Take it slowly and make sure you are sending the files to the correct location. 
 
 ~~~
- $ cat TettelinList.txt | while read line
- > do 
- > echo moving fasta file of strain $line
- > mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. 
- > done
- ~~~
+$ cat TettelinList.txt | while read line
+do 
+echo moving fasta file of strain $line
+mv agalactiae_$line/refseq/bacteria/*/*.fna agalactiae_$line/. 
+done
+~~~
 {: .language-bash}
 ~~~
 moving fasta file of strain A909
@@ -417,12 +416,12 @@ Use the `tree` command to make sure that everything is in its right place.
 Now let's remove the `refseq/` directories completely:
 
 ~~~
- $ cat TettelinList.txt | while read line
- > do 
- > echo removing refseq directory of strain $line
- > rm -r agalactiae_$line/refseq
- > done
- ~~~
+$ cat TettelinList.txt | while read line
+do 
+echo removing refseq directory of strain $line
+rm -r agalactiae_$line/refseq
+done
+~~~
 {: .language-bash}
 
 ~~~
@@ -477,14 +476,14 @@ $ rm agalactiae_CJB111/GCF_015221735.2_ASM1522173v2_genomic.fna
 > In this example, we have downloaded the genome in `fasta` format. However, we can
 >  use the `--format` or `-F` flags to get any other format of interest.
 >  For example, the `gbk` format files (which contain information about the
->  coding sequences, their locus, the name of the protein and the full
+>  coding sequences, their locus, the name of the protein, and the full
 >  nucleotide sequence of the assembly, and are useful for annotation double-checking)
 >  can be downloaded by specifying our queries with `--format genbank`.
 {: .callout}
 
 > ## Exercise 1: Searching for desired strains
 >  Until now we have downloaded only specific strains that we were looking for. Write a command that would tell you which genomes are 
->  available for all the *Streptococcus* genus.
+>  available for all the *Streptococcus* genera.
 >
 > **Bonus**: Make a file with the output of your search.
 > 
@@ -514,6 +513,3 @@ $ rm agalactiae_CJB111/GCF_015221735.2_ASM1522173v2_genomic.fna
 > > 
 > {: .solution}
 {: .challenge}
-
-
-
