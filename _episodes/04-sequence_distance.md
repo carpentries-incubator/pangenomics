@@ -22,16 +22,18 @@ sequences and measuring the percentage of identity. The process of building gene
 > ## Pizza pangenomics
 > Do Roma Tomatoes and Cherry Tomatoes go in the same family? 
 >  
-> If two genes of different species come from a gene in an ancestral species, they are **orthologs**. And if a gene
-> duplicates within a species, the two resulting genes are **paralogs**. Depending on your research questions you may want to have the
-> paralogs separated into different families or in the same family with duplications.
-> Paralogs tend to have a higher percentage of identity than orthologs, so if you want to separate the paralogs you can use an algorithm
-> that makes the families using an identity threshold and set a high threshold.
->
-> Since you want to offer the most variety of ingredients in your pizza restaurant it may be a better idea to use a higher identity threshold
-> (however you are measuring the similarity between ingredients)
-> that separates the Roma Tomatoes and the
-> Cherry Tomatoes into different families, instead of having only one family of just _tomatoes_. 
+>> ## Solution
+>> 
+>> If two genes of different species come from a gene in an ancestral species, they are **orthologs**. And if a gene
+>> duplicates within a species, the two resulting genes are **paralogs**. Depending on your research questions you may want to have the
+>> paralogs separated into different families or in the same family with duplications.
+>> Paralogs tend to have a higher percentage of identity than orthologs, so if you want to separate the paralogs you can use an algorithm
+>> that uses an identity threshold, and set a high threshold.
+>>
+>> Since you want to offer the most variety of ingredients in your pizza restaurant it may be a better idea to separate the ingredients into as many families as possible.
+>> To achieve that you should use a **higher identity threshold** (whatever that means when you are comparing ingredients), this way you would separate the Roma Tomatoes and the
+>> Cherry Tomatoes into two families, instead of having one family of just _tomatoes_. 
+{: .solution}
 {: .discussion}
 
 In this episode, we will demonstrate how we measure the similarity of genes using [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
