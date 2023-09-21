@@ -13,7 +13,7 @@ keypoints:
 
 ## Finding gene families
 
-In the [previous episode](https://paumayell.github.io/pangenomics/03-annotation-with-Prokka/index.html), we annotated all of our genomes, so now we know the genes that each individual genome has (and their protein sequences). 
+In the previous episode, we annotated all of our genomes, so now we know the genes that each individual genome has (and their protein sequences). 
 To build a pangenome we 
 need to figure out which genes to compare between genomes. For this, we need to build **gene families**, which are groups of homologous genes (i.e. 
 genes with a common ancestor). Homology between genes is found through sequence similarity, and sequence similarity is measured by aligning the
