@@ -33,7 +33,7 @@ sequences and measuring the percentage of identity. The process of building gene
 >> Since you want to offer the most variety of ingredients in your pizza restaurant it may be a better idea to separate the ingredients into as many families as possible.
 >> To achieve that you should use a **higher identity threshold** (whatever that means when you are comparing ingredients), this way you would separate the Roma Tomatoes and the
 >> Cherry Tomatoes into two families, instead of having one family of just _tomatoes_. 
-{: .solution}
+>{: .solution}
 {: .discussion}
 
 In this episode, we will demonstrate how we measure the similarity of genes using [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
