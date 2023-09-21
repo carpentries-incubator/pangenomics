@@ -3,41 +3,37 @@ title: "Clustering Protein Families"
 teaching: 15
 exercises: 10
 questions:
-- "What software is recommended for clustering protein families?"
-- "What is GET_HOMOLOGUES?"
+- "Can I cluster my sequences automatically?"
 objectives:
 - "Cluster orthologous proteins from GenBank (.gbk) files"
 - "Explore clusters using GET_HOMOLOGUES suit of tools"
-- "Understand basic pangenomics metrics"
 keypoints:
 - "Clustering protein families refers to the process of grouping proteins that share similar characteristics or functions into distinct clusters or families."
 - "GET_HOMOLOGUES is a software package for microbial pangenome analysis"
-- "Three sequence clustering algorithms are supported by Get_Homologues; BDBH, COGtriangles and OrthoMCL"
-
+- "Three sequence clustering algorithms are supported by Get_Homologues; BDBH, COGtriangles, and OrthoMCL"
 ---
 
-## What software is recommended for clustering protein families?
+## Diversity of algorithms for clustering
 
-When it comes to pangenome analysis, which involves analyzing the complete set of genes in a given species or a group of related organisms, there are several software tools that can be used for clustering protein families:
+The key step in pangenomics is knowing what to compare between genomes, in other words, what are the gene families in our group of genomes. The clustering of homologous sequences is a very 
+complex problem in bioinformatics, and it can be tackled in different ways. This is why there are many clustering programs that focus on different things to join the individual sequences into families. 
 
-1. [OrthoFinder](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1832-y): It clusters proteins based on orthology relationships, identifying orthologous protein families across multiple genomes. OrthoFinder uses a combination of sequence similarity and phylogenetic tree-based approaches to infer orthology relationships.
+1. [OrthoFinder](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1832-y) uses a combination of sequence similarity and phylogenetic tree-based approaches to infer orthology relationships. It is designed for comparative genomics and phylogenetic analysis, not for pangenomics.
 
-2. [Roary](https://academic.oup.com/bioinformatics/article/31/22/3691/240757): It clusters proteins based on pairwise protein similarity. It utilizes a fast algorithm to construct clusters and determines core and accessory genes in the pangenome. Roary is known for its speed and scalability, making it suitable for large-scale pangenome analyses.
+2. [Roary](https://academic.oup.com/bioinformatics/article/31/22/3691/240757) clusters proteins based on pairwise protein similarity. It was designed specifically for pangenomics so it is one of the most used programs in the field and it has set the standard format for the files that describe a pangenome.
 
-3. [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13): It offers various algorithms for clustering proteins, including bidirectional best hit, Markov clustering, and COGtriangles. Also provides additional functionalities, such as identification of strain-specific genes and visualization of pangenome data.
+3. [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13) offers various algorithms for clustering proteins, including bidirectional best hit, Markov clustering, and COGtriangles. Also provides additional functionalities, such as identification of strain-specific genes and visualization of pangenome data. It provides a comparison of different clustering algorithms.
 
-4. [PPanGGOLiN](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732): It uses the CD-HIT algorithm to cluster proteins based on sequence similarity. It allows users to define the similarity threshold for clustering, enabling customization according to the specific requirements of the analysis. Also provides features for visualizing and exploring pangenome data. 
+4. [PPanGGOLiN](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) uses the CD-HIT algorithm to cluster proteins based on sequence similarity. It allows users to define the similarity threshold for clustering, enabling customization according to the specific requirements of the analysis. Also provides features for visualizing and exploring pangenome data. 
 
-> ## Considerations when choosing a software for clustering protein families
-> It's important to acknowledge the specific requirements of your analysis, such as scalability, speed, and the desired output, and evaluate different 
-> tools to determine which one best suits your needs. 
-{: .callout}
+
+It's important to acknowledge the specific requirements of your analysis, such as scalability, speed, and the desired output, and evaluate different 
+tools to determine which program best suits your needs. 
+
 
 ## What is GET_HOMOLOGUES?
 
-In this episode we will use get [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13) suite of tools for pangenome analysis.
-
-Its main task is clustering protein and nucleotide sequences in homologous (possibly orthologous) groups. This software identifies orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes. The definition of pan- and core-genomes by Get_Homologues is done by calculation of overlapping sets of proteins. It is maintained by Bruno Contreras-Moreira and Pablo Vinuesa.
+In this episode, we will use [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13) suite of tools for pangenome analysis. Its main task is clustering protein and nucleotide sequences in homologous (possibly orthologous) groups. This software identifies orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes. The definition of pan- and core-genomes by Get_Homologues is done by calculation of overlapping sets of proteins.
 
 GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hit (BDBH), OrthoMCL (OMCL) or COGtriangles clustering algorithms.
 
@@ -50,37 +46,6 @@ GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hi
 <a href="../fig/GET_HOMOLOGUES_flow_char.jpeg">
   <img src="../fig/GET_HOMOLOGUES_flow_char.jpeg" width="435" height="631" alt="GET_HOMOLOGUES flow chart." />
 </a>
-
-> ## Exercise 1: Clustering algorithms
->
-> Complete the line blank with the correct clustering algorithms
->
-> |------------------------------+------------------------------------------------------------------------------|  
-> | **Algorithms**                  		 |     **Information required**                            		 |  
-> |------------------------------+------------------------------------------------------------------------------|  
-> | ___________________ |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                         		 |  
-> |------------------------------+------------------------------------------------------------------------------|  
-> | ___________________ | Merges triangles of inter-genomic symmetrical best matches |   
-> |------------------------------+------------------------------------------------------------------------------|  
-> | ___________________ | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
-> |------------------------------+------------------------------------------------------------------------------|
->
->
->> ## Solution
->>
->> |------------------------------+------------------------------------------------------------------------------|  
->> | **algorithms**                  		 |     **Information required**                            		 |  
->> |------------------------------+------------------------------------------------------------------------------|  
->> | BDBH             		 |  Starting from a reference genome, keep adding genomes stepwise while storing the sequence clusters that result from merging the latest bidirectional best hits                         		 |  
->> |------------------------------+------------------------------------------------------------------------------|  
->> | COGS  | Merges triangles of inter-genomic symmetrical best matches |   
->> |------------------------------+------------------------------------------------------------------------------|  
->> | OMCL    | uses the Markov Cluster Algorithm to group sequences, with inflation (-F) controlling cluster granularity  |  
->> |------------------------------+------------------------------------------------------------------------------|
->>
->>
-> {: .solution}
-{: .challenge}
 
 ## Clustering protein families with GET_HOMOLOGUES
 
