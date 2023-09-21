@@ -1,15 +1,18 @@
 ---
-title: "Clustering gene families with blast scores"  
+title: "Clustering with BLAST Results"  
 teaching: 30
 exercises: 15
 questions:
-- "What elements are compared to create a pangenome?"
-- "How are gene families conformed?"
+- "How can we use the blast results to form families?"
 objectives:
 - "Cluster gene families according to a similarity measurement."
 keypoints:
 - "Genes are clustered into gene families according to a similarity score."
 ---
+
+In the previous episode, we obtained the E-value between each pair of sequences of our mini dataset. Even though it is not strictly an identity measure between the sequences, 
+the E-value tells us if the two sequences are a good match. We will now use this information to cluster the sequences from families using an algorithm written in Python, and we will see how it 
+joins the sequences progressively until each of them is part of a family.
 
 ## Processing the BLAST results
 
@@ -21,7 +24,7 @@ from matplotlib import cm
 import numpy as np
 ~~~
 {: .language-python}
-First we need to read the `mini-genomes.blast` file that we produced.
+First, we need to read the `mini-genomes.blast` file that we produced.
 Let's import the BLAST results to Python using the column names: `qseqid`,`sseqid`, `evalue`.
 
 ~~~
@@ -41,7 +44,8 @@ blastE.head()
 ~~~
 {: .output}
 
-Now we want to make two columns that have the name of the genomes of the queries, and the name of the genomes of the subjects. We will take this information from the query and subject IDs (the label that we added at the beginning of the episode).
+Now we want to make two columns that have the name of the genomes of the queries, and the name of the genomes of the subjects. We will take this information from the query 
+and subject IDs (the label that we added at the beginning of the episode).
 
 First, let's obtain the genome of each query gene.
 ~~~
@@ -138,7 +142,7 @@ for a in genomes:
 ~~~
 {: .language-python}
 
-We can now use this dictionary to know how many genes does each genome has and therefore identify the biggest genome.
+We can now use this dictionary to know how many genes each genome has and therefore identify the biggest genome.
 ~~~
 genome_temp=[]
 size_genome=[]
@@ -176,19 +180,19 @@ genomes
 ~~~
 {: .output}
 
-So the biggest genome es `A909` and we will start our clustering algorithm with this genome.
+So the biggest genome is `A909` and we will start our clustering algorithm with it.
 
-## Finding gene families with BBH algorithm
+## Finding gene families with the BBH algorithm
 
-To make a gene family, we first need to identify the most similar genes between genomes. The 
-Bidirectional Best Hit algorithm will allow us to find the pairs of genes that are the most similar 
+To make a gene family, we first need to identify the most similar genes between genomes. 
+The Bidirectional best-hit algorithm will allow us to find the pairs of genes that are the most similar 
 (lowest e-value) to each other in each pair of genomes.  
 
 <a href="{{ page.root }}/fig/bdbh.png">
    <img src="{{ page.root }}/fig/bdbh.png" alt=" Bidirectional best-hit algorithm" />
   </a>
 
-For this we will define a function to find in each genome the gene that is most similar to each
+For this, we will define a function to find in each genome the gene that is most similar to each
 gene in our biggest genome A909. 
 
 > ## Clustering algorithms
@@ -245,14 +249,14 @@ def besthit_bbh(gengenome,listgenomes,genome,data):
 
 In one of the previous steps, we created a dictionary with all the genes present in each genome.
 Since we know that the biggest genome is `A909`, we will obtain the genes belonging to `A909` and 
-almacenate them in a list.  
+gather them in a list.  
 
 ~~~
 genome_A909 = dic_gen_genomes['A909']
 ~~~
 {: .language-python}
 
-Now, we will apply the function `besthit_bbh` to the previous list, `genomes` and  the genome `A909` that is `genomes[0]`.
+Now, we will apply the function `besthit_bbh` to the previous list, `genomes`, and  the genome `A909` that is `genomes[0]`.
 
 ~~~
 g_A909_bbh=besthit_bbh(genome_A909,genomes,genomes[0],df)
@@ -435,10 +439,10 @@ A909|MGIDGNCP_00405	A909|MGIDGNCP_00405	2603V|GBPINHCM_00401	515|LHMFJANI_00394	
 515|LHMFJANI_01625	NA	                NA	                 515|LHMFJANI_01625	  NEM316|AOGPFIKH_01842
 ~~~
 {: .output}
-Here we have our complete pangenome! In the first column we have the gene family names, and then one column per genome 
+Here we have our complete pangenome! In the first column, we have the gene family names, and then one column per genome 
 with the genes that belong to each family.  
 
-Finaly, we will export to a csv file.
+Finally, we will export to a `csv` file.
 
 ~~~
 families_bbh.to_csv('~/pan_workshop/results/blast/mini/families_minis.csv')
@@ -447,8 +451,8 @@ families_bbh.to_csv('~/pan_workshop/results/blast/mini/families_minis.csv')
 
 ## Explore functional annotation of gene families
 
-Now that we have our genes grouped together in gene families and that we have the functional annotation of each gene, let's check if the
-obtained families coincide with the functional annotations.
+Now that we have our genes grouped together in gene families and since we have the functional annotation of each gene, we can check if the
+obtained families coincide with the functional annotations. For this, we will go back to our Terminal to use Bash.
 
 The unique functional annotation that our mini genomes have are the following.
 
