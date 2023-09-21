@@ -46,7 +46,7 @@ The pangenome consists of two primary components or partitions: core genome and 
 > What are the partitions in your pizza pangenome?
 >  
 > > ## Solution
-> > During your expedition of gathering pizza recipes you find that only flour, water, salt, and yeast are in all the recipes, this is your pizza **core genome**. Since the vast majority of pizzas have tomato sauce and cheese (believe it or not, there are white pizzas without tomato sauce and pizzas like the marinara that does not have cheese), you put the tomato and the cheese in the **soft-core genome**. Other ingredients like basil and olive oil are very common so they go to the **shell genome**, and finally the weirdos like pineapple go to the **cloud genome**.
+> > During your expedition of gathering pizza recipes you find that only flour, water, salt, and yeast are in all the recipes, this is your pizza **core genome**. Since the vast majority of pizzas have tomato sauce and cheese (believe it or not, there are white pizzas without tomato sauce and pizzas without cheese), you put the tomato and the cheese in the **soft-core genome**. Other ingredients like basil and olive oil are very common so they go to the **shell genome**, and finally the weirdos like pineapple go to the **cloud genome**.
 > {: .solution}  
 {: .discussion}
 
@@ -58,7 +58,7 @@ The concept of pangenome encompasses two types: the open pangenome and the close
   </a>
 
 
-To understand these concepts better, we can visualize the pangenome as a matrix representing the presence (1) or absence (0) of orthologous gene families. The columns represent the gene families, while the rows represent the genomes added to the pangenome. In an open pangenome, the number of columns increases significantly as new genomes are added. Conversely, in a closed pangenome, the number of columns remains relatively unchanged as the number of genomes increases. This suggests that the species maintains a consistent set of orthologous gene families. Consequently, the size of the core genome in a closed pangenome closely matches that of a single complete genome of the species. In contrast, the core size of an open pangenome is relatively smaller compared to the size of an individual genome.
+To understand these concepts better, we can visualize the pangenome as a matrix representing the presence (1) or absence (0) of orthologous gene families. The columns represent the gene families, while the rows represent the genomes added to the pangenome. In an open pangenome, the number of columns increases significantly as new genomes are added. Conversely, in a closed pangenome, the number of columns remains relatively unchanged as the number of genomes increases. This suggests that the species maintains a consistent set of gene families. Consequently, the size of the core genome in a closed pangenome closely matches that of a single complete genome of the species. In contrast, the core size of an open pangenome is relatively smaller compared to the size of an individual genome.
 
 In summary, the terms "open pangenome" and "closed pangenome" describe the dynamic nature of gene content in a species, with the former signifying an expanding gene family pool and the latter representing a more stable gene family repertoire.
 
@@ -80,9 +80,9 @@ In summary, the terms "open pangenome" and "closed pangenome" describe the dynam
 
 ## Genome database for this workshop 
 
-### Description of the Dataset 
+### Description of the dataset 
 
-In this lesson, we will follow a standard pangenomics pipeline that involves genomic annotation, clustering of gene families to identify othologous sequences, and analyzing the pangenome partitions and openness. To illustrate these concepts, we will work with a dataset consisting of eight strains of *Streptococcus agalactiae* as included in the pioneering pangenome study by *Tettelin et al., 2005* (See the **Table** below).
+In this lesson, we will follow a standard pangenomics pipeline that involves genomic annotation, clustering of genes to identify orthologous sequences and build the gene families, and analyzing the pangenome partitions and openness. To illustrate these concepts, we will work with a dataset consisting of eight strains of *Streptococcus agalactiae* as included in the pioneering pangenome study by *Tettelin et al., 2005* (See the **Table** below).
 
 We already have the genomes of strains 18RS21 and H36B available in our `pan_workshop/data` directory. However, the remaining strains will be downloaded and annotated in the upcoming episodes, allowing us to explore the complete dataset.
 
@@ -102,7 +102,7 @@ We already have the genomes of strains 18RS21 and H36B available in our `pan_wor
 
 
 
-> ## Prepare your Genome Database
+> ## Prepare your genome database
 > Make sure you have the `pan_workshop/` directory in your home directory. If you do not have it, you can download it with the following instructions.
 >
 > ~~~
@@ -115,8 +115,3 @@ We already have the genomes of strains 18RS21 and H36B available in our `pan_wor
 {: .checklist}
 
 {% include links.md %}
-
-
-
-
-
