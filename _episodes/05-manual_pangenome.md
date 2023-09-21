@@ -5,13 +5,16 @@ exercises: 15
 questions:
 - "How can we use the blast results to form families?"
 objectives:
-- "Cluster gene families according to a similarity measurement."
+- "Use a clustering algorithm to form families using the E-value."
 keypoints:
-- "Genes are clustered into gene families according to a similarity score."
+- "The Bidirectional Best-Hit algorithm groups sequences together into families according to the E-value."
 ---
 
+## Using E-values to cluster sequences into families
+
 In the previous episode, we obtained the E-value between each pair of sequences of our mini dataset. Even though it is not strictly an identity measure between the sequences, 
-the E-value tells us if the two sequences are a good match. We will now use this information to cluster the sequences from families using an algorithm written in Python, and we will see how it 
+the E-value allows us to know from a pool of sequences which one is the best match to a query sequence. We will now use this information to cluster the sequences from 
+families using an algorithm written in Python, and we will see how it 
 joins the sequences progressively until each of them is part of a family.
 
 ## Processing the BLAST results
