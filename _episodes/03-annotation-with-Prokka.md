@@ -56,7 +56,7 @@ genomes will be.
 $ mkdir -p ~/pan_workshop/results/annotated/
 $ cd ~/pan_workshop/results/annotated/
 $ conda deactivate
-$ conda activate Prokka_Global
+$ conda activate /miniconda3/envs/Prokka_Global
 ~~~
 {: .language-bash}
 
@@ -189,7 +189,7 @@ We can now run Prokka on each of these strains. Since the following command can 
 The screen session will not have the conda environment activated, so let's activate it again.
 ~~~
 screen -R prokka
-conda activate Prokka_Global
+conda activate /miniconda3/envs/Prokka_Global
 ~~~
 {: .language-bash}  
 ~~~

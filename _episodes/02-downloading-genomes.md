@@ -23,7 +23,7 @@ The `ncbi-genome-download` package can be installed with conda. In our case, we 
 
 Let's activate the *ncbi-genome-download* conda environment to begin.  
 ~~~
-$ conda activate ncbi-genome-download
+$ conda activate /miniconda3/envs/ncbi-genome-download
 ~~~
 {: .language-bash}
 

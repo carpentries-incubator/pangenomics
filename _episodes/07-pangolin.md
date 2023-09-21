@@ -54,7 +54,7 @@ The pangenome will be built in a single HDF-5 file that will be the input and ou
 
 Before starting using PPanGGOLiN, we need to activate the Pangenomics environment.
 ~~~
-$ conda activate Pangenomics_Global
+$ conda activate /miniconda3/envs/Pangenomics_Global
 ~~~
 {: .language-bash}
 ~~~
