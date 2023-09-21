@@ -1,9 +1,9 @@
 ---
-title: "Distance between sequences"
+title: "Measuring Sequence Similarity"
 teaching: 30
 exercises: 15
 questions:
-- "How con we measure differences in gene sequences?"
+- "How can we measure differences in gene sequences?"
 objectives:
 - "Calculate a score between two sequences using BLAST."
 keypoints:
@@ -37,11 +37,10 @@ sequences and measuring the percentage of identity. The process of building gene
 {: .discussion}
 
 In this episode, we will demonstrate how we measure the similarity of genes using [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
-and use an algorithm to group the genes into 
+and in the next one, we will use an algorithm to group the genes into 
 gene families. This is usually done by software that automates these steps, but we will do it step by step with a reduced version of 
 four of our genomes to understand how this process works. Later on in the lesson, 
 we will repeat these steps but in an automated way with pangenomics software using the complete genomes.
-
 
 ## Aligning the protein sequences to each other with BLASTp
 
@@ -57,7 +56,8 @@ Streptococcus_agalactiae_2603V_mini.faa  Streptococcus_agalactiae_515_mini.faa  
 ~~~
 {: .output}
 
-First we need to put a label on each protein to know to which genome it belongs to, this will be important later. If we explore our annotated genomes, we have amino acid sequences with a header that has the sequence ID and the functional annotation.
+First, we need to put a label on each protein to know to which genome it belongs to, this will be important later. If we explore our annotated
+genomes, we have amino acid sequences with a header that has the sequence ID and the functional annotation.
 
 ~~~
 $ head -n1 Streptococcus_agalactiae_A909_mini.faa
@@ -87,7 +87,9 @@ $ head -n1 Streptococcus_agalactiae_A909_mini.faa
 ~~~
 {: .output}
 
-Now, we need to create one dataset with the sequences from all of our genomes. We will use it to generate a database, which is a set of files that have the information of our FASTA file but in a format that BLAST can use to align the query sequences to sequences in the database.
+Now, we need to create one dataset with the sequences from all of our genomes. We will use it to generate a database, 
+which is a set of files that have the information of our FASTA file but in a format that BLAST can use to align the 
+query sequences to sequences in the database.
 
 ~~~
 $ cat *.faa > mini-genomes.faa
@@ -127,8 +129,7 @@ We will ask `blastp` to align the queries to the database and give the result in
 Sequence-ID, Subject Sequence-ID, and E-value. 
 BLAST aligns the query sequence to all of the sequences in the database, it measures the percentage of identity, the percentage of the query sequence that is covered by the subject sequence, and uses these measures to give a score of how good the match is between your query and each 
 subject sequence. The [E-value](https://blast.ncbi.nlm.nih.gov/doc/blast-help/FAQ.html) represents the possibility of finding a match with a similar 
-score in a database of a certain size by chance. So the lower the E-value, the more significant the match between our query and the subject sequences 
-is.
+score in a database of a certain size by chance. So the lower the E-value, the more significant the match between our query and the subject sequences is.
 
 ~~~
 $ blastp -query mini-genomes.faa -db database/mini-genomes -outfmt "6 qseqid sseqid evalue" > output_blast/mini-genomes.blast
