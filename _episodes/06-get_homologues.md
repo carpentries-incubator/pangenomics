@@ -6,16 +6,15 @@ questions:
 - "Can I cluster my sequences automatically?"
 objectives:
 - "Cluster orthologous proteins from GenBank (.gbk) files"
-- "Explore clusters using GET_HOMOLOGUES suit of tools"
 keypoints:
-- "Clustering protein families refers to the process of grouping proteins that share similar characteristics or functions into distinct clusters or families."
+- "Clustering protein families refers to the process of grouping similar sequences into distinct clusters or families."
 - "GET_HOMOLOGUES is a software package for microbial pangenome analysis"
-- "Three sequence clustering algorithms are supported by Get_Homologues; BDBH, COGtriangles, and OrthoMCL"
+- "Three sequence clustering algorithms are supported by GET_HOMOLOGUES; BDBH, COGtriangles, and OrthoMCL"
 ---
 
 ## Diversity of algorithms for clustering
 
-The key step in pangenomics is knowing what to compare between genomes, in other words, what are the gene families in our group of genomes. The clustering of homologous sequences is a very 
+The key step in pangenomics is knowing what to compare between genomes, in other words, what are the gene/protein families in our group of genomes? The clustering of homologous sequences is a very 
 complex problem in bioinformatics, and it can be tackled in different ways. This is why there are many clustering programs that focus on different things to join the individual sequences into families. 
 
 1. [OrthoFinder](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1832-y) uses a combination of sequence similarity and phylogenetic tree-based approaches to infer orthology relationships. It is designed for comparative genomics and phylogenetic analysis, not for pangenomics.
