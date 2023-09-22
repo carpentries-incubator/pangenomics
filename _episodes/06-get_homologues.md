@@ -1,13 +1,13 @@
 ---
-title: "Clustering Protein Families"
-teaching: 15
+title: "Clustering Protein Sequences"
+teaching: 30
 exercises: 10
 questions:
 - "Can I cluster my sequences automatically?"
 objectives:
-- "Cluster orthologous proteins from GenBank (.gbk) files"
+- "Cluster proteins from GenBank files with an automatic software"
 keypoints:
-- "Clustering protein families refers to the process of grouping similar sequences into distinct clusters or families."
+- "Clustering protein sequences refers to the process of grouping similar sequences into distinct clusters or families."
 - "GET_HOMOLOGUES is a software package for microbial pangenome analysis"
 - "Three sequence clustering algorithms are supported by GET_HOMOLOGUES; BDBH, COGtriangles, and OrthoMCL"
 ---
@@ -21,18 +21,18 @@ complex problem in bioinformatics, and it can be tackled in different ways. This
 
 2. [Roary](https://academic.oup.com/bioinformatics/article/31/22/3691/240757) clusters proteins based on pairwise protein similarity. It was designed specifically for pangenomics so it is one of the most used programs in the field and it has set the standard format for the files that describe a pangenome.
 
-3. [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13) offers various algorithms for clustering proteins, including bidirectional best hit, Markov clustering, and COGtriangles. Also provides additional functionalities, such as identification of strain-specific genes and visualization of pangenome data. It provides a comparison of different clustering algorithms.
+3. [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13) offers various algorithms for clustering proteins, including Bidirectional Best-Hits, Markov clustering, and COGtriangles. It also provides additional functionalities, such as the identification of strain-specific genes and visualization of pangenome data. It provides a comparison of different clustering algorithms.
 
-4. [PPanGGOLiN](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) uses the CD-HIT algorithm to cluster proteins based on sequence similarity. It allows users to define the similarity threshold for clustering, enabling customization according to the specific requirements of the analysis. Also provides features for visualizing and exploring pangenome data. 
+4. [PPanGGOLiN](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007732) uses the program MMseqs2 to cluster proteins based on sequence similarity. It allows users to define the similarity threshold for clustering, enabling customization according to the specific requirements of the analysis. Also provides features for visualizing and exploring pangenome data. 
 
 It's important to acknowledge the specific requirements of your analysis, such as scalability, speed, and the desired output, and evaluate different 
 tools to determine which program best suits your needs. 
 
 ## What is GET_HOMOLOGUES?
 
-In this episode, we will use [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13) suite of tools for pangenome analysis. Its main task is clustering protein and nucleotide sequences in homologous (possibly orthologous) groups. This software identifies orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes. The definition of pan- and core-genomes by GET_HOLOGUES is done by calculation of overlapping sets of proteins.
+In this episode, we will use the [GET_HOMOLOGUES](https://journals.asm.org/doi/10.1128/AEM.02411-13) suite of tools for pangenome analysis. Its main task is clustering protein and nucleotide sequences in homologous (possibly orthologous) groups. This software identifies orthologous groups of intergenic regions, flanked by orthologous open reading frames (ORFs), conserved across related genomes. The definition of pan- and core-genomes by GET_HOLOGUES is done by calculation of overlapping sets of proteins.
 
-GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hit (BDBH), OrthoMCL (OMCL), and COGtriangles clustering algorithms.
+GET_HOMOLOGUES supports three sequence-clustering methods; Bidirectional Best-Hit (BDBH), OrthoMCL (OMCL), and COGtriangles clustering algorithms.
 
 |    	Method   		 |                           	Definition                         		 |
 |:---------------------:    |:---------------------------------------------------------------------:    |
@@ -43,8 +43,8 @@ GET_HOMOLOGUES supports three sequence-clustering methods; bidirectional best-hi
 
 ## Clustering protein families with GET_HOMOLOGUES
 
-For this lesson, we will cluster all of our genomes with one of the algorithms of GET_HOMOLOGUES, but the we will use PPanGGOLiN to analyze the pangenome, instead of the GET_HOMOLOGUES 
-tools designed for pangenomics.
+For this lesson, we will cluster all of our genomes with one of the algorithms of GET_HOMOLOGUES, but then, we will use 
+PPanGGOLiN to analyze the pangenome, instead of the GET_HOMOLOGUES tools designed for pangenomics.
 Before starting to use GET_HOMOLOGUES, we need to activate the `Pangenomics_Global` environment.
 
 ~~~
@@ -53,6 +53,7 @@ $ conda activate /miniconda3/envs/Pangenomics_Global
 ~~~
 {: .language-bash}
 
+Now let's display the programs' help to confirm that it is correctly installed and know what are the options to run the clustering.
 ~~~
 $ get_homologues.pl -h #This command display the options
 ~~~
@@ -105,7 +106,7 @@ Options that control clustering:
 {: .output}
 
 > ## Best practices
-> Get_homologues suggests that the user run their data inside a directory as in the future they might want to add a new *.gbk* file to the analysis.
+> GET_HOMOLOGUES suggests that the user runs their data inside a directory because in the future they might want to add a new *.gbk* file to the analysis.
 {: .callout}
 
 ### Create a directory for the output
@@ -185,7 +186,7 @@ MGVKKGQRIYHILKTNDLEVSSSTVYRHIKKGYLSITPIDLPRAVKFKKRRKSTLPPIPKAIKEGRRYEDFIEHMNQSEL
 We want to create a file that summarizes the information of the clustering by showing only which genes correspond to which family. 
 We will need that file in the next episode to explore our pangenome with another program.
 
-To obtain this file, which we will name `gene_families.tsv`, we will extract the IDs of the genes from the FASTA headers (in the FASTA header we see the ID of the gene at the beginning after `ID:`) and the name of the families from the file names. For this, we will use the following short script.  
+To obtain this file, which we will name `gene_families.tsv`, we will extract the IDs of the genes from the FASTA headers (in the FASTA header we see the ID of the gene after `ID:`) and the name of the families from the file names. For this, we will use the following short script.  
 
 Copy the contents and paste them into a file:
 ~~~
@@ -248,4 +249,4 @@ $ head gene_families.tsv
 ~~~
 {: .output}
 
-Now we have in only one file all the description of our clustering results!
+Now we have in only one file the description of our clustering results!
