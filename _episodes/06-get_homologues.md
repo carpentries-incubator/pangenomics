@@ -250,3 +250,10 @@ $ head gene_families.tsv
 {: .output}
 
 Now we have in only one file the description of our clustering results!
+
+> ## References:
+> Go to the GET_HOMOLOGUES [GitHub](https://github.com/eead-csic-compbio/get_homologues) for the complete collection of instructions and posibilities.  
+> And read the original GET_HOMOLOGUES article to understand the details:
+>
+> Contreras-Moreira, B., Vinuesa, P. (2013) GET_HOMOLOGUES, a Versatile Software Package for Scalable and Robust Microbial Pangenome Analysis. Applied and Environmental Microbiology 79(24) [https://doi.org/10.1128/AEM.02411-13](https://journals.asm.org/doi/10.1128/aem.02411-13).
+{: .callout}
