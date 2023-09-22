@@ -16,64 +16,56 @@ objectives:
 
 keypoints:
 - "Anvi’o can build a pangenome starting from genomes or metagenomes, or a combination of both"
-- "Anvi'o allows to interactively visualize your pangenomes"
+- "Anvi'o allows you to interactively visualize your pangenomes"
 - "Anvi'o platform includes additional scripts to explore the geometric and biochemical homogeneity of the gene clusters, to compute and visualize the ANI values of the genomes, to conduct a functional enrichment analysis in a group of genomes, among others"
 ---
-
-<a href="../fig/01-03-01.png">
-  <img src="../fig/01-03-01.png" alt="Anvi'o network representation displaying the programs and artifacts that allow the construction of workflows for integrated multiomics." />
-</a>
 
 ## Anvi'o
 
 Anvi’o is an open-source, community-driven analysis and visualization platform for microbial omics.
 It brings together many aspects of today's cutting-edge strategies, including **genomics, metagenomics, metatranscriptomics, phylogenomics, microbial population genetics, pangenomics, and metapangenomics** in an *integrated* and *easy-to-use* fashion through extensive interactive visualization capabilities.
 
-### Get all ready to start the Anvi'o workflow to build a pangenome
+In this episode, we will meet another pangenomics powerful tool. The pangenomics workflow of Anvi'o is not suitable for thousands 
+of genomes like the PPanGGOLiN workflow, but it allows for an interactive exploration of smaller pangenomes, providing you with a 
+closer look at the pangenome matrix and some interesting characteristics of our gene families.
 
-To start using Anvi'o, activate the conda environment `Pangenomics_Global`
+##  Build a pangenome with Anvi'o
 
+To start using Anvi'o, activate the conda environment `Pangenomics_Global`.
 ~~~
-conda activate /miniconda3/envs/anvio-7.1
-~~~
-{: .language-bash}
-
-Move into the directory named `results` and create a new directory called `anvi-o` for the Anvi'o analysis
-~~~
-cd ~/pan_workshop/results/pangenome
-mkdir anvi-o
-cd anvi-o
+$ conda activate /miniconda3/envs/anvio-7.1
 ~~~
 {: .language-bash}
 
-In order to better organize our Anvi'o results, create a new directory named `genome-db` that will be used to store the genome database needed for the Anvi'o pangenome workflow
+Move into the directory named `results` and create a new directory called `anvi-o` for the Anvi'o analysis.
 ~~~
-mkdir genome-db
+$ cd ~/pan_workshop/results/pangenome
+$ mkdir anvi-o
+$ cd anvi-o
 ~~~
 {: .language-bash}
 
-> ## Note
-> The bacterial genomes that will be used in this practice
->  come from the Prokka annotation analysis.
->  We will use the `.gbk` files as input for the Anvi'o workflow.
->  The `.gbk` files can be found in `~/pan_workshop/results/annotated`.
-{: .callout}
-
-
-## Ten steps guide to build a Pangenome in Anvi'o
+In order to better organize our Anvi'o results, create a new directory named `genome-db` that will be used to store the genome database needed for the Anvi'o pangenome workflow. We will use the `.gbk` files that came out of Prokka as input for the Anvi'o workflow. They can be found in `~/pan_workshop/results/annotated`.
+~~~
+$ mkdir genome-db
+~~~
+{: .language-bash}
 
 ### Step 1
 
-Process the genome files (`.gbk`) with the `anvi-script-process-genbank` script
+Process the genome files (`.gbk`) with the `anvi-script-process-genbank` script.
 
 ~~~
-ls ~/pan_workshop/results/annotated/Streptococcus_agalactiae_* | cut -d'/' -f7 | cut -d '.' -f1 | while read line; do anvi-script-process-genbank -i GENBANK --input-genbank ~/pan_workshop/results/annotated/$line.gbk -O genome-db/$line; done
+$ ls ~/pan_workshop/results/annotated/Streptococcus_agalactiae_* | cut -d'/' -f7 | cut -d '.' -f1 | while read line
+do
+anvi-script-process-genbank -i GENBANK --input-genbank ~/pan_workshop/results/annotated/$line.gbk -O genome-db/$line
+done
 ~~~
 {: .language-bash}
 
 ~~~
-cd genome-db
-ls
+$ cd genome-db
+$ ls
 ~~~
 {: .language-bash}
 
@@ -96,11 +88,14 @@ Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt    Streptococcus_ag
 
 ### Step 2
 
-Reformat the fasta files using the `anvi-script-reformat-fasta` script
+Reformat the fasta files using the `anvi-script-reformat-fasta` script.
 
 ~~~
-ls *fa |while read line; do anvi-script-reformat-fasta --seq-type NT $line -o $line\.fasta; done
-ls
+$ ls *fa |while read line
+do
+anvi-script-reformat-fasta --seq-type NT $line -o $line\.fasta
+done
+$ ls
 ~~~
 {: .language-bash}
 
@@ -127,11 +122,11 @@ Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt    Streptococcus_ag
 
 ### Step 3
 
-Create a database per genome with the `anvi-gen-contigs-database` script
+Create a database per genome with the `anvi-gen-contigs-database` script.
 
 ~~~
-ls *fasta | while read line; do anvi-gen-contigs-database -T 4 -f $line -o $line-contigs.db; done
-ls
+$ ls *fasta | while read line; do anvi-gen-contigs-database -T 4 -f $line -o $line-contigs.db; done
+$ ls
 ~~~
 {: .language-bash}
 
@@ -164,8 +159,11 @@ Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt        Streptococcu
 
 When using external genomes in Anvi'o, a list of the genome IDs and their corresponding genome database is required. This list tells Anvi'o which genomes will be processed to construct the pangenome.
 ~~~
-ls *.fa | cut -d '-' -f1 | while read line; do echo $line$'\t'$line-contigs.db >>external-genomes.txt; done
-head external-genomes.txt
+$ ls *.fa | cut -d '-' -f1 | while read line
+do
+echo $line$'\t'$line-contigs.db >> external-genomes.txt
+done
+$ head external-genomes.txt
 ~~~
 {: .language-bash}
 
@@ -183,9 +181,9 @@ Streptococcus_agalactiae_NEM316_prokka  Streptococcus_agalactiae_NEM316_prokka-c
 
 ### Step 5
 
-Modify the headers of the list `external-genomes.txt`
+Modify the headers of the list `external-genomes.txt`.
 ~~~
-nano external-genomes.txt
+$ nano external-genomes.txt
 ~~~
 {: .language-bash}
 
@@ -208,7 +206,7 @@ Streptococcus_agalactiae_NEM316_prokka  Streptococcus_agalactiae_NEM316_prokka-c
 {: .output}
 
 ~~~
-head external-genomes.txt
+$ head external-genomes.txt
 ~~~
 {: .language-bash}
 
@@ -228,11 +226,11 @@ Streptococcus_agalactiae_NEM316_prokka  Streptococcus_agalactiae_NEM316_prokka-c
 
 ### Step 6
 
-Rename the `.db` files
+Rename the `.db` files.
 
 ~~~
-rename s'/.fa.fasta-contigs.db/.db/' *db
-ls *.db
+$ rename s'/.fa.fasta-contigs.db/.db/' *db
+$ ls *.db
 ~~~
 {: .language-bash}
 
@@ -246,10 +244,13 @@ Streptococcus_agalactiae_A909_prokka-contigs.db    Streptococcus_agalactiae_NEM3
 {: .output}
 
 ### Step 7
-Execute HMM analysis with the `anvi-run-hmms` script to identify matching genes in each contigs database file
+Execute HMM analysis with the `anvi-run-hmms` script to identify matching genes in each contigs database file.
 
 ~~~
-ls *contigs.db | while read line; do anvi-run-hmms -c $line; done
+$ ls *contigs.db | while read line
+do
+anvi-run-hmms -c $line
+done
 ~~~
 {: .language-bash}
 
@@ -309,8 +310,8 @@ Number of raw hits in table file .............: 0
 Create the genome database `genomes-storage-db` using the `anvi-gen-genomes-storage` script. In this case, we named this `genomes-storage-db` as **STREPTOCOCCUS_AGALACTIAE_GENOMES.db**, which will be used downstream as input in other processes.
 
 ~~~
-anvi-gen-genomes-storage -e external-genomes.txt -o STREPTOCOCCUS_AGALACTIAE_GENOMES.db
-ls *.db
+$ anvi-gen-genomes-storage -e external-genomes.txt -o STREPTOCOCCUS_AGALACTIAE_GENOMES.db
+$ ls *.db
 ~~~
 {: .language-bash}
 
@@ -325,10 +326,10 @@ Streptococcus_agalactiae_CJB111_prokka-contigs.db
 
 ### Step 9
 
-Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named `STREPTOCOCCUS_AGALACTIAE_GENOMES.db` as input
+Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named `STREPTOCOCCUS_AGALACTIAE_GENOMES.db` as input.
 
 ~~~
-anvi-pan-genome -g STREPTOCOCCUS_AGALACTIAE_GENOMES.db \
+$ anvi-pan-genome -g STREPTOCOCCUS_AGALACTIAE_GENOMES.db \
             	--project-name "PANGENOME-AGALACTIAE" \
             	--output-dir AGALACTIAE \
             	--num-threads 6 \
@@ -406,7 +407,7 @@ If you publish your findings, please do not forget to properly credit this tool.
 Create the interactive pangenome with the `anvi-display-pan` script using as input the `genomes-storage-db`  `STREPTOCOCCUS_AGALACTIAE_GENOMES.db` and the `pan-db`  `PANGENOME-AGALACTIAE-PAN.db` (located in `AGALACTIAE` directory)
 
 ~~~
-anvi-display-pan -g STREPTOCOCCUS_AGALACTIAE_GENOMES.db \
+$ anvi-display-pan -g STREPTOCOCCUS_AGALACTIAE_GENOMES.db \
 	-p AGALACTIAE/PANGENOME-AGALACTIAE-PAN.db
 ~~~
 {: .language-bash}
@@ -463,7 +464,7 @@ Without disturbing the active terminal, open a new window in your preferred brow
 >>
 >> b)
 >>~~~
-anvi-get-sequences-for-gene-clusters -g genomes-storage-db \
+$ anvi-get-sequences-for-gene-clusters -g genomes-storage-db \
                                  	-p pan-db \
                                  	-o genes-fasta \
                                  	--min-functional-homogenity-index 0.25
@@ -478,13 +479,10 @@ anvi-get-sequences-for-gene-clusters -g genomes-storage-db \
 > ## Exercise 2: Splitting the pangenome.
 > 1. Read about [`anvi-split`](https://anvio.org/help/main/programs/anvi-split/)
 > 2. With this program split your pangenome in independent pangenomes that:
-> > * Contains only singletons.
-> > * Contains only core gene clusters.
+> * Contains only singletons.
+> * Contains only core gene clusters.
 >
 > Tip: [anvi-display-pan](https://anvio.org/help/main/programs/anvi-display-pan/) can be useful
 {: .challenge}
 
 {% include links.md %}
-
-
-
