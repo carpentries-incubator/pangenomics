@@ -4,7 +4,7 @@ teaching: 20
 exercises: 30
 questions:
 - "How can I build a pangenome of thousands of genomes?"
-- "How can I visualize the spacial relationship between gene families?"
+- "How can I visualize the spatial relationship between gene families?"
 
 objectives:
 - "Understand the fundamentals of the PPanGGOLiN tool."
@@ -12,14 +12,10 @@ objectives:
 - "Conduct a basic workflow with PPanGGOLiN."
 - "Interpret the main results of PPanGGOLiN."
 keypoints:
-- "PPanGGOLiN is a sotfware to create and manipulate prokaryotic pangenomes."
+- "PPanGGOLiN is a software to create and manipulate prokaryotic pangenomes."
 - "PPanGGOLiN integrates gene families and their genomic neighborhood to build a graph and define the partitions."
 - "PPanGGOLiN is designed to scale up to tens of thousands of genomes."
 ---
-
-<a href="../fig/01-04-01.png">
-  <img src="../fig/01-04-01.png" alt="PPanGGOLiN's logo." />
-</a>
 
 ## PPanGGOLiN: Partitioned PanGenome Graph Of Linked Neighbors
 
@@ -27,18 +23,18 @@ keypoints:
 prokaryotic pangenomes in its own special way. It gives a lot more information than just 
 the presence and absence of the gene families and it can be used with [thousands of genomes](https://github.com/labgem/PPanGGOLiN/wiki/Basic-usage-and-practical-information). This program **represents the pangenome in a graph** where each node is a gene family, and two gene 
 families are connected by an edge if they are neighbors (their sequences are next to each other) in at least one genome. The width of this edge 
-represents the number of genomes in which these two families are neighbors. And the size of the nodes represents the number of genes that are part of the
+represents the number of genomes in which these two families are neighbors. The size of the nodes represents the number of genes that are part of the
 gene family.
 
 To classify a gene family into a partition, PPanGGOLiN not only takes into account the percentage of genomes the family is present in, but it also 
-considers its neighbors. If two gene families are consistently linked across the genomes, they will more likely belong to the same partition. The software uses statistical approach to decide how many partitions should be made and in which partition a gene family should be placed. 
+considers its neighbors. If two gene families are consistently linked across the genomes, they will more likely belong to the same partition. The software uses a statistical approach to decide how many partitions should be made and in which partition a gene family should be placed. 
 
 
 |    	Classes   		 |                           	Definition                         		 |
 |:---------------------:    |:---------------------------------------------------------------------:    |
 | **Persistent genome**     |      	For gene families present in almost all genomes.    		 |
 |	**Shell genome**  	 | For gene families present at intermediate frequencies in the genomes. There can be multiple shells.    |
-|	**Cloud genome**  	 |   	For gene familes present at low frequency in the species.  		 |
+|	**Cloud genome**  	 |   	For gene families present at low frequency in the species.  		 |
 
 The PPanGGOLiN pipeline can be divided into **building the pangenome**, and **extracting results**. You can also perform some **special analyses** and
 extract the corresponding results.
@@ -52,7 +48,7 @@ The pangenome will be built in a single HDF-5 file that will be the input and ou
 
 ### Genome annotation
 
-Before starting using PPanGGOLiN, we need to activate the Pangenomics environment.
+Before starting to use PPanGGOLiN, we need to activate the Pangenomics_Global environment.
 ~~~
 $ conda activate /miniconda3/envs/Pangenomics_Global
 ~~~
@@ -69,7 +65,7 @@ $ cd ~/pan_workshop/results/pangenome/ppanggolin
 ~~~
 {: .language-bash}
 
-PPanGGOLiN analysis can start from genomic DNA sequences in FASTA format or annotated genomes in GBK or GFF formats. The first step is getting this 
+PPanGGOLiN analysis can start from genomic DNA sequences in FASTA format or annotated genomes in GBK or GFF formats. The first step is to get this 
 genomic information into the HDF-5 file and annotate it if it is not already.  
 To use the GBKs in the annotation step we need to create a text file with the unique name of each organism in one column and the path to the
 corresponding `.gbk` in another one. 
@@ -77,10 +73,10 @@ We already have links to our Prokka annotations in the `get_homologues/` directo
 
 ~~~
 $ ls ~/pan_workshop/results/pangenome/get_homologues/data_gbks/* | while read line
-> do 
-> name=$(echo $line | cut -d'/' -f9 | cut -d'.' -f1)
-> echo $name$'\t'$line >> organisms.gbk.list
-> done
+do 
+name=$(echo $line | cut -d'/' -f9 | cut -d'.' -f1)
+echo $name$'\t'$line >> organisms.gbk.list
+done
 ~~~
 {: .language-bash}
 
@@ -125,15 +121,15 @@ total 8.9M
 
 ### Gene clustering
 
-PPanGGolin uses by default [MMseqs2](https://github.com/soedinglab/MMseqs2) but we will provide the clusters that Get_Homologues found. For this, it is mandatory that in the `annotate` step we provided GBK files, not FASTA files. 
+PPanGGolin uses by default [MMseqs2](https://github.com/soedinglab/MMseqs2) but we will provide the clusters that GET_HOMOLOGUES found. For this, it is mandatory that in the `annotate` step we provide GBK files, not FASTA files. 
 
-For this we only need the `gene_families.tsv` that we made in the previous episode. PPanGGOLiN will use this to know which genes belong to which families and build the pangenome from that. 
+For this, we only need the `gene_families.tsv` that we made in the previous episode. PPanGGOLiN will use this to know which genes belong to which families and build the pangenome from that. 
 ~~~
 $ ppanggolin cluster -p pangenome.h5 --clusters ../../get_homologues/gene_families.tsv --cpu 8
 ~~~
 {: .language-bash}
 
-We can now notice that the size of out file has increased.
+We can now notice that the size of our file has increased.
 
 ~~~
 $ ls -lh
@@ -157,11 +153,11 @@ $ ppanggolin graph --pangenome pangenome.h5 --cpu 8
 
 ### Partition the graph
 
-Finally we can assign the gene families to the persistent, shell, or cloud partitions. PPanGGOLiN can find the optimal number of partitions, if it is
+Finally, we can assign the gene families to the persistent, shell, or cloud partitions. PPanGGOLiN can find the optimal number of partitions, if it is
 larger than three it will make more shell partitions. You can also specify how many partitions you want with the option `-K`.
 
 Besides these partitions, PPanGGOLiN will also calculate the exact core (families in 100% of genomes) and exact accessory 
-(families in less than 100% of genomes) and the soft core (families in more than 95% of genomes) and soft accessory (families in less than 95% of genomes).
+(families in less than 100% of genomes) and the softcore (families in more than 95% of genomes) and soft accessory (families in less than 95% of genomes).
 
 ~~~
 $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
@@ -170,9 +166,9 @@ $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
 
 ## Extracting results
 
-### Print files with information of the pangenome
+### Print files with information about the pangenome
 
-For a first glimpse of our pangenome we can obtain the summary statistics with the command `ppanggolin info`.
+For a first glimpse of our pangenome, we can obtain the summary statistics with the command `ppanggolin info`.
 ~~~
 $ ppanggolin info -p pangenome.h5 --content
 ~~~
@@ -191,9 +187,9 @@ Number of partitions : 3
 
 If we want to have this in a file we can redirect this output adding `> summary_statistics.txt` to the command.
 
-With the `ppanggolin write` command you can extract many text files and tables with a lot of information. For this you need to provide the 
+With the `ppanggolin write` command you can extract many text files and tables with a lot of information. For this, you need to provide the 
 `pangenome.h5` file and the name of the directory to store the files. Each of the additional flags indicates which file or files to write. Let's 
-use all of the flags that will give us basic information of our analysis. And then see what was generated.
+use all of the flags that will give us basic information about our analysis. And then see what was generated.
 
 ~~~
 $ ppanggolin write -p pangenome.h5 --output files --stats --csv --Rtab --partitions --projection --families_tsv
@@ -239,23 +235,23 @@ $ tree
 > Then explain to the rest of the group what you learned.
 > > ## Solution  
 > > `gene_families.tsv` is a table that shows you which individual genes (second column) correspond to which gene family (first column). 
-> > In the third column it has an F is the gene is potentialy fragmented.  
+> > In the third column it has an F if the gene is potentially fragmented.  
 > > `gene_presence_absence.Rtab` is a binary matrix that shows if a gene family is present (1) or absent (0) in each genome.  
-> > `matrix.csv` is a table with one row per gene family, many columns with metadata and one column per genome showing the name 
+> > `matrix.csv` is a table with one row per gene family, many columns with metadata, and one column per genome showing the name 
 > > of the gene in the corresponding gene family.  
 > >  `mean_persistent_duplication.tsv` has one row per persistent gene family and metrics about its duplication and if it is 
 > >  considered a single-copy marker.  
-> >  `organisms_statistics.tsv` has one row per genomes and columns for the number of gene families and genes in total and in each partition, 
+> >  `organisms_statistics.tsv` has one row per genome and columns for the number of gene families and genes in total and in each partition, 
 > >  the completeness and the number of single-copy markers.  
 > >  `partitions/` has one list per partition with the names of the gene families it contains.
-> >  `projection/` has one file per genome with the metadata of each gene (ie. contig, coordinates, strand, gene family, 
-> >  number of copies, partition, neighbours in each partition).  
+> >  `projection/` has one file per genome with the metadata of each gene (i.e. contig, coordinates, strand, gene family, 
+> >  number of copies, partition, neighbors in each partition).  
 > {: .solution}
 {: .challenge}
 
 ### Draw interactive plots
 
-We can also extract two interactive plots with the command `ppanggolin draw`, following a similar syntax than with the command `ppanggolin write`.
+We can also extract two interactive plots with the command `ppanggolin draw`, following a similar syntax as with the command `ppanggolin write`.
 
 ~~~
 $ ppanggolin draw --pangenome pangenome.h5 --output plots --ucurve --tile_plot
@@ -287,12 +283,12 @@ obtained from them.
 The U-shaped plot is a bar chart where you can see how many gene families (y-axis) are in how many genomes (x-axis). They are colored according to the 
 partition they belong to.
 <a href="../fig/01-06-02.png">
-  <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot. The number of organisms is plotted in the x axis and the number of gene families in the y axis." />
+  <img src="../fig/01-06-02.png" width="960" height="438" alt="Bar graph depicting the gene family frequency distribution, represented by a U-shaped plot. The number of organisms is plotted in the x-axis and the number of gene families in the y axis." />
 
 * **Tile plot**
 
- The tile plot is a presence/absence heatmap of the gene families (y-axis) in each genome (x-axis) ordered by a hierarchical clustering and showing the 
-  multycopy families.
+ The tile plot is a presence/absence heatmap of the gene families (y-axis) in each genome (x-axis) ordered by hierarchical clustering and showing the 
+  multicopy families.
 <a href="../fig/01-06-03.png">
   <img src="../fig/01-06-03.png" width="956.5" height="453.5" alt="Tile plot displaying the gene families present within six strains of Streptococcus agalactiae, including the cloud gene families" />
 
@@ -312,7 +308,7 @@ partition they belong to.
 
 ### Draw the pangenome graph
 
-Now its time to see the actual partitioned graph. For that we can use the `ppangolin write` command.
+Now it's time to see the actual partitioned graph. For that, we can use the `ppanggolin write` command.
 ~~~
 $ ppanggolin write -p pangenome.h5 --gexf --output gexf
 ~~~
@@ -355,7 +351,7 @@ To view the interactive graph we will use the software **gephi**.
 Go to `File/Open/`and select the file `pangenomeGraph.gexf`.  
 Click OK in the window that appears.  
 Scroll out with your mouse.
-Go to the Layout section in the left and in the selection bar choose ForceAtlas2.
+Go to the Layout section on the left and in the selection bar choose ForceAtlas2.
 In the Tuning section change the Scaling value to 4000 and check the Stronger Gravity box.
 Click on the Run button and then click it again to stop.
   
@@ -367,12 +363,12 @@ Now we have a pangenome graph!
  
 
 > ## Exercise 2: Exploring the pangenome graph.
-> Finally we are looking at the pangenome graph. Here each node is a gene family, if you click on the black **T** at the bottom of the graph you can lable them.  
+> Finally we are looking at the pangenome graph. Here each node is a gene family, if you click on the black **T** at the bottom of the graph you can label them.  
 >   
->  Explore the options of visualization for the pangenome graph, while trying to identify what does each element of the graph represent (ie. size of 
+>  Explore the options of visualization for the pangenome graph, while trying to identify what each element of the graph represents (i.e. size of 
 >  nodes and edges, etc.) and what is in the Data Laboratory.
 >  
->  Use the Appearance section to color the nodes and edges according to the attribultes that you find most useful, like:
+>  Use the Appearance section to color the nodes and edges according to the attributes that you find most useful, like:
 >
 > a) Partition.
 >  
@@ -383,13 +379,13 @@ Now we have a pangenome graph!
 > d) Product.
 >  
 > > ## Solution
-> > In the top left panel you can color the nodes or edges accoring to different data.
+> > In the top left panel you can color the nodes or edges according to different data.
 > > You can choose discrete palettes in the partition section and gradients in the 
-> > Ranking section. You can choose the palette, generate a new one or choose 
+> > Ranking section. You can choose the palette, generate a new one, or choose 
 > > colors one by one.   
 > > a) Nodes colored according to the partition they belong to.  
 > > <a href="../fig/01-06-05.png">
-> > <img src="../fig/01-06-05.png" alt="Gephi visualization with orange nodes for the parsistent families, blue for cloud and green for shell." />
+> > <img src="../fig/01-06-05.png" alt="Gephi visualization with orange nodes for the persistent families, blue for cloud, and green for shell." />
 > > </a>
 > > b) Nodes colored according to the number of organisms they are present in.
 > > <a href="../fig/01-06-06.png">
@@ -417,7 +413,7 @@ Besides being able to work with thousands of genomes and having the approach of 
 You can also use PPanGGOLiN to identify **Conserved Modules**, groups of accessory genes that are usually together and may be functional 
   modules. And you can find the modules present in RGPs and Spots of Insertion.   
   
-To see how your pangenome grows ass more genomes are added and know if it is open or closed you can do **Rarefaction** analysis.  
+To see how your pangenome grows as more genomes are added and know if it is open or closed you can do **Rarefaction** analysis.  
   
 If you are interested in the phylogeny of your genomes, you can retrieve the **Multiple Sequence Alignment** of each gene family and a 
   concatenation of all single-copy exact core genes.   
@@ -432,6 +428,3 @@ These analyses, **and more**, can be done by using commands that enrich your `pa
 {: .callout}
 
 {% include links.md %}
-
-
-
