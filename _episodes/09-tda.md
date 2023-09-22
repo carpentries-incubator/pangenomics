@@ -33,10 +33,10 @@ A simplex (plural simplices) is a simple geometric object of any dimension (poin
 >> The points $p_0, ..., p_k$ are called the vertices of $\sigma$.
 >> 
 > {: .solution}
-{: .discussion}
+{: .callout}
 
 ### Simplicial complex
-A simplicial complex is a mathematical structure comprising a collection of simplices constructed from a data set. In other words, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements that follows specific rules. As a starting point, we can think of a simplicial complex as extending the notion of a graph only formed by vertices and edges. The following figure shows an example of a simplicial complex.  
+A simplicial complex is a mathematical structure comprising a collection of simplices constructed from a data set. In other words, a simplicial complex is a collection of vertices, edges, triangles, tetrahedra, and other elements that follow specific rules. As a starting point, we can think of a simplicial complex as extending the notion of a graph only formed by vertices and edges. The following figure shows an example of a simplicial complex.  
 
   <a href="../fig/Tda_Simplicial_complex_example.png">
   <img src="../fig/Tda_Simplicial_complex_example.png" alt="Example Simplicial Complex" width="70%" height="auto"/>
@@ -57,7 +57,7 @@ A simplicial complex is a mathematical structure comprising a collection of simp
 > > The elements of $K$ are the simplices.  
 > > 
 > {: .solution}
-{: .discussion}
+{: .callout}
 
 In the following figure, the left panel "a)" is an example of a simplicial complex, while the right panel "b)" is not because it does not satisfy the second mathematical condition. In the figure, a triangle is part of the simplicial complex but one vertex is not. Colloquially speaking it fails that if one simplex is part of the simplicial complex, then all its simplices of the lower dimensions must also be part of the complex. Mathematically speaking, it is not true that the face of a simplex from $K$ is also a simplex of $K$ or that the intersection of any pair of simplices is either empty or a face. 
 
@@ -102,7 +102,7 @@ In a practical example, the set of points represents your dataset, such as a gro
 >>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in R(P,r) \quad iff \quad  \lVert p_{i_j} -p_{i_l}  \rVert  \leq 2r, \forall j,l\leq k $$ with $$ j \neq k$$
 >> 
 > {: .solution}
-{: .discussion}
+{: .callout}
 
 On the other hand, the **Čech complex** is based on constructing simplicial cells rather than simply connecting points at specific distances. Given a set of points and a distance parameter, all sets of points whose balls of radius equal to the distance parameter have a non-empty intersection are considered. These sets of points become the simplices of the Čech complex. Similar to the Vietoris-Rips complex, higher-dimensional simplices can be constructed by closing under combinations of lower-dimensional simplices that form a complete simplex.
 
@@ -114,7 +114,7 @@ On the other hand, the **Čech complex** is based on constructing simplicial cel
 >>  $$ \sigma = [p_{i_0},p_{i_1},...,p_{i_k}] \in C(P,r) \quad iff \quad \cap_{j=0}^k Bp_{i_j} \neq \emptyset $$  
 >> 
 > {: .solution}
-{: .discussion}
+{: .callout}
 In the following figure, we have the representation of the Rips simplicial complex (left) and the Cech simplicial complex (right), for the same set of points $P={p_1,...,p_9}$.
 
  <a href="../fig/Tda_rips_cech.png">
@@ -181,7 +181,7 @@ A filtration of a simplicial complex is an ordered sequence of subcomplexes of t
 >>  1. $K_N=K$.
 >> 2.  $K_i$ is a subcomplex of $K_{i+1}$, for $i=0,1,...,N-1$.
 > {: .solution} 
-{: .discussion}
+{: .callout}
 
 An example of a filtration for $K=\langle a, b , c \rangle $ is the following:
 
