@@ -32,17 +32,17 @@ considers its neighbors. If two gene families are consistently linked across the
 
 |    	Classes   		 |                           	Definition                         		 |
 |:---------------------:    |:---------------------------------------------------------------------:    |
-| **Persistent genome**     |      	For gene families present in almost all genomes.    		 |
+| **Persistent genome**     |      	For gene families present in all or almost all genomes.    		 |
 |	**Shell genome**  	 | For gene families present at intermediate frequencies in the genomes. There can be multiple shells.    |
 |	**Cloud genome**  	 |   	For gene families present at low frequency in the species.  		 |
 
 The PPanGGOLiN pipeline can be divided into **building the pangenome**, and **extracting results**. You can also perform some **special analyses** and
 extract the corresponding results.
 
-## Building a Pangenome
+## Building the pangenome
 
 The required steps to build a pangenome can be achieved with a single command `ppanggolin workflow`,
-or can be run individually if you want to make adjustments to each of them. The adjustment that we want to make is to use the clusters that Get_Homologues already found.
+or can be run individually if you want to make adjustments to each of them. The adjustment that we want to make is to use the clusters that GET_HOMOLOGUES already found.
 
 The pangenome will be built in a single HDF-5 file that will be the input and output of all the commands and will get enriched with each of them.
 
@@ -67,6 +67,7 @@ $ cd ~/pan_workshop/results/pangenome/ppanggolin
 
 PPanGGOLiN analysis can start from genomic DNA sequences in FASTA format or annotated genomes in GBK or GFF formats. The first step is to get this 
 genomic information into the HDF-5 file and annotate it if it is not already.  
+
 To use the GBKs in the annotation step we need to create a text file with the unique name of each organism in one column and the path to the
 corresponding `.gbk` in another one. 
 We already have links to our Prokka annotations in the `get_homologues/` directory, so we can tell PPanGGOLiN to use those.  
@@ -98,7 +99,7 @@ Streptococcus_agalactiae_NEM316_prokka	/home/dcuser/pan_workshop/results/pangeno
 ~~~
 {: .output}
 
-Using the organisms list, we can run the `annotate` module of PPanGGOLiN, which will not really annotate the genomes, because they are already annotated, but it will integrate them into it's special `.h5` file that will be 
+Using the organisms list, we can run the `annotate` module of PPanGGOLiN, which will not really annotate the genomes because they are already annotated, but it will integrate them into its special `.h5` file that will be 
 used as input and output in all of the steps.
 
 ~~~
@@ -106,7 +107,7 @@ $ ppanggolin annotate --anno organisms.gbk.list --output pangenome
 ~~~
 {: .language-bash}
 
-Now a new directory named `pangenome/`  was created, let's move into it and explore it. PPanGGolin created the `pangenome.h5` that will be getting enriched throughout the processing. Let's monitor it's increase in size.
+Now a new directory named `pangenome/`  has been created, let's move into it and explore it. PPanGGolin created the `pangenome.h5` that will be getting enriched throughout the processing. Let's monitor it's increase in size.
 ~~~
 $ cd pangenome/
 $ ls -lh
@@ -121,7 +122,7 @@ total 8.9M
 
 ### Gene clustering
 
-PPanGGolin uses by default [MMseqs2](https://github.com/soedinglab/MMseqs2) but we will provide the clusters that GET_HOMOLOGUES found. For this, it is mandatory that in the `annotate` step we provide GBK files, not FASTA files. 
+PPanGGolin uses by default [MMseqs2](https://github.com/soedinglab/MMseqs2) but we will provide the clusters that GET_HOMOLOGUES found. For this, it is mandatory that in the `annotate` step we provided GBK files, not FASTA files. 
 
 For this, we only need the `gene_families.tsv` that we made in the previous episode. PPanGGOLiN will use this to know which genes belong to which families and build the pangenome from that. 
 ~~~
@@ -157,7 +158,7 @@ Finally, we can assign the gene families to the persistent, shell, or cloud part
 larger than three it will make more shell partitions. You can also specify how many partitions you want with the option `-K`.
 
 Besides these partitions, PPanGGOLiN will also calculate the exact core (families in 100% of genomes) and exact accessory 
-(families in less than 100% of genomes) and the softcore (families in more than 95% of genomes) and soft accessory (families in less than 95% of genomes).
+(families in less than 100% of genomes) and the softcore (families in more than 95% of genomes) and soft accessory (families in less than 95% of genomes). The percentage that defines the soft core and soft accessory can be modified by the user.
 
 ~~~
 $ ppanggolin partition --pangenome pangenome.h5 --cpu 8
@@ -234,17 +235,19 @@ $ tree
 > Go to small groups (if you are learning at a Workshop) and explore one result file or set of result files to see what information they are giving you. 
 > Then explain to the rest of the group what you learned.
 > > ## Solution  
-> > `gene_families.tsv` is a table that shows you which individual genes (second column) correspond to which gene family (first column). 
-> > In the third column it has an F if the gene is potentially fragmented.  
-> > `gene_presence_absence.Rtab` is a binary matrix that shows if a gene family is present (1) or absent (0) in each genome.  
-> > `matrix.csv` is a table with one row per gene family, many columns with metadata, and one column per genome showing the name 
+> > * `gene_families.tsv` is a table that shows you which individual genes (second column) correspond to which gene family (first column).
+> > It is the same as the one we provided with the GET_HOMOLOGUES results. When you don't provide the clusters, PPanGGOLiN uses an algorithm that
+> > detects if a coding sequence appears to be a fragment, it uses this information to improve the clustering and it tells you which
+> > genes appear to be fragments in the third column of this file.  
+> > * `gene_presence_absence.Rtab` is a binary matrix that shows if a gene family is present (1) or absent (0) in each genome.  
+> > * `matrix.csv` is a table with one row per gene family, many columns with metadata, and one column per genome showing the name 
 > > of the gene in the corresponding gene family.  
-> >  `mean_persistent_duplication.tsv` has one row per persistent gene family and metrics about its duplication and if it is 
+> >  * `mean_persistent_duplication.tsv` has one row per persistent gene family and metrics about its duplication and if it is 
 > >  considered a single-copy marker.  
-> >  `organisms_statistics.tsv` has one row per genome and columns for the number of gene families and genes in total and in each partition, 
+> >  * `organisms_statistics.tsv` has one row per genome and columns for the number of gene families and genes in total and in each partition, 
 > >  the completeness and the number of single-copy markers.  
-> >  `partitions/` has one list per partition with the names of the gene families it contains.
-> >  `projection/` has one file per genome with the metadata of each gene (i.e. contig, coordinates, strand, gene family, 
+> >  * `partitions/` has one list per partition with the names of the gene families it contains.
+> >  * `projection/` has one file per genome with the metadata of each gene (i.e. contig, coordinates, strand, gene family, 
 > >  number of copies, partition, neighbors in each partition).  
 > {: .solution}
 {: .challenge}
@@ -300,8 +303,8 @@ partition they belong to.
 > ## Discussion: Partitions
 >   Why are there bars with two partitions in the U plot?
 > > ## Solution
-> > Because in PPanGGOLiN the partitions not only depend on the number of genomes a gene family is present in, but also on the conservation of the 
-> > neighborhood of the gene. So a gene that is in only a few genomes but has the same shell neighbors in all or most of them, will more likely be placed 
+> > Because in PPanGGOLiN the partitions not only depend on the number of genomes a gene family is present in but also on the conservation of the 
+> > neighborhood of the gene. For example, a gene that is in only a few genomes but has the same shell neighbors in all or most of them, will more likely be placed 
 > > in the shell than in the cloud. 
 > {: .solution}
 {: .challenge}
@@ -347,13 +350,15 @@ To view the interactive graph we will use the software **gephi**.
 > If your download is in a language that is not English, change the language to English to make it easier to find the options that we will mention. 
 > Find the equivalent to `Tools/Language/English` in the top left menu and restart gephi.
 {: .prereq}
-  
-Go to `File/Open/`and select the file `pangenomeGraph.gexf`.  
-Click OK in the window that appears.  
-Scroll out with your mouse.
-Go to the Layout section on the left and in the selection bar choose ForceAtlas2.
-In the Tuning section change the Scaling value to 4000 and check the Stronger Gravity box.
-Click on the Run button and then click it again to stop.
+
+#### Steps to see the graph in gephi
+
+1) Go to `File/Open/`and select the file `pangenomeGraph.gexf`.  
+2) Click OK in the window that appears.  
+3) Scroll out with your mouse.
+4) Go to the Layout section on the left and in the selection bar choose ForceAtlas2.
+5) In the Tuning section change the Scaling value to 4000 and check the Stronger Gravity box.
+6) Click on the Run button and then click it again to stop.
   
 <a href="../fig/01-06-04.png">
   <img src="../fig/01-06-04.png" width="512" height="512" alt="default Gephi visualization after layout specifications" />
@@ -382,7 +387,8 @@ Now we have a pangenome graph!
 > > In the top left panel you can color the nodes or edges according to different data.
 > > You can choose discrete palettes in the partition section and gradients in the 
 > > Ranking section. You can choose the palette, generate a new one, or choose 
-> > colors one by one.   
+> > colors one by one.
+> > 
 > > a) Nodes colored according to the partition they belong to.  
 > > <a href="../fig/01-06-05.png">
 > > <img src="../fig/01-06-05.png" alt="Gephi visualization with orange nodes for the persistent families, blue for cloud, and green for shell." />
