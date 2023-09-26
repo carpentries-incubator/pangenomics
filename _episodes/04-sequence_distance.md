@@ -149,3 +149,83 @@ $ head -n4 output_blast/mini-genomes.blast
 ~~~
 {: .output}
 
+> ## Exercise 1: Remote blast search
+> We already know how to perform a BLAST search of one FASTA file with many sequences to a custom database of the same sequences.
+> What if we want to make a search against the available NCBI databases?
+> 1) Search on the help page of `blastp` how you can do a remote search.
+> 2) Search on the help page of `blastp` which other fields can be part of your tabular output.
+> 3) Create a small FASTA file with only one sequence of one of our mini genomes.
+> 4) Run `blastp` remotely against the `refseq_protein` database for the created FASTA file and add more fields to the output.
+> (Note that adding the `qseqid` field will not be necessary because we are searching only one protein.
+> 
+> > ## Solution
+> > Use the command-line manual of `blastp`
+> > ~~~
+> > $ blastp -help
+> > ~~~
+> >  {: .language.bash}
+> > ~~~
+> > -remote
+> >   Execute search remotely?
+> >    * Incompatible with:  gilist, seqidlist, taxids, taxidlist,
+> >   negative_gilist, negative_seqidlist, negative_taxids, negative_taxidlist,
+> >   subject_loc, num_threads
+> > ~~~
+> >  {: .output}
+> > ~~~
+> > Options 6, 7 and 10 can be additionally configured to produce
+> >    a custom format specified by space delimited format specifiers,
+> >    or by a token specified by the delim keyword.
+> >     E.g.: "10 delim=@ qacc sacc score".
+> >    The delim keyword must appear after the numeric output format
+> >    specification.
+> >    The supported format specifiers are:
+> >    	    qseqid means Query Seq-id
+> >    	       qgi means Query GI
+> >    	      qacc means Query accesion
+> >    	   qaccver means Query accesion.version
+> >    	      qlen means Query sequence length
+> > .
+> > .
+> > .
+> > ~~~
+> >  {: .output}
+> > Print the sequence to know the identifier.
+> > ~~~
+> > $ head -n2 ~/pan_workshop/data/annotated_mini/Streptococcus_agalactiae_A909_mini.faa 
+> > ~~~
+> >  {: .language.bash}
+> > ~~~
+> > >A909|MGIDGNCP_01408 30S ribosomal protein S16
+> > MAVKIRLTRMGSKKKPFYRINVADSRAPRDGRFIETVGTYNPLVAENQVTIKEERVLEWL
+> > ~~~
+> >  {: .output}
+> > Create the new FASTA file with the sequence and put the identifier of the sequence in the name of the file.
+> > ~~~
+> > $ head -n2 ~/pan_workshop/data/annotated_mini/Streptococcus_agalactiae_A909_mini.faa > Streptococcus_agalactiae_A909_MGIDGNCP_01408.faa
+> > ~~~
+> >  {: .language.bash}
+> > Run blast using the `-remote` flag against the `refseq_protein` database and and use different fields in the `-outfmt` option.
+> > ~~~
+> > $ blastp -query Streptococcus_agalactiae_A909_MGIDGNCP_01408.faa -db refseq_protein -remote -outfmt "6 sseqid evalue bitscore" > output_blast/Streptococcus_agalactiae_A909_MGIDGNCP_01408.blast
+> > ~~~
+> > ~~~
+> > $ head output_blast/Streptococcus_agalactiae_A909_MGIDGNCP_01408.blast
+> > ~~~
+> >  {: .language.bash}
+> > ~~~
+> > ref|WP_109910314.1|	2.23e-36	126
+> > ref|WP_278043300.1|	2.30e-36	126
+> > ref|WP_000268757.1|	2.72e-36	126
+> > ref|WP_017645295.1|	3.13e-36	126
+> > ref|WP_120033169.1|	3.20e-36	126
+> > ref|WP_136133384.1|	4.17e-36	125
+> > ref|WP_020833411.1|	4.55e-36	125
+> > ref|WP_195675206.1|	6.68e-36	125
+> > ref|WP_004232185.1|	6.83e-36	125
+> > ref|WP_016480974.1|	7.54e-36	125
+> > ~~~
+> > {: .output}
+> > 
+> {: .solution}
+{: .challenge}
