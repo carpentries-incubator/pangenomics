@@ -150,13 +150,13 @@ $ head -n4 output_blast/mini-genomes.blast
 {: .output}
 
 > ## Exercise 1: Remote blast search
-> We already know how to perform a BLAST search of one FASTA file with many sequences to a custom database of the same sequences.
-> What if we want to make a search against the available NCBI databases?
-> 1) Search on the help page of `blastp` how you can do a remote search.
-> 2) Search on the help page of `blastp` which other fields can be part of your tabular output.
-> 3) Create a small FASTA file with only one sequence of one of our mini genomes.
-> 4) Run `blastp` remotely against the `refseq_protein` database for the created FASTA file and add more fields to the output.
-> (Note that adding the `qseqid` field will not be necessary because we are searching only one protein.
+> We already know how to perform a BLAST search of one FASTA file with many sequences to a custom database of the same sequences.  
+> What if we want to make a search against the available NCBI databases?  
+> 1) Search on the help page of `blastp` how you can do a remote search.  
+> 2) Search on the help page of `blastp` which other fields can be part of your tabular output.  
+> 3) Create a small FASTA file with only one sequence of one of our mini genomes.  
+> 4) Run `blastp` remotely against the `refseq_protein` database for the created FASTA file and add more fields to the output.  
+> (Note that adding the `qseqid` field will not be necessary because we are searching only one protein.)  
 > 
 > > ## Solution
 > > Use the command-line manual of `blastp`
