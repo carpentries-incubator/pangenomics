@@ -80,7 +80,7 @@ In this example, we will use the following options:
 | --addgens |Add 'gene' features for each 'CDS' feature (default OFF) |
 
 ~~~
-$ prokka --prefix agalactiae_A909_prokka --outdir agalactiae_A909_prokka --kingdom Bacteria --genus Streptococcus --species agalactiae --strain A909 --usegenus --addgenes ~/pan_workshop/data/agalactiae_A909/GCF_000012705.1_ASM1270v1_genomic.fna
+$ prokka --prefix agalactiae_515_prokka --outdir agalactiae_515_prokka --kingdom Bacteria --genus Streptococcus --species agalactiae --strain 515 --usegenus --addgenes ~/pan_workshop/data/agalactiae_515/GCF_012593885.1_ASM1259388v1_genomic.fna
 ~~~
 {: .language-bash}
 
@@ -92,19 +92,19 @@ tree
 
 ~~~
 .
-└── agalactiae_A909_prokka
-    ├── agalactiae_A909_prokka.err
-    ├── agalactiae_A909_prokka.faa
-    ├── agalactiae_A909_prokka.ffn
-    ├── agalactiae_A909_prokka.fna
-    ├── agalactiae_A909_prokka.fsa
-    ├── agalactiae_A909_prokka.gbk
-    ├── agalactiae_A909_prokka.gff
-    ├── agalactiae_A909_prokka.log
-    ├── agalactiae_A909_prokka.sqn
-    ├── agalactiae_A909_prokka.tbl
-    ├── agalactiae_A909_prokka.tsv
-    └── agalactiae_A909_prokka.txt
+└── agalactiae_515_prokka
+    ├── agalactiae_515_prokka.err
+    ├── agalactiae_515_prokka.faa
+    ├── agalactiae_515_prokka.ffn
+    ├── agalactiae_515_prokka.fna
+    ├── agalactiae_515_prokka.fsa
+    ├── agalactiae_515_prokka.gbk
+    ├── agalactiae_515_prokka.gff
+    ├── agalactiae_515_prokka.log
+    ├── agalactiae_515_prokka.sqn
+    ├── agalactiae_515_prokka.tbl
+    ├── agalactiae_515_prokka.tsv
+    └── agalactiae_515_prokka.txt
 
 1 directory, 12 files
 ~~~
