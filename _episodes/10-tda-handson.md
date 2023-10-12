@@ -16,14 +16,15 @@ Welcome to this lesson on using GUDHI and exploring simplicial homology. [GUDHI]
 
 To begin, we will import the necessary packages.
 ~~~
-from IPython.display import Image
-from os import chdir
-import numpy as np
-import gudhi as gd
-import matplotlib.pyplot as plt
-import argparse
-import seaborn as sns
-import requests
+from IPython.display import Image     # Import the Image function from IPython.display to display images in Jupyter environments.
+from os import chdir                  # Import chdir from os module to change the current working directory.
+import numpy as np                    # Import numpy library for working with n-dimensional arrays and mathematical operations.
+import gudhi as gd                    # Import gudhi library for computational topology and computational geometry.
+import matplotlib.pyplot as plt       # Import pyplot from matplotlib for creating visualizations and graphs.
+import argparse                       # Import argparse, a standard library for writing user-friendly command-line interfaces.
+import seaborn as sns                 # Import seaborn for data visualization; it's based on matplotlib and provides a high-level interface for drawing statistical graphs.
+import requests                       # Import requests library to make HTTP requests in Python easily.
+
 ~~~
 {: .language-python}
 
