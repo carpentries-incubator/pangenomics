@@ -28,8 +28,10 @@ import os
 Now, we need to read the `mini-genomes.blast` file that we produced in the episode of [Understanding Pangenomes with BLAST](https://paumayell.github.io/pangenomics/04-manual-pangenomes/index.html). 
 
 ~~~
-os.getcwd()
-blastE = pd.read_csv( '~/pan_workshop/results/blast/mini/output_blast/mini-genomes.blast', sep = '\t',names = ['qseqid','sseqid', 'evalue'])  
+
+url = "https://raw.githubusercontent.com/paumayell/pangenomics/gh-pages/files/mini-genomes.blast"
+blastE = pd.read_csv(url, sep='\t', names=['qseqid', 'sseqid', 'evalue'])
+ 
 ~~~
 {: .language-python}
 
