@@ -29,7 +29,7 @@ In this episode, we will meet another pangenomics powerful tool. The pangenomics
 of genomes like the PPanGGOLiN workflow, but it allows for an interactive exploration of smaller pangenomes, providing you with a 
 closer look at the pangenome matrix and some interesting characteristics of our gene families.
 
-##  Build a pangenome with Anvi'o
+## Preparing the databases for each genome
 
 To start using Anvi'o, activate the conda environment `Pangenomics_Global`.
 ~~~
@@ -51,10 +51,8 @@ $ mkdir genome-db
 ~~~
 {: .language-bash}
 
-### Step 1
-
-Process the genome files (`.gbk`) with the `anvi-script-process-genbank` script.
-
+To build a pangenome Anvi'o needs to extract the sequences AND OTHER INFORMATION from the `gbk` files. To do this
+let's do a while loop to get the file names of each `gbk` and run the `anvi-script-process-genbank` script for each of them.
 ~~~
 $ ls ~/pan_workshop/results/annotated/Streptococcus_agalactiae_* | cut -d'/' -f7 | cut -d '.' -f1 | while read line
 do
@@ -86,9 +84,8 @@ Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt    Streptococcus_ag
 ~~~
 {: .output}
 
-### Step 2
-
-Reformat the fasta files using the `anvi-script-reformat-fasta` script.
+Now we have our `genome-db/` with the files that Anvi'o needs. Now we need to reformat the generated `fasta` files so that the GENE NAMES ARE STANDARDIZED. Let's do it
+with the `anvi-script-reformat-fasta` script.
 
 ~~~
 $ ls *fa |while read line
@@ -120,9 +117,7 @@ Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt    Streptococcus_ag
 ~~~
 {: .output}
 
-### Step 3
-
-Create a database per genome with the `anvi-gen-contigs-database` script.
+With these new files now we need to GATHER THAT INFORMATION in an Anvi'o database format. To create a database per genome we need to run the `anvi-gen-contigs-database` script.
 
 ~~~
 $ ls *fasta | while read line; do anvi-gen-contigs-database -T 4 -f $line -o $line-contigs.db; done
@@ -155,9 +150,24 @@ Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt        Streptococcu
 ~~~
 {: .output}
 
-### Step 4
+The database files have a super long name, so we should replace the extension to only `.db`.
 
-When using external genomes in Anvi'o, a list of the genome IDs and their corresponding genome database is required. This list tells Anvi'o which genomes will be processed to construct the pangenome.
+~~~
+$ rename s'/.fa.fasta-contigs.db/.db/' *db
+$ ls *.db
+~~~
+{: .language-bash}
+
+~~~
+Streptococcus_agalactiae_18RS21_prokka-contigs.db  Streptococcus_agalactiae_CJB111_prokka-contigs.db
+Streptococcus_agalactiae_2603V_prokka-contigs.db   Streptococcus_agalactiae_COH1_prokka-contigs.db
+Streptococcus_agalactiae_515_prokka-contigs.db     Streptococcus_agalactiae_H36B_prokka-contigs.db
+Streptococcus_agalactiae_A909_prokka-contigs.db    Streptococcus_agalactiae_NEM316_prokka-contigs.db
+
+~~~
+{: .output}
+
+When using external genomes (genomes that are not part of the Anvi'o collection), a list of the genome IDs and their corresponding genome database is required. This list tells Anvi'o which genomes will be processed to construct the pangenome.
 ~~~
 $ ls *.fa | cut -d '-' -f1 | while read line
 do
@@ -179,34 +189,9 @@ Streptococcus_agalactiae_NEM316_prokka  Streptococcus_agalactiae_NEM316_prokka-c
 ~~~
 {: .output}
 
-### Step 5
-
-Modify the headers of the list `external-genomes.txt`.
+Let's add a header to the list that we made.
 ~~~
 $ nano external-genomes.txt
-~~~
-{: .language-bash}
-
-~~~
-  GNU nano 4.8                                                         	external-genomes.txt                                   name    contigs_db_path
-Streptococcus_agalactiae_18RS21_prokka  Streptococcus_agalactiae_18RS21_prokka-contigs.db
-Streptococcus_agalactiae_2603V_prokka   Streptococcus_agalactiae_2603V_prokka-contigs.db
-Streptococcus_agalactiae_515_prokka     Streptococcus_agalactiae_515_prokka-contigs.db
-Streptococcus_agalactiae_A909_prokka    Streptococcus_agalactiae_A909_prokka-contigs.db
-Streptococcus_agalactiae_CJB111_prokka  Streptococcus_agalactiae_CJB111_prokka-contigs.db
-Streptococcus_agalactiae_COH1_prokka    Streptococcus_agalactiae_COH1_prokka-contigs.db
-Streptococcus_agalactiae_H36B_prokka    Streptococcus_agalactiae_H36B_prokka-contigs.db
-Streptococcus_agalactiae_NEM316_prokka  Streptococcus_agalactiae_NEM316_prokka-contigs.db
-
-
-
-^G Get Help 	^O Write Out	^W Where Is 	^K Cut Text 	^J Justify  	^C Cur Pos  	M-U Undo    	M-A Mark Text   M-] To Bracket  M-Q Previous
-^X Exit     	^R Read File	^\ Replace  	^U Paste Text   ^T To Spell 	^_ Go To Line   M-E Redo    	M-6 Copy Text   ^Q Where Was	M-W Next
-~~~
-{: .output}
-
-~~~
-$ head external-genomes.txt
 ~~~
 {: .language-bash}
 
@@ -220,31 +205,13 @@ Streptococcus_agalactiae_CJB111_prokka  Streptococcus_agalactiae_CJB111_prokka-c
 Streptococcus_agalactiae_COH1_prokka    Streptococcus_agalactiae_COH1_prokka-contigs.db
 Streptococcus_agalactiae_H36B_prokka    Streptococcus_agalactiae_H36B_prokka-contigs.db
 Streptococcus_agalactiae_NEM316_prokka  Streptococcus_agalactiae_NEM316_prokka-contigs.db
-
 ~~~
 {: .output}
 
-### Step 6
+## Building the pangenome
 
-Rename the `.db` files.
-
-~~~
-$ rename s'/.fa.fasta-contigs.db/.db/' *db
-$ ls *.db
-~~~
-{: .language-bash}
-
-~~~
-Streptococcus_agalactiae_18RS21_prokka-contigs.db  Streptococcus_agalactiae_CJB111_prokka-contigs.db
-Streptococcus_agalactiae_2603V_prokka-contigs.db   Streptococcus_agalactiae_COH1_prokka-contigs.db
-Streptococcus_agalactiae_515_prokka-contigs.db     Streptococcus_agalactiae_H36B_prokka-contigs.db
-Streptococcus_agalactiae_A909_prokka-contigs.db    Streptococcus_agalactiae_NEM316_prokka-contigs.db
-
-~~~
-{: .output}
-
-### Step 7
-Execute HMM analysis with the `anvi-run-hmms` script to identify matching genes in each contigs database file.
+### HMM
+Now we are ready to identify matching genes in each contigs database file, for this, we will execute the HMM analysis with the `anvi-run-hmms` script.
 
 ~~~
 $ ls *contigs.db | while read line
@@ -305,7 +272,7 @@ Number of raw hits in table file .............: 0
 {: .output}
 
 
-### Step 8
+### Creating a combined database
 
 Create the genome database `genomes-storage-db` using the `anvi-gen-genomes-storage` script. In this case, we named this `genomes-storage-db` as **STREPTOCOCCUS_AGALACTIAE_GENOMES.db**, which will be used downstream as input in other processes.
 
@@ -324,7 +291,7 @@ Streptococcus_agalactiae_CJB111_prokka-contigs.db
 ~~~
 {: .output}
 
-### Step 9
+### Making a pangenomic database
 
 Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named `STREPTOCOCCUS_AGALACTIAE_GENOMES.db` as input.
 
@@ -402,7 +369,7 @@ If you publish your findings, please do not forget to properly credit this tool.
 {: .output}
 
 
-### Step 10
+## Creating interactive plot
 
 Create the interactive pangenome with the `anvi-display-pan` script using as input the `genomes-storage-db`  `STREPTOCOCCUS_AGALACTIAE_GENOMES.db` and the `pan-db`  `PANGENOME-AGALACTIAE-PAN.db` (located in `AGALACTIAE` directory)
 
