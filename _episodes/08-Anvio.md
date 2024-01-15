@@ -369,7 +369,7 @@ If you publish your findings, please do not forget to properly credit this tool.
 {: .output}
 
 
-## Creating interactive plot
+## Creating an interactive plot
 
 Create the interactive pangenome with the `anvi-display-pan` script using as input the `genomes-storage-db`  `STREPTOCOCCUS_AGALACTIAE_GENOMES.db` and the `pan-db`  `PANGENOME-AGALACTIAE-PAN.db` (located in `AGALACTIAE` directory)
 
@@ -410,46 +410,22 @@ Without disturbing the active terminal, open a new window in your preferred brow
 </a>
 
 {: .output}
-
- 
-> ## Exercise 1: The homogeneity of gene clusters.
->Anvi’o allows to identify different levels of disagreement between amino acid sequences in different genomes. Amino acid sequences from different genomes in a gene cluster that are almost identical tell us that the gene cluster is highly homogeneous.
->
-> The **geometric homogeneity index** tell us the degree of geometric configuration between the genes of a gene cluster and the **functional homogeneity index** considers aligned residues and quantifies differences across residues in a site.
->
->For more info see [this.](https://merenlab.org/2016/11/08/pangenomics-v2/#inferring-the-homogeneity-of-gene-clusters)
->
->Go to this [page](https://anvio.org/help/main/programs/anvi-get-sequences-for-gene-clusters/) and explore the pangenome graph according to the following homogeneity index.
->
->a) Order the pangenome based on the geometric homogeneity index and inspect a gene cluster with a relatively low score.
->
->b) Filter the gene cluster according to a functional homogeneity index above 0.25.
->
->Extra) How can you estimate evolutionary relationships between genomes? With the `concatenated-gene-alignment-fasta` produce the phylogenomic tree and explore it.
-> >## Solution
->> a) Go to the main settings panel and modify the `items order`.
+> ## Exercise 1: Explore the interactive plot.
+> 
+>>## Solution
 >>
->> b)
->>~~~
-$ anvi-get-sequences-for-gene-clusters -g genomes-storage-db \
-                                 	-p pan-db \
-                                 	-o genes-fasta \
-                                 	--min-functional-homogenity-index 0.25
 >>~~~
 >>{: .language-bash}
 >>
->>Extra)Explore this [page.](https://anvio.org/help/main/programs/anvi-gen-phylogenomic-tree/)
+>>
 >{: .solution}
 {: .challenge}
- 
- 
-> ## Exercise 2: Splitting the pangenome.
-> 1. Read about [`anvi-split`](https://anvio.org/help/main/programs/anvi-split/)
-> 2. With this program split your pangenome in independent pangenomes that:
-> * Contains only singletons.
-> * Contains only core gene clusters.
->
-> Tip: [anvi-display-pan](https://anvio.org/help/main/programs/anvi-display-pan/) can be useful
-{: .challenge}
+
+## Special analyses
+Anvi'o allows us to identify different levels of disagreement between amino acid sequences in different genomes. Amino acid sequences from different genomes in a gene cluster that are almost identical tell us that the gene cluster is highly homogeneous. The **geometric homogeneity index** tells us the degree of geometric configuration between the genes of a gene cluster and the **functional homogeneity index** considers aligned residues and quantifies differences across residues in a site. For more info see [this.](https://merenlab.org/2016/11/08/pangenomics-v2/#inferring-the-homogeneity-of-gene-clusters)
+
+Anvi'o can also estimate evolutionary relationships between genomes with the `concatenated-gene-alignment-fasta` to produce the phylogenomic tree. For more information see [this](https://anvio.org/help/main/programs/anvi-gen-phylogenomic-tree/)
+
+ With Anvi'o you can further analyze your pangenome with [`anvi-split`](https://anvio.org/help/main/programs/anvi-split/) to create independent pangenomes that contain only singletons or contain only core gene clusters.
 
 {% include links.md %}
