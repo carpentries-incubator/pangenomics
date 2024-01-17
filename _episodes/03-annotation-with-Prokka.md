@@ -7,9 +7,11 @@ questions:
 objectives:
 - "Annotate bacterial genomes using Prokka."
 - "Use scripts to customize output files."
+- "Identify genes conferring antibiotic resistance with RGI."
 keypoints:
 - "Prokka is a command line utility that provides rapid prokaryotic genome annotation."
 - "Sometimes we need manual curation of the output files of the software."
+- "Specialized software exist to perform annotation of specific genomic elements."
 ---
 
 ## Annotating genomes
@@ -388,3 +390,129 @@ Voilà! Our `gbk` files now have the strain code in the `ORGANISM` line.
 > `LOCUS       c_000000000001         44796 bp    DNA     linear`.  
 > Problem solved!
 {: .callout}
+
+## Annotating antibiotic resistance
+
+Whereas Prokka is useful to identify all kinds of genomic elements, other more
+specialized pipelines are also available. For example,
+[antiSMASH](https://antismash.secondarymetabolites.org) searches genomes for
+biosynthetic gene clusters, responsible for the production of secondary
+metabolites. Another pipeline of interest is
+[RGI](https://github.com/arpcard/rgi): the Resistance Gene Identifier. This
+program allows users to predict genes and SNPs which confer antibiotic
+resistance to an organism. It is a very complex piece of software subdivided
+into several subprograms; RGI main, for instance, is used to annotate contigs,
+and RGI bwt, on the other hand, annotates reads. In this lesson, we'll learn
+how to use RGI main. To use it, first activate its virtual environment:
+
+~~~
+$ conda activate rgi
+~~~
+{: .language-bash}
+
+You can type `rgi --help` to list all subprograms that RGI provides. In order
+to get a manual of a specific subcommand, type `rgi [command] --help`,
+replacing `[command]` with your subprogram of interest. Before you do anything
+with RGI, however, you must download [CARD](https://card.mcmaster.ca/)
+(the Comprehensive Antibiotic Resistance Database), which is used by RGI as
+reference. To do so, we will use `wget` and one of the subcommands of RGI,
+`rgi load`, as follows:
+
+~~~
+$ cd ~/pan_workshop/data/
+$ wget -O card_archive.tar.gz https://card.mcmaster.ca/latest/data
+$ tar -xf card_archive.tar.gz ./card.json
+$ rgi load --local -i card.json
+$ rm card_archive.tar.gz card.json
+~~~
+{: .language-bash}
+
+After performing this sequence of commands, you'll find a directory called
+`localDB` in your current working directory. Its location and name are extremely
+important: **you must always run RGI inside the parent directory of
+`localDB`** (which, in our case, is `~/pan_workshop/data/`), and **you shall
+not rename `localDB` to anything else**. RGI will fail if you don't follow
+these rules.
+
+As we'll be using RGI
+main, write `rgi main --help` and take a moment to read through the help page.
+The most important parameters are `-i` (or `--input_sequence`), used to set the
+genomic sequence we want to annotate, and `-o` (or `--output_file`), which
+specifies the basename for the output files: for example, if you set this
+option to `results`, you'll get two files, `results.json` and `results.txt`.
+We'll look at the contents of these files a little later. We are now going to
+create a new directory for RGI main's outputs:
+
+~~~
+$ mkdir -p ../results/resistomes/
+~~~
+{: .language-bash}
+
+Next, let's see how we would find the resistance genes in the 18RS21 strain of
+*S. agalactiae*:
+
+~~~
+$ rgi main --clean --local \
+> -i agalactiae_18RS21/Streptococcus_agalactiae_18RS21.fna \
+> -o ../results/resistomes/agalactiae_18RS21
+~~~
+{: .language-bash}
+
+Notice that we are using the `--clean` option; this removes any extra and
+temporary files that RGI produces during its execution. Further, we are also
+supplying the `--local` option so that RGI uses the database stored in
+`localDB` as its reference. Let's now take a look at the files that the program
+created:
+
+~~~
+$ cd ../results/resistomes/
+$ ls
+~~~
+{: .language-bash}
+
+~~~
+agalactiae_18RS21.json
+agalactiae_18RS21.txt
+~~~
+{: .output}
+
+The `JSON` file stores the complete output whereas the `.TXT` file contains a
+subset of this information. However, the former isn't very human-readable, and
+is mostly useful for downstream analyses with RGI; the latter, on the other
+hand, has everything we might need in a "friendly" format. This file is
+tab-delimited, meaning that it is a table file which uses the tab symbol as
+separator. Have a look at the file by running `less -S agalactiae_18RS21.txt`;
+use the arrow keys to move left and right. A detailed description of the
+meaning of each column can be found in the table below:
+
+|    Field                                                 | Contents                                       |
+|:---------------------------------------------------------|:-----------------------------------------------|
+|    ORF_ID                                                | Open Reading Frame identifier (internal to RGI)|
+|    Contig                                                | Source Sequence                                |
+|    Start                                                 | Start co-ordinate of ORF                       |
+|    Stop                                                  | End co-ordinate of ORF                         |
+|    Orientation                                           | Strand of ORF                                  |
+|    Cut_Off                                               | RGI Detection Paradigm (Perfect, Strict, Loose)|
+|    Pass_Bitscore                                         | Strict detection model bitscore cut-off        |
+|    Best_Hit_Bitscore                                     | Bitscore value of match to top hit in CARD     |
+|    Best_Hit_ARO                                          | ARO term of top hit in CARD                    |
+|    Best_Identities                                       | Percent identity of match to top hit in CARD   |
+|    ARO                                                   | ARO accession of match to top hit in CARD      |
+|    Model_type                                            | CARD detection model type                      |
+|    SNPs_in_Best_Hit_ARO                                  | Mutations observed in the ARO term of top hit in CARD (if applicable)|
+|    Other_SNPs                                            | Mutations observed in ARO terms of other hits indicated by model id (if applicable)|
+|    Drug Class                                            | ARO Categorization                             |
+|    Resistance Mechanism                                  | ARO Categorization                             |
+|    AMR Gene Family                                       | ARO Categorization                             |
+|    Predicted_DNA                                         | ORF predicted nucleotide sequence              |
+|    Predicted_Protein                                     | ORF predicted protein sequence                 |
+|    CARD_Protein_Sequence                                 | Protein sequence of top hit in CARD            |
+|    Percentage Length of Reference Sequence               | (length of ORF protein / length of CARD reference protein)|
+|    ID                                                    | HSP identifier (internal to RGI)               |
+|    Model_id                                              | CARD detection model id                        |
+|    Nudged                                                | TRUE = Hit nudged from Loose to Strict         |
+|    Note                                                  | Reason for nudge or other notes                |
+|    Hit_Start                                             | Start co-ordinate for HSP in CARD reference    |
+|    Hit_End                                               | End co-ordinate for HSP in CARD reference      |
+|    Antibiotic                                            | ARO Categorization                             |
+
