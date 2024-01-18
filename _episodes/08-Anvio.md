@@ -123,11 +123,8 @@ $ ls *.db
 {: .language-bash}
 
 ~~~
-Streptococcus_agalactiae_18RS21_prokka-contigs.db  Streptococcus_agalactiae_CJB111_prokka-contigs.db
-Streptococcus_agalactiae_2603V_prokka-contigs.db   Streptococcus_agalactiae_COH1_prokka-contigs.db
-Streptococcus_agalactiae_515_prokka-contigs.db     Streptococcus_agalactiae_H36B_prokka-contigs.db
-Streptococcus_agalactiae_A909_prokka-contigs.db    Streptococcus_agalactiae_NEM316_prokka-contigs.db
-
+Streptococcus_agalactiae_18RS21_prokka-contigs.db 
+...
 ~~~
 {: .output}
 
