@@ -279,9 +279,6 @@ $ anvi-pan-genome -g STREPTOCOCCUS_AGALACTIAE_GENOMES.db \
 > Too-weak matches were culled by employing the --minbit criterion with the default value of 0.5, to minimize feeding MCL irrelevant similarities - by calculating all possible pairwise similarities, we introduce nonsensical comparisons, e.g., DnaK to TonB, that can be disregarded by their poor alignment quality prior to MCL. CITAR A DUTTER
 > MCL uses a hyperparameter, “inflation,” to adjust the clustering sensitivity, i.e., the tendency to split clusters. MCL then uses these pairwise identities to group ORFs into gene clusters, putatively homologous gene groups. MCL uses a hyperparameter (inflation, --mcl-inflation) to adjust the clustering sensitivity, i.e., the tendency to split clusters. The decision for this flag depend of the level of you genomes, for example if you want to construct a pangenome to level Genus you can use a MCL more low and if you want to construct a pangenome level you can use more high
 
-
-
-
 {: .callout}
 
 
