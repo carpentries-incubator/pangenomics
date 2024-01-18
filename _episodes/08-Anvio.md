@@ -235,6 +235,9 @@ Number of raw hits in table file .............: 0
 ~~~
 {: .output}
 
+> ## Know more
+> If you want to read more about HMM .
+{: .callout}
 
 ### Creating a combined database
 
@@ -258,6 +261,8 @@ Streptococcus_agalactiae_CJB111_prokka-contigs.db
 ### Making a pangenomic database
 
 Construct the pangenome database `pan-db` with the `anvi-pan-pangenome` script using the `genomes-storage-db` named `STREPTOCOCCUS_AGALACTIAE_GENOMES.db` as input.
+
+ABEL EXPLICA LAS FLAGS DE ESTO
 
 ~~~
 $ anvi-pan-genome -g STREPTOCOCCUS_AGALACTIAE_GENOMES.db \
