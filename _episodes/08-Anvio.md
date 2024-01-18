@@ -68,19 +68,10 @@ $ ls
 {: .language-bash}
 
 ~~~
-Streptococcus_agalactiae_18RS21_prokka-contigs.fa               Streptococcus_agalactiae_CJB111_prokka-contigs.fa
-Streptococcus_agalactiae_18RS21_prokka-external-functions.txt   Streptococcus_agalactiae_CJB111_prokka-external-functions.txt
-Streptococcus_agalactiae_18RS21_prokka-external-gene-calls.txt  Streptococcus_agalactiae_CJB111_prokka-external-gene-calls.txt
-Streptococcus_agalactiae_2603V_prokka-contigs.fa                Streptococcus_agalactiae_COH1_prokka-contigs.fa
-Streptococcus_agalactiae_2603V_prokka-external-functions.txt    Streptococcus_agalactiae_COH1_prokka-external-functions.txt
-Streptococcus_agalactiae_2603V_prokka-external-gene-calls.txt   Streptococcus_agalactiae_COH1_prokka-external-gene-calls.txt
-Streptococcus_agalactiae_515_prokka-contigs.fa                  Streptococcus_agalactiae_H36B_prokka-contigs.fa
-Streptococcus_agalactiae_515_prokka-external-functions.txt      Streptococcus_agalactiae_H36B_prokka-external-functions.txt
-Streptococcus_agalactiae_515_prokka-external-gene-calls.txt     Streptococcus_agalactiae_H36B_prokka-external-gene-calls.txt
-Streptococcus_agalactiae_A909_prokka-contigs.fa                 Streptococcus_agalactiae_NEM316_prokka-contigs.fa
-Streptococcus_agalactiae_A909_prokka-external-functions.txt     Streptococcus_agalactiae_NEM316_prokka-external-functions.txt
-Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt    Streptococcus_agalactiae_NEM316_prokka-external-gene-calls.txt
-
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa 
+Streptococcus_agalactiae_18RS21_prokka-external-functions.txt 
+Streptococcus_agalactiae_18RS21_prokka-external-gene-calls.txt 
+...
 ~~~
 {: .output}
 
@@ -97,23 +88,11 @@ $ ls
 {: .language-bash}
 
 ~~~
-Streptococcus_agalactiae_18RS21_prokka-contigs.fa               Streptococcus_agalactiae_CJB111_prokka-contigs.fa
-Streptococcus_agalactiae_18RS21_prokka-contigs.fa.fasta         Streptococcus_agalactiae_CJB111_prokka-contigs.fa.fasta
-Streptococcus_agalactiae_18RS21_prokka-external-functions.txt   Streptococcus_agalactiae_CJB111_prokka-external-functions.txt
-Streptococcus_agalactiae_18RS21_prokka-external-gene-calls.txt  Streptococcus_agalactiae_CJB111_prokka-external-gene-calls.txt
-Streptococcus_agalactiae_2603V_prokka-contigs.fa                Streptococcus_agalactiae_COH1_prokka-contigs.fa
-Streptococcus_agalactiae_2603V_prokka-contigs.fa.fasta          Streptococcus_agalactiae_COH1_prokka-contigs.fa.fasta
-Streptococcus_agalactiae_2603V_prokka-external-functions.txt    Streptococcus_agalactiae_COH1_prokka-external-functions.txt
-Streptococcus_agalactiae_2603V_prokka-external-gene-calls.txt   Streptococcus_agalactiae_COH1_prokka-external-gene-calls.txt
-Streptococcus_agalactiae_515_prokka-contigs.fa                  Streptococcus_agalactiae_H36B_prokka-contigs.fa
-Streptococcus_agalactiae_515_prokka-contigs.fa.fasta            Streptococcus_agalactiae_H36B_prokka-contigs.fa.fasta
-Streptococcus_agalactiae_515_prokka-external-functions.txt      Streptococcus_agalactiae_H36B_prokka-external-functions.txt
-Streptococcus_agalactiae_515_prokka-external-gene-calls.txt     Streptococcus_agalactiae_H36B_prokka-external-gene-calls.txt
-Streptococcus_agalactiae_A909_prokka-contigs.fa                 Streptococcus_agalactiae_NEM316_prokka-contigs.fa
-Streptococcus_agalactiae_A909_prokka-contigs.fa.fasta           Streptococcus_agalactiae_NEM316_prokka-contigs.fa.fasta
-Streptococcus_agalactiae_A909_prokka-external-functions.txt     Streptococcus_agalactiae_NEM316_prokka-external-functions.txt
-Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt    Streptococcus_agalactiae_NEM316_prokka-external-gene-calls.txt
-
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa 
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa.fasta 
+Streptococcus_agalactiae_18RS21_prokka-external-functions.txt 
+Streptococcus_agalactiae_18RS21_prokka-external-gene-calls.txt 
+...
 ~~~
 {: .output}
 
@@ -126,27 +105,12 @@ $ ls
 {: .language-bash}
 
 ~~~
-Streptococcus_agalactiae_18RS21_prokka-contigs.fa                   Streptococcus_agalactiae_CJB111_prokka-contigs.fa
-Streptococcus_agalactiae_18RS21_prokka-contigs.fa.fasta             Streptococcus_agalactiae_CJB111_prokka-contigs.fa.fasta
-Streptococcus_agalactiae_18RS21_prokka-contigs.fa.fasta-contigs.db  Streptococcus_agalactiae_CJB111_prokka-contigs.fa.fasta-contigs.db
-Streptococcus_agalactiae_18RS21_prokka-external-functions.txt       Streptococcus_agalactiae_CJB111_prokka-external-functions.txt
-Streptococcus_agalactiae_18RS21_prokka-external-gene-calls.txt      Streptococcus_agalactiae_CJB111_prokka-external-gene-calls.txt
-Streptococcus_agalactiae_2603V_prokka-contigs.fa                    Streptococcus_agalactiae_COH1_prokka-contigs.fa
-Streptococcus_agalactiae_2603V_prokka-contigs.fa.fasta              Streptococcus_agalactiae_COH1_prokka-contigs.fa.fasta
-Streptococcus_agalactiae_2603V_prokka-contigs.fa.fasta-contigs.db   Streptococcus_agalactiae_COH1_prokka-contigs.fa.fasta-contigs.db
-Streptococcus_agalactiae_2603V_prokka-external-functions.txt        Streptococcus_agalactiae_COH1_prokka-external-functions.txt
-Streptococcus_agalactiae_2603V_prokka-external-gene-calls.txt       Streptococcus_agalactiae_COH1_prokka-external-gene-calls.txt
-Streptococcus_agalactiae_515_prokka-contigs.fa                      Streptococcus_agalactiae_H36B_prokka-contigs.fa
-Streptococcus_agalactiae_515_prokka-contigs.fa.fasta                Streptococcus_agalactiae_H36B_prokka-contigs.fa.fasta
-Streptococcus_agalactiae_515_prokka-contigs.fa.fasta-contigs.db     Streptococcus_agalactiae_H36B_prokka-contigs.fa.fasta-contigs.db
-Streptococcus_agalactiae_515_prokka-external-functions.txt          Streptococcus_agalactiae_H36B_prokka-external-functions.txt
-Streptococcus_agalactiae_515_prokka-external-gene-calls.txt         Streptococcus_agalactiae_H36B_prokka-external-gene-calls.txt
-Streptococcus_agalactiae_A909_prokka-contigs.fa                     Streptococcus_agalactiae_NEM316_prokka-contigs.fa
-Streptococcus_agalactiae_A909_prokka-contigs.fa.fasta               Streptococcus_agalactiae_NEM316_prokka-contigs.fa.fasta
-Streptococcus_agalactiae_A909_prokka-contigs.fa.fasta-contigs.db    Streptococcus_agalactiae_NEM316_prokka-contigs.fa.fasta-contigs.db
-Streptococcus_agalactiae_A909_prokka-external-functions.txt         Streptococcus_agalactiae_NEM316_prokka-external-functions.txt
-Streptococcus_agalactiae_A909_prokka-external-gene-calls.txt        Streptococcus_agalactiae_NEM316_prokka-external-gene-calls.txt
-
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa 
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa.fasta 
+Streptococcus_agalactiae_18RS21_prokka-contigs.fa.fasta-contigs.db 
+Streptococcus_agalactiae_18RS21_prokka-external-functions.txt 
+Streptococcus_agalactiae_18RS21_prokka-external-gene-calls.txt 
+...
 ~~~
 {: .output}
 
