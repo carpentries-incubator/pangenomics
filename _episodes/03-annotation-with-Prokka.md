@@ -428,20 +428,27 @@ $ rm card_archive.tar.gz card.json
 {: .language-bash}
 
 After performing this sequence of commands, you'll find a directory called
-`localDB` in your current working directory. Its location and name are extremely
-important: **you must always run RGI inside the parent directory of
-`localDB`** (which, in our case, is `~/pan_workshop/data/`), and **you shall
-not rename `localDB` to anything else**. RGI will fail if you don't follow
+`localDB/` in your current working directory. Its location and name are
+extremely important: **you must always run RGI inside the parent directory of
+`localDB/`** (which, in our case, is `~/pan_workshop/data/`), and **you shall
+not rename `localDB/` to anything else**. RGI will fail if you don't follow
 these rules.
 
-As we'll be using RGI
-main, write `rgi main --help` and take a moment to read through the help page.
-The most important parameters are `-i` (or `--input_sequence`), used to set the
-genomic sequence we want to annotate, and `-o` (or `--output_file`), which
-specifies the basename for the output files: for example, if you set this
-option to `results`, you'll get two files, `results.json` and `results.txt`.
-We'll look at the contents of these files a little later. We are now going to
-create a new directory for RGI main's outputs:
+As we'll be using RGI main, write `rgi main --help` and take a moment to read
+through the help page. The parameters we'll be using in this lesson are:
+
+- `-i` or `--input_sequence`. Sets the genomic sequence (in `fasta` or
+`fasta.gz` format) we want to annotate.
+- `-o` or `--output_file`. Specifies the basename for the two output files RGI
+produces; for example, if you set this option to `outputs`, you'll get two
+files: `outputs.json` and `outputs.txt`.
+- `--include_loose`. When not using this option, RGI will only return
+hits with strict boundaries; on the other hand, if provided, RGI will also
+include hits with loose boundaries.
+- `--local`. Tells RGI to use the database stored in `localDB/`.
+- `--clean`. Removes temporary files created by RGI.
+
+We are now going to create a new directory for RGI main's outputs:
 
 ~~~
 $ mkdir -p ../results/resistomes/
@@ -452,17 +459,13 @@ Next, let's see how we would find the resistance genes in the 18RS21 strain of
 *S. agalactiae*:
 
 ~~~
-$ rgi main --clean --local \
+$ rgi main --clean --local --include_loose \
 > -i agalactiae_18RS21/Streptococcus_agalactiae_18RS21.fna \
 > -o ../results/resistomes/agalactiae_18RS21
 ~~~
 {: .language-bash}
 
-Notice that we are using the `--clean` option; this removes any extra and
-temporary files that RGI produces during its execution. Further, we are also
-supplying the `--local` option so that RGI uses the database stored in
-`localDB` as its reference. Let's now take a look at the files that the program
-created:
+Recall that RGI produces two output files; let's have a look at them: 
 
 ~~~
 $ cd ../results/resistomes/
@@ -478,41 +481,51 @@ agalactiae_18RS21.txt
 
 The `JSON` file stores the complete output whereas the `.TXT` file contains a
 subset of this information. However, the former isn't very human-readable, and
-is mostly useful for downstream analyses with RGI; the latter, on the other
-hand, has everything we might need in a "friendly" format. This file is
+is mostly useful for downstream analyses with RGI; the latter, on the contrary,
+has everything we might need in a "friendlier" format. This file is
 tab-delimited, meaning that it is a table file which uses the tab symbol as
 separator. Have a look at the file by running `less -S agalactiae_18RS21.txt`;
 use the arrow keys to move left and right. A detailed description of the
-meaning of each column can be found in the table below:
+meaning of each column can be found in the table below (taken from RGI's
+documentation):
 
-|    Field                                                 | Contents                                       |
-|:---------------------------------------------------------|:-----------------------------------------------|
-|    ORF_ID                                                | Open Reading Frame identifier (internal to RGI)|
-|    Contig                                                | Source Sequence                                |
-|    Start                                                 | Start co-ordinate of ORF                       |
-|    Stop                                                  | End co-ordinate of ORF                         |
-|    Orientation                                           | Strand of ORF                                  |
-|    Cut_Off                                               | RGI Detection Paradigm (Perfect, Strict, Loose)|
-|    Pass_Bitscore                                         | Strict detection model bitscore cut-off        |
-|    Best_Hit_Bitscore                                     | Bitscore value of match to top hit in CARD     |
-|    Best_Hit_ARO                                          | ARO term of top hit in CARD                    |
-|    Best_Identities                                       | Percent identity of match to top hit in CARD   |
-|    ARO                                                   | ARO accession of match to top hit in CARD      |
-|    Model_type                                            | CARD detection model type                      |
-|    SNPs_in_Best_Hit_ARO                                  | Mutations observed in the ARO term of top hit in CARD (if applicable)|
-|    Other_SNPs                                            | Mutations observed in ARO terms of other hits indicated by model id (if applicable)|
-|    Drug Class                                            | ARO Categorization                             |
-|    Resistance Mechanism                                  | ARO Categorization                             |
-|    AMR Gene Family                                       | ARO Categorization                             |
-|    Predicted_DNA                                         | ORF predicted nucleotide sequence              |
-|    Predicted_Protein                                     | ORF predicted protein sequence                 |
-|    CARD_Protein_Sequence                                 | Protein sequence of top hit in CARD            |
-|    Percentage Length of Reference Sequence               | (length of ORF protein / length of CARD reference protein)|
-|    ID                                                    | HSP identifier (internal to RGI)               |
-|    Model_id                                              | CARD detection model id                        |
-|    Nudged                                                | TRUE = Hit nudged from Loose to Strict         |
-|    Note                                                  | Reason for nudge or other notes                |
-|    Hit_Start                                             | Start co-ordinate for HSP in CARD reference    |
-|    Hit_End                                               | End co-ordinate for HSP in CARD reference      |
-|    Antibiotic                                            | ARO Categorization                             |
+<details>
 
+<summary>Click to view table</summary>
+
+|Column|Field                                  | Contents                                       |
+|:-----|:--------------------------------------|:-----------------------------------------------|
+|   1  |ORF_ID                                 | Open Reading Frame identifier (internal to RGI)|
+|   2  |Contig                                 | Source Sequence                                |
+|   3  |Start                                  | Start co-ordinate of ORF                       |
+|   4  |Stop                                   | End co-ordinate of ORF                         |
+|   5  |Orientation                            | Strand of ORF                                  |
+|   6  |Cut_Off                                | RGI Detection Paradigm (Perfect, Strict, Loose)|
+|   7  |Pass_Bitscore                          | Strict detection model bitscore cut-off        |
+|   8  |Best_Hit_Bitscore                      | Bitscore value of match to top hit in CARD     |
+|   9  |Best_Hit_ARO                           | ARO term of top hit in CARD                    |
+|  10  |Best_Identities                        | Percent identity of match to top hit in CARD   |
+|  11  |ARO                                    | ARO accession of match to top hit in CARD      |
+|  12  |Model_type                             | CARD detection model type                      |
+|  13  |SNPs_in_Best_Hit_ARO                   | Mutations observed in the ARO term of top hit in CARD (if applicable)|
+|  14  |Other_SNPs                             | Mutations observed in ARO terms of other hits indicated by model id (if applicable)|
+|  15  |Drug Class                             | ARO Categorization                             |
+|  16  |Resistance Mechanism                   | ARO Categorization                             |
+|  17  |AMR Gene Family                        | ARO Categorization                             |
+|  18  |Predicted_DNA                          | ORF predicted nucleotide sequence              |
+|  19  |Predicted_Protein                      | ORF predicted protein sequence                 |
+|  20  |CARD_Protein_Sequence                  | Protein sequence of top hit in CARD            |
+|  21  |Percentage Length of Reference Sequence| (length of ORF protein / length of CARD reference protein)|
+|  22  |ID                                     | HSP identifier (internal to RGI)               |
+|  23  |Model_id                               | CARD detection model id                        |
+|  24  |Nudged                                 | TRUE = Hit nudged from Loose to Strict         |
+|  25  |Note                                   | Reason for nudge or other notes                |
+|  26  |Hit_Start                              | Start co-ordinate for HSP in CARD reference    |
+|  27  |Hit_End                                | End co-ordinate for HSP in CARD reference      |
+|  28  |Antibiotic                             | ARO Categorization                             |
+
+</details>
+
+When viewing wide tab-delimited files like this one, it might be useful to look
+at them one column at a time, which can be accomplished with the `cut` command.
+For instance, if we wanted to look at 
