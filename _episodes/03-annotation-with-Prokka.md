@@ -489,10 +489,6 @@ use the arrow keys to move left and right. A detailed description of the
 meaning of each column can be found in the table below (taken from RGI's
 documentation):
 
-<details>
-
-<summary>Click to view table</summary>
-
 |Column|Field                                  | Contents                                       |
 |:-----|:--------------------------------------|:-----------------------------------------------|
 |   1  |ORF_ID                                 | Open Reading Frame identifier (internal to RGI)|
@@ -523,8 +519,6 @@ documentation):
 |  26  |Hit_Start                              | Start co-ordinate for HSP in CARD reference    |
 |  27  |Hit_End                                | End co-ordinate for HSP in CARD reference      |
 |  28  |Antibiotic                             | ARO Categorization                             |
-
-</details>
 
 When viewing wide tab-delimited files like this one, it might be useful to look
 at them one column at a time, which can be accomplished with the `cut` command.
