@@ -1,7 +1,7 @@
 ---
 title: "Annotating Genomic Data"
-teaching: 30
-exercises: 15
+teaching: 40
+exercises: 20
 questions:
 - "How can I identify the genes in a genome?"
 objectives:
@@ -522,4 +522,217 @@ documentation):
 
 When viewing wide tab-delimited files like this one, it might be useful to look
 at them one column at a time, which can be accomplished with the `cut` command.
-For instance, if we wanted to look at 
+For example, if we wanted to look at the Drug Class field (which is the 15th
+column), we would write the following:
+
+~~~
+$ cut -f 15 agalactiae_18RS21.txt | head
+~~~
+{: .language-bash}
+
+~~~
+Drug Class
+carbapenem
+mupirocin-like antibiotic
+phenicol antibiotic
+macrolide antibiotic
+macrolide antibiotic; tetracycline antibiotic; disinfecting agents and antiseptics
+diaminopyrimidine antibiotic
+carbapenem
+phenicol antibiotic
+carbapenem; cephalosporin; penam
+~~~
+{: .output}
+
+> ## Exercise 3: The most abundant resistance mechanisms
+> 
+> Complete the following bash command to get the counts of each unique
+> resistance mechanism. Which one is the abundant?
+> 
+> ~~~
+> $ cut -f ____ agalactiae_18RS21.txt | tail +2 | ____ | ____
+> ~~~
+> {: .language-bash}
+> 
+> > ## Solution
+> > 
+> > The resistance mechanism is the 16th column, so we should pass the number
+> > 16 to `cut -f`. The `tail +2` part simply removes the header row. Next, we
+> > should sort the rows using `sort`, and, finally, count each occurrence with
+> > `uniq -c`. Thus, we get the following command:
+> > 
+> > ~~~
+> > $ cut -f 16 agalactiae_18RS21.txt | tail +2 | sort | uniq -c
+> > ~~~
+> > {: .language-bash}
+> > 
+> > ~~~
+> >     574 antibiotic efflux
+> >       7 antibiotic efflux; reduced permeability to antibiotic
+> >     697 antibiotic inactivation
+> >     342 antibiotic target alteration
+> >      11 antibiotic target alteration; antibiotic efflux
+> >       2 antibiotic target alteration; antibiotic efflux; reduced permeability to antibiotic
+> >      12 antibiotic target alteration; antibiotic target replacement
+> >     170 antibiotic target protection
+> >      49 antibiotic target replacement
+> >      24 reduced permeability to antibiotic
+> >       2 resistance by host-dependent nutrient acquisition
+> > ~~~
+> > {: .output}
+> > 
+> > From here, we can see that the **antibiotic inactivation** mechanism is the
+> > most abundant.
+> > 
+> {: .solution}
+{: .challenge}
+
+> ## Exercise 4: Annotating antibiotic resistance of multiple genomes
+> 
+> Fill in the blanks in the following bash loop in order to annotate each of
+> the eight genomes with RGI main and save outputs into
+> `~/pan_workshop/results/resistomes/`. The basenames of the output files must
+> have the form `agalactiae_[strain]`, where `[strain]` shall be replaced with
+> the corresponding strain.
+> 
+> ~~~
+> $ cd ~/pan_workshop/data/
+> $ cat TettelinList.txt | while read strain; do
+> > rgi main --clean --local --include_loose \
+> > -i ___________________________ \
+> > -o ___________________________
+> > done
+> ~~~
+> {: .language-bash}
+> 
+> To check your answer, confirm that you get the same output when running the
+> following:
+> 
+> ~~~
+> $ ls ~/pan_workshop/results/resistomes/
+> ~~~
+> {: .language-bash}
+> 
+> ~~~
+> agalactiae_18RS21.json  agalactiae_515.json   agalactiae_CJB111.json  agalactiae_H36B.json
+> agalactiae_18RS21.txt   agalactiae_515.txt    agalactiae_CJB111.txt   agalactiae_H36B.txt
+> agalactiae_2603V.json   agalactiae_A909.json  agalactiae_COH1.json    agalactiae_NEM316.json
+> agalactiae_2603V.txt    agalactiae_A909.txt   agalactiae_COH1.txt     agalactiae_NEM316.txt
+> ~~~
+> {: .output}
+> 
+> **Bonus:** Notice that this command will execute RGI main even if the outputs
+> already exist. How would you modify this script so that already processed
+> files are skipped?
+> 
+> > ## Solution
+> > 
+> > Because `TettelinList.txt` only stores strains, we must write the complete
+> > name by appending `agalactiae_` before the `strain` variable and the
+> > corresponding file extensions. As such, we get the following command:
+> > 
+> > ~~~
+> > $ cd ~/pan_workshop/data/
+> > $ cat TettelinList.txt | while read strain; do
+> > > rgi main --clean --local --include_loose \
+> > > -i agalactiae_$strain/*.fna \
+> > > -o ../results/resistomes/agalactiae_$strain \
+> > > done
+> > ~~~
+> > {: .language-bash}
+> > 
+> > **Bonus:** In order to skip already processed files, we can add a
+> > conditional statement which tests for the existence of one of the output
+> > files, and run the command if this test fails. We'll use the `.txt` file
+> > for this check. Recall that to test for the existence of a file, we use
+> > the following syntax: `if [ -f path/to/file ]`; taking this into account,
+> > we can now build our command:
+> > 
+> > ~~~
+> > $ cd ~/pan_workshop/data/
+> > $ cat TettelinList.txt | while read strain; do
+> > > if [ -f ../results/resistomes/agalactiae_$strain.txt ]; then
+> > > echo "Skipping $strain"
+> > > else
+> > > echo "Annotating $strain"
+> > > rgi main --clean --local --include_loose \
+> > > -i agalactiae_$strain/*.fna \
+> > > -o ../results/resistomes/agalactiae_$strain \
+> > > fi
+> > > done
+> > ~~~
+> > {: .language-bash}
+> > 
+> {: .solution}
+{: .challenge}
+
+> ## Unleashing the power of the command line: building presence-absence tables from RGI main outputs
+> 
+> Bash is a powerful and flexible language; as an example of the possibilities
+> that it enables, we will create a presence-absence table from our RGI results.
+> This kind of tables store the presence or absence of features in a set of
+> individuals. Each cell may contain a 1 if the feature is present or a 0
+> otherwise. In our case, each column will correspond to a genome, and each
+> row to an ARO, which is a unique identifier for resistance genes.
+> 
+> First, let's create the script and grant it the permission to execute:
+> 
+> ~~~
+> $ touch create-rgi-presence-table.sh
+> $ chmod +x create-rgi-presence-table.sh
+> ~~~
+> {: .language-bash}
+> 
+> Next, open the script with any text editor and copy the following code into
+> it. Several comments have been added throughout the script to make it clear
+> what is being done at each step. Links to useful articles detailing specific
+> Bash scripting tools are also provided.
+> 
+> ~~~
+> #!/bin/bash
+> 
+> # Set "Bash Strict Mode". [1]
+> set -euo pipefail
+> IFS=$'\n\t'
+> 
+> # Show help message when no arguments are passed and exit. [2]
+> if [ $# -lt 1 ]; then
+>   echo "Usage: $0 [TXT FILES] > [OUTPUT TSV FILE]" >&2
+>   echo Create a presence-absence table from RGI main txt outputs. >&2
+>   exit 1
+> fi
+> 
+> # Output table parts.
+> header="aro"
+> table=""
+> 
+> # For each passed file. $@ is also a special variable. [2]
+> for file in $@; do
+> 
+>   # Add column name to header.
+>   header=$header'\t'$(basename $file .txt)
+> 
+>   # List file's AROs and append the digit 1 at the right of each line. [3]
+>   aros=$(cut -f 11 $file | tail +2 | sort | uniq | sed 's/$/ 1/')
+> 
+>   # Join the AROs into table, fill missing values with zeroes. [4]
+>   table=$(join -e 0 -a 1 -a 2 <(echo "${table}") <(echo "${aros}") -o auto)
+> 
+> done
+> 
+> # Print full tab-delimited table.
+> echo -e "${header}"
+> echo "${table}" | tr ' ' '\t' | tail +2
+> 
+> # Useful links:
+> # [1] More info about the "Bash Strict Mode":
+> #     http://redsymbol.net/articles/unofficial-bash-strict-mode/
+> # [2] Both $# and $@ are examples of special variables. Learn about them here:
+> #     https://linuxhandbook.com/bash-special-variables/
+> # [3] Sed is a powerful text processing tool. Get started here:
+> #     https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
+> # [4] Learn how to use the join command from this source:
+> #     https://www.ibm.com/docs/ro/aix/7.2?topic=j-join-command
+> 
+> ~~~
+> {: .language-bash}
