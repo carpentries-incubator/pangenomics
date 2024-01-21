@@ -715,7 +715,7 @@ carbapenem; cephalosporin; penam
 >   # List file's AROs and append the digit 1 at the right of each line. [3]
 >   aros=$(cut -f 11 $file | tail +2 | sort | uniq | sed 's/$/ 1/')
 > 
->   # Join the AROs into table, fill missing values with zeroes. [4]
+>   # Join the AROs into table, fill missing values with zeroes. [4] [5]
 >   table=$(join -e 0 -a 1 -a 2 <(echo "${table}") <(echo "${aros}") -o auto)
 > 
 > done
@@ -733,6 +733,9 @@ carbapenem; cephalosporin; penam
 > #     https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
 > # [4] Learn how to use the join command from this source:
 > #     https://www.ibm.com/docs/ro/aix/7.2?topic=j-join-command
+> # [5] The <(EXPRESSION) notation is called process substitution, used here
+> #     because the join command only accepts files. Learn more from here:
+> #     https://medium.com/factualopinions/process-substitution-in-bash-739096a2f66d
 > 
 > ~~~
 > {: .language-bash}
