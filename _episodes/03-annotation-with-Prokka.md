@@ -743,8 +743,7 @@ carbapenem; cephalosporin; penam
 > obtained from Exercise 4 as arguments:
 > 
 > ~~~
-> $ ./create-rgi-presence-table.sh ~/pan_workshop/results/resistomes/*.txt \
-> > agalactiae_rgi_presence.tsv
+> $ ./create-rgi-presence-table.sh ~/pan_workshop/results/resistomes/*.txt > agalactiae_rgi_presence.tsv
 > ~~~
 > {: .language-bash}
 > 
