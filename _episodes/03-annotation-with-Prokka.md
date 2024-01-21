@@ -670,7 +670,7 @@ carbapenem; cephalosporin; penam
 > 
 > Bash is a powerful and flexible language; as an example of the possibilities
 > that it enables, we will create a presence-absence table from our RGI results.
-> This kind of tables store the presence or absence of features in a set of
+> This kind of table stores the presence or absence of features in a set of
 > individuals. Each cell may contain a 1 if the feature is present or a 0
 > otherwise. In our case, each column will correspond to a genome, and each
 > row to an ARO, which is a unique identifier for resistance genes.
@@ -706,7 +706,7 @@ carbapenem; cephalosporin; penam
 > header="aro"
 > table=""
 > 
-> # For each passed file. $@ is also a special variable. [2]
+> # For each passed file. [2]
 > for file in $@; do
 > 
 >   # Add column name to header.
