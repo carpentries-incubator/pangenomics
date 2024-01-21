@@ -736,7 +736,16 @@ carbapenem; cephalosporin; penam
 > # [5] The <(EXPRESSION) notation is called process substitution, used here
 > #     because the join command only accepts files. Learn more from here:
 > #     https://medium.com/factualopinions/process-substitution-in-bash-739096a2f66d
-> 
 > ~~~
 > {: .language-bash}
+> 
+> Finally, you can run this script by passing the eight `.txt` files we
+> obtained from Exercise 4 as arguments:
+> 
+> ~~~
+> $ ./create-rgi-presence-table.sh ~/pan_workshop/results/resistomes/*.txt \
+> > agalactiae_rgi_presence.tsv
+> ~~~
+> {: .language-bash}
+> 
 {: .callout}
