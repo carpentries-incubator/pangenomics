@@ -17,9 +17,10 @@ keypoints:
 -   "b) Analysis of horizontal gene transfer or genetic recombination."
 -   "c) Evolutionary studies of genes (duplication, gain-loss genes, etc.)."
 ---
-##
 
-The Genome taxonomy database provides a comprehensive catalog of prokaryotes [GTDB](https://gtdb.ecogenomic.org/). The closest genomes to a new genome can be found with the GTDB toolkit as in this [example](https://ecogenomics.github.io/GTDBTk/examples/classify_wf.html). 
+## Before building a Pangenome
+Before building a Pangenome it is necessary to know the taxonomic classification of the genome of interest. The Genome taxonomy database provides a comprehensive catalog of prokaryotes [GTDB](https://gtdb.ecogenomic.org/). The closest genomes to a new genome can be found with the GTDB toolkit as in this [example](https://ecogenomics.github.io/GTDBTk/examples/classify_wf.html). 
+
 ## Downstream analysis of pangenomes
 
 We have acquired a comprehensive understanding of pangenome construction techniques at this stage. Our analysis has yielded a gene presence-absence matrix, which serves as a rudimentary representation of our pangenome. Ideally, we can complement this data by incorporating a metadata file encompassing various phenotypic features associated with each sample. These features may include the year of isolation, geographic origin, host information, drug-resistance profiles, levels of pathogenicity or virulence, serotypes, lineages, and more. Armed with this extensive metadata, numerous intriguing avenues for downstream analyses become available to us. By exploring the pangenome, we can uncover invaluable insights and elucidate various aspects of microbial genetics. 
