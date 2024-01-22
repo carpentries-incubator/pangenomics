@@ -6,7 +6,7 @@ questions:
 - "What can I do after I have built a pangenome?"
 - "What bioinformatic tools are available for downstream analysis of pangenomes?"
 objectives:
-- "Learn about the downstream analysis to describe a pangenome"
+- "Learn downstream analysis to describe a pangenome"
 keypoints:
 - "Downstream analysis of pangenomes could be focused on describing the core or the accessory genome of the organism studied."
 - "Examples using the information obtained in the **CORE GENOME**:" 
@@ -17,6 +17,7 @@ keypoints:
 -   "b) Analysis of horizontal gene transfer or genetic recombination."
 -   "c) Evolutionary studies of genes (duplication, gain-loss genes, etc.)."
 ---
+
 ## Downstream analysis of pangenomes
 
 At this stage, we have acquired a comprehensive understanding of pangenome construction techniques. Our analysis has yielded a gene presence-absence matrix, which serves as a rudimentary representation of our pangenome. Ideally, we can complement this data by incorporating a metadata file encompassing various phenotypic features associated with each of our samples. These features may include the year of isolation, geographic origin, host information, drug-resistance profiles, levels of pathogenicity or virulence, serotypes, lineages, and more. Armed with this extensive metadata, numerous intriguing avenues for downstream analyses become available to us. By exploring the pangenome, we can uncover invaluable insights and elucidate various aspects of microbial genetics. 
