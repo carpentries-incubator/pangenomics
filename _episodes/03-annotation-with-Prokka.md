@@ -406,7 +406,7 @@ and RGI bwt, on the other hand, annotates reads. In this lesson, we'll learn
 how to use RGI main. To use it, first activate its virtual environment:
 
 ~~~
-$ conda activate rgi
+$ conda activate /miniconda3/envs/rgi/
 ~~~
 {: .language-bash}
 
