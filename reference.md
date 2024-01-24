@@ -4,6 +4,6 @@ layout: reference
 
 ## Glossary
 
-FIXME
+Pangenome: The complete repertoire of genes of a group of organisms.
 
 {% include links.md %}
