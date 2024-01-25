@@ -111,6 +111,21 @@ Options that control clustering:
 
 ### Create a directory for the output
 
+> ## Note for longer workshops
+> Instead of running the following commands on all files, in longer workshops, it should be executed on the mini genomes.
+> First, it will be useful to locate the mini genomes:
+> ~~~
+> $ ls ~/pan_workshop/data/annotated_mini/
+> ~~~
+> {: .language-bash}
+> ~~~
+> Streptococcus_agalactiae_2603V_mini.faa  Streptococcus_agalactiae_A909_mini.faa
+> Streptococcus_agalactiae_515_mini.faa    Streptococcus_agalactiae_NEM316_mini.faa
+> ~~~
+> {: .output}
+
+{: .callout}
+
 It's necessary to create a new folder to store all the results.
 
 ~~~
