@@ -123,7 +123,6 @@ Options that control clustering:
 > Streptococcus_agalactiae_515_mini.faa    Streptococcus_agalactiae_NEM316_mini.faa
 > ~~~
 > {: .output}
-
 {: .callout}
 
 It's necessary to create a new folder to store all the results.
