@@ -147,7 +147,7 @@ $ conda activate /miniconda3/envs/Pangenomics_Global
 {: .language-bash}
 And now let's run our program.
 ~~~
-$ get_homologues.pl -d data_gbks -M -t 0 -c -n 8
+$ get_homologues.pl -d data_gbks -M -t 0 -c -n 1
 ~~~
 {: .language-bash}
 Click `Ctrl`+ `a` + `d` to detach from the session and wait 8 minutes to attach back the screen and check if it has finished.
@@ -251,6 +251,58 @@ $ head gene_families.tsv
 
 Now we have in only one file the description of our clustering results!
 
+## Obtaining a pangenomic matrix for a shell genome database
+
+We are going to obtain a file with our gene families that are found in the core genome, or well, perhaps a bit beyond the core, the Shell genome. This will be our database and will serve us to search for enzymes with expansions close to specialized metabolism with EvoMining.
+
+Well, first, let's create our pangenomic matrix. This matrix has the presence and absence of genes from each gene family in the genomes.
+
+~~~
+$ compare_clusters.pl -o sample_intersection -m -d data_gbks_homologues/Streptococcusagalactiae18RS21prokka_f0_0taxa_algOMCL_e0_
+~~~
+{: .language-bash}
+
+~~~
+[...]
+# intersection size = 3464 clusters
+
+# intersection list = sample_intersection/intersection_t0.cluster_list
+
+# pangenome_file = sample_intersection/pangenome_matrix_t0.tab transposed = sample_intersection/pangenome_matrix_t0.tr.tab
+# pangenome_genes = sample_intersection/pangenome_matrix_genes_t0.tab transposed = sample_intersection/pangenome_matrix_genes_t0.tr.tab
+# pangenome_phylip file = sample_intersection/pangenome_matrix_t0.phylip
+# pangenome_FASTA file = sample_intersection/pangenome_matrix_t0.fasta
+# pangenome CSV file (Scoary) = sample_intersection/pangenome_matrix_t0.tr.csv
+
+# WARNING: Venn diagrams are only available for 2 or 3 input cluster directories
+~~~
+{: .output}
+
+|	source:/home/j....	|                	Streptococcus_agalactiae_18RS21_prokka.gbk                         		 |	Streptococcus_agalactiae_2603V_prokka.gbk	|    Streptococcus_agalactiae_515_prokka.gbk    |... |
+|:-----------------:    |:---------------------------------------------------------------------:    | :------------------------------------------------:	|   :----------------------------:   | :---: |
+| **1_rnmV_1.faa**  |						1 			   		 |			0				|    0    | ... |
+| **2_scaC.faa**    |						 1				    	|			0				|    0    | ... |
+| **3_hypothetical_protein.faa**  	 |   			1  					 |			0				|    0   | ... |
+| **4_yecS.faa**  	 |   			1  					 |			1				|    1   | ... |
+| 	...		|					...					|			...				|    ...    | ... |
+
+Now we are going to use the table to count the gene families that are present in more than half of the genomes (>50%). The Shell genome consists of the genes shared by the majority of genomes (10-95% occurrence).
+
+
+To achieve this, we will use a function in R that is available in the following [Github]([inst/extdata/search_shell_enzymes_DB_panworkshop.R](https://github.com/andrespan/MetaEvoMining/blob/14e1b45af93f53c6e2a716700ad9c7442d87a3e2/inst/extdata/search_shell_enzymes_DB_panworkshop.R)) repository. This function selects the protein sequences that are present in more than half of the genomes in the pangenomic matrix. It utilizes the sequence files obtained from Get_homologues and concatenates them into a FASTA file with the appropriate headers for use in EvoMining. Remember to import the necessary libraries, which are in the '@import' section of the documentation.
+
+To facilitate the use of this lesson, let's download the Streptococcus agalactiae shell database
+
+~~~
+$ cp /home/pan_workshop/results/pangenome/StreptococcusDB.* ..
+$ ls ..
+~~~
+{: .language-bash}
+~~~
+data_gbks             families           sample_intersection  StreptococcusDB.shell
+data_gbks_homologues  gene_families.tsv  StreptococcusDB.core
+~~~
+{: .output}
 > ## References:
 > Go to the GET_HOMOLOGUES [GitHub](https://github.com/eead-csic-compbio/get_homologues) for the complete collection of instructions and posibilities.  
 > And read the original GET_HOMOLOGUES article to understand the details:
