@@ -278,12 +278,12 @@ $ compare_clusters.pl -o sample_intersection -m -d data_gbks_homologues/Streptoc
 ~~~
 {: .output}
 
-|	source:/home/j....	|                	Streptococcus_agalactiae_18RS21_prokka.gbk                         		 |	Streptococcus_agalactiae_2603V_prokka.gbk	|    Streptococcus_agalactiae_515_prokka.gbk    |... |
-|:-----------------:    |:---------------------------------------------------------------------:    | :------------------------------------------------:	|   :----------------------------:   | :---: |
-| **1_rnmV_1.faa**  |						1 			   		 |			0				|    0    | ... |
-| **2_scaC.faa**    |						 1				    	|			0				|    0    | ... |
-| **3_hypothetical_protein.faa**  	 |   			1  					 |			0				|    0   | ... |
-| **4_yecS.faa**  	 |   			1  					 |			1				|    1   | ... |
+|	gene families / genomes	|                	Streptococcus_agalactiae_18RS21_prokka.gbk                         		 |	Streptococcus_agalactiae_2603V_prokka.gbk	|... |
+|:-----------------:    |:---------------------------------------------------------------------:    | :------------------------------------------------:	| :---: |
+| **1_rnmV_1.faa**  |						1 			   		 |			0				| ... |
+| **2_scaC.faa**    |						 1				    	|			0				| ... |
+| **3_hypothetical_protein.faa**  	 |   			1  					 |			0				| ... |
+| **4_yecS.faa**  	 |   			1  					 |			1				| ... |
 | 	...		|					...					|			...				|    ...    | ... |
 
 Now we are going to use the table to count the gene families that are present in more than half of the genomes (>50%). The Shell genome consists of the genes shared by the majority of genomes (10-95% occurrence).
