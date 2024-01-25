@@ -304,20 +304,10 @@ $ compare_clusters.pl -o sample_intersection -m -d data_gbks_homologues/Streptoc
 Now we are going to use the table to count the gene families that are present in more than half of the genomes (>50%). The Shell genome consists of the genes shared by the majority of genomes (10-95% occurrence).
 
 
-To achieve this, we will use a function in R that is available in the following [Github]([inst/extdata/search_shell_enzymes_DB_panworkshop.R](https://github.com/andrespan/MetaEvoMining/blob/14e1b45af93f53c6e2a716700ad9c7442d87a3e2/inst/extdata/search_shell_enzymes_DB_panworkshop.R)) repository. This function selects the protein sequences that are present in more than half of the genomes in the pangenomic matrix. It utilizes the sequence files obtained from Get_homologues and concatenates them into a FASTA file with the appropriate headers for use in EvoMining. Remember to import the necessary libraries, which are in the '@import' section of the documentation.
+To achieve this, we will use a function in R that is available in the following [Github]([inst/extdata/search_shell_enzymes_DB_panworkshop.R](https://github.com/andrespan/MetaEvoMining/blob/14e1b45af93f53c6e2a716700ad9c7442d87a3e2/inst/extdata/search_shell_enzymes_DB_panworkshop.R)) repository. This function selects the protein sequences present in more than half of the genomes in the pangenomic matrix. It utilizes the sequence files obtained from Get_homologues and concatenates them into a FASTA file with the appropriate headers for use in EvoMining. Remember to import the necessary libraries which are in the '@import' section of the function documentation.
 
-To facilitate the use of this lesson, let's download the Streptococcus agalactiae shell database
+To facilitate the use of this lesson, let's download the *Streptococcus agalactiae* shell database which is available at this [GitHub](https://github.com/andrespan/MetaEvoMining/tree/e2945cd4555622c9677ca23d9ed1e161fe2c44fa/inst/extdata/DATABASES) link.
 
-~~~
-$ cp /home/pan_workshop/results/pangenome/StreptococcusDB.* ..
-$ ls ..
-~~~
-{: .language-bash}
-~~~
-data_gbks             families           sample_intersection  StreptococcusDB.shell
-data_gbks_homologues  gene_families.tsv  StreptococcusDB.core
-~~~
-{: .output}
 > ## References:
 > Go to the GET_HOMOLOGUES [GitHub](https://github.com/eead-csic-compbio/get_homologues) for the complete collection of instructions and posibilities.  
 > And read the original GET_HOMOLOGUES article to understand the details:
