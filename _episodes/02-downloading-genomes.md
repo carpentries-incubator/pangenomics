@@ -546,3 +546,11 @@ $ rm agalactiae_CJB111/GCF_015221735.2_ASM1522173v2_genomic.fna
 > > 
 > {: .solution}
 {: .challenge}
+> 
+> ## Resources:
+> Other tools for obtaining genomic data sets to work with can be found here:
+> - **NCBI Datasets** is a resource that lets you easily gather data from across NCBI databases. You can get the data through different interfaces. [Link](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/how-tos/genomes/large-download/).
+> - **Natural Products Discovery Center** is a shared state-of-the-art actinobacterial strain collection and genome database. [Link](https://npdc.rc.ufl.edu/home).
+> - **AllTheBacteria** is a good database that contains 1.9 million genomes that have been uniformly re-processed for quality and taxonomic criteria. [Link](https://www.biorxiv.org/content/10.1101/2024.03.08.584059v1).
+> 
+{: .callout}
