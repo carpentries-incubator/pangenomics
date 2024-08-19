@@ -128,7 +128,7 @@ Great! The genome is available!
 Now, we can proceed to download it. To better organize our data, we can save this file into a specific directory for this strain. We can indicate this instruction with the `--output-folder` or `-o` flag followed by the name we choose. In this case, will be `-o agalactie_515`. Notice that now we no longer need the flag the `-n`.  
 
 ~~~
-$ ncbi-genome-download --genera "Streptococcus agalactiae" -S 515 --formats fasta -o agalactie_515 bacteria
+$ ncbi-genome-download --genera "Streptococcus agalactiae" -S 515 --formats fasta -o agalactiae_515 bacteria
 ~~~
 {: .language-bash}
 
