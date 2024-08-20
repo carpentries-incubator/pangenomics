@@ -636,7 +636,7 @@ carbapenem; cephalosporin; penam
 > > $ cat TettelinList.txt | while read strain; do
 > > > rgi main --clean --local --include_loose \
 > > > -i agalactiae_$strain/*.fna \
-> > > -o ../results/resistomes/agalactiae_$strain \
+> > > -o ../results/resistomes/agalactiae_$strain
 > > > done
 > > ~~~
 > > {: .language-bash}
